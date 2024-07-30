@@ -20,10 +20,11 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
         <img
           className='character-card__details-fav'
           src={whiteHeart}
-          alt={'Charter fav'}
+          alt={'Favorite'}
         />
       </div>
     </div>
   );
 };
+
 export default CharacterCard;
