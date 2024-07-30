@@ -1,26 +1,26 @@
-import React, { createContext, useState, ReactNode, FC } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
 import { Character } from '../types/marvel';
 
 interface MarvelContextProps {
   characters: Character[];
-  setCharacters: React.Dispatch<React.SetStateAction<Character[]>>;
-  favorites: Character[];
-  setFavorites: React.Dispatch<React.SetStateAction<Character[]>>;
+  setCharacters: (characters: Character[]) => void;
 }
 
-const MarvelContext = createContext<MarvelContextProps | undefined>(undefined);
+const defaultValue: MarvelContextProps = {
+  characters: [],
+  setCharacters: () => {},
+};
 
-const MarvelProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const MarvelContext = createContext<MarvelContextProps>(defaultValue);
+
+export const MarvelProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [favorites, setFavorites] = useState<Character[]>([]);
 
   return (
-    <MarvelContext.Provider
-      value={{ characters, setCharacters, favorites, setFavorites }}
-    >
+    <MarvelContext.Provider value={{ characters, setCharacters }}>
       {children}
     </MarvelContext.Provider>
   );
 };
-
-export { MarvelContext, MarvelProvider };

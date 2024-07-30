@@ -1,12 +1,24 @@
 import { Character, ApiResponse } from '../types/marvel';
 
 const API_URL = 'http://gateway.marvel.com/v1/public';
-const API_KEY = 'tu_api_key_aqui';
+const API_KEY = '1daf6cf594dc2df417c2c3ddfca3ab88';
+const API_SECRET = 'e9490d8978ab16f8d697314e0421ecef29308dd8';
+const MD5 = '2a701329d07892b26769a4b9948c29ca';
 
 export const fetchCharacters = async (): Promise<Character[]> => {
-  const response = await fetch(`${API_URL}/characters?apikey=${API_KEY}`);
-  const data: ApiResponse<Character[]> = await response.json();
-  return data.data.results;
-};
+  try {
+    const response = await fetch(
+      `${API_URL}/characters?limit=50&ts=1&apikey=${API_KEY}&hash=${MD5}`
+    );
+    const data: ApiResponse<Character[]> = await response.json();
 
-// Otras funciones para la API
+    if (!data.data || !data.data.results) {
+      throw new Error('Invalid API response');
+    }
+
+    return data.data.results;
+  } catch (error) {
+    console.error('Error fetching characters:', error);
+    return [];
+  }
+};
