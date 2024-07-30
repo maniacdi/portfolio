@@ -56,25 +56,27 @@ const CharacterDetail: React.FC = () => {
   return (
     <div className='character-detail'>
       {character && (
-        <div className='character-detail__header'>
-          <img
-            className='character-detail__image'
-            src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-            alt={character.name}
-          />
-          <div className='character-detail__header-text'>
-            <div className='character-detail__header-text__title'>
-              <h1 className='character-detail__name'>{character.name}</h1>{' '}
-              <img
-                className='character-details__fav'
-                src={isFavorite ? redHeart : whiteHeart}
-                alt={'Favorite'}
-                onClick={handleFavoriteClick}
-              />
+        <div className='character-detail__header-container'>
+          <div className='character-detail__header'>
+            <img
+              className='character-detail__image'
+              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+              alt={character.name}
+            />
+            <div className='character-detail__header-text'>
+              <div className='character-detail__header-text__title'>
+                <h1 className='character-detail__name'>{character.name}</h1>{' '}
+                <img
+                  className='character-details__fav'
+                  src={isFavorite ? redHeart : whiteHeart}
+                  alt={'Favorite'}
+                  onClick={handleFavoriteClick}
+                />
+              </div>
+              <p className='character-detail__description'>
+                {character.description || 'No description available'}
+              </p>
             </div>
-            <p className='character-detail__description'>
-              {character.description || 'No description available'}
-            </p>
           </div>
         </div>
       )}
