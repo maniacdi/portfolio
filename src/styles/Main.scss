@@ -1,0 +1,9 @@
+.character-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 90vw;
+  height: 100%;
+  flex-wrap: wrap;
+  margin: auto;
+}

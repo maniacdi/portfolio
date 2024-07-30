@@ -13,8 +13,8 @@ import Loader from '../components/Loader/Loader';
 import Header from '../components/Header/Header';
 import { debounce } from 'lodash';
 import { Character } from '../types/marvel';
-import logo from '../assets/logo512.png';
-
+import logo from '../assets/logo.png';
+import '../styles/Main.scss';
 const MainView: React.FC = () => {
   const context = useContext(MarvelContext);
   const { characters, setCharacters } = context;

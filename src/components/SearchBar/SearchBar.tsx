@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './SearchBar.scss';
 interface SearchBarProps {
   onSearch: (query: string) => void;
   disabled: boolean;
@@ -12,6 +12,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, disabled }) => {
 
   return (
     <input
+      className='search-bar'
       type='text'
       onChange={handleChange}
       placeholder='Search characters...'
