@@ -1,5 +1,5 @@
 export interface Character {
-  id: number;
+  id: string;
   name: string;
   description: string;
   thumbnail: Image;
@@ -9,6 +9,10 @@ export interface Character {
 export interface ApiResponse<T> {
   data: {
     results: T;
+    total: number;
+    count: number;
+    limit: number;
+    offset: number;
   };
 }
 

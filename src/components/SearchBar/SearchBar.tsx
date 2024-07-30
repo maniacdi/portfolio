@@ -22,7 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         className='search-bar__input'
         type='text'
         onChange={handleChange}
-        placeholder='SEARCH CHARACTERS...'
+        placeholder='SEARCH A CHARACTER...'
         disabled={disabled}
       />
       <div className='search-bar__count'>
