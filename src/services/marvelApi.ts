@@ -2,7 +2,6 @@ import { Character, ApiResponse } from '../types/marvel';
 
 const API_URL = 'http://gateway.marvel.com/v1/public';
 const API_KEY = '1daf6cf594dc2df417c2c3ddfca3ab88';
-const API_SECRET = 'e9490d8978ab16f8d697314e0421ecef29308dd8';
 const MD5 = '2a701329d07892b26769a4b9948c29ca';
 
 export const fetchCharacters = async (): Promise<Character[]> => {

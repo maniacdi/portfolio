@@ -2,19 +2,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 3rem;
   background-color: #20232a;
   color: white;
 }
 
 .header-logo {
   height: 40px;
+  width: 40px;
+}
+
+.test {
+  height: 40px;
+  width: 40px;
+  color: white;
 }
 
 .header-favorites {
   color: rgb(166, 43, 43);
   cursor: pointer;
+  background-color: transparent;
   font-size: 1.5rem;
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 }

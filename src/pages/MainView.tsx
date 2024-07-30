@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useState, useCallback } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+} from 'react';
 import { MarvelContext } from '../context/MarvelContext';
 import { fetchCharacters } from '../services/marvelApi';
 import CharacterCard from '../components/CharacterCard/CharacterCard';
@@ -16,30 +22,52 @@ const MainView: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    const cacheKey = 'allCharacters';
     const getCharacters = async () => {
-      setLoading(true);
-      const fetchedCharacters = await fetchCharacters();
-      if (fetchedCharacters.length > 0) {
-        setCharacters(fetchedCharacters);
-        setFilteredCharacters(fetchedCharacters);
+      // Check localStorage first
+      const cachedData = localStorage.getItem(cacheKey);
+
+      if (cachedData) {
+        const parsedData = JSON.parse(cachedData);
+        setCharacters(parsedData);
+        setFilteredCharacters(parsedData);
+        setLoading(false);
+      } else {
+        setLoading(true);
+        const fetchedCharacters = await fetchCharacters();
+        if (fetchedCharacters.length > 0) {
+          setCharacters(fetchedCharacters);
+          setFilteredCharacters(fetchedCharacters);
+          // Save to cache
+          localStorage.setItem(cacheKey, JSON.stringify(fetchedCharacters));
+        }
+        setLoading(false);
       }
-      setLoading(false);
     };
+
     getCharacters();
   }, [setCharacters]);
 
-  const handleSearch = useCallback(
-    debounce((query: string) => {
-      if (query === '') {
-        setFilteredCharacters(characters);
-      } else {
-        const filtered = characters.filter((character: Character) =>
-          character.name.toLowerCase().includes(query.toLowerCase())
-        );
-        setFilteredCharacters(filtered);
-      }
-    }, 300),
+  const debouncedHandleSearch = useMemo(
+    () =>
+      debounce((query: string) => {
+        if (query === '') {
+          setFilteredCharacters(characters);
+        } else {
+          const filtered = characters.filter((character: Character) =>
+            character.name.toLowerCase().includes(query.toLowerCase())
+          );
+          setFilteredCharacters(filtered);
+        }
+      }, 300),
     [characters]
+  );
+
+  const handleSearch = useCallback(
+    (query: string) => {
+      debouncedHandleSearch(query);
+    },
+    [debouncedHandleSearch]
   );
 
   const handleFavoritesClick = () => {
