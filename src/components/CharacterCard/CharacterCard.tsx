@@ -1,6 +1,8 @@
 import React from 'react';
 import { Character } from '../../types/marvel';
+import whiteHeart from '../../assets/white-out-heart.png';
 import './CharacterCard.scss';
+
 interface CharacterCardProps {
   character: Character;
 }
@@ -13,7 +15,14 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
         src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
         alt={character.name}
       />
-      <h3 className='character-card__name'>{character.name}</h3>
+      <div className='character-card__details'>
+        <p className='character-card__details-name'>{character.name}</p>
+        <img
+          className='character-card__details-fav'
+          src={whiteHeart}
+          alt={'Charter fav'}
+        />
+      </div>
     </div>
   );
 };

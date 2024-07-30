@@ -77,7 +77,11 @@ const MainView: React.FC = () => {
   return (
     <div>
       <Header logo={logo} onFavoritesClick={handleFavoritesClick} />
-      <SearchBar onSearch={handleSearch} disabled={loading} />
+      <SearchBar
+        onSearch={handleSearch}
+        disabled={loading}
+        itemCount={filteredCharacters.length}
+      />
       {loading ? (
         <Loader />
       ) : (

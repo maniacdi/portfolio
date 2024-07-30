@@ -1,23 +1,34 @@
 import React from 'react';
 import './SearchBar.scss';
+
 interface SearchBarProps {
   onSearch: (query: string) => void;
   disabled: boolean;
+  itemCount: number;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch, disabled }) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  onSearch,
+  disabled,
+  itemCount,
+}) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSearch(e.target.value);
   };
 
   return (
-    <input
-      className='search-bar'
-      type='text'
-      onChange={handleChange}
-      placeholder='Search characters...'
-      disabled={disabled}
-    />
+    <div className='search-bar'>
+      <input
+        className='search-bar__input'
+        type='text'
+        onChange={handleChange}
+        placeholder='SEARCH CHARACTERS...'
+        disabled={disabled}
+      />
+      <div className='search-bar__count'>
+        {itemCount} {itemCount === 1 ? 'Result' : 'Results'}
+      </div>
+    </div>
   );
 };
 
