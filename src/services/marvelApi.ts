@@ -1,4 +1,4 @@
-import { Character, ApiResponse } from '../types/marvel';
+import { Character, ApiResponse, Comic } from '../types/marvel';
 
 const API_URL = 'http://gateway.marvel.com/v1/public';
 const API_KEY = '1daf6cf594dc2df417c2c3ddfca3ab88';
@@ -43,14 +43,39 @@ export const fetchCharacterById = async (
     );
     const data: ApiResponse<Character[]> = await response.json();
 
-    // Asegúrate de que `results` es un array de `Character`
     if (!data.data || !data.data.results || data.data.results.length === 0) {
       throw new Error('Invalid API response');
     }
 
-    return data.data.results[0]; // Retorna el primer personaje
+    return data.data.results[0];
   } catch (error) {
     console.error('Error fetching character by ID:', error);
     return null;
+  }
+};
+
+export const fetchComicsByCharacterId = async (
+  characterId: string,
+  limit: number = 20
+): Promise<Comic[]> => {
+  try {
+    const url = new URL(`${API_URL}/characters/${characterId}/comics`);
+    url.searchParams.append('ts', '1');
+    url.searchParams.append('apikey', API_KEY);
+    url.searchParams.append('hash', MD5);
+    url.searchParams.append('orderBy', 'onsaleDate');
+    url.searchParams.append('limit', limit.toString());
+
+    const response = await fetch(url.toString());
+    const data: ApiResponse<Comic[]> = await response.json();
+
+    if (!data.data || !data.data.results) {
+      throw new Error('Invalid API response');
+    }
+
+    return data.data.results;
+  } catch (error) {
+    console.error('Error fetching comics:', error);
+    return [];
   }
 };

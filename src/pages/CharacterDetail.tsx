@@ -1,25 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { fetchCharacterById } from '../services/marvelApi';
-import { Character } from '../types/marvel';
+import { useParams } from 'react-router-dom';
+import {
+  fetchCharacterById,
+  fetchComicsByCharacterId,
+} from '../services/marvelApi';
+import { Character, Comic } from '../types/marvel';
 import { MarvelContext } from '../context/MarvelContext';
 import whiteHeart from '../assets/out-white-heart.svg';
 import redHeart from '../assets/red-heart.svg';
 
 const CharacterDetail: React.FC = () => {
   const context = useContext(MarvelContext);
-  const {
-    setCharacters,
-    favorites,
-    loading,
-    setLoading,
-    addFavorite,
-    removeFavorite,
-  } = context;
+  const { favorites, loading, setLoading, addFavorite, removeFavorite } =
+    context;
   const { id } = useParams<{ id: string }>();
   const [character, setCharacter] = useState<Character | null>(null);
+  const [comics, setComics] = useState<Comic[]>([]);
   const [error, setError] = useState<string | null>(null);
   const isFavorite = favorites.some((fav) => fav.id === character?.id);
+
   useEffect(() => {
     const getCharacter = async () => {
       setLoading(true);
@@ -28,6 +27,8 @@ const CharacterDetail: React.FC = () => {
         const fetchedCharacter = await fetchCharacterById(id || '');
         if (fetchedCharacter) {
           setCharacter(fetchedCharacter);
+          const fetchedComics = await fetchComicsByCharacterId(id || '');
+          setComics(fetchedComics);
         } else {
           setError('Character not found');
         }
@@ -41,9 +42,6 @@ const CharacterDetail: React.FC = () => {
     getCharacter();
   }, [id]);
 
-  if (error) {
-    return <div>{error}</div>;
-  }
   const handleFavoriteClick = () => {
     if (character) {
       if (isFavorite) {
@@ -53,9 +51,14 @@ const CharacterDetail: React.FC = () => {
       }
     }
   };
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div className='character-detail'>
-      {character && (
+      {!loading && character && (
         <div className='character-detail__header-container'>
           <div className='character-detail__header'>
             <img
@@ -77,6 +80,28 @@ const CharacterDetail: React.FC = () => {
                 {character.description || 'No description available'}
               </p>
             </div>
+          </div>
+        </div>
+      )}
+      {!loading && comics.length > 0 && (
+        <div className='character-detail__comics'>
+          <h2>Comics</h2>
+          <div className='character-detail__comics-list'>
+            {comics.map((comic) => (
+              <div key={comic.id} className='comic-card'>
+                <img
+                  className='comic-card__image'
+                  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                  alt={comic.title}
+                />
+                <h3 className='comic-card__title'>{comic.title}</h3>
+                <p className='comic-card__date'>
+                  {comic.dates
+                    .find((date) => date.type === 'onsaleDate')
+                    ?.date.split('-')[0] || 'Unknown'}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       )}

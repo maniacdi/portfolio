@@ -27,7 +27,7 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalResults, setTotalResults] = useState<number>(0);
   const itemsPerPage: number = 50;
-  const fetchPerPage: number = 100; // Traer 100 personajes por solicitud
+  const fetchPerPage: number = 100;
 
   const fetchAndSetCharacters = async (searchText: string, page: number) => {
     setLoading(true);
@@ -35,7 +35,6 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
       const offset =
         Math.floor(((page - 1) * itemsPerPage) / fetchPerPage) * fetchPerPage;
 
-      // Verificar si los datos están en localStorage
       const localStorageKey = `characters_${searchText}_${offset}`;
       const localStorageData = localStorage.getItem(localStorageKey);
 
@@ -44,12 +43,10 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
           results: Character[];
           total: number;
         };
-        // Verificar si results está vacío
         if (results.length > 0) {
           setAllCharacters((prevCharacters) => [...prevCharacters, ...results]);
           setTotalResults(total);
         } else {
-          // Si results está vacío, hacer la petición
           const results: Character[] = await fetchCharacters(
             searchText,
             offset
@@ -62,7 +59,6 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
           setTotalResults(total);
         }
       } else {
-        // Si no están en localStorage, hacer la petición
         const results: Character[] = await fetchCharacters(searchText, offset);
         localStorage.setItem(localStorageKey, JSON.stringify({ results }));
         setAllCharacters((prevCharacters) => [...prevCharacters, ...results]);
@@ -128,7 +124,6 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
           onClick={() => {
             if (currentPage * itemsPerPage < totalResults) {
               setCurrentPage((prev) => prev + 1);
-              // Traer nuevos personajes cuando el usuario alcanza la mitad del lote actual
               if ((currentPage + 1) % (fetchPerPage / itemsPerPage) === 0) {
                 fetchAndSetCharacters(searchText, currentPage + 1);
               }

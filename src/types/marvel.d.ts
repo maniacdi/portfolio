@@ -25,3 +25,10 @@ export interface ComicList {
   available: number;
   items: Array<{ name: string }>;
 }
+
+export interface Comic {
+  id: string;
+  title: string;
+  dates: Array<{ type: string; date: string }>;
+  thumbnail: Image;
+}

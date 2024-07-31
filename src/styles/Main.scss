@@ -37,51 +37,109 @@
 
 .character-detail {
   display: flex;
-}
+  flex-direction: column;
 
-.character-detail__header-container {
-  background-color: black;
-  width: 100%;
-  height: 320px;
-  clip-path: polygon(0 0, 100% 0, 100% 95%, 99% 100%, 0 100%);
-  padding: 0 15vw;
+  .character-detail__header-container {
+    background-color: black;
+    width: 70vw;
+    height: 320px;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 98% 100%, 0 100%);
+    padding: 0 15vw;
 
-  .character-detail__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-    .character-detail__image {
-      height: 320px;
-      width: 320px;
-    }
-    .character-detail__header-text {
-      color: white;
-      min-width: 600px;
-      .character-detail__header-text__title {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
+    .character-detail__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      .character-detail__image {
+        height: 320px;
+        width: 320px;
+      }
+      .character-detail__header-text {
+        color: white;
+        min-width: 600px;
+        .character-detail__header-text__title {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
 
-        .character-detail__name {
-          font-size: 40px;
-          font-weight: 700;
-          line-height: 46.88px;
-          text-align: left;
-          text-transform: uppercase;
+          .character-detail__name {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 46.88px;
+            text-align: left;
+            text-transform: uppercase;
+          }
+          .character-details__fav {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+          }
         }
-        .character-details__fav {
-          width: 32px;
-          height: 32px;
-          cursor: pointer;
+        .character-detail__description {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 18.75px;
+          text-align: left;
         }
       }
-      .character-detail__description {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 18.75px;
+    }
+  }
+  .character-detail__comics {
+    margin: 48px auto;
+    width: 70vw;
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      margin-left: 5px;
+      text-transform: uppercase;
+    }
+
+    .character-detail__comics-list {
+      display: flex;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #ec1d24 transparent;
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #ec1d24;
+        border-radius: 4px;
+      }
+
+      .comic-card {
+        flex: 0 0 auto;
+        width: 268px;
+        margin-right: 16px;
+        border-radius: 8px;
+        overflow: hidden;
         text-align: left;
+        padding: 10px;
+
+        .comic-card__image {
+          width: 100%;
+          height: auto;
+        }
+
+        .comic-card__title {
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 5px;
+        }
+
+        .comic-card__date {
+          font-size: 12px;
+        }
       }
     }
   }
