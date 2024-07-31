@@ -27,43 +27,45 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalResults, setTotalResults] = useState<number>(0);
   const itemsPerPage: number = 50;
+  const fetchPerPage: number = 100; // Traer 100 personajes por solicitud
 
   const fetchAndSetCharacters = async (searchText: string, page: number) => {
     setLoading(true);
     try {
-      const offset = (page - 1) * itemsPerPage;
+      const offset =
+        Math.floor(((page - 1) * itemsPerPage) / fetchPerPage) * fetchPerPage;
 
       // Verificar si los datos están en localStorage
       const localStorageKey = `characters_${searchText}_${offset}`;
       const localStorageData = localStorage.getItem(localStorageKey);
 
       if (localStorageData) {
-        const fetchedCharacters = JSON.parse(localStorageData) as Character[];
-        setAllCharacters((prevCharacters) => [
-          ...prevCharacters,
-          ...fetchedCharacters,
-        ]);
-        setFilteredCharacters((prevCharacters) => [
-          ...prevCharacters,
-          ...fetchedCharacters,
-        ]);
-        setTotalResults((prevTotal) => prevTotal + fetchedCharacters.length);
+        const { results, total } = JSON.parse(localStorageData) as {
+          results: Character[];
+          total: number;
+        };
+        // Verificar si results está vacío
+        if (results.length > 0) {
+          setAllCharacters((prevCharacters) => [...prevCharacters, ...results]);
+          setTotalResults(total);
+        } else {
+          // Si results está vacío, hacer la petición
+          const results: Character[] = await fetchCharacters(
+            searchText,
+            offset
+          );
+          localStorage.setItem(
+            localStorageKey,
+            JSON.stringify({ results, total })
+          );
+          setAllCharacters((prevCharacters) => [...prevCharacters, ...results]);
+          setTotalResults(total);
+        }
       } else {
         // Si no están en localStorage, hacer la petición
-        const fetchedCharacters = await fetchCharacters(searchText, offset);
-        localStorage.setItem(
-          localStorageKey,
-          JSON.stringify(fetchedCharacters)
-        );
-        setAllCharacters((prevCharacters) => [
-          ...prevCharacters,
-          ...fetchedCharacters,
-        ]);
-        setFilteredCharacters((prevCharacters) => [
-          ...prevCharacters,
-          ...fetchedCharacters,
-        ]);
-        setTotalResults((prevTotal) => prevTotal + fetchedCharacters.length);
+        const results: Character[] = await fetchCharacters(searchText, offset);
+        localStorage.setItem(localStorageKey, JSON.stringify({ results }));
+        setAllCharacters((prevCharacters) => [...prevCharacters, ...results]);
       }
     } catch (error) {
       console.error('Error fetching characters:', error);
@@ -126,7 +128,10 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
           onClick={() => {
             if (currentPage * itemsPerPage < totalResults) {
               setCurrentPage((prev) => prev + 1);
-              fetchAndSetCharacters(searchText, currentPage + 1);
+              // Traer nuevos personajes cuando el usuario alcanza la mitad del lote actual
+              if ((currentPage + 1) % (fetchPerPage / itemsPerPage) === 0) {
+                fetchAndSetCharacters(searchText, currentPage + 1);
+              }
             }
           }}
           disabled={currentPage * itemsPerPage >= totalResults}

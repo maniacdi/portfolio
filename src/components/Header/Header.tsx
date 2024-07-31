@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { MarvelContext } from '../../context/MarvelContext';
-import favLogo from '../../assets/red-heart.png';
+import redHeartSvg from '../../assets/red-heart.svg';
 import './Header.scss';
 
 interface HeaderProps {
@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({
         />
         <button className='header-favorites' onClick={onFavoritesClick}>
           <img
-            src={favLogo}
+            src={redHeartSvg}
             alt='Favorites'
             className='header-favorites__logo'
           />

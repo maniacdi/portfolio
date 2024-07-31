@@ -3,8 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { fetchCharacterById } from '../services/marvelApi';
 import { Character } from '../types/marvel';
 import { MarvelContext } from '../context/MarvelContext';
-import whiteHeart from '../assets/white-out-heart.png';
-import redHeart from '../assets/red-heart.png';
+import whiteHeart from '../assets/out-white-heart.svg';
+import redHeart from '../assets/red-heart.svg';
 
 const CharacterDetail: React.FC = () => {
   const context = useContext(MarvelContext);

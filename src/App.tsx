@@ -10,7 +10,7 @@ import Header from './components/Header/Header';
 import Loader from './components/Loader/Loader';
 import MainView from './pages/MainView';
 import CharacterDetail from './pages/CharacterDetail';
-import logo from './assets/logo.png';
+import logo from './assets/logo.svg';
 import './App.scss';
 
 const App: React.FC = () => {

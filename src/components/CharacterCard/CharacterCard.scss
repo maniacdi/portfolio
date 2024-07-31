@@ -4,6 +4,9 @@
   background-color: black;
   overflow: hidden;
   clip-path: polygon(0 0, 100% 0, 100% 93%, 93% 100%, 0 100%);
+  a {
+    text-decoration: none;
+  }
 }
 
 .character-card__image {
