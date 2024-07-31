@@ -30,16 +30,16 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}
         />
-        <div className='character-card__details'>
-          <p className='character-card__details-name'>{character.name}</p>
-          <img
-            className='character-card__details-fav'
-            src={isFavorite ? redHeart : whiteHeart}
-            alt={'Favorite'}
-            onClick={handleFavoriteClick}
-          />
-        </div>
       </Link>
+      <div className='character-card__details'>
+        <p className='character-card__details-name'>{character.name}</p>
+        <img
+          className='character-card__details-fav'
+          src={isFavorite ? redHeart : whiteHeart}
+          alt={'Favorite'}
+          onClick={handleFavoriteClick}
+        />
+      </div>
     </div>
   );
 };
