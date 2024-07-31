@@ -38,6 +38,7 @@
 .character-detail {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 
   .character-detail__header-container {
     background-color: black;
@@ -45,7 +46,6 @@
     height: 320px;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 98% 100%, 0 100%);
     padding: 0 15vw;
-
     .character-detail__header {
       display: flex;
       justify-content: space-between;
@@ -100,7 +100,8 @@
     .character-detail__comics-list {
       display: flex;
       overflow-x: auto;
-      padding-bottom: 10px;
+      padding-bottom: 30px;
+      margin-bottom: 40px;
       scrollbar-width: thin;
       scrollbar-color: #ec1d24 transparent;
 
@@ -119,22 +120,28 @@
 
       .comic-card {
         flex: 0 0 auto;
-        width: 268px;
-        margin-right: 16px;
+        max-height: 340px;
+        max-width: 180px;
         border-radius: 8px;
         overflow: hidden;
         text-align: left;
         padding: 10px;
 
         .comic-card__image {
-          width: 100%;
-          height: auto;
+          height: 270px;
+          width: 180px;
         }
 
         .comic-card__title {
           font-size: 16px;
           font-weight: 500;
           margin-bottom: 5px;
+          line-height: 19px;
+          max-height: 40px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin: 0;
+          margin-top: 10px;
         }
 
         .comic-card__date {
