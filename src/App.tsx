@@ -4,6 +4,7 @@ import {
   Route,
   Routes,
   useNavigate,
+  useLocation,
 } from 'react-router-dom';
 import { MarvelContext, MarvelProvider } from './context/MarvelContext';
 import Header from './components/Header/Header';
@@ -33,9 +34,16 @@ const AppContent: React.FC<{
   setShowFavorites: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ showFavorites, setShowFavorites }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { loading } = useContext(MarvelContext);
   const handleFavoritesClick = () => {
-    setShowFavorites((prevShowFavorites) => !prevShowFavorites);
+    if (location.pathname.includes('/character')) {
+      navigate('/');
+      setShowFavorites(true);
+    } else {
+      navigate('/');
+      setShowFavorites((prevShowFavorites) => !prevShowFavorites);
+    }
   };
 
   const handleLogoClick = () => {
