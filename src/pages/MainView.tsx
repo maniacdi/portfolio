@@ -5,7 +5,6 @@ import React, {
   useCallback,
   useMemo,
 } from 'react';
-import { Link } from 'react-router-dom';
 import { MarvelContext } from '../context/MarvelContext';
 import { fetchCharacters } from '../services/marvelApi';
 import SearchBar from '../components/SearchBar/SearchBar';
@@ -20,7 +19,7 @@ interface MainViewProps {
 
 const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
   const context = useContext(MarvelContext);
-  const { setCharacters, favorites, loading, setLoading } = context;
+  const { favorites, loading, setLoading } = context;
   const [allCharacters, setAllCharacters] = useState<Character[]>([]);
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
   const [searchText, setSearchText] = useState<string>('');
@@ -72,6 +71,7 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
 
   useEffect(() => {
     fetchAndSetCharacters(searchText, currentPage);
+    // eslint-disable-next-line
   }, [searchText, currentPage]);
 
   useEffect(() => {
