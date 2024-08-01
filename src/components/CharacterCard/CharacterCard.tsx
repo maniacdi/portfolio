@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Character } from '../../types/marvel';
-import { MarvelContext } from '../../context/MarvelContext';
+import useFavorites from '../../hooks/useFavorites';
 import whiteHeart from '../../assets/out-white-heart.svg';
 import redHeart from '../../assets/red-heart.svg';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ interface CharacterCardProps {
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
-  const { favorites, addFavorite, removeFavorite } = useContext(MarvelContext);
+  const { favorites, addFavorite, removeFavorite } = useFavorites();
   const isFavorite = favorites.some((fav) => fav.id === character.id);
 
   const handleFavoriteClick = () => {
