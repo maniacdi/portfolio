@@ -25,24 +25,24 @@ const CharacterHeader: React.FC<CharacterHeaderProps> = ({ character }) => {
   };
 
   return (
-    <div className='character-detail__header-container'>
-      <div className='character-detail__header'>
+    <div className="character-detail__header-container">
+      <div className="character-detail__header">
         <img
-          className='character-detail__image'
+          className="character-detail__image"
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}
         />
-        <div className='character-detail__header-text'>
-          <div className='character-detail__header-text__title'>
-            <h1 className='character-detail__name'>{character.name}</h1>{' '}
+        <div className="character-detail__header-text">
+          <div className="character-detail__header-text__title">
+            <h1 className="character-detail__name">{character.name}</h1>{' '}
             <img
-              className='character-details__fav'
+              className="character-details__fav"
               src={isFavorite ? redHeart : whiteHeart}
               alt={'Favorite'}
               onClick={handleFavoriteClick}
             />
           </div>
-          <p className='character-detail__description'>
+          <p className="character-detail__description">
             {character.description || 'No description available'}
           </p>
         </div>

@@ -112,7 +112,7 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
         itemCount={paginatedCharacters.length}
       />
       <CharacterList list={paginatedCharacters} />
-      <div className='main-view_pagination'>
+      <div className="main-view_pagination">
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}

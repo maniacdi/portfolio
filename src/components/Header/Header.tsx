@@ -16,21 +16,21 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const { favorites } = useContext(MarvelContext);
   return (
-    <header className='header'>
-      <div className='header-container'>
+    <header className="header">
+      <div className="header-container">
         <img
           src={logo}
-          alt='Logo'
-          className='header-logo'
+          alt="Logo"
+          className="header-logo"
           onClick={onLogoClick}
         />
-        <button className='header-favorites' onClick={onFavoritesClick}>
+        <button className="header-favorites" onClick={onFavoritesClick}>
           <img
             src={redHeartSvg}
-            alt='Favorites'
-            className='header-favorites__logo'
+            alt="Favorites"
+            className="header-favorites__logo"
           />
-          <span className='header-favorites__count'>{favorites.length}</span>
+          <span className="header-favorites__count">{favorites.length}</span>
         </button>
       </div>
     </header>

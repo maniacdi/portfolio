@@ -23,18 +23,18 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
     }
   };
   return (
-    <div className='character-card'>
+    <div className="character-card">
       <Link to={`/character/${character.id}`}>
         <img
-          className='character-card__image'
+          className="character-card__image"
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}
         />
       </Link>
-      <div className='character-card__details'>
-        <p className='character-card__details-name'>{character.name}</p>
+      <div className="character-card__details">
+        <p className="character-card__details-name">{character.name}</p>
         <img
-          className='character-card__details-fav'
+          className="character-card__details-fav"
           src={isFavorite ? redHeart : whiteHeart}
           alt={'Favorite'}
           onClick={handleFavoriteClick}

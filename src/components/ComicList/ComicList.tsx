@@ -9,18 +9,18 @@ interface ComicListProps {
 
 const ComicList: React.FC<ComicListProps> = ({ list }) => {
   return (
-    <div className='character-detail__comics'>
+    <div className="character-detail__comics">
       <h2>Comics</h2>
-      <div className='character-detail__comics-list'>
+      <div className="character-detail__comics-list">
         {list.map((comic) => (
-          <div key={comic.id} className='comic-card'>
+          <div key={comic.id} className="comic-card">
             <img
-              className='comic-card__image'
+              className="comic-card__image"
               src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
               alt={comic.title}
             />
-            <h3 className='comic-card__title'>{comic.title}</h3>
-            <p className='comic-card__date'>
+            <h3 className="comic-card__title">{comic.title}</h3>
+            <p className="comic-card__date">
               {comic.dates
                 .find((date) => date.type === 'onsaleDate')
                 ?.date.split('-')[0] || 'Unknown'}

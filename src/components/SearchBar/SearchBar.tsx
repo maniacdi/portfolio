@@ -17,15 +17,15 @@ const SearchBar: React.FC<SearchBarProps> = ({
   };
 
   return (
-    <div className='search-bar'>
+    <div className="search-bar">
       <input
-        className='search-bar__input'
-        type='text'
+        className="search-bar__input"
+        type="text"
         onChange={handleChange}
-        placeholder='SEARCH A CHARACTER...'
+        placeholder="SEARCH A CHARACTER..."
         disabled={disabled}
       />
-      <div className='search-bar__count'>
+      <div className="search-bar__count">
         {itemCount} {itemCount === 1 ? 'Result' : 'Results'}
       </div>
     </div>

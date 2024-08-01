@@ -60,8 +60,8 @@ const AppContent: React.FC<{
       />
       {loading && <Loader />}
       <Routes>
-        <Route path='/' element={<MainView showFavorites={showFavorites} />} />
-        <Route path='/character/:id' element={<CharacterDetail />} />
+        <Route path="/" element={<MainView showFavorites={showFavorites} />} />
+        <Route path="/character/:id" element={<CharacterDetail />} />
       </Routes>
     </>
   );
