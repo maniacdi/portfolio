@@ -1,0 +1,64 @@
+.character-detail__comics {
+  margin: 48px auto;
+  width: 70vw;
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    text-transform: uppercase;
+  }
+
+  .character-detail__comics-list {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+    scrollbar-width: thin;
+    scrollbar-color: #ec1d24 transparent;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ec1d24;
+      border-radius: 4px;
+    }
+
+    .comic-card {
+      flex: 0 0 auto;
+      max-height: 340px;
+      max-width: 180px;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: left;
+      padding: 10px;
+
+      .comic-card__image {
+        height: 270px;
+        width: 180px;
+      }
+
+      .comic-card__title {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 5px;
+        line-height: 19px;
+        max-height: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+        margin-top: 10px;
+      }
+
+      .comic-card__date {
+        font-size: 12px;
+      }
+    }
+  }
+}

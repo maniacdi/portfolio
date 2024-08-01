@@ -6,18 +6,17 @@ import {
 } from '../services/marvelApi';
 import { Character, Comic } from '../types/marvel';
 import { MarvelContext } from '../context/MarvelContext';
-import whiteHeart from '../assets/out-white-heart.svg';
-import redHeart from '../assets/red-heart.svg';
+
+import ComicList from '../components/ComicList/ComicList';
+import CharacterHeader from '../components/CharacterHeader/CharacterHeader';
 
 const CharacterDetail: React.FC = () => {
   const context = useContext(MarvelContext);
-  const { favorites, loading, setLoading, addFavorite, removeFavorite } =
-    context;
+  const { loading, setLoading } = context;
   const { id } = useParams<{ id: string }>();
   const [character, setCharacter] = useState<Character | null>(null);
   const [comics, setComics] = useState<Comic[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const isFavorite = favorites.some((fav) => fav.id === character?.id);
 
   useEffect(() => {
     const getCharacter = async () => {
@@ -40,17 +39,8 @@ const CharacterDetail: React.FC = () => {
     };
 
     getCharacter();
+    // eslint-disable-next-line
   }, [id]);
-
-  const handleFavoriteClick = () => {
-    if (character) {
-      if (isFavorite) {
-        removeFavorite(character?.id);
-      } else {
-        addFavorite(character);
-      }
-    }
-  };
 
   if (error) {
     return <div>{error}</div>;
@@ -58,53 +48,8 @@ const CharacterDetail: React.FC = () => {
 
   return (
     <div className='character-detail'>
-      {!loading && character && (
-        <div className='character-detail__header-container'>
-          <div className='character-detail__header'>
-            <img
-              className='character-detail__image'
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt={character.name}
-            />
-            <div className='character-detail__header-text'>
-              <div className='character-detail__header-text__title'>
-                <h1 className='character-detail__name'>{character.name}</h1>{' '}
-                <img
-                  className='character-details__fav'
-                  src={isFavorite ? redHeart : whiteHeart}
-                  alt={'Favorite'}
-                  onClick={handleFavoriteClick}
-                />
-              </div>
-              <p className='character-detail__description'>
-                {character.description || 'No description available'}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-      {!loading && comics.length > 0 && (
-        <div className='character-detail__comics'>
-          <h2>Comics</h2>
-          <div className='character-detail__comics-list'>
-            {comics.map((comic) => (
-              <div key={comic.id} className='comic-card'>
-                <img
-                  className='comic-card__image'
-                  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                  alt={comic.title}
-                />
-                <h3 className='comic-card__title'>{comic.title}</h3>
-                <p className='comic-card__date'>
-                  {comic.dates
-                    .find((date) => date.type === 'onsaleDate')
-                    ?.date.split('-')[0] || 'Unknown'}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {!loading && character && <CharacterHeader character={character} />}
+      {!loading && comics.length > 0 && <ComicList list={comics} />}
     </div>
   );
 };
