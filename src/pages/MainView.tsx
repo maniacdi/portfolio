@@ -129,6 +129,7 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
         fetchAndSetCharacters(searchText, newPage);
       }
     },
+    //eslint-disable-next-line
     [searchText]
   );
 
