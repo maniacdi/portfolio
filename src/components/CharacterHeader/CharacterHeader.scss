@@ -1,43 +1,83 @@
-.character-card {
-  height: 245px;
-  width: 188px;
+.character-detail__header-container {
   background-color: black;
+  width: 100%;
+  height: 610px;
+  position: relative;
   overflow: hidden;
-  clip-path: polygon(0 0, 100% 0, 100% 93%, 93% 100%, 0 100%);
-  a {
-    text-decoration: none;
+
+  .character-detail__header {
+    display: flex;
+    flex-direction: column;
+
+    .character-detail__image {
+      height: 400px;
+      width: 100%;
+      object-fit: cover;
+    }
+    .character-detail__header-text {
+      color: white;
+      margin: 1vw 4vw;
+      .character-detail__header-text__title {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+
+        .character-detail__name {
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 46.88px;
+          text-align: left;
+          text-transform: uppercase;
+        }
+        .character-details__fav {
+          width: 32px;
+          height: 32px;
+          cursor: pointer;
+        }
+      }
+      .character-detail__description {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 18.75px;
+        text-align: left;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        background-color: rgb(255, 255, 255);
+        clip-path: polygon(100% 0, 0 100%, 100% 100%);
+      }
+    }
   }
 }
+@media (min-width: 1200px) {
+  .character-detail__header-container {
+    width: 70vw;
+    height: 320px;
 
-.character-card__image {
-  height: 190px;
-  width: 188px;
-  border-bottom: 5px solid #ec1d24;
-}
-
-.character-card__details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-}
-
-.character-card__details-name {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16px;
-  text-align: left;
-  color: white;
-  text-transform: uppercase;
-  max-width: 85%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.character-card__details-fav {
-  height: 16px;
-  width: 16px;
-  object-fit: contain;
-  cursor: pointer;
+    padding: 0 15vw;
+    .character-detail__header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      .character-detail__image {
+        height: 320px;
+        width: 320px;
+      }
+      .character-detail__header-text {
+        min-width: 580px;
+        &::after {
+          width: 34px;
+          height: 34px;
+        }
+      }
+    }
+  }
 }
