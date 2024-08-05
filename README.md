@@ -8,12 +8,11 @@ Una aplicación React para explorar y ver detalles de personajes del universo Ma
 2. [Tecnologías Utilizadas](#tecnologías-utilizadas)
 3. [Estructura del Proyecto](#estructura-del-proyecto)
 4. [Instalación y Configuración](#instalación-y-configuración)
-6. [Arquitectura](#arquitectura)
-5. [Linting y Formateo](#linting-y-formateo)
-5. [Run Locally](#run-locally)
-5. [Autores](#autores)
-5. [License](#license)
-
+5. [Arquitectura](#arquitectura)
+6. [Linting y Formateo](#linting-y-formateo)
+7. [Run Locally](#run-locally)
+8. [Autores](#autores)
+9. [License](#license)
 
 ## Características
 
@@ -120,11 +119,9 @@ Start the server
   npm run start
 ```
 
-
 ## Authors
 
 - [@maniacdi](https://www.github.com/octokatherine)
-
 
 ## License
 
@@ -140,12 +137,11 @@ Una aplicación React para explorar y ver detalles de personajes del universo Ma
 2. [Tecnologías Utilizadas](#tecnologías-utilizadas)
 3. [Estructura del Proyecto](#estructura-del-proyecto)
 4. [Instalación y Configuración](#instalación-y-configuración)
-6. [Arquitectura](#arquitectura)
-5. [Linting y Formateo](#linting-y-formateo)
-5. [Run Locally](#run-locally)
-5. [Autores](#autores)
-5. [License](#license)
-
+5. [Arquitectura](#arquitectura)
+6. [Linting y Formateo](#linting-y-formateo)
+7. [Run Locally](#run-locally)
+8. [Autores](#autores)
+9. [License](#license)
 
 ## Características
 
@@ -252,13 +248,10 @@ Start the server
   npm run start
 ```
 
-
 ## Authors
 
 - [@maniacdi](https://www.github.com/octokatherine)
 
-
 ## License
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
