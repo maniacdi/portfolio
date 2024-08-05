@@ -7,7 +7,7 @@ const MD5 = '2a701329d07892b26769a4b9948c29ca';
 export const fetchCharacters = async (
   searchText?: string,
   offset: number = 0
-): Promise<Character[]> => {
+): Promise<{ results: Character[]; total: number }> => {
   try {
     const url = new URL(`${API_URL}/characters`);
     url.searchParams.append('ts', '1');
@@ -27,10 +27,10 @@ export const fetchCharacters = async (
       throw new Error('Invalid API response');
     }
 
-    return data.data.results;
+    return { results: data.data.results, total: data.data.total };
   } catch (error) {
     console.error('Error fetching characters:', error);
-    return [];
+    return { results: [], total: 0 };
   }
 };
 

@@ -26,7 +26,7 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalResults, setTotalResults] = useState<number>(0);
   const itemsPerPage: number = 50;
-  const fetchPerPage: number = 100;
+  const fetchPerPage: number = 50;
 
   const fetchAndSetCharacters = async (searchText: string, page: number) => {
     setLoading(true);
@@ -42,14 +42,27 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
           results: Character[];
           total: number;
         };
-        if (results.length > 0) {
+
+        if (results.length > 0 && total > 0) {
           setAllCharacters((prevCharacters) => [...prevCharacters, ...results]);
           setTotalResults(total);
         } else {
-          const results: Character[] = await fetchCharacters(
-            searchText,
-            offset
-          );
+          const { results, total } = await fetchCharacters(searchText, offset);
+          if (results.length > 0) {
+            localStorage.setItem(
+              localStorageKey,
+              JSON.stringify({ results, total })
+            );
+            setAllCharacters((prevCharacters) => [
+              ...prevCharacters,
+              ...results,
+            ]);
+            setTotalResults(total);
+          }
+        }
+      } else {
+        const { results, total } = await fetchCharacters(searchText, offset);
+        if (results.length > 0) {
           localStorage.setItem(
             localStorageKey,
             JSON.stringify({ results, total })
@@ -57,10 +70,6 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
           setAllCharacters((prevCharacters) => [...prevCharacters, ...results]);
           setTotalResults(total);
         }
-      } else {
-        const results: Character[] = await fetchCharacters(searchText, offset);
-        localStorage.setItem(localStorageKey, JSON.stringify({ results }));
-        setAllCharacters((prevCharacters) => [...prevCharacters, ...results]);
       }
     } catch (error) {
       console.error('Error fetching characters:', error);
@@ -104,6 +113,25 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
     currentPage * itemsPerPage
   );
 
+  const handlePageChange = useCallback(
+    (newPage: number) => {
+      setCurrentPage(newPage);
+      const offset =
+        Math.floor(((newPage - 1) * itemsPerPage) / fetchPerPage) *
+        fetchPerPage;
+      const localStorageKey = `characters_${searchText}_${offset}`;
+      const localStorageData = localStorage.getItem(localStorageKey);
+
+      if (
+        !localStorageData ||
+        JSON.parse(localStorageData).results.length === 0
+      ) {
+        fetchAndSetCharacters(searchText, newPage);
+      }
+    },
+    [searchText]
+  );
+
   return (
     <div>
       <SearchBar
@@ -114,24 +142,21 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
       <CharacterList list={paginatedCharacters} />
       <div className="main-view_pagination">
         <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
           disabled={currentPage === 1}
         >
-          Previous
+          {'<'}
         </button>
-        <span>Page {currentPage}</span>
+        <span>{currentPage}</span>
         <button
           onClick={() => {
             if (currentPage * itemsPerPage < totalResults) {
-              setCurrentPage((prev) => prev + 1);
-              if ((currentPage + 1) % (fetchPerPage / itemsPerPage) === 0) {
-                fetchAndSetCharacters(searchText, currentPage + 1);
-              }
+              handlePageChange(currentPage + 1);
             }
           }}
           disabled={currentPage * itemsPerPage >= totalResults}
         >
-          Next
+          {'>'}
         </button>
       </div>
     </div>
