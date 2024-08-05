@@ -48,7 +48,7 @@ const CharacterDetail: React.FC = () => {
 
   return (
     <div className="character-detail">
-      {!loading && character && <CharacterHeader character={character} />}
+      {character && <CharacterHeader character={character} />}
       {!loading && comics.length > 0 && <ComicList list={comics} />}
     </div>
   );
