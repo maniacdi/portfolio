@@ -1,0 +1,41 @@
+.marvel-header {
+  background-color: #000000;
+  color: white;
+  width: 100%;
+  height: 84px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #333333;
+}
+.marvel-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
+  margin: auto;
+}
+
+.marvel-header-logo {
+  height: 52px;
+  width: auto;
+  cursor: pointer;
+}
+
+.marvel-header-favorites {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  .marvel-header-favorites__logo {
+    height: 24px;
+    width: 24px;
+  }
+  .marvel-header-favorites__count {
+    color: white;
+  }
+}

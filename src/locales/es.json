@@ -1,0 +1,10 @@
+{
+  "welcome": "Bienvenido",
+  "description": "Esta es una aplicación de ejemplo",
+  "character.description.empty": "No hay descripción disponible",
+  "comics": "Comics",
+  "unknown": "Desconocido",
+  "character.search": "BUSCA UN PERSONAJE...",
+  "results": "resultados",
+  "result": "resultado"
+}

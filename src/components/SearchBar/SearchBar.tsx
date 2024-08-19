@@ -1,4 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import './SearchBar.scss';
 
 interface SearchBarProps {
@@ -12,6 +14,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
   disabled,
   itemCount,
 }) => {
+  const { t } = useTranslation();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSearch(e.target.value);
   };
@@ -22,11 +26,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
         className="search-bar__input"
         type="text"
         onChange={handleChange}
-        placeholder="SEARCH A CHARACTER..."
+        placeholder={t('character.search')}
         disabled={disabled}
       />
       <div className="search-bar__count">
-        {itemCount} {itemCount === 1 ? 'Result' : 'Results'}
+        {itemCount} {itemCount === 1 ? t('result') : t('results')}
       </div>
     </div>
   );

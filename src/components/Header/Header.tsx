@@ -1,20 +1,11 @@
-import React, { useContext } from 'react';
-import { MarvelContext } from '../../context/MarvelContext';
-import redHeartSvg from '../../assets/red-heart.svg';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/react.svg';
 import './Header.scss';
+import LanguageSwitcher from '../../LanguageSwitcher/LanguageSwitcher';
 
-interface HeaderProps {
-  logo: string;
-  onFavoritesClick: () => void;
-  onLogoClick: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({
-  logo,
-  onFavoritesClick,
-  onLogoClick,
-}) => {
-  const { favorites } = useContext(MarvelContext);
+const Header = () => {
+  const navigate = useNavigate();
   return (
     <header className="header">
       <div className="header-container">
@@ -22,16 +13,15 @@ const Header: React.FC<HeaderProps> = ({
           src={logo}
           alt="Logo"
           className="header-logo"
-          onClick={onLogoClick}
+          onClick={() => navigate('/')}
         />
-        <button className="header-favorites" onClick={onFavoritesClick}>
-          <img
-            src={redHeartSvg}
-            alt="Favorites"
-            className="header-favorites__logo"
-          />
-          <span className="header-favorites__count">{favorites.length}</span>
+        <button
+          className="btn header-btn"
+          onClick={() => navigate('/marvel-list')}
+        >
+          LISTA
         </button>
+        <LanguageSwitcher />
       </div>
     </header>
   );

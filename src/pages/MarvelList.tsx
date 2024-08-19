@@ -13,11 +13,11 @@ import { Character } from '../types/marvel';
 import CharacterList from '../components/CharacterList/CharacterList';
 import '../styles/Main.scss';
 
-interface MainViewProps {
+interface MarvelListProps {
   showFavorites: boolean;
 }
 
-const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
+const MarvelList: React.FC<MarvelListProps> = ({ showFavorites }) => {
   const context = useContext(MarvelContext);
   const { favorites, loading, setLoading } = context;
   const [allCharacters, setAllCharacters] = useState<Character[]>([]);
@@ -164,4 +164,4 @@ const MainView: React.FC<MainViewProps> = ({ showFavorites }) => {
   );
 };
 
-export default MainView;
+export default MarvelList;

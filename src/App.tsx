@@ -7,12 +7,14 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { MarvelContext, MarvelProvider } from './context/MarvelContext';
-import Header from './components/Header/Header';
+import MarvelHeader from './components/MarvelHeader/MarvelHeader';
 import Loader from './components/Loader/Loader';
-import MainView from './pages/MainView';
+import MarvelList from './pages/MarvelList';
 import CharacterDetail from './pages/CharacterDetail';
 import logo from './assets/logo.svg';
 import './App.scss';
+import Home from './pages/Home';
+import Header from './components/Header/Header';
 
 const App: React.FC = () => {
   const [showFavorites, setShowFavorites] = useState<boolean>(false);
@@ -38,29 +40,39 @@ const AppContent: React.FC<{
   const { loading } = useContext(MarvelContext);
   const handleFavoritesClick = () => {
     if (location.pathname.includes('/character')) {
-      navigate('/');
+      navigate('/marvel-list');
       setShowFavorites(true);
     } else {
-      navigate('/');
+      navigate('/marvel-list');
       setShowFavorites((prevShowFavorites) => !prevShowFavorites);
     }
   };
 
   const handleLogoClick = () => {
-    navigate('/');
+    navigate('/marvel-list');
     setShowFavorites(false);
   };
+  const showMarvelHeader =
+    location.pathname === '/marvel-list' ||
+    location.pathname.includes('/character');
 
   return (
     <>
-      <Header
-        logo={logo}
-        onFavoritesClick={handleFavoritesClick}
-        onLogoClick={handleLogoClick}
-      />
+      <Header />
+      {showMarvelHeader && (
+        <MarvelHeader
+          logo={logo}
+          onFavoritesClick={handleFavoritesClick}
+          onLogoClick={handleLogoClick}
+        />
+      )}
       {loading && <Loader />}
       <Routes>
-        <Route path="/" element={<MainView showFavorites={showFavorites} />} />
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/marvel-list"
+          element={<MarvelList showFavorites={showFavorites} />}
+        />
         <Route path="/character/:id" element={<CharacterDetail />} />
       </Routes>
     </>

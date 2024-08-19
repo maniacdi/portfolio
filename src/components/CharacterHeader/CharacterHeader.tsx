@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Character } from '../../types/marvel';
 import { MarvelContext } from '../../context/MarvelContext';
 import whiteHeart from '../../assets/out-white-heart.svg';
@@ -6,13 +7,16 @@ import redHeart from '../../assets/red-heart.svg';
 
 import './CharacterHeader.scss';
 
-interface CharacterHeaderProps {
+interface CharacterMarvelHeaderProps {
   character: Character;
 }
 
-const CharacterHeader: React.FC<CharacterHeaderProps> = ({ character }) => {
+const CharacterMarvelHeader: React.FC<CharacterMarvelHeaderProps> = ({
+  character,
+}) => {
   const { favorites, addFavorite, removeFavorite } = useContext(MarvelContext);
   const isFavorite = favorites.some((fav) => fav.id === character?.id);
+  const { t } = useTranslation();
 
   const handleFavoriteClick = () => {
     if (character) {
@@ -43,7 +47,7 @@ const CharacterHeader: React.FC<CharacterHeaderProps> = ({ character }) => {
             />
           </div>
           <p className="character-detail__description">
-            {character.description || 'No description available'}
+            {character.description || t('character.description.empty')}
           </p>
         </div>
       </div>
@@ -51,4 +55,4 @@ const CharacterHeader: React.FC<CharacterHeaderProps> = ({ character }) => {
   );
 };
 
-export default CharacterHeader;
+export default CharacterMarvelHeader;

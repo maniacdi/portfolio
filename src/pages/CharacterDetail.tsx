@@ -8,7 +8,7 @@ import { Character, Comic } from '../types/marvel';
 import { MarvelContext } from '../context/MarvelContext';
 
 import ComicList from '../components/ComicList/ComicList';
-import CharacterHeader from '../components/CharacterHeader/CharacterHeader';
+import CharacterMarvelHeader from '../components/CharacterHeader/CharacterHeader';
 
 const CharacterDetail: React.FC = () => {
   const context = useContext(MarvelContext);
@@ -48,7 +48,7 @@ const CharacterDetail: React.FC = () => {
 
   return (
     <div className="character-detail">
-      {character && <CharacterHeader character={character} />}
+      {character && <CharacterMarvelHeader character={character} />}
       {!loading && comics.length > 0 && <ComicList list={comics} />}
     </div>
   );
