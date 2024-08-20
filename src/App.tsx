@@ -25,10 +25,15 @@ const App: React.FC = () => {
   return (
     <MarvelProvider>
       <Router>
-        <AppContent
-          showFavorites={showFavorites}
-          setShowFavorites={setShowFavorites}
-        />
+        <div className="app">
+          <Header />
+
+          <AppContent
+            showFavorites={showFavorites}
+            setShowFavorites={setShowFavorites}
+          />
+          <Footer />
+        </div>
       </Router>
     </MarvelProvider>
   );
@@ -60,8 +65,7 @@ const AppContent: React.FC<{
     location.pathname.includes('/character');
 
   return (
-    <>
-      <Header />
+    <div className="app-content">
       {showMarvelHeader && (
         <MarvelHeader
           logo={logo}
@@ -80,8 +84,7 @@ const AppContent: React.FC<{
         <Route path="/about" element={<About />} />
         <Route path="/playground" element={<Playground />} />
       </Routes>
-      <Footer />
-    </>
+    </div>
   );
 };
 
