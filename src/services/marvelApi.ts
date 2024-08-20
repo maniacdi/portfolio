@@ -1,8 +1,8 @@
 import { Character, ApiResponse, Comic } from '../types/marvel';
 
 const API_URL = 'http://gateway.marvel.com/v1/public';
-const API_KEY = '1daf6cf594dc2df417c2c3ddfca3ab88';
-const MD5 = '2a701329d07892b26769a4b9948c29ca';
+const API_KEY = process.env.REACT_APP_MARVEL_API_KEY;
+const MD5 = process.env.REACT_APP_MARVEL_MD5;
 
 export const fetchCharacters = async (
   searchText?: string,
@@ -11,8 +11,8 @@ export const fetchCharacters = async (
   try {
     const url = new URL(`${API_URL}/characters`);
     url.searchParams.append('ts', '1');
-    url.searchParams.append('apikey', API_KEY);
-    url.searchParams.append('hash', MD5);
+    url.searchParams.append('apikey', API_KEY!);
+    url.searchParams.append('hash', MD5!);
     url.searchParams.append('limit', '50');
     url.searchParams.append('offset', offset.toString());
 
@@ -61,8 +61,8 @@ export const fetchComicsByCharacterId = async (
   try {
     const url = new URL(`${API_URL}/characters/${characterId}/comics`);
     url.searchParams.append('ts', '1');
-    url.searchParams.append('apikey', API_KEY);
-    url.searchParams.append('hash', MD5);
+    url.searchParams.append('apikey', API_KEY!);
+    url.searchParams.append('hash', MD5!);
     url.searchParams.append('orderBy', 'onsaleDate');
     url.searchParams.append('limit', limit.toString());
 
