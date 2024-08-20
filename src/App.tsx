@@ -17,6 +17,7 @@ import Home from './pages/Home';
 import Header from './components/Header/Header';
 import About from './pages/About';
 import Playground from './pages/Playground';
+import Footer from './components/Footer/Footer';
 
 const App: React.FC = () => {
   const [showFavorites, setShowFavorites] = useState<boolean>(false);
@@ -79,6 +80,7 @@ const AppContent: React.FC<{
         <Route path="/about" element={<About />} />
         <Route path="/playground" element={<Playground />} />
       </Routes>
+      <Footer />
     </>
   );
 };

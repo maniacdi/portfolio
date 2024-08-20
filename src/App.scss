@@ -17,16 +17,30 @@ button {
   box-shadow: none; /* Remove default shadow */
 }
 
-.home {
-  background-color: #d0c9c9;
+//Pages
+.home,
+.about,
+.playground {
+  background-color: #ffffff;
   color: rgb(181, 8, 8);
   height: 90vh;
 }
 
-.home__container {
+.home__container,
+.about__container,
+.playground__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 94vw;
+  margin: auto;
+}
+
+.home__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
   width: 94vw;
   margin: auto;
 }

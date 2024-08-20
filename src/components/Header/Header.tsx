@@ -2,9 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/Mlogo.svg';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../../LanguageSwitcher/LanguageSwitcher';
 
 import './Header.scss';
-import LanguageSwitcher from '../../LanguageSwitcher/LanguageSwitcher';
 
 const Header = () => {
   const navigate = useNavigate();

@@ -10,6 +10,9 @@ const Home: React.FC = () => {
         <h1>{t('welcome')}</h1>
         <p>{t('description')}</p>
       </div>
+      <div className="home__footer">
+        <h1>{t('maintenance')}</h1>
+      </div>
     </div>
   );
 };
