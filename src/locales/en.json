@@ -4,6 +4,9 @@
   "character.description.empty": "No description available",
   "comics": "Comics",
   "unknown": "Unknown",
+  "play": "Play",
+  "play.title": "Let's play",
+  "about": "Know me",
   "character.search": "SEARCH A CHARACTER...",
   "results": "results",
   "result": "result"

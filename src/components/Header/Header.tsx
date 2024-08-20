@@ -1,11 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/react.svg';
+import { useTranslation } from 'react-i18next';
+
 import './Header.scss';
 import LanguageSwitcher from '../../LanguageSwitcher/LanguageSwitcher';
 
 const Header = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   return (
     <header className="header">
       <div className="header-container">
@@ -15,12 +19,24 @@ const Header = () => {
           className="header-logo"
           onClick={() => navigate('/')}
         />
-        <button
-          className="btn header-btn"
-          onClick={() => navigate('/marvel-list')}
-        >
-          LISTA
-        </button>
+        <nav className="header__nav">
+          {' '}
+          <button
+            className="btn header-btn"
+            onClick={() => navigate('/playground')}
+          >
+            {t('play.title')}
+          </button>
+          <button className="btn header-btn" onClick={() => navigate('/about')}>
+            MAGALDI
+          </button>
+          <button
+            className="btn header-btn"
+            onClick={() => navigate('/marvel-list')}
+          >
+            MARVEL
+          </button>
+        </nav>
         <LanguageSwitcher />
       </div>
     </header>

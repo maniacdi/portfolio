@@ -2,9 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Home: React.FC = () => {
-  // const { loading, setLoading } = context;
-  // const { id } = useParams<{ id: string }>();
-  // const [error, setError] = useState<string | null>(null);
   const { t } = useTranslation();
 
   return (

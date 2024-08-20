@@ -15,6 +15,8 @@ import logo from './assets/logo.svg';
 import './App.scss';
 import Home from './pages/Home';
 import Header from './components/Header/Header';
+import About from './pages/About';
+import Playground from './pages/Playground';
 
 const App: React.FC = () => {
   const [showFavorites, setShowFavorites] = useState<boolean>(false);
@@ -74,6 +76,8 @@ const AppContent: React.FC<{
           element={<MarvelList showFavorites={showFavorites} />}
         />
         <Route path="/character/:id" element={<CharacterDetail />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/playground" element={<Playground />} />
       </Routes>
     </>
   );
