@@ -85,5 +85,24 @@
     "title": "My Favorite Anime",
     "description": "A curated list of anime I love, each one meaningful for different reasons.",
     "cta": "View More"
+  },
+  "weather": {
+    "loading": "Loading weather...",
+    "refreshing": "Refreshing...",
+    "error": "Error",
+    "showWeather": "Show weather",
+    "feelsLike": "Feels like",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "forecast": "5-Day Forecast",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "pressure": "Pressure",
+    "kmh": "km/h",
+    "hpa": "hPa",
+    "minimize": "Minimize",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "currentLocation": "Current Location"
   }
 }

@@ -84,14 +84,25 @@
   "anime": {
     "title": "Mi Anime Favorito",
     "description": "Una lista curada de anime que amo, cada uno significativo por diferentes razones.",
-    "cta": "Ver Más",
-    "items": {
-      "onePiece": "One Piece",
-      "attackOnTitan": "Attack on Titan",
-      "violetEvergarden": "Violet Evergarden",
-      "demonSlayer": "Demon Slayer",
-      "fullmetalAlchemist": "Fullmetal Alchemist: Brotherhood",
-      "naruto": "Naruto"
-    }
+    "cta": "Ver Más"
+  },
+  "weather": {
+    "loading": "Cargando clima...",
+    "refreshing": "Actualizando...",
+    "error": "Error",
+    "showWeather": "Mostrar clima",
+    "feelsLike": "Sensación térmica",
+    "sunrise": "Amanecer",
+    "sunset": "Atardecer",
+    "forecast": "Pronóstico 5 días",
+    "humidity": "Humedad",
+    "wind": "Viento",
+    "pressure": "Presión",
+    "kmh": "km/h",
+    "hpa": "hPa",
+    "minimize": "Minimizar",
+    "expand": "Expandir",
+    "collapse": "Contraer",
+    "currentLocation": "Ubicación actual"
   }
 }

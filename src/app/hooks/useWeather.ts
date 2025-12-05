@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { WeatherService } from "@/app/services/weatherService";
+import { useLocale } from "next-intl";
 
 export const useWeather = () => {
   const [weather, setWeather] = useState<any>(null);
@@ -9,6 +10,7 @@ export const useWeather = () => {
   const [location, setLocation] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const locale = useLocale();
 
   const fetchWeather = useCallback(async () => {
     try {
@@ -45,14 +47,17 @@ export const useWeather = () => {
       // Prepare forecast from daily data
       const forecastDays = [];
       if (weatherData.daily) {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 10; i++) {
           const weatherInfo = WeatherService.getWeatherDescription(
             weatherData.daily.weather_code[i]
           );
           forecastDays.push({
-            date: new Date(weatherData.daily.time[i]).toLocaleDateString("en-US", {
-              weekday: "short",
-            }),
+            date: new Date(weatherData.daily.time[i]).toLocaleDateString(
+              locale === "en" ? "en-US" : "es-ES",
+              {
+                weekday: "short",
+              }
+            ),
             temp_min: Math.round(weatherData.daily.temperature_2m_min[i]),
             temp_max: Math.round(weatherData.daily.temperature_2m_max[i]),
             description: weatherInfo.description,

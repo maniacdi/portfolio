@@ -23,7 +23,7 @@ import { useWeather } from "@/app/hooks/useWeather";
 import { WeatherService } from "@/app/services/weatherService";
 import { format } from "date-fns";
 import { enUS, es } from "date-fns/locale";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import "./WeatherWidget.scss";
 
 export default function WeatherWidget() {
@@ -33,6 +33,7 @@ export default function WeatherWidget() {
   const [isMinimized, setIsMinimized] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const locale = useLocale();
+  const t = useTranslations("weather");
   const dateLocale = locale === "es" ? es : enUS;
 
   const hasShownError = useRef(false);
@@ -94,7 +95,7 @@ export default function WeatherWidget() {
     return (
       <div className="weather-widget loading">
         <div className="weather-spinner"></div>
-        <span>{isRefreshing ? "Refreshing..." : "Loading weather..."}</span>
+        <span>{isRefreshing ? t("refreshing") : t("loading")}</span>
       </div>
     );
   }
@@ -105,16 +106,16 @@ export default function WeatherWidget() {
         <button
           className="weather-toggle-btn error"
           onClick={() => setIsVisible(true)}
-          title="Show weather"
+          title={t("showWeather")}
         >
           <Cloud size={18} />
-          <span>Error</span>
+          <span>{t("error")}</span>
         </button>
       </div>
     );
   }
 
-  const weatherInfo = WeatherService.getWeatherDescription(weather.weather_code);
+  const weatherInfo = WeatherService.getWeatherDescription(weather.weather_code, locale);
   const weatherColor = WeatherService.getWeatherColor(weather.weather_code);
   const emojiIcon = WeatherService.getWeatherIcon(weatherInfo.icon);
   const WeatherIcon = getWeatherIcon(weatherInfo.icon);
@@ -132,7 +133,7 @@ export default function WeatherWidget() {
           className="weather-toggle-btn"
           onClick={() => setIsMinimized(false)}
           style={{ borderColor: weatherColor }}
-          title="Show weather"
+          title={t("showWeather")}
         >
           <WeatherIcon size={18} />
           <span>{weather.temp}°C</span>
@@ -161,7 +162,7 @@ export default function WeatherWidget() {
             <div className="weather-header">
               <div className="location">
                 <MapPin size={14} />
-                <span className="city">{location}</span>
+                <span className="city">{location || t("currentLocation")}</span>
                 <span className="temp">{weather.temp}°C</span>
               </div>
 
@@ -169,14 +170,14 @@ export default function WeatherWidget() {
                 <button
                   className="action-btn expand-btn"
                   onClick={() => setIsExpanded(!isExpanded)}
-                  title={isExpanded ? "Collapse" : "Expand"}
+                  title={isExpanded ? t("collapse") : t("expand")}
                 >
                   {isExpanded ? <ChevronDown size={16} /> : <ChevronUp size={16} />}
                 </button>
                 <button
                   className="action-btn minimize-btn"
                   onClick={() => setIsMinimized(true)}
-                  title="Minimize"
+                  title={t("minimize")}
                 >
                   <ChevronsDown size={14} />
                 </button>
@@ -192,22 +193,30 @@ export default function WeatherWidget() {
                 </div>
                 <div className="weather-info">
                   <span className="description">{weatherInfo.description}</span>
-                  <span className="feels-like">Feels like: {weather.feels_like}°C</span>
+                  <span className="feels-like">
+                    {t("feelsLike")}: {weather.feels_like}°C
+                  </span>
                 </div>
               </div>
 
               <div className="weather-details">
                 <div className="detail-item">
                   <Droplets size={14} />
-                  <span>{weather.humidity}%</span>
+                  <span>
+                    {weather.humidity}% {t("humidity")}
+                  </span>
                 </div>
                 <div className="detail-item">
                   <Wind size={14} />
-                  <span>{Math.round(weather.wind_speed * 3.6)} km/h</span>
+                  <span>
+                    {Math.round(weather.wind_speed * 3.6)} {t("kmh")} {t("wind")}
+                  </span>
                 </div>
                 <div className="detail-item">
                   <Thermometer size={14} />
-                  <span>{weather.pressure} hPa</span>
+                  <span>
+                    {weather.pressure} {t("hpa")} {t("pressure")}
+                  </span>
                 </div>
               </div>
             </div>
@@ -225,18 +234,22 @@ export default function WeatherWidget() {
                   <div className="sun-times">
                     <div className="sun-time">
                       <Sunrise size={14} />
-                      <span>Sunrise: {formatTime(weather.sunrise)}</span>
+                      <span>
+                        {t("sunrise")}: {formatTime(weather.sunrise)}
+                      </span>
                     </div>
                     <div className="sun-time">
                       <Sunset size={14} />
-                      <span>Sunset: {formatTime(weather.sunset)}</span>
+                      <span>
+                        {t("sunset")}: {formatTime(weather.sunset)}
+                      </span>
                     </div>
                   </div>
 
                   {/* 5-Day Forecast */}
                   {forecast.length > 0 && (
                     <div className="forecast-days">
-                      <h4>5-Day Forecast</h4>
+                      <h4>{t("forecast")}</h4>
                       <div className="forecast-grid">
                         {forecast.map((day, index) => (
                           <div key={index} className="forecast-day">
