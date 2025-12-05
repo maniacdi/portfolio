@@ -84,14 +84,6 @@
   "anime": {
     "title": "My Favorite Anime",
     "description": "A curated list of anime I love, each one meaningful for different reasons.",
-    "cta": "View More",
-    "items": {
-      "onePiece": "One Piece",
-      "attackOnTitan": "Attack on Titan",
-      "violetEvergarden": "Violet Evergarden",
-      "demonSlayer": "Demon Slayer",
-      "fullmetalAlchemist": "Fullmetal Alchemist: Brotherhood",
-      "naruto": "Naruto"
-    }
+    "cta": "View More"
   }
 }

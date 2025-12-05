@@ -1,4 +1,3 @@
-// components/hobbies/SectionHeader.tsx
 import React from "react";
 import "./SectionHeader.scss";
 

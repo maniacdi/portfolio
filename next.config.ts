@@ -3,9 +3,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  images: {
+    domains: ["openweathermap.org", "nominatim.openstreetmap.org"],
+  },
 };
 
-// Asegúrate de que la ruta sea correcta
-const withNextIntlConfig = withNextIntl("./src/i18n/request.ts");
-
-export default withNextIntlConfig(nextConfig);
+export default withNextIntl("./src/i18n/request.ts")(nextConfig);

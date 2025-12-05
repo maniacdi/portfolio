@@ -1,4 +1,3 @@
-// app/services/weatherService.ts
 export class WeatherService {
   static async getCurrentWeather(lat: number, lon: number): Promise<any> {
     try {

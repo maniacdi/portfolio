@@ -1,41 +1,71 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MagaldiDev Portfolio
 
-## Getting Started
+Modern, futuristic portfolio built with Next.js 14, featuring internationalization, weather widget, and neon aesthetics.
 
-First, run the development server:
+## 🚀 Features
+
+- 🌐 **Internationalization** (English/Spanish) with next-intl
+- 🌤️ **Real-time Weather Widget** using Open-Meteo API
+- 🎨 **Neon Futuristic Design** with custom CSS variables
+- 📱 **Fully Responsive** design
+- ⚡ **Fast Performance** with Next.js 14
+- 🎭 **Smooth Animations** with Framer Motion
+- 💾 **Global State Management** with Zustand
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: SCSS + Tailwind CSS
+- **Internationalization**: next-intl
+- **State Management**: Zustand
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Weather API**: Open-Meteo.com
+
+## 🏗️ Project Structure
+
+📦src
+┣ 📂app # Next.js app router
+┃ ┣ 📂components # React components
+┃ ┣ 📂hooks # Custom React hooks
+┃ ┣ 📂store # Zustand global store
+┃ ┣ 📂services # API services
+┃ ┗ 📂[locale] # Internationalized routes
+┣ 📂i18n # Internationalization config
+┣ 📂styles # Global styles (SCSS)
+┗ 📂utils # Utilities and types
+
+## 🚦 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/portfolio.git
+   cd portfolio
+   ```
+2. **Clone the repository**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Run the development server**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Open your browser**
+   Navigate to `http://localhost:3000` to see the portfolio in action.
 
-## Learn More
+## 🌐 Deploymen
 
-To learn more about Next.js, take a look at the following resources:
+Deploy on Vercel: https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fyour-username%2Fportfolio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Deploy on Vercel
+## 🤝 Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# portfolio
-My frontend portfolio
->>>>>>> 65b977721a58f4f0aed727c5f0e32b65636d18e6
+Created by Javier Garcia Magaldi - [GitHub](https://github.com/maniacdi)

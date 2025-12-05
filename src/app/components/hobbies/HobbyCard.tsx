@@ -1,4 +1,3 @@
-// app/components/hobbies/HobbyCard.tsx (ejemplo actualizado)
 "use client";
 
 import { HobbyItem } from "@/utils/types/Hobby";

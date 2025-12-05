@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Thermometer,
@@ -25,24 +25,17 @@ import { format } from "date-fns";
 import { enUS, es } from "date-fns/locale";
 import { useLocale } from "next-intl";
 import "./WeatherWidget.scss";
-import { useLoading } from "@/app/hooks/useLoading";
 
 export default function WeatherWidget() {
-  const { weather, forecast, location, loading: weatherLoading, error } = useWeather();
-  const { showLoading, hideLoading } = useLoading();
+  const { weather, forecast, location, loading: weatherLoading, error, refetch } = useWeather();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const locale = useLocale();
   const dateLocale = locale === "es" ? es : enUS;
 
-  useEffect(() => {
-    if (weatherLoading) {
-      showLoading("Loading weather data...");
-    } else {
-      hideLoading();
-    }
-  }, [weatherLoading, showLoading, hideLoading]);
+  const hasShownError = useRef(false);
 
   const formatTime = (timestamp: number) => {
     const date = new Date(timestamp * 1000);
@@ -80,6 +73,31 @@ export default function WeatherWidget() {
         return CloudSun;
     }
   };
+
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    try {
+      await refetch();
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
+  useEffect(() => {
+    if (error && !hasShownError.current) {
+      console.error("Weather widget error:", error);
+      hasShownError.current = true;
+    }
+  }, [error]);
+
+  if (weatherLoading || isRefreshing) {
+    return (
+      <div className="weather-widget loading">
+        <div className="weather-spinner"></div>
+        <span>{isRefreshing ? "Refreshing..." : "Loading weather..."}</span>
+      </div>
+    );
+  }
 
   if (error || !weather) {
     return (

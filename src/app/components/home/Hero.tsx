@@ -1,11 +1,5 @@
 "use client";
 
-/*
-  Hero.tsx
-  - 3D hero section with parallax and motion
-  - Fully typed for TS strict mode
-*/
-
 import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";

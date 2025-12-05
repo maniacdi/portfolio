@@ -1,11 +1,5 @@
 "use client";
 
-/*
-  SceneSphere.tsx
-  - 3D sphere with distortion material
-  - Fully typed, compliant with React 19 + R3F v9
-*/
-
 import React, { useRef } from "react";
 import { useFrame, ThreeElements } from "@react-three/fiber";
 import { Mesh } from "three";

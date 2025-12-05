@@ -1,4 +1,3 @@
-// components/hobbies/HobbyTabs.tsx
 "use client";
 
 import { useState } from "react";
@@ -12,7 +11,6 @@ export default function HobbyTabs() {
   const [active, setActive] = useState<string>("anime");
   const t = useTranslations("hobbies.categories");
 
-  // Mapear los títulos traducidos a las secciones
   const translatedSections = sectionsData.map((section) => ({
     ...section,
     title: t(section.id),
