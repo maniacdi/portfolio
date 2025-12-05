@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
+    <!-- Fondo azul -->
+    <rect width="100%" height="100%" fill="#00247d"/>
+    <!-- Cruces diagonales blancas (San Patricio y San Andrés combinadas) -->
+    <path d="M0,0L600,300M600,0L0,300" stroke="#fff" stroke-width="60"/>
+    <!-- Cruces diagonales rojas (San Patricio) - con un desplazamiento para el efecto asimétrico -->
+    <path d="m-30,0 300,150 330-165M0,330l330-165 300,150" fill="none" stroke="#cf142b" stroke-width="20"/>
+    <!-- Cruz vertical y horizontal blanca (San Jorge) -->
+    <path d="M300,0V300M0,150H600" stroke="#fff" stroke-width="100"/>
+    <!-- Cruz vertical y horizontal roja (San Jorge) -->
+    <path d="M300,0V300M0,150H600" stroke="#cf142b" stroke-width="60"/>
+</svg>

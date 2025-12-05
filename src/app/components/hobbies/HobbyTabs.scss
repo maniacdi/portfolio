@@ -1,0 +1,32 @@
+.hobbies-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hobbies-tabs {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  button {
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    background: rgba(30, 25, 55, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    color: var(--text);
+    transition: 0.3s ease;
+
+    &.active {
+      background: var(--neon);
+      color: black;
+      box-shadow: 0 0 12px var(--neon);
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

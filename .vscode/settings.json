@@ -1,0 +1,19 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.organizeImports": "never"
+  },
+
+  // Prettier como formateador principal
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Necesario para que Eslint corra bien en monorepo
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  // Corre ESLint on save
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // No usar el sort-imports de VSCode
+  "typescript.preferences.importModuleSpecifier": "non-relative"
+}

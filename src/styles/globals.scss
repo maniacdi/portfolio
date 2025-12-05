@@ -1,0 +1,125 @@
+@use "./variables.scss" as *;
+
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+============================================ */
+/* --- RESET / GLOBAL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  padding: 0;
+  margin: 0;
+  height: 100dvh;
+}
+
+/* Make the layout stretch to full height */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main grows to push footer down */
+main {
+  flex: 1;
+  padding: var(--padding-lg);
+  margin: 0 3dvw;
+}
+
+/* ============================================
+   LINKS
+============================================ */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+a:hover {
+  text-shadow: 0 0 6px var(--accent);
+}
+
+/* ============================================
+   HEADINGS
+============================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron", sans-serif; /* Futuristic headings */
+  letter-spacing: 0.5px;
+  margin-top: 0;
+  color: var(--text);
+  text-shadow: var(--shadow-neon);
+}
+
+/* ============================================
+   GENERAL ELEMENTS
+============================================ */
+
+p {
+  line-height: 1.6;
+  color: var(--text);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+/* Optional selection highlight */
+::selection {
+  background: var(--neon);
+  color: #fff;
+}
+
+/* Smooth animations globally */
+* {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* ============================================
+   GLOBAL SCROLLBAR STYLING
+============================================ */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px; // Thin scrollbar
+  height: 8px; // Horizontal scrollbar
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg2); // Slightly lighter than main bg
+  border-radius: var(--radius);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon); // Neon purple thumb
+  border-radius: var(--radius);
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent); // Neon cyan on hover
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neon) var(--bg2);
+}

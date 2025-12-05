@@ -1,0 +1,188 @@
+/* ============================================
+   HEADER - PALETA C MAGENTA FUTURISTA
+============================================ */
+
+.header-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  background: rgba(10, 14, 26, 0.65);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-soft);
+  transition: background 0.3s ease;
+
+  &.scrolled {
+    background: rgba(10, 14, 26, 0.88);
+  }
+}
+
+.header-content {
+  max-width: 94%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ============================
+   LOGO
+============================ */
+.logo {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--neon);
+  text-shadow: 0 0 10px var(--neon);
+  animation: neonPulse 3s ease-in-out infinite;
+  cursor: pointer;
+}
+
+/* Neón suave */
+@keyframes neonPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 6px var(--neon);
+  }
+  50% {
+    text-shadow: 0 0 14px var(--neon);
+  }
+}
+
+/* ============================
+   NAV DESKTOP
+============================ */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+
+  a {
+    position: relative;
+    color: var(--text);
+    font-size: 1rem;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: var(--neon);
+    }
+
+    /* underline */
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -4px;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--neon);
+      box-shadow: var(--shadow-neon);
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  /* Active link */
+  .active {
+    color: var(--neon);
+    text-shadow: var(--shadow-neon);
+
+    &::after {
+      width: 100% !important;
+    }
+  }
+}
+
+/* ============================
+   MOBILE BURGER
+============================ */
+
+.burger {
+  width: 34px;
+  height: 26px;
+  position: relative;
+  display: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: 0.35s ease;
+  }
+
+  span:nth-child(1) {
+    top: 4px;
+  }
+  span:nth-child(2) {
+    top: 12px;
+  }
+  span:nth-child(3) {
+    top: 20px;
+  }
+
+  &.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  &.active span:nth-child(2) {
+    opacity: 0;
+  }
+  &.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+  }
+}
+
+/* ============================
+   MOBILE SLIDE MENU
+============================ */
+
+.mobile-menu {
+  position: absolute;
+  top: -300px;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background: rgba(10, 14, 26, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: top 0.35s ease;
+
+  &.show {
+    top: 74px;
+  }
+
+  a {
+    font-size: 1.3rem;
+    color: var(--text);
+    transition: 0.25s ease;
+
+    &:hover {
+      color: var(--neon);
+      text-shadow: var(--shadow-neon);
+    }
+  }
+
+  .active {
+    color: var(--neon);
+    text-shadow: var(--shadow-neon);
+  }
+}

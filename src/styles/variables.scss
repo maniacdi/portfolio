@@ -1,0 +1,37 @@
+/* ============================================
+   FUTURISTIC NEON COLOR PALETTE
+============================================ */
+
+:root {
+  /* ----- Primary Colors ----- */
+  --neon: #ff4edd;
+  --accent: #ffd6fa;
+  --text: #edeaff;
+
+  /* ----- Background Layers ----- */
+  --bg: #0a0e1a;
+  --bg2: #0d1117;
+  --bg3: #0b0517;
+  --bg4: #05040a;
+  --bg-transparent: rgba(15, 20, 30, 0.6);
+
+  /* ----- Neon Glows & Shadows ----- */
+  --shadow-neon: 0 0 12px var(--neon);
+  --shadow-accent: 0 0 10px var(--accent);
+
+  /* ----- Borders ----- */
+  --border-soft: rgba(255, 255, 255, 0.05);
+  --border-neon: var(--neon);
+
+  /* ----- Global Spacing & Radius ----- */
+  --radius: 8px;
+  --radius-lg: 12px;
+  --padding: 1.2rem;
+  --padding-lg: 2rem;
+}
+
+/* ============================================
+   FONTS
+============================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");

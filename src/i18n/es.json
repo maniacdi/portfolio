@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "title": "Magaldidev",
+    "description": "Bienvenido a mi portfolio"
+  },
+  "header": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "travels": "Viajes",
+    "hobbies": "Hobbies",
+    "language": "Idioma"
+  },
+  "home": {
+    "title": "Bienvenido a mi portfolio",
+    "subtitle": "Soy Javi, desarrollador web especializado en crear experiencias modernas y funcionales.",
+    "downloadCv": "Descargar CV",
+    "contact": "Contacto"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "subtitle": "Construyo experiencias web futuristas, minimalistas y de alto rendimiento.",
+    "description": "Con pasión por el desarrollo front-end y UX, me enfoco en crear sitios web elegantes y funcionales.",
+    "skills": {
+      "frontend": "Desarrollo Front-end",
+      "backend": "Desarrollo Back-end",
+      "fullstack": "Desarrollo Full-stack"
+    }
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "description": "Una muestra de proyectos web construidos con tecnologías modernas y principios de diseño futuristas."
+  },
+  "travels": {
+    "title": "Mis Viajes",
+    "description": "Una colección de mis experiencias de viaje, aventuras y exploraciones alrededor del mundo."
+  },
+  "hobbies": {
+    "title": "Mis Hobbies",
+    "description": "Cosas que me encanta hacer además de programar, como anime, música, videojuegos y artes creativas.",
+    "categories": {
+      "anime": "Anime",
+      "drawing": "Dibujo",
+      "videoGames": "Videojuegos",
+      "cooking": "Cocina"
+    },
+    "anime": {
+      "title": "Mi Lista de Anime",
+      "description": "Una lista curada de anime que he visto, destacando mis favoritos personales."
+    },
+    "drawing": {
+      "title": "Dibujo & Arte",
+      "description": "Mi lado creativo expresado a través de bocetos, arte digital e ilustraciones."
+    },
+    "videoGames": {
+      "title": "Videojuegos",
+      "description": "Juegos que me han cautivado con sus historias, jugabilidad y mundos."
+    },
+    "cooking": {
+      "title": "Cocina",
+      "description": "Explorando sabores y técnicas de diferentes cocinas alrededor del mundo."
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "¡No dudes en contactarme para colaboraciones o simplemente para charlar!",
+    "email": "Email",
+    "phone": "Teléfono",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "about": "Sobre Mí",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "copyright": "Todos los derechos reservados."
+  },
+  "hero": {
+    "title": "Construyendo la web del futuro",
+    "subtitle": "Experiencias digitales con diseño minimalista, alto rendimiento y un toque futurista.",
+    "ctaPrimary": "Ver proyectos",
+    "ctaSecondary": "Saber más"
+  },
+  "anime": {
+    "title": "Mi Anime Favorito",
+    "description": "Una lista curada de anime que amo, cada uno significativo por diferentes razones.",
+    "cta": "Ver Más",
+    "items": {
+      "onePiece": "One Piece",
+      "attackOnTitan": "Attack on Titan",
+      "violetEvergarden": "Violet Evergarden",
+      "demonSlayer": "Demon Slayer",
+      "fullmetalAlchemist": "Fullmetal Alchemist: Brotherhood",
+      "naruto": "Naruto"
+    }
+  }
+}

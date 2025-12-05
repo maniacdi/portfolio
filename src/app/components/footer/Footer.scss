@@ -1,0 +1,72 @@
+.footer-container {
+  background: var(--bg4);
+  border-top: 1px solid var(--border-soft);
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* BRAND */
+.footer-brand {
+  .footer-logo {
+    font-family: "Orbitron", sans-serif;
+    color: var(--neon);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-shadow: 0 0 6px var(--neon);
+  }
+
+  .footer-copy {
+    margin-top: 4px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+}
+
+/* SOCIAL ICONS */
+.footer-socials {
+  display: flex;
+  gap: 1.3rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--text);
+    transition: 0.25s ease;
+    border: 1px solid transparent;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      transition: 0.25s ease;
+    }
+
+    &:hover {
+      color: var(--neon);
+      border-color: var(--neon);
+      box-shadow: 0 0 10px var(--neon);
+      transform: translateY(-2px);
+
+      svg {
+        filter: drop-shadow(0 0 6px var(--neon));
+      }
+    }
+  }
+}
