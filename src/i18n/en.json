@@ -25,7 +25,16 @@
       "frontend": "Front-end Development",
       "backend": "Back-end Development",
       "fullstack": "Full-stack Development"
-    }
+    },
+    "frontendDesc": "Creating modern, responsive, and interactive interfaces with cutting-edge technologies.",
+    "backendDesc": "Building secure and scalable server-side logic with robust architectures.",
+    "fullstackDesc": "Delivering complete end-to-end solutions that bridge design and functionality.",
+    "experience": "Experience",
+    "education": "Education",
+    "technologies": "Technologies I Work With",
+    "philosophy": "Development Philosophy",
+    "philosophyText": "I believe in clean code, user-centered design, and continuous learning to create digital experiences that not only look stunning but also perform flawlessly.",
+    "cta": "Let's Build Something Amazing"
   },
   "projects": {
     "title": "My Projects",
@@ -104,5 +113,25 @@
     "expand": "Expand",
     "collapse": "Collapse",
     "currentLocation": "Current Location"
+  },
+  "developerProfile": {
+    "terminalTitle": "terminal ~/portfolio/profile.json",
+    "command": "cat profile.json",
+    "profile": "profile",
+    "skills": "skills",
+    "contact": "contact",
+    "name": "Name",
+    "job": "Job",
+    "location": "Location",
+    "email": "Email",
+    "experience": "Experience",
+    "status": "Status",
+    "copyEmail": "Copy email",
+    "emailCopied": "Email copied!",
+    "available": "Available for projects",
+    "frontend": "frontend",
+    "backend": "backend",
+    "tools": "tools",
+    "languages": "languages"
   }
 }

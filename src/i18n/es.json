@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Magaldidev",
-    "description": "Bienvenido a mi portfolio"
+    "description": "Bienvenido a mi sitio web de portfolio"
   },
   "header": {
     "home": "Inicio",
@@ -25,7 +25,16 @@
       "frontend": "Desarrollo Front-end",
       "backend": "Desarrollo Back-end",
       "fullstack": "Desarrollo Full-stack"
-    }
+    },
+    "frontendDesc": "Creando interfaces modernas, responsivas e interactivas con tecnologías de vanguardia.",
+    "backendDesc": "Construyendo lógica del lado del servidor segura y escalable con arquitecturas robustas.",
+    "fullstackDesc": "Entregando soluciones completas de extremo a extremo que unen diseño y funcionalidad.",
+    "experience": "Experiencia",
+    "education": "Educación",
+    "technologies": "Tecnologías que Utilizo",
+    "philosophy": "Filosofía de Desarrollo",
+    "philosophyText": "Creo en código limpio, diseño centrado en el usuario y aprendizaje continuo para crear experiencias digitales que no solo se vean impresionantes, sino que también funcionen perfectamente.",
+    "cta": "Construyamos Algo Increíble"
   },
   "projects": {
     "title": "Mis Proyectos",
@@ -104,5 +113,25 @@
     "expand": "Expandir",
     "collapse": "Contraer",
     "currentLocation": "Ubicación actual"
+  },
+  "developerProfile": {
+    "terminalTitle": "terminal ~/portfolio/profile.json",
+    "command": "cat profile.json",
+    "profile": "perfil",
+    "skills": "habilidades",
+    "contact": "contacto",
+    "name": "Nombre",
+    "job": "Trabajo",
+    "location": "Ubicación",
+    "email": "Email",
+    "experience": "Experiencia",
+    "status": "Estado",
+    "copyEmail": "Copiar email",
+    "emailCopied": "¡Email copiado!",
+    "available": "Disponible para proyectos",
+    "frontend": "frontend",
+    "backend": "backend",
+    "tools": "herramientas",
+    "languages": "lenguajes"
   }
 }
