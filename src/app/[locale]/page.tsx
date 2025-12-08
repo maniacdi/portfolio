@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import "@/styles/page.scss";
 import Hero from "@/app/components/home/Hero";
+import ImpactHero from "../components/home/ImpactHero";
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -8,6 +9,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <main className="home-container">
+      <ImpactHero />
+
       <Hero />
       <section className="hero">
         <h1>{t("title")}</h1>
