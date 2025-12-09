@@ -42,7 +42,21 @@
   },
   "travels": {
     "title": "My Travels",
-    "description": "A collection of my travel experiences, adventures, and explorations around the world."
+    "description": "A collection of my travel experiences, adventures, and explorations around the world.",
+    "mapView": "Map View",
+    "listView": "List View",
+    "filterBy": "Filter by",
+    "all": "All",
+    "vacation": "Vacation",
+    "business": "Business",
+    "adventure": "Adventure",
+    "cultural": "Cultural",
+    "search": "Search destinations...",
+    "location": "Location",
+    "dates": "Dates",
+    "duration": "Duration",
+    "highlights": "Highlights",
+    "days": "days"
   },
   "hobbies": {
     "title": "My Hobbies",

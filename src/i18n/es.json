@@ -8,60 +8,74 @@
     "about": "Sobre mí",
     "projects": "Proyectos",
     "travels": "Viajes",
-    "hobbies": "Hobbies",
+    "hobbies": "Pasatiempos",
     "language": "Idioma"
   },
   "home": {
     "title": "Bienvenido a mi portfolio",
     "subtitle": "Soy Javi, desarrollador web especializado en crear experiencias modernas y funcionales.",
     "downloadCv": "Descargar CV",
-    "contact": "Contacto"
+    "contact": "Contactar"
   },
   "about": {
     "title": "Sobre Mí",
     "subtitle": "Construyo experiencias web futuristas, minimalistas y de alto rendimiento.",
-    "description": "Con pasión por el desarrollo front-end y UX, me enfoco en crear sitios web elegantes y funcionales.",
+    "description": "Con pasión por el desarrollo front-end y UX, me centro en ofrecer sitios web elegantes y funcionales.",
     "skills": {
       "frontend": "Desarrollo Front-end",
       "backend": "Desarrollo Back-end",
       "fullstack": "Desarrollo Full-stack"
     },
     "frontendDesc": "Creando interfaces modernas, responsivas e interactivas con tecnologías de vanguardia.",
-    "backendDesc": "Construyendo lógica del lado del servidor segura y escalable con arquitecturas robustas.",
+    "backendDesc": "Construyendo lógica de servidor segura y escalable con arquitecturas robustas.",
     "fullstackDesc": "Entregando soluciones completas de extremo a extremo que unen diseño y funcionalidad.",
     "experience": "Experiencia",
     "education": "Educación",
-    "technologies": "Tecnologías que Utilizo",
+    "technologies": "Tecnologías con las que Trabajo",
     "philosophy": "Filosofía de Desarrollo",
-    "philosophyText": "Creo en código limpio, diseño centrado en el usuario y aprendizaje continuo para crear experiencias digitales que no solo se vean impresionantes, sino que también funcionen perfectamente.",
+    "philosophyText": "Creo en código limpio, diseño centrado en el usuario y aprendizaje continuo para crear experiencias digitales que no solo sean visualmente impactantes sino que también funcionen a la perfección.",
     "cta": "Construyamos Algo Increíble"
   },
   "projects": {
     "title": "Mis Proyectos",
-    "description": "Una muestra de proyectos web construidos con tecnologías modernas y principios de diseño futuristas."
+    "description": "Una muestra de proyectos web construidos con tecnologías modernas y principios de diseño futurista."
   },
   "travels": {
     "title": "Mis Viajes",
-    "description": "Una colección de mis experiencias de viaje, aventuras y exploraciones alrededor del mundo."
+    "description": "Una colección de mis experiencias de viaje, aventuras y exploraciones alrededor del mundo.",
+    "mapView": "Vista Mapa",
+    "listView": "Vista Lista",
+    "filterBy": "Filtrar por",
+    "all": "Todos",
+    "vacation": "Vacaciones",
+    "business": "Negocios",
+    "adventure": "Aventura",
+    "cultural": "Cultural",
+    "search": "Buscar destinos...",
+    "location": "Ubicación",
+    "dates": "Fechas",
+    "duration": "Duración",
+    "highlights": "Destacados",
+    "days": "días"
   },
   "hobbies": {
-    "title": "Mis Hobbies",
-    "description": "Cosas que me encanta hacer además de programar, como anime, música, videojuegos y artes creativas.",
+    "title": "Mis Pasatiempos",
+    "description": "Cosas que amo hacer además de programar, como anime, música, videojuegos y artes creativas.",
     "categories": {
       "anime": "Anime",
       "drawing": "Dibujo",
-      "videoGames": "Videojuegos",
+      "video-games": "Videojuegos",
       "cooking": "Cocina"
     },
     "anime": {
       "title": "Mi Lista de Anime",
-      "description": "Una lista curada de anime que he visto, destacando mis favoritos personales."
+      "description": "Una lista seleccionada del anime que he visto, destacando mis favoritos personales."
     },
     "drawing": {
       "title": "Dibujo & Arte",
       "description": "Mi lado creativo expresado a través de bocetos, arte digital e ilustraciones."
     },
-    "videoGames": {
+    "video-games": {
       "title": "Videojuegos",
       "description": "Juegos que me han cautivado con sus historias, jugabilidad y mundos."
     },
@@ -71,7 +85,7 @@
     }
   },
   "contact": {
-    "title": "Contacto",
+    "title": "Contacta Conmigo",
     "description": "¡No dudes en contactarme para colaboraciones o simplemente para charlar!",
     "email": "Email",
     "phone": "Teléfono",
@@ -92,7 +106,7 @@
   },
   "anime": {
     "title": "Mi Anime Favorito",
-    "description": "Una lista curada de anime que amo, cada uno significativo por diferentes razones.",
+    "description": "Una lista seleccionada de anime que amo, cada uno significativo por diferentes razones.",
     "cta": "Ver Más"
   },
   "weather": {
@@ -100,10 +114,10 @@
     "refreshing": "Actualizando...",
     "error": "Error",
     "showWeather": "Mostrar clima",
-    "feelsLike": "Sensación térmica",
+    "feelsLike": "Sensación",
     "sunrise": "Amanecer",
     "sunset": "Atardecer",
-    "forecast": "Pronóstico 5 días",
+    "forecast": "Pronóstico 5 Días",
     "humidity": "Humedad",
     "wind": "Viento",
     "pressure": "Presión",
@@ -112,7 +126,7 @@
     "minimize": "Minimizar",
     "expand": "Expandir",
     "collapse": "Contraer",
-    "currentLocation": "Ubicación actual"
+    "currentLocation": "Ubicación Actual"
   },
   "developerProfile": {
     "terminalTitle": "terminal ~/portfolio/profile.json",
@@ -132,6 +146,6 @@
     "frontend": "frontend",
     "backend": "backend",
     "tools": "herramientas",
-    "languages": "lenguajes"
+    "languages": "idiomas"
   }
 }
