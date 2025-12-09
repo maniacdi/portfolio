@@ -50,7 +50,7 @@
     "categories": {
       "anime": "Anime",
       "drawing": "Drawing",
-      "videoGames": "Video Games",
+      "video-games": "Video Games",
       "cooking": "Cooking"
     },
     "anime": {
@@ -61,7 +61,7 @@
       "title": "Drawing & Art",
       "description": "My creative side expressed through sketches, digital art and illustrations."
     },
-    "videoGames": {
+    "video-games": {
       "title": "Video Games",
       "description": "Games that have captivated me with their stories, gameplay and worlds."
     },

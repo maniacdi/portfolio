@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { Travel } from '@/utils/types/Travel';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  X, 
-  MapPin, 
-  Calendar, 
-  Star, 
+import { Travel } from "@/utils/types/Travel";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  X,
+  MapPin,
+  Calendar,
+  Star,
   ChevronLeft,
   ChevronRight,
   Camera,
   Globe,
-  Clock
-} from 'lucide-react';
+  Clock,
+} from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useState } from 'react';
-import './TravelModal.scss';
-import { formatDate, getDuration, getTypeColor } from '@/utils/helpers/travels';
+import { useState } from "react";
+import "./TravelModal.scss";
+import { formatDate, getDuration, getTypeColor } from "@/utils/helpers/travels";
 
 interface TravelModalProps {
   travel: Travel;
@@ -25,21 +25,16 @@ interface TravelModalProps {
 }
 
 export default function TravelModal({ travel, isOpen, onClose }: TravelModalProps) {
-  const t = useTranslations('travels');
+  const t = useTranslations("travels");
   const locale = useLocale();
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
-
   const nextPhoto = () => {
-    setCurrentPhotoIndex((prev) => 
-      prev === travel.photos.length - 1 ? 0 : prev + 1
-    );
+    setCurrentPhotoIndex((prev) => (prev === travel.photos.length - 1 ? 0 : prev + 1));
   };
 
   const prevPhoto = () => {
-    setCurrentPhotoIndex((prev) => 
-      prev === 0 ? travel.photos.length - 1 : prev - 1
-    );
+    setCurrentPhotoIndex((prev) => (prev === 0 ? travel.photos.length - 1 : prev - 1));
   };
 
   return (
@@ -54,14 +49,14 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
             exit={{ opacity: 0 }}
             onClick={onClose}
           />
-          
+
           {/* Modal */}
           <motion.div
             className="travel-modal"
             initial={{ opacity: 0, scale: 0.9, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 50 }}
-            transition={{ type: 'spring', damping: 25 }}
+            transition={{ type: "spring", damping: 25 }}
           >
             {/* Close button */}
             <button className="modal-close-btn" onClick={onClose}>
@@ -74,12 +69,12 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
               <div className="modal-gallery">
                 {travel.photos.length > 0 ? (
                   <>
-                    <img 
-                      src={travel.photos[currentPhotoIndex]} 
+                    <img
+                      src={travel.photos[currentPhotoIndex]}
                       alt={`${travel.title} - Photo ${currentPhotoIndex + 1}`}
                       className="modal-main-photo"
                     />
-                    
+
                     {travel.photos.length > 1 && (
                       <>
                         <button className="gallery-nav prev" onClick={prevPhoto}>
@@ -88,19 +83,19 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                         <button className="gallery-nav next" onClick={nextPhoto}>
                           <ChevronRight size={24} />
                         </button>
-                        
+
                         <div className="gallery-thumbnails">
-                          {travel.photos.map((photo: string | Blob | undefined, index: number ) => (
+                          {travel.photos.map((photo: string | Blob | undefined, index: number) => (
                             <button
                               key={index}
-                              className={`thumbnail ${index === currentPhotoIndex ? 'active' : ''}`}
+                              className={`thumbnail ${index === currentPhotoIndex ? "active" : ""}`}
                               onClick={() => setCurrentPhotoIndex(index)}
                             >
                               <img src={photo} alt={`Thumbnail ${index + 1}`} />
                             </button>
                           ))}
                         </div>
-                        
+
                         <div className="photo-counter">
                           {currentPhotoIndex + 1} / {travel.photos.length}
                         </div>
@@ -120,24 +115,24 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                 {/* Header */}
                 <div className="modal-header">
                   <div className="header-top">
-                    <span 
+                    <span
                       className="travel-type-badge"
                       style={{ background: getTypeColor(travel.type) }}
                     >
                       {travel.type}
                     </span>
                     {travel.isFeatured && (
-                      <span className="featured-badge">⭐ {t('featured')}</span>
+                      <span className="featured-badge">⭐ {t("featured")}</span>
                     )}
                   </div>
-                  
+
                   <h2 className="modal-title">{travel.title}</h2>
-                  
+
                   <div className="travel-rating">
                     {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        size={18} 
+                      <Star
+                        key={i}
+                        size={18}
                         fill={i < travel.rating ? "#FFD700" : "none"}
                         color="#FFD700"
                       />
@@ -151,28 +146,31 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                   <div className="detail-item">
                     <MapPin size={18} />
                     <div>
-                      <span className="detail-label">{t('location')}</span>
+                      <span className="detail-label">{t("location")}</span>
                       <span className="detail-value">
                         {travel.location.city}, {travel.location.country}
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="detail-item">
                     <Calendar size={18} />
                     <div>
-                      <span className="detail-label">{t('dates')}</span>
+                      <span className="detail-label">{t("dates")}</span>
                       <span className="detail-value">
-                        {formatDate(travel.date.start, locale)} - {formatDate(travel.date.end, locale)}
+                        {formatDate(travel.date.start, locale)} -{" "}
+                        {formatDate(travel.date.end, locale)}
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="detail-item">
                     <Clock size={18} />
                     <div>
-                      <span className="detail-label">{t('duration')}</span>
-                      <span className="detail-value">{getDuration(travel)} {t('days')}</span>
+                      <span className="detail-label">{t("duration")}</span>
+                      <span className="detail-value">
+                        {getDuration(travel)} {t("days")}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -186,14 +184,16 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                 {/* Highlights */}
                 {travel.highlights.length > 0 && (
                   <div className="travel-highlights">
-                    <h3>{t('highlights')}</h3>
+                    <h3>{t("highlights")}</h3>
                     <ul className="highlights-list">
-                      {travel.highlights.map((highlight: string | null | undefined, index: number) => (
-                        <li key={index} className="highlight-item">
-                          <div className="highlight-bullet"></div>
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
+                      {travel.highlights.map(
+                        (highlight: string | null | undefined, index: number) => (
+                          <li key={index} className="highlight-item">
+                            <div className="highlight-bullet"></div>
+                            <span>{highlight}</span>
+                          </li>
+                        )
+                      )}
                     </ul>
                   </div>
                 )}
@@ -201,7 +201,7 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                 {/* Tips */}
                 {travel.tips && (
                   <div className="travel-tips">
-                    <h3>{t('tips')}</h3>
+                    <h3>{t("tips")}</h3>
                     <div className="tips-content">
                       <Globe size={20} />
                       <p>{travel.tips}</p>

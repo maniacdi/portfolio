@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   background: #0a0e1a;
-  
+
   // Cursor personalizado
   &:hover {
     cursor: none;
@@ -24,9 +24,9 @@
   z-index: 9999;
   mix-blend-mode: difference;
   transition: transform 0.1s ease;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 20px;
     height: 20px;
@@ -46,21 +46,28 @@
   position: fixed;
   pointer-events: none;
   z-index: 9998;
-  transition: 
+  transition:
     transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1),
     opacity 0.2s ease;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
 }
 
 .hero-canvas {
   position: absolute;
   inset: 0;
   z-index: 1;
-  
+
   canvas {
     width: 100% !important;
     height: 100% !important;
@@ -73,7 +80,7 @@
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background: 
+  background:
     radial-gradient(circle at 50% 50%, rgba(255, 78, 221, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(0, 217, 255, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 20% 80%, rgba(255, 214, 250, 0.1) 0%, transparent 50%);
@@ -104,20 +111,20 @@
   line-height: 0.85;
   text-transform: uppercase;
   margin: 0;
-  
+
   .title-line {
     display: block;
-    
+
     &.line-1 {
       font-size: clamp(4rem, 12vw, 10rem);
       letter-spacing: -0.03em;
-      text-shadow: 
+      text-shadow:
         0 0 20px #ff4edd,
         0 0 40px #ff4edd,
         0 0 80px #ff4edd;
       animation: textGlow 3s ease-in-out infinite alternate;
     }
-    
+
     &.line-2 {
       font-size: clamp(3rem, 10vw, 8rem);
       letter-spacing: -0.02em;
@@ -133,13 +140,13 @@
 
 @keyframes textGlow {
   0% {
-    text-shadow: 
+    text-shadow:
       0 0 20px #ff4edd,
       0 0 40px #ff4edd,
       0 0 80px #ff4edd;
   }
   100% {
-    text-shadow: 
+    text-shadow:
       0 0 25px #ff4edd,
       0 0 50px #ff4edd,
       0 0 100px #ff4edd,
@@ -159,10 +166,10 @@
   margin: 0;
   font-weight: 300;
   letter-spacing: 0.02em;
-  
+
   .glitch-text {
     position: relative;
-    
+
     &::before,
     &::after {
       content: attr(data-text);
@@ -173,13 +180,13 @@
       height: 100%;
       opacity: 0.8;
     }
-    
+
     &::before {
       color: #00d9ff;
       animation: glitch-1 5s infinite linear alternate-reverse;
       clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
     }
-    
+
     &::after {
       color: #ff4edd;
       animation: glitch-2 7s infinite linear alternate-reverse;
@@ -189,23 +196,36 @@
 }
 
 @keyframes glitch-1 {
-  0%, 5%, 10.001%, 15%, 25.001%, 30%, 35.001%, 40%, 45%, 50.001% {
+  0%,
+  5%,
+  10.001%,
+  15%,
+  25.001%,
+  30%,
+  35.001%,
+  40%,
+  45%,
+  50.001% {
     clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
     transform: translate(0);
   }
-  5.001%, 10% {
+  5.001%,
+  10% {
     clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%);
     transform: translate(-5px, 5px);
   }
-  15.001%, 25% {
+  15.001%,
+  25% {
     clip-path: polygon(0 5%, 100% 5%, 100% 35%, 0 35%);
     transform: translate(5px, -5px);
   }
-  30.001%, 35% {
+  30.001%,
+  35% {
     clip-path: polygon(0 25%, 100% 25%, 100% 35%, 0 35%);
     transform: translate(5px, 5px);
   }
-  40.001%, 45% {
+  40.001%,
+  45% {
     clip-path: polygon(0 10%, 100% 10%, 100% 35%, 0 35%);
     transform: translate(-5px, -5px);
   }
@@ -216,23 +236,36 @@
 }
 
 @keyframes glitch-2 {
-  0%, 5%, 10.001%, 15%, 25.001%, 30%, 35.001%, 40%, 45%, 50.001% {
+  0%,
+  5%,
+  10.001%,
+  15%,
+  25.001%,
+  30%,
+  35.001%,
+  40%,
+  45%,
+  50.001% {
     clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
     transform: translate(0);
   }
-  5.001%, 10% {
+  5.001%,
+  10% {
     clip-path: polygon(0 75%, 100% 75%, 100% 100%, 0 100%);
     transform: translate(5px, -5px);
   }
-  15.001%, 25% {
+  15.001%,
+  25% {
     clip-path: polygon(0 85%, 100% 85%, 100% 100%, 0 100%);
     transform: translate(-5px, 5px);
   }
-  30.001%, 35% {
+  30.001%,
+  35% {
     clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0 100%);
     transform: translate(-5px, -5px);
   }
-  40.001%, 45% {
+  40.001%,
+  45% {
     clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
     transform: translate(5px, 5px);
   }
@@ -246,7 +279,7 @@
   display: flex;
   gap: 1.5rem;
   margin-bottom: 4rem;
-  
+
   @media (max-width: 640px) {
     flex-direction: column;
     width: 100%;
@@ -267,7 +300,7 @@
   outline: none;
   overflow: hidden;
   z-index: 1;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,20 +311,20 @@
   background: linear-gradient(135deg, #ff4edd 0%, #b300ff 100%);
   color: white;
   transform-style: preserve-3d;
-  
+
   .button-text {
     position: relative;
     z-index: 2;
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    
+
     .button-arrow {
       font-size: 1.4rem;
       transition: transform 0.3s ease;
     }
   }
-  
+
   .button-glow {
     position: absolute;
     inset: 0;
@@ -301,41 +334,45 @@
     z-index: -1;
     transition: opacity 0.3s ease;
   }
-  
+
   .button-particles {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.3) 1px,
+      transparent 1px
+    );
     background-size: 20px 20px;
     animation: particlesMove 20s linear infinite;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: -1;
   }
-  
+
   &:hover {
     transform: translateY(-8px) scale(1.05);
-    
+
     .button-arrow {
       transform: translateX(5px) rotate(45deg);
     }
-    
+
     .button-glow {
       opacity: 0.9;
     }
-    
+
     .button-particles {
       opacity: 0.3;
     }
-    
+
     &::before {
       transform: translateY(0%);
     }
   }
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -352,9 +389,9 @@
   background: transparent;
   color: #ffd6fa;
   border: 2px solid rgba(255, 78, 221, 0.3);
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, rgba(255, 78, 221, 0.1) 0%, transparent 100%);
@@ -362,11 +399,11 @@
     transition: opacity 0.3s ease;
     z-index: -1;
   }
-  
+
   &:hover {
     border-color: #ff4edd;
     transform: translateY(-5px);
-    
+
     &::after {
       opacity: 1;
     }
@@ -387,13 +424,13 @@
   font-weight: 300;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  
+
   .scroll-line {
     width: 1px;
     height: 60px;
     background: linear-gradient(to bottom, #ff4edd, transparent);
     position: relative;
-    
+
     .scroll-dot {
       position: absolute;
       top: 0;
@@ -423,19 +460,19 @@
   inset: 0;
   z-index: 4;
   pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    transparent 50%,
-    rgba(0, 0, 0, 0.05) 50%
-  );
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.05) 50%);
   background-size: 100% 3px;
   opacity: 0.15;
   mix-blend-mode: overlay;
 }
 
 @keyframes particlesMove {
-  0% { background-position: 0 0; }
-  100% { background-position: 20px 20px; }
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 20px;
+  }
 }
 
 // Efecto de distorsión en hover de botones
@@ -446,6 +483,11 @@
 }
 
 @keyframes distort {
-  0%, 100% { transform: translateY(-8px) scale(1.05); }
-  50% { transform: translateY(-8px) scale(1.05) rotate(0.5deg); }
+  0%,
+  100% {
+    transform: translateY(-8px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.05) rotate(0.5deg);
+  }
 }

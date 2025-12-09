@@ -35,17 +35,13 @@ export default async function LocaleLayout({
     const messages = await getMessages({ locale });
 
     return (
-      <html lang={locale}>
-        <body>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            <LoadingModal />
-            <Header />
-            <main className="main-content">{children}</main>
-            <Footer />
-            <WeatherWidget />
-          </NextIntlClientProvider>
-        </body>
-      </html>
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        <LoadingModal />
+        <Header />
+        <main className="main-content">{children}</main>
+        <Footer />
+        <WeatherWidget />
+      </NextIntlClientProvider>
     );
   } catch (error) {
     console.error(`Error loading messages for locale ${locale}:`, error);

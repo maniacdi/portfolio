@@ -1,15 +1,9 @@
-'use client';
+"use client";
 
-import { formatDate, getDuration, getTypeColor } from '@/utils/helpers/travels';
-import { Travel } from '@/utils/types/Travel';
-import { motion } from 'framer-motion';
-import { 
-  MapPin, 
-  Calendar, 
-  Star, 
-  ChevronRight,
-  Camera
-} from 'lucide-react';
+import { formatDate, getDuration, getTypeColor } from "@/utils/helpers/travels";
+import { Travel } from "@/utils/types/Travel";
+import { motion } from "framer-motion";
+import { MapPin, Calendar, Star, ChevronRight, Camera } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 interface TravelCardProps {
@@ -19,7 +13,7 @@ interface TravelCardProps {
 }
 
 export default function TravelCard({ travel, index, onClick }: TravelCardProps) {
-  const t = useTranslations('travels');
+  const t = useTranslations("travels");
   const locale = useLocale();
 
   return (
@@ -31,17 +25,15 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
       onClick={onClick}
       style={{ borderLeftColor: getTypeColor(travel.type) }}
     >
-      {travel.isFeatured && (
-        <div className="featured-badge">⭐ {t('featured')}</div>
-      )}
-      
+      {travel.isFeatured && <div className="featured-badge">⭐ {t("featured")}</div>}
+
       <div className="travel-card-image">
         {travel.photos[0] ? (
-          <img 
-            src={travel.photos[0]} 
+          <img
+            src={travel.photos[0]}
             alt={travel.title}
             onError={(e) => {
-              e.currentTarget.src = '/images/travels/default.jpg';
+              e.currentTarget.src = "/images/travels/default.jpg";
             }}
           />
         ) : (
@@ -60,9 +52,9 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
           <h3 className="travel-title">{travel.title}</h3>
           <div className="travel-rating">
             {[...Array(5)].map((_, i) => (
-              <Star 
-                key={i} 
-                size={14} 
+              <Star
+                key={i}
+                size={14}
                 fill={i < travel.rating ? "#FFD700" : "none"}
                 color="#FFD700"
               />
@@ -73,13 +65,15 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
         <div className="travel-info">
           <div className="info-item">
             <MapPin size={14} />
-            <span>{travel.location.city}, {travel.location.country}</span>
+            <span>
+              {travel.location.city}, {travel.location.country}
+            </span>
           </div>
-          
+
           <div className="info-item">
             <Calendar size={14} />
             <span>
-              {formatDate(travel.date.start, locale)} • {getDuration(travel)} {t('days')}
+              {formatDate(travel.date.start, locale)} • {getDuration(travel)} {t("days")}
             </span>
           </div>
         </div>
@@ -88,18 +82,23 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
 
         <div className="travel-highlights">
           {travel.highlights.slice(0, 2).map((highlight, i) => (
-            <span key={i} className="highlight-tag">{highlight}</span>
+            <span key={i} className="highlight-tag">
+              {highlight}
+            </span>
           ))}
           {travel.highlights.length > 2 && (
             <span className="more-tag">+{travel.highlights.length - 2}</span>
           )}
         </div>
 
-        <button className="view-details-btn" onClick={(e) => {
-          e.stopPropagation();
-          onClick();
-        }}>
-          {t('viewDetails')} <ChevronRight size={16} />
+        <button
+          className="view-details-btn"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClick();
+          }}
+        >
+          {t("viewDetails")} <ChevronRight size={16} />
         </button>
       </div>
     </motion.div>

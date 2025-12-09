@@ -1,52 +1,42 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { 
-  Map, 
-  List, 
-  Filter, 
-  Search, 
-  Globe,
-  Calendar,
-  Star,
-  Kayak,
-  TreePalm
-} from 'lucide-react';
-import TravelMap from './TravelMap';
-import TravelCard from './TravelCard';
-import TravelModal from './TravelModal';
-import { mockTravels } from '@/utils/data/travels';
-import { Travel } from '@/utils/types/Travel';
-import './TravelContent.scss';
-
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
+import { Map, List, Filter, Search, Globe, Calendar, Star, Kayak, TreePalm } from "lucide-react";
+import TravelMap from "./TravelMap";
+import TravelCard from "./TravelCard";
+import TravelModal from "./TravelModal";
+import { mockTravels } from "@/utils/data/travels";
+import { Travel } from "@/utils/types/Travel";
+import "./TravelContent.scss";
 
 export default function TravelContent() {
-  const t = useTranslations('travels');
-  const [viewMode, setViewMode] = useState<'map' | 'list'>('map');
-  const [filter, setFilter] = useState<string>('all');
-  const [search, setSearch] = useState<string>('');
+  const t = useTranslations("travels");
+  const [viewMode, setViewMode] = useState<"map" | "list">("map");
+  const [filter, setFilter] = useState<string>("all");
+  const [search, setSearch] = useState<string>("");
   const [selectedTravel, setSelectedTravel] = useState<Travel | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Filters
   const filters = [
-    { id: 'all', label: t('all'), icon: <Globe size={16} /> },
-    { id: 'vacation', label: t('vacation'), icon: <TreePalm size={16} /> },
-    { id: 'business', label: t('business'), icon: <Calendar size={16} /> },
-    { id: 'adventure', label: t('adventure'), icon: <Kayak size={16} /> },
-    { id: 'cultural', label: t('cultural'), icon: <Star size={16} /> }
+    { id: "all", label: t("all"), icon: <Globe size={16} /> },
+    { id: "vacation", label: t("vacation"), icon: <TreePalm size={16} /> },
+    { id: "business", label: t("business"), icon: <Calendar size={16} /> },
+    { id: "adventure", label: t("adventure"), icon: <Kayak size={16} /> },
+    { id: "cultural", label: t("cultural"), icon: <Star size={16} /> },
   ];
 
   // Filter travels
-  const filteredTravels = mockTravels.filter(travel => {
-    const matchesFilter = filter === 'all' || travel.type === filter;
-    const matchesSearch = search === '' || 
+  const filteredTravels = mockTravels.filter((travel) => {
+    const matchesFilter = filter === "all" || travel.type === filter;
+    const matchesSearch =
+      search === "" ||
       travel.title.toLowerCase().includes(search.toLowerCase()) ||
       travel.location.country.toLowerCase().includes(search.toLowerCase()) ||
       travel.location.city.toLowerCase().includes(search.toLowerCase());
-    
+
     return matchesFilter && matchesSearch;
   });
 
@@ -65,7 +55,7 @@ export default function TravelContent() {
           transition={{ duration: 0.6 }}
           className="travels-title"
         >
-          {t('title')}
+          {t("title")}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -73,7 +63,7 @@ export default function TravelContent() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="travels-description"
         >
-          {t('description')}
+          {t("description")}
         </motion.p>
       </div>
 
@@ -82,18 +72,18 @@ export default function TravelContent() {
         {/* View Toggle */}
         <div className="view-toggle">
           <button
-            className={`view-btn ${viewMode === 'map' ? 'active' : ''}`}
-            onClick={() => setViewMode('map')}
+            className={`view-btn ${viewMode === "map" ? "active" : ""}`}
+            onClick={() => setViewMode("map")}
           >
             <Map size={18} />
-            <span>{t('mapView')}</span>
+            <span>{t("mapView")}</span>
           </button>
           <button
-            className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
-            onClick={() => setViewMode('list')}
+            className={`view-btn ${viewMode === "list" ? "active" : ""}`}
+            onClick={() => setViewMode("list")}
           >
             <List size={18} />
-            <span>{t('listView')}</span>
+            <span>{t("listView")}</span>
           </button>
         </div>
 
@@ -102,7 +92,7 @@ export default function TravelContent() {
           <Search size={18} />
           <input
             type="text"
-            placeholder={t('search')}
+            placeholder={t("search")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -112,13 +102,13 @@ export default function TravelContent() {
         <div className="filters">
           <div className="filters-label">
             <Filter size={16} />
-            <span>{t('filterBy')}:</span>
+            <span>{t("filterBy")}:</span>
           </div>
           <div className="filter-buttons">
             {filters.map((filterItem) => (
               <button
                 key={filterItem.id}
-                className={`filter-btn ${filter === filterItem.id ? 'active' : ''}`}
+                className={`filter-btn ${filter === filterItem.id ? "active" : ""}`}
                 onClick={() => setFilter(filterItem.id)}
               >
                 {filterItem.icon}
@@ -131,11 +121,8 @@ export default function TravelContent() {
 
       {/* Content */}
       <div className="travels-content">
-        {viewMode === 'map' ? (
-          <TravelMap 
-            travels={filteredTravels} 
-            onMarkerClick={handleTravelClick}
-          />
+        {viewMode === "map" ? (
+          <TravelMap travels={filteredTravels} onMarkerClick={handleTravelClick} />
         ) : (
           <div className="travels-grid">
             {filteredTravels.map((travel, index) => (
