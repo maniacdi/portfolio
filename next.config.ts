@@ -4,7 +4,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // React Compiler (opcional pero recomendado si usas React 19)
   experimental: {
-    reactCompiler: true,
     optimizePackageImports: [
       "three",
       "@react-three/fiber",
@@ -74,10 +73,6 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
 
-  // Reducir warnings durante el build
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
