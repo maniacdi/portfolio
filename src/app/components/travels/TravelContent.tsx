@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Map, List, Filter, Search, Globe, Calendar, Star, Kayak, TreePalm } from "lucide-react";
 import TravelMap from "./TravelMap";
 import TravelCard from "./TravelCard";
 import TravelModal from "./TravelModal";
-import { mockTravels } from "@/utils/data/travels";
+import { fetchAllTravels } from "../../services/travelService";
 import { Travel } from "@/utils/types/Travel";
 import "./TravelContent.scss";
+import { Preload } from "@react-three/drei";
+import Preloader from "../common/Preloader";
 
 export default function TravelContent() {
   const t = useTranslations("travels");
@@ -18,6 +20,20 @@ export default function TravelContent() {
   const [search, setSearch] = useState<string>("");
   const [selectedTravel, setSelectedTravel] = useState<Travel | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [travels, setTravels] = useState<Travel[]>([]);
+  const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+    loadTravels();
+  }, []);
+
+
+    const loadTravels = async () => {
+    setLoading(true);
+    const data = await fetchAllTravels();
+    setTravels(data);
+    setLoading(false);
+  };
 
   // Filters
   const filters = [
@@ -29,7 +45,7 @@ export default function TravelContent() {
   ];
 
   // Filter travels
-  const filteredTravels = mockTravels.filter((travel) => {
+  const filteredTravels = travels.filter((travel) => {
     const matchesFilter = filter === "all" || travel.type === filter;
     const matchesSearch =
       search === "" ||
@@ -44,6 +60,14 @@ export default function TravelContent() {
     setSelectedTravel(travel);
     setIsModalOpen(true);
   };
+
+  if (loading) {
+    return (
+      <div className="travels-page">
+        <Preloader />
+      </div>
+    );
+  }
 
   return (
     <div className="travels-page">

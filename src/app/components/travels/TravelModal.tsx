@@ -128,17 +128,6 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
 
                   <h2 className="modal-title">{travel.title}</h2>
 
-                  <div className="travel-rating">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={18}
-                        fill={i < travel.rating ? "#FFD700" : "none"}
-                        color="#FFD700"
-                      />
-                    ))}
-                    <span className="rating-text">{travel.rating}/5</span>
-                  </div>
                 </div>
 
                 {/* Location and date */}
@@ -195,17 +184,6 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                         )
                       )}
                     </ul>
-                  </div>
-                )}
-
-                {/* Tips */}
-                {travel.tips && (
-                  <div className="travel-tips">
-                    <h3>{t("tips")}</h3>
-                    <div className="tips-content">
-                      <Globe size={20} />
-                      <p>{travel.tips}</p>
-                    </div>
                   </div>
                 )}
               </div>

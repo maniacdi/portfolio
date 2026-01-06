@@ -8,7 +8,7 @@
     "about": "Sobre mí",
     "projects": "Proyectos",
     "travels": "Viajes",
-    "hobbies": "Pasatiempos",
+    "hobbies": "Hobbies",
     "language": "Idioma"
   },
   "home": {
@@ -59,7 +59,7 @@
     "days": "días"
   },
   "hobbies": {
-    "title": "Mis Pasatiempos",
+    "title": "Mis Hobbies",
     "description": "Cosas que amo hacer además de programar, como anime, música, videojuegos y artes creativas.",
     "categories": {
       "anime": "Anime",

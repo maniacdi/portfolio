@@ -50,16 +50,6 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
       <div className="travel-card-content">
         <div className="travel-header">
           <h3 className="travel-title">{travel.title}</h3>
-          <div className="travel-rating">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                size={14}
-                fill={i < travel.rating ? "#FFD700" : "none"}
-                color="#FFD700"
-              />
-            ))}
-          </div>
         </div>
 
         <div className="travel-info">

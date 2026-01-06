@@ -1,4 +1,3 @@
-// src/app/components/common/MatrixLoader.tsx
 "use client";
 
 import { useEffect, useRef, useState } from 'react';

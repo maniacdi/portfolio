@@ -1,8 +1,7 @@
-// src/app/components/common/Preloader.tsx
 "use client";
 
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import './Preloader.scss';
 
@@ -12,7 +11,6 @@ export default function Preloader() {
   const t = useTranslations('preloader');
 
   useEffect(() => {
-    // Simular carga de assets
     const timer = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -24,15 +22,11 @@ export default function Preloader() {
       });
     }, 30);
 
-    // O cargar assets reales
     const preloadAssets = async () => {
       const assets = [
-        // Añade URLs de tus assets pesados
         '/api/weather',
-        // Three.js se carga aparte
       ];
       
-      // Carga real
       await Promise.all(assets.map(url => fetch(url)));
     };
 
@@ -51,7 +45,6 @@ export default function Preloader() {
       transition={{ duration: 0.5 }}
     >
       <div className="preloader-content">
-        {/* Logo animado */}
         <motion.div
           className="logo-container"
           animate={{
@@ -68,13 +61,11 @@ export default function Preloader() {
           <div className="logo-glow" />
         </motion.div>
 
-        {/* Texto */}
         <div className="preloader-text">
           <h2 className="title">{t('title')}</h2>
           <p className="subtitle">{t('subtitle')}</p>
         </div>
 
-        {/* Barra de progreso futurista */}
         <div className="progress-container">
           <div className="progress-bar">
             <motion.div
@@ -91,7 +82,6 @@ export default function Preloader() {
           </div>
         </div>
 
-        {/* Efectos de partículas */}
         <div className="particles">
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
@@ -116,7 +106,6 @@ export default function Preloader() {
           ))}
         </div>
 
-        {/* Terminal style console */}
         <div className="console">
           <div className="console-header">
             <span className="console-title">system_init.sh</span>

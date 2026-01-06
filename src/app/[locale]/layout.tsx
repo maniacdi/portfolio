@@ -5,10 +5,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import Header from "@components/header/Header";
 import Footer from "@components/footer/Footer";
 import WeatherWidget from "@components/common/WeatherWidget";
-import LoadingModal from "@components/common/LoadingModal";
 import "../../styles/globals.scss";
-import Preloader from "../components/common/Preloader";
-import MatrixLoader from "../components/common/MatrixLoader";  
  import TerminalLoader from "../components/common/TerminalLoader";
 
 export async function generateMetadata({
@@ -39,10 +36,7 @@ export default async function LocaleLayout({
 
     return (
       <NextIntlClientProvider locale={locale} messages={messages}>
-        {/* <Preloader /> */}
-        {/* <MatrixLoader /> */}
         <TerminalLoader />
-        <LoadingModal />
         <Header />
         <main className="main-content">{children}</main>
         <Footer />
