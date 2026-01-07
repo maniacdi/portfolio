@@ -1,4 +1,3 @@
-// src/app/components/home/SimpleImpactHero.tsx
 "use client";
 
 import { Canvas } from "@react-three/fiber";
@@ -8,7 +7,6 @@ import { useTranslations } from "next-intl";
 import { OrbitControls, Stars, Sparkles } from "@react-three/drei";
 import "./ImpactHero.scss";
 
-// Componente más simple que seguro funciona
 const SimpleSphere = () => {
   return (
     <mesh position={[0, 0, 0]} rotation={[0, 0, 0]}>
@@ -37,7 +35,6 @@ export default function SimpleImpactHero() {
 
   return (
     <section ref={containerRef} className="impact-hero">
-      {/* Canvas 3D mínimo */}
       <div className="hero-canvas">
         <Canvas camera={{ position: [0, 0, 5] }}>
           <Suspense fallback={null}>
@@ -54,7 +51,6 @@ export default function SimpleImpactHero() {
         </Canvas>
       </div>
 
-      {/* Contenido */}
       <div className="hero-content">
         <h1 className="main-title">
           <span className="title-line line-1">BUILDING THE</span>
