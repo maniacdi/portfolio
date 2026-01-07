@@ -6,7 +6,7 @@ export default async function HobbiesPage({ params }: { params: Promise<{ locale
   const t = await getTranslations({ locale, namespace: "hobbies" });
 
   return (
-    <div className="hobbies-page min-h-screen bg-gradient-to-b from-background to-background-dark py-12">
+    <div className="hobbies-page bg-gradient-to-b from-background to-background-dark py-12">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center my-12 mx-auto max-w-3xl">
           <div className="page-header-animation">

@@ -16,7 +16,7 @@
   transform: translate(-50%, -50%) !important;
   width: 90%;
   max-width: 1000px;
-  max-height: 90vh;
+  max-height: 90dvh;
   background: var(--bg);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 78, 221, 0.3);
@@ -342,7 +342,7 @@
 @media (max-width: 768px) {
   .travel-modal {
     width: 95%;
-    max-height: 95vh;
+    max-height: 95dvh;
 
     .modal-content {
       flex-direction: column;
