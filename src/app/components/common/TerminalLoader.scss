@@ -9,8 +9,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Space Grotesk', monospace;
-  
+  font-family: "Space Grotesk", monospace;
+
   .terminal {
     width: 90%;
     max-width: 800px;
@@ -18,12 +18,12 @@
     background: rgba(13, 17, 23, 0.95);
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 
+    box-shadow:
       0 20px 60px rgba(0, 0, 0, 0.5),
       0 0 0 1px rgba(255, 78, 221, 0.1),
       inset 0 0 20px rgba(255, 78, 221, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    
+
     &-header {
       display: flex;
       justify-content: space-between;
@@ -31,118 +31,124 @@
       padding: 1rem 1.5rem;
       background: rgba(10, 14, 26, 0.8);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      
+
       .terminal-title {
         display: flex;
         align-items: center;
         gap: 0.8rem;
         color: var(--accent);
         font-size: 0.9rem;
-        
+
         .icon {
           color: var(--neon);
           font-size: 1.2rem;
         }
       }
-      
+
       .terminal-controls {
         display: flex;
         gap: 0.6rem;
-        
+
         .control {
           width: 12px;
           height: 12px;
           border-radius: 50%;
           cursor: pointer;
           transition: all 0.2s ease;
-          
+
           &.close {
             background: #ff5f57;
-            &:hover { background: #ff3b30; }
+            &:hover {
+              background: #ff3b30;
+            }
           }
-          
+
           &.minimize {
             background: #ffbd2e;
-            &:hover { background: #ffa500; }
+            &:hover {
+              background: #ffa500;
+            }
           }
-          
+
           &.expand {
             background: #28ca42;
-            &:hover { background: #1db954; }
+            &:hover {
+              background: #1db954;
+            }
           }
         }
       }
     }
-    
+
     &-body {
       height: calc(100% - 60px);
       padding: 1.5rem;
       overflow-y: auto;
-      
+
       &::-webkit-scrollbar {
         width: 6px;
       }
-      
+
       &::-webkit-scrollbar-track {
         background: rgba(255, 255, 255, 0.05);
       }
-      
+
       &::-webkit-scrollbar-thumb {
         background: var(--neon);
         border-radius: 3px;
       }
     }
-    
+
     &-content {
-      font-family: 'Monaco', 'Consolas', monospace;
+      font-family: "Monaco", "Consolas", monospace;
       font-size: 0.95rem;
       line-height: 1.6;
     }
-    
+
     &-line {
       margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
-      
+
       .input {
         color: #00ff9d;
         font-weight: 600;
-        
+
         &::before {
-          content: '$ ';
+          content: "$ ";
           color: var(--neon);
         }
       }
-      
+
       .output {
         color: var(--accent);
         opacity: 0.8;
-        
+
         &::before {
-          content: '> ';
+          content: "> ";
           color: #ffd700;
         }
       }
-      
+
       .success {
         color: #00ff9d;
         font-weight: 600;
-        
+
         &::before {
-          content: '✓ ';
+          content: "✓ ";
         }
       }
-      
+
       .command {
         color: var(--neon);
         font-weight: 600;
-        
+
         &::before {
-          content: '$ ';
+          content: "$ ";
           color: #00ff9d;
         }
       }
-      
+
       .cursor {
         display: inline-block;
         width: 8px;
@@ -153,7 +159,7 @@
       }
     }
   }
-  
+
   .hint {
     position: absolute;
     bottom: 3rem;
@@ -165,7 +171,7 @@
     color: var(--accent);
     font-size: 0.9rem;
     opacity: 0.7;
-    
+
     .spinner {
       width: 20px;
       height: 20px;
@@ -178,19 +184,27 @@
 }
 
 @keyframes cursor-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 // Terminal typing effect
 .terminal-line {
   opacity: 0;
   animation: type-in 0.3s forwards;
-  
+
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
       animation-delay: #{($i - 1) * 0.3}s;
@@ -199,12 +213,12 @@
 }
 
 @keyframes type-in {
-  from { 
-    opacity: 0; 
+  from {
+    opacity: 0;
     transform: translateY(10px);
   }
-  to { 
-    opacity: 1; 
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
 }

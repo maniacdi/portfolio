@@ -6,7 +6,7 @@ import Header from "@components/header/Header";
 import Footer from "@components/footer/Footer";
 import WeatherWidget from "@components/common/WeatherWidget";
 import "../../styles/globals.scss";
- import TerminalLoader from "../components/common/TerminalLoader";
+import TerminalLoader from "../components/common/TerminalLoader";
 
 export async function generateMetadata({
   params,

@@ -30,18 +30,16 @@ export function adaptApiTravelToFrontend(apiTravel: ApiTravel): Travel {
     location: {
       country: apiTravel.country,
       city: apiTravel.location,
-      coordinates: apiTravel.coordinates
+      coordinates: apiTravel.coordinates,
     },
     date: {
       start: apiTravel.dates.start,
-      end: apiTravel.dates.end
+      end: apiTravel.dates.end,
     },
     type: apiTravel.type,
-    photos: apiTravel.images.length > 0 
-      ? apiTravel.images 
-      : [],
+    photos: apiTravel.images.length > 0 ? apiTravel.images : [],
     highlights: apiTravel.highlights,
-    isFeatured: false, 
+    isFeatured: false,
   };
 }
 
@@ -51,7 +49,7 @@ export function getTravelPlaceholderImage(type: string): string {
     vacation: "/images/placeholders/beach.svg",
     business: "/images/placeholders/business.svg",
     adventure: "/images/placeholders/mountain.svg",
-    cultural: "/images/placeholders/culture.svg"
+    cultural: "/images/placeholders/culture.svg",
   };
   return placeholders[type] || "/images/placeholders/default.svg";
 }

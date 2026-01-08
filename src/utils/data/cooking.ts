@@ -21,4 +21,23 @@ export const cookingList: HobbyItem[] = [
     slug: slugify("Sushi Making"),
     image: "/images/anime/default.png",
   },
+  {
+    id: slugify("Asian Cuisine"),
+    title: "Asian Cuisine",
+    slug: slugify("Asian Cuisine"),
+    image: "/images/anime/default.png",
+  },
+  {
+    id: slugify("Spanish Cuisine"),
+    title: "Spanish Cuisine",
+    slug: slugify("Spanish Cuisine"),
+    favorite: true,
+    image: "/images/anime/default.png",
+  },
+  {
+    id: slugify("Grilling"),
+    title: "Grilling",
+    slug: slugify("Grilling"),
+    image: "/images/anime/default.png",
+  },
 ];

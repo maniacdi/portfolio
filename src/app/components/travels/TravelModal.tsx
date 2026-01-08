@@ -127,7 +127,6 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                   </div>
 
                   <h2 className="modal-title">{travel.title}</h2>
-
                 </div>
 
                 {/* Location and date */}

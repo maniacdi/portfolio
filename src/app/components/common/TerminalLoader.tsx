@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import './TerminalLoader.scss';
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import "./TerminalLoader.scss";
 
 const commands = [
   "npm run build-portfolio",
@@ -12,7 +12,7 @@ const commands = [
   "> Compiling neon shaders...",
   "> Establishing secure connection...",
   "✓ Portfolio ready",
-  "$ Welcome to the future of web development"
+  "$ Welcome to the future of web development",
 ];
 
 export default function TerminalLoader() {
@@ -23,7 +23,7 @@ export default function TerminalLoader() {
   useEffect(() => {
     // Animación de escritura
     const interval = setInterval(() => {
-      setVisibleLines(prev => {
+      setVisibleLines((prev) => {
         if (prev >= commands.length) {
           clearInterval(interval);
           setTimeout(() => {
@@ -37,7 +37,7 @@ export default function TerminalLoader() {
 
     // Cursor parpadeante
     const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 500);
 
     return () => {
@@ -67,32 +67,36 @@ export default function TerminalLoader() {
             <div className="control expand" />
           </div>
         </div>
-        
+
         <div className="terminal-body">
           <div className="terminal-content">
             {commands.slice(0, visibleLines).map((line, index) => (
               <div key={index} className="terminal-line">
-                <span className={
-                  line.startsWith('>') ? 'output' : 
-                  line.startsWith('✓') ? 'success' : 
-                  line.startsWith('$') ? 'command' : 'input'
-                }>
+                <span
+                  className={
+                    line.startsWith(">")
+                      ? "output"
+                      : line.startsWith("✓")
+                        ? "success"
+                        : line.startsWith("$")
+                          ? "command"
+                          : "input"
+                  }
+                >
                   {line}
                 </span>
               </div>
             ))}
-            
+
             {visibleLines < commands.length && (
               <div className="terminal-line">
-                <span className="cursor">
-                  {showCursor ? '▋' : ' '}
-                </span>
+                <span className="cursor">{showCursor ? "▋" : " "}</span>
               </div>
             )}
           </div>
         </div>
       </div>
-      
+
       <div className="hint">
         <span>Initializing experience...</span>
         <div className="spinner" />

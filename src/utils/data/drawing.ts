@@ -16,9 +16,9 @@ export const drawingList: HobbyItem[] = [
     image: "/images/anime/default.png",
   },
   {
-    id: slugify("Illustration"),
-    title: "Illustration",
-    slug: slugify("Illustration"),
+    id: slugify("Improvising"),
+    title: "Improvising",
+    slug: slugify("Improvising"),
     favorite: true,
     image: "/images/anime/default.png",
   },

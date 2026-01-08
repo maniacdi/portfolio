@@ -1,22 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import './MatrixLoader.scss';
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import "./MatrixLoader.scss";
 
 export default function MatrixLoader() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
   const [isComplete, setIsComplete] = useState(false);
 
-  const hackerText = "01101000 01100001 01100011 01101011 01100101 01110010 00100000 01101101 01101111 01100100 01100101 00100000 01100101 01101110 01100111 01100001 01100111 01100101 01100100";
+  const hackerText =
+    "01101000 01100001 01100011 01101011 01100101 01110010 00100000 01101101 01101111 01100100 01100101 00100000 01100101 01101110 01100111 01100001 01100111 01100101 01100100";
 
   useEffect(() => {
     // Efecto matrix en canvas
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     canvas.width = window.innerWidth;
@@ -34,10 +35,10 @@ export default function MatrixLoader() {
     let animationId: number;
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(10, 14, 26, 0.05)';
+      ctx.fillStyle = "rgba(10, 14, 26, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#0f0';
+      ctx.fillStyle = "#0f0";
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
@@ -62,7 +63,7 @@ export default function MatrixLoader() {
     let i = 0;
     const typeWriter = setInterval(() => {
       if (i < hackerText.length) {
-        setCode(prev => prev + hackerText.charAt(i));
+        setCode((prev) => prev + hackerText.charAt(i));
         i++;
       } else {
         clearInterval(typeWriter);
@@ -86,7 +87,7 @@ export default function MatrixLoader() {
       transition={{ duration: 0.5 }}
     >
       <canvas ref={canvasRef} className="matrix-canvas" />
-      
+
       <div className="matrix-content">
         <div className="matrix-header">
           <h1 className="matrix-title">SYSTEM BOOT</h1>
@@ -103,39 +104,39 @@ export default function MatrixLoader() {
               <span className="cursor">|</span>
             </pre>
           </div>
-          
+
           <div className="terminal-stats">
             <div className="stat">
               <span className="stat-label">CPU</span>
               <div className="stat-bar">
-                <motion.div 
+                <motion.div
                   className="stat-fill"
                   initial={{ width: 0 }}
-                  animate={{ width: '85%' }}
+                  animate={{ width: "85%" }}
                   transition={{ duration: 2 }}
                 />
               </div>
             </div>
-            
+
             <div className="stat">
               <span className="stat-label">MEM</span>
               <div className="stat-bar">
-                <motion.div 
+                <motion.div
                   className="stat-fill"
                   initial={{ width: 0 }}
-                  animate={{ width: '70%' }}
+                  animate={{ width: "70%" }}
                   transition={{ duration: 2, delay: 0.2 }}
                 />
               </div>
             </div>
-            
+
             <div className="stat">
               <span className="stat-label">GPU</span>
               <div className="stat-bar">
-                <motion.div 
+                <motion.div
                   className="stat-fill"
                   initial={{ width: 0 }}
-                  animate={{ width: '95%' }}
+                  animate={{ width: "95%" }}
                   transition={{ duration: 2, delay: 0.4 }}
                 />
               </div>

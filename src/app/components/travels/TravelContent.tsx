@@ -23,12 +23,11 @@ export default function TravelContent() {
   const [travels, setTravels] = useState<Travel[]>([]);
   const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
+  useEffect(() => {
     loadTravels();
   }, []);
 
-
-    const loadTravels = async () => {
+  const loadTravels = async () => {
     setLoading(true);
     const data = await fetchAllTravels();
     setTravels(data);

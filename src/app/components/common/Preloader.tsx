@@ -1,18 +1,18 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import './Preloader.scss';
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import "./Preloader.scss";
 
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const t = useTranslations('preloader');
+  const t = useTranslations("preloader");
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress(prev => {
+      setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
           setTimeout(() => setIsLoading(false), 500);
@@ -23,11 +23,9 @@ export default function Preloader() {
     }, 30);
 
     const preloadAssets = async () => {
-      const assets = [
-        '/api/weather',
-      ];
-      
-      await Promise.all(assets.map(url => fetch(url)));
+      const assets = ["/api/weather"];
+
+      await Promise.all(assets.map((url) => fetch(url)));
     };
 
     preloadAssets();
@@ -54,7 +52,7 @@ export default function Preloader() {
           transition={{
             duration: 2,
             repeat: Infinity,
-            repeatType: "reverse"
+            repeatType: "reverse",
           }}
         >
           <div className="logo">M</div>
@@ -62,8 +60,8 @@ export default function Preloader() {
         </motion.div>
 
         <div className="preloader-text">
-          <h2 className="title">{t('title')}</h2>
-          <p className="subtitle">{t('subtitle')}</p>
+          <h2 className="title">{t("title")}</h2>
+          <p className="subtitle">{t("subtitle")}</p>
         </div>
 
         <div className="progress-container">
@@ -78,7 +76,7 @@ export default function Preloader() {
           </div>
           <div className="progress-text">
             <span className="percentage">{progress}%</span>
-            <span className="status">{t('loading')}</span>
+            <span className="status">{t("loading")}</span>
           </div>
         </div>
 

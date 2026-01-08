@@ -6,11 +6,6 @@ import { HobbySection } from "@/utils/types/Hobby";
 
 export const sectionsData: HobbySection[] = [
   {
-    id: "drawing",
-    title: "Drawing",
-    items: drawingList,
-  },
-  {
     id: "anime",
     title: "Anime",
     items: animeList,
@@ -24,5 +19,10 @@ export const sectionsData: HobbySection[] = [
     id: "cooking",
     title: "Cooking",
     items: cookingList,
+  },
+  {
+    id: "drawing",
+    title: "Drawing",
+    items: drawingList,
   },
 ];
