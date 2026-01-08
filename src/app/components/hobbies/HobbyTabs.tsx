@@ -18,21 +18,30 @@ export default function HobbyTabs() {
 
   return (
     <div className="hobbies-container">
+      {/* Tabs */}
       <div className="hobbies-tabs">
         {translatedSections.map((section) => (
           <motion.button
             key={section.id}
-            className={active === section.id ? "active" : ""}
+            className={`tab-btn ${active === section.id ? "active" : ""}`}
             onClick={() => setActive(section.id)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             {section.title}
+            {active === section.id && (
+              <motion.div 
+                className="tab-indicator"
+                layoutId="tab-indicator"
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            )}
           </motion.button>
         ))}
       </div>
 
+      {/* Contenido */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
