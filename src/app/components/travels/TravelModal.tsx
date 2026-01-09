@@ -133,7 +133,7 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                 <div className="travel-details">
                   <div className="detail-item">
                     <MapPin size={18} />
-                    <div>
+                    <div className="detail-content">
                       <span className="detail-label">{t("location")}</span>
                       <span className="detail-value">
                         {travel.location.city}, {travel.location.country}
@@ -143,7 +143,7 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
 
                   <div className="detail-item">
                     <Calendar size={18} />
-                    <div>
+                    <div className="detail-content">
                       <span className="detail-label">{t("dates")}</span>
                       <span className="detail-value">
                         {formatDate(travel.date.start, locale)} -{" "}
@@ -154,7 +154,7 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
 
                   <div className="detail-item">
                     <Clock size={18} />
-                    <div>
+                    <div className="detail-content">
                       <span className="detail-label">{t("duration")}</span>
                       <span className="detail-value">
                         {getDuration(travel)} {t("days")}

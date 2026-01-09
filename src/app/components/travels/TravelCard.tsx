@@ -68,7 +68,7 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
           </div>
         </div>
 
-        <p className="travel-description">{travel.description.substring(0, 100)}...</p>
+        <p className="travel-description">{travel.description.substring(0, 100)}</p>
 
         <div className="travel-highlights">
           {travel.highlights.slice(0, 2).map((highlight, i) => (
@@ -81,15 +81,17 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
           )}
         </div>
 
-        <button
-          className="view-details-btn"
-          onClick={(e) => {
-            e.stopPropagation();
-            onClick();
-          }}
-        >
-          {t("viewDetails")} <ChevronRight size={16} />
-        </button>
+        <div className="button-container">
+          <button
+            className="view-details-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClick();
+            }}
+          >
+            {t("viewDetails")} <ChevronRight size={16} />
+          </button>
+        </div>
       </div>
     </motion.div>
   );

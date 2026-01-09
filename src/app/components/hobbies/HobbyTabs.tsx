@@ -31,7 +31,7 @@ export default function HobbyTabs() {
           >
             {section.title}
             {active === section.id && (
-              <motion.div 
+              <motion.div
                 className="tab-indicator"
                 layoutId="tab-indicator"
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}

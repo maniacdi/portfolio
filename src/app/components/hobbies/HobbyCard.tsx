@@ -26,8 +26,8 @@ export const HobbyCard = ({ item }: HobbyCardProps) => {
         }
       },
       {
-        rootMargin: "100px", 
-        threshold: 0.1
+        rootMargin: "100px",
+        threshold: 0.1,
       }
     );
 
@@ -41,7 +41,7 @@ export const HobbyCard = ({ item }: HobbyCardProps) => {
       const img = new Image();
       img.src = item.image ?? "/images/anime/default.png";
       img.onload = () => setImageLoaded(true);
-      img.onerror = () => setImageLoaded(true); 
+      img.onerror = () => setImageLoaded(true);
     }
   }, [isInView, item.image]);
 
@@ -57,15 +57,15 @@ export const HobbyCard = ({ item }: HobbyCardProps) => {
     >
       <div className="image-wrapper">
         {!imageLoaded && <div className="image-skeleton" />}
-        
-        <img 
+
+        <img
           ref={imgRef}
-          src={isInView ? item.image : ""} 
+          src={isInView ? item.image : "/images/anime/default.png"}
           alt={item.title}
           loading="lazy"
-          style={{ 
+          style={{
             opacity: imageLoaded ? 1 : 0,
-            transition: 'opacity 0.3s ease'
+            transition: "opacity 0.3s ease",
           }}
           onLoad={() => setImageLoaded(true)}
           onError={() => {
@@ -73,15 +73,11 @@ export const HobbyCard = ({ item }: HobbyCardProps) => {
             console.error(`Failed to load image: ${item.image}`);
           }}
         />
-        
+
         <div className="image-overlay" />
       </div>
 
       <p className="title">{item.title}</p>
-      
-      {item.category && (
-        <span className="category-tag">{item.category}</span>
-      )}
     </motion.div>
   );
 };

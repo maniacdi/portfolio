@@ -56,7 +56,8 @@
     "dates": "Dates",
     "duration": "Duration",
     "highlights": "Highlights",
-    "days": "days"
+    "days": "days",
+    "viewDetails": "View Details"
   },
   "hobbies": {
     "title": "My Hobbies",

@@ -234,13 +234,19 @@
         flex-shrink: 0;
       }
 
+      .detail-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 60%;
+      }
+
       .detail-label {
         display: block;
         font-size: 0.8rem;
         color: var(--text-secondary);
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 0.25rem;
       }
 
       .detail-value {
@@ -268,7 +274,6 @@
 
   .travel-highlights {
     margin-bottom: 2rem;
-    overflow: scroll;
 
     h3 {
       font-size: 1.3rem;
@@ -279,6 +284,8 @@
     .highlights-list {
       list-style: none;
       padding: 0;
+      max-height: 140px;
+      overflow-y: scroll;
 
       .highlight-item {
         display: flex;

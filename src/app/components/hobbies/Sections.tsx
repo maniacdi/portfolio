@@ -13,10 +13,7 @@ export const Sections = ({ section }: Props) => {
 
   return (
     <div className="section-wrapper">
-      <SectionHeader 
-        title={section.title} 
-        description={t(`${section.id}.description` as any)} 
-      />
+      <SectionHeader title={section.title} description={t(`${section.id}.description` as any)} />
 
       <div className="cards-grid">
         {section.items.map((item) => (

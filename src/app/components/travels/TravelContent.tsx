@@ -10,8 +10,6 @@ import TravelModal from "./TravelModal";
 import { fetchAllTravels } from "../../services/travelService";
 import { Travel } from "@/utils/types/Travel";
 import "./TravelContent.scss";
-import { Preload } from "@react-three/drei";
-import Preloader from "../common/Preloader";
 
 export default function TravelContent() {
   const t = useTranslations("travels");
@@ -59,14 +57,6 @@ export default function TravelContent() {
     setSelectedTravel(travel);
     setIsModalOpen(true);
   };
-
-  if (loading) {
-    return (
-      <div className="travels-page">
-        <Preloader />
-      </div>
-    );
-  }
 
   return (
     <div className="travels-page">
