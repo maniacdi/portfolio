@@ -7,6 +7,7 @@
   --neon: #ff4edd;
   --accent: #ffd6fa;
   --text: #edeaff;
+  --neon-blue: #00f3ff;
 
   /* ----- Background Layers ----- */
   --bg: #0a0e1a;
@@ -14,6 +15,9 @@
   --bg3: #0b0517;
   --bg4: #05040a;
   --bg-transparent: rgba(15, 20, 30, 0.6);
+  --terminal-bg: rgba(10, 14, 26, 0.95);
+  --card-bg: rgba(15, 20, 35, 0.9);
+
 
   /* ----- Neon Glows & Shadows ----- */
   --shadow-neon: 0 0 12px var(--neon);
@@ -28,6 +32,13 @@
   --radius-lg: 12px;
   --padding: 1.2rem;
   --padding-lg: 2rem;
+
+   /* ----- Text Colors ----- */
+   --text-primary: #ffffff;
+   --text-secondary: #a0aec0;
+   --success: #4cd964;
+   --warning: #ffbd2e;
+   --danger: #ff5f56;
 }
 
 /* ============================================

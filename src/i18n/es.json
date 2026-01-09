@@ -34,11 +34,9 @@
     "technologies": "Tecnologías con las que Trabajo",
     "philosophy": "Filosofía de Desarrollo",
     "philosophyText": "Creo en código limpio, diseño centrado en el usuario y aprendizaje continuo para crear experiencias digitales que no solo sean visualmente impactantes sino que también funcionen a la perfección.",
-    "cta": "Construyamos Algo Increíble"
-  },
-  "projects": {
-    "title": "Mis Proyectos",
-    "description": "Una muestra de proyectos web construidos con tecnologías modernas y principios de diseño futurista."
+    "cta": "Construyamos algo increíble",
+    "ctaText": "Listo para convertir tus ideas en realidad digital",
+    "ctaButton": "Ponte en Contacto"
   },
   "travels": {
     "title": "Mis Viajes",

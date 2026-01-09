@@ -34,11 +34,9 @@
     "technologies": "Technologies I Work With",
     "philosophy": "Development Philosophy",
     "philosophyText": "I believe in clean code, user-centered design, and continuous learning to create digital experiences that not only look stunning but also perform flawlessly.",
-    "cta": "Let's Build Something Amazing"
-  },
-  "projects": {
-    "title": "My Projects",
-    "description": "A showcase of web projects built with modern technologies and futuristic design principles."
+    "cta": "Let's build something amazing",
+    "ctaText": "Ready to turn your ideas into digital reality",
+    "ctaButton": "Get in Touch"
   },
   "travels": {
     "title": "My Travels",

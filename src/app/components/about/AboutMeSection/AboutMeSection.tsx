@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import "./AboutMeSection.scss";
 import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/DeveloperProfile";
+import TechCarousel from "../TechCarousel/TechCarousel";
 
 interface AboutSectionProps {
   className?: string;
@@ -48,7 +49,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   ];
 
   return (
-    <section className={`about-section ${className}`} aria-labelledby="about-title" role="region">
+    <><section className={`about-section ${className}`} aria-labelledby="about-title" role="region">
       <div className="about-content">
         <div className="about-main">
           {/* Hero Header */}
@@ -205,9 +206,9 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
           >
             <div className="cta-content">
               <h3 className="cta-title">{t("cta")}</h3>
-              <p className="cta-subtitle">Ready to turn your ideas into digital reality</p>
+              <p className="cta-subtitle">{t("ctaText")}</p>
               <button className="neon-button">
-                <span>Get in Touch</span>
+                <span>{t("ctaButton")}</span>
                 <Zap size={16} />
               </button>
             </div>
@@ -216,7 +217,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
         </div>
         <DeveloperProfile className="developer-profile-side" />
       </div>
-    </section>
+    </section><TechCarousel /></>
   );
 };
 

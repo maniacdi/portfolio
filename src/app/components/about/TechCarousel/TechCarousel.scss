@@ -1,0 +1,418 @@
+// TechCarousel.scss
+.tech-carousel-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, #0f0f1a 100%);
+  position: relative;
+  overflow: hidden;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .section-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      font-family: 'Inter', sans-serif;
+
+      .gradient-text {
+        background: linear-gradient(90deg, #ff4edd, #00d9ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: #a0aec0;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+    }
+  }
+}
+
+.tech-carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  background: rgba(10, 10, 10, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .carousel-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 78, 221, 0.1) 0%,
+      rgba(0, 217, 255, 0.05) 30%,
+      transparent 70%
+    );
+    z-index: -1;
+    animation: gradientMove 20s ease infinite;
+  }
+}
+
+.tech-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+  position: relative;
+  z-index: 2;
+
+  .tech-card {
+    position: absolute;
+    width: 300px;
+    padding: 2rem;
+    background: rgba(20, 20, 30, 0.8);
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+
+    &:hover {
+      transform: translateY(-10px) scale(1.05);
+      border-color: var(--tech-color);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 60px color-mix(in srgb, var(--tech-color) 20%, transparent);
+
+      .tech-icon-large {
+        transform: scale(1.2) rotate(10deg);
+        filter: drop-shadow(0 0 20px var(--tech-color));
+      }
+    }
+
+    &.active {
+      z-index: 10;
+      transform: scale(1.1);
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 80px color-mix(in srgb, var(--tech-color) 30%, transparent);
+      border-color: var(--tech-color);
+    }
+
+    .tech-icon-large {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      filter: drop-shadow(0 0 10px currentColor);
+    }
+
+    .tech-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .tech-name {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #fff;
+      }
+
+      .tech-category {
+        font-size: 0.9rem;
+        color: var(--tech-color);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .tech-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        .badge-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          animation: pulseBadge 2s infinite;
+        }
+
+        .badge-text {
+          font-size: 0.8rem;
+          color: #a0aec0;
+        }
+      }
+    }
+
+    .tech-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.5;
+      z-index: -1;
+    }
+  }
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(255, 78, 221, 0.2);
+    border-color: #ff4edd;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  &.prev {
+    left: 1rem;
+  }
+
+  &.next {
+    right: 1rem;
+  }
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+
+  .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.2);
+    }
+
+    &.active {
+      background: #ff4edd;
+      box-shadow: 0 0 10px #ff4edd;
+      transform: scale(1.3);
+    }
+  }
+}
+
+.tech-mini-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  .mini-tech-item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.8rem;
+
+    &:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: currentColor;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    &.active {
+      background: rgba(var(--tech-color-rgb), 0.1);
+      border-color: currentColor;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px currentColor;
+    }
+  }
+}
+
+.tech-categories {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+
+  .category-btn {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    color: #a0aec0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    &.active {
+      background: linear-gradient(90deg, #ff4edd, #00d9ff);
+      color: #000;
+      border: none;
+      font-weight: 600;
+      box-shadow: 0 5px 20px rgba(255, 78, 221, 0.3);
+    }
+  }
+}
+
+// Animaciones
+@keyframes gradientMove {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulseBadge {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+  .tech-carousel-container {
+    padding: 1.5rem;
+  }
+
+  .tech-card {
+    width: 250px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-carousel-section {
+    padding: 3rem 1rem;
+  }
+
+  .tech-carousel-container {
+    padding: 1rem;
+  }
+
+  .carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+
+    &.prev {
+      left: 0.5rem;
+    }
+
+    &.next {
+      right: 0.5rem;
+    }
+  }
+
+  .tech-card {
+    width: 220px !important;
+    padding: 1.5rem !important;
+
+    .tech-icon-large {
+      font-size: 3rem !important;
+    }
+
+    .tech-name {
+      font-size: 1.5rem !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem !important;
+  }
+
+  .tech-mini-grid {
+    gap: 0.5rem;
+
+    .mini-tech-item {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
+  }
+
+  .tech-categories {
+    gap: 0.5rem;
+
+    .category-btn {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+}
