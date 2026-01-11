@@ -1,4 +1,3 @@
-// components/about/TechCarousel.tsx
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -27,7 +26,6 @@ export default function TechCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Tecnologías organizadas por categoría
   const techStack: TechItem[] = [
     // Frontend
     { id: "react", name: "React", icon: <SiReact />, color: "#61DAFB", category: "frontend" },
@@ -73,11 +71,9 @@ export default function TechCarousel() {
     };
   }, [isPaused, techStack.length]);
 
-  // Manejar pausa en hover
   const handleMouseEnter = () => setIsPaused(true);
   const handleMouseLeave = () => setIsPaused(false);
 
-  // Navegación manual
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? techStack.length - 1 : prev - 1));
   };
@@ -85,10 +81,6 @@ export default function TechCarousel() {
   const handleNext = () => {
     setCurrentIndex((prev) => (prev === techStack.length - 1 ? 0 : prev + 1));
   };
-
-  // Filtrar por categoría (opcional)
-  const filteredTech = techStack; // Mostrar todas
-  // const filteredTech = techStack.filter(t => t.category === "frontend"); // Filtrar por categoría
 
   return (
     <section className="tech-carousel-section" aria-label="Tecnologías y herramientas">
@@ -107,10 +99,8 @@ export default function TechCarousel() {
         onMouseLeave={handleMouseLeave}
         ref={carouselRef}
       >
-        {/* Fondo gradiente animado */}
         <div className="carousel-gradient" />
         
-        {/* Controles */}
         <button 
           className="carousel-control prev"
           onClick={handlePrev}
@@ -127,11 +117,10 @@ export default function TechCarousel() {
           →
         </button>
 
-        {/* Carrusel principal */}
         <div className="tech-carousel">
           <AnimatePresence mode="wait">
             {/* Tech items */}
-            {filteredTech.map((tech, index) => (
+            {techStack.map((tech, index) => (
               <motion.div
                 key={tech.id}
                 className={`tech-card ${index === currentIndex ? "active" : ""}`}
@@ -148,33 +137,28 @@ export default function TechCarousel() {
                 } as React.CSSProperties}
                 onClick={() => setCurrentIndex(index)}
               >
-                {/* Icono grande */}
                 <div className="tech-icon-large" style={{ color: tech.color }}>
                   {tech.icon}
                 </div>
 
-                {/* Contenido */}
                 <div className="tech-content">
                   <h3 className="tech-name">{tech.name}</h3>
                   <span className="tech-category">{tech.category}</span>
                   
-                  {/* Badge de estado */}
                   <div className="tech-badge">
                     <span className="badge-dot" style={{ background: tech.color }} />
                     <span className="badge-text">Daily Use</span>
                   </div>
                 </div>
 
-                {/* Efecto de brillo */}
                 <div className="tech-glow" style={{ background: tech.color }} />
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
 
-        {/* Indicadores */}
         <div className="carousel-indicators">
-          {filteredTech.map((_, index) => (
+          {techStack.map((_, index) => (
             <button
               key={index}
               className={`indicator ${index === currentIndex ? "active" : ""}`}
@@ -184,9 +168,8 @@ export default function TechCarousel() {
           ))}
         </div>
 
-        {/* Mini carrusel de todas las tech (barra inferior) */}
         <div className="tech-mini-grid">
-          {filteredTech.map((tech, index) => (
+          {techStack.map((tech, index) => (
             <motion.div
               key={`mini-${tech.id}`}
               className={`mini-tech-item ${index === currentIndex ? "active" : ""}`}

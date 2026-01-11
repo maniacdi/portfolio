@@ -1,7 +1,8 @@
 .about-section {
-  max-width: 1200px;
   padding: 4rem 2rem;
   color: var(--text);
+  border: 1px solid red;
+  overflow: hidden;
 }
 
 .about-main {
@@ -52,7 +53,6 @@
   .about-description {
     font-size: 1.1rem;
     line-height: 1.8;
-    max-width: 800px;
     margin: 0 auto;
     color: var(--text-secondary);
   }
@@ -415,7 +415,7 @@
 // Responsive
 @media (max-width: 768px) {
   .about-section {
-    padding: 2rem 1rem;
+    padding: 2rem 0rem;
   }
 
   .about-title {
