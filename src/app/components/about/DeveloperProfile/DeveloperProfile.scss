@@ -1,10 +1,13 @@
 .developer-profile {
   position: relative;
-  width: 100%;
-  max-width: 1000px;
-  margin: 2rem auto;
+  width: 75%;
+  margin: 2rem 0;
   perspective: 1000px;
   opacity: 0;
+
+@media (max-width: 480px) {
+    width: 84%;
+  }
 
   .profile-background {
     position: absolute;
@@ -412,7 +415,8 @@
         .detail-value-wrapper {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: center;
+          position:relative;
 
           .detail-value {
             font-size: 1rem;
@@ -428,6 +432,13 @@
             color: var(--text-secondary);
             cursor: pointer;
             transition: all 0.2s ease;
+            position:absolute;
+            right: 4px;
+
+            @media (max-width: 480px) {
+              right: -10px;
+              top: -30px;
+            }
 
             &:hover {
               background: rgba(0, 243, 255, 0.2);
@@ -844,7 +855,7 @@
 // Responsive Design
 @media (max-width: 768px) {
   .developer-profile {
-    margin: 1rem;
+    margin: 1rem 0;
   }
 
   .profile-card {

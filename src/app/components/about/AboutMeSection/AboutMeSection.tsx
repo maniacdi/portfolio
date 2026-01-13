@@ -51,6 +51,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   return (
     <><section className={`about-section ${className}`} aria-labelledby="about-title" role="region">
       <div className="about-content">
+                <DeveloperProfile className="developer-profile-side" />
         <div className="about-main">
           {/* Hero Header */}
           <motion.div
@@ -156,48 +157,14 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
               </div>
             </motion.div>
 
-            {/* Right Column: Tech & Philosophy */}
-            <motion.div
-              className="about-column"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              {/* Technologies */}
-              <div className="tech-section">
-                <div className="section-header">
-                  <Zap size={22} />
-                  <h3>{t("technologies")}</h3>
-                </div>
-                <div className="tech-grid">
-                  {techStack.map((tech, index) => (
-                    <div
-                      key={index}
-                      className="tech-item"
-                      style={{ "--tech-color": tech.color } as any}
-                    >
-                      <div className="tech-icon" style={{ color: tech.color }}>
-                        {tech.icon}
-                      </div>
-                      <span>{tech.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Philosophy */}
-              <div className="philosophy-section neon-card">
-                <div className="section-header">
-                  <Sparkles size={22} />
-                  <h3>{t("philosophy")}</h3>
-                </div>
-                <p className="philosophy-text">{t("philosophyText")}</p>
-                <div className="philosophy-glow"></div>
-              </div>
-            </motion.div>
           </div>
 
-          {/* CTA Section */}
+         
+        </div>
+
+      </div>
+    </section><TechCarousel />
+     {/* CTA Section */}
           <motion.div
             className="cta-section"
             initial={{ opacity: 0, y: 40 }}
@@ -214,10 +181,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
             </div>
             <div className="cta-glow"></div>
           </motion.div>
-        </div>
-        <DeveloperProfile className="developer-profile-side" />
-      </div>
-    </section><TechCarousel /></>
+    </>
   );
 };
 
