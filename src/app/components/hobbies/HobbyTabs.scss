@@ -23,7 +23,6 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     color: var(--text);
-    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -65,18 +64,15 @@
     margin-bottom: 3rem;
 
     h2 {
-      font-size: 2.5rem;
       color: var(--text);
       margin-bottom: 1rem;
       font-weight: 800;
 
       @media (max-width: 768px) {
-        font-size: 2rem;
       }
     }
 
     p {
-      font-size: 1.1rem;
       color: var(--accent);
       max-width: 600px;
       margin: 0 auto;

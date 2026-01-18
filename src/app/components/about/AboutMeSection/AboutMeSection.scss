@@ -5,14 +5,12 @@
 .about-main {
   margin-right: 20px;
   width: 90%;
-
 }
 
 .about-hero {
   text-align: center;
   margin-bottom: 4rem;
   width: 90%;
-
 
   .title-container {
     display: flex;
@@ -28,7 +26,6 @@
   }
 
   .about-title {
-    font-size: 3.5rem;
     font-weight: 800;
     background: linear-gradient(135deg, var(--neon) 0%, var(--accent) 100%);
     -webkit-background-clip: text;
@@ -45,14 +42,12 @@
   }
 
   .about-subtitle {
-    font-size: 1.5rem;
     color: var(--accent);
     margin-bottom: 1.5rem;
     font-weight: 500;
   }
 
   .about-description {
-    font-size: 1.1rem;
     line-height: 1.8;
     max-width: 800px;
     margin: 0 auto;
@@ -132,7 +127,6 @@
     }
 
     .skill-title {
-      font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 1rem;
       color: var(--text);
@@ -186,7 +180,6 @@
   }
 
   h3 {
-    font-size: 1.8rem;
     font-weight: 700;
     color: var(--text);
   }
@@ -218,7 +211,6 @@
       }
 
       .timeline-year {
-        font-size: 0.9rem;
         font-weight: 600;
         color: var(--neon);
         margin-bottom: 0.5rem;
@@ -228,7 +220,6 @@
 
       .timeline-content {
         h4 {
-          font-size: 1.2rem;
           font-weight: 600;
           margin-bottom: 0.25rem;
           color: var(--text);
@@ -236,7 +227,6 @@
 
         p {
           color: var(--text-secondary);
-          font-size: 0.95rem;
         }
       }
 
@@ -268,7 +258,6 @@
     z-index: 2;
 
     .cta-title {
-      font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
       background: linear-gradient(135deg, var(--neon), var(--accent));
@@ -278,7 +267,6 @@
     }
 
     .cta-subtitle {
-      font-size: 1.2rem;
       color: var(--text-secondary);
       margin-bottom: 2rem;
     }
@@ -304,7 +292,7 @@
   color: #fff;
   border: none;
   border-radius: var(--radius);
-  font-size: 1.1rem;
+
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -357,14 +345,5 @@
 @media (max-width: 768px) {
   .about-section {
     padding: 2rem 1rem;
-  }
-
-  .about-title {
-    font-size: 2.5rem !important;
-  }
-
-
-  .cta-title {
-    font-size: 2rem !important;
   }
 }

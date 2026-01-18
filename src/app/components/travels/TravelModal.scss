@@ -163,7 +163,6 @@
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
-    font-size: 0.9rem;
   }
 }
 
@@ -182,7 +181,6 @@
       .travel-type-badge {
         padding: 0.25rem 0.75rem;
         border-radius: 20px;
-        font-size: 0.8rem;
         font-weight: 600;
         text-transform: uppercase;
         color: #000;
@@ -193,14 +191,12 @@
         color: #ffd700;
         padding: 0.25rem 0.75rem;
         border-radius: 20px;
-        font-size: 0.8rem;
         font-weight: 600;
         border: 1px solid rgba(255, 215, 0, 0.3);
       }
     }
 
     .modal-title {
-      font-size: 2rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
       color: var(--text);
@@ -213,7 +209,6 @@
 
       .rating-text {
         color: var(--text-secondary);
-        font-size: 0.9rem;
       }
     }
   }
@@ -243,7 +238,6 @@
 
       .detail-label {
         display: block;
-        font-size: 0.8rem;
         color: var(--text-secondary);
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -261,7 +255,6 @@
     margin-bottom: 2rem;
 
     h3 {
-      font-size: 1.3rem;
       margin-bottom: 1rem;
       color: var(--text);
     }
@@ -276,7 +269,6 @@
     margin-bottom: 2rem;
 
     h3 {
-      font-size: 1.3rem;
       margin-bottom: 1rem;
       color: var(--text);
     }
@@ -321,7 +313,6 @@
     padding: 1.5rem;
 
     h3 {
-      font-size: 1.3rem;
       margin-bottom: 1rem;
       color: var(--text);
     }

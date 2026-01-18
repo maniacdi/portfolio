@@ -37,11 +37,9 @@
         align-items: center;
         gap: 0.8rem;
         color: var(--accent);
-        font-size: 0.9rem;
 
         .icon {
           color: var(--neon);
-          font-size: 1.2rem;
         }
       }
 
@@ -101,7 +99,6 @@
 
     &-content {
       font-family: "Monaco", "Consolas", monospace;
-      font-size: 0.95rem;
       line-height: 1.6;
     }
 
@@ -169,7 +166,6 @@
     align-items: center;
     gap: 1rem;
     color: var(--accent);
-    font-size: 0.9rem;
     opacity: 0.7;
 
     .spinner {

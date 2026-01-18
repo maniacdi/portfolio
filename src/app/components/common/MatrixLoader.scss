@@ -38,7 +38,6 @@
 
       .matrix-title {
         font-family: "Orbitron", sans-serif;
-        font-size: 2.5rem;
         color: #0f0;
         text-shadow:
           0 0 10px #0f0,
@@ -53,7 +52,6 @@
         gap: 1rem;
         color: #0f0;
         font-family: "Space Grotesk", monospace;
-        font-size: 0.9rem;
 
         .status-dot {
           width: 10px;
@@ -97,7 +95,6 @@
 
         .code {
           font-family: "Monaco", "Consolas", monospace;
-          font-size: 1.1rem;
           line-height: 1.8;
           color: #0f0;
           margin: 0;
@@ -121,7 +118,6 @@
             display: block;
             color: #0f0;
             font-family: "Space Grotesk", monospace;
-            font-size: 0.9rem;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -170,7 +166,6 @@
       .hint {
         color: #0f0;
         font-family: "Space Grotesk", monospace;
-        font-size: 1rem;
         letter-spacing: 0.1em;
         opacity: 0.8;
       }

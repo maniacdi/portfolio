@@ -2,11 +2,25 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, 
-  SiMongodb, SiExpress, SiTailwindcss, SiSass,
-  SiFramer, SiVercel, SiGit, SiDocker, SiPostgresql,
-  SiGraphql, SiRedis, SiJest, SiCypress, SiStorybook
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiNodedotjs,
+  SiMongodb,
+  SiExpress,
+  SiTailwindcss,
+  SiSass,
+  SiFramer,
+  SiVercel,
+  SiGit,
+  SiDocker,
+  SiPostgresql,
+  SiGraphql,
+  SiRedis,
+  SiJest,
+  SiCypress,
+  SiStorybook,
 } from "react-icons/si";
 import { TbBrandThreejs } from "react-icons/tb";
 import { FaAws } from "react-icons/fa";
@@ -29,23 +43,59 @@ export default function TechCarousel() {
   const techStack: TechItem[] = [
     // Frontend
     { id: "react", name: "React", icon: <SiReact />, color: "#61DAFB", category: "frontend" },
-    { id: "nextjs", name: "Next.js", icon: <SiNextdotjs />, color: "#000000", category: "frontend" },
-    { id: "typescript", name: "TypeScript", icon: <SiTypescript />, color: "#3178C6", category: "frontend" },
-    { id: "tailwind", name: "Tailwind", icon: <SiTailwindcss />, color: "#06B6D4", category: "frontend" },
+    {
+      id: "nextjs",
+      name: "Next.js",
+      icon: <SiNextdotjs />,
+      color: "#000000",
+      category: "frontend",
+    },
+    {
+      id: "typescript",
+      name: "TypeScript",
+      icon: <SiTypescript />,
+      color: "#3178C6",
+      category: "frontend",
+    },
+    {
+      id: "tailwind",
+      name: "Tailwind",
+      icon: <SiTailwindcss />,
+      color: "#06B6D4",
+      category: "frontend",
+    },
     { id: "sass", name: "Sass", icon: <SiSass />, color: "#CC6699", category: "frontend" },
-    { id: "framer", name: "Framer Motion", icon: <SiFramer />, color: "#FF4EDD", category: "frontend" },
-    { id: "threejs", name: "Three.js", icon: <TbBrandThreejs />, color: "#000000", category: "frontend" },
-    
+    {
+      id: "framer",
+      name: "Framer Motion",
+      icon: <SiFramer />,
+      color: "#FF4EDD",
+      category: "frontend",
+    },
+    {
+      id: "threejs",
+      name: "Three.js",
+      icon: <TbBrandThreejs />,
+      color: "#000000",
+      category: "frontend",
+    },
+
     // Backend
     { id: "nodejs", name: "Node.js", icon: <SiNodedotjs />, color: "#339933", category: "backend" },
     { id: "express", name: "Express", icon: <SiExpress />, color: "#000000", category: "backend" },
     { id: "graphql", name: "GraphQL", icon: <SiGraphql />, color: "#E10098", category: "backend" },
-    
+
     // Databases
     { id: "mongodb", name: "MongoDB", icon: <SiMongodb />, color: "#47A248", category: "database" },
-    { id: "postgresql", name: "PostgreSQL", icon: <SiPostgresql />, color: "#4169E1", category: "database" },
+    {
+      id: "postgresql",
+      name: "PostgreSQL",
+      icon: <SiPostgresql />,
+      color: "#4169E1",
+      category: "database",
+    },
     { id: "redis", name: "Redis", icon: <SiRedis />, color: "#DC382D", category: "database" },
-    
+
     // Tools & DevOps
     { id: "git", name: "Git", icon: <SiGit />, color: "#F05032", category: "tools" },
     { id: "docker", name: "Docker", icon: <SiDocker />, color: "#2496ED", category: "tools" },
@@ -53,7 +103,13 @@ export default function TechCarousel() {
     { id: "vercel", name: "Vercel", icon: <SiVercel />, color: "#000000", category: "tools" },
     { id: "jest", name: "Jest", icon: <SiJest />, color: "#C21325", category: "tools" },
     { id: "cypress", name: "Cypress", icon: <SiCypress />, color: "#17202C", category: "tools" },
-    { id: "storybook", name: "Storybook", icon: <SiStorybook />, color: "#FF4785", category: "tools" },
+    {
+      id: "storybook",
+      name: "Storybook",
+      icon: <SiStorybook />,
+      color: "#FF4785",
+      category: "tools",
+    },
   ];
 
   // Autoplay
@@ -93,23 +149,23 @@ export default function TechCarousel() {
         </p>
       </div>
 
-      <div 
+      <div
         className="tech-carousel-container"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         ref={carouselRef}
       >
         <div className="carousel-gradient" />
-        
-        <button 
+
+        <button
           className="carousel-control prev"
           onClick={handlePrev}
           aria-label="Tecnología anterior"
         >
           ←
         </button>
-        
-        <button 
+
+        <button
           className="carousel-control next"
           onClick={handleNext}
           aria-label="Siguiente tecnología"
@@ -125,16 +181,18 @@ export default function TechCarousel() {
                 key={tech.id}
                 className={`tech-card ${index === currentIndex ? "active" : ""}`}
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={{ 
+                animate={{
                   opacity: index === currentIndex ? 1 : 0.3,
                   scale: index === currentIndex ? 1 : 0.7,
                   y: index === currentIndex ? 0 : 10,
                 }}
                 exit={{ opacity: 0, scale: 0.8, y: -20 }}
                 transition={{ duration: 0.5, type: "spring" }}
-                style={{ 
-                  '--tech-color': tech.color,
-                } as React.CSSProperties}
+                style={
+                  {
+                    "--tech-color": tech.color,
+                  } as React.CSSProperties
+                }
                 onClick={() => setCurrentIndex(index)}
               >
                 <div className="tech-icon-large" style={{ color: tech.color }}>
@@ -144,7 +202,7 @@ export default function TechCarousel() {
                 <div className="tech-content">
                   <h3 className="tech-name">{tech.name}</h3>
                   <span className="tech-category">{tech.category}</span>
-                  
+
                   <div className="tech-badge">
                     <span className="badge-dot" style={{ background: tech.color }} />
                     <span className="badge-text">Daily Use</span>

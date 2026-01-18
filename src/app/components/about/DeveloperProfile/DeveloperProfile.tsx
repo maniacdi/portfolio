@@ -159,11 +159,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
         <div className="terminal-header">
           <div className="terminal-header-glow"></div>
           <div className="terminal-dots">
-            <motion.div
-              className="dot red"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            />
+            <motion.div className="dot red" whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }} />
             <motion.div
               className="dot yellow"
               whileHover={{ scale: 1.2 }}
@@ -367,7 +363,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                             onMouseLeave={() => setHoveredSkill(null)}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: (categoryIndex * 0.1) + (skillIndex * 0.05) }}
+                            transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
                             whileHover={{
                               scale: 1.05,
                               color: "var(--neon)",
@@ -378,7 +374,10 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                               className="skill-progress"
                               initial={{ scaleX: 0 }}
                               animate={{ scaleX: 1 }}
-                              transition={{ delay: (categoryIndex * 0.1) + (skillIndex * 0.05) + 0.2, duration: 0.8 }}
+                              transition={{
+                                delay: categoryIndex * 0.1 + skillIndex * 0.05 + 0.2,
+                                duration: 0.8,
+                              }}
                             />
                           </motion.div>
                         ))}

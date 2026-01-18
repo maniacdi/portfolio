@@ -49,138 +49,136 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   ];
 
   return (
-    <><section className={`about-section ${className}`} aria-labelledby="about-title" role="region">
-      <div className="about-content">
-                <DeveloperProfile className="developer-profile-side" />
-        <div className="about-main">
-          {/* Hero Header */}
-          <motion.div
-            className="about-hero"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="title-container">
-              <Sparkles className="sparkle-icon" />
-              <h1 id="about-title" className="about-title">
-                {t("title")}
-                <span className="title-gradient">_</span>
-              </h1>
-            </div>
-
-            <p className="about-subtitle">{t("subtitle")}</p>
-            <p className="about-description">{t("description")}</p>
-          </motion.div>
-
-          {/* Skills Grid */}
-          <motion.div
-            className="skills-grid"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="skill-card neon-card">
-              <div className="skill-icon frontend-icon">
-                <Globe size={28} />
-              </div>
-              <h3 className="skill-title">{t("skills.frontend")}</h3>
-              <p className="skill-desc">{t("frontendDesc")}</p>
-              <div className="skill-glow"></div>
-            </div>
-
-            <div className="skill-card neon-card">
-              <div className="skill-icon backend-icon">
-                <Server size={28} />
-              </div>
-              <h3 className="skill-title">{t("skills.backend")}</h3>
-              <p className="skill-desc">{t("backendDesc")}</p>
-              <div className="skill-glow"></div>
-            </div>
-
-            <div className="skill-card neon-card">
-              <div className="skill-icon fullstack-icon">
-                <Rocket size={28} />
-              </div>
-              <h3 className="skill-title">{t("skills.fullstack")}</h3>
-              <p className="skill-desc">{t("fullstackDesc")}</p>
-              <div className="skill-glow"></div>
-            </div>
-          </motion.div>
-
-          {/* Two Column Layout */}
-          <div className="about-content-grid">
-            {/* Left Column: Experience & Education */}
+    <>
+      <section className={`about-section ${className}`} aria-labelledby="about-title" role="region">
+        <div className="about-content">
+          <DeveloperProfile className="developer-profile-side" />
+          <div className="about-main">
+            {/* Hero Header */}
             <motion.div
-              className="about-column"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              className="about-hero"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              {/* Experience */}
-              <div className="timeline-section">
-                <div className="section-header">
-                  <Briefcase size={22} />
-                  <h3>{t("experience")}</h3>
-                </div>
-                <div className="timeline">
-                  {experiences.map((exp, index) => (
-                    <div key={index} className="timeline-item">
-                      <div className="timeline-year">{exp.year}</div>
-                      <div className="timeline-content">
-                        <h4>{exp.role}</h4>
-                        <p>{exp.company}</p>
-                      </div>
-                      <div className="timeline-dot"></div>
-                    </div>
-                  ))}
-                </div>
+              <div className="title-container">
+                <Sparkles className="sparkle-icon" />
+                <h1 id="about-title" className="about-title">
+                  {t("title")}
+                  <span className="title-gradient">_</span>
+                </h1>
               </div>
 
-              {/* Education */}
-              <div className="timeline-section">
-                <div className="section-header">
-                  <GraduationCap size={22} />
-                  <h3>{t("education")}</h3>
+              <p className="about-subtitle">{t("subtitle")}</p>
+              <p className="about-description">{t("description")}</p>
+            </motion.div>
+
+            {/* Skills Grid */}
+            <motion.div
+              className="skills-grid"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="skill-card neon-card">
+                <div className="skill-icon frontend-icon">
+                  <Globe size={28} />
                 </div>
-                <div className="timeline">
-                  {education.map((edu, index) => (
-                    <div key={index} className="timeline-item">
-                      <div className="timeline-year">{edu.year}</div>
-                      <div className="timeline-content">
-                        <h4>{edu.degree}</h4>
-                        <p>{edu.institution}</p>
-                      </div>
-                      <div className="timeline-dot"></div>
-                    </div>
-                  ))}
+                <h3 className="skill-title">{t("skills.frontend")}</h3>
+                <p className="skill-desc">{t("frontendDesc")}</p>
+                <div className="skill-glow"></div>
+              </div>
+
+              <div className="skill-card neon-card">
+                <div className="skill-icon backend-icon">
+                  <Server size={28} />
                 </div>
+                <h3 className="skill-title">{t("skills.backend")}</h3>
+                <p className="skill-desc">{t("backendDesc")}</p>
+                <div className="skill-glow"></div>
+              </div>
+
+              <div className="skill-card neon-card">
+                <div className="skill-icon fullstack-icon">
+                  <Rocket size={28} />
+                </div>
+                <h3 className="skill-title">{t("skills.fullstack")}</h3>
+                <p className="skill-desc">{t("fullstackDesc")}</p>
+                <div className="skill-glow"></div>
               </div>
             </motion.div>
 
-          </div>
+            {/* Two Column Layout */}
+            <div className="about-content-grid">
+              {/* Left Column: Experience & Education */}
+              <motion.div
+                className="about-column"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                {/* Experience */}
+                <div className="timeline-section">
+                  <div className="section-header">
+                    <Briefcase size={22} />
+                    <h3>{t("experience")}</h3>
+                  </div>
+                  <div className="timeline">
+                    {experiences.map((exp, index) => (
+                      <div key={index} className="timeline-item">
+                        <div className="timeline-year">{exp.year}</div>
+                        <div className="timeline-content">
+                          <h4>{exp.role}</h4>
+                          <p>{exp.company}</p>
+                        </div>
+                        <div className="timeline-dot"></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-         
-        </div>
-
-      </div>
-    </section><TechCarousel />
-     {/* CTA Section */}
-          <motion.div
-            className="cta-section"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <div className="cta-content">
-              <h3 className="cta-title">{t("cta")}</h3>
-              <p className="cta-subtitle">{t("ctaText")}</p>
-              <button className="neon-button">
-                <span>{t("ctaButton")}</span>
-                <Zap size={16} />
-              </button>
+                {/* Education */}
+                <div className="timeline-section">
+                  <div className="section-header">
+                    <GraduationCap size={22} />
+                    <h3>{t("education")}</h3>
+                  </div>
+                  <div className="timeline">
+                    {education.map((edu, index) => (
+                      <div key={index} className="timeline-item">
+                        <div className="timeline-year">{edu.year}</div>
+                        <div className="timeline-content">
+                          <h4>{edu.degree}</h4>
+                          <p>{edu.institution}</p>
+                        </div>
+                        <div className="timeline-dot"></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             </div>
-            <div className="cta-glow"></div>
-          </motion.div>
+          </div>
+        </div>
+      </section>
+      <TechCarousel />
+      {/* CTA Section */}
+      <motion.div
+        className="cta-section"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        <div className="cta-content">
+          <h3 className="cta-title">{t("cta")}</h3>
+          <p className="cta-subtitle">{t("ctaText")}</p>
+          <button className="neon-button">
+            <span>{t("ctaButton")}</span>
+            <Zap size={16} />
+          </button>
+        </div>
+        <div className="cta-glow"></div>
+      </motion.div>
     </>
   );
 };
