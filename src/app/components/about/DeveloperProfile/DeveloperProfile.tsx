@@ -25,6 +25,7 @@ import {
   Heart,
 } from "lucide-react";
 import "./DeveloperProfile.scss";
+import CVSection from "../../cv/CVSection";
 
 interface DeveloperProfileProps {
   className?: string;
@@ -532,6 +533,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
               <span className="cursor-blinking">▊</span>
             </div>
           </motion.div>
+          <CVSection />
         </div>
       </div>
     </motion.div>

@@ -36,7 +36,7 @@ export default async function LocaleLayout({
 
     return (
       <NextIntlClientProvider locale={locale} messages={messages}>
-        <TerminalLoader />
+        {/* <TerminalLoader /> */}
         <Header />
         <main className="main-content">{children}</main>
         <Footer />

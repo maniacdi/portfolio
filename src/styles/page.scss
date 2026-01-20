@@ -23,3 +23,26 @@
   width: 100%;
   padding: 0;
 }
+
+.hobbies-page {
+  margin-top: 32px;
+}
+
+.page-title {
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--neon) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.page-description {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-align: center;
+}
