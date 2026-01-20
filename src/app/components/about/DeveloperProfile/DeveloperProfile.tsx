@@ -54,15 +54,15 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
     },
     skills: {
       frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Redux"],
-      backend: ["Node.js", "Express", "MongoDB", "JAVA", "GraphQL", "PostgreSQL"],
+      backend: ["Node.js", "Express", "MongoDB", "JAVA", "GraphQL"],
       tools: ["Git", "Docker", "Vercel", "Figma", "VS Code", "AWS"],
-      languages: ["JavaScript", "TypeScript", "JAVA", "SQL", "Python"],
+      languages: ["JavaScript", "TypeScript", "JAVA", "SQL", "HTML5", "CSS3", "SCSS", "JAVA", "C#"],
     },
     contact: {
       email: "magaldi6@gmail.com",
       github: "github.com/maniacdi",
       linkedin: "linkedin.com/in/javimagaldi",
-      website: "coming soon...",
+      website: t("soon"),
     },
   };
 
@@ -104,9 +104,9 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
 
   // Navigation tabs
   const tabs = [
-    { id: "profile", label: "profile.json", icon: User },
-    { id: "skills", label: "skills.js", icon: Code2 },
-    { id: "contact", label: "contact.md", icon: Mail },
+    { id: "profile", label: `${t("profile")}.json`, icon: User },
+    { id: "skills", label: `${t("skillsSection")}.js`, icon: Code2 },
+    { id: "contact", label: `${t("contactSection")}.md`, icon: Mail },
   ];
 
   // Get icon for skill category
@@ -183,7 +183,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            <span>Connected</span>
+            <span>{t("connected")}</span>
           </div>
         </div>
 
@@ -318,7 +318,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <h4>About Me</h4>
+                  <h4>{t("title")}</h4>
                   <p className="bio-text">{profileData.profile.bio}</p>
                 </motion.div>
               </motion.div>
@@ -449,7 +449,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                     },
                     {
                       icon: Globe,
-                      title: "Portfolio",
+                      title: t("new"),
                       value: profileData.contact.website,
                       color: "#10B981",
                     },
@@ -499,7 +499,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                 </div>
 
                 <div className="contact-cta">
-                  <p>Interested in working together?</p>
+                  <p>{t("interestedIn")}</p>
                   <motion.button
                     className="cta-button"
                     whileHover={{ scale: 1.05 }}
@@ -507,7 +507,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                     onClick={handleCopyEmail}
                   >
                     <Mail size={16} />
-                    Send me an email
+                    {t("sendMessage")} 
                   </motion.button>
                 </div>
               </motion.div>
@@ -524,8 +524,8 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
             <div className="footer-content">
               <span className="path">~/portfolio</span>
               <div className="footer-info">
-                <span className="file-count">3 files</span>
-                <span className="last-updated">Updated just now</span>
+                <span className="file-count">3 {t("files")}</span>
+                <span className="last-updated">{t("updated")}</span>
               </div>
             </div>
             <div className="cursor-line">

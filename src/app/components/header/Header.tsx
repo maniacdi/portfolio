@@ -23,7 +23,7 @@ export default function Header() {
     <header className={`header-container ${open ? "menu-open" : ""}`}>
       <div className="header-content">
         <LocalizedLink href="/">
-          <div className="logo">Magaldidev</div>
+          <img className="logo" src="/images/LOGO.png" alt="Magaldidev" />
         </LocalizedLink>
 
         {/* Burger */}

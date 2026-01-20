@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { FileText, Download, Eye, Terminal } from "lucide-react";
@@ -7,6 +8,8 @@ import { cvService } from "@/app/services/cvService";
 import "./CVSection.scss";
 
 export default function CVSection() {
+    const t = useTranslations("about");
+
   const locale = useLocale() as "es" | "en";
   const [cvUrls, setCvUrls] = useState<{ es: string; en: string } | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
@@ -59,7 +62,7 @@ export default function CVSection() {
       <div className="cv-control-panel">
         <div className="panel-header">
           <FileText className="panel-icon" />
-          <h3>CV Manager</h3>
+          <h3>{t("cvManager")}</h3>
         </div>
 
         <div className="action-buttons">
@@ -69,7 +72,7 @@ export default function CVSection() {
             disabled={isLoading || !cvUrls}
           >
             <Eye />
-            Preview CV
+            {t("previewCv")}
           </button>
           <button
             className="action-btn download-btn"
@@ -77,7 +80,7 @@ export default function CVSection() {
             disabled={isLoading || !cvUrls}
           >
             <Download />
-            {isLoading ? "Loading..." : "Download CV"}
+            {isLoading ? t("loadingCv") : t("downloadCvButton")}
           </button>
         </div>
       </div>
@@ -87,7 +90,7 @@ export default function CVSection() {
           <div className="modal-overlay" onClick={() => setIsPreviewOpen(false)}></div>
           <div className="modal-content">
             <div className="modal-header">
-              <h3>CV Preview - {selectedLang.toUpperCase()}</h3>
+              <h3>{t("previewCv")} - {selectedLang.toUpperCase()}</h3>
               <button className="close-btn" onClick={() => setIsPreviewOpen(false)}>
                 ✕
               </button>
@@ -99,7 +102,7 @@ export default function CVSection() {
             />
             <div className="modal-actions">
               <button className="modal-download-btn" onClick={handleDownload}>
-                <Download /> Download CV
+                <Download /> {t("downloadCvButton")}
               </button>
             </div>
           </div>

@@ -29,11 +29,13 @@
    LOGO
 ============================ */
 .logo {
-  font-weight: 700;
-  color: var(--neon);
-  text-shadow: 0 0 10px var(--neon);
-  animation: neonPulse 3s ease-in-out infinite;
+  //old logo styles
+  // font-weight: 700;
+  // color: var(--neon);
+  // text-shadow: 0 0 10px var(--neon);
+  // animation: neonPulse 3s ease-in-out infinite;
   cursor: pointer;
+  height: 6dvh;
 }
 
 /* Neón suave */

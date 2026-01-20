@@ -18,7 +18,6 @@ import {
 import "./AboutMeSection.scss";
 import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/DeveloperProfile";
 import TechCarousel from "../TechCarousel/TechCarousel";
-import CVSection from "../../cv/CVSection";
 
 interface AboutSectionProps {
   className?: string;
@@ -180,8 +179,6 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
         </div>
         <div className="cta-glow"></div>
       </motion.div>
-
-      {/* <CVSection /> */}
     </>
   );
 };

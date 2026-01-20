@@ -36,7 +36,22 @@
     "philosophyText": "Creo en código limpio, diseño centrado en el usuario y aprendizaje continuo para crear experiencias digitales que no solo sean visualmente impactantes sino que también funcionen a la perfección.",
     "cta": "Construyamos algo increíble",
     "ctaText": "Listo para convertir tus ideas en realidad digital",
-    "ctaButton": "Ponte en Contacto"
+    "ctaButton": "Ponte en Contacto",
+    "downloadCv": "Descargar CV",
+    "new": "Nuevo",
+    "soon": "Próximamente...",
+    "interestedIn": "¿Interesado en trabajar juntos?",
+    "sendMessage": "Enviame un correo",
+    "files": "archivos",
+    "updated": "Actualizado justo ahora",
+    "cvManager": "Administrador de CV",
+    "previewCv": "Previsualizar CV",
+    "loadingCv": "Cargando CV...",
+    "downloadCvButton": "Descargar CV",
+    "profile": "perfil",
+    "skillsSection": "habilidades",
+    "contactSection": "contacto",
+    "connected": "Conectado"
   },
   "travels": {
     "title": "Mis Viajes",

@@ -36,7 +36,22 @@
     "philosophyText": "I believe in clean code, user-centered design, and continuous learning to create digital experiences that not only look stunning but also perform flawlessly.",
     "cta": "Let's build something amazing",
     "ctaText": "Ready to turn your ideas into digital reality",
-    "ctaButton": "Get in Touch"
+    "ctaButton": "Get in Touch",
+    "downloadCv": "Download CV",
+    "new": "New",
+    "soon": "Coming Soon...",
+    "interestedIn": "Interested in working together?",
+    "sendMessage": "Send me an email",
+    "files": "files",
+    "updated": "Updated just now",
+    "cvManager": "CV Manager",
+    "previewCv": "Preview CV",
+    "loadingCv": "Loading CV...",
+    "downloadCvButton": "Download CV",
+    "profile": "profile",
+    "skillsSection": "skills",
+    "contactSection": "contact",
+    "connected": "Connected"
   },
   "travels": {
     "title": "My Travels",
