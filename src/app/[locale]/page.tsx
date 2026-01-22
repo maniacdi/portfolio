@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import "@/styles/page.scss";
-import ImpactHero from "../components/home/ImpactHero";
+import PowerHero from "../components/home/PowerHero";
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -8,7 +8,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <main className="home-container">
-      <ImpactHero />
+      <PowerHero />
     </main>
   );
 }

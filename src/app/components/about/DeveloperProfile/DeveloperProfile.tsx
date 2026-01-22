@@ -53,10 +53,10 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
       status: "Available for projects",
     },
     skills: {
-      frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Redux"],
-      backend: ["Node.js", "Express", "MongoDB", "JAVA", "GraphQL"],
-      tools: ["Git", "Docker", "Vercel", "Figma", "VS Code", "AWS"],
-      languages: ["JavaScript", "TypeScript", "JAVA", "SQL", "HTML5", "CSS3", "SCSS", "JAVA", "C#"],
+      frontend: ["React", "Tailwind CSS", "Framer Motion", "Redux"],
+      backend: ["Node.js", "MongoDB", "JAVA"],
+      tools: ["Git", "Docker", "Vercel", "Figma"],
+      languages: ["TypeScript", "JAVA", "SQL", "C#"],
     },
     contact: {
       email: "magaldi6@gmail.com",

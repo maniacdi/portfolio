@@ -57,10 +57,9 @@
 
 .about-content {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   gap: 3rem;
   margin-top: 2rem;
-  padding: 1rem;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -188,7 +187,6 @@
 .timeline-section {
   .timeline {
     position: relative;
-    padding-left: 2rem;
 
     &::before {
       content: "";

@@ -4,20 +4,13 @@ import { FC } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
-  Code,
-  Palette,
-  Server,
-  Cpu,
   Zap,
-  Globe,
-  Rocket,
-  GraduationCap,
-  Briefcase,
-  Sparkles,
 } from "lucide-react";
 import "./AboutMeSection.scss";
 import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/DeveloperProfile";
 import TechCarousel from "../TechCarousel/TechCarousel";
+import { HorizontalTimeline } from "../HorizontalTimeline/HorizontalTimeline";
+
 
 interface AboutSectionProps {
   className?: string;
@@ -26,26 +19,59 @@ interface AboutSectionProps {
 export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   const t = useTranslations("about");
 
-  // Tech stack data
-  const techStack = [
-    { name: "React/Next.js", icon: <Cpu size={20} />, color: "#61DAFB" },
-    { name: "TypeScript", icon: <Code size={20} />, color: "#3178C6" },
-    { name: "Node.js", icon: <Server size={20} />, color: "#339933" },
-    { name: "MongoDB", icon: <Database size={20} />, color: "#47A248" },
-    { name: "SCSS/Tailwind", icon: <Palette size={20} />, color: "#CC6699" },
-    { name: "Framer Motion", icon: <Sparkles size={20} />, color: "#FF4EDD" },
-  ];
-
   // Experience timeline
+  // const experiences = [
+  //   { year: "2023-Present", role: "Fronted Developer", company: "AMS Solutions" },
+  //   { year: "2022-2023", role: "Full-stack Developer", company: "Innova-tsn" },
+  //   { year: "2020-2022", role: "Fronted Developer", company: "Incentro" },
+  // ];
+
+  // // Education
+  // const education = [
+  //   { degree: "Computer Science", institution: "University of Cantabria", year: "2015-2021" },
+  // ];
+
+   // Timeline data
   const experiences = [
-    { year: "2023-Present", role: "Fronted Developer", company: "AMS Solutions" },
-    { year: "2022-2023", role: "Full-stack Developer", company: "Innova-tsn" },
-    { year: "2020-2022", role: "Fronted Developer", company: "Incentro" },
+    {
+      id: "exp1",
+      year: "2023-Present",
+      title: "Frontend Developer",
+      subtitle: "AMS Solutions",
+      description: "Developing responsive web applications with React and TypeScript",
+      type: "work" as const,
+      tags: ["React", "TypeScript", "Next.js", "SCSS"]
+    },
+    {
+      id: "exp2",
+      year: "2022-2023",
+      title: "Full-stack Developer",
+      subtitle: "Innova-tsn",
+      description: "Built full-stack applications with Node.js and MongoDB",
+      type: "work" as const,
+      tags: ["Node.js", "MongoDB", "Express", "React"]
+    },
+    {
+      id: "exp3",
+      year: "2020-2022",
+      title: "Frontend Developer",
+      subtitle: "Incentro",
+      description: "Created user interfaces and implemented design systems",
+      type: "work" as const,
+      tags: ["JavaScript", "Vue.js", "CSS", "UI/UX"]
+    }
   ];
 
-  // Education
   const education = [
-    { degree: "Computer Science", institution: "University of Cantabria", year: "2015-2021" },
+    {
+      id: "edu1",
+      year: "2015-2021",
+      title: "Computer Science Degree",
+      subtitle: "University of Cantabria",
+      description: "Specialized in software engineering and web technologies",
+      type: "education" as const,
+      tags: ["Algorithms", "Databases", "Software Engineering", "Networks"]
+    }
   ];
 
   return (
@@ -53,72 +79,13 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
       <section className={`about-section ${className}`} aria-labelledby="about-title" role="region">
         <div className="about-content">
           <DeveloperProfile className="developer-profile-side" />
-          <div className="about-main">
-            {/* Hero Header */}
-            <motion.div
-              className="about-hero"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="title-container">
-                <Sparkles className="sparkle-icon" />
-                <h1 id="about-title" className="about-title">
-                  {t("title")}
-                  <span className="title-gradient">_</span>
-                </h1>
-              </div>
-
-              <p className="about-subtitle">{t("subtitle")}</p>
-              <p className="about-description">{t("description")}</p>
-            </motion.div>
-
-            {/* Skills Grid */}
-            <motion.div
-              className="skills-grid"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="skill-card neon-card">
-                <div className="skill-icon frontend-icon">
-                  <Globe size={28} />
-                </div>
-                <h3 className="skill-title">{t("skills.frontend")}</h3>
-                <p className="skill-desc">{t("frontendDesc")}</p>
-                <div className="skill-glow"></div>
-              </div>
-
-              <div className="skill-card neon-card">
-                <div className="skill-icon backend-icon">
-                  <Server size={28} />
-                </div>
-                <h3 className="skill-title">{t("skills.backend")}</h3>
-                <p className="skill-desc">{t("backendDesc")}</p>
-                <div className="skill-glow"></div>
-              </div>
-
-              <div className="skill-card neon-card">
-                <div className="skill-icon fullstack-icon">
-                  <Rocket size={28} />
-                </div>
-                <h3 className="skill-title">{t("skills.fullstack")}</h3>
-                <p className="skill-desc">{t("fullstackDesc")}</p>
-                <div className="skill-glow"></div>
-              </div>
-            </motion.div>
-
-            {/* Two Column Layout */}
-            <div className="about-content-grid">
-              {/* Left Column: Experience & Education */}
+            {/* <div className="about-content-grid">
               <motion.div
                 className="about-column"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                {/* Experience */}
-                <div className="timeline-section">
                   <div className="section-header">
                     <Briefcase size={22} />
                     <h3>{t("experience")}</h3>
@@ -137,7 +104,6 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
                   </div>
                 </div>
 
-                {/* Education */}
                 <div className="timeline-section">
                   <div className="section-header">
                     <GraduationCap size={22} />
@@ -157,8 +123,13 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
                   </div>
                 </div>
               </motion.div>
-            </div>
-          </div>
+            </div> */}
+                    <div className="timeline-section">
+          <HorizontalTimeline
+            experiences={experiences}
+            education={education}
+          />
+        </div>
         </div>
       </section>
       <TechCarousel />

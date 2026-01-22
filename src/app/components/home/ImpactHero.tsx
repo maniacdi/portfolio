@@ -53,7 +53,7 @@ export default function SimpleImpactHero() {
 
       <div className="hero-content">
         <h1 className="main-title">
-          <span className="title-line line-1">BUILDING THE</span>
+          <span className="title-line line-1">BUILDING THEaa</span>
           <span className="title-line line-2">FUTURE WEB</span>
         </h1>
 
