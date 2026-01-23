@@ -1,6 +1,6 @@
 .developer-profile {
   position: relative;
-  width: 98%;
+  width: 100%;
   margin: 2rem 0;
   perspective: 1000px;
   opacity: 0;
@@ -826,6 +826,7 @@
 @media (max-width: 768px) {
   .developer-profile {
     margin: 1rem 0;
+    width: 80dvw;
   }
 
   .profile-card {

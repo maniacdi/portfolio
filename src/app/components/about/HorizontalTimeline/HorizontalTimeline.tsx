@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, Calendar, MapPin } from "lucide-react";
+import { Briefcase, GraduationCap, Calendar, MapPin, ChevronRight } from "lucide-react";
 import "./HorizontalTimeline.scss";
 
 interface TimelineItem {
@@ -32,14 +32,16 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
     return yearB - yearA;
   });
 
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 6 }, (_, i) => currentYear - i);
+
   return (
     <section className={`horizontal-timeline ${className}`}>
-      {/* Header */}
       <div className="timeline-header">
         <div className="header-content">
-          <h2 className="timeline-title">Professional Journey</h2>
+          <h2 className="timeline-title">Career Timeline</h2>
           <p className="timeline-subtitle">
-            A timeline of my career development and education
+            My professional journey and education milestones
           </p>
         </div>
         <div className="timeline-controls">
@@ -56,11 +58,9 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
         </div>
       </div>
 
-      {/* Timeline Track */}
       <div className="timeline-track">
         <div className="track-line"></div>
         
-        {/* Timeline Items */}
         <div className="timeline-items">
           {allItems.map((item, index) => (
             <motion.div
@@ -68,18 +68,16 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
               className={`timeline-card ${item.type}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              {/* Card Header */}
               <div className="card-header">
                 <div className="card-icon">
-                  {item.type === 'work' ? <Briefcase size={18} /> : <GraduationCap size={18} />}
+                  {item.type === 'work' ? <Briefcase size={16} /> : <GraduationCap size={16} />}
                 </div>
                 <div className="card-year">{item.year}</div>
               </div>
 
-              {/* Card Content */}
               <div className="card-content">
                 <h3 className="card-title">{item.title}</h3>
                 <p className="card-subtitle">{item.subtitle}</p>
@@ -90,28 +88,26 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
 
                 {item.tags && item.tags.length > 0 && (
                   <div className="card-tags">
-                    {item.tags.map((tag, tagIndex) => (
+                    {item.tags.slice(0, 3).map((tag, tagIndex) => (
                       <span key={tagIndex} className="tag">{tag}</span>
                     ))}
                   </div>
                 )}
               </div>
 
-              {/* Card Footer */}
               <div className="card-footer">
                 <div className="footer-item">
-                  <Calendar size={14} />
+                  <Calendar size={12} />
                   <span>{item.year}</span>
                 </div>
                 {item.type === 'work' && (
                   <div className="footer-item">
-                    <MapPin size={14} />
-                    <span>Remote</span>
+                    <MapPin size={12} />
+                    <span>Spain</span>
                   </div>
                 )}
               </div>
 
-              {/* Connector Line */}
               {index < allItems.length - 1 && (
                 <div className="card-connector"></div>
               )}
@@ -120,14 +116,18 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
         </div>
       </div>
 
-      {/* Years Scale */}
       <div className="years-scale">
-        {Array.from({ length: 8 }, (_, i) => 2024 - i).map((year) => (
+        {years.map((year) => (
           <div key={year} className="year-marker">
             <div className="marker-line"></div>
             <div className="marker-label">{year}</div>
           </div>
         ))}
+      </div>
+
+      <div className="scroll-indicator">
+        <span>Scroll horizontally</span>
+        <ChevronRight className="scroll-icon" size={14} />
       </div>
     </section>
   );
