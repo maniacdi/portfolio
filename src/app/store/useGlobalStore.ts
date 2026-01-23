@@ -2,22 +2,18 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface GlobalState {
-  // UI State
   isLoading: boolean;
   loadingMessage: string;
 
-  // User preferences
   userLocation: string | null;
   visitedPages: string[];
   dismissedNotifications: string[];
 
-  // Hobbies favorites
   favoriteAnime: string[];
   favoriteGames: string[];
   favoriteDrawings: string[];
   favoriteCookings: string[];
 
-  // Actions
   setLoading: (loading: boolean, message?: string) => void;
   setUserLocation: (location: string) => void;
   addVisitedPage: (page: string) => void;
@@ -28,7 +24,6 @@ interface GlobalState {
 export const useGlobalStore = create<GlobalState>()(
   persist(
     (set) => ({
-      // Initial state
       isLoading: false,
       loadingMessage: "Loading...",
       userLocation: null,
@@ -39,7 +34,6 @@ export const useGlobalStore = create<GlobalState>()(
       favoriteDrawings: [],
       favoriteCookings: [],
 
-      // Actions
       setLoading: (isLoading, message = "Loading...") =>
         set({ isLoading, loadingMessage: message }),
       setUserLocation: (location) => set({ userLocation: location }),

@@ -17,7 +17,6 @@ export const useWeather = () => {
       setLoading(true);
       setError(null);
 
-      // Get user location
       const position = await new Promise<GeolocationPosition>((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject, {
           timeout: 5000,
@@ -27,10 +26,8 @@ export const useWeather = () => {
 
       const { latitude, longitude } = position.coords;
 
-      // Fetch weather data
       const weatherData = await WeatherService.getCurrentWeather(latitude, longitude);
 
-      // Get city name from coordinates
       const cityResponse = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
       );
@@ -44,7 +41,6 @@ export const useWeather = () => {
       setLocation(locationName);
       setWeather(weatherData);
 
-      // Prepare forecast from daily data
       const forecastDays = [];
       if (weatherData.daily) {
         for (let i = 0; i < 10; i++) {
@@ -77,7 +73,6 @@ export const useWeather = () => {
   useEffect(() => {
     fetchWeather();
 
-    // Refresh every 30 minutes
     const interval = setInterval(fetchWeather, 30 * 60 * 1000);
 
     return () => clearInterval(interval);
@@ -89,6 +84,6 @@ export const useWeather = () => {
     location,
     loading,
     error,
-    refetch: fetchWeather, // Add refetch function
+    refetch: fetchWeather,
   };
 };

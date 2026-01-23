@@ -5,14 +5,11 @@ import { Travel } from "@/utils/types/Travel";
 import { useTranslations } from "next-intl";
 import "./TravelMap.scss";
 
-// Dynamic imports for Leaflet (client-side only)
 import dynamic from "next/dynamic";
 
-// Import Leaflet CSS
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
-// Dynamic import for MapContainer (client-side only)
 const MapContainer = dynamic(() => import("react-leaflet").then((mod) => mod.MapContainer), {
   ssr: false,
 });
@@ -30,7 +27,6 @@ interface TravelMapProps {
   onMarkerClick: (travel: Travel) => void;
 }
 
-// Fix for Leaflet icons in Next.js
 import L from "leaflet";
 import "leaflet-defaulticon-compatibility";
 import { getTypeColor } from "@/utils/helpers/travels";
@@ -59,7 +55,6 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
     );
   }
 
-  // Calculate map bounds
   const bounds = L.latLngBounds(
     travels.map((travel) => [travel.location.coordinates.lat, travel.location.coordinates.lng])
   );
@@ -101,7 +96,6 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {/* Dark theme alternative */}
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -134,7 +128,6 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
         ))}
       </MapContainer>
 
-      {/* Legend */}
       <div className="map-legend">
         <h4>Travel Types</h4>
         {["vacation", "business", "adventure", "cultural"].map((type) => (

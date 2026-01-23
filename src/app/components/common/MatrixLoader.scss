@@ -183,7 +183,6 @@
   }
 }
 
-// Animaciones para Matrix Loader
 @keyframes pulse-green {
   0%,
   100% {
@@ -232,7 +231,6 @@
   }
 }
 
-// Matrix code typing effect
 .code {
   span {
     opacity: 0;
@@ -257,7 +255,6 @@
   }
 }
 
-// Glitch effect
 .matrix-terminal {
   animation: glitch 5s infinite;
 }

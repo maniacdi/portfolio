@@ -15,7 +15,7 @@ export interface Travel {
     end: string;
   };
   type: "vacation" | "business" | "adventure" | "cultural";
-  photos: string[]; // image URLs
+  photos: string[];
   highlights: string[];
   isFeatured: boolean;
 }

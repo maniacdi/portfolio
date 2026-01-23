@@ -43,7 +43,6 @@ export default function WeatherWidget() {
     return format(date, "HH:mm", { locale: dateLocale });
   };
 
-  // Get weather icon based on condition
   const getWeatherIcon = (iconName: string) => {
     switch (iconName) {
       case "sun":
@@ -120,7 +119,6 @@ export default function WeatherWidget() {
   const emojiIcon = WeatherService.getWeatherIcon(weatherInfo.icon);
   const WeatherIcon = getWeatherIcon(weatherInfo.icon);
 
-  // Minimized view
   if (isMinimized) {
     return (
       <motion.div
@@ -142,7 +140,6 @@ export default function WeatherWidget() {
     );
   }
 
-  // Full widget view
   return (
     <AnimatePresence>
       {isVisible && (

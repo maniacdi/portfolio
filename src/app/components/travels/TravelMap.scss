@@ -26,7 +26,6 @@
   }
 }
 
-// Custom markers
 .custom-marker {
   position: relative;
   display: flex;
@@ -51,7 +50,6 @@
     filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.7));
   }
 
-  // Type colors
   &.vacation .marker-pulse {
     color: #00f3ff;
   }
@@ -196,7 +194,6 @@
   }
 }
 
-// Responsive
 @media (max-width: 768px) {
   .travel-map-container {
     height: 400px;

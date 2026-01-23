@@ -41,7 +41,6 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
   const [glitchEffect, setGlitchEffect] = useState(false);
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  // Developer data
   const profileData = {
     profile: {
       name: "Javi García Magaldi",
@@ -102,14 +101,12 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Navigation tabs
   const tabs = [
     { id: "profile", label: `${t("profile")}.json`, icon: User },
     { id: "skills", label: `${t("skillsSection")}.js`, icon: Code2 },
     { id: "contact", label: `${t("contactSection")}.md`, icon: Mail },
   ];
 
-  // Get icon for skill category
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case "frontend":

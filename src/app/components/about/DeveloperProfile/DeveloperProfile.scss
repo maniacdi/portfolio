@@ -6,6 +6,7 @@
   opacity: 0;
 
   .profile-background {
+    width: 96dvw;
     position: absolute;
     inset: -50px;
     z-index: 0;
@@ -82,7 +83,6 @@
   }
 }
 
-// Terminal Header
 .terminal-header {
   position: relative;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -91,6 +91,7 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--glass-border);
+  overflow: scroll;
 
   .terminal-header-glow {
     position: absolute;
@@ -174,7 +175,6 @@
   }
 }
 
-// Navigation Tabs
 .navigation-tabs {
   display: flex;
   padding: 0 2rem;
@@ -223,7 +223,6 @@
   }
 }
 
-// Terminal Content
 .terminal-content {
   padding: 2rem;
   min-height: 500px;
@@ -259,12 +258,10 @@
   }
 }
 
-// Tab Content Common Styles
 .tab-content {
   min-height: 400px;
 }
 
-// Profile Tab
 .profile-tab {
   .profile-header {
     display: flex;
@@ -452,7 +449,6 @@
   }
 }
 
-// Skills Tab
 .skills-tab {
   .skills-header {
     margin-bottom: 2rem;
@@ -591,7 +587,6 @@
   }
 }
 
-// Contact Tab
 .contact-tab {
   .contact-header {
     margin-bottom: 2rem;
@@ -718,7 +713,6 @@
   }
 }
 
-// Terminal Footer
 .terminal-footer {
   margin-top: 2rem;
   padding-top: 1rem;
@@ -767,7 +761,6 @@
   }
 }
 
-// Animations
 @keyframes cursor-blink {
   0%,
   50% {
@@ -822,7 +815,6 @@
   }
 }
 
-// Responsive Design
 @media (max-width: 768px) {
   .developer-profile {
     margin: 1rem 0;
@@ -843,10 +835,11 @@
   .navigation-tabs {
     padding: 0 1rem;
     justify-content: center;
+    overflow-x: auto;
 
-    .tab {
-      padding: 0.75rem 1rem;
-    }
+    .tab:first-child {
+      margin-left: 70px; 
+    } 
   }
 
   .terminal-content {

@@ -13,7 +13,6 @@ export default function MatrixLoader() {
     "01101000 01100001 01100011 01101011 01100101 01110010 00100000 01101101 01101111 01100100 01100101 00100000 01100101 01101110 01100111 01100001 01100111 01100101 01100100";
 
   useEffect(() => {
-    // Efecto matrix en canvas
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -59,7 +58,6 @@ export default function MatrixLoader() {
 
     animate();
 
-    // Texto hacker typing effect
     let i = 0;
     const typeWriter = setInterval(() => {
       if (i < hackerText.length) {

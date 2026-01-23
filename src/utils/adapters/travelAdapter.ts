@@ -43,7 +43,6 @@ export function adaptApiTravelToFrontend(apiTravel: ApiTravel): Travel {
   };
 }
 
-// Función para placeholder cuando no hay imágenes
 export function getTravelPlaceholderImage(type: string): string {
   const placeholders: Record<string, string> = {
     vacation: "/images/placeholders/beach.svg",

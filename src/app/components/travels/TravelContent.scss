@@ -306,7 +306,7 @@
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  flex: 1; // Hace que el contenido ocupe todo el espacio disponible
+  flex: 1;
   height: 100%;
   min-height: 0;
   .travel-header {
@@ -422,7 +422,6 @@
   }
 }
 
-// Loading state
 .travels-loading {
   display: flex;
   flex-direction: column;
@@ -445,7 +444,6 @@
   }
 }
 
-// No results
 .no-results {
   text-align: center;
   padding: 4rem 2rem;
@@ -462,14 +460,12 @@
   }
 }
 
-// Animations
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-// Responsive improvements
 @media (max-width: 1024px) {
   .travels-grid {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -496,7 +492,6 @@
   }
 }
 
-// Hide Leaflet attribution
 .leaflet-control-attribution {
   display: none;
 }

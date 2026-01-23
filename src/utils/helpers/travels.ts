@@ -10,7 +10,6 @@ export const getTypeColor = (type: string) => {
   return colors[type] || "#fff";
 };
 
-// Calculate duration in days
 export const getDuration = (travel: Travel) => {
   const start = new Date(travel.date.start);
   const end = new Date(travel.date.end);

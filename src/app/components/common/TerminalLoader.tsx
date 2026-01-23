@@ -21,7 +21,6 @@ export default function TerminalLoader() {
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
-    // Animación de escritura
     const interval = setInterval(() => {
       setVisibleLines((prev) => {
         if (prev >= commands.length) {
@@ -35,7 +34,6 @@ export default function TerminalLoader() {
       });
     }, 300);
 
-    // Cursor parpadeante
     const cursorInterval = setInterval(() => {
       setShowCursor((prev) => !prev);
     }, 500);

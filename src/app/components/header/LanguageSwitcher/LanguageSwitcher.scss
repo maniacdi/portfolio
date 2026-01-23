@@ -63,17 +63,14 @@
       0 1px 4px rgba(0, 0, 0, 0.1);
   }
 
-  // Estado inglés - bubble a la izquierda
   &.en .selection-bubble {
     left: 7px;
   }
 
-  // Estado español - bubble a la derecha
   &.es .selection-bubble {
-    left: calc(100% - 33px); // 72px width - 26px bubble - 7px margin
+    left: calc(100% - 33px);
   }
 
-  // Estados de las banderas
   &.en {
     .flag-en {
       transform: scale(1.15);
@@ -114,7 +111,6 @@
     }
   }
 
-  // Efectos hover
   &:hover {
     .track {
       background: rgba(255, 255, 255, 0.15);

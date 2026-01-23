@@ -32,7 +32,6 @@ export default function TravelContent() {
     setLoading(false);
   };
 
-  // Filters
   const filters = [
     { id: "all", label: t("all"), icon: <Globe size={16} /> },
     { id: "vacation", label: t("vacation"), icon: <TreePalm size={16} /> },
@@ -41,7 +40,6 @@ export default function TravelContent() {
     { id: "cultural", label: t("cultural"), icon: <Star size={16} /> },
   ];
 
-  // Filter travels
   const filteredTravels = travels.filter((travel) => {
     const matchesFilter = filter === "all" || travel.type === filter;
     const matchesSearch =

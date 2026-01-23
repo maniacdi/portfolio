@@ -3,7 +3,7 @@ export interface HobbyItem {
   title: string;
   description?: string;
   image?: string;
-  [key: string]: any; // Additional flexible fields
+  [key: string]: any;
 }
 
 export interface HobbySection {
