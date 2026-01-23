@@ -100,13 +100,13 @@ export default function PowerHero() {
               <div className="stack-fill" style={{ width: "92%" }}></div>
             </div>
           </div>
-                    <div className="stack-item">
+          <div className="stack-item">
             <span className="stack-name">CSS</span>
             <div className="stack-bar">
               <div className="stack-fill" style={{ width: "88%" }}></div>
             </div>
           </div>
-                    <div className="stack-item">
+          <div className="stack-item">
             <span className="stack-name">VUE</span>
             <div className="stack-bar">
               <div className="stack-fill" style={{ width: "70%" }}></div>

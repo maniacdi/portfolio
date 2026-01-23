@@ -17,7 +17,7 @@
   .grid-overlay {
     position: absolute;
     inset: 0;
-    background-image: 
+    background-image:
       linear-gradient(rgba(255, 78, 221, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 78, 221, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
@@ -53,7 +53,7 @@
   background: rgba(255, 78, 221, 0.1);
   border: 1px solid rgba(255, 78, 221, 0.3);
   border-radius: 20px;
-  font-family: 'Space Grotesk', monospace;
+  font-family: "Space Grotesk", monospace;
   color: var(--neon);
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -73,7 +73,7 @@
   }
 
   .terminal-line {
-    font-family: 'Courier New', monospace;
+    font-family: "Courier New", monospace;
     color: #a0aec0;
 
     .prompt {
@@ -89,7 +89,7 @@
 }
 
 .main-name {
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: clamp(4rem, 12vw, 8rem);
   font-weight: 900;
   line-height: 0.85;
@@ -128,7 +128,7 @@
     }
 
     .tech-text {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-weight: 500;
       color: #ffd6fa;
       letter-spacing: 0.05em;
@@ -138,7 +138,7 @@
 }
 
 .value-proposition {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   line-height: 1.6;
   color: #a0aec0;
   max-width: 600px;
@@ -150,7 +150,7 @@
   }
 
   .code {
-    font-family: 'Courier New', monospace;
+    font-family: "Courier New", monospace;
     background: rgba(0, 243, 255, 0.1);
     padding: 0.1rem 0.4rem;
     border-radius: 4px;
@@ -167,7 +167,7 @@
 
     .stack-name {
       display: block;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       color: #a0aec0;
       text-align: left;
       margin-bottom: 0.25rem;
@@ -209,7 +209,7 @@
     padding: 1rem 2.5rem;
     background: linear-gradient(135deg, var(--neon) 0%, #b300ff 100%);
     border-radius: 8px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-weight: 600;
     color: #ffffff;
     text-decoration: none;
@@ -237,7 +237,7 @@
     background: transparent;
     border: 2px solid rgba(255, 214, 250, 0.3);
     border-radius: 8px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-weight: 500;
     color: #ffd6fa;
     text-decoration: none;
@@ -266,7 +266,7 @@
   gap: 1rem;
 
   .scroll-text {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     color: #a0aec0;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -285,7 +285,8 @@
 }
 
 @keyframes sparkle {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -294,7 +295,8 @@
 }
 
 @keyframes scrollLine {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
     transform: translateY(0);
   }
@@ -320,11 +322,27 @@
   }
 }
 
-.tech-badge { animation-delay: 0.1s; }
-.home-terminal-header { animation-delay: 0.2s; }
-.main-name { animation-delay: 0.3s; }
-.specialization { animation-delay: 0.4s; }
-.value-proposition { animation-delay: 0.5s; }
-.quick-stack { animation-delay: 0.6s; }
-.hero-actions { animation-delay: 0.7s; }
-.scroll-indicator { animation-delay: 1s; }
+.tech-badge {
+  animation-delay: 0.1s;
+}
+.home-terminal-header {
+  animation-delay: 0.2s;
+}
+.main-name {
+  animation-delay: 0.3s;
+}
+.specialization {
+  animation-delay: 0.4s;
+}
+.value-proposition {
+  animation-delay: 0.5s;
+}
+.quick-stack {
+  animation-delay: 0.6s;
+}
+.hero-actions {
+  animation-delay: 0.7s;
+}
+.scroll-indicator {
+  animation-delay: 1s;
+}

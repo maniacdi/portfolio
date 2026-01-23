@@ -4,6 +4,7 @@ import { FC } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, Calendar, MapPin, ChevronRight } from "lucide-react";
 import "./HorizontalTimeline.scss";
+import { useTranslations } from "next-intl";
 
 interface TimelineItem {
   id: string;
@@ -11,7 +12,7 @@ interface TimelineItem {
   title: string;
   subtitle: string;
   description?: string;
-  type: 'work' | 'education';
+  type: "work" | "education";
   tags?: string[];
 }
 
@@ -27,32 +28,31 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
   className = "",
 }) => {
   const allItems = [...experiences, ...education].sort((a, b) => {
-    const yearA = parseInt(a.year.split('-')[0]);
-    const yearB = parseInt(b.year.split('-')[0]);
+    const yearA = parseInt(a.year.split("-")[0]);
+    const yearB = parseInt(b.year.split("-")[0]);
     return yearB - yearA;
   });
 
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 6 }, (_, i) => currentYear - i);
+  const t = useTranslations("about");
 
   return (
     <section className={`horizontal-timeline ${className}`}>
       <div className="timeline-header">
         <div className="header-content">
-          <h2 className="timeline-title">Career Timeline</h2>
-          <p className="timeline-subtitle">
-            My professional journey and education milestones
-          </p>
+          <h2 className="timeline-title">{t("career")}</h2>
+          <p className="timeline-subtitle">{t("timelineDesc")}</p>
         </div>
         <div className="timeline-controls">
           <div className="legend">
             <div className="legend-item">
               <div className="legend-dot work"></div>
-              <span>Work Experience</span>
+              <span>{t("workLabel")}</span>
             </div>
             <div className="legend-item">
               <div className="legend-dot education"></div>
-              <span>Education</span>
+              <span>{t("educationLabel")}</span>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
 
       <div className="timeline-track">
         <div className="track-line"></div>
-        
+
         <div className="timeline-items">
           {allItems.map((item, index) => (
             <motion.div
@@ -73,7 +73,7 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
             >
               <div className="card-header">
                 <div className="card-icon">
-                  {item.type === 'work' ? <Briefcase size={16} /> : <GraduationCap size={16} />}
+                  {item.type === "work" ? <Briefcase size={16} /> : <GraduationCap size={16} />}
                 </div>
                 <div className="card-year">{item.year}</div>
               </div>
@@ -81,15 +81,15 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
               <div className="card-content">
                 <h3 className="card-title">{item.title}</h3>
                 <p className="card-subtitle">{item.subtitle}</p>
-                
-                {item.description && (
-                  <p className="card-description">{item.description}</p>
-                )}
+
+                {item.description && <p className="card-description">{item.description}</p>}
 
                 {item.tags && item.tags.length > 0 && (
                   <div className="card-tags">
                     {item.tags.slice(0, 3).map((tag, tagIndex) => (
-                      <span key={tagIndex} className="tag">{tag}</span>
+                      <span key={tagIndex} className="tag">
+                        {tag}
+                      </span>
                     ))}
                   </div>
                 )}
@@ -100,7 +100,7 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
                   <Calendar size={12} />
                   <span>{item.year}</span>
                 </div>
-                {item.type === 'work' && (
+                {item.type === "work" && (
                   <div className="footer-item">
                     <MapPin size={12} />
                     <span>Spain</span>
@@ -108,9 +108,7 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
                 )}
               </div>
 
-              {index < allItems.length - 1 && (
-                <div className="card-connector"></div>
-              )}
+              {index < allItems.length - 1 && <div className="card-connector"></div>}
             </motion.div>
           ))}
         </div>
@@ -126,7 +124,7 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
       </div>
 
       <div className="scroll-indicator">
-        <span>Scroll horizontally</span>
+        <span>{t("scrollHint")}</span>
         <ChevronRight className="scroll-icon" size={14} />
       </div>
     </section>

@@ -132,7 +132,6 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      {/* Animated Background Elements */}
       <div className="profile-background">
         <div className="floating-shapes">
           {[1, 2, 3, 4].map((i) => (
@@ -154,9 +153,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
         </div>
       </div>
 
-      {/* Main Card */}
       <div className={`profile-card ${glitchEffect ? "glitch" : ""}`}>
-        {/* Terminal Header with Glow Effect */}
         <div className="terminal-header">
           <div className="terminal-header-glow"></div>
           <div className="terminal-dots">
@@ -187,7 +184,6 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
           </div>
         </div>
 
-        {/* Navigation Tabs */}
         <div className="navigation-tabs">
           {tabs.map((tab) => {
             const Icon = tab.icon;
@@ -213,9 +209,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
           })}
         </div>
 
-        {/* Terminal Content */}
         <div className="terminal-content" ref={terminalRef}>
-          {/* Animated Command Line */}
           <motion.div
             className="command-line"
             initial={{ opacity: 0, x: -20 }}
@@ -228,7 +222,6 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
           </motion.div>
 
           <AnimatePresence mode="wait">
-            {/* Profile Tab Content */}
             {activeTab === "profile" && (
               <motion.div
                 key="profile"
@@ -324,7 +317,6 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
               </motion.div>
             )}
 
-            {/* Skills Tab Content */}
             {activeTab === "skills" && (
               <motion.div
                 key="skills"
@@ -337,9 +329,9 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                 <div className="skills-header">
                   <h3>
                     <Zap size={20} />
-                    Tech Stack & Skills
+                    {t("techSkills")}
                   </h3>
-                  <p className="skills-subtitle">Hover over skills to see details</p>
+                  <p className="skills-subtitle">{t("hoverAd")}</p>
                 </div>
 
                 <div className="skills-grid">
@@ -387,7 +379,6 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                   ))}
                 </div>
 
-                {/* Skill Details Panel */}
                 <AnimatePresence>
                   {hoveredSkill && (
                     <motion.div
@@ -420,8 +411,8 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                 transition={{ duration: 0.3 }}
               >
                 <div className="contact-header">
-                  <h3>Get In Touch</h3>
-                  <p className="contact-subtitle">Let's build something amazing together</p>
+                  <h3>{t("ctaButton")}</h3>
+                  <p className="contact-subtitle">{t("letsBuild")}</p>
                 </div>
 
                 <div className="contact-options">
@@ -507,14 +498,13 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
                     onClick={handleCopyEmail}
                   >
                     <Mail size={16} />
-                    {t("sendMessage")} 
+                    {t("sendMessage")}
                   </motion.button>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Terminal Footer */}
           <motion.div
             className="terminal-footer"
             initial={{ opacity: 0 }}

@@ -8,7 +8,7 @@ import { cvService } from "@/app/services/cvService";
 import "./CVSection.scss";
 
 export default function CVSection() {
-    const t = useTranslations("about");
+  const t = useTranslations("about");
 
   const locale = useLocale() as "es" | "en";
   const [cvUrls, setCvUrls] = useState<{ es: string; en: string } | null>(null);
@@ -90,7 +90,9 @@ export default function CVSection() {
           <div className="modal-overlay" onClick={() => setIsPreviewOpen(false)}></div>
           <div className="modal-content">
             <div className="modal-header">
-              <h3>{t("previewCv")} - {selectedLang.toUpperCase()}</h3>
+              <h3>
+                {t("previewCv")} - {selectedLang.toUpperCase()}
+              </h3>
               <button className="close-btn" onClick={() => setIsPreviewOpen(false)}>
                 ✕
               </button>
