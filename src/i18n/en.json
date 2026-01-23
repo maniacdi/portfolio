@@ -131,10 +131,17 @@
     "copyright": "All rights reserved."
   },
   "hero": {
-    "title": "Building the future web",
-    "subtitle": "Digital experiences with minimalist design, high performance and a futuristic touch.",
-    "ctaPrimary": "View projects",
-    "ctaSecondary": "Learn more"
+    "title": "WELCOME",
+    "subtitle": "ARCHITECTING SCALABLE SYSTEMS",
+    "description": "ENGINEERING PERFORMANCE",
+    "d1": "Building",
+    "d2": "high-performance applications",
+    "d3": "with",
+    "d4": "modern architecture",
+    "d5": "and",
+    "d6": "clean code principles",
+    "ctaPrimary": "Contact Me",
+    "explore": "EXPLORE"
   },
   "anime": {
     "title": "My Favorite Anime",

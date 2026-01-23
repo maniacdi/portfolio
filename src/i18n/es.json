@@ -131,10 +131,17 @@
     "copyright": "Todos los derechos reservados."
   },
   "hero": {
-    "title": "Construyendo la web del futuro",
-    "subtitle": "Experiencias digitales con diseño minimalista, alto rendimiento y un toque futurista.",
-    "ctaPrimary": "Ver proyectos",
-    "ctaSecondary": "Saber más"
+    "title": "BIENVENIDO",
+    "subtitle": "ARQUITECTANDO SISTEMAS ESCALABLES",
+    "description": "INGENIERÍA DE ALTO RENDIMIENTO",
+    "d1": "Construyendo",
+    "d2": "aplicaciones de alto rendimiento",
+    "d3": "con",
+    "d4": "arquitectura moderna",
+    "d5": "y",
+    "d6": "principios de código limpio",
+    "ctaPrimary": "Contáctame",
+    "explore": "EXPLORA"
   },
   "anime": {
     "title": "Mi Anime Favorito",

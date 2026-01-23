@@ -23,7 +23,7 @@ export default function PowerHero() {
           className="tech-badge"
         >
           <Cpu size={16} />
-          <span>WELCOME</span>
+          <span>{t("title")}</span>
         </motion.div>
 
         <motion.div
@@ -57,11 +57,11 @@ export default function PowerHero() {
         >
           <div className="specialization-line">
             <Code2 className="icon" />
-            <span className="tech-text">ARCHITECTING SCALABLE SYSTEMS</span>
+            <span className="tech-text">{t("subtitle")}</span>
           </div>
           <div className="specialization-line">
             <Zap className="icon" />
-            <span className="tech-text">ENGINEERING PERFORMANCE</span>
+            <span className="tech-text">{t("description")}</span>
           </div>
         </motion.div>
 
@@ -71,9 +71,9 @@ export default function PowerHero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="value-proposition"
         >
-          Building <span className="highlight">high-performance applications</span> with{" "}
-          <span className="code">modern architecture</span> and{" "}
-          <span className="highlight">clean code principles</span>.
+          {t("d1")} <span className="highlight">{t("d2")}</span> {t("d3")}{" "}
+          <span className="code">{t("d4")}</span> {t("d5")}{" "}
+          <span className="highlight">{t("d6")}</span>.
         </motion.p>
 
         <motion.div
@@ -121,7 +121,7 @@ export default function PowerHero() {
           className="hero-actions"
         >
           <a href="mailto:magaldi6@gmail.com" className="secondary-action">
-            <span>Get in Touch</span>
+            <span>{t("ctaPrimary")}</span>
             <Sparkles className="sparkle-icon" />
           </a>
         </motion.div>
@@ -133,7 +133,7 @@ export default function PowerHero() {
         transition={{ duration: 1, delay: 1.2 }}
         className="scroll-indicator"
       >
-        <div className="scroll-text">EXPLORE</div>
+        <div className="scroll-text">{t("explore")}</div>
         <div className="scroll-line"></div>
       </motion.div>
     </section>
