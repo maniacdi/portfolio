@@ -4,6 +4,9 @@
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
+    width: 98dvw;
+    margin-left: -6dvw;
+
 
   &::before {
     content: "";
@@ -13,6 +16,10 @@
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  }
+
+  @media (max-width: 768px) {
+    width: 96dvw;
   }
 }
 
@@ -117,7 +124,7 @@
     display: flex;
     gap: 1.5rem;
     overflow-x: auto;
-    padding: 2rem 0.5rem;
+    padding: 2rem;
     scrollbar-width: thin;
     scrollbar-color: var(--neon) var(--bg);
 
@@ -430,6 +437,8 @@
 @media (max-width: 480px) {
   .horizontal-timeline {
     padding: 1.5rem 0.75rem;
+    width: 96%;
+    margin-left: 0;
   }
 
   .timeline-track {

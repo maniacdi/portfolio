@@ -1,13 +1,12 @@
 .developer-profile {
   position: relative;
-  width: 100%;
+  width: 90dvw;
   margin: 2rem 0;
-  perspective: 1000px;
   opacity: 0;
 
   .profile-background {
-    width: 100dvw;
     position: absolute;
+    width: 96dvw;
     inset: -50px;
     z-index: 0;
     overflow: hidden;
@@ -21,7 +20,7 @@
 
     .floating-shapes {
       position: absolute;
-      width: 100%;
+      width: 90%;
       height: 100%;
 
       .floating-shape {
@@ -816,6 +815,7 @@
 
 @media (max-width: 768px) {
   .developer-profile {
+    width: 84dvw;
     margin: 1rem 0;
   }
 
@@ -874,7 +874,8 @@
 }
 
 @media (max-width: 480px) {
-  .developer-name {
+  .developer-profile {
+    width: 78dvw;
   }
 
   .avatar {
