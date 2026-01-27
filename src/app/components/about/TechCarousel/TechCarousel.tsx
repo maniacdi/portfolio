@@ -15,16 +15,15 @@ import {
   SiVercel,
   SiGit,
   SiDocker,
-  SiPostgresql,
   SiGraphql,
-  SiRedis,
   SiJest,
   SiCypress,
-  SiStorybook,
+  SiMysql,
 } from "react-icons/si";
 import { TbBrandThreejs } from "react-icons/tb";
 import { FaAws } from "react-icons/fa";
 import "./TechCarousel.scss";
+import { useTranslations } from "next-intl";
 
 interface TechItem {
   id: string;
@@ -35,6 +34,7 @@ interface TechItem {
 }
 
 export default function TechCarousel() {
+    const t = useTranslations("techCarousel");
   const [isPaused, setIsPaused] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -47,7 +47,7 @@ export default function TechCarousel() {
       id: "nextjs",
       name: "Next.js",
       icon: <SiNextdotjs />,
-      color: "#000000",
+      color: "#ffffff",
       category: "frontend",
     },
     {
@@ -88,28 +88,20 @@ export default function TechCarousel() {
     // Databases
     { id: "mongodb", name: "MongoDB", icon: <SiMongodb />, color: "#47A248", category: "database" },
     {
-      id: "postgresql",
-      name: "PostgreSQL",
-      icon: <SiPostgresql />,
-      color: "#4169E1",
+      id: "mysql",
+      name: "MySQL",
+      icon: <SiMysql />,
+      color: "#4479A1",
       category: "database",
     },
-    { id: "redis", name: "Redis", icon: <SiRedis />, color: "#DC382D", category: "database" },
 
     // Tools & DevOps
     { id: "git", name: "Git", icon: <SiGit />, color: "#F05032", category: "tools" },
     { id: "docker", name: "Docker", icon: <SiDocker />, color: "#2496ED", category: "tools" },
     { id: "aws", name: "AWS", icon: <FaAws />, color: "#FF9900", category: "tools" },
-    { id: "vercel", name: "Vercel", icon: <SiVercel />, color: "#000000", category: "tools" },
+    { id: "vercel", name: "Vercel", icon: <SiVercel />, color: "#ffffff", category: "tools" },
     { id: "jest", name: "Jest", icon: <SiJest />, color: "#C21325", category: "tools" },
     { id: "cypress", name: "Cypress", icon: <SiCypress />, color: "#17202C", category: "tools" },
-    {
-      id: "storybook",
-      name: "Storybook",
-      icon: <SiStorybook />,
-      color: "#FF4785",
-      category: "tools",
-    },
   ];
 
   // Autoplay
@@ -142,10 +134,10 @@ export default function TechCarousel() {
     <section className="tech-carousel-section" aria-label="Tecnologías y herramientas">
       <div className="section-header">
         <h2 className="section-title">
-          <span className="gradient-text">Tech Stack</span> & Tools
+          <span className="gradient-text">{t("title")}</span> & Tools
         </h2>
         <p className="section-subtitle">
-          Tecnologías y herramientas que uso diariamente para construir productos digitales
+          {t("subtitle")}
         </p>
       </div>
 
@@ -205,7 +197,7 @@ export default function TechCarousel() {
 
                   <div className="tech-badge">
                     <span className="badge-dot" style={{ background: tech.color }} />
-                    <span className="badge-text">Daily Use</span>
+                    <span className="badge-text">{t("badge")}</span>
                   </div>
                 </div>
 

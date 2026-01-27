@@ -6,6 +6,13 @@ export const getTypeColor = (type: string) => {
     business: "#3a86ff",
     adventure: "#ff006e",
     cultural: "#ffd700",
+    Vacation: "#00f3ff",
+    Business: "#3a86ff",
+    Adventure: "#ff006e",
+    Cultural: "#ffd700",
+    Vacaciones: "#00f3ff",
+    Negocios: "#3a86ff",
+    Aventura: "#ff006e",
   };
   return colors[type] || "#fff";
 };

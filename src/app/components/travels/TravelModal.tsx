@@ -105,7 +105,7 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                 ) : (
                   <div className="no-photos">
                     <Camera size={48} />
-                    <p>No photos available</p>
+                    <p>{t("noPhotos")}</p>
                   </div>
                 )}
               </div>
@@ -165,7 +165,7 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
 
                 {/* Description */}
                 <div className="travel-description">
-                  <h3>About this trip</h3>
+                  <h3>{t("aboutTrip")}</h3>
                   <p>{travel.description}</p>
                 </div>
 

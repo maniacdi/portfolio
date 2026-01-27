@@ -79,11 +79,19 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
   };
 
   const getTypeEmoji = (type: string) => {
+    console.log("Getting emoji for type:", type);
     const emojis: Record<string, string> = {
       vacation: "🏖️",
       business: "💼",
       adventure: "🏔️",
       cultural: "🏛️",
+      Vacation: "🏖️",
+      Business: "💼",
+      Adventure: "🏔️",
+      Cultural: "🏛️",
+      Vacaciones: "🏖️",
+      Negocios: "💼",
+      Aventura: "🏔️",
     };
     return emojis[type] || "📍";
   };
@@ -120,7 +128,7 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
                   {travel.type}
                 </p>
                 <button className="popup-btn" onClick={() => onMarkerClick(travel)}>
-                  View Details
+                  {t("viewDetails")}
                 </button>
               </div>
             </Popup>
@@ -129,8 +137,8 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
       </MapContainer>
 
       <div className="map-legend">
-        <h4>Travel Types</h4>
-        {["vacation", "business", "adventure", "cultural"].map((type) => (
+        <h4>{t("types.header")}</h4>
+        {[t("types.vacation"), t("types.business"), t("types.adventure"), t("types.cultural")].map((type) => (
           <div key={type} className="legend-item">
             <div className="legend-marker" style={{ background: getTypeColor(type) }}>
               {getTypeEmoji(type)}

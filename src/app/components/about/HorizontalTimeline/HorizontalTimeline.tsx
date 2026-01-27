@@ -103,7 +103,7 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
                 {item.type === "work" && (
                   <div className="footer-item">
                     <MapPin size={12} />
-                    <span>Spain</span>
+                    <span>{t("country")}</span>
                   </div>
                 )}
               </div>

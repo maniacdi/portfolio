@@ -69,7 +69,8 @@
     "exp1Description": "Developing responsive web applications with React and TypeScript",
     "exp2Title": "Full-stack Developer",
     "exp2Description": "Built full-stack applications with Node.js and MongoDB",
-    "exp3Description": "Created user interfaces and implemented design systems"
+    "exp3Description": "Created user interfaces and implemented design systems",
+    "country": "Spain"
   },
   "travels": {
     "title": "My Travels",
@@ -88,7 +89,16 @@
     "duration": "Duration",
     "highlights": "Highlights",
     "days": "days",
-    "viewDetails": "View Details"
+    "viewDetails": "View Details",
+    "noPhotos": "No photos available",
+    "aboutTrip": "About this trip",
+    "types": {
+      "header": "Travel Types",
+      "vacation": "Vacation",
+      "business": "Business",
+      "adventure": "Adventure",
+      "cultural": "Cultural"
+    }
   },
   "hobbies": {
     "title": "My Hobbies",
@@ -186,5 +196,19 @@
     "backend": "backend",
     "tools": "tools",
     "languages": "languages"
+  },
+  "techCarousel": {
+    "title": "Tech Stack",
+    "subtitle": "Technologies and tools I use daily to build digital products",
+    "previous": "Previous technology",
+    "next": "Next technology",
+    "goToTech": "Go to technology {index}",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "tools": "Tools"
+    },
+    "badge": "Daily Use"
   }
 }
