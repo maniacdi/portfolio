@@ -18,10 +18,10 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(255, 78, 221, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 78, 221, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(255, 78, 221, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 78, 221, 0.08) 1px, transparent 1px);
     background-size: 40px 40px;
-    mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
+    mask-image: radial-gradient(circle at center, black 50%, transparent 70%);
   }
 
   .gradient-orb {
