@@ -264,6 +264,7 @@
   .profile-header {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     margin-bottom: 2.5rem;
 
@@ -817,8 +818,11 @@
   .developer-profile {
     width: 84dvw;
     margin: 1rem 0;
-  }
 
+    .profile-background {
+      width: 98dvw;
+    }
+  }
   .profile-card {
     border-radius: 16px;
   }
@@ -836,7 +840,7 @@
     overflow-x: auto;
 
     .tab:first-child {
-      margin-left: 70px; 
+      margin-left: 132px; 
     } 
   }
 
@@ -875,7 +879,12 @@
 
 @media (max-width: 480px) {
   .developer-profile {
-    width: 78dvw;
+    margin-left: -4dvw;
+    width: 80dvw;
+
+    .profile-background {
+      width: 99dvw;
+    }
   }
 
   .avatar {
@@ -883,7 +892,31 @@
     height: 80px !important;
   }
 
+  .command-line {
+    flex-direction: column;
+    align-items: flex-start !important;
+
+    .cursor {
+      width: 10%;
+    }
+  }
+
+  .navigation-tabs {
+    &:first-child {
+      margin-left: 60px;
+      border: 1px solid red;
+    }
+  }
+
   .tab {
     padding: 0.5rem 0.75rem !important;
+  }
+
+  .detail-card {
+    width: 70dvw;
+  }
+
+  .detail-icon{
+    background: none !important;
   }
 }

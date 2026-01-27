@@ -236,3 +236,134 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .cv-section {
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 12px;
+  }
+  
+  .cv-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cv-header .terminal-dots {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+  
+  .cv-control-panel {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .cv-control-panel .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .action-buttons {
+    gap: 0.75rem;
+  }
+  
+  .action-buttons .action-btn {
+    padding: 14px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .action-buttons .action-btn.preview-btn:hover {
+    background: var(--neon-blue);
+    color: white;
+    box-shadow: 0 0 20px var(--neon-blue);
+  }
+  
+  .action-buttons .action-btn.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 78, 221, 0.4);
+  }
+  
+  .cv-preview-modal .modal-content {
+    width: 95%;
+    height: 90vh;
+    margin: 5vh auto;
+  }
+  
+  .cv-preview-modal .modal-header {
+    padding: 1rem;
+  }
+  
+  .cv-preview-modal .modal-actions {
+    padding: 1rem;
+  }
+  
+  .cv-preview-modal .modal-actions .modal-download-btn {
+    width: 100%;
+    padding: 14px;
+  }
+  
+  .cv-preview-modal .modal-header .close-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cv-header {
+    gap: 10px;
+  }
+  
+  .cv-header .cv-title {
+    font-size: 1.4rem;
+  }
+  
+  .action-buttons .action-btn {
+    padding: 12px 10px;
+    font-size: 0.85rem;
+  }
+  
+  .action-buttons .action-btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  .action-buttons .action-btn.download-btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+@media (max-width: 320px) {
+  .cv-section {
+    padding: 0.75rem;
+  }
+  
+  .cv-control-panel {
+    padding: 0.75rem;
+  }
+  
+  .action-buttons .action-btn {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .cv-preview-modal .modal-content {
+    height: 85vh;
+    width: 90%;
+  }
+  
+  .cv-header {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .cv-header .terminal-dots {
+    margin-left: auto;
+  }
+}
