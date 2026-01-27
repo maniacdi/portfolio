@@ -4,8 +4,9 @@
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
-  width: 98dvw;
-  margin-left: -6dvw;
+  width: 99dvw;
+  margin-left: -4.5dvw;
+  margin-bottom: 32px;
 
   &::before {
     content: "";
