@@ -138,14 +138,16 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
 
       <div className="map-legend">
         <h4>{t("types.header")}</h4>
-        {[t("types.vacation"), t("types.business"), t("types.adventure"), t("types.cultural")].map((type) => (
-          <div key={type} className="legend-item">
-            <div className="legend-marker" style={{ background: getTypeColor(type) }}>
-              {getTypeEmoji(type)}
+        {[t("types.vacation"), t("types.business"), t("types.adventure"), t("types.cultural")].map(
+          (type) => (
+            <div key={type} className="legend-item">
+              <div className="legend-marker" style={{ background: getTypeColor(type) }}>
+                {getTypeEmoji(type)}
+              </div>
+              <span>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
             </div>
-            <span>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
-          </div>
-        ))}
+          )
+        )}
       </div>
     </div>
   );

@@ -4,9 +4,8 @@
   border-radius: var(--radius-lg);
   position: relative;
   overflow: hidden;
-    width: 98dvw;
-    margin-left: -6dvw;
-
+  width: 98dvw;
+  margin-left: -6dvw;
 
   &::before {
     content: "";
@@ -438,7 +437,7 @@
     }
   }
 
-  .header-content{
+  .header-content {
     gap: 4px;
   }
   .timeline-card {

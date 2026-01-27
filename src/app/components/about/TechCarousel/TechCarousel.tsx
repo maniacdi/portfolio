@@ -34,7 +34,7 @@ interface TechItem {
 }
 
 export default function TechCarousel() {
-    const t = useTranslations("techCarousel");
+  const t = useTranslations("techCarousel");
   const [isPaused, setIsPaused] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -136,9 +136,7 @@ export default function TechCarousel() {
         <h2 className="section-title">
           <span className="gradient-text">{t("title")}</span> & Tools
         </h2>
-        <p className="section-subtitle">
-          {t("subtitle")}
-        </p>
+        <p className="section-subtitle">{t("subtitle")}</p>
       </div>
 
       <div
