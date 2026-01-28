@@ -31,8 +31,8 @@
     text-align: center;
 
     .tab-label {
-        font-size: 1rem;
-      }
+      font-size: 1rem;
+    }
 
     &:hover {
       background: rgba(255, 255, 255, 0.05);
@@ -46,8 +46,6 @@
       border-color: var(--neon);
       color: var(--neon);
       box-shadow: 0 0 20px rgba(255, 0, 150, 0.2);
-
-  
 
       .tab-indicator {
         position: absolute;

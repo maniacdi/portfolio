@@ -49,8 +49,10 @@ export default function Header() {
             </LocalizedLink>
           ))}
         </nav>
-
-        <LanguageSwitcher />
+        <div className="header-actions">
+          <button className="cta-btn" onClick={() => window.location.href = "mailto:magaldi6@gmail.com"}>CONTACTAME</button>
+          <LanguageSwitcher />
+        </div>
       </div>
 
       {/* Mobile menu */}
