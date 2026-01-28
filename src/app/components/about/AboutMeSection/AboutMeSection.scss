@@ -288,10 +288,11 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--neon), var(--accent));
-  color: #fff;
+  background: linear-gradient(45deg, var(--neon), var(--neon-blue));
+  color: white;
   border: none;
   border-radius: var(--radius);
+  text-transform: uppercase;
 
   font-weight: 600;
   cursor: pointer;

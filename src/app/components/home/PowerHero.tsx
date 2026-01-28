@@ -127,7 +127,7 @@ export default function PowerHero() {
         </motion.div>
       </div>
 
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
@@ -135,7 +135,7 @@ export default function PowerHero() {
       >
         <div className="scroll-text">{t("explore")}</div>
         <div className="scroll-line"></div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }

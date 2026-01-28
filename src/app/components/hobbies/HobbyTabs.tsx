@@ -29,7 +29,7 @@ export default function HobbyTabs() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            {section.title}
+            <span className="tab-label">{section.title}</span>
             {active === section.id && (
               <motion.div
                 className="tab-indicator"
