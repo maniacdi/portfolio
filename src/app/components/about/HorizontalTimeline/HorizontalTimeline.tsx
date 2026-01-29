@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import {  MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import "./HorizontalTimeline.scss";
 import { useTranslations } from "next-intl";
 
@@ -22,15 +22,8 @@ interface HorizontalTimelineProps {
   education: TimelineItem[];
 }
 
-export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
-  experiences,
-  education,
-
-}) => {
-
-
-
- return (
+export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({ experiences, education }) => {
+  return (
     <div className="timeline-container">
       <h2 className="timeline-section-title">Experiencia Profesional</h2>
       <div className="timeline">
@@ -39,7 +32,9 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
             <div className="timeline-content">
               <div className="timeline-header">
                 <span className="timeline-period">{exp.period}</span>
-                <span className="timeline-location"><MapPin className="timeline-location-icon" /> {exp.location}</span>
+                <span className="timeline-location">
+                  <MapPin className="timeline-location-icon" /> {exp.location}
+                </span>
               </div>
               <h3 className="timeline-title">{exp.title}</h3>
               {exp.company && <h4 className="timeline-subtitle">{exp.company}</h4>}
@@ -65,7 +60,9 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({
             <div className="timeline-content">
               <div className="timeline-header">
                 <span className="timeline-period">{edu.period}</span>
-                <span className="timeline-location"><MapPin className="timeline-location-icon" /> {edu.location}</span>
+                <span className="timeline-location">
+                  <MapPin className="timeline-location-icon" /> {edu.location}
+                </span>
               </div>
               <h3 className="timeline-title">{edu.title}</h3>
               {edu.institution && <h4 className="timeline-subtitle">{edu.institution}</h4>}

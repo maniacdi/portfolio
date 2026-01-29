@@ -50,7 +50,12 @@ export default function Header() {
           ))}
         </nav>
         <div className="header-actions">
-          <button className="cta-btn" onClick={() => window.location.href = "mailto:magaldi6@gmail.com"}>CONTACTAME</button>
+          <button
+            className="cta-btn"
+            onClick={() => (window.location.href = "mailto:magaldi6@gmail.com")}
+          >
+            CONTACTAME
+          </button>
           <LanguageSwitcher />
         </div>
       </div>

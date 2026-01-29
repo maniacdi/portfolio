@@ -59,44 +59,43 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   //   },
   // ];
 
-
   const experiences = [
-  {
-    period: "2023-Presente",
-    location: "España",
-    title: "Desarrollador Frontend",
-    company: "AMS Solutions",
-    description: "Desarrollando aplicaciones web responsivas con React y TypeScript",
-    technologies: ["React", "TypeScript", "Next.js"]
-  },
-  {
-    period: "2022-2023",
-    location: "España",
-    title: "Desarrollador Full-stack",
-    company: "Innova-tsn",
-    description: "Construyendo aplicaciones full-stack con Node.js y MongoDB",
-    technologies: ["Node.js", "MongoDB", "Express"]
-  },
-  {
-    period: "2020-2022",
-    location: "España",
-    title: "Desarrollador Frontend",
-    company: "Incontro",
-    description: "Creando interfaces de usuario e implementando sistemas de diseño",
-    technologies: ["JavaScript", "Vue.js", "CSS"]
-  }
-];
+    {
+      period: "2023-Presente",
+      location: "España",
+      title: "Desarrollador Frontend",
+      company: "AMS Solutions",
+      description: "Desarrollando aplicaciones web responsivas con React y TypeScript",
+      technologies: ["React", "TypeScript", "Next.js"],
+    },
+    {
+      period: "2022-2023",
+      location: "España",
+      title: "Desarrollador Full-stack",
+      company: "Innova-tsn",
+      description: "Construyendo aplicaciones full-stack con Node.js y MongoDB",
+      technologies: ["Node.js", "MongoDB", "Express"],
+    },
+    {
+      period: "2020-2022",
+      location: "España",
+      title: "Desarrollador Frontend",
+      company: "Incontro",
+      description: "Creando interfaces de usuario e implementando sistemas de diseño",
+      technologies: ["JavaScript", "Vue.js", "CSS"],
+    },
+  ];
 
-const education = [
-  {
-    period: "2015-2021",
-    location: "España",
-    title: "Grado en Informática",
-    institution: "Universidad de",
-    specialization: "Especializado en ingeniería y tecnología",
-    subjects: ["Algorithms", "Data", "Software Engineering"]
-  }
-];
+  const education = [
+    {
+      period: "2015-2021",
+      location: "España",
+      title: "Grado en Informática",
+      institution: "Universidad de",
+      specialization: "Especializado en ingeniería y tecnología",
+      subjects: ["Algorithms", "Data", "Software Engineering"],
+    },
+  ];
   return (
     <>
       <section className={`about-section ${className}`} aria-labelledby="about-title" role="region">
