@@ -7,8 +7,8 @@ import "./PowerHero.scss";
 
 const TECH_STACK = [
   { name: "REACT", level: 95 },
-  { name: "NODE.JS", level: 80 },
-  { name: "TYPESCRIPT", level: 92 },
+  { name: "NODE.JS", level: 85 },
+  { name: "TYPESCRIPT", level: 95 },
   { name: "CSS", level: 88 },
   { name: "VUE", level: 70 },
 ] as const;
