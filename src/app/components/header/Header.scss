@@ -1,5 +1,5 @@
 /* ============================================
-   HEADER - PALETA C MAGENTA FUTURISTA
+   HEADER - IMPROVED VERSION
 ============================================ */
 
 .header-container {
@@ -10,15 +10,21 @@
   background: rgba(10, 14, 26, 0.65);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-soft);
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+
+  @media (max-width: 768px) {
+    padding: 0.875rem 1.25rem;
+  }
 
   &.scrolled {
-    background: rgba(10, 14, 26, 0.88);
+    background: rgba(10, 14, 26, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
 }
 
 .header-content {
-  max-width: 94%;
+  max-width: 90dvw;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -29,23 +35,20 @@
    LOGO
 ============================ */
 .logo {
-  //old logo styles
-  // font-weight: 700;
-  // color: var(--neon);
-  // text-shadow: 0 0 10px var(--neon);
-  // animation: neonPulse 3s ease-in-out infinite;
   cursor: pointer;
   height: 6dvh;
-}
+  min-height: 40px;
+  max-height: 60px;
+  width: auto;
+  transition: transform 0.3s ease;
 
-/* Neón suave */
-@keyframes neonPulse {
-  0%,
-  100% {
-    text-shadow: 0 0 6px var(--neon);
+  @media (max-width: 768px) {
+    height: 5dvh;
+    min-height: 35px;
   }
-  50% {
-    text-shadow: 0 0 14px var(--neon);
+
+  &:hover {
+    transform: scale(1.05);
   }
 }
 
@@ -56,9 +59,14 @@
   display: flex;
   gap: 2rem;
 
+  @media (max-width: 768px) {
+    display: none;
+  }
+
   a {
     position: relative;
     color: var(--text);
+    font-weight: 500;
     transition: color 0.25s ease;
 
     &:hover {
@@ -75,22 +83,21 @@
       width: 0;
       height: 2px;
       background: var(--neon);
-      box-shadow: var(--shadow-neon);
+      box-shadow: 0 0 8px var(--neon);
       transition: width 0.3s ease;
     }
 
     &:hover::after {
       width: 100%;
     }
-  }
 
-  /* Active link */
-  .active {
-    color: var(--neon);
-    text-shadow: var(--shadow-neon);
+    &.active {
+      color: var(--neon);
+      text-shadow: 0 0 8px var(--neon);
 
-    &::after {
-      width: 100% !important;
+      &::after {
+        width: 100%;
+      }
     }
   }
 }
@@ -99,10 +106,17 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .cta-btn {
-  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
   border-radius: var(--radius);
   font-family: "Orbitron", sans-serif;
   font-weight: 600;
@@ -111,13 +125,23 @@
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
-
   background: linear-gradient(45deg, var(--neon), var(--neon-blue));
   color: white;
 
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(255, 78, 221, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.mobile {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -126,13 +150,19 @@
 ============================ */
 
 .burger {
-  width: 34px;
-  height: 26px;
+  width: 28px;
+  height: 24px;
   position: relative;
   display: none;
   border: none;
   background: none;
   cursor: pointer;
+  padding: 0;
+  z-index: 101;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 
   span {
     position: absolute;
@@ -141,36 +171,34 @@
     height: 2px;
     background: var(--text);
     border-radius: 2px;
-    transition: 0.35s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   span:nth-child(1) {
-    top: 4px;
+    top: 0;
   }
   span:nth-child(2) {
-    top: 12px;
+    top: 11px;
   }
   span:nth-child(3) {
-    top: 20px;
+    top: 22px;
   }
 
-  &.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  &.active span:nth-child(2) {
-    opacity: 0;
-  }
-  &.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-}
-
-@media (max-width: 768px) {
-  .burger {
-    display: block;
-  }
-  .nav-links {
-    display: none;
+  &.active {
+    span:nth-child(1) {
+      top: 11px;
+      transform: rotate(45deg);
+      background: var(--neon);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    span:nth-child(3) {
+      top: 11px;
+      transform: rotate(-45deg);
+      background: var(--neon);
+    }
   }
 }
 
@@ -179,35 +207,139 @@
 ============================ */
 
 .mobile-menu {
-  position: absolute;
-  top: -300px;
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem;
-  background: rgba(10, 14, 26, 0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-soft);
+  height: 100vh;
+  padding: 5rem 2rem 2rem;
+  background: rgba(10, 14, 26, 0.98);
+  backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  transition: top 0.35s ease;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  
+  @media (min-width: 769px) {
+    display: none;
+  }
 
   &.show {
-    top: 74px;
+    transform: translateX(0);
+  }
+
+  .mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   a {
     color: var(--text);
-    transition: 0.25s ease;
+    font-weight: 500;
+    padding: 1rem;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 1px solid transparent;
 
     &:hover {
       color: var(--neon);
-      text-shadow: var(--shadow-neon);
+      background: rgba(255, 78, 221, 0.1);
+      border-color: rgba(255, 78, 221, 0.3);
+      transform: translateX(5px);
+    }
+
+    &.active {
+      color: var(--neon);
+      background: rgba(255, 78, 221, 0.15);
+      border-color: var(--neon);
+      box-shadow: 0 0 20px rgba(255, 78, 221, 0.3);
     }
   }
 
-  .active {
-    color: var(--neon);
-    text-shadow: var(--shadow-neon);
+  .mobile-menu-footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ============================
+   OVERLAY
+============================ */
+
+.header-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  animation: fadeIn 0.3s ease;
+  
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================
+   ACCESSIBILITY
+============================ */
+
+.burger:focus-visible,
+.cta-btn:focus-visible,
+.nav-links a:focus-visible,
+.mobile-menu a:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: 4px;
+}
+
+/* ============================
+   ANIMATIONS
+============================ */
+
+@keyframes neonPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 6px var(--neon);
+  }
+  50% {
+    text-shadow: 0 0 14px var(--neon);
+  }
+}
+
+/* ============================
+   REDUCED MOTION
+============================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .header-container,
+  .burger span,
+  .mobile-menu,
+  .nav-links a::after,
+  .cta-btn,
+  .logo {
+    transition: none;
+  }
+
+  .mobile-menu.show {
+    transition: none;
   }
 }

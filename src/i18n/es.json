@@ -70,7 +70,12 @@
     "exp2Title": "Desarrollador Full-stack",
     "exp2Description": "Construyendo aplicaciones full-stack con Node.js y MongoDB",
     "exp3Description": "Creando interfaces de usuario e implementando sistemas de diseño",
-    "country": "España"
+    "country": "España",
+    "email": "Correo",
+    "role": "Rol",
+    "name": "Nombre",
+    "proficiency": "Competencia",
+    "years": "años"
   },
   "travels": {
     "title": "Mis Viajes",

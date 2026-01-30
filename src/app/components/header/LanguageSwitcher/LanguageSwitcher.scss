@@ -2,6 +2,7 @@
   display: inline-block;
   cursor: pointer;
   transition: transform 0.2s ease;
+  position: relative;
 
   &:hover {
     transform: scale(1.05);
@@ -9,6 +10,12 @@
 
   &:active {
     transform: scale(0.95);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--neon);
+    outline-offset: 4px;
+    border-radius: 25px;
   }
 
   .track {
@@ -42,11 +49,12 @@
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     img {
       border-radius: 2px;
       transition: all 0.3s ease;
+      user-select: none;
     }
   }
 
@@ -61,14 +69,11 @@
     box-shadow:
       0 3px 10px rgba(0, 0, 0, 0.15),
       0 1px 4px rgba(0, 0, 0, 0.1);
+    will-change: transform;
   }
 
   &.en .selection-bubble {
-    left: 7px;
-  }
-
-  &.es .selection-bubble {
-    left: calc(100% - 33px);
+    left: 8px;
   }
 
   &.en {
@@ -91,6 +96,11 @@
     }
   }
 
+  // Spanish state
+  &.es .selection-bubble {
+    left: calc(100% - 33px);
+  }
+
   &.es {
     .flag-es {
       transform: scale(1.15);
@@ -111,6 +121,7 @@
     }
   }
 
+  // Hover effects
   &:hover {
     .track {
       background: rgba(255, 255, 255, 0.15);
@@ -122,6 +133,41 @@
       box-shadow:
         0 4px 14px rgba(0, 0, 0, 0.2),
         0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  // Screen reader only text
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .lang-switcher {
+    .selection-bubble {
+      transition: none;
+    }
+
+    .flag,
+    .track {
+      transition: none;
+    }
+
+    &:hover {
+      transform: none;
+    }
+
+    &:active {
+      transform: none;
     }
   }
 }

@@ -1,22 +1,63 @@
 "use client";
 
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import { useLocale } from "next-intl";
+import { AnchorHTMLAttributes, forwardRef } from "react";
 
-interface LocalizedLinkProps {
+// Combine Next.js Link props with HTML anchor props, excluding conflicting ones
+type CombinedLinkProps = Omit<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  keyof LinkProps
+> &
+  LinkProps & {
+    children: React.ReactNode;
+  };
+
+// Our component props - href is required as string
+interface LocalizedLinkProps extends Omit<CombinedLinkProps, "href"> {
   href: string;
-  children: React.ReactNode;
-  className?: string;
+  locale?: string; // Optional: override current locale
 }
 
-export default function LocalizedLink({ href, children, className }: LocalizedLinkProps) {
-  const locale = useLocale();
+const LocalizedLink = forwardRef<HTMLAnchorElement, LocalizedLinkProps>(
+  ({ href, children, locale: customLocale, ...props }, ref) => {
+    const currentLocale = useLocale();
+    const locale = customLocale || currentLocale;
 
-  const finalHref = href.startsWith(`/${locale}`) ? href : `/${locale}${href}`;
+    // Build the localized href
+    const localizedHref = (() => {
+      // If href already starts with a locale, don't add it again
+      if (href.startsWith(`/${locale}/`) || href === `/${locale}`) {
+        return href;
+      }
 
-  return (
-    <Link href={finalHref} className={className}>
-      {children}
-    </Link>
-  );
-}
+      // Handle root path
+      if (href === "/") {
+        return `/${locale}`;
+      }
+
+      // Handle external URLs
+      if (href.startsWith("http://") || href.startsWith("https://")) {
+        return href;
+      }
+
+      // Handle anchor links
+      if (href.startsWith("#")) {
+        return href;
+      }
+
+      // Add locale to path
+      return `/${locale}${href.startsWith("/") ? href : `/${href}`}`;
+    })();
+
+    return (
+      <Link ref={ref} href={localizedHref} {...props}>
+        {children}
+      </Link>
+    );
+  }
+);
+
+LocalizedLink.displayName = "LocalizedLink";
+
+export default LocalizedLink;
