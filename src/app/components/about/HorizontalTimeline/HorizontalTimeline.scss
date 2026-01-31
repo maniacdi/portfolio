@@ -2,11 +2,11 @@
   width: 100%;
   max-width: 1200px;
   margin: 3rem auto;
-  padding: var(--padding-lg) var(--padding-md);
+  padding: clamp(1.5rem, 3vw, 2rem) 0;  /* ✅ FIXED: Solo padding vertical */
   position: relative;
 
   @media (max-width: 768px) {
-    padding: var(--padding-md) var(--padding-sm);
+    padding: clamp(1rem, 2vw, 1.5rem) 0;  /* ✅ FIXED: Solo padding vertical */
     margin: 2rem auto;
   }
 }
@@ -96,7 +96,6 @@
     transform: none;
   }
 }
-
 .timeline-item {
   position: relative;
   margin-bottom: 4rem;
