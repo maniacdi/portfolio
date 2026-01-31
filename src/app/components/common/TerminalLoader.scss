@@ -10,11 +10,12 @@
   align-items: center;
   justify-content: center;
   font-family: "Space Grotesk", monospace;
+  padding: 1rem;
 
   .terminal {
-    width: 90%;
+    width: 100%;
     max-width: 800px;
-    height: 500px;
+    height: clamp(400px, 80vh, 500px);
     background: rgba(13, 17, 23, 0.95);
     border-radius: 12px;
     overflow: hidden;
@@ -24,6 +25,11 @@
       inset 0 0 20px rgba(255, 78, 221, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.05);
 
+    @media (max-width: 768px) {
+      border-radius: 8px;
+      max-width: 95%;
+    }
+
     &-header {
       display: flex;
       justify-content: space-between;
@@ -32,20 +38,42 @@
       background: rgba(10, 14, 26, 0.8);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
+      @media (max-width: 768px) {
+        padding: 0.875rem 1rem;
+      }
+
       .terminal-title {
         display: flex;
         align-items: center;
         gap: 0.8rem;
         color: var(--accent);
+        font-size: clamp(0.875rem, 2vw, 1rem);
+
+        @media (max-width: 768px) {
+          gap: 0.5rem;
+        }
 
         .icon {
           color: var(--neon);
+          font-size: 1.2em;
+          flex-shrink: 0;
+        }
+
+        span:last-child {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
 
       .terminal-controls {
         display: flex;
         gap: 0.6rem;
+        flex-shrink: 0;
+
+        @media (max-width: 768px) {
+          gap: 0.5rem;
+        }
 
         .control {
           width: 12px;
@@ -53,6 +81,12 @@
           border-radius: 50%;
           cursor: pointer;
           transition: all 0.2s ease;
+          flex-shrink: 0;
+
+          @media (max-width: 768px) {
+            width: 10px;
+            height: 10px;
+          }
 
           &.close {
             background: #ff5f57;
@@ -82,6 +116,12 @@
       height: calc(100% - 60px);
       padding: 1.5rem;
       overflow-y: auto;
+      overflow-x: hidden;
+
+      @media (max-width: 768px) {
+        padding: 1rem;
+        height: calc(100% - 54px);
+      }
 
       &::-webkit-scrollbar {
         width: 6px;
@@ -100,12 +140,18 @@
     &-content {
       font-family: "Monaco", "Consolas", monospace;
       line-height: 1.6;
+      word-break: break-word;
     }
 
     &-line {
       margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
+      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+
+      @media (max-width: 768px) {
+        margin-bottom: 0.375rem;
+      }
 
       .input {
         color: #00ff9d;
@@ -153,13 +199,18 @@
         background: var(--neon);
         margin-left: 2px;
         animation: cursor-blink 1s infinite;
+        flex-shrink: 0;
+
+        @media (max-width: 768px) {
+          width: 6px;
+        }
       }
     }
   }
 
   .hint {
     position: absolute;
-    bottom: 3rem;
+    bottom: clamp(2rem, 5vh, 3rem);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -167,6 +218,13 @@
     gap: 1rem;
     color: var(--accent);
     opacity: 0.7;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    white-space: nowrap;
+
+    @media (max-width: 768px) {
+      gap: 0.75rem;
+      padding: 0 1rem;
+    }
 
     .spinner {
       width: 20px;
@@ -175,6 +233,12 @@
       border-top-color: var(--neon);
       border-radius: 50%;
       animation: spin 1s linear infinite;
+      flex-shrink: 0;
+
+      @media (max-width: 768px) {
+        width: 16px;
+        height: 16px;
+      }
     }
   }
 }
@@ -196,24 +260,24 @@
   }
 }
 
-.terminal-line {
-  opacity: 0;
-  animation: type-in 0.3s forwards;
 
-  @for $i from 1 through 10 {
-    &:nth-child(#{$i}) {
-      animation-delay: #{($i - 1) * 0.3}s;
-    }
-  }
+body:has(.terminal-loader) {
+  overflow: hidden;
 }
 
-@keyframes type-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .terminal-loader {
+    .terminal-line {
+      animation: none;
+    }
+
+    .cursor {
+      animation: none;
+      opacity: 1;
+    }
+
+    .spinner {
+      animation: spin 3s linear infinite;
+    }
   }
 }
