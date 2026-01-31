@@ -2,11 +2,11 @@
   width: 100%;
   max-width: 1200px;
   margin: 3rem auto;
-  padding: clamp(1.5rem, 3vw, 2rem) 0;  /* ✅ FIXED: Solo padding vertical */
+  padding: clamp(1.5rem, 3vw, 2rem) 0;
   position: relative;
 
   @media (max-width: 768px) {
-    padding: clamp(1rem, 2vw, 1.5rem) 0;  /* ✅ FIXED: Solo padding vertical */
+    padding: clamp(1rem, 2vw, 1.5rem) 0;
     margin: 2rem auto;
   }
 }
