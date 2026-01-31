@@ -11,20 +11,12 @@
 
   @media (max-width: 768px) {
     margin: 1.5rem auto;
-    padding: 0 var(--padding-sm);
+    padding: 0 var(--padding-sm)
   }
-}
 
-.developer-profile {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0;  /* ✅ FIXED: Sin padding lateral (ya está en about-content) */
-
-  @media (max-width: 768px) {
-    margin: 1.5rem auto;
-    padding: 0;  /* ✅ FIXED: Sin padding lateral */
+  @media (max-width: 480px) {
+     margin-left: -9dvw;
+     width: 90dvw;
   }
 }
 
