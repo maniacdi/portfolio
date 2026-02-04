@@ -19,39 +19,32 @@ export default function TerminalLoader() {
   const [visibleLines, setVisibleLines] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
-  const [shouldShow, setShouldShow] = useState(false);
+  const [shouldShow, setShouldShow] = useState(true); // ← CAMBIO: Ahora empieza en true
 
   useEffect(() => {
-    const hasLoaded = sessionStorage.getItem('portfolio-loaded');
+    setShouldShow(true);
     
-    if (!hasLoaded) {
-      setShouldShow(true);
-      
-      const interval = setInterval(() => {
-        setVisibleLines((prev) => {
-          if (prev >= commands.length) {
-            clearInterval(interval);
-            setTimeout(() => {
-              setIsComplete(true);
-              sessionStorage.setItem('portfolio-loaded', 'true');
-            }, 1000);
-            return prev;
-          }
-          return prev + 1;
-        });
-      }, 300);
+    const interval = setInterval(() => {
+      setVisibleLines((prev) => {
+        if (prev >= commands.length) {
+          clearInterval(interval);
+          setTimeout(() => {
+            setIsComplete(true);
+          }, 1000);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 300);
 
-      const cursorInterval = setInterval(() => {
-        setShowCursor((prev) => !prev);
-      }, 500);
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
 
-      return () => {
-        clearInterval(interval);
-        clearInterval(cursorInterval);
-      };
-    } else {
-      setIsComplete(true);
-    }
+    return () => {
+      clearInterval(interval);
+      clearInterval(cursorInterval);
+    };
   }, []);
 
   if (!shouldShow || isComplete) return null;
