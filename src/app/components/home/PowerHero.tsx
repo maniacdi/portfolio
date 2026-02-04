@@ -1,29 +1,151 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
-import { Terminal, Code2, Cpu, Zap, Sparkles } from "lucide-react";
+import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
+import { 
+  Terminal, 
+  Code2, 
+  Cpu, 
+  Zap, 
+  Sparkles, 
+  Mail,
+  Github,
+  Linkedin,
+  Download,
+  ChevronDown,
+  Briefcase,
+  Calendar,
+  Award
+} from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { cvService } from "../../services/cvService";
 import "./PowerHero.scss";
 
 const TECH_STACK = [
-  { name: "REACT", level: 95 },
-  { name: "NODE.JS", level: 85 },
-  { name: "TYPESCRIPT", level: 95 },
-  { name: "CSS", level: 88 },
-  { name: "VUE", level: 70 },
+  { name: "REACT", level: 95, projects: 6, years: 5 },
+  { name: "NODE.JS", level: 85, projects: 2, years: 4 },
+  { name: "TYPESCRIPT", level: 95, projects: 7, years: 5 },
+  { name: "CSS", level: 88, projects: 7, years: 5 },
+  { name: "VUE", level: 70, projects: 1, years: 1 },
+] as const;
+
+const TERMINAL_COMMANDS = [
+  "whoami",
+  "cat about.md",
+  "npm run create-awesome",
+  "git commit -m 'Building the future'",
+  "docker compose up innovation",
+] as const;
+
+const STATS = [
+  { value: 8, label: "Proyectos", icon: Briefcase },
+  { value: 5, label: "Años", icon: Calendar },
 ] as const;
 
 export default function PowerHero() {
   const t = useTranslations("hero");
+  const locale = useLocale() as "es" | "en";
+  const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
+  const [displayedCommand, setDisplayedCommand] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const [hoveredTech, setHoveredTech] = useState<string | null>(null);
+  const [isGlitching, setIsGlitching] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  
+  const heroRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  
+  const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
+
+  // Terminal typing effect
+  useEffect(() => {
+    const currentCommand = TERMINAL_COMMANDS[currentCommandIndex];
+    let charIndex = 0;
+    setIsTyping(true);
+    setDisplayedCommand("");
+
+    const typingInterval = setInterval(() => {
+      if (charIndex < currentCommand.length) {
+        setDisplayedCommand(currentCommand.slice(0, charIndex + 1));
+        charIndex++;
+      } else {
+        setIsTyping(false);
+        clearInterval(typingInterval);
+        
+        // Wait 2 seconds then move to next command
+        setTimeout(() => {
+          setCurrentCommandIndex((prev) => (prev + 1) % TERMINAL_COMMANDS.length);
+        }, 2000);
+      }
+    }, 80);
+
+    return () => clearInterval(typingInterval);
+  }, [currentCommandIndex]);
+
+  // Mouse tracking for 3D effect
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!heroRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
+  // Handle CV download
+  const handleDownloadCV = async () => {
+    setIsDownloading(true);
+    try {
+      await cvService.downloadCV(locale);
+    } catch (error) {
+      console.error("Error downloading CV:", error);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   return (
-    <section className="power-hero">
+    <section className="power-hero" ref={heroRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+      {/* Animated Background */}
       <div className="tech-background">
         <div className="grid-overlay" />
         <div className="gradient-orb" />
+        
+        {/* Floating particles */}
+        <div className="particles">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="particle"
+              animate={{
+                y: [0, -100, 0],
+                x: [0, Math.random() * 50 - 25, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + Math.random() * 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="hero-container">
+      <motion.div 
+        className="hero-container"
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      >
+        {/* Tech Badge */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,8 +154,14 @@ export default function PowerHero() {
         >
           <Cpu size={16} />
           <span>{t("title")}</span>
+          <motion.div
+            className="badge-glow"
+            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
         </motion.div>
 
+        {/* Interactive Terminal */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -43,20 +171,35 @@ export default function PowerHero() {
           <Terminal className="terminal-icon" />
           <div className="terminal-line">
             <span className="prompt">$</span>
-            <span className="command">whoami</span>
+            <span className="command">{displayedCommand}</span>
+            <motion.span 
+              className="cursor"
+              animate={{ opacity: isTyping ? [1, 0] : 0 }}
+              transition={{ duration: 0.5, repeat: isTyping ? Infinity : 0 }}
+            >
+              ▊
+            </motion.span>
           </div>
         </motion.div>
 
+        {/* Name with Glitch Effect */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="main-name"
+          onMouseEnter={() => setIsGlitching(true)}
+          onMouseLeave={() => setIsGlitching(false)}
         >
-          <span className="name-first">JAVIER</span>
-          <span className="name-last">GARCÍA</span>
+          <span className={`name-first ${isGlitching ? 'glitch' : ''}`} data-text="JAVIER">
+            JAVIER
+          </span>
+          <span className={`name-last ${isGlitching ? 'glitch' : ''}`} data-text="GARCÍA">
+            GARCÍA
+          </span>
         </motion.h1>
 
+        {/* Specialization */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,6 +216,7 @@ export default function PowerHero() {
           </div>
         </motion.div>
 
+        {/* Value Proposition */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -84,29 +228,73 @@ export default function PowerHero() {
           <span className="highlight">{t("d6")}</span>.
         </motion.p>
 
+        {/* Animated Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.55 }}
+          className="stats-grid"
+        >
+          {STATS.map((stat, index) => (
+            <AnimatedStat 
+              key={stat.label} 
+              value={stat.value} 
+              label={stat.label}
+              Icon={stat.icon}
+              delay={0.6 + index * 0.1}
+            />
+          ))}
+        </motion.div>
+
+        {/* Interactive Tech Stack */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
           className="quick-stack"
         >
           {TECH_STACK.map((tech, index) => (
             <motion.div
               key={tech.name}
-              className="stack-item"
+              className={`stack-item ${hoveredTech === tech.name ? 'hovered' : ''}`}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 + index * 0.1 }}
+              transition={{ delay: 0.8 + index * 0.1 }}
+              whileHover={{ 
+                scale: 1.05,
+                backgroundColor: "rgba(0, 243, 255, 0.1)",
+              }}
+              onMouseEnter={() => setHoveredTech(tech.name)}
+              onMouseLeave={() => setHoveredTech(null)}
             >
-              <span className="stack-name">{tech.name}</span>
+              <div className="stack-header">
+                <span className="stack-name">{tech.name}</span>
+                <span className="stack-level">{tech.level}%</span>
+              </div>
+              
               <div className="stack-bar">
                 <motion.div
                   className="stack-fill"
                   initial={{ width: 0 }}
                   animate={{ width: `${tech.level}%` }}
-                  transition={{ duration: 1, delay: 0.8 + index * 0.1 }}
+                  transition={{ duration: 1, delay: 1 + index * 0.1 }}
                 />
               </div>
+
+              <AnimatePresence>
+                {hoveredTech === tech.name && (
+                  <motion.div
+                    className="stack-info"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                  >
+                    <span>{tech.projects} proyectos</span>
+                    <span>•</span>
+                    <span>{tech.years} años</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </motion.div>
@@ -114,19 +302,98 @@ export default function PowerHero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
           className="hero-actions"
         >
-          <a
+          <motion.a
+            href={`/${locale}/about`}
+            className="primary-action"
+            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 78, 221, 0.6)" }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Sparkles size={18} />
+            <span>Ver Mas</span>
+          </motion.a>
+
+          <motion.a
             href="mailto:magaldi6@gmail.com"
             className="secondary-action"
-            aria-label="Contact via email"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
+            <Mail size={18} />
             <span>{t("ctaPrimary")}</span>
-            <Sparkles className="sparkle-icon" />
-          </a>
+          </motion.a>
+
+          <motion.button
+            onClick={handleDownloadCV}
+            className="tertiary-action"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            disabled={isDownloading}
+          >
+            <Download size={18} />
+            <span>{isDownloading ? "Descargando..." : "Descargar CV"}</span>
+          </motion.button>
         </motion.div>
-      </div>
+
+
+      </motion.div>
     </section>
+  );
+}
+
+// Animated Stat Component
+function AnimatedStat({ 
+  value, 
+  label, 
+  Icon,
+  delay 
+}: { 
+  value: number; 
+  label: string; 
+  Icon: any;
+  delay: number;
+}) {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (hasAnimated) return;
+
+    const timer = setTimeout(() => {
+      let start = 0;
+      const duration = 2000;
+      const increment = value / (duration / 16);
+
+      const counter = setInterval(() => {
+        start += increment;
+        if (start >= value) {
+          setCount(value);
+          clearInterval(counter);
+          setHasAnimated(true);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, 16);
+
+      return () => clearInterval(counter);
+    }, delay * 1000);
+
+    return () => clearTimeout(timer);
+  }, [value, delay, hasAnimated]);
+
+  return (
+    <motion.div
+      className="stat-item"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay }}
+      whileHover={{ scale: 1.1 }}
+    >
+      <Icon className="stat-icon" size={24} />
+      <span className="stat-number">{count}+</span>
+      <span className="stat-label">{label}</span>
+    </motion.div>
   );
 }
