@@ -40,7 +40,6 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 1rem;
-    font-size: clamp(2rem, 5vw, 3.5rem);
 
     .title-gradient {
       background: linear-gradient(90deg, var(--neon), var(--accent));
@@ -54,7 +53,6 @@
     color: var(--accent);
     margin-bottom: 1.5rem;
     font-weight: 500;
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
   }
 
   .about-description {
@@ -62,7 +60,6 @@
     max-width: 800px;
     margin: 0 auto;
     color: var(--text-secondary);
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
   }
 }
 
@@ -167,13 +164,11 @@
       font-weight: 700;
       margin-bottom: 1rem;
       color: var(--text);
-      font-size: clamp(1.1rem, 2vw, 1.3rem);
     }
 
     .skill-desc {
       color: var(--text-secondary);
       line-height: 1.6;
-      font-size: clamp(0.9rem, 1.5vw, 1rem);
     }
 
     .skill-glow {
@@ -227,7 +222,6 @@
   h3 {
     font-weight: 700;
     color: var(--text);
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   }
 }
 
@@ -237,7 +231,7 @@
 
 .timeline-section {
   width: 100%;
-  
+
   .timeline {
     position: relative;
 
@@ -271,7 +265,6 @@
         margin-bottom: 0.5rem;
         text-transform: uppercase;
         letter-spacing: 1px;
-        font-size: clamp(0.85rem, 1.5vw, 1rem);
       }
 
       .timeline-content {
@@ -279,12 +272,10 @@
           font-weight: 600;
           margin-bottom: 0.25rem;
           color: var(--text);
-          font-size: clamp(1rem, 2vw, 1.2rem);
         }
 
         p {
           color: var(--text-secondary);
-          font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
       }
 
@@ -306,7 +297,7 @@
   }
 
   @media (max-width: 480px) {
-     margin-left: -4dvw;
+    margin-left: -4dvw;
   }
 }
 
@@ -344,13 +335,11 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
     }
 
     .cta-subtitle {
       color: var(--text-secondary);
       margin-bottom: 2rem;
-      font-size: clamp(0.95rem, 2vw, 1.1rem);
     }
   }
 
@@ -375,7 +364,6 @@
   border: none;
   border-radius: var(--radius);
   text-transform: uppercase;
-  font-size: clamp(0.85rem, 1.5vw, 1rem);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;

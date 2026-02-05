@@ -7,12 +7,12 @@
 
   @media (max-width: 768px) {
     padding: clamp(1rem, 2vw, 1.5rem) 0;
-    margin: 2rem -4dvw ;
+    margin: 2rem -4dvw;
   }
 }
 
 .timeline-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 50%;
@@ -36,8 +36,7 @@
 }
 
 .timeline-section-title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-family: "Orbitron", sans-serif;
   font-weight: 700;
   color: var(--text-primary);
   margin: 3rem 0 2rem;
@@ -51,7 +50,7 @@
 }
 
 .timeline-section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -63,8 +62,13 @@
 }
 
 @keyframes pulseLine {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .timeline {
@@ -73,21 +77,22 @@
 }
 
 .timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, 
-    transparent 0%, 
-    var(--neon) 10%, 
-    var(--neon-blue) 50%, 
-    var(--neon) 90%, 
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--neon) 10%,
+    var(--neon-blue) 50%,
+    var(--neon) 90%,
     transparent 100%
   );
-  box-shadow: 
+  box-shadow:
     0 0 15px var(--neon),
     0 0 30px rgba(0, 243, 255, 0.3);
 
@@ -142,7 +147,7 @@
   padding: 1.8rem;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 78, 221, 0.2);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.3),
     0 0 0 1px rgba(255, 78, 221, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -156,7 +161,7 @@
 
 .timeline-content:hover {
   transform: translateY(-5px);
-  box-shadow: 
+  box-shadow:
     0 12px 40px rgba(255, 78, 221, 0.2),
     0 0 20px rgba(0, 243, 255, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -183,8 +188,7 @@
 }
 
 .timeline-period {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  font-family: "Orbitron", sans-serif;
   font-weight: 600;
   color: var(--neon);
   text-shadow: 0 0 8px var(--neon);
@@ -197,7 +201,6 @@
 
 .timeline-location {
   color: var(--neon-blue);
-  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
   opacity: 0.9;
   display: flex;
   align-items: center;
@@ -209,8 +212,7 @@
 }
 
 .timeline-title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-family: "Orbitron", sans-serif;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0.5rem 0;
@@ -221,7 +223,6 @@
 }
 
 .timeline-subtitle {
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: var(--accent);
   margin: 0.3rem 0 1rem;
   font-weight: 500;
@@ -232,7 +233,6 @@
   color: var(--text-secondary);
   line-height: 1.7;
   margin: 1rem 0;
-  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
 }
 
 .timeline-tags {
@@ -252,11 +252,10 @@
   color: var(--neon-blue);
   padding: 0.4rem 1rem;
   border-radius: 20px;
-  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
   font-weight: 500;
   border: 1px solid rgba(0, 243, 255, 0.3);
   transition: all 0.3s ease;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
 
   @media (max-width: 768px) {
     padding: 0.3rem 0.8rem;
@@ -281,7 +280,7 @@
   background: var(--bg);
   border-radius: 50%;
   border: 3px solid var(--neon);
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgba(255, 78, 221, 0.3),
     0 0 20px var(--neon);
   z-index: 2;
@@ -314,7 +313,7 @@
 
 .timeline-dot:hover {
   transform: scale(1.2);
-  box-shadow: 
+  box-shadow:
     0 0 0 4px rgba(255, 78, 221, 0.4),
     0 0 30px var(--neon);
 
@@ -347,17 +346,18 @@
 }
 
 .timeline-content::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -2px;
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, 
-    transparent, 
-    transparent, 
-    var(--neon), 
-    transparent, 
+  background: linear-gradient(
+    45deg,
+    transparent,
+    transparent,
+    var(--neon),
+    transparent,
     transparent
   );
   border-radius: var(--radius-lg);
@@ -372,6 +372,11 @@
 }
 
 @keyframes neonGlow {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }

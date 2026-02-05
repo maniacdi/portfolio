@@ -85,17 +85,17 @@ export default function PowerHero() {
   }, [currentCommandIndex]);
 
   // Mouse tracking for 3D effect
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!heroRef.current) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left - rect.width / 2);
-    mouseY.set(e.clientY - rect.top - rect.height / 2);
-  };
+  // const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  //   if (!heroRef.current) return;
+  //   const rect = heroRef.current.getBoundingClientRect();
+  //   mouseX.set(e.clientX - rect.left - rect.width / 2);
+  //   mouseY.set(e.clientY - rect.top - rect.height / 2);
+  // };
 
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
+  // const handleMouseLeave = () => {
+  //   mouseX.set(0);
+  //   mouseY.set(0);
+  // };
 
   // Handle CV download
   const handleDownloadCV = async () => {
@@ -110,7 +110,9 @@ export default function PowerHero() {
   };
 
   return (
-    <section className="power-hero" ref={heroRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
+    <section className="power-hero"  
+    //ref={heroRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
+    >
       {/* Animated Background */}
       <div className="tech-background">
         <div className="grid-overlay" />
@@ -191,12 +193,12 @@ export default function PowerHero() {
           onMouseEnter={() => setIsGlitching(true)}
           onMouseLeave={() => setIsGlitching(false)}
         >
-          <span className={`name-first ${isGlitching ? 'glitch' : ''}`} data-text="JAVIER">
+          <h1 className={`name-first ${isGlitching ? 'glitch' : ''}`} data-text="JAVIER">
             JAVIER
-          </span>
-          <span className={`name-last ${isGlitching ? 'glitch' : ''}`} data-text="GARCÍA">
+          </h1>
+          <h1 className={`name-last ${isGlitching ? 'glitch' : ''}`} data-text="GARCÍA">
             GARCÍA
-          </span>
+          </h1>
         </motion.h1>
 
         {/* Specialization */}
