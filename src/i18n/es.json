@@ -107,28 +107,28 @@
   },
   "hobbies": {
     "title": "Mis Hobbies",
-    "description": "Cosas que amo hacer además de programar, como anime, música, videojuegos y artes creativas.",
+    "description": "Cosas que me encanta hacer en mi tiempo libre",
+    "total": "Total",
+    "favorites": "Favoritos",
+    "results": "Resultados",
+    "noResults": "No hay resultados",
     "categories": {
       "anime": "Anime",
+      "videogames": "Videojuegos",
       "drawing": "Dibujo",
-      "video-games": "Videojuegos",
       "cooking": "Cocina"
     },
     "anime": {
-      "title": "Mi Lista de Anime",
-      "description": "Una lista seleccionada del anime que he visto, destacando mis favoritos personales."
+      "description": "Mis series y películas de anime favoritas que me han inspirado"
+    },
+    "videogames": {
+      "description": "Juegos que disfruto en mi tiempo libre"
     },
     "drawing": {
-      "title": "Dibujo & Arte",
-      "description": "Mi lado creativo expresado a través de bocetos, arte digital e ilustraciones."
-    },
-    "video-games": {
-      "title": "Videojuegos",
-      "description": "Juegos que me han cautivado con sus historias, jugabilidad y mundos."
+      "description": "Mis estilos de dibujo y técnicas artísticas"
     },
     "cooking": {
-      "title": "Cocina",
-      "description": "Explorando sabores y técnicas de diferentes cocinas alrededor del mundo."
+      "description": "Cocinas y recetas con las que me gusta experimentar"
     }
   },
   "contact": {

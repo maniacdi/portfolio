@@ -1,13 +1,19 @@
 export interface HobbyItem {
-  slug: string;
+  id: string;
   title: string;
-  description?: string;
+  slug: string;
+  favorite?: boolean;
   image?: string;
-  [key: string]: any;
 }
 
 export interface HobbySection {
   id: string;
   title: string;
   items: HobbyItem[];
+}
+
+export interface AnimeBase {
+  title: string;
+  favorite: boolean;
+  image: string;
 }

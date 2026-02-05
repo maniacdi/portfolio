@@ -1,8 +1,8 @@
-import { drawingList } from "./drawing";
+import { HobbySection } from "@/utils/types/Hobby";
 import { animeList } from "./anime";
 import { videoGamesList } from "./videoGames";
+import { drawingList } from "./drawing";
 import { cookingList } from "./cooking";
-import { HobbySection } from "@/utils/types/Hobby";
 
 export const sectionsData: HobbySection[] = [
   {
@@ -11,18 +11,18 @@ export const sectionsData: HobbySection[] = [
     items: animeList,
   },
   {
-    id: "video-games",
+    id: "videogames",
     title: "Video Games",
     items: videoGamesList,
-  },
-  {
-    id: "cooking",
-    title: "Cooking",
-    items: cookingList,
   },
   {
     id: "drawing",
     title: "Drawing",
     items: drawingList,
+  },
+  {
+    id: "cooking",
+    title: "Cooking",
+    items: cookingList,
   },
 ];

@@ -107,28 +107,28 @@
   },
   "hobbies": {
     "title": "My Hobbies",
-    "description": "Things I love doing beyond coding, like anime, music, gaming and creative arts.",
+    "description": "Things I love doing in my free time",
+    "total": "Total",
+    "favorites": "Favorites",
+    "results": "Results",
+    "noResults": "No results found",
     "categories": {
       "anime": "Anime",
+      "videogames": "Video Games",
       "drawing": "Drawing",
-      "video-games": "Video Games",
       "cooking": "Cooking"
     },
     "anime": {
-      "title": "My Anime List",
-      "description": "A curated list of the anime I've watched, highlighted with my personal favorites."
+      "description": "My favorite anime series and movies that have inspired me"
+    },
+    "videogames": {
+      "description": "Games I enjoy playing in my spare time"
     },
     "drawing": {
-      "title": "Drawing & Art",
-      "description": "My creative side expressed through sketches, digital art and illustrations."
-    },
-    "video-games": {
-      "title": "Video Games",
-      "description": "Games that have captivated me with their stories, gameplay and worlds."
+      "description": "My drawing styles and artistic techniques"
     },
     "cooking": {
-      "title": "Cooking",
-      "description": "Exploring flavors and techniques from different cuisines around the world."
+      "description": "Cuisines and recipes I love to experiment with"
     }
   },
   "contact": {

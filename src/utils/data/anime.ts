@@ -1,9 +1,15 @@
-import { Anime } from "../types/Anime";
-import { slugify } from "../helpers/slug";
+import { HobbyItem } from "@/utils/types/Hobby";
+import { slugify } from "@/utils/helpers/slug";
 
 const defaultImg = "/images/anime/default.png";
 
-export const animeList: Anime[] = [
+interface AnimeData {
+  title: string;
+  favorite: boolean;
+  image: string;
+}
+
+const animeData: AnimeData[] = [
   { title: "One Piece", favorite: true, image: "/images/anime/one-piece.jpg" },
   { title: "Naruto", favorite: true, image: "/images/anime/naruto.jpg" },
   { title: "Bleach", favorite: false, image: "/images/anime/bleach.jpg" },
@@ -30,8 +36,15 @@ export const animeList: Anime[] = [
   { title: "Assassination Classroom", favorite: false, image: "/images/anime/assasination.jpg" },
   { title: "Princess Mononoke", favorite: true, image: "/images/anime/mononoke.jpg" },
   { title: "Dr. Stone", favorite: false, image: "/images/anime/stone.jpg" },
-].map((anime) => ({
-  ...anime,
-  slug: slugify(anime.title),
-  image: anime.image ?? defaultImg,
-}));
+];
+
+export const animeList: HobbyItem[] = animeData.map((anime) => {
+  const slug = slugify(anime.title);
+  return {
+    id: slug,
+    title: anime.title,
+    slug: slug,
+    favorite: anime.favorite,
+    image: anime.image ?? defaultImg,
+  };
+});
