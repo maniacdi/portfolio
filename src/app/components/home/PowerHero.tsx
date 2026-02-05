@@ -193,12 +193,12 @@ export default function PowerHero() {
           onMouseEnter={() => setIsGlitching(true)}
           onMouseLeave={() => setIsGlitching(false)}
         >
-          <h1 className={`name-first ${isGlitching ? 'glitch' : ''}`} data-text="JAVIER">
+          <span className={`name-first ${isGlitching ? 'glitch' : ''}`} data-text="JAVIER">
             JAVIER
-          </h1>
-          <h1 className={`name-last ${isGlitching ? 'glitch' : ''}`} data-text="GARCÍA">
+          </span>
+          <span className={`name-last ${isGlitching ? 'glitch' : ''}`} data-text="GARCÍA">
             GARCÍA
-          </h1>
+          </span>
         </motion.h1>
 
         {/* Specialization */}

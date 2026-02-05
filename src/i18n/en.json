@@ -140,10 +140,21 @@
     "github": "GitHub"
   },
   "footer": {
+    "home": "Home",
     "about": "About Me",
     "projects": "Projects",
+    "travels": "Travels",
+    "hobbies": "Hobbies",
     "contact": "Contact",
-    "copyright": "All rights reserved."
+    "copyright": "All rights reserved.",
+    "connect": "Let's Connect",
+    "connectText": "Follow me on social media for updates and insights.",
+    "quickLinks": "Quick Links",
+    "tagline": "Crafting digital experiences with passion and precision.",
+    "madeWith": "Made with",
+    "and": "and",
+    "backToTop": "Back to top",
+    "country": "Spain"
   },
   "hero": {
     "title": "WELCOME",

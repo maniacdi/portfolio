@@ -4,7 +4,7 @@
 
 .power-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,7 +198,7 @@
   line-height: 1;
   font-family: "Orbitron", sans-serif;
 
-  h1 {
+  span {
     display: inline-block;
     background: linear-gradient(135deg, var(--neon-blue), var(--neon));
     -webkit-background-clip: text;
@@ -206,6 +206,7 @@
     background-clip: text;
     position: relative;
     transition: all 0.3s ease;
+    font-size: 5.5rem;
 
     &.glitch {
       animation: glitch 0.3s infinite;

@@ -1,70 +1,489 @@
+/* ============================================
+   FOOTER - SPECTACULAR VERSION
+============================================ */
+
 .footer-container {
-  background: var(--bg4);
+  position: relative;
+  background: linear-gradient(180deg, rgba(10, 14, 26, 0.8) 0%, rgba(10, 14, 26, 0.95) 100%);
   border-top: 1px solid var(--border-soft);
-  padding: 2rem 0;
-  margin-top: 4rem;
+  margin-top: 6rem;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    margin-top: 4rem;
+  }
+}
+
+/* ============================================
+   DECORATIVE TOP LINE
+============================================ */
+
+.footer-divider {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+
+  .divider-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon), transparent);
+    animation: slideGlow 3s ease-in-out infinite;
+  }
+}
+
+@keyframes slideGlow {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ============================================
+   MAIN FOOTER CONTENT
+============================================ */
+
+.footer-main {
+  padding: 4rem 2rem 2rem;
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem 2rem;
+  }
 }
 
 .footer-content {
-  max-width: 95%;
+  max-width: 1400px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 4rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+}
+
+/* ============================================
+   FOOTER COLUMNS
+============================================ */
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+}
+
+.column-title {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   BRAND SECTION
+============================================ */
+
+.footer-brand {
+  .brand-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    .brand-icon {
+      color: var(--neon-blue);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .footer-logo {
+      font-family: "Orbitron", sans-serif;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--neon-blue), var(--neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+    }
+  }
+
+  .brand-tagline {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 400px;
+
+    @media (max-width: 768px) {
+      margin: 0 auto;
+    }
+  }
+
+  .brand-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+
+    @media (max-width: 768px) {
+      align-items: center;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+
+      svg {
+        color: var(--neon-blue);
+        flex-shrink: 0;
+      }
+
+      a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--neon-blue);
+        }
+      }
+
+      &:hover {
+        color: var(--text-primary);
+      }
+    }
+  }
+}
+
+/* ============================================
+   QUICK LINKS
+============================================ */
+
+.footer-links {
+  @media (max-width: 1024px) {
+    display: none; // Hide on tablet/mobile to save space
+  }
+
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.25rem 0;
+
+    .link-arrow {
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
+      color: var(--neon-blue);
+    }
+
+    &:hover {
+      color: var(--text-primary);
+      padding-left: 0.5rem;
+
+      .link-arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--neon-blue);
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+/* ============================================
+   CONNECT SECTION
+============================================ */
+
+.footer-connect {
+  .connect-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+
+    @media (max-width: 768px) {
+      max-width: 300px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--social-color);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      svg, span {
+        position: relative;
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      &:hover {
+        border-color: var(--social-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+        &::before {
+          opacity: 0.1;
+        }
+
+        svg {
+          color: var(--social-color);
+          filter: drop-shadow(0 0 8px var(--social-color));
+        }
+      }
+    }
+  }
+}
+
+/* ============================================
+   BOTTOM BAR
+============================================ */
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 2rem;
+  background: rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.5rem;
+  }
+}
+
+.footer-bottom-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 2rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
+    gap: 1.5rem;
   }
 }
 
-/* BRAND */
-.footer-brand {
-  .footer-logo {
-    font-family: "Orbitron", sans-serif;
-    color: var(--neon);
-    font-weight: 700;
-    text-shadow: 0 0 6px var(--neon);
-  }
-
-  .footer-copy {
-    margin-top: 4px;
-    color: var(--accent);
-    opacity: 0.7;
-  }
-}
-
-/* SOCIAL ICONS */
-.footer-socials {
+.footer-copyright {
   display: flex;
-  gap: 1.3rem;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
 
-  a {
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+
+  .separator {
+    opacity: 0.5;
+  }
+
+  .made-with {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    border-radius: 50%;
-    color: var(--text);
-    transition: 0.25s ease;
-    border: 1px solid transparent;
+    gap: 0.375rem;
+
+    .heart-icon {
+      color: #FF6B6B;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    .code-icon {
+      color: var(--neon-blue);
+    }
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    background: rgba(0, 243, 255, 0.1);
+    border-color: var(--neon-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 243, 255, 0.2);
 
     svg {
-      width: 22px;
-      height: 22px;
-      transition: 0.25s ease;
-    }
-
-    &:hover {
-      color: var(--neon);
-      border-color: var(--neon);
-      box-shadow: 0 0 10px var(--neon);
       transform: translateY(-2px);
-
-      svg {
-        filter: drop-shadow(0 0 6px var(--neon));
-      }
     }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   ANIMATED BACKGROUND GLOW
+============================================ */
+
+.footer-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 243, 255, 0.1) 0%,
+    rgba(255, 78, 221, 0.05) 50%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
+
+  @media (max-width: 768px) {
+    width: 400px;
+    height: 200px;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+============================================ */
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .divider-glow,
+  .footer-glow,
+  .brand-icon,
+  .heart-icon {
+    animation: none;
+  }
+
+  .social-link,
+  .footer-link,
+  .back-to-top {
+    transition: none;
   }
 }
