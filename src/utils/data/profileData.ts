@@ -42,4 +42,4 @@ export const profileData = {
 
 export type ProfileData = typeof profileData;
 export type SkillCategory = keyof typeof profileData.skills;
-export type Skill = typeof profileData.skills.frontend[number];
+export type Skill = (typeof profileData.skills.frontend)[number];

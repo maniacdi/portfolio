@@ -1,12 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 interface UseIntersectionObserverOptions extends IntersectionObserverInit {
   freezeOnceVisible?: boolean;
 }
 
-export const useIntersectionObserver = (
-  options: UseIntersectionObserverOptions = {}
-) => {
+export const useIntersectionObserver = (options: UseIntersectionObserverOptions = {}) => {
   const [isInView, setIsInView] = useState(false);
   const [hasBeenInView, setHasBeenInView] = useState(false);
   const ref = useRef<HTMLElement>(null);
@@ -20,7 +18,7 @@ export const useIntersectionObserver = (
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
-        
+
         if (entry.isIntersecting) {
           setHasBeenInView(true);
           if (freezeOnceVisible) {
@@ -30,7 +28,7 @@ export const useIntersectionObserver = (
       },
       {
         threshold: 0.1,
-        rootMargin: '50px',
+        rootMargin: "50px",
         ...observerOptions,
       }
     );

@@ -67,7 +67,9 @@ export default function Header() {
 
   return (
     <>
-      <header className={`header-container ${open ? "menu-open" : ""} ${scrolled ? "scrolled" : ""}`}>
+      <header
+        className={`header-container ${open ? "menu-open" : ""} ${scrolled ? "scrolled" : ""}`}
+      >
         <div className="header-content">
           <LocalizedLink href="/" onClick={handleLinkClick}>
             <img className="logo" src="/images/LOGO.png" alt="Magaldidev" />
@@ -112,7 +114,7 @@ export default function Header() {
         </div>
 
         {/* Mobile menu */}
-        <nav 
+        <nav
           className={`mobile-menu ${open ? "show" : ""}`}
           aria-label="Mobile navigation"
           aria-hidden={!open}
@@ -146,13 +148,7 @@ export default function Header() {
       </header>
 
       {/* Overlay for mobile menu */}
-      {open && (
-        <div 
-          className="header-overlay" 
-          onClick={() => setOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+      {open && <div className="header-overlay" onClick={() => setOpen(false)} aria-hidden="true" />}
     </>
   );
 }

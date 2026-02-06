@@ -23,8 +23,8 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <Link 
-      href={newUrl} 
+    <Link
+      href={newUrl}
       className={`lang-switcher ${isEnglish ? "en" : "es"}`}
       aria-label={`Change language to ${languageLabels[nextLocale]}`}
       title={`Switch to ${languageLabels[nextLocale]}`}
@@ -32,22 +32,10 @@ export default function LanguageSwitcher() {
       <div className="track">
         <div className="flags-container">
           <div className="flag flag-en" aria-hidden="true">
-            <Image 
-              src="/flags/en.svg" 
-              width={16} 
-              height={16} 
-              alt="" 
-              priority
-            />
+            <Image src="/flags/en.svg" width={16} height={16} alt="" priority />
           </div>
           <div className="flag flag-es" aria-hidden="true">
-            <Image 
-              src="/flags/es.svg" 
-              width={16} 
-              height={16} 
-              alt="" 
-              priority
-            />
+            <Image src="/flags/es.svg" width={16} height={16} alt="" priority />
           </div>
         </div>
 
@@ -63,7 +51,7 @@ export default function LanguageSwitcher() {
           aria-hidden="true"
         />
       </div>
-      
+
       {/* Screen reader only text
       <span className="sr-only">
         Current language: {languageLabels[locale]}. 

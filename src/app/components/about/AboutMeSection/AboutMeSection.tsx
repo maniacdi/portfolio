@@ -16,72 +16,29 @@ interface AboutSectionProps {
 export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   const t = useTranslations("about");
 
-  // Timeline data
-  // const experiences = [
-  //   {
-  //     id: "exp1",
-  //     year: "2023-Present",
-  //     title: `${t("exp1Title")}`,
-  //     subtitle: "AMS Solutions",
-  //     description: `${t("exp1Description")}`,
-  //     type: "work" as const,
-  //     tags: ["React", "TypeScript", "Next.js", "SCSS"],
-  //   },
-  //   {
-  //     id: "exp2",
-  //     year: "2022-2023",
-  //     title: `${t("exp2Title")}`,
-  //     subtitle: "Innova-tsn",
-  //     description: `${t("exp2Description")}`,
-  //     type: "work" as const,
-  //     tags: ["Node.js", "MongoDB", "Express", "React"],
-  //   },
-  //   {
-  //     id: "exp3",
-  //     year: "2020-2022",
-  //     title: `${t("exp1Title")}`,
-  //     subtitle: "Incentro",
-  //     description: `${t("exp3Description")}`,
-  //     type: "work" as const,
-  //     tags: ["JavaScript", "Vue.js", "CSS", "UI/UX"],
-  //   },
-  // ];
-
-  // const education = [
-  //   {
-  //     id: "edu1",
-  //     year: "2015-2021",
-  //     title: `${t("edu1Title")}`,
-  //     subtitle: `${t("edu1Subtitle")}`,
-  //     description: `${t("edu1Description")}`,
-  //     type: "education" as const,
-  //     tags: ["Algorithms", "Databases", "Software Engineering", "Networks"],
-  //   },
-  // ];
-
   const experiences = [
     {
       period: "2023-Presente",
       location: "España",
-      title: "Desarrollador Frontend",
+      title: `${t("exp1Title")}`,
       company: "AMS Solutions",
-      description: "Desarrollando aplicaciones web responsivas con React y TypeScript",
+      description: `${t("exp1Description")}`,
       technologies: ["React", "TypeScript", "Next.js"],
     },
     {
       period: "2022-2023",
       location: "España",
-      title: "Desarrollador Full-stack",
+      title: `${t("exp2Title")}`,
       company: "Innova-tsn",
-      description: "Construyendo aplicaciones full-stack con Node.js y MongoDB",
+      description: `${t("exp2Description")}`,
       technologies: ["Node.js", "MongoDB", "Express"],
     },
     {
       period: "2020-2022",
       location: "España",
-      title: "Desarrollador Frontend",
+      title: `${t("exp1Title")}`,
       company: "Incontro",
-      description: "Creando interfaces de usuario e implementando sistemas de diseño",
+      description: `${t("exp3Description")}`,
       technologies: ["JavaScript", "Vue.js", "CSS"],
     },
   ];
@@ -90,9 +47,9 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
     {
       period: "2015-2021",
       location: "España",
-      title: "Grado en Informática",
-      institution: "Universidad de",
-      specialization: "Especializado en ingeniería y tecnología",
+      title: `${t("edu1Title")}`,
+      institution: `${t("edu1Subtitle")}`,
+      specialization: `${t("edu1Description")}`,
       subjects: ["Algorithms", "Data", "Software Engineering"],
     },
   ];

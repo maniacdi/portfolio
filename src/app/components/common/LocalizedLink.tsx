@@ -5,10 +5,7 @@ import { useLocale } from "next-intl";
 import { AnchorHTMLAttributes, forwardRef } from "react";
 
 // Combine Next.js Link props with HTML anchor props, excluding conflicting ones
-type CombinedLinkProps = Omit<
-  AnchorHTMLAttributes<HTMLAnchorElement>,
-  keyof LinkProps
-> &
+type CombinedLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> &
   LinkProps & {
     children: React.ReactNode;
   };

@@ -90,7 +90,7 @@
 }
 
 .column-title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
@@ -226,7 +226,7 @@
     }
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: 0;
@@ -281,7 +281,7 @@
       }
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
         background: var(--social-color);
@@ -289,7 +289,8 @@
         transition: opacity 0.3s ease;
       }
 
-      svg, span {
+      svg,
+      span {
         position: relative;
         z-index: 1;
         transition: all 0.3s ease;
@@ -363,7 +364,7 @@
     gap: 0.375rem;
 
     .heart-icon {
-      color: #FF6B6B;
+      color: #ff6b6b;
       animation: heartbeat 1.5s ease-in-out infinite;
     }
 
@@ -374,7 +375,8 @@
 }
 
 @keyframes heartbeat {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -443,7 +445,8 @@
 }
 
 @keyframes glowPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: translateX(-50%) scale(1);
   }
@@ -458,7 +461,8 @@
 ============================================ */
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }

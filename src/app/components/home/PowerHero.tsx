@@ -2,12 +2,12 @@
 
 import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import { 
-  Terminal, 
-  Code2, 
-  Cpu, 
-  Zap, 
-  Sparkles, 
+import {
+  Terminal,
+  Code2,
+  Cpu,
+  Zap,
+  Sparkles,
   Mail,
   Github,
   Linkedin,
@@ -15,7 +15,7 @@ import {
   ChevronDown,
   Briefcase,
   Calendar,
-  Award
+  Award,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cvService } from "../../services/cvService";
@@ -51,11 +51,11 @@ export default function PowerHero() {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const [isGlitching, setIsGlitching] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
-  
+
   const heroRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
+
   const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
   const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
 
@@ -73,7 +73,7 @@ export default function PowerHero() {
       } else {
         setIsTyping(false);
         clearInterval(typingInterval);
-        
+
         // Wait 2 seconds then move to next command
         setTimeout(() => {
           setCurrentCommandIndex((prev) => (prev + 1) % TERMINAL_COMMANDS.length);
@@ -110,14 +110,15 @@ export default function PowerHero() {
   };
 
   return (
-    <section className="power-hero"  
-    //ref={heroRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
+    <section
+      className="power-hero"
+      //ref={heroRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
     >
       {/* Animated Background */}
       <div className="tech-background">
         <div className="grid-overlay" />
         <div className="gradient-orb" />
-        
+
         {/* Floating particles */}
         <div className="particles">
           {Array.from({ length: 20 }).map((_, i) => (
@@ -143,7 +144,7 @@ export default function PowerHero() {
         </div>
       </div>
 
-      <motion.div 
+      <motion.div
         className="hero-container"
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       >
@@ -174,7 +175,7 @@ export default function PowerHero() {
           <div className="terminal-line">
             <span className="prompt">$</span>
             <span className="command">{displayedCommand}</span>
-            <motion.span 
+            <motion.span
               className="cursor"
               animate={{ opacity: isTyping ? [1, 0] : 0 }}
               transition={{ duration: 0.5, repeat: isTyping ? Infinity : 0 }}
@@ -193,11 +194,14 @@ export default function PowerHero() {
           onMouseEnter={() => setIsGlitching(true)}
           onMouseLeave={() => setIsGlitching(false)}
         >
-          <span className={`name-first ${isGlitching ? 'glitch' : ''}`} data-text="JAVIER">
+          <span className={`name-first ${isGlitching ? "glitch" : ""}`} data-text="JAVIER">
             JAVIER
           </span>
-          <span className={`name-last ${isGlitching ? 'glitch' : ''}`} data-text="GARCÍA">
+          <span className={`name-last ${isGlitching ? "glitch" : ""}`} data-text="GARCÍA">
             GARCÍA
+          </span>{" "}
+          <span className={`name-last ${isGlitching ? "glitch" : ""}`} data-text="MAGALDI">
+            MAGALDI
           </span>
         </motion.h1>
 
@@ -238,9 +242,9 @@ export default function PowerHero() {
           className="stats-grid"
         >
           {STATS.map((stat, index) => (
-            <AnimatedStat 
-              key={stat.label} 
-              value={stat.value} 
+            <AnimatedStat
+              key={stat.label}
+              value={stat.value}
               label={stat.label}
               Icon={stat.icon}
               delay={0.6 + index * 0.1}
@@ -258,11 +262,11 @@ export default function PowerHero() {
           {TECH_STACK.map((tech, index) => (
             <motion.div
               key={tech.name}
-              className={`stack-item ${hoveredTech === tech.name ? 'hovered' : ''}`}
+              className={`stack-item ${hoveredTech === tech.name ? "hovered" : ""}`}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 + index * 0.1 }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 backgroundColor: "rgba(0, 243, 255, 0.1)",
               }}
@@ -273,7 +277,7 @@ export default function PowerHero() {
                 <span className="stack-name">{tech.name}</span>
                 <span className="stack-level">{tech.level}%</span>
               </div>
-              
+
               <div className="stack-bar">
                 <motion.div
                   className="stack-fill"
@@ -338,22 +342,20 @@ export default function PowerHero() {
             <span>{isDownloading ? "Descargando..." : "Descargar CV"}</span>
           </motion.button>
         </motion.div>
-
-
       </motion.div>
     </section>
   );
 }
 
 // Animated Stat Component
-function AnimatedStat({ 
-  value, 
-  label, 
+function AnimatedStat({
+  value,
+  label,
   Icon,
-  delay 
-}: { 
-  value: number; 
-  label: string; 
+  delay,
+}: {
+  value: number;
+  label: string;
   Icon: any;
   delay: number;
 }) {

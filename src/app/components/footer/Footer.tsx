@@ -1,6 +1,16 @@
 "use client";
 
-import { Github, Twitter, Instagram, Linkedin, Mail, MapPin, Code, Heart, ArrowUp } from "lucide-react";
+import {
+  Github,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Code,
+  Heart,
+  ArrowUp,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import "./Footer.scss";
@@ -17,34 +27,34 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { 
-      href: "https://x.com/Magaldi6", 
-      icon: Twitter, 
+    {
+      href: "https://x.com/Magaldi6",
+      icon: Twitter,
       label: "Twitter",
-      color: "#1DA1F2" 
+      color: "#1DA1F2",
     },
-    { 
-      href: "https://github.com/maniacdi", 
-      icon: Github, 
+    {
+      href: "https://github.com/maniacdi",
+      icon: Github,
       label: "GitHub",
-      color: "#fff" 
+      color: "#fff",
     },
-    { 
-      href: "https://www.instagram.com/magaldi6/", 
-      icon: Instagram, 
+    {
+      href: "https://www.instagram.com/magaldi6/",
+      icon: Instagram,
       label: "Instagram",
-      color: "#E4405F" 
+      color: "#E4405F",
     },
-    { 
-      href: "https://www.linkedin.com/in/javimagaldi/", 
-      icon: Linkedin, 
+    {
+      href: "https://www.linkedin.com/in/javimagaldi/",
+      icon: Linkedin,
       label: "LinkedIn",
-      color: "#0A66C2" 
+      color: "#0A66C2",
     },
   ];
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -60,10 +70,8 @@ export default function Footer() {
               <Code className="brand-icon" size={24} />
               <span className="footer-logo">Magaldidev</span>
             </div>
-            
-            <p className="brand-tagline">
-              {t("tagline")}
-            </p>
+
+            <p className="brand-tagline">{t("tagline")}</p>
 
             <div className="brand-info">
               <div className="info-item">
@@ -91,10 +99,8 @@ export default function Footer() {
 
           <div className="footer-column footer-connect">
             <h3 className="column-title">{t("connect")}</h3>
-            <p className="connect-description">
-              {t("connectText")}
-            </p>
-            
+            <p className="connect-description">{t("connectText")}</p>
+
             <div className="social-grid">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
@@ -106,7 +112,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="social-link"
                     aria-label={social.label}
-                    style={{ '--social-color': social.color } as React.CSSProperties}
+                    style={{ "--social-color": social.color } as React.CSSProperties}
                   >
                     <Icon size={20} />
                     <span>{social.label}</span>
@@ -126,15 +132,12 @@ export default function Footer() {
             <span>{t("copyright") || "All rights reserved"}</span>
             <span className="separator">•</span>
             <span className="made-with">
-              {t("madeWith")} <Heart className="heart-icon" size={14} /> {t("and")} <Code className="code-icon" size={14} />
+              {t("madeWith")} <Heart className="heart-icon" size={14} /> {t("and")}{" "}
+              <Code className="code-icon" size={14} />
             </span>
           </div>
 
-          <button 
-            className="back-to-top"
-            onClick={scrollToTop}
-            aria-label={t("backToTop")}
-          >
+          <button className="back-to-top" onClick={scrollToTop} aria-label={t("backToTop")}>
             <span>{t("backToTop")}</span>
             <ArrowUp size={16} />
           </button>

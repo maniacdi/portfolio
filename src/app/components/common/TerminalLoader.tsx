@@ -23,7 +23,7 @@ export default function TerminalLoader() {
 
   useEffect(() => {
     setShouldShow(true);
-    
+
     const interval = setInterval(() => {
       setVisibleLines((prev) => {
         if (prev >= commands.length) {

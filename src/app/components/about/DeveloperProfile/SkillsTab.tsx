@@ -111,7 +111,9 @@ export const SkillsTab = ({ data, t }: SkillsTabProps) => {
               </div>
               <div className="stat">
                 <span className="stat-label">{t("experience")}</span>
-                <span className="stat-value">{hoveredSkill.years}+ {t("years")}</span>
+                <span className="stat-value">
+                  {hoveredSkill.years}+ {t("years")}
+                </span>
               </div>
             </div>
             <div className="skill-level-bar">

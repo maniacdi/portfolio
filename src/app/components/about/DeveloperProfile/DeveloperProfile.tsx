@@ -3,13 +3,7 @@
 import { FC, useState, useCallback, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Terminal,
-  Code2,
-  User,
-  Mail,
-  Sparkles,
-} from "lucide-react";
+import { Terminal, Code2, User, Mail, Sparkles } from "lucide-react";
 import { useClipboard } from "@/app/hooks/useClipboard";
 import { profileData } from "@/utils/data/profileData";
 import { ProfileTab } from "./ProfileTab";
@@ -53,7 +47,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
         {/* Terminal Header */}
         <header className="terminal-header">
           <div className="terminal-header-glow" aria-hidden="true" />
-          
+
           <div className="terminal-dots" aria-hidden="true">
             <div className="dot red" />
             <div className="dot yellow" />
@@ -80,7 +74,7 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
-            
+
             return (
               <button
                 key={tab.id}
@@ -107,27 +101,21 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
         {/* Terminal Content */}
         <div className="terminal-content">
           <div className="command-line" aria-label="Terminal command">
-            <span className="prompt" aria-hidden="true">visitor@portfolio:~$</span>
+            <span className="prompt" aria-hidden="true">
+              visitor@portfolio:~$
+            </span>
             <span className="command">cat developer-profile</span>
-            <span className="cursor" aria-hidden="true">▊</span>
+            <span className="cursor" aria-hidden="true">
+              ▊
+            </span>
           </div>
 
           <AnimatePresence mode="wait">
             {activeTab === "profile" && (
-              <ProfileTab 
-                key="profile" 
-                data={profileData.profile} 
-                t={t}
-              />
+              <ProfileTab key="profile" data={profileData.profile} t={t} />
             )}
 
-            {activeTab === "skills" && (
-              <SkillsTab 
-                key="skills" 
-                data={profileData.skills} 
-                t={t}
-              />
-            )}
+            {activeTab === "skills" && <SkillsTab key="skills" data={profileData.skills} t={t} />}
 
             {activeTab === "contact" && (
               <ContactTab
