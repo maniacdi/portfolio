@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import {
   Terminal,
@@ -12,12 +12,10 @@ import {
   Github,
   Linkedin,
   Download,
-  ChevronDown,
   Briefcase,
   Calendar,
-  Award,
 } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { cvService } from "../../services/cvService";
 import "./PowerHero.scss";
 
@@ -38,8 +36,8 @@ const TERMINAL_COMMANDS = [
 ] as const;
 
 const STATS = [
-  { value: 8, label: "Proyectos", icon: Briefcase },
-  { value: 5, label: "Años", icon: Calendar },
+  { value: 8, label: "projects", icon: Briefcase },
+  { value: 5, label: "years", icon: Calendar },
 ] as const;
 
 export default function PowerHero() {
@@ -52,12 +50,12 @@ export default function PowerHero() {
   const [isGlitching, setIsGlitching] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
 
-  const heroRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  // const heroRef = useRef<HTMLDivElement>(null);
+  // const mouseX = useMotionValue(0);
+  // const mouseY = useMotionValue(0);
 
-  const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
-  const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
+  // const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
+  // const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
 
   // Terminal typing effect
   useEffect(() => {
@@ -146,7 +144,7 @@ export default function PowerHero() {
 
       <motion.div
         className="hero-container"
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        // style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       >
         {/* Tech Badge */}
         <motion.div
@@ -245,7 +243,7 @@ export default function PowerHero() {
             <AnimatedStat
               key={stat.label}
               value={stat.value}
-              label={stat.label}
+              label={t(stat.label)}
               Icon={stat.icon}
               delay={0.6 + index * 0.1}
             />
@@ -295,9 +293,11 @@ export default function PowerHero() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                   >
-                    <span>{tech.projects} proyectos</span>
+                    {/* <span>{tech.projects} proyectos</span> */}
                     <span>•</span>
-                    <span>{tech.years} años</span>
+                    <span>
+                      {tech.years} {t("yearsLabel")}
+                    </span>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -318,7 +318,7 @@ export default function PowerHero() {
             whileTap={{ scale: 0.95 }}
           >
             <Sparkles size={18} />
-            <span>Ver Mas</span>
+            <span>{t("seeMore")}</span>
           </motion.a>
 
           <motion.a
@@ -339,7 +339,7 @@ export default function PowerHero() {
             disabled={isDownloading}
           >
             <Download size={18} />
-            <span>{isDownloading ? "Descargando..." : "Descargar CV"}</span>
+            <span>{isDownloading ? t("downloadingCv") : t("downloadCv")}</span>
           </motion.button>
         </motion.div>
       </motion.div>

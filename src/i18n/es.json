@@ -167,7 +167,13 @@
     "d5": "y",
     "d6": "principios de código limpio",
     "ctaPrimary": "Contáctame",
-    "explore": "EXPLORA"
+    "explore": "EXPLORA",
+    "projects": "Proyectos",
+    "years": "Años",
+    "yearsLabel": "años de experiencia",
+    "seeMore": "Ver más",
+    "downloadCv": "Descargar CV",
+    "downloadingCv": "Descargando..."
   },
   "anime": {
     "title": "Mi Anime Favorito",

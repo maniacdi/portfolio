@@ -167,7 +167,13 @@
     "d5": "and",
     "d6": "clean code principles",
     "ctaPrimary": "Contact Me",
-    "explore": "EXPLORE"
+    "explore": "EXPLORE",
+    "projects": "Projects",
+    "years": "Years",
+    "yearsLabel": "years of experience",
+    "seeMore": "See more",
+    "downloadCv": "Download CV",
+    "downloadingCv": "Downloading..."
   },
   "anime": {
     "title": "My Favorite Anime",
