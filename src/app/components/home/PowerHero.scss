@@ -206,7 +206,7 @@
     background-clip: text;
     position: relative;
     transition: all 0.3s ease;
-    font-size: 5.5rem;
+    font-size: clamp(2.5rem, 14vw, 5.5rem);
 
     &.glitch {
       animation: glitch 0.3s infinite;
