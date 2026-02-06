@@ -23,9 +23,11 @@ interface HorizontalTimelineProps {
 }
 
 export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({ experiences, education }) => {
+  const t = useTranslations("about");
+
   return (
     <div className="timeline-container">
-      <h2 className="timeline-section-title">Experiencia Profesional</h2>
+      <h2 className="timeline-section-title">{t("experienceLabel")}</h2>
       <div className="timeline">
         {experiences.map((exp, index) => (
           <div className="timeline-item" key={`exp-${index}`}>
@@ -53,7 +55,7 @@ export const HorizontalTimeline: FC<HorizontalTimelineProps> = ({ experiences, e
         ))}
       </div>
 
-      <h2 className="timeline-section-title">Educación</h2>
+      <h2 className="timeline-section-title">{t("educationLabel")}</h2>
       <div className="timeline">
         {education.map((edu, index) => (
           <div className="timeline-item" key={`edu-${index}`}>

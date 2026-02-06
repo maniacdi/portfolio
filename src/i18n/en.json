@@ -75,7 +75,8 @@
     "role": "Role",
     "name": "Name",
     "proficiency": "Proficiency",
-    "years": "years"
+    "years": "years",
+    "experienceLabel": "Professional Experience"
   },
   "travels": {
     "title": "My Travels",
