@@ -11,10 +11,11 @@
   overflow: hidden;
   perspective: 1000px;
   padding: 2rem;
+  width: 99dvw;
 
   @media (max-width: 768px) {
     padding: 1rem;
-    min-height: 100svh;
+    min-height: 100dvh;
   }
 }
 
@@ -27,6 +28,7 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  width: 99dvw;
 
   .grid-overlay {
     position: absolute;
