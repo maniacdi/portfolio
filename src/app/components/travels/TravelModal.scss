@@ -338,16 +338,12 @@
 
 @media (max-width: 768px) {
   .travel-modal {
-    width: 95%;
+    overflow: scroll;
     max-height: 95dvh;
 
     .modal-content {
       flex-direction: column;
     }
-  }
-
-  .modal-gallery {
-    height: 300px;
   }
 
   .modal-info {
