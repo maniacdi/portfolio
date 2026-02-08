@@ -7,6 +7,7 @@ import Footer from "@components/footer/Footer";
 import WeatherWidget from "@components/common/WeatherWidget";
 import "../../styles/globals.scss";
 import TerminalLoader from "../components/common/TerminalLoader";
+import EasterEggs from "../components/common/EasterEggs";
 
 export async function generateMetadata({
   params,
@@ -41,6 +42,7 @@ export default async function LocaleLayout({
         <main className="main-content">{children}</main>
         <Footer />
         <WeatherWidget />
+        <EasterEggs />
       </NextIntlClientProvider>
     );
   } catch (error) {

@@ -1,0 +1,123 @@
+/* ============================================
+   EASTER EGGS - ANIMATED TOASTS
+============================================ */
+
+.easter-eggs-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.easter-egg-toast {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.toast-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem;
+}
+
+.toast-text {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   BANANA TOAST
+============================================ */
+
+.banana-toast {
+  .toast-content {
+    background: transparent;
+  }
+
+  .banana-emoji {
+    animation: wiggle 0.3s ease-in-out infinite;
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+
+/* ============================================
+   WOW TOAST
+============================================ */
+
+.wow-toast {
+  .toast-content {
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #fff;
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 0.8),
+      0 0 60px rgba(102, 126, 234, 0.5);
+  }
+
+  .wow-emoji {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  }
+
+  .wow-text {
+    color: white;
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 30px rgba(255, 255, 255, 0.4);
+    margin: 0;
+  }
+
+  .confetti {
+    position: absolute;
+    pointer-events: none;
+  }
+}
+
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 768px) {
+  .toast-content {
+    padding: 1rem 1.5rem;
+  }
+
+}
+
+/* ============================================
+   REDUCED MOTION
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .banana-emoji,
+  .neon-emoji,
+  .wow-emoji,
+  .pixel-heart,
+  .confetti {
+    animation: none !important;
+  }
+
+  .easter-egg-toast {
+    animation: simpleAppear 1s ease !important;
+  }
+}
+
+@keyframes simpleAppear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
