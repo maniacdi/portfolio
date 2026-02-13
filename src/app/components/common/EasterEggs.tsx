@@ -37,8 +37,8 @@ export default function EasterEggs() {
   const [lastKeyTime, setLastKeyTime] = useState(Date.now());
   const [foundEggs, setFoundEggs] = useState<Set<string>>(new Set());
   const [showProgress, setShowProgress] = useState(false);
+  const [justCompletedAll, setJustCompletedAll] = useState(false);
   const t = useTranslations("easterEggs");
-
 
   const SEQUENCE_TIMEOUT = 3000;
 
@@ -73,6 +73,13 @@ export default function EasterEggs() {
           };
 
           setActiveToasts((prev) => [...prev, newToast]);
+
+          const wasFirstTime = !foundEggs.has(egg.id);
+          const updatedFound = saveProgress(egg.id);
+
+          if (wasFirstTime && updatedFound.size === EASTER_EGGS.length)
+            setJustCompletedAll(true);
+
 
           setTimeout(() => {
             setActiveToasts((prev) => prev.filter((t) => t.id !== newToast.id));
