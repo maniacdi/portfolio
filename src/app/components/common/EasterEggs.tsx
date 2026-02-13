@@ -3,22 +3,27 @@
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./EasterEggs.scss";
+import { useTranslations } from "next-intl";
 
-
+// 🎮 easter eggs 
 const EASTER_EGGS = [
   {
-    sequence: ["b", "n", "b"], 
+    sequence: ["b", "n", "b"],
     id: "banana",
+    name: "Banana Jump",
     component: BananaToast,
     duration: 3000,
   },
   {
-    sequence: ["w", "o", "w"], 
+    sequence: ["w", "o", "w"],
     id: "wow",
+    name: "WOW Party",
     component: WowToast,
     duration: 3000,
   },
 ];
+
+const STORAGE_KEY = "portfolio-easter-eggs";
 
 interface Toast {
   id: string;
@@ -30,36 +35,57 @@ export default function EasterEggs() {
   const [keySequence, setKeySequence] = useState<string[]>([]);
   const [activeToasts, setActiveToasts] = useState<Toast[]>([]);
   const [lastKeyTime, setLastKeyTime] = useState(Date.now());
+  const [foundEggs, setFoundEggs] = useState<Set<string>>(new Set());
+  const [showProgress, setShowProgress] = useState(false);
+  const t = useTranslations("easterEggs");
 
-  // Timeout to reset sequence if user types too slowly
-  const SEQUENCE_TIMEOUT = 2000;
 
-  const checkForEasterEgg = useCallback((sequence: string[]) => {
-    for (const egg of EASTER_EGGS) {
-      const lastKeys = sequence.slice(-egg.sequence.length);
-      
-      if (
-        lastKeys.length === egg.sequence.length &&
-        lastKeys.every((key, index) => key === egg.sequence[index])
-      ) {
-        const newToast: Toast = {
-          id: `${egg.id}-${Date.now()}`,
-          eggId: egg.id,
-          component: egg.component,
-        };
+  const SEQUENCE_TIMEOUT = 3000;
 
-        setActiveToasts((prev) => [...prev, newToast]);
-
-        setTimeout(() => {
-          setActiveToasts((prev) => prev.filter((t) => t.id !== newToast.id));
-        }, egg.duration);
-
-        setKeySequence([]);
-        return true;
-      }
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      setFoundEggs(new Set(JSON.parse(saved)));
     }
-    return false;
   }, []);
+
+  const saveProgress = (eggId: string) => {
+    const newFound = new Set(foundEggs);
+    newFound.add(eggId);
+    setFoundEggs(newFound);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...newFound]));
+    return newFound;
+  };
+
+  const checkForEasterEgg = useCallback(
+    (sequence: string[]) => {
+      for (const egg of EASTER_EGGS) {
+        const lastKeys = sequence.slice(-egg.sequence.length);
+
+        if (
+          lastKeys.length === egg.sequence.length &&
+          lastKeys.every((key, index) => key === egg.sequence[index])
+        ) {
+          const newToast: Toast = {
+            id: `${egg.id}-${Date.now()}`,
+            eggId: egg.id,
+            component: egg.component,
+          };
+
+          setActiveToasts((prev) => [...prev, newToast]);
+
+          setTimeout(() => {
+            setActiveToasts((prev) => prev.filter((t) => t.id !== newToast.id));
+          }, egg.duration);
+
+          setKeySequence([]);
+          return true;
+        }
+      }
+      return false;
+    },
+    [foundEggs]
+  );
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -70,7 +96,7 @@ export default function EasterEggs() {
       } else {
         setKeySequence((prev) => {
           const newSequence = [...prev, e.key.toLowerCase()];
-          
+
           if (newSequence.length > 20) {
             newSequence.shift();
           }
@@ -88,35 +114,122 @@ export default function EasterEggs() {
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, [lastKeyTime, checkForEasterEgg]);
 
+  const progress = (foundEggs.size / EASTER_EGGS.length) * 100;
+  const allFound = foundEggs.size === EASTER_EGGS.length;
+
   return (
-    <div className="easter-eggs-container">
+    <>
+      <div className="easter-eggs-container">
+        <AnimatePresence>
+          {activeToasts.map((toast, index) => {
+            const ToastComponent = toast.component;
+            return <ToastComponent key={`${toast.id}-${index}`} />;
+          })}
+        </AnimatePresence>
+      </div>
+
+      {/* 📊 PROGRESS BUTTON */}
+      <motion.button
+        className={`easter-egg-progress-button ${allFound ? "completed" : ""}`}
+        onClick={() => setShowProgress(!showProgress)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1 }}
+      >
+        {allFound ? "🏆" : "🎮"}
+        <span className="progress-count">
+          {foundEggs.size}/{EASTER_EGGS.length}
+        </span>
+      </motion.button>
+
+      {/* 📋 PROGRESS PANEL */}
       <AnimatePresence>
-        {activeToasts.map((toast, index) => {
-          const ToastComponent = toast.component;
-          return <ToastComponent key={`${toast.id}-${index}`} />;
-        })}
+        {showProgress && (
+          <motion.div
+            className="easter-egg-progress-panel"
+            initial={{ opacity: 0, x: -400 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -400 }}
+            transition={{ type: "spring", damping: 20 }}
+          >
+            <div className="panel-header">
+              <h3>🎮 {t("title")}</h3>
+              <button className="close-button" onClick={() => setShowProgress(false)}>
+                ✕
+              </button>
+            </div>
+
+            <div className="progress-bar-container">
+              <div className="progress-bar">
+                <motion.div
+                  className="progress-fill"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ duration: 0.5 }}
+                />
+              </div>
+              <p className="progress-text">
+                {foundEggs.size} / {EASTER_EGGS.length} {t("state")}
+              </p>
+            </div>
+
+            <div className="eggs-list">
+              {EASTER_EGGS.map((egg) => {
+                const found = foundEggs.has(egg.id);
+                return (
+                  <motion.div
+                    key={egg.id}
+                    className={`egg-item ${found ? "found" : "locked"}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    whileHover={found ? { scale: 1.05 } : {}}
+                  >
+                    <div className="egg-icon">{found ? "✅" : "🔒"}</div>
+                    <div className="egg-info">
+                      <p className="egg-name">{found ? egg.name : "???"}</p>
+                      <p className="egg-hint">
+                        {found
+                          ? `Código: ${egg.sequence.join(" ").toUpperCase()}`
+                          : `${egg.sequence.length} ${t("keys")}`}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            <button
+              className="reset-button"
+              onClick={() => {
+                localStorage.removeItem(STORAGE_KEY);
+                setFoundEggs(new Set());
+                setShowProgress(false);
+              }}
+            >
+              🔄 {t("resetProgress")}
+            </button>
+          </motion.div>
+        )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
 
-// 🍌 BANANA TOAST 
+// 🍌 BANANA TOAST
 function BananaToast() {
   return (
     <motion.div
       className="easter-egg-toast banana-toast"
       initial={{ y: "100vh", rotate: -20, scale: 0.5 }}
       animate={{
-        y: [
-          "100vh",   // Start down
-          "60vh",   // Go up
-          "100vh",   // And fall back down
-        ],
-        scale: [0.5,  5, 0.5],
+        y: ["100vh", "60vh", "100vh"],
+        scale: [0.5, 5, 0.5],
       }}
       transition={{
         duration: 3,
-        times: [0,  0.5, 1],
+        times: [0, 0.5, 1],
         ease: [0.43, 0.13, 0.23, 0.96],
       }}
       exit={{ opacity: 0, scale: 0 }}
@@ -128,18 +241,14 @@ function BananaToast() {
   );
 }
 
-// 🎉 WOW TOAST 
+// 🎉 WOW TOAST
 function WowToast() {
   return (
     <motion.div
       className="easter-egg-toast wow-toast"
       initial={{ scale: 0, rotate: 0 }}
       animate={{
-         y: [
-          "100vh",   // Start down
-          "60vh",   // Go up
-          "100vh",   // And fall back down
-        ],
+        y: ["100vh", "60vh", "100vh"],
         scale: [0, 1, 0],
         rotate: [0, 360, 720],
       }}
@@ -157,7 +266,7 @@ function WowToast() {
           🎉
         </motion.div>
         <p className="wow-text">WOW!</p>
-        
+
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={i}
@@ -168,8 +277,8 @@ function WowToast() {
               opacity: 1,
             }}
             animate={{
-              x: Math.cos((i * 360) / 20 * Math.PI / 180) * 200,
-              y: Math.sin((i * 360) / 20 * Math.PI / 180) * 200,
+              x: Math.cos(((i * 360) / 20) * (Math.PI / 180)) * 200,
+              y: Math.sin(((i * 360) / 20) * (Math.PI / 180)) * 200,
               opacity: 0,
             }}
             transition={{ duration: 1.5 }}

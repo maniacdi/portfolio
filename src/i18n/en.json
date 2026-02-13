@@ -233,5 +233,11 @@
       "tools": "Tools"
     },
     "badge": "Daily Use"
+  },
+  "easterEggs": {
+    "title": "Easter Eggs",
+    "state": "found",
+    "keys": "keys",
+    "resetProgress": "Reset progress"
   }
 }

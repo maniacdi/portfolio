@@ -233,5 +233,11 @@
       "tools": "Herramientas"
     },
     "badge": "Uso diario"
+  },
+  "easterEggs": {
+    "title": "Easter Eggs",
+    "state": "encontrados",
+    "keys": "teclas",
+    "resetProgress": "Reiniciar progreso"
   }
 }
