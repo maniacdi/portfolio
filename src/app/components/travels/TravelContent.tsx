@@ -9,10 +9,13 @@ import TravelCard from "./TravelCard";
 import TravelModal from "./TravelModal";
 import { fetchAllTravels } from "../../services/travelService";
 import { Travel } from "@/utils/types/Travel";
+import { useToast } from "@/app/components/toast/ToastProvider";
 import "./TravelContent.scss";
 
 export default function TravelContent() {
   const t = useTranslations("travels");
+  const toast = useToast();
+  
   const [viewMode, setViewMode] = useState<"map" | "list">("map");
   const [filter, setFilter] = useState<string>("all");
   const [search, setSearch] = useState<string>("");
@@ -20,6 +23,7 @@ export default function TravelContent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [travels, setTravels] = useState<Travel[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     loadTravels();
@@ -27,9 +31,33 @@ export default function TravelContent() {
 
   const loadTravels = async () => {
     setLoading(true);
-    const data = await fetchAllTravels();
-    setTravels(data);
-    setLoading(false);
+    setError(false);
+    
+    try {
+      const data = await fetchAllTravels();
+      
+      if (!data || data.length === 0) {
+
+        toast.warning("No se encontraron viajes disponibles");
+        setTravels([]);
+      } else {
+
+        setTravels(data);
+        toast.success(`${data.length} viajes cargados correctamente`);
+      }
+    } catch (err) {
+
+      console.error("Error loading travels:", err);
+      setError(true);
+      setTravels([]);
+      
+      toast.error(
+        "Error al cargar los viajes. Por favor, intenta recargar la página.",
+        8000
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   const filters = [
@@ -54,6 +82,11 @@ export default function TravelContent() {
   const handleTravelClick = (travel: Travel) => {
     setSelectedTravel(travel);
     setIsModalOpen(true);
+  };
+
+  const handleRetry = () => {
+    toast.info("Recargando viajes...");
+    loadTravels();
   };
 
   return (
@@ -85,6 +118,7 @@ export default function TravelContent() {
           <button
             className={`view-btn ${viewMode === "map" ? "active" : ""}`}
             onClick={() => setViewMode("map")}
+            disabled={loading || error}
           >
             <Map size={18} />
             <span>{t("mapView")}</span>
@@ -92,6 +126,7 @@ export default function TravelContent() {
           <button
             className={`view-btn ${viewMode === "list" ? "active" : ""}`}
             onClick={() => setViewMode("list")}
+            disabled={loading || error}
           >
             <List size={18} />
             <span>{t("listView")}</span>
@@ -106,6 +141,7 @@ export default function TravelContent() {
             placeholder={t("search")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            disabled={loading || error}
           />
         </div>
 
@@ -121,6 +157,7 @@ export default function TravelContent() {
                 key={filterItem.id}
                 className={`filter-btn ${filter === filterItem.id ? "active" : ""}`}
                 onClick={() => setFilter(filterItem.id)}
+                disabled={loading || error}
               >
                 {filterItem.icon}
                 <span>{filterItem.label}</span>
@@ -132,7 +169,33 @@ export default function TravelContent() {
 
       {/* Content */}
       <div className="travels-content">
-        {viewMode === "map" ? (
+        {loading ? (
+          <div className="travels-loading">
+            <div className="loader"></div>
+            <p>Cargando viajes...</p>
+          </div>
+        ) : error ? (
+          <div className="travels-error">
+            <div className="error-icon">⚠️</div>
+            <h3>Error al cargar los viajes</h3>
+            <p>No se pudieron cargar los datos. Por favor, intenta de nuevo.</p>
+            <button className="retry-button" onClick={handleRetry}>
+              🔄 Reintentar
+            </button>
+          </div>
+        ) : travels.length === 0 ? (
+          <div className="travels-empty">
+            <div className="empty-icon">🗺️</div>
+            <h3>No hay viajes disponibles</h3>
+            <p>Aún no hay viajes registrados en el sistema.</p>
+          </div>
+        ) : filteredTravels.length === 0 ? (
+          <div className="travels-empty">
+            <div className="empty-icon">🔍</div>
+            <h3>No se encontraron resultados</h3>
+            <p>Prueba con otros filtros o términos de búsqueda.</p>
+          </div>
+        ) : viewMode === "map" ? (
           <TravelMap travels={filteredTravels} onMarkerClick={handleTravelClick} />
         ) : (
           <div className="travels-grid">

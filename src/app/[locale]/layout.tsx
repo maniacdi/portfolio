@@ -8,6 +8,7 @@ import WeatherWidget from "@components/common/WeatherWidget";
 import "../../styles/globals.scss";
 import TerminalLoader from "../components/common/TerminalLoader";
 import EasterEggs from "../components/common/EasterEggs";
+import { ToastProvider } from "../components/toast/ToastProvider";
 
 export async function generateMetadata({
   params,
@@ -37,12 +38,14 @@ export default async function LocaleLayout({
 
     return (
       <NextIntlClientProvider locale={locale} messages={messages}>
+         <ToastProvider>
         <TerminalLoader />
         <Header />
         <main className="main-content">{children}</main>
         <Footer />
         <WeatherWidget />
         <EasterEggs />
+        </ToastProvider>
       </NextIntlClientProvider>
     );
   } catch (error) {
