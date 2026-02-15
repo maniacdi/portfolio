@@ -223,7 +223,7 @@ export default function EasterEggs() {
             >
               🔄 {t("resetProgress")}
             </button>
-            {!isMobile && <p className="mobile-warning">{t("only")}</p>}
+            {isMobile && <p className="mobile-warning">{t("only")}</p>}
           </motion.div>
         )}
       </AnimatePresence>
