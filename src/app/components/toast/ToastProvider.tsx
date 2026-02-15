@@ -87,13 +87,7 @@ export function useToast() {
 }
 
 // Toast Container Component
-function ToastContainer({
-  toasts,
-  onRemove,
-}: {
-  toasts: Toast[];
-  onRemove: (id: string) => void;
-}) {
+function ToastContainer({ toasts, onRemove }: { toasts: Toast[]; onRemove: (id: string) => void }) {
   return (
     <div className="toast-container">
       <AnimatePresence>
@@ -143,7 +137,7 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
       layout
     >
       <div className="toast-icon">{getIcon()}</div>
-      
+
       <div className="toast-content">
         <p className="toast-title">{getTitle()}</p>
         <p className="toast-message">{toast.message}</p>

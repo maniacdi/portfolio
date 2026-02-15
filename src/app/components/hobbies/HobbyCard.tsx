@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Heart } from "lucide-react";
 import { useGlobalStore } from "@/app/store/useGlobalStore";
 import "./HobbyCard.scss";
+import { useToast } from "../toast/ToastProvider";
+import { useTranslations } from "next-intl";
 
 interface HobbyCardProps {
   item: HobbyItem;
@@ -14,6 +16,9 @@ interface HobbyCardProps {
 }
 
 export const HobbyCard = ({ item, index = 0, categoryType }: HobbyCardProps) => {
+  const toast = useToast();
+  const t = useTranslations("general");
+
   const { toggleFavorite, favoriteAnime, favoriteGames, favoriteDrawings, favoriteCookings } =
     useGlobalStore();
 
@@ -37,6 +42,7 @@ export const HobbyCard = ({ item, index = 0, categoryType }: HobbyCardProps) => 
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
     toggleFavorite(categoryType, item.id);
+    toast.info(isFavorite ? t("removedFromFavorites") : t("addedToFavorites"), 1000);
   };
 
   return (

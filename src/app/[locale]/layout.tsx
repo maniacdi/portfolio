@@ -38,13 +38,13 @@ export default async function LocaleLayout({
 
     return (
       <NextIntlClientProvider locale={locale} messages={messages}>
-         <ToastProvider>
-        <TerminalLoader />
-        <Header />
-        <main className="main-content">{children}</main>
-        <Footer />
-        <WeatherWidget />
-        <EasterEggs />
+        <ToastProvider>
+          <TerminalLoader />
+          <Header />
+          <main className="main-content">{children}</main>
+          <Footer />
+          <WeatherWidget />
+          <EasterEggs />
         </ToastProvider>
       </NextIntlClientProvider>
     );

@@ -117,7 +117,8 @@
       "anime": "Anime",
       "videogames": "Videojuegos",
       "drawing": "Dibujo",
-      "cooking": "Cocina"
+      "cooking": "Cocina",
+      "favorites": "Favoritos"
     },
     "anime": {
       "description": "Mis series y películas de anime favoritas que me han inspirado"
@@ -238,6 +239,11 @@
     "title": "Easter Eggs",
     "state": "encontrados",
     "keys": "teclas",
-    "resetProgress": "Reiniciar progreso"
+    "resetProgress": "Reiniciar progreso",
+    "only": "Solo jugable en escritorio"
+  },
+  "general": {
+    "removedFromFavorites": "Eliminado de favoritos",
+    "addedToFavorites": "Añadido a favoritos"
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Map, List, Filter, Search, Globe, Calendar, Star, Kayak, TreePalm } from "lucide-react";
@@ -15,7 +15,7 @@ import "./TravelContent.scss";
 export default function TravelContent() {
   const t = useTranslations("travels");
   const toast = useToast();
-  
+
   const [viewMode, setViewMode] = useState<"map" | "list">("map");
   const [filter, setFilter] = useState<string>("all");
   const [search, setSearch] = useState<string>("");
@@ -25,6 +25,9 @@ export default function TravelContent() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const hasShownToast = useRef(false);
+  const isFirstLoad = useRef(true);
+
   useEffect(() => {
     loadTravels();
   }, []);
@@ -32,29 +35,33 @@ export default function TravelContent() {
   const loadTravels = async () => {
     setLoading(true);
     setError(false);
-    
+
     try {
       const data = await fetchAllTravels();
-      
+
       if (!data || data.length === 0) {
-
-        toast.warning("No se encontraron viajes disponibles");
         setTravels([]);
+        if (!hasShownToast.current) {
+          toast.warning("No se encontraron viajes disponibles");
+          hasShownToast.current = true;
+        }
       } else {
-
         setTravels(data);
-        toast.success(`${data.length} viajes cargados correctamente`);
+        if (isFirstLoad.current) {
+          toast.success(`${data.length} viajes cargados correctamente`);
+          isFirstLoad.current = false;
+          hasShownToast.current = true;
+        }
       }
     } catch (err) {
-
       console.error("Error loading travels:", err);
       setError(true);
       setTravels([]);
-      
-      toast.error(
-        "Error al cargar los viajes. Por favor, intenta recargar la página.",
-        8000
-      );
+
+      if (!hasShownToast.current) {
+        toast.error("Error al cargar los viajes. Por favor, intenta recargar la página.", 8000);
+        hasShownToast.current = true;
+      }
     } finally {
       setLoading(false);
     }
@@ -85,6 +92,7 @@ export default function TravelContent() {
   };
 
   const handleRetry = () => {
+    hasShownToast.current = false;
     toast.info("Recargando viajes...");
     loadTravels();
   };

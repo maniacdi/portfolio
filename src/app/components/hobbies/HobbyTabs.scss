@@ -211,6 +211,10 @@
 .grid-controls {
   display: flex;
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .grid-btn {

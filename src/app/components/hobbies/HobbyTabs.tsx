@@ -85,7 +85,7 @@ export default function HobbyTabs() {
             title="Show only favorites"
           >
             <Heart size={18} className={showOnlyFavorites ? "filled" : ""} />
-            <span>Favorites</span>
+            <span>{t("favorites")}</span>
           </motion.button>
 
           <div className="separator" />

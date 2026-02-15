@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./EasterEggs.scss";
 import { useTranslations } from "next-intl";
 
-// 🎮 easter eggs 
+// 🎮 easter eggs
 const EASTER_EGGS = [
   {
     sequence: ["b", "n", "b"],
@@ -38,6 +38,7 @@ export default function EasterEggs() {
   const [foundEggs, setFoundEggs] = useState<Set<string>>(new Set());
   const [showProgress, setShowProgress] = useState(false);
   const [justCompletedAll, setJustCompletedAll] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const t = useTranslations("easterEggs");
 
   const SEQUENCE_TIMEOUT = 3000;
@@ -47,6 +48,13 @@ export default function EasterEggs() {
     if (saved) {
       setFoundEggs(new Set(JSON.parse(saved)));
     }
+  }, []);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const saveProgress = (eggId: string) => {
@@ -77,9 +85,7 @@ export default function EasterEggs() {
           const wasFirstTime = !foundEggs.has(egg.id);
           const updatedFound = saveProgress(egg.id);
 
-          if (wasFirstTime && updatedFound.size === EASTER_EGGS.length)
-            setJustCompletedAll(true);
-
+          if (wasFirstTime && updatedFound.size === EASTER_EGGS.length) setJustCompletedAll(true);
 
           setTimeout(() => {
             setActiveToasts((prev) => prev.filter((t) => t.id !== newToast.id));
@@ -217,6 +223,7 @@ export default function EasterEggs() {
             >
               🔄 {t("resetProgress")}
             </button>
+            {!isMobile && <p className="mobile-warning">{t("only")}</p>}
           </motion.div>
         )}
       </AnimatePresence>
