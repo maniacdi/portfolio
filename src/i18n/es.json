@@ -9,7 +9,8 @@
     "projects": "Proyectos",
     "travels": "Viajes",
     "hobbies": "Hobbies",
-    "language": "Idioma"
+    "language": "Idioma",
+    "code": "Código"
   },
   "home": {
     "title": "Bienvenido a mi portfolio",
@@ -222,7 +223,7 @@
     "languages": "idiomas"
   },
   "techCarousel": {
-    "title": "Tech Stack",
+    "title": "Tecnologías y Herramientas",
     "subtitle": "Tecnologías y herramientas que uso diariamente para construir productos digitales",
     "previous": "Tecnología anterior",
     "next": "Siguiente tecnología",
@@ -245,5 +246,22 @@
   "general": {
     "removedFromFavorites": "Eliminado de favoritos",
     "addedToFavorites": "Añadido a favoritos"
+  },
+  "code": {
+    "feature": "Repositorios Destacados",
+    "featuredRepos": "Proyectos destacados y experimentos técnicos disponibles en GitHub",
+    "loading": "Cargando repositorios...",
+    "fail": "No se pudieron cargar los repositorios",
+    "retry": "Reintentar",
+    "updated": "Actualizado",
+    "view": "Ver código",
+    "live": "Ver demo",
+    "viewAll": "Ver todos los repositorios en GitHub",
+    "openSource": "Código abierto",
+    "code": "Código y Proyectos",
+    "description": "Explorando tecnologías, construyendo soluciones y compartiendo conocimiento a través del código abierto.",
+    "repositories": "Repositorios",
+    "stars": "Estrellas",
+    "forks": "Forks"
   }
 }

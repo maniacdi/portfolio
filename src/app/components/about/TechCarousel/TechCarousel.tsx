@@ -133,8 +133,8 @@ export default function TechCarousel() {
   return (
     <section className="tech-carousel-section" aria-label="Tecnologías y herramientas">
       <div className="section-header">
-        <h2 className="section-title">
-          <span className="gradient-text">{t("title")}</span> & Tools
+        <h2 className="section-title gradient-text">
+          {t("title")}
         </h2>
         <p className="section-subtitle">{t("subtitle")}</p>
       </div>

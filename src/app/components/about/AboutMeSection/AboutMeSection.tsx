@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import "./AboutMeSection.scss";
 import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/DeveloperProfile";
-import TechCarousel from "../TechCarousel/TechCarousel";
 import { HorizontalTimeline } from "../HorizontalTimeline/HorizontalTimeline";
 
 interface AboutSectionProps {
@@ -64,7 +63,6 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
           </div>
         </div>
       </section>
-      <TechCarousel />
       <motion.div
         className="cta-section"
         initial={{ opacity: 0, y: 40 }}

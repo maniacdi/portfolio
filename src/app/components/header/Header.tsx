@@ -18,6 +18,7 @@ export default function Header() {
     { href: "/about", label: t("about") },
     { href: "/travels", label: t("travels") },
     { href: "/hobbies", label: t("hobbies") },
+    { href: "/code", label: t("code") },
   ];
 
   // Close menu when clicking on a link
