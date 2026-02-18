@@ -14,8 +14,8 @@
   }
 
   @media (max-width: 480px) {
-    margin-left: -8dvw;
-    width: 98dvw;
+    margin-left: -4dvw;
+    width: 100dvw;
   }
 }
 
@@ -675,7 +675,7 @@
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
-      max-width: 94%;
+      max-width: 90%;
     }
 
     .contact-card {
