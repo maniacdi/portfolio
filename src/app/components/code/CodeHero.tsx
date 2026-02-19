@@ -2,55 +2,40 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Code2, BookOpen, Star, GitFork } from "lucide-react";
+import { Code2, BookOpen, Calendar, Github, ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
+import {
+  fetchGitHubStats,
+  fetchPrimaryLanguages,
+  GitHubStats,
+} from "@/app/services/githubService";
 import "./CodeHero.scss";
-
-interface GitHubStats {
-  totalRepos: number;
-  totalStars: number;
-  totalForks: number;
-}
 
 export default function CodeHero() {
   const t = useTranslations("code");
   const [stats, setStats] = useState<GitHubStats>({
     totalRepos: 11,
-    totalStars: 0,
-    totalForks: 0,
+    totalLanguages: 5,
+    yearsActive: 3,
   });
+  const [primaryLanguages, setPrimaryLanguages] = useState<string[]>([
+    "TypeScript",
+    "JavaScript",
+    "React",
+  ]);
 
   useEffect(() => {
-    fetchGitHubStats();
+    loadGitHubData();
   }, []);
 
-  const fetchGitHubStats = async () => {
-    try {
-      const response = await fetch(
-        "https://api.github.com/users/maniacdi/repos?per_page=100"
-      );
+  const loadGitHubData = async () => {
+    const [statsData, languagesData] = await Promise.all([
+      fetchGitHubStats(),
+      fetchPrimaryLanguages(),
+    ]);
 
-      if (!response.ok) return;
-
-      const repos = await response.json();
-
-      const totalStars = repos.reduce(
-        (acc: number, repo: any) => acc + repo.stargazers_count,
-        0
-      );
-      const totalForks = repos.reduce(
-        (acc: number, repo: any) => acc + repo.forks_count,
-        0
-      );
-
-      setStats({
-        totalRepos: repos.length,
-        totalStars,
-        totalForks,
-      });
-    } catch (error) {
-      console.error("Error fetching GitHub stats:", error);
-    }
+    setStats(statsData);
+    setPrimaryLanguages(languagesData);
   };
 
   return (
@@ -66,20 +51,45 @@ export default function CodeHero() {
           <span>{t("openSource")}</span>
         </div>
 
-        <h1 className="hero-title gradient-text">
-         {t("code")}
+        <h1 className="hero-title">
+          {t("code").split(" ")[0]}{" "}
+          <span className="gradient-text">
+            {t("code").split(" ").slice(1).join(" ")}
+          </span>
         </h1>
 
-        <p className="hero-description">
-          {t("description")}
-        </p>
+        <p className="hero-description">{t("description")}</p>
+
+        <div className="hero-stats-mini">
+          <motion.div
+            className="stat-mini"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <BookOpen size={20} />
+            <span>
+              {stats.totalRepos} {t("projects")}
+            </span>
+          </motion.div>
+
+          <motion.div
+            className="stat-mini tech-stack"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Code2 size={20} />
+            <span>{primaryLanguages.join(" · ")}</span>
+          </motion.div>
+        </div>
 
         <div className="hero-stats">
           <motion.div
             className="stat-card"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.5 }}
             whileHover={{ scale: 1.05 }}
           >
             <BookOpen className="stat-icon" />
@@ -93,13 +103,13 @@ export default function CodeHero() {
             className="stat-card"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.6 }}
             whileHover={{ scale: 1.05 }}
           >
-            <Star className="stat-icon" />
+            <Code2 className="stat-icon" />
             <div className="stat-content">
-              <span className="stat-value">{stats.totalStars}</span>
-              <span className="stat-label">{t("stars")}</span>
+              <span className="stat-value">{stats.totalLanguages}+</span>
+              <span className="stat-label">{t("languages")}</span>
             </div>
           </motion.div>
 
@@ -107,16 +117,32 @@ export default function CodeHero() {
             className="stat-card"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.7 }}
             whileHover={{ scale: 1.05 }}
           >
-            <GitFork className="stat-icon" />
+            <Calendar className="stat-icon" />
             <div className="stat-content">
-              <span className="stat-value">{stats.totalForks}</span>
-              <span className="stat-label">{t("forks")}</span>
+              <span className="stat-value">{stats.yearsActive}+</span>
+              <span className="stat-label">{t("active")}</span>
             </div>
           </motion.div>
         </div>
+
+        <motion.a
+          href="https://github.com/maniacdi?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero-cta"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Github size={20} />
+          {t("viewGithub")}
+          <ExternalLink size={16} />
+        </motion.a>
       </motion.div>
     </section>
   );

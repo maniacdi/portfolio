@@ -1,4 +1,3 @@
-
 /* ============================================
    CODE HERO SECTION
 ============================================ */
@@ -40,18 +39,17 @@
     color: var(--text-primary);
     margin: 0 0 1.5rem 0;
     line-height: 1.1;
-    text-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
 
     @media (max-width: 768px) {
     }
-  }
 
-  .gradient-text {
+    .gradient-text {
       background: linear-gradient(90deg, #ff4edd, #00d9ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+  }
 
   .hero-description {
     color: var(--text-secondary);
@@ -62,17 +60,77 @@
     margin-right: auto;
 
     @media (max-width: 768px) {
+      margin-bottom: 2rem;
     }
   }
+
+  /* ============================================
+     STATS MINI (Tech Stack Line)
+  ============================================ */
+
+  .hero-stats-mini {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-mini {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+
+      @media (max-width: 768px) {
+        padding: 0.5rem 1rem;
+      }
+
+      svg {
+        color: var(--neon-blue);
+        flex-shrink: 0;
+      }
+
+      &.tech-stack {
+        span {
+          color: var(--text-primary);
+          font-weight: 600;
+        }
+      }
+
+      &:hover {
+        background: rgba(0, 243, 255, 0.05);
+        border-color: rgba(0, 243, 255, 0.3);
+      }
+    }
+  }
+
+  /* ============================================
+     STATS CARDS
+  ============================================ */
 
   .hero-stats {
     display: flex;
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
+    margin-bottom: 3rem;
 
     @media (max-width: 768px) {
       gap: 1rem;
+      margin-bottom: 2rem;
     }
   }
 
@@ -128,6 +186,51 @@
         letter-spacing: 0.5px;
         font-weight: 600;
       }
+    }
+  }
+
+  /* ============================================
+     CTA BUTTON
+  ============================================ */
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(90deg, #ff4edd, #00d9ff);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(255, 78, 221, 0.4);
+    transition: all 0.3s ease;
+
+    @media (max-width: 768px) {
+      padding: 0.875rem 1.5rem;
+    }
+
+    svg {
+      flex-shrink: 0;
+
+      &:last-child {
+        transition: transform 0.3s ease;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(255, 78, 221, 0.6);
+
+      svg:last-child {
+        transform: translateX(5px);
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 }

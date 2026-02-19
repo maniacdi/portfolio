@@ -3,24 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Github, Star, GitFork, ExternalLink } from "lucide-react";
-import { useToast } from "../toast/ToastProvider";
-import "./GitHubRepos.scss";
 import { useTranslations } from "next-intl";
+import { useToast } from "../toast/ToastProvider";
+import {
+  fetchFeaturedRepos,
+  GitHubRepo,
+} from "@/app/services/githubService";
+import "./GitHubRepos.scss";
 
-interface GitHubRepo {
-  id: number;
-  name: string;
-  description: string | null;
-  html_url: string;
-  homepage: string | null;
-  language: string;
-  stargazers_count: number;
-  forks_count: number;
-  topics: string[];
-  updated_at: string;
-}
-
-// Repos destacados en orden
 const FEATURED_REPOS = [
   "portfolio",
   "portfolio-backend",
@@ -31,38 +21,28 @@ const FEATURED_REPOS = [
 ];
 
 export default function GitHubRepos() {
-  const toast = useToast();
   const t = useTranslations("code");
+  const toast = useToast();
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchGitHubRepos();
+    loadRepos();
   }, []);
 
-  const fetchGitHubRepos = async () => {
+  const loadRepos = async () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://api.github.com/users/maniacdi/repos?sort=updated&per_page=100"
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch repos");
-      }
-
-      const allRepos: GitHubRepo[] = await response.json();
-
-      // Filtrar y ordenar según FEATURED_REPOS
-      const featuredRepos = FEATURED_REPOS.map((repoName) =>
-        allRepos.find((repo) => repo.name === repoName)
-      ).filter(Boolean) as GitHubRepo[];
-
+      const featuredRepos = await fetchFeaturedRepos(FEATURED_REPOS);
       setRepos(featuredRepos);
+
+      if (featuredRepos.length === 0) {
+        toast.warning(t("fail"));
+      }
     } catch (error) {
-      console.error("Error fetching GitHub repos:", error);
-      toast.error("Error al cargar repositorios de GitHub");
+      console.error("Error loading repos:", error);
+      toast.error(t("fail"));
       setRepos([]);
     } finally {
       setLoading(false);
@@ -101,11 +81,12 @@ export default function GitHubRepos() {
     for (const [unit, secondsInUnit] of Object.entries(intervals)) {
       const interval = Math.floor(diffInSeconds / secondsInUnit);
       if (interval >= 1) {
-        return `${interval} ${unit}${interval > 1 ? "s" : ""} ago`;
+        const unitKey = interval > 1 ? `${unit}s` : unit;
+        return `${interval} ${t(unitKey)} ${t("ago")}`;
       }
     }
 
-    return "just now";
+    return t("justNow");
   };
 
   return (
@@ -113,11 +94,9 @@ export default function GitHubRepos() {
       <div className="section-header">
         <h2 className="section-title">
           <Github className="title-icon" />
-          <span className="gradient-text">{t("feature")}</span>
+          {t("feature")}
         </h2>
-        <p className="section-subtitle">
-          {t("featuredRepos")}
-        </p>
+        <p className="section-subtitle">{t("featuredRepos")}</p>
       </div>
 
       {loading ? (
@@ -129,7 +108,7 @@ export default function GitHubRepos() {
         <div className="repos-empty">
           <Github size={48} />
           <p>{t("fail")}</p>
-          <button onClick={fetchGitHubRepos} className="retry-button">
+          <button onClick={loadRepos} className="retry-button">
             {t("retry")}
           </button>
         </div>
@@ -144,7 +123,6 @@ export default function GitHubRepos() {
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
             >
-              {/* Language badge */}
               {repo.language && (
                 <div className="repo-language">
                   <span
@@ -157,18 +135,15 @@ export default function GitHubRepos() {
                 </div>
               )}
 
-              {/* Repo name */}
               <h3 className="repo-name">
                 <Github size={20} />
                 {repo.name}
               </h3>
 
-              {/* Description */}
               <p className="repo-description">
-                {repo.description || "No description available"}
+                {repo.description || t("noDescription")}
               </p>
 
-              {/* Topics */}
               {repo.topics && repo.topics.length > 0 && (
                 <div className="repo-topics">
                   {repo.topics.slice(0, 3).map((topic) => (
@@ -179,7 +154,6 @@ export default function GitHubRepos() {
                 </div>
               )}
 
-              {/* Stats */}
               <div className="repo-stats">
                 <div className="stat">
                   <Star size={14} />
@@ -194,7 +168,6 @@ export default function GitHubRepos() {
                 </div>
               </div>
 
-              {/* Links */}
               <div className="repo-links">
                 <a
                   href={repo.html_url}
@@ -223,7 +196,6 @@ export default function GitHubRepos() {
         </div>
       )}
 
-      {/* View all repos link */}
       <motion.div
         className="view-all-container"
         initial={{ opacity: 0 }}
