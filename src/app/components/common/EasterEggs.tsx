@@ -21,6 +21,13 @@ const EASTER_EGGS = [
     component: WowToast,
     duration: 3000,
   },
+    {
+    sequence: ["k", "u", "n", "a", "i"],
+    id: "kunai",
+    name: "Kunai Naruto",
+    component: KunaiToast,
+    duration: 4000,
+  },
 ];
 
 const STORAGE_KEY = "portfolio-easter-eggs";
@@ -302,5 +309,90 @@ function WowToast() {
         ))}
       </div>
     </motion.div>
+  );
+}
+
+// 🔪 KUNAI NARUTO TOAST
+function KunaiToast() {
+  const [audioPlayed, setAudioPlayed] = useState(false);
+
+  useEffect(() => {
+    if (!audioPlayed) {
+      const audio = new Audio('/easters/Naruto-theme.mp3');
+      audio.volume = 0.5;
+      audio.play().catch(err => console.log('Audio play failed:', err));
+      
+      document.body.classList.add('kunai-impact');
+      setTimeout(() => {
+        document.body.classList.remove('kunai-impact');
+      }, 900);
+      
+      setAudioPlayed(true);
+    }
+  }, [audioPlayed]);
+
+  return (
+    <>
+      <motion.div
+        className="easter-egg-toast kunai-toast"
+        initial={{ 
+          x: '-100vw', 
+          y: '-100vh', 
+        }}
+        animate={{
+          x: ['-100vw', '0vw'],
+          y: ['-100vh', '10vh'],
+        }}
+      >
+        <div className="toast-content kunai-content">
+          <motion.img
+            src="/easters/kunai.png"
+            alt="Kunai"
+            className="kunai-image"
+
+          />
+
+          <motion.div
+            className="impact-effect"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ 
+              scale: [0, 2, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{ 
+              delay: 0, 
+              duration: 0.6,
+              ease: "easeOut"
+            }}
+          />
+
+          {Array.from({ length: 12 }).map((_, i) => (
+            <motion.div
+              key={`smoke-${i}`}
+              className="smoke-particle"
+              initial={{ 
+                x: 0, 
+                y: 0, 
+                scale: 0,
+                opacity: 0,
+              }}
+              animate={{
+                x: Math.cos((i * 360) / 12 * (Math.PI / 180)) * 80,
+                y: Math.sin((i * 360) / 12 * (Math.PI / 180)) * 80,
+                scale: [0, 1.5, 0],
+                opacity: [0, 0.8, 0],
+              }}
+              transition={{
+                delay: 0.2  + i * 0.01,
+                duration: 0.8,
+                ease: "easeOut",
+              }}
+            >
+              💨
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </>
   );
 }

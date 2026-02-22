@@ -289,144 +289,6 @@
 }
 
 /* ============================================
-   TROPHY TOAST
-============================================ */
-
-.trophy-toast {
-  .toast-content {
-    position: relative;
-    padding: 3rem 2.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    border: 4px solid #ffd700;
-    border-radius: 20px;
-    box-shadow:
-      0 0 40px rgba(255, 215, 0, 0.8),
-      0 0 80px rgba(102, 126, 234, 0.6),
-      inset 0 0 40px rgba(255, 255, 255, 0.1);
-    overflow: visible;
-
-    @media (max-width: 768px) {
-      padding: 2rem 1.5rem;
-    }
-  }
-
-  .trophy-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .trophy-icon {
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
-
-    @media (max-width: 768px) {
-    }
-  }
-
-  .trophy-title {
-    font-family: "Orbitron", sans-serif;
-    font-weight: 900;
-    color: #ffd700;
-    text-align: center;
-    margin: 0;
-    text-shadow:
-      0 0 10px rgba(255, 215, 0, 0.8),
-      0 0 20px rgba(255, 215, 0, 0.6),
-      0 0 30px rgba(255, 215, 0, 0.4);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-
-    @media (max-width: 768px) {
-    }
-  }
-
-  .trophy-subtitle {
-    color: white;
-    text-align: center;
-    margin: 0;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-
-    @media (max-width: 768px) {
-    }
-  }
-
-  .trophy-stats {
-    display: flex;
-    gap: 3rem;
-    margin: 1rem 0;
-
-    @media (max-width: 768px) {
-      gap: 2rem;
-    }
-
-    .stat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-
-      .stat-value {
-        font-family: "Orbitron", sans-serif;
-        font-weight: 900;
-        color: #ffd700;
-        text-shadow:
-          0 0 20px rgba(255, 215, 0, 1),
-          0 0 40px rgba(255, 215, 0, 0.6);
-        line-height: 1;
-
-        @media (max-width: 768px) {
-        }
-      }
-
-      .stat-label {
-        color: rgba(255, 255, 255, 0.8);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-
-        @media (max-width: 768px) {
-        }
-      }
-    }
-  }
-
-  .trophy-message {
-    color: white;
-    text-align: center;
-    max-width: 400px;
-    line-height: 1.6;
-    margin: 0;
-
-    @media (max-width: 768px) {
-    }
-  }
-
-  .trophy-confetti {
-    position: absolute;
-    pointer-events: none;
-  }
-
-  .trophy-close-button {
-    padding: 0.75rem 2rem;
-    background: rgba(0, 0, 0, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 12px;
-    color: white;
-    font-family: "Orbitron", sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: white;
-      transform: scale(1.05);
-    }
-  }
-}
-
-/* ============================================
    BANANA TOAST
 ============================================ */
 
@@ -494,12 +356,162 @@
 }
 
 /* ============================================
+   KUNAI NARUTO TOAST
+============================================ */
+
+.kunai-toast {
+  .toast-content {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .kunai-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .kunai-image {
+    width: 200px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 165, 0, 0.8));
+    transform-origin: center center;
+    z-index: 10;
+
+    @media (max-width: 768px) {
+      width: 150px;
+    }
+  }
+
+  .kunai-text {
+    margin-top: 1.5rem;
+    text-align: center;
+
+    .naruto-quote {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #ff6b00;
+      text-shadow: 
+        0 0 10px rgba(255, 107, 0, 0.8),
+        0 0 20px rgba(255, 107, 0, 0.6),
+        0 0 30px rgba(255, 107, 0, 0.4),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  /* Efecto de impacto */
+  .impact-effect {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 165, 0, 0.8) 0%,
+      rgba(255, 107, 0, 0.4) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* Líneas de velocidad */
+  .speed-line {
+    position: absolute;
+    left: 0;
+    width: 150px;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 165, 0, 0.8) 50%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Partículas de humo */
+  .smoke-particle {
+    position: absolute;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 4;
+  }
+}
+
+/* Flash de pantalla */
+.screen-flash {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 165, 0, 0.6) 0%,
+    rgba(255, 107, 0, 0.3) 30%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+@keyframes kunaiStick {
+  0% {
+    transform: rotate(-45deg) scale(1);
+  }
+  50% {
+    transform: rotate(2deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes screenShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* Efecto shake en el body cuando se clava */
+body.kunai-impact {
+  animation: screenShake 0.3s ease-in-out 3;
+}
+
+/* ============================================
    RESPONSIVE
 ============================================ */
 
 @media (max-width: 768px) {
   .toast-content {
     padding: 1rem 1.5rem;
+  }
+
+   .kunai-toast {
+    .speed-line {
+      width: 100px;
+      height: 2px;
+    }
+
+    .smoke-particle {
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -509,15 +521,29 @@
 
 @media (prefers-reduced-motion: reduce) {
   .banana-emoji,
-  .wow-emoji,
-  .confetti,
-  .trophy-icon,
-  .trophy-confetti {
+  .wow-emoji {
     animation: none !important;
   }
 
   .easter-egg-toast {
     animation: simpleAppear 1s ease !important;
+  }
+  
+  .kunai-toast {
+    .kunai-image,
+    .speed-line,
+    .smoke-particle,
+    .impact-effect {
+      animation: none !important;
+    }
+  }
+
+  .screen-flash {
+    display: none;
+  }
+
+  body.kunai-impact {
+    animation: none !important;
   }
 }
 
