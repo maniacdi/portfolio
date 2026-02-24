@@ -280,5 +280,17 @@
     "minute": "minuto",
     "minutes": "minutos",
     "noDescription": "Sin descripción disponible"
+  },
+  "chatbot": {
+    "title": "Lacayo de Javi",
+    "online": "En línea",
+    "offline": "Desconectado",
+    "openChat": "Abrir chat",
+    "close": "Cerrar",
+    "placeholder": "Escribe tu pregunta...",
+    "send": "Enviar",
+    "poweredBy": "Powered by",
+    "noCost": "Sin costos de API",
+    "typing": "Escribiendo..."
   }
 }

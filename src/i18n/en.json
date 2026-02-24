@@ -280,5 +280,17 @@
     "minute": "minute",
     "minutes": "minutes",
     "noDescription": "No description available"
+  },
+  "chatbot": {
+    "title": "Javi's Minion",
+    "online": "Online",
+    "offline": "Offline",
+    "openChat": "Open chat",
+    "close": "Close",
+    "placeholder": "Type your question...",
+    "send": "Send",
+    "poweredBy": "Powered by",
+    "noCost": "No API costs",
+    "typing": "Typing..."
   }
 }
