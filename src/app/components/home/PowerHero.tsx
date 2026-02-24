@@ -10,8 +10,6 @@ import {
   Code2,
   Cpu,
   Download,
-  Github,
-  Linkedin,
   Mail,
   Sparkles,
   Terminal,

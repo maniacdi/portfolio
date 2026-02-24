@@ -10,9 +10,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock,
-  Globe,
   MapPin,
-  Star,
   X,
 } from "lucide-react";
 

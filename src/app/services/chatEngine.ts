@@ -158,8 +158,6 @@ export function getContextualSuggestions(
 
   const suggestions = locale === "es" ? suggestionsES : suggestionsEN;
 
-  const askedTopics = previousQuestions.map((q) => detectIntent(q, locale)).filter(Boolean);
-
   return suggestions.filter((_, index) => {
     return index < 3;
   });

@@ -30,11 +30,11 @@ import { WeatherService } from "@/app/services/weatherService";
 import "./WeatherWidget.scss";
 
 export default function WeatherWidget() {
-  const { weather, forecast, location, loading: weatherLoading, error, refetch } = useWeather();
+  const { weather, forecast, location, loading: weatherLoading, error } = useWeather();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isMinimized, setIsMinimized] = useState(false);
-  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isRefreshing, _setIsRefreshing] = useState(false);
   const locale = useLocale();
   const t = useTranslations("weather");
   const dateLocale = locale === "es" ? es : enUS;
@@ -74,15 +74,6 @@ export default function WeatherWidget() {
         return Zap;
       default:
         return CloudSun;
-    }
-  };
-
-  const handleRefresh = async () => {
-    setIsRefreshing(true);
-    try {
-      await refetch();
-    } finally {
-      setIsRefreshing(false);
     }
   };
 
