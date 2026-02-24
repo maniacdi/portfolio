@@ -1,10 +1,14 @@
-import { HobbySection } from "@/utils/types/Hobby";
-import { HobbyCard } from "./HobbyCard";
-import { SectionHeader } from "./SectionHeader";
 import { useTranslations } from "next-intl";
-import { useGlobalStore } from "@/app/store/useGlobalStore";
+
 import { motion } from "framer-motion";
 import { SearchX } from "lucide-react";
+
+import { useGlobalStore } from "@/app/store/useGlobalStore";
+import { HobbySection } from "@/utils/types/Hobby";
+
+import { HobbyCard } from "./HobbyCard";
+import { SectionHeader } from "./SectionHeader";
+
 import "./Sections.scss";
 
 interface Props {

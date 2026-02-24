@@ -1,8 +1,9 @@
 import { HobbySection } from "@/utils/types/Hobby";
+
 import { animeList } from "./anime";
-import { videoGamesList } from "./videoGames";
-import { drawingList } from "./drawing";
 import { cookingList } from "./cooking";
+import { drawingList } from "./drawing";
+import { videoGamesList } from "./videoGames";
 
 export const sectionsData: HobbySection[] = [
   {

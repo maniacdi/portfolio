@@ -2,11 +2,15 @@
 
 import { FC } from "react";
 import { useTranslations } from "next-intl";
+
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
-import "./AboutMeSection.scss";
+
 import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/DeveloperProfile";
+
 import { HorizontalTimeline } from "../HorizontalTimeline/HorizontalTimeline";
+
+import "./AboutMeSection.scss";
 
 interface AboutSectionProps {
   className?: string;

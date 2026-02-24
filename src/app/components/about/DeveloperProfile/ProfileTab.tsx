@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Mail, MapPin, Briefcase, Heart } from "lucide-react";
+import { Briefcase, Heart,Mail, MapPin, User } from "lucide-react";
+
 import type { ProfileData } from "@/utils/data/profileData";
 
 interface ProfileTabProps {

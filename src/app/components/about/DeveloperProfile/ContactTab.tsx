@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, Globe, ChevronRight } from "lucide-react";
+import { ChevronRight,Github, Globe, Linkedin, Mail } from "lucide-react";
+
 import type { ProfileData } from "@/utils/data/profileData";
 
 interface ContactTabProps {

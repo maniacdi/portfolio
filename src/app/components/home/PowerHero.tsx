@@ -1,22 +1,25 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect,useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+
+import { AnimatePresence,motion } from "framer-motion";
 import {
-  Terminal,
-  Code2,
-  Cpu,
-  Zap,
-  Sparkles,
-  Mail,
-  Github,
-  Linkedin,
-  Download,
   Briefcase,
   Calendar,
+  Code2,
+  Cpu,
+  Download,
+  Github,
+  Linkedin,
+  Mail,
+  Sparkles,
+  Terminal,
+  Zap,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+
 import { cvService } from "../../services/cvService";
+
 import "./PowerHero.scss";
 
 const TECH_STACK = [

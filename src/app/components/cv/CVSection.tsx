@@ -1,10 +1,13 @@
 "use client";
 
+import { useEffect,useState } from "react";
 import { useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
 import { useLocale } from "next-intl";
-import { FileText, Download, Eye, Terminal } from "lucide-react";
+
+import { Download, Eye, FileText, Terminal } from "lucide-react";
+
 import { cvService } from "@/app/services/cvService";
+
 import "./CVSection.scss";
 
 export default function CVSection() {
@@ -13,7 +16,7 @@ export default function CVSection() {
   const locale = useLocale() as "es" | "en";
   const [cvUrls, setCvUrls] = useState<{ es: string; en: string } | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState<"es" | "en">(locale);
+  const [selectedLang, _setSelectedLang] = useState<"es" | "en">(locale);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {

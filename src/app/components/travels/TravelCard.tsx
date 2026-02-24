@@ -1,10 +1,12 @@
 "use client";
 
+import { useLocale, useTranslations } from "next-intl";
+
+import { motion } from "framer-motion";
+import { Calendar, Camera,ChevronRight, MapPin } from "lucide-react";
+
 import { formatDate, getDuration, getTypeColor } from "@/utils/helpers/travels";
 import { Travel } from "@/utils/types/Travel";
-import { motion } from "framer-motion";
-import { MapPin, Calendar, ChevronRight, Camera } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 
 interface TravelCardProps {
   travel: Travel;

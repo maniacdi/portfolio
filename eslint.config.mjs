@@ -1,10 +1,9 @@
-// eslint.config.mjs
 import js from "@eslint/js";
-import nextConfig from "eslint-config-next";
+import nextPlugin from "@next/eslint-plugin-next";
 import prettier from "eslint-config-prettier";
+import react from "eslint-plugin-react";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import tseslint from "typescript-eslint";
-import react from "eslint-plugin-react";
 
 const config = [
   // Ignore folders
@@ -15,15 +14,23 @@ const config = [
   // JS base rules
   js.configs.recommended,
 
-  // Next config
-  ...nextConfig.configs.recommended,
-
   // TypeScript rules
   ...tseslint.configs.recommended,
 
   // React rules
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
+
+  // Next.js config (adaptado para flat config)
+  {
+    plugins: {
+      "@next/next": nextPlugin,
+    },
+    rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
+    },
+  },
 
   {
     plugins: {
@@ -33,8 +40,8 @@ const config = [
 
     rules: {
       // React specific
-      "react/react-in-jsx-scope": "off", // No necesario en Next.js
-      "react/prop-types": "off", // Usamos TypeScript
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
 
       // Import sorting
       "simple-import-sort/imports": [
@@ -43,22 +50,16 @@ const config = [
           groups: [
             // React + Next first
             ["^react", "^next", "^@react-three"],
-
             // External packages
             ["^@?\\w"],
-
             // Internal aliases
             ["^@/", "^@components/", "^@styles/"],
-
             // Parent imports
             ["^\\.\\./"],
-
             // Same folder imports
             ["^\\."],
-
             // Style imports
             ["^.+\\.s?css$"],
-
             // Side effect imports
             ["^\\u0000"],
           ],
@@ -86,9 +87,6 @@ const config = [
 
       // Allow console in development
       "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-
-      // Prettier compatibility
-      ...prettier.rules,
     },
 
     // Settings for React
@@ -109,6 +107,8 @@ const config = [
       },
     },
   },
+
+  prettier,
 ];
 
 export default config;

@@ -58,16 +58,12 @@ export async function fetchGitHubStats(): Promise<GitHubStats> {
     }
 
     const languages = new Set(
-      repos
-        .map((repo) => repo.language)
-        .filter((lang): lang is string => lang !== null)
+      repos.map((repo) => repo.language).filter((lang): lang is string => lang !== null)
     );
 
     const dates = repos.map((repo) => new Date(repo.created_at).getTime());
     const oldestRepo = Math.min(...dates);
-    const yearsActive = Math.ceil(
-      (Date.now() - oldestRepo) / (1000 * 60 * 60 * 24 * 365)
-    );
+    const yearsActive = Math.ceil((Date.now() - oldestRepo) / (1000 * 60 * 60 * 24 * 365));
 
     return {
       totalRepos: repos.length,
@@ -87,9 +83,7 @@ export async function fetchGitHubStats(): Promise<GitHubStats> {
 /**
  * Fetch featured repositories by names
  */
-export async function fetchFeaturedRepos(
-  repoNames: string[]
-): Promise<GitHubRepo[]> {
+export async function fetchFeaturedRepos(repoNames: string[]): Promise<GitHubRepo[]> {
   try {
     const allRepos = await fetchAllRepos();
 
@@ -115,8 +109,7 @@ export async function fetchPrimaryLanguages(): Promise<string[]> {
 
     repos.forEach((repo) => {
       if (repo.language) {
-        languageCount[repo.language] =
-          (languageCount[repo.language] || 0) + 1;
+        languageCount[repo.language] = (languageCount[repo.language] || 0) + 1;
       }
     });
 

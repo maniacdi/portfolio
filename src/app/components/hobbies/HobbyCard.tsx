@@ -1,13 +1,17 @@
 "use client";
 
-import { HobbyItem } from "@/utils/types/Hobby";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { Heart } from "lucide-react";
-import { useGlobalStore } from "@/app/store/useGlobalStore";
-import "./HobbyCard.scss";
-import { useToast } from "../toast/ToastProvider";
 import { useTranslations } from "next-intl";
+
+import { motion } from "framer-motion";
+import { Heart } from "lucide-react";
+
+import { useGlobalStore } from "@/app/store/useGlobalStore";
+import { HobbyItem } from "@/utils/types/Hobby";
+
+import { useToast } from "../toast/ToastProvider";
+
+import "./HobbyCard.scss";
 
 interface HobbyCardProps {
   item: HobbyItem;

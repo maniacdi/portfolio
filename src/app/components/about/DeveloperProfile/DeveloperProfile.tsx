@@ -1,15 +1,20 @@
 "use client";
 
-import { FC, useState, useCallback, useMemo } from "react";
+import { FC, useCallback, useMemo,useState } from "react";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
-import { Terminal, Code2, User, Mail, Sparkles } from "lucide-react";
+
+import { AnimatePresence,motion } from "framer-motion";
+import { Code2, Mail, Sparkles,Terminal, User } from "lucide-react";
+
 import { useClipboard } from "@/app/hooks/useClipboard";
 import { profileData } from "@/utils/data/profileData";
+
+import CVSection from "../../cv/CVSection";
+
+import { ContactTab } from "./ContactTab";
 import { ProfileTab } from "./ProfileTab";
 import { SkillsTab } from "./SkillsTab";
-import { ContactTab } from "./ContactTab";
-import CVSection from "../../cv/CVSection";
+
 import "./DeveloperProfile.scss";
 
 interface DeveloperProfileProps {

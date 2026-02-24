@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Github, Star, GitFork, ExternalLink } from "lucide-react";
+import { useEffect,useState } from "react";
 import { useTranslations } from "next-intl";
+
+import { motion } from "framer-motion";
+import { ExternalLink,GitFork, Github, Star } from "lucide-react";
+
+import { fetchFeaturedRepos, GitHubRepo } from "@/app/services/githubService";
+
 import { useToast } from "../toast/ToastProvider";
-import {
-  fetchFeaturedRepos,
-  GitHubRepo,
-} from "@/app/services/githubService";
+
 import "./GitHubRepos.scss";
 
 const FEATURED_REPOS = [
@@ -140,9 +141,7 @@ export default function GitHubRepos() {
                 {repo.name}
               </h3>
 
-              <p className="repo-description">
-                {repo.description || t("noDescription")}
-              </p>
+              <p className="repo-description">{repo.description || t("noDescription")}</p>
 
               {repo.topics && repo.topics.length > 0 && (
                 <div className="repo-topics">

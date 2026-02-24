@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Zap, Palette, Database, Cpu, Code } from "lucide-react";
+
+import { AnimatePresence,motion } from "framer-motion";
+import { Code,Cpu, Database, Palette, Zap } from "lucide-react";
+
 import type { ProfileData } from "@/utils/data/profileData";
 
 interface SkillsTabProps {

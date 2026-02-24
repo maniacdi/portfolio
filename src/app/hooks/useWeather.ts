@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { WeatherService } from "@/app/services/weatherService";
+import { useCallback,useEffect, useState } from "react";
 import { useLocale } from "next-intl";
+
+import { WeatherService } from "@/app/services/weatherService";
 
 export const useWeather = () => {
   const [weather, setWeather] = useState<any>(null);

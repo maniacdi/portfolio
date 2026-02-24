@@ -1,7 +1,9 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence,motion } from "framer-motion";
+
 import { useGlobalStore } from "@/app/store/useGlobalStore";
+
 import "./LoadingModal.scss";
 
 export default function LoadingModal() {

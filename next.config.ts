@@ -1,5 +1,5 @@
-import withNextIntl from "next-intl/plugin";
 import type { NextConfig } from "next";
+import withNextIntl from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   // React Compiler (opcional pero recomendado si usas React 19)

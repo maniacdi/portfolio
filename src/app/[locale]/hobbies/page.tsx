@@ -1,5 +1,7 @@
 import { getTranslations } from "next-intl/server";
+
 import HobbyTabs from "@/app/components/hobbies/HobbyTabs";
+
 import "@/styles/page.scss";
 
 export default async function HobbiesPage({ params }: { params: Promise<{ locale: string }> }) {

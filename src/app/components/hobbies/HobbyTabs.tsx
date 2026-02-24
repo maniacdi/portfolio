@@ -1,11 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Sections } from "./Sections";
-import { sectionsData } from "@/utils/data";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Search, X, Grid3x3, Grid2x2, LayoutGrid, Heart } from "lucide-react";
+
+import { AnimatePresence,motion } from "framer-motion";
+import { Grid2x2, Grid3x3, Heart,LayoutGrid, Search, X } from "lucide-react";
+
+import { sectionsData } from "@/utils/data";
+
+import { Sections } from "./Sections";
+
 import "./HobbyTabs.scss";
 
 export default function HobbyTabs() {

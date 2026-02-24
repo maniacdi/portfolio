@@ -391,11 +391,11 @@
     text-align: center;
 
     .naruto-quote {
-      font-family: 'Orbitron', sans-serif;
+      font-family: "Orbitron", sans-serif;
       font-size: 2rem;
       font-weight: 900;
       color: #ff6b00;
-      text-shadow: 
+      text-shadow:
         0 0 10px rgba(255, 107, 0, 0.8),
         0 0 20px rgba(255, 107, 0, 0.6),
         0 0 30px rgba(255, 107, 0, 0.4),
@@ -478,7 +478,8 @@
 }
 
 @keyframes screenShake {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
   25% {
@@ -503,7 +504,7 @@ body.kunai-impact {
     padding: 1rem 1.5rem;
   }
 
-   .kunai-toast {
+  .kunai-toast {
     .speed-line {
       width: 100px;
       height: 2px;
@@ -528,7 +529,7 @@ body.kunai-impact {
   .easter-egg-toast {
     animation: simpleAppear 1s ease !important;
   }
-  
+
   .kunai-toast {
     .kunai-image,
     .speed-line,

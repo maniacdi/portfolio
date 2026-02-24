@@ -1,22 +1,25 @@
 "use client";
 
-import { Travel } from "@/utils/types/Travel";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+
+import { AnimatePresence,motion } from "framer-motion";
 import {
-  X,
-  MapPin,
   Calendar,
-  Star,
+  Camera,
   ChevronLeft,
   ChevronRight,
-  Camera,
-  Globe,
   Clock,
+  Globe,
+  MapPin,
+  Star,
+  X,
 } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import { useState } from "react";
-import "./TravelModal.scss";
+
 import { formatDate, getDuration, getTypeColor } from "@/utils/helpers/travels";
+import { Travel } from "@/utils/types/Travel";
+
+import "./TravelModal.scss";
 
 interface TravelModalProps {
   travel: Travel;

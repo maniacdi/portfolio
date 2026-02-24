@@ -1,29 +1,32 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Thermometer,
-  Droplets,
-  Wind,
-  Sunrise,
-  Sunset,
-  MapPin,
-  ChevronDown,
-  ChevronUp,
-  Cloud,
-  CloudSun,
-  CloudRain,
-  Snowflake,
-  Zap,
-  Sun,
-  ChevronsDown,
-} from "lucide-react";
-import { useWeather } from "@/app/hooks/useWeather";
-import { WeatherService } from "@/app/services/weatherService";
+import { useLocale, useTranslations } from "next-intl";
+
 import { format } from "date-fns";
 import { enUS, es } from "date-fns/locale";
-import { useLocale, useTranslations } from "next-intl";
+import { AnimatePresence,motion } from "framer-motion";
+import {
+  ChevronDown,
+  ChevronsDown,
+  ChevronUp,
+  Cloud,
+  CloudRain,
+  CloudSun,
+  Droplets,
+  MapPin,
+  Snowflake,
+  Sun,
+  Sunrise,
+  Sunset,
+  Thermometer,
+  Wind,
+  Zap,
+} from "lucide-react";
+
+import { useWeather } from "@/app/hooks/useWeather";
+import { WeatherService } from "@/app/services/weatherService";
+
 import "./WeatherWidget.scss";
 
 export default function WeatherWidget() {

@@ -1,5 +1,16 @@
-import { ChatResponse, defaultResponsesES, farewellsES, greetingsES, knowledgeBaseES } from "@/utils/data/chatKnowledgeBase";
-import { knowledgeBaseEN, greetingsEN, farewellsEN, defaultResponsesEN } from "@/utils/data/chatKnowledgeBaseEN";
+import {
+  ChatResponse,
+  defaultResponsesES,
+  farewellsES,
+  greetingsES,
+  knowledgeBaseES,
+} from "@/utils/data/chatKnowledgeBase";
+import {
+  defaultResponsesEN,
+  farewellsEN,
+  greetingsEN,
+  knowledgeBaseEN,
+} from "@/utils/data/chatKnowledgeBaseEN";
 
 function normalizeText(text: string): string {
   return text
@@ -27,10 +38,7 @@ function calculateSimilarity(tokens1: string[], tokens2: string[]): number {
 }
 
 // Detect question intent based on keywords and similarity
-function detectIntent(
-  question: string,
-  locale: "es" | "en" = "es"
-): string | null {
+function detectIntent(question: string, locale: "es" | "en" = "es"): string | null {
   const questionTokens = tokenize(question);
 
   const knowledgeBase = locale === "es" ? knowledgeBaseES : knowledgeBaseEN;
@@ -42,19 +50,11 @@ function detectIntent(
     score: 0,
   };
 
-  if (
-    greetings.keywords.some((keyword) =>
-      normalizeText(question).includes(keyword)
-    )
-  ) {
+  if (greetings.keywords.some((keyword) => normalizeText(question).includes(keyword))) {
     return "greeting";
   }
 
-  if (
-    farewells.keywords.some((keyword) =>
-      normalizeText(question).includes(keyword)
-    )
-  ) {
+  if (farewells.keywords.some((keyword) => normalizeText(question).includes(keyword))) {
     return "farewell";
   }
 
@@ -82,28 +82,20 @@ function detectIntent(
   return bestMatch.score > 0.3 ? bestMatch.category : null;
 }
 
-export function getChatResponse(
-  question: string,
-  locale: "es" | "en" = "es"
-): ChatResponse {
+export function getChatResponse(question: string, locale: "es" | "en" = "es"): ChatResponse {
   const intent = detectIntent(question, locale);
 
   const knowledgeBase = locale === "es" ? knowledgeBaseES : knowledgeBaseEN;
   const greetings = locale === "es" ? greetingsES : greetingsEN;
   const farewells = locale === "es" ? farewellsES : farewellsEN;
-  const defaultResponses =
-    locale === "es" ? defaultResponsesES : defaultResponsesEN;
+  const defaultResponses = locale === "es" ? defaultResponsesES : defaultResponsesEN;
 
   if (intent === "greeting") {
     return {
       answer: greetings.responses[0],
       followUp:
         locale === "es"
-          ? [
-              "¿Qué experiencia tienes?",
-              "¿Qué tecnologías dominas?",
-              "¿Qué proyectos has hecho?",
-            ]
+          ? ["¿Qué experiencia tienes?", "¿Qué tecnologías dominas?", "¿Qué proyectos has hecho?"]
           : [
               "What experience do you have?",
               "What technologies do you master?",
@@ -114,9 +106,7 @@ export function getChatResponse(
 
   if (intent === "farewell") {
     const randomFarewell =
-      farewells.responses[
-        Math.floor(Math.random() * farewells.responses.length)
-      ];
+      farewells.responses[Math.floor(Math.random() * farewells.responses.length)];
     return { answer: randomFarewell };
   }
 
@@ -126,17 +116,12 @@ export function getChatResponse(
     return response;
   }
 
-  const randomDefault =
-    defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+  const randomDefault = defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
   return {
     answer: randomDefault,
     followUp:
       locale === "es"
-        ? [
-            "¿Qué tecnologías usas?",
-            "¿Dónde has trabajado?",
-            "¿Qué proyectos has hecho?",
-          ]
+        ? ["¿Qué tecnologías usas?", "¿Dónde has trabajado?", "¿Qué proyectos has hecho?"]
         : [
             "What technologies do you use?",
             "Where have you worked?",
@@ -173,9 +158,7 @@ export function getContextualSuggestions(
 
   const suggestions = locale === "es" ? suggestionsES : suggestionsEN;
 
-  const askedTopics = previousQuestions
-    .map((q) => detectIntent(q, locale))
-    .filter(Boolean);
+  const askedTopics = previousQuestions.map((q) => detectIntent(q, locale)).filter(Boolean);
 
   return suggestions.filter((_, index) => {
     return index < 3;
@@ -234,9 +217,7 @@ export function extractKeywords(question: string): string[] {
   ];
 
   const tokens = tokenize(question);
-  return tokens.filter(
-    (token) => !stopWords.includes(token) && token.length > 2
-  );
+  return tokens.filter((token) => !stopWords.includes(token) && token.length > 2);
 }
 
 export function isValidQuestion(question: string): boolean {

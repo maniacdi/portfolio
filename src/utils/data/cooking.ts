@@ -1,5 +1,5 @@
-import { HobbyItem } from "@/utils/types/Hobby";
 import { slugify } from "@/utils/helpers/slug";
+import { HobbyItem } from "@/utils/types/Hobby";
 
 export const cookingList: HobbyItem[] = [
   {

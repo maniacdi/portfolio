@@ -1,15 +1,20 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef,useState } from "react";
 import { useTranslations } from "next-intl";
+
 import { motion } from "framer-motion";
-import { Map, List, Filter, Search, Globe, Calendar, Star, Kayak, TreePalm } from "lucide-react";
-import TravelMap from "./TravelMap";
-import TravelCard from "./TravelCard";
-import TravelModal from "./TravelModal";
-import { fetchAllTravels } from "../../services/travelService";
-import { Travel } from "@/utils/types/Travel";
+import { Calendar, Filter, Globe, Kayak, List, Map, Search, Star, TreePalm } from "lucide-react";
+
 import { useToast } from "@/app/components/toast/ToastProvider";
+import { Travel } from "@/utils/types/Travel";
+
+import { fetchAllTravels } from "../../services/travelService";
+
+import TravelCard from "./TravelCard";
+import TravelMap from "./TravelMap";
+import TravelModal from "./TravelModal";
+
 import "./TravelContent.scss";
 
 export default function TravelContent() {

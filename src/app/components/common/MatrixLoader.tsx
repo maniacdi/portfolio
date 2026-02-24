@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+
 import { motion } from "framer-motion";
+
 import "./MatrixLoader.scss";
 
 export default function MatrixLoader() {

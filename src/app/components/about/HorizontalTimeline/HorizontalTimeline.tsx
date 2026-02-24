@@ -1,9 +1,11 @@
 "use client";
 
 import { FC } from "react";
-import { MapPin } from "lucide-react";
-import "./HorizontalTimeline.scss";
 import { useTranslations } from "next-intl";
+
+import { MapPin } from "lucide-react";
+
+import "./HorizontalTimeline.scss";
 
 interface TimelineItem {
   period: string;

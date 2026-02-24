@@ -1,8 +1,10 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, ReactNode } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, XCircle, Info, AlertTriangle, X } from "lucide-react";
+import { createContext, ReactNode,useCallback, useContext, useState } from "react";
+
+import { AnimatePresence,motion } from "framer-motion";
+import { AlertTriangle, CheckCircle, Info, X,XCircle } from "lucide-react";
+
 import "./ToastProvider.scss";
 
 type ToastType = "success" | "error" | "info" | "warning";

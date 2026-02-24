@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Send, X, Sparkles, User, Bot } from "lucide-react";
+import { useEffect,useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import {
-  getChatResponse,
-  calculateTypingDelay,
-  isValidQuestion,
-} from "@/app/services/chatEngine";
+
+import { AnimatePresence,motion } from "framer-motion";
+import { Bot,MessageCircle, Send, Sparkles, User, X } from "lucide-react";
+
+import { calculateTypingDelay, getChatResponse, isValidQuestion } from "@/app/services/chatEngine";
+
 import "./ChatBot.scss";
 
 interface Message {
@@ -49,11 +48,7 @@ export default function ChatBot() {
 
         const followUpSuggestions =
           locale === "es"
-            ? [
-                "¿Qué tecnologías dominas?",
-                "¿Dónde has trabajado?",
-                "¿Qué proyectos has hecho?",
-              ]
+            ? ["¿Qué tecnologías dominas?", "¿Dónde has trabajado?", "¿Qué proyectos has hecho?"]
             : [
                 "What technologies do you master?",
                 "Where have you worked?",
@@ -183,11 +178,7 @@ export default function ChatBot() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="message-avatar">
-                    {message.type === "user" ? (
-                      <User size={16} />
-                    ) : (
-                      <Bot size={16} />
-                    )}
+                    {message.type === "user" ? <User size={16} /> : <Bot size={16} />}
                   </div>
                   <div className="message-content">
                     <p>{message.content}</p>

@@ -1,11 +1,14 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { useTranslations } from "next-intl";
-import LocalizedLink from "@components/common/LocalizedLink";
-import LanguageSwitcher from "@/app/components/header/LanguageSwitcher/LanguageSwitcher";
+import { useCallback,useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+
 import { Mail } from "lucide-react";
+
+import LanguageSwitcher from "@/app/components/header/LanguageSwitcher/LanguageSwitcher";
+import LocalizedLink from "@components/common/LocalizedLink";
+
 import "./Header.scss";
 
 export default function Header() {

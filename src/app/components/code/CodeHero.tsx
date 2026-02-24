@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Code2, BookOpen, Calendar, Github, ExternalLink } from "lucide-react";
+import { useEffect,useState } from "react";
 import { useTranslations } from "next-intl";
-import {
-  fetchGitHubStats,
-  fetchPrimaryLanguages,
-  GitHubStats,
-} from "@/app/services/githubService";
+
+import { motion } from "framer-motion";
+import { BookOpen, Calendar, Code2, ExternalLink,Github } from "lucide-react";
+
+import { fetchGitHubStats, fetchPrimaryLanguages, GitHubStats } from "@/app/services/githubService";
+
 import "./CodeHero.scss";
 
 export default function CodeHero() {
@@ -53,9 +52,7 @@ export default function CodeHero() {
 
         <h1 className="hero-title">
           {t("code").split(" ")[0]}{" "}
-          <span className="gradient-text">
-            {t("code").split(" ").slice(1).join(" ")}
-          </span>
+          <span className="gradient-text">{t("code").split(" ").slice(1).join(" ")}</span>
         </h1>
 
         <p className="hero-description">{t("description")}</p>

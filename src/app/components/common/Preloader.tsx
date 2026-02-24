@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+
+import { motion } from "framer-motion";
+
 import "./Preloader.scss";
 
 export default function Preloader() {

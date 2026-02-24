@@ -1,5 +1,5 @@
-import { Travel } from "@/utils/types/Travel";
 import { adaptApiTravelToFrontend, ApiTravel } from "@/utils/adapters/travelAdapter";
+import { Travel } from "@/utils/types/Travel";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://portfolio-backend-azure-one.vercel.app";
 

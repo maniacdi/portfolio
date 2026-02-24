@@ -1,18 +1,20 @@
 "use client";
 
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+
 import {
+  ArrowUp,
+  Code,
   Github,
-  Twitter,
+  Heart,
   Instagram,
   Linkedin,
   Mail,
   MapPin,
-  Code,
-  Heart,
-  ArrowUp,
+  Twitter,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
-import Link from "next/link";
+
 import "./Footer.scss";
 
 export default function Footer() {

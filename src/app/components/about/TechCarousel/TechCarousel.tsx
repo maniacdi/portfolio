@@ -1,29 +1,31 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef,useState } from "react";
+import { FaAws } from "react-icons/fa";
 import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiNodedotjs,
-  SiMongodb,
-  SiExpress,
-  SiTailwindcss,
-  SiSass,
-  SiFramer,
-  SiVercel,
-  SiGit,
+  SiCypress,
   SiDocker,
+  SiExpress,
+  SiFramer,
+  SiGit,
   SiGraphql,
   SiJest,
-  SiCypress,
+  SiMongodb,
   SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiReact,
+  SiSass,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
 } from "react-icons/si";
 import { TbBrandThreejs } from "react-icons/tb";
-import { FaAws } from "react-icons/fa";
-import "./TechCarousel.scss";
 import { useTranslations } from "next-intl";
+
+import { AnimatePresence,motion } from "framer-motion";
+
+import "./TechCarousel.scss";
 
 interface TechItem {
   id: string;
@@ -133,9 +135,7 @@ export default function TechCarousel() {
   return (
     <section className="tech-carousel-section" aria-label="Tecnologías y herramientas">
       <div className="section-header">
-        <h2 className="section-title gradient-text">
-          {t("title")}
-        </h2>
+        <h2 className="section-title gradient-text">{t("title")}</h2>
         <p className="section-subtitle">{t("subtitle")}</p>
       </div>
 

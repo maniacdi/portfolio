@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Travel } from "@/utils/types/Travel";
-import { useTranslations } from "next-intl";
-import "./TravelMap.scss";
-
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 
+import { Travel } from "@/utils/types/Travel";
+
+import "./TravelMap.scss";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
@@ -28,8 +28,10 @@ interface TravelMapProps {
 }
 
 import L from "leaflet";
-import "leaflet-defaulticon-compatibility";
+
 import { getTypeColor } from "@/utils/helpers/travels";
+
+import "leaflet-defaulticon-compatibility";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
