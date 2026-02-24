@@ -1,0 +1,499 @@
+/* ============================================
+   TERMINAL EASTER EGG
+============================================ */
+
+.terminal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.terminal-window {
+  width: 900px;
+  max-width: 100%;
+  height: 600px;
+  max-height: 90vh;
+  background: #0a0e14;
+  border-radius: 12px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 0 100px rgba(0, 243, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(0, 243, 255, 0.3);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+}
+
+/* ============================================
+   TERMINAL HEADER
+============================================ */
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #1a1f2e;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+
+  .terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+
+    .btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &.btn-close {
+        background: #ff5f56;
+
+        &:hover {
+          background: #ff3b30;
+          box-shadow: 0 0 10px #ff5f56;
+        }
+      }
+
+      &.btn-minimize {
+        background: #ffbd2e;
+
+        &:hover {
+          box-shadow: 0 0 10px #ffbd2e;
+        }
+      }
+
+      &.btn-maximize {
+        background: #27c93f;
+
+        &:hover {
+          box-shadow: 0 0 10px #27c93f;
+        }
+      }
+    }
+  }
+
+  .terminal-title {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+  }
+}
+
+/* ============================================
+   TERMINAL BODY
+============================================ */
+
+.terminal-body {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #0f0;
+  background: #0a0e14;
+
+  /* Scanline effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.3;
+  }
+
+  /* CRT flicker */
+  animation: flicker 0.15s infinite;
+
+  /* Custom scrollbar */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 243, 255, 0.3);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(0, 243, 255, 0.5);
+    }
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.98;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.98;
+  }
+}
+
+/* ============================================
+   WELCOME MESSAGE
+============================================ */
+
+.welcome-message {
+  margin-bottom: 1.5rem;
+
+  .ascii-logo {
+    color: var(--neon-blue);
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+  }
+
+  .welcome-text {
+    color: #888;
+    margin: 0;
+  }
+}
+
+/* ============================================
+   COMMAND OUTPUT
+============================================ */
+
+.command-output {
+  margin-bottom: 1rem;
+
+  .command-input-line {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .prompt {
+      color: var(--neon-blue);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .command-text {
+      color: #fff;
+    }
+  }
+
+  .output-content {
+    margin-left: 1.5rem;
+    color: #0f0;
+
+    .error-text {
+      color: #ff5f56;
+    }
+  }
+}
+
+/* ============================================
+   COMMAND INPUT
+============================================ */
+
+.command-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  .prompt {
+    color: var(--neon-blue);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: 'Courier New', 'Consolas', monospace;
+    font-size: 0.95rem;
+    caret-color: #0f0;
+
+    &::selection {
+      background: rgba(0, 243, 255, 0.3);
+    }
+  }
+}
+
+/* ============================================
+   HELP OUTPUT
+============================================ */
+
+.help-output {
+  .help-title {
+    color: var(--neon-blue);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .commands-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .command-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+
+      .command-name {
+        color: #ffbd2e;
+        font-weight: 600;
+      }
+
+      .command-desc {
+        color: #888;
+      }
+    }
+  }
+}
+
+/* ============================================
+   SKILLS OUTPUT
+============================================ */
+
+.skills-output {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .skill-category {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .category-title {
+      color: var(--neon-blue);
+      font-weight: 600;
+    }
+
+    .category-items {
+      color: #0f0;
+      margin-left: 1rem;
+    }
+  }
+}
+
+/* ============================================
+   PROJECTS OUTPUT
+============================================ */
+
+.projects-output {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .project-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .project-name {
+      color: #ffbd2e;
+      font-weight: 600;
+    }
+
+    .project-tech {
+      color: #888;
+      margin-left: 1rem;
+    }
+
+    .project-link {
+      color: var(--neon-blue);
+      margin-left: 1rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* ============================================
+   EXPERIENCE OUTPUT
+============================================ */
+
+.experience-output {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .job-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .job-title {
+      color: var(--neon-blue);
+      font-weight: 600;
+    }
+
+    .job-period {
+      color: #ffbd2e;
+      font-size: 0.875rem;
+    }
+
+    .job-desc {
+      color: #0f0;
+      margin-left: 1rem;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+/* ============================================
+   CONTACT OUTPUT
+============================================ */
+
+.contact-output {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  p {
+    margin: 0;
+    color: #0f0;
+
+    &.contact-note {
+      margin-top: 0.5rem;
+      color: #ffbd2e;
+    }
+  }
+}
+
+/* ============================================
+   EASTER EGGS OUTPUT
+============================================ */
+
+.eastereggs-output {
+  .ee-title {
+    color: var(--neon-blue);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .ee-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .ee-item {
+      display: flex;
+      gap: 1rem;
+
+      .ee-code {
+        color: #ffbd2e;
+        font-weight: 600;
+        min-width: 100px;
+      }
+
+      .ee-name {
+        color: #0f0;
+      }
+    }
+  }
+}
+
+/* ============================================
+   ASCII ART
+============================================ */
+
+.ascii-art {
+  color: var(--neon-blue);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+  white-space: pre;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 768px) {
+  .terminal-body {
+    font-size: 0.85rem;
+    padding: 1rem;
+  }
+
+  .help-output .commands-list .command-item {
+    grid-template-columns: 100px 1fr;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .ascii-art {
+    font-size: 0.65rem;
+  }
+
+  .projects-output .project-item,
+  .experience-output .job-item,
+  .skills-output .skill-category {
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-body {
+    animation: none !important;
+
+    &::before {
+      opacity: 0.1;
+    }
+  }
+
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 1;
+    }
+  }
+}

@@ -1,11 +1,10 @@
 "use client";
 
-import { useCallback,useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-
-import { AnimatePresence,motion } from "framer-motion";
-
+import { useEffect, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./EasterEggs.scss";
+import { useTranslations } from "next-intl";
+import Terminal from "./Terminal";
 
 // 🎮 easter eggs
 const EASTER_EGGS = [
@@ -30,6 +29,13 @@ const EASTER_EGGS = [
     component: KunaiToast,
     duration: 4000,
   },
+  {
+    sequence: ["h", "e", "l", "p"],
+    id: "terminal",
+    name: "Terminal",
+    component: null, // Terminal se maneja diferente
+    duration: 0,
+  },
 ];
 
 const STORAGE_KEY = "portfolio-easter-eggs";
@@ -41,13 +47,14 @@ interface Toast {
 }
 
 export default function EasterEggs() {
-  const [_keySequence, setKeySequence] = useState<string[]>([]);
+  const [keySequence, setKeySequence] = useState<string[]>([]);
   const [activeToasts, setActiveToasts] = useState<Toast[]>([]);
   const [lastKeyTime, setLastKeyTime] = useState(Date.now());
   const [foundEggs, setFoundEggs] = useState<Set<string>>(new Set());
   const [showProgress, setShowProgress] = useState(false);
-  const [_justCompletedAll, setJustCompletedAll] = useState(false);
+  const [justCompletedAll, setJustCompletedAll] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [showTerminal, setShowTerminal] = useState(false);
   const t = useTranslations("easterEggs");
 
   const SEQUENCE_TIMEOUT = 3000;
@@ -83,10 +90,23 @@ export default function EasterEggs() {
           lastKeys.length === egg.sequence.length &&
           lastKeys.every((key, index) => key === egg.sequence[index])
         ) {
+          // Terminal es especial - se abre en modal
+          if (egg.id === "terminal") {
+            setShowTerminal(true);
+            const wasFirstTime = !foundEggs.has(egg.id);
+            const updatedFound = saveProgress(egg.id);
+            if (wasFirstTime && updatedFound.size === EASTER_EGGS.length) {
+              setJustCompletedAll(true);
+            }
+            setKeySequence([]);
+            return true;
+          }
+
+          // Otros easter eggs (toasts)
           const newToast: Toast = {
             id: `${egg.id}-${Date.now()}`,
             eggId: egg.id,
-            component: egg.component,
+            component: egg.component!,
           };
 
           setActiveToasts((prev) => [...prev, newToast]);
@@ -94,10 +114,13 @@ export default function EasterEggs() {
           const wasFirstTime = !foundEggs.has(egg.id);
           const updatedFound = saveProgress(egg.id);
 
-          if (wasFirstTime && updatedFound.size === EASTER_EGGS.length) setJustCompletedAll(true);
+          if (wasFirstTime && updatedFound.size === EASTER_EGGS.length)
+            setJustCompletedAll(true);
 
           setTimeout(() => {
-            setActiveToasts((prev) => prev.filter((t) => t.id !== newToast.id));
+            setActiveToasts((prev) =>
+              prev.filter((t) => t.id !== newToast.id)
+            );
           }, egg.duration);
 
           setKeySequence([]);
@@ -150,6 +173,9 @@ export default function EasterEggs() {
         </AnimatePresence>
       </div>
 
+      {/* Terminal Modal */}
+      {showTerminal && <Terminal onClose={() => setShowTerminal(false)} />}
+
       {/* 📊 PROGRESS BUTTON */}
       <motion.button
         className={`easter-egg-progress-button ${allFound ? "completed" : ""}`}
@@ -178,7 +204,10 @@ export default function EasterEggs() {
           >
             <div className="panel-header">
               <h3>🎮 {t("title")}</h3>
-              <button className="close-button" onClick={() => setShowProgress(false)}>
+              <button
+                className="close-button"
+                onClick={() => setShowProgress(false)}
+              >
                 ✕
               </button>
             </div>
@@ -320,10 +349,12 @@ function KunaiToast() {
 
   useEffect(() => {
     if (!audioPlayed) {
-      const audio = new Audio("/easters/Naruto-theme.mp3");
+      // Reproducir tema de Naruto
+      const audio = new Audio("/naruto-theme.mp3");
       audio.volume = 0.5;
       audio.play().catch((err) => console.log("Audio play failed:", err));
 
+      // Agregar clase de shake al body
       document.body.classList.add("kunai-impact");
       setTimeout(() => {
         document.body.classList.remove("kunai-impact");
@@ -335,20 +366,56 @@ function KunaiToast() {
 
   return (
     <>
+      {/* Kunai volando y clavándose */}
       <motion.div
         className="easter-egg-toast kunai-toast"
         initial={{
           x: "-100vw",
           y: "-100vh",
+          rotate: -45,
+          scale: 0.3,
         }}
         animate={{
-          x: ["-100vw", "0vw"],
-          y: ["-100vh", "10vh"],
+          x: ["-100vw", "50vw", "50vw"],
+          y: ["-100vh", "40vh", "40vh"],
+          rotate: [-45, 720, 0],
+          scale: [0.3, 1.5, 1],
         }}
+        transition={{
+          duration: 4,
+          times: [0, 0.7, 1],
+          ease: [0.43, 0.13, 0.23, 0.96],
+        }}
+        exit={{ opacity: 0, scale: 0 }}
       >
         <div className="toast-content kunai-content">
-          <motion.img src="/easters/kunai.png" alt="Kunai" className="kunai-image" />
+          {/* Imagen del Kunai */}
+          <motion.img
+            src="/kunai.png"
+            alt="Kunai"
+            className="kunai-image"
+            animate={{
+              x: [0, -2, 2, -2, 2, 0],
+              rotate: [0, -1, 1, -1, 1, 0],
+            }}
+            transition={{
+              delay: 2.8,
+              duration: 0.3,
+              repeat: 3,
+            }}
+          />
 
+          {/* Texto Naruto */}
+          <motion.div
+            className="kunai-text"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3, duration: 0.5 }}
+          >
+            <p className="naruto-quote">Dattebayo!</p>
+          </motion.div>
+
+          {/* Efecto de impacto */}
           <motion.div
             className="impact-effect"
             initial={{ scale: 0, opacity: 0 }}
@@ -357,12 +424,39 @@ function KunaiToast() {
               opacity: [0, 1, 0],
             }}
             transition={{
-              delay: 0,
+              delay: 2.8,
               duration: 0.6,
               ease: "easeOut",
             }}
           />
 
+          {/* Líneas de velocidad */}
+          {Array.from({ length: 8 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="speed-line"
+              style={{
+                top: `${20 + i * 10}%`,
+                rotate: `${-45 + (Math.random() - 0.5) * 20}deg`,
+              }}
+              initial={{
+                x: -200,
+                opacity: 0,
+                scaleX: 0,
+              }}
+              animate={{
+                x: [0, 100],
+                opacity: [0, 1, 0],
+                scaleX: [0, 1, 0],
+              }}
+              transition={{
+                delay: 0.5 + i * 0.1,
+                duration: 0.5,
+              }}
+            />
+          ))}
+
+          {/* Partículas de humo */}
           {Array.from({ length: 12 }).map((_, i) => (
             <motion.div
               key={`smoke-${i}`}
@@ -380,7 +474,7 @@ function KunaiToast() {
                 opacity: [0, 0.8, 0],
               }}
               transition={{
-                delay: 0.2 + i * 0.01,
+                delay: 2.8,
                 duration: 0.8,
                 ease: "easeOut",
               }}
@@ -390,6 +484,17 @@ function KunaiToast() {
           ))}
         </div>
       </motion.div>
+
+      {/* Flash de pantalla */}
+      <motion.div
+        className="screen-flash"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0.5, 0] }}
+        transition={{
+          delay: 2.8,
+          duration: 0.3,
+        }}
+      />
     </>
   );
 }
