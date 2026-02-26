@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import "./EasterEggs.scss";
+import { useCallback,useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+
+import { AnimatePresence,motion } from "framer-motion";
+
 import Terminal from "./Terminal";
+
+import "./EasterEggs.scss";
 
 // 🎮 easter eggs
 const EASTER_EGGS = [

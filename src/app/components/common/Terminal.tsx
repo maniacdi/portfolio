@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef, JSX } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations, useLocale } from "next-intl";
+import { JSX,useEffect, useRef, useState } from "react";
+import { useLocale,useTranslations } from "next-intl";
+
+import { AnimatePresence,motion } from "framer-motion";
+
 import "./Terminal.scss";
 
 interface CommandOutput {
@@ -33,7 +35,6 @@ export default function Terminal({ onClose }: TerminalProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
-  // Comandos disponibles
   const commands: { [key: string]: Command } = {
     help: {
       name: "help",
@@ -160,19 +161,19 @@ optimizing performance and writing scalable code."`;
         <div className="experience-output">
           <div className="job-item">
             <span className="job-title">Front-End Engineer @ AMS Solutions</span>
-            <span className="job-period">May 2023 - Present</span>
+            <span className="job-period"> {locale === "es" ? "May 2023 - Actualidad" : "May 2023 - Present"}</span>
             <span className="job-desc">• {locale === "es" ? "Desarrollo apps para Inditex (miles de usuarios)" : "Developing apps for Inditex (thousands of users)"}</span>
             <span className="job-desc">• {locale === "es" ? "Lideré plataforma unificada de componentes" : "Led unified component platform"}</span>
             <span className="job-desc">• {locale === "es" ? "Implementé BFF que redujo tiempos ~60%" : "Implemented BFF that reduced times ~60%"}</span>
           </div>
           <div className="job-item">
             <span className="job-title">Front-End Developer @ Innova-tsn</span>
-            <span className="job-period">Aug 2022 - May 2023</span>
+            <span className="job-period"> {locale === "es" ? "Ago 2022 - May 2023" : "Aug 2022 - May 2023"}</span>
             <span className="job-desc">• {locale === "es" ? "Consultoría frontend para clientes corporativos" : "Frontend consulting for corporate clients"}</span>
           </div>
           <div className="job-item">
             <span className="job-title">Front-End Developer @ Incentro</span>
-            <span className="job-period">Sep 2020 - Aug 2022</span>
+            <span className="job-period"> {locale === "es" ? "Sep 2020 - Ago 2022" : "Sep 2020 - Aug 2022"}</span>
             <span className="job-desc">• {locale === "es" ? "Rediseñé webs corporativas desde cero" : "Redesigned corporate websites from scratch"}</span>
             <span className="job-desc">• {locale === "es" ? "Gestioné e-commerce de gran volumen" : "Managed high-volume e-commerce"}</span>
           </div>
@@ -244,7 +245,7 @@ optimizing performance and writing scalable code."`;
     pwd: {
       name: "pwd",
       description: locale === "es" ? "Directorio actual" : "Current directory",
-      execute: () => "/home/javi/portfolio",
+      execute: () => "/home/javimagaldi/portfolio",
     },
 
     date: {
@@ -254,25 +255,14 @@ optimizing performance and writing scalable code."`;
     },
   };
 
-  // Detectar comando "help" en easter eggs
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      const key = e.key.toLowerCase();
-      // Este efecto se implementará en el componente de Easter Eggs
-    };
-
-    window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
-  }, []);
-
-  // Auto-scroll al final
+  // Auto-scroll
   useEffect(() => {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
   }, [history]);
 
-  // Focus en input cuando se abre
+  // Focus input
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
@@ -294,11 +284,9 @@ optimizing performance and writing scalable code."`;
 
     if (!trimmedCmd) return;
 
-    // Agregar a historial de comandos
     setCommandHistory((prev) => [...prev, cmd]);
     setHistoryIndex(-1);
 
-    // Buscar comando
     if (commands[trimmedCmd]) {
       const output = commands[trimmedCmd].execute();
       if (output) {
@@ -322,7 +310,6 @@ optimizing performance and writing scalable code."`;
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    // Navegación en historial con flechas
     if (e.key === "ArrowUp") {
       e.preventDefault();
       if (commandHistory.length > 0) {
@@ -342,7 +329,7 @@ optimizing performance and writing scalable code."`;
 
   const handleClose = () => {
     setIsOpen(false);
-    setTimeout(() => onClose(), 300); // Wait for animation
+    setTimeout(() => onClose(), 300);
   };
 
   return (
@@ -363,7 +350,6 @@ optimizing performance and writing scalable code."`;
             transition={{ type: "spring", damping: 20 }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Terminal Header */}
             <div className="terminal-header">
               <div className="terminal-buttons">
                 <span className="btn btn-close" onClick={handleClose}></span>
@@ -373,9 +359,7 @@ optimizing performance and writing scalable code."`;
               <div className="terminal-title">javi@portfolio:~$</div>
             </div>
 
-            {/* Terminal Body */}
             <div className="terminal-body" ref={terminalRef}>
-              {/* Welcome Message */}
               <div className="welcome-message">
                 <pre className="ascii-logo">{`
 ╔══════════════════════════════════════╗
@@ -388,7 +372,6 @@ optimizing performance and writing scalable code."`;
                 </p>
               </div>
 
-              {/* Command History */}
               {history.map((item) => (
                 <div key={item.id} className="command-output">
                   <div className="command-input-line">
@@ -399,7 +382,6 @@ optimizing performance and writing scalable code."`;
                 </div>
               ))}
 
-              {/* Input Line */}
               <form onSubmit={handleSubmit} className="command-input">
                 <span className="prompt">javi@portfolio:~$</span>
                 <input
@@ -422,9 +404,7 @@ optimizing performance and writing scalable code."`;
   );
 }
 
-// Export para que pueda ser activado desde EasterEggs
 export function openTerminal() {
-  // Esta función será llamada desde el componente de Easter Eggs
   const event = new CustomEvent("openTerminal");
   window.dispatchEvent(event);
 }
