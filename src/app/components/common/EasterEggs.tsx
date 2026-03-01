@@ -352,12 +352,10 @@ function KunaiToast() {
 
   useEffect(() => {
     if (!audioPlayed) {
-      // Reproducir tema de Naruto
-      const audio = new Audio("/naruto-theme.mp3");
+      const audio = new Audio("/easters/Naruto-theme.mp3");
       audio.volume = 0.5;
       audio.play().catch((err) => console.log("Audio play failed:", err));
 
-      // Agregar clase de shake al body
       document.body.classList.add("kunai-impact");
       setTimeout(() => {
         document.body.classList.remove("kunai-impact");
@@ -369,56 +367,20 @@ function KunaiToast() {
 
   return (
     <>
-      {/* Kunai volando y clavándose */}
       <motion.div
         className="easter-egg-toast kunai-toast"
         initial={{
           x: "-100vw",
           y: "-100vh",
-          rotate: -45,
-          scale: 0.3,
         }}
         animate={{
-          x: ["-100vw", "50vw", "50vw"],
-          y: ["-100vh", "40vh", "40vh"],
-          rotate: [-45, 720, 0],
-          scale: [0.3, 1.5, 1],
+          x: ["100vw", "0vw"],
+          y: ["100vh", "10vh"],
         }}
-        transition={{
-          duration: 4,
-          times: [0, 0.7, 1],
-          ease: [0.43, 0.13, 0.23, 0.96],
-        }}
-        exit={{ opacity: 0, scale: 0 }}
       >
         <div className="toast-content kunai-content">
-          {/* Imagen del Kunai */}
-          <motion.img
-            src="/kunai.png"
-            alt="Kunai"
-            className="kunai-image"
-            animate={{
-              x: [0, -2, 2, -2, 2, 0],
-              rotate: [0, -1, 1, -1, 1, 0],
-            }}
-            transition={{
-              delay: 2.8,
-              duration: 0.3,
-              repeat: 3,
-            }}
-          />
+          <motion.img src="/easters/kunai.png" alt="Kunai" className="kunai-image" />
 
-          {/* Texto Naruto */}
-          <motion.div
-            className="kunai-text"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3, duration: 0.5 }}
-          >
-            <p className="naruto-quote">Dattebayo!</p>
-          </motion.div>
-
-          {/* Efecto de impacto */}
           <motion.div
             className="impact-effect"
             initial={{ scale: 0, opacity: 0 }}
@@ -427,39 +389,12 @@ function KunaiToast() {
               opacity: [0, 1, 0],
             }}
             transition={{
-              delay: 2.8,
+              delay: 0,
               duration: 0.6,
               ease: "easeOut",
             }}
           />
 
-          {/* Líneas de velocidad */}
-          {Array.from({ length: 8 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="speed-line"
-              style={{
-                top: `${20 + i * 10}%`,
-                rotate: `${-45 + (Math.random() - 0.5) * 20}deg`,
-              }}
-              initial={{
-                x: -200,
-                opacity: 0,
-                scaleX: 0,
-              }}
-              animate={{
-                x: [0, 100],
-                opacity: [0, 1, 0],
-                scaleX: [0, 1, 0],
-              }}
-              transition={{
-                delay: 0.5 + i * 0.1,
-                duration: 0.5,
-              }}
-            />
-          ))}
-
-          {/* Partículas de humo */}
           {Array.from({ length: 12 }).map((_, i) => (
             <motion.div
               key={`smoke-${i}`}
@@ -477,7 +412,7 @@ function KunaiToast() {
                 opacity: [0, 0.8, 0],
               }}
               transition={{
-                delay: 2.8,
+                delay: 0.2 + i * 0.01,
                 duration: 0.8,
                 ease: "easeOut",
               }}
@@ -487,17 +422,6 @@ function KunaiToast() {
           ))}
         </div>
       </motion.div>
-
-      {/* Flash de pantalla */}
-      <motion.div
-        className="screen-flash"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 0.5, 0] }}
-        transition={{
-          delay: 2.8,
-          duration: 0.3,
-        }}
-      />
     </>
   );
 }
