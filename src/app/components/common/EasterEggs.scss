@@ -521,6 +521,220 @@ body.kunai-impact {
 }
 
 /* ============================================
+   SENBONZAKURA KAGEYOSHI TOAST
+============================================ */
+
+.senbonzakura-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(139, 0, 139, 0.4) 0%,
+    rgba(75, 0, 130, 0.6) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 9997;
+  pointer-events: none;
+}
+
+.senbonzakura-toast {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  overflow: hidden;
+
+  .sword-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    .sword {
+      font-size: 4rem;
+      filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.8));
+
+      @media (max-width: 768px) {
+        font-size: 3rem;
+      }
+    }
+  }
+
+  /* ============================================
+     TEXTO BANKAI
+  ============================================ */
+
+  .senbonzakura-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 11;
+
+    .bankai-title {
+      font-family: serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: #fff;
+      margin: 0;
+      text-shadow: 
+        0 0 20px rgba(255, 192, 203, 0.8),
+        0 0 40px rgba(255, 105, 180, 0.6),
+        0 0 60px rgba(219, 112, 147, 0.4),
+        3px 3px 6px rgba(0, 0, 0, 0.8);
+      animation: pulseGlow 2s ease-in-out infinite;
+
+      @media (max-width: 768px) {
+        font-size: 3rem;
+      }
+    }
+
+    .technique-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffb6c1;
+      margin: 1rem 0 0.5rem 0;
+      text-shadow: 
+        0 0 10px rgba(255, 182, 193, 0.8),
+        0 0 20px rgba(255, 105, 180, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+      letter-spacing: 2px;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .technique-subtitle {
+      font-family: serif;
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0;
+      text-shadow: 
+        0 0 10px rgba(255, 192, 203, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  /* ============================================
+     PÉTALOS DE SAKURA
+  ============================================ */
+
+  .sakura-petal {
+    position: absolute;
+    top: -50px;
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.8));
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .sakura-petal-spiral {
+    position: absolute;
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.9));
+    pointer-events: none;
+    z-index: 6;
+  }
+
+  /* ============================================
+     PARTÍCULAS BRILLANTES
+  ============================================ */
+
+  .sparkle-particle {
+    position: absolute;
+    font-size: 1rem;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+    pointer-events: none;
+    z-index: 7;
+  }
+
+  /* ============================================
+     EFECTOS DE ENERGÍA
+  ============================================ */
+
+  .shockwave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 182, 193, 0.8);
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  .energy-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    margin: -150px 0 0 -150px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 105, 180, 0.6);
+    box-shadow: 
+      0 0 20px rgba(255, 182, 193, 0.8),
+      inset 0 0 20px rgba(255, 105, 180, 0.4);
+    pointer-events: none;
+    z-index: 3;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 20px rgba(255, 192, 203, 0.8),
+      0 0 40px rgba(255, 105, 180, 0.6),
+      0 0 60px rgba(219, 112, 147, 0.4),
+      3px 3px 6px rgba(0, 0, 0, 0.8);
+  }
+  50% {
+    text-shadow: 
+      0 0 30px rgba(255, 192, 203, 1),
+      0 0 60px rgba(255, 105, 180, 0.8),
+      0 0 90px rgba(219, 112, 147, 0.6),
+      3px 3px 6px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 768px) {
+  .senbonzakura-toast {
+    .sakura-petal {
+      font-size: 1rem;
+    }
+
+    .sakura-petal-spiral {
+      font-size: 0.9rem;
+    }
+
+    .sparkle-particle {
+      font-size: 0.8rem;
+    }
+
+    .shockwave,
+    .energy-ring {
+      width: 150px;
+      height: 150px;
+      margin: -75px 0 0 -75px;
+    }
+  }
+}
+
+/* ============================================
    REDUCED MOTION
 ============================================ */
 
@@ -549,6 +763,20 @@ body.kunai-impact {
 
   body.kunai-impact {
     animation: none !important;
+  }
+
+  .senbonzakura-toast {
+    .sakura-petal,
+    .sakura-petal-spiral,
+    .sparkle-particle,
+    .shockwave,
+    .energy-ring {
+      animation: none !important;
+    }
+
+    .senbonzakura-text .bankai-title {
+      animation: none !important;
+    }
   }
 }
 

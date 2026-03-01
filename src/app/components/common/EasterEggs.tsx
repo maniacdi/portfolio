@@ -36,8 +36,15 @@ const EASTER_EGGS = [
     sequence: ["h", "e", "l", "p"],
     id: "terminal",
     name: "Terminal",
-    component: null, // Terminal se maneja diferente
+    component: null, // Terminal will be handled specially
     duration: 0,
+  },
+   {
+    sequence: ["b", "a", "n", "k", "a", "i"], 
+    id: "senbonzakura",
+    name: "Senbonzakura",
+    component: SenbonzakuraToast,
+    duration: 6000,
   },
 ];
 
@@ -421,6 +428,192 @@ function KunaiToast() {
             </motion.div>
           ))}
         </div>
+      </motion.div>
+    </>
+  );
+}
+
+// 🌸 SENBONZAKURA KAGEYOSHI TOAST
+function SenbonzakuraToast() {
+  // const [audioPlayed, setAudioPlayed] = useState(false);
+
+  // useEffect(() => {
+  //   if (!audioPlayed) {
+  //     const audio = new Audio("/easters/bleach-theme.mp3");
+  //     audio.volume = 0.5;
+  //     audio.play().catch((err) => console.log("Audio play failed:", err));
+
+  //     setAudioPlayed(true);
+  //   }
+  // }, [audioPlayed]);
+
+  return (
+    <>
+      <motion.div
+        className="senbonzakura-overlay"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.7 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      />
+
+      <motion.div
+        className="easter-egg-toast senbonzakura-toast"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <motion.div
+          className="sword-container"
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: "40vh", opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <motion.div
+            className="sword"
+            initial={{ scale: 1, rotate: 45 }}
+            animate={{
+              scale: [1, 1.2, 0],
+              rotate: [45, 45, 180],
+              opacity: [1, 1, 0],
+            }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+          >
+            ⚔️
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="senbonzakura-text"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
+          <h2 className="bankai-title">卍解</h2>
+          <h3 className="technique-name">Senbonzakura Kageyoshi</h3>
+          <p className="technique-subtitle">千本桜景厳</p>
+        </motion.div>
+
+        {Array.from({ length: 100 }).map((_, i) => {
+          const randomX = Math.random() * 100;
+          const randomDelay = Math.random() * 2;
+          const randomDuration = 3 + Math.random() * 3;
+          const randomRotation = Math.random() * 360;
+          const randomSize = 0.5 + Math.random() * 1.5;
+
+          return (
+            <motion.div
+              key={`petal-${i}`}
+              className="sakura-petal"
+              style={{
+                left: `${randomX}%`,
+                fontSize: `${randomSize}rem`,
+              }}
+              initial={{
+                y: -50,
+                x: 0,
+                rotate: randomRotation,
+                opacity: 0,
+              }}
+              animate={{
+                y: "110vh",
+                x: [0, 30, -20, 40, 0],
+                rotate: [randomRotation, randomRotation + 720],
+                opacity: [0, 1, 1, 0],
+              }}
+              transition={{
+                delay: randomDelay,
+                duration: randomDuration,
+                ease: "linear",
+              }}
+            >
+              🌸
+            </motion.div>
+          );
+        })}
+
+        {Array.from({ length: 30 }).map((_, i) => {
+          const angle = (i * 360) / 30;
+          const radius = 150 + i * 5;
+
+          return (
+            <motion.div
+              key={`spiral-${i}`}
+              className="sakura-petal-spiral"
+              initial={{
+                x: "50vw",
+                y: "40vh",
+                scale: 0,
+                opacity: 0,
+              }}
+              animate={{
+                x: [
+                  "50vw",
+                  `calc(50vw + ${Math.cos((angle * Math.PI) / 180) * radius}px)`,
+                ],
+                y: [
+                  "40vh",
+                  `calc(40vh + ${Math.sin((angle * Math.PI) / 180) * radius}px)`,
+                ],
+                scale: [0, 1, 0],
+                opacity: [0, 1, 0],
+                rotate: [0, 360],
+              }}
+              transition={{
+                delay: 1 + i * 0.03,
+                duration: 2,
+                ease: "easeOut",
+              }}
+            >
+              🌸
+            </motion.div>
+          );
+        })}
+
+        {Array.from({ length: 40 }).map((_, i) => (
+          <motion.div
+            key={`sparkle-${i}`}
+            className="sparkle-particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              delay: 1.5 + Math.random() * 2,
+              duration: 1 + Math.random(),
+              repeat: 2,
+            }}
+          >
+            ✨
+          </motion.div>
+        ))}
+
+        <motion.div
+          className="shockwave"
+          initial={{ scale: 0, opacity: 0.8 }}
+          animate={{ scale: 4, opacity: 0 }}
+          transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
+        />
+
+        {[0, 0.3, 0.6].map((delay, index) => (
+          <motion.div
+            key={`ring-${index}`}
+            className="energy-ring"
+            initial={{ scale: 0, opacity: 0.6 }}
+            animate={{ scale: 3, opacity: 0 }}
+            transition={{
+              delay: 1 + delay,
+              duration: 2,
+              ease: "easeOut",
+            }}
+          />
+        ))}
       </motion.div>
     </>
   );
