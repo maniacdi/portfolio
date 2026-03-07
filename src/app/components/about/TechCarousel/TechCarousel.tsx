@@ -177,7 +177,7 @@ export default function TechCarousel() {
     id: "threejs",
     name: "Three.js",
     icon: <TbBrandThreejs />,
-    color: "#000000",
+    color: "#a0a0a0",
     category: "frontend",
   },
 
@@ -238,7 +238,7 @@ export default function TechCarousel() {
     id: "express",
     name: "Express",
     icon: <SiExpress />,
-    color: "#000000",
+    color: "#a0a0a0",
     category: "backend",
   },
   {
@@ -422,7 +422,7 @@ export default function TechCarousel() {
     id: "notion",
     name: "Notion",
     icon: <SiNotion />,
-    color: "#000000",
+    color: "#a0a0a0",
     category: "tools",
   },
 
@@ -473,7 +473,7 @@ export default function TechCarousel() {
     id: "markdown",
     name: "Markdown",
     icon: <SiMarkdown />,
-    color: "#000000",
+    color: "#a0a0a0",
     category: "tools",
   },
 ];
