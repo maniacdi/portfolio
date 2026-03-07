@@ -18,7 +18,6 @@ import {
   SiGraphql,
   SiMongodb,
   SiMysql,
-  SiPostgresql,
   SiGit,
   SiGithub,
   SiDocker,
@@ -42,6 +41,8 @@ import {
   SiUbuntu,
   SiMarkdown,
   SiBitbucket,
+  SiExpo,
+  SiSocketdotio,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
@@ -80,6 +81,13 @@ export default function TechCarousel() {
     id: "react",
     name: "React",
     icon: <SiReact />,
+    color: "#61DAFB",
+    category: "frontend",
+  },
+  {
+    id: "react-native",
+    name: "React Native",
+    icon: <RiReactjsLine />,
     color: "#61DAFB",
     category: "frontend",
   },
@@ -186,7 +194,7 @@ export default function TechCarousel() {
   {
     id: "zustand",
     name: "Zustand",
-    icon: <RiReactjsLine />, // Usa icono de React como alternativa
+    icon: <RiReactjsLine />,
     color: "#443E38",
     category: "frontend",
   },
@@ -208,6 +216,13 @@ export default function TechCarousel() {
     color: "#8DD6F9",
     category: "tools",
   },
+  {
+    id: "expo",
+    name: "Expo",
+    icon: <SiExpo />,
+    color: "#000020",
+    category: "tools",
+  },
 
   // ============================================
   // BACKEND
@@ -224,6 +239,13 @@ export default function TechCarousel() {
     name: "Express",
     icon: <SiExpress />,
     color: "#000000",
+    category: "backend",
+  },
+  {
+    id: "socketio",
+    name: "Socket.io",
+    icon: <SiSocketdotio />,
+    color: "#010101",
     category: "backend",
   },
   {
@@ -287,7 +309,7 @@ export default function TechCarousel() {
     color: "#181717",
     category: "tools",
   },
-  {    id: "bitbucket", name: "Bitbucket", icon: <SiBitbucket />, color: "#0052CC", category: "tools" },
+  { id: "bitbucket", name: "Bitbucket", icon: <SiBitbucket />, color: "#0052CC", category: "tools" },
 
   // ============================================
   // DEVOPS & DEPLOYMENT

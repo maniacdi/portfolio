@@ -11,6 +11,7 @@ export const profileData = {
   skills: {
     frontend: [
       { name: "React", level: 95, years: 5 },
+      { name: "React Native", level: 70, years: 1 },
       { name: "Tailwind CSS", level: 75, years: 1 },
       { name: "Framer Motion", level: 75, years: 2 },
       { name: "Redux", level: 90, years: 4 },
@@ -18,11 +19,13 @@ export const profileData = {
     backend: [
       { name: "Node.js", level: 85, years: 5 },
       { name: "MongoDB", level: 80, years: 3 },
+      { name: "Socket.io", level: 65, years: 1 },
       { name: "JAVA", level: 60, years: 1 },
     ],
     tools: [
       { name: "Git", level: 95, years: 6 },
-      { name: "Docker", level: 55, years: 1 },
+      { name: "Docker", level: 60, years: 1 },
+      { name: "Expo", level: 70, years: 1 },
       { name: "Vercel", level: 90, years: 2 },
       { name: "Figma", level: 95, years: 3 },
     ],

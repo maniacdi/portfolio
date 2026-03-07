@@ -15,6 +15,8 @@ import "./GitHubRepos.scss";
 const FEATURED_REPOS = [
   "portfolio",
   "portfolio-backend",
+  "compras-app",
+  "compras-backend",
   "marvel-explorer",
   "ams-test",
   "pokemon-app",
