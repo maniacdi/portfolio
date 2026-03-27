@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback,useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { AnimatePresence,motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import Terminal from "./Terminal";
 
@@ -39,8 +39,8 @@ const EASTER_EGGS = [
     component: null, // Terminal will be handled specially
     duration: 0,
   },
-   {
-    sequence: ["b", "a", "n", "k", "a", "i"], 
+  {
+    sequence: ["b", "a", "n", "k", "a", "i"],
     id: "senbonzakura",
     name: "Senbonzakura",
     component: SenbonzakuraToast,
@@ -124,13 +124,10 @@ export default function EasterEggs() {
           const wasFirstTime = !foundEggs.has(egg.id);
           const updatedFound = saveProgress(egg.id);
 
-          if (wasFirstTime && updatedFound.size === EASTER_EGGS.length)
-            setJustCompletedAll(true);
+          if (wasFirstTime && updatedFound.size === EASTER_EGGS.length) setJustCompletedAll(true);
 
           setTimeout(() => {
-            setActiveToasts((prev) =>
-              prev.filter((t) => t.id !== newToast.id)
-            );
+            setActiveToasts((prev) => prev.filter((t) => t.id !== newToast.id));
           }, egg.duration);
 
           setKeySequence([]);
@@ -214,10 +211,7 @@ export default function EasterEggs() {
           >
             <div className="panel-header">
               <h3>🎮 {t("title")}</h3>
-              <button
-                className="close-button"
-                onClick={() => setShowProgress(false)}
-              >
+              <button className="close-button" onClick={() => setShowProgress(false)}>
                 ✕
               </button>
             </div>
@@ -377,12 +371,12 @@ function KunaiToast() {
       <motion.div
         className="easter-egg-toast kunai-toast"
         initial={{
-          x: "-100vw",
-          y: "-100vh",
+          x: "-90vw",
+          y: "-90vh",
         }}
         animate={{
           x: ["100vw", "0vw"],
-          y: ["100vh", "10vh"],
+          y: ["100vh", "30vh"],
         }}
       >
         <div className="toast-content kunai-content">
@@ -435,18 +429,6 @@ function KunaiToast() {
 
 // 🌸 SENBONZAKURA KAGEYOSHI TOAST
 function SenbonzakuraToast() {
-  // const [audioPlayed, setAudioPlayed] = useState(false);
-
-  // useEffect(() => {
-  //   if (!audioPlayed) {
-  //     const audio = new Audio("/easters/bleach-theme.mp3");
-  //     audio.volume = 0.5;
-  //     audio.play().catch((err) => console.log("Audio play failed:", err));
-
-  //     setAudioPlayed(true);
-  //   }
-  // }, [audioPlayed]);
-
   return (
     <>
       <motion.div
@@ -548,14 +530,8 @@ function SenbonzakuraToast() {
                 opacity: 0,
               }}
               animate={{
-                x: [
-                  "50vw",
-                  `calc(50vw + ${Math.cos((angle * Math.PI) / 180) * radius}px)`,
-                ],
-                y: [
-                  "40vh",
-                  `calc(40vh + ${Math.sin((angle * Math.PI) / 180) * radius}px)`,
-                ],
+                x: ["50vw", `calc(50vw + ${Math.cos((angle * Math.PI) / 180) * radius}px)`],
+                y: ["40vh", `calc(40vh + ${Math.sin((angle * Math.PI) / 180) * radius}px)`],
                 scale: [0, 1, 0],
                 opacity: [0, 1, 0],
                 rotate: [0, 360],

@@ -7,10 +7,12 @@
   top: 0;
   z-index: 100;
   padding: 1rem 2rem;
-  background: rgba(10, 14, 26, 0.65);
+  background: rgba(8, 12, 16, 0.65);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-soft);
-  transition: all 0.3s ease;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 
   @media (max-width: 768px) {
     padding: 0.875rem 1.25rem;
@@ -18,8 +20,8 @@
   }
 
   &.scrolled {
-    background: rgba(10, 14, 26, 0.95);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(8, 12, 16, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -45,6 +47,7 @@
 /* ============================
    LOGO
 ============================ */
+
 .logo {
   cursor: pointer;
   height: 6dvh;
@@ -65,8 +68,9 @@
 }
 
 /* ============================
-   NAV DESKTOP
+   DESKTOP NAV
 ============================ */
+
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -79,16 +83,17 @@
 
   a {
     position: relative;
-    color: var(--text);
-    font-weight: 500;
-    transition: color 0.25s ease;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
     white-space: nowrap;
 
     &:hover {
-      color: var(--neon);
+      color: var(--text);
     }
 
-    /* underline */
     &::after {
       content: "";
       position: absolute;
@@ -96,10 +101,9 @@
       bottom: -4px;
       transform: translateX(-50%);
       width: 0;
-      height: 2px;
+      height: 1px;
       background: var(--neon);
-      box-shadow: 0 0 8px var(--neon);
-      transition: width 0.3s ease;
+      transition: width 0.25s ease;
     }
 
     &:hover::after {
@@ -107,8 +111,7 @@
     }
 
     &.active {
-      color: var(--neon);
-      text-shadow: 0 0 8px var(--neon);
+      color: var(--neon-mid);
 
       &::after {
         width: 100%;
@@ -118,8 +121,9 @@
 }
 
 /* ============================
-   HEADER ACTIONS 
+   HEADER ACTIONS
 ============================ */
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -135,21 +139,25 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.625rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   border-radius: var(--radius);
-  font-family: "Orbitron", sans-serif;
-  font-weight: 600;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.08em;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  background: linear-gradient(45deg, var(--neon), var(--neon-blue));
-  color: white;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+  border: 1px solid var(--neon);
+  background: var(--neon);
+  color: #fff;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(255, 78, 221, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(111, 0, 255, 0.35);
   }
 
   &:active {
@@ -187,8 +195,8 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: 2px;
-    background: var(--text);
+    height: 1.5px;
+    background: var(--text-secondary);
     border-radius: 2px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -207,7 +215,7 @@
     span:nth-child(1) {
       top: 11px;
       transform: rotate(45deg);
-      background: var(--neon);
+      background: var(--neon-mid);
     }
     span:nth-child(2) {
       opacity: 0;
@@ -216,7 +224,7 @@
     span:nth-child(3) {
       top: 11px;
       transform: rotate(-45deg);
-      background: var(--neon);
+      background: var(--neon-mid);
     }
   }
 }
@@ -232,7 +240,7 @@
   width: 100%;
   height: 100vh;
   padding: 5rem 2rem 2rem;
-  background: rgba(10, 14, 26, 0.98);
+  background: rgba(8, 12, 16, 0.98);
   backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
@@ -258,26 +266,28 @@
   }
 
   a {
-    color: var(--text);
-    font-weight: 500;
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: 15px;
     padding: 1rem;
     border-radius: var(--radius);
-    transition: all 0.3s ease;
+    transition:
+      color 0.2s ease,
+      background 0.2s ease,
+      border-color 0.2s ease;
     text-align: center;
     border: 1px solid transparent;
 
     &:hover {
-      color: var(--neon);
-      background: rgba(255, 78, 221, 0.1);
-      border-color: rgba(255, 78, 221, 0.3);
-      transform: translateX(5px);
+      color: var(--neon-mid);
+      background: var(--neon-subtle);
+      border-color: var(--neon-border);
     }
 
     &.active {
-      color: var(--neon);
-      background: rgba(255, 78, 221, 0.15);
-      border-color: var(--neon);
-      box-shadow: 0 0 20px rgba(255, 78, 221, 0.3);
+      color: var(--neon-mid);
+      background: var(--neon-subtle);
+      border-color: var(--neon-border);
     }
   }
 
@@ -286,7 +296,7 @@
     padding-top: 2rem;
     display: flex;
     justify-content: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-soft);
   }
 }
 
@@ -326,22 +336,8 @@
 .cta-btn:focus-visible,
 .nav-links a:focus-visible,
 .mobile-menu a:focus-visible {
-  outline: 2px solid var(--neon);
+  outline: 2px solid var(--neon-mid);
   outline-offset: 4px;
-}
-
-/* ============================
-   ANIMATIONS
-============================ */
-
-@keyframes neonPulse {
-  0%,
-  100% {
-    text-shadow: 0 0 6px var(--neon);
-  }
-  50% {
-    text-shadow: 0 0 14px var(--neon);
-  }
 }
 
 /* ============================
@@ -357,18 +353,10 @@
   .logo {
     transition: none;
   }
-
-  .mobile-menu.show {
-    transition: none;
-  }
 }
 
 /* ============================
-   VARIANTE: SI TIENES MUCHOS LINKS
-============================ */
-
-/* ============================
-   FALLBACK: Header without CSS Grid (for older browsers)
+   GRID FALLBACK
 ============================ */
 
 @supports not (display: grid) {

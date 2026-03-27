@@ -19,10 +19,10 @@
   max-height: 90dvh;
   background: var(--bg);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 78, 221, 0.3);
+  border: 1px solid var(--neon-border);
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(255, 78, 221, 0.2);
+    0 0 40px rgba(111, 0, 255, 0.1);
   z-index: 9999;
   overflow: hidden;
 
@@ -30,22 +30,27 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text);
+    color: var(--text-secondary);
     cursor: pointer;
     z-index: 100;
-    transition: all 0.3s ease;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
 
     &:hover {
-      background: var(--neon);
-      color: #000;
+      background: var(--neon-subtle);
+      border-color: var(--neon-border);
+      color: var(--neon-mid);
       transform: rotate(90deg);
     }
   }
@@ -59,6 +64,10 @@
     }
   }
 }
+
+/* ============================================
+   GALLERY
+============================================ */
 
 .modal-gallery {
   flex: 1;
@@ -79,11 +88,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(111, 0, 255, 0.03);
     color: var(--text-secondary);
 
     svg {
       margin-bottom: 1rem;
+      color: var(--neon-mid);
+      opacity: 0.5;
     }
   }
 
@@ -91,27 +102,24 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.2s ease;
 
     &:hover {
-      background: var(--neon);
-      color: #000;
+      background: rgba(111, 0, 255, 0.7);
     }
-
     &.prev {
       left: 1rem;
     }
-
     &.next {
       right: 1rem;
     }
@@ -128,14 +136,16 @@
     padding: 0 1rem;
 
     .thumbnail {
-      width: 60px;
-      height: 40px;
-      border: 2px solid transparent;
-      border-radius: 4px;
+      width: 56px;
+      height: 38px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
       overflow: hidden;
       cursor: pointer;
-      opacity: 0.7;
-      transition: all 0.3s ease;
+      opacity: 0.6;
+      transition:
+        opacity 0.2s ease,
+        border-color 0.2s ease;
 
       &:hover {
         opacity: 1;
@@ -144,7 +154,7 @@
 
       &.active {
         opacity: 1;
-        border-color: var(--neon);
+        border-color: var(--neon-mid);
       }
 
       img {
@@ -159,45 +169,57 @@
     position: absolute;
     top: 1rem;
     left: 1rem;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.65);
+    color: var(--text);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    padding: 0.2rem 0.625rem;
+    border-radius: 100px;
   }
 }
+
+/* ============================================
+   INFO PANEL
+============================================ */
 
 .modal-info {
   flex: 1;
   padding: 2rem;
+  overflow-y: auto;
 
   .modal-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     .header-top {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.625rem;
       margin-bottom: 0.75rem;
 
       .travel-type-badge {
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-weight: 600;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        padding: 0.2rem 0.75rem;
+        border-radius: 100px;
+        font-weight: 500;
         text-transform: uppercase;
+        letter-spacing: 0.06em;
         color: #000;
       }
 
       .featured-badge {
-        background: rgba(255, 215, 0, 0.2);
+        background: rgba(255, 215, 0, 0.15);
         color: #ffd700;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-weight: 600;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        padding: 0.2rem 0.75rem;
+        border-radius: 100px;
+        font-weight: 500;
         border: 1px solid rgba(255, 215, 0, 0.3);
       }
     }
 
     .modal-title {
-      font-weight: 700;
+      font-weight: 500;
       margin-bottom: 0.75rem;
       color: var(--text);
     }
@@ -209,6 +231,7 @@
 
       .rating-text {
         color: var(--text-secondary);
+        font-size: 13px;
       }
     }
   }
@@ -216,8 +239,8 @@
   .travel-details {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 0.875rem;
+    margin-bottom: 1.5rem;
 
     .detail-item {
       display: flex;
@@ -225,7 +248,7 @@
       gap: 1rem;
 
       svg {
-        color: var(--neon);
+        color: var(--neon-mid);
         flex-shrink: 0;
       }
 
@@ -239,38 +262,45 @@
       .detail-label {
         display: block;
         color: var(--text-secondary);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.08em;
       }
 
       .detail-value {
         display: block;
         color: var(--text);
         font-weight: 500;
+        font-size: 14px;
       }
     }
   }
 
   .travel-description {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     h3 {
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
     }
-
     p {
       line-height: 1.8;
       color: var(--text-secondary);
+      font-size: 14px;
     }
   }
 
   .travel-highlights {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     h3 {
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
     }
 
     .highlights-list {
@@ -283,15 +313,15 @@
         display: flex;
         align-items: flex-start;
         gap: 0.75rem;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.625rem;
 
         &:last-child {
           margin-bottom: 0;
         }
 
         .highlight-bullet {
-          width: 8px;
-          height: 8px;
+          width: 6px;
+          height: 6px;
           background: var(--neon);
           border-radius: 50%;
           margin-top: 0.5rem;
@@ -301,20 +331,23 @@
         span {
           color: var(--text-secondary);
           line-height: 1.6;
+          font-size: 14px;
         }
       }
     }
   }
 
   .travel-tips {
-    background: rgba(255, 78, 221, 0.1);
-    border: 1px solid rgba(255, 78, 221, 0.2);
+    background: var(--neon-subtle);
+    border: 1px solid var(--neon-border);
     border-radius: var(--radius);
-    padding: 1.5rem;
+    padding: 1.25rem;
 
     h3 {
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
     }
 
     .tips-content {
@@ -322,15 +355,15 @@
       gap: 1rem;
 
       svg {
-        color: var(--neon);
+        color: var(--neon-mid);
         flex-shrink: 0;
         margin-top: 0.25rem;
       }
-
       p {
         color: var(--text-secondary);
         line-height: 1.8;
         margin: 0;
+        font-size: 14px;
       }
     }
   }

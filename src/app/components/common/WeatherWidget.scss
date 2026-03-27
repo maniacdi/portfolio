@@ -1,3 +1,9 @@
+/* ============================================
+   WEATHER WIDGET
+   Dynamic color controlled via --weather-color CSS var set from TSX.
+   Purple values here are fallbacks only.
+============================================ */
+
 .weather-widget-container {
   position: fixed;
   bottom: 24px;
@@ -15,9 +21,9 @@
 
   .weather-toggle-btn,
   .weather-show-btn {
-    background: rgba(20, 15, 35, 0.9);
+    background: rgba(8, 12, 16, 0.9);
     backdrop-filter: blur(10px);
-    border: 1px solid;
+    border: 1px solid var(--neon-border);
     border-radius: 20px;
     padding: 10px 16px;
     color: var(--text);
@@ -25,42 +31,47 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    font-size: 13px;
+    font-weight: 400;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 
     &:hover {
       transform: translateY(-2px);
       box-shadow:
         0 6px 20px rgba(0, 0, 0, 0.4),
-        0 0 15px var(--weather-color, rgba(0, 243, 255, 0.2));
+        0 0 12px var(--weather-color, rgba(111, 0, 255, 0.2));
     }
 
     svg {
-      color: var(--weather-color, var(--neon));
+      color: var(--weather-color, var(--neon-mid));
     }
 
     &.error {
-      border-color: #ff4757;
+      border-color: var(--danger);
 
       svg {
-        color: #ff4757;
+        color: var(--danger);
       }
     }
   }
 }
 
 .weather-widget {
-  background: rgba(20, 15, 35, 0.95);
+  background: rgba(8, 12, 16, 0.95);
   backdrop-filter: blur(15px);
-  border: 1px solid var(--weather-color, rgba(255, 78, 221, 0.3));
-  border-radius: 20px;
+  border: 1px solid var(--weather-color, var(--neon-border));
+  border-radius: 16px;
   padding: 16px;
   width: 300px;
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
-    0 0 20px var(--weather-color, rgba(255, 78, 221, 0.2));
-  transition: all 0.3s ease;
+    0 0 16px var(--weather-color, rgba(111, 0, 255, 0.15));
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
   color: var(--text);
 
   &.expanded {
@@ -68,10 +79,10 @@
   }
 
   &:hover {
-    border-color: var(--weather-color, var(--neon));
+    border-color: var(--weather-color, var(--neon-mid));
     box-shadow:
       0 12px 40px rgba(0, 0, 0, 0.5),
-      0 0 25px var(--weather-color, rgba(255, 78, 221, 0.3));
+      0 0 24px var(--weather-color, rgba(111, 0, 255, 0.2));
   }
 }
 
@@ -81,7 +92,7 @@
   align-items: center;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-soft);
 
   .location {
     display: flex;
@@ -90,11 +101,12 @@
     flex-grow: 1;
 
     svg {
-      color: var(--neon);
+      color: var(--neon-mid);
     }
 
     .city {
-      font-weight: 600;
+      font-weight: 500;
+      font-size: 14px;
       flex-grow: 1;
       white-space: nowrap;
       overflow: hidden;
@@ -102,9 +114,9 @@
     }
 
     .temp {
-      font-weight: 700;
-      color: var(--neon);
-      text-shadow: 0 0 10px var(--neon);
+      font-weight: 600;
+      font-family: "JetBrains Mono", monospace;
+      color: var(--weather-color, var(--neon-mid));
       min-width: 60px;
       text-align: right;
     }
@@ -116,43 +128,34 @@
     margin-left: 8px;
 
     .action-btn {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       border: none;
       color: var(--text-secondary);
       cursor: pointer;
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s ease;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
         color: var(--text);
-        transform: scale(1.1);
       }
 
-      &.minimize-btn {
-        &:hover {
-          background: rgba(255, 78, 221, 0.2);
-          color: var(--neon);
-        }
+      &.minimize-btn:hover,
+      &.expand-btn:hover {
+        background: var(--neon-subtle);
+        color: var(--neon-mid);
       }
 
-      &.expand-btn {
-        &:hover {
-          background: rgba(255, 78, 221, 0.2);
-          color: var(--neon);
-        }
-      }
-
-      &.close-btn {
-        &:hover {
-          background: rgba(255, 71, 87, 0.2);
-          color: #ff4757;
-        }
+      &.close-btn:hover {
+        background: rgba(255, 95, 86, 0.15);
+        color: var(--danger);
       }
     }
   }
@@ -180,8 +183,8 @@
 
       .weather-icon-svg {
         position: absolute;
-        opacity: 0.2;
-        color: var(--weather-color, var(--neon));
+        opacity: 0.15;
+        color: var(--weather-color, var(--neon-mid));
         width: 100%;
         height: 100%;
         z-index: 1;
@@ -195,12 +198,14 @@
       flex-grow: 1;
 
       .description {
-        font-weight: 600;
+        font-weight: 500;
+        font-size: 14px;
         text-transform: capitalize;
       }
 
       .feels-like {
         color: var(--text-secondary);
+        font-size: 13px;
       }
     }
   }
@@ -208,29 +213,29 @@
   .weather-details {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 8px;
     overflow-x: scroll;
 
     .detail-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 8px 12px;
-      border-radius: 10px;
-      transition: all 0.3s ease;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.06);
       }
 
       svg {
-        color: var(--weather-color, var(--neon));
+        color: var(--weather-color, var(--neon-mid));
         opacity: 0.8;
       }
 
       span {
+        font-size: 12px;
         font-weight: 500;
       }
     }
@@ -240,7 +245,7 @@
 .weather-forecast {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-soft);
   overflow-x: scroll;
 
   .sun-times {
@@ -253,6 +258,7 @@
       align-items: center;
       gap: 8px;
       color: var(--text-secondary);
+      font-size: 13px;
 
       svg {
         color: #ffd700;
@@ -262,47 +268,53 @@
 
   .forecast-days {
     h4 {
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
       color: var(--text-secondary);
     }
 
     .forecast-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
+      gap: 6px;
 
       .forecast-day {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 4px;
-        padding: 8px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 10px;
-        transition: all 0.3s ease;
+        padding: 8px 4px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 8px;
+        transition: background 0.2s ease;
 
         &:hover {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.05);
         }
 
         .day-name {
-          font-weight: 600;
+          font-size: 10px;
+          font-weight: 500;
           text-transform: uppercase;
+          letter-spacing: 0.04em;
+          color: var(--text-secondary);
         }
 
         .day-emoji {
-          margin: 4px 0;
+          margin: 2px 0;
         }
 
         .day-temps {
           display: flex;
           gap: 4px;
+          font-size: 11px;
+          font-family: "JetBrains Mono", monospace;
 
           .temp-max {
-            font-weight: 600;
-            color: var(--weather-color, var(--neon));
+            font-weight: 500;
+            color: var(--weather-color, var(--neon-mid));
           }
 
           .temp-min {
@@ -327,10 +339,10 @@
   min-height: 100px;
 
   .weather-spinner {
-    width: 30px;
-    height: 30px;
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    border-top-color: var(--neon);
+    width: 28px;
+    height: 28px;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-top-color: var(--neon-mid);
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
@@ -345,7 +357,6 @@
   }
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .weather-widget-container,
   .weather-widget-minimized,
@@ -367,11 +378,6 @@
 
   .forecast-grid {
     grid-template-columns: repeat(3, 1fr) !important;
-
-    .forecast-day {
-      .day-name {
-      }
-    }
   }
 
   .sun-times {

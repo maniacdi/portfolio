@@ -32,9 +32,10 @@
   margin-top: 32px;
 }
 
+/* Título de página — gradiente morado */
 .page-title {
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--neon) 0%, var(--accent) 100%);
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 60%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -47,8 +48,9 @@
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
   text-align: center;
+  font-size: 15px;
 
   @media (max-width: 482px) {
     padding-inline: 1.5rem;

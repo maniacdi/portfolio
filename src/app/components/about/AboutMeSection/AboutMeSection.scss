@@ -28,31 +28,33 @@
     margin-bottom: 1.5rem;
 
     .sparkle-icon {
-      color: var(--neon);
+      color: var(--neon-mid);
       animation: sparkle 2s ease-in-out infinite;
     }
   }
 
   .about-title {
-    font-weight: 800;
-    background: linear-gradient(135deg, var(--neon) 0%, var(--accent) 100%);
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 1rem;
 
+    /* Removed blink animation — readability */
     .title-gradient {
-      background: linear-gradient(90deg, var(--neon), var(--accent));
+      background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: blink 1.5s infinite;
+      background-clip: text;
     }
   }
 
   .about-subtitle {
-    color: var(--accent);
+    color: var(--neon-mid);
     margin-bottom: 1.5rem;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 15px;
   }
 
   .about-description {
@@ -60,12 +62,13 @@
     max-width: 800px;
     margin: 0 auto;
     color: var(--text-secondary);
+    font-size: 15px;
   }
 }
 
-// ============================================
-// ABOUT CONTENT - FIXED
-// ============================================
+/* ============================================
+   ABOUT CONTENT
+============================================ */
 
 .about-content {
   display: grid;
@@ -81,7 +84,6 @@
   @media (max-width: 1024px) {
     gap: 2rem;
   }
-
   @media (max-width: 768px) {
     padding: 0 1rem;
   }
@@ -89,12 +91,15 @@
 
 .neon-card {
   position: relative;
-  background: rgba(20, 15, 35, 0.7);
+  background: rgba(111, 0, 255, 0.03);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 78, 221, 0.2);
+  border: 1px solid rgba(111, 0, 255, 0.15);
   border-radius: var(--radius-lg);
   padding: 2rem;
-  transition: all 0.3s ease;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
   width: 100%;
 
   @media (max-width: 768px) {
@@ -102,15 +107,19 @@
   }
 
   &:hover {
-    border-color: var(--neon);
-    box-shadow: 0 0 30px rgba(255, 78, 221, 0.2);
-    transform: translateY(-5px);
+    border-color: rgba(111, 0, 255, 0.35);
+    box-shadow: 0 8px 32px rgba(111, 0, 255, 0.1);
+    transform: translateY(-4px);
 
     .skill-glow {
       opacity: 1;
     }
   }
 }
+
+/* ============================================
+   SKILLS GRID
+============================================ */
 
 .skills-grid {
   display: grid;
@@ -128,8 +137,8 @@
     text-align: center;
 
     .skill-icon {
-      width: 70px;
-      height: 70px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -137,38 +146,40 @@
       margin: 0 auto 1.5rem;
 
       @media (max-width: 768px) {
-        width: 60px;
-        height: 60px;
+        width: 56px;
+        height: 56px;
       }
 
       &.frontend-icon {
-        background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(0, 243, 255, 0.3));
-        border: 2px solid #00f3ff;
-        color: #00f3ff;
+        background: var(--neon-subtle);
+        border: 1px solid var(--neon-border);
+        color: var(--neon-mid);
       }
 
       &.backend-icon {
-        background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.3));
-        border: 2px solid #3a86ff;
+        background: rgba(58, 134, 255, 0.08);
+        border: 1px solid rgba(58, 134, 255, 0.3);
         color: #3a86ff;
       }
 
       &.fullstack-icon {
-        background: linear-gradient(135deg, rgba(255, 78, 221, 0.1), rgba(255, 78, 221, 0.3));
-        border: 2px solid var(--neon);
+        background: var(--neon-subtle);
+        border: 1px solid var(--neon-border);
         color: var(--neon);
       }
     }
 
     .skill-title {
-      font-weight: 700;
-      margin-bottom: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
       color: var(--text);
+      font-size: 15px;
     }
 
     .skill-desc {
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.7;
+      font-size: 14px;
     }
 
     .skill-glow {
@@ -178,13 +189,17 @@
       right: 0;
       bottom: 0;
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at center, rgba(255, 78, 221, 0.1), transparent 70%);
+      background: radial-gradient(circle at center, rgba(111, 0, 255, 0.06), transparent 70%);
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.25s ease;
       pointer-events: none;
     }
   }
 }
+
+/* ============================================
+   ABOUT CONTENT GRID
+============================================ */
 
 .about-content-grid {
   display: grid;
@@ -216,18 +231,18 @@
   margin-bottom: 1.5rem;
 
   svg {
-    color: var(--neon);
+    color: var(--neon-mid);
   }
 
   h3 {
-    font-weight: 700;
+    font-weight: 500;
     color: var(--text);
   }
 }
 
-// ============================================
-// TIMELINE SECTION - FIXED (sin padding duplicado)
-// ============================================
+/* ============================================
+   TIMELINE SECTION
+============================================ */
 
 .timeline-section {
   width: 100%;
@@ -241,7 +256,7 @@
       left: 0;
       top: 0;
       bottom: 0;
-      width: 2px;
+      width: 1px;
       background: linear-gradient(to bottom, var(--neon), transparent);
 
       @media (max-width: 768px) {
@@ -260,22 +275,25 @@
       }
 
       .timeline-year {
-        font-weight: 600;
-        color: var(--neon);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--neon-mid);
         margin-bottom: 0.5rem;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.08em;
       }
 
       .timeline-content {
         h4 {
-          font-weight: 600;
+          font-weight: 500;
           margin-bottom: 0.25rem;
           color: var(--text);
         }
 
         p {
           color: var(--text-secondary);
+          font-size: 14px;
         }
       }
 
@@ -283,11 +301,11 @@
         position: absolute;
         left: -2.4rem;
         top: 0.3rem;
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: var(--neon);
-        box-shadow: 0 0 10px var(--neon);
+        box-shadow: 0 0 8px rgba(111, 0, 255, 0.5);
 
         @media (max-width: 768px) {
           left: 14px;
@@ -301,9 +319,9 @@
   }
 }
 
-// ============================================
-// CTA SECTION - FIXED
-// ============================================
+/* ============================================
+   CTA SECTION
+============================================ */
 
 .cta-section {
   position: relative;
@@ -311,8 +329,8 @@
   padding: 3rem 2rem;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(10, 14, 26, 0.9), rgba(20, 15, 35, 0.9));
-  border: 1px solid rgba(255, 78, 221, 0.3);
+  background: rgba(111, 0, 255, 0.03);
+  border: 1px solid rgba(111, 0, 255, 0.2);
   margin-top: 32px;
   width: 100%;
   max-width: 1400px;
@@ -329,9 +347,9 @@
     z-index: 2;
 
     .cta-title {
-      font-weight: 800;
+      font-weight: 500;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--neon), var(--accent));
+      background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -340,6 +358,7 @@
     .cta-subtitle {
       color: var(--text-secondary);
       margin-bottom: 2rem;
+      font-size: 15px;
     }
   }
 
@@ -349,8 +368,19 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at center, rgba(255, 78, 221, 0.15), transparent 70%);
-    animation: pulse 4s ease-in-out infinite;
+    background: radial-gradient(circle at center, rgba(111, 0, 255, 0.08), transparent 70%);
+    animation: glowPulse 5s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
@@ -358,30 +388,35 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem 2rem;
-  background: linear-gradient(45deg, var(--neon), var(--neon-blue));
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
   color: white;
   border: none;
-  border-radius: var(--radius);
-  text-transform: uppercase;
-  font-weight: 600;
+  border-radius: var(--radius-lg);
+  font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(255, 78, 221, 0.4);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
 
   @media (max-width: 768px) {
-    padding: 0.85rem 1.5rem;
+    padding: 0.75rem 1.5rem;
   }
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(255, 78, 221, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(111, 0, 255, 0.4);
   }
 
   &:active {
-    transform: translateY(-1px);
+    transform: translateY(0);
   }
 }
+
+/* ============================================
+   ANIMATIONS
+============================================ */
 
 @keyframes sparkle {
   0%,
@@ -390,27 +425,7 @@
     transform: scale(1);
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.6;
     transform: scale(1.1);
-  }
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
   }
 }

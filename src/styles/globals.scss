@@ -1,9 +1,9 @@
 @use "./variables.scss" as *;
 
 /* ============================================
-   GLOBAL RESET & BASE STYLES
+   RESET & BASE
 ============================================ */
-/* --- RESET / GLOBAL --- */
+
 * {
   margin: 0;
   padding: 0;
@@ -20,13 +20,11 @@ body {
   height: 100dvh;
 }
 
-/* Make the layout stretch to full height */
 body {
   display: flex;
   flex-direction: column;
 }
 
-/* Main grows to push footer down */
 main {
   flex: 1;
   padding: var(--padding-lg);
@@ -38,17 +36,19 @@ main {
 ============================================ */
 
 a {
-  color: var(--accent);
+  color: var(--neon-mid);
   text-decoration: none;
-  transition: 0.25s ease;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  text-shadow: 0 0 6px var(--accent);
+  color: var(--accent);
 }
 
 /* ============================================
    HEADINGS
+   — Sin text-shadow global. Solo el Hero
+     aplica Orbitron; el resto hereda Space Grotesk.
 ============================================ */
 
 h1,
@@ -57,21 +57,32 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Orbitron", sans-serif; /* Futuristic headings */
-  letter-spacing: 0.5px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
   margin-top: 0;
   color: var(--text);
-  text-shadow: var(--shadow-neon);
+  line-height: 1.15;
+}
+
+/* Clase utilitaria para cuando se quiera el acento neon en un heading */
+.heading-accent {
+  color: var(--neon-mid);
 }
 
 /* ============================================
-   GENERAL ELEMENTS
+   TEXTO & PÁRRAFOS
 ============================================ */
 
 p {
-  line-height: 1.6;
-  color: var(--text);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-size: 15px;
 }
+
+/* ============================================
+   BOTONES BASE
+============================================ */
 
 button {
   cursor: pointer;
@@ -80,46 +91,86 @@ button {
   font-family: inherit;
 }
 
-/* Optional selection highlight */
-::selection {
-  background: var(--neon);
-  color: #fff;
+/* ============================================
+   CLASES UTILITARIAS GLOBALES
+============================================ */
+
+/* Label de sección estilo mono */
+.section-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--neon);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--neon);
+    flex-shrink: 0;
+  }
 }
 
-/* Smooth animations globally */
-* {
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+/* Gradient text utilitario */
+.gradient-text {
+  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 60%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ============================================
-   GLOBAL SCROLLBAR STYLING
+   SELECTION
 ============================================ */
 
-/* Chrome, Edge, Safari */
+::selection {
+  background: rgba(111, 0, 255, 0.3);
+  color: var(--text);
+}
+
+/* ============================================
+   SCROLLBAR
+============================================ */
+
 ::-webkit-scrollbar {
-  width: 8px; // Thin scrollbar
-  height: 8px; // Horizontal scrollbar
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg2); // Slightly lighter than main bg
-  border-radius: var(--radius);
+  background: var(--bg2);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--neon); // Neon purple thumb
-  border-radius: var(--radius);
-  transition: background 0.3s ease;
+  background: var(--neon);
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent); // Neon cyan on hover
+  background: var(--neon-mid);
 }
 
-/* Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--neon) var(--bg2);
+}
+
+/* ============================================
+   TRANSICIONES GLOBALES
+   — Solo propiedades específicas, no `all`
+   para evitar jank en animaciones
+============================================ */
+
+* {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }

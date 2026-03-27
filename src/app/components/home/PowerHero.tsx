@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-import { AnimatePresence,motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Briefcase,
   Calendar,
@@ -266,8 +266,8 @@ export default function PowerHero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 + index * 0.1 }}
               whileHover={{
-                scale: 1.05,
-                backgroundColor: "rgba(0, 243, 255, 0.1)",
+                scale: 1.02,
+                backgroundColor: "rgba(111, 0, 255, 0.08)",
               }}
               onMouseEnter={() => setHoveredTech(tech.name)}
               onMouseLeave={() => setHoveredTech(null)}
@@ -315,7 +315,7 @@ export default function PowerHero() {
           <motion.a
             href={`/${locale}/about`}
             className="primary-action"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 78, 221, 0.6)" }}
+            whileHover={{ scale: 1.03, boxShadow: "0 0 28px rgba(111, 0, 255, 0.45)" }}
             whileTap={{ scale: 0.95 }}
           >
             <Sparkles size={18} />
