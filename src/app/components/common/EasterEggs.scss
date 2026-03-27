@@ -362,10 +362,12 @@
 }
 
 /* ============================================
-   KUNAI TOAST — themed (Naruto orange), intentionally kept
+   KUNAI TOAST
 ============================================ */
 
 .kunai-toast {
+  position: fixed !important;
+
   .toast-content {
     background: transparent;
     border: none;
@@ -496,7 +498,7 @@ body.kunai-impact {
 }
 
 /* ============================================
-   SENBONZAKURA TOAST — themed (Bleach sakura), intentionally kept
+   SENBONZAKURA TOAST
 ============================================ */
 
 .senbonzakura-overlay {
@@ -514,33 +516,16 @@ body.kunai-impact {
 
 .senbonzakura-toast {
   position: fixed;
-  inset: 0;
   z-index: 9998;
   pointer-events: none;
   overflow: hidden;
-
-  .sword-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-
-    .sword {
-      font-size: 4rem;
-      filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.8));
-
-      @media (max-width: 768px) {
-        font-size: 3rem;
-      }
-    }
-  }
+  width: 100dvw;
+  height: 100dvh;
 
   .senbonzakura-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 45%;
     text-align: center;
     z-index: 11;
 
@@ -558,36 +543,6 @@ body.kunai-impact {
 
       @media (max-width: 768px) {
         font-size: 3rem;
-      }
-    }
-
-    .technique-name {
-      font-family: "Orbitron", sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #ffb6c1;
-      margin: 1rem 0 0.5rem 0;
-      text-shadow:
-        0 0 10px rgba(255, 182, 193, 0.8),
-        2px 2px 4px rgba(0, 0, 0, 0.8);
-      letter-spacing: 2px;
-
-      @media (max-width: 768px) {
-        font-size: 1.5rem;
-      }
-    }
-
-    .technique-subtitle {
-      font-family: serif;
-      font-size: 1.5rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin: 0;
-      text-shadow:
-        0 0 10px rgba(255, 192, 203, 0.6),
-        2px 2px 4px rgba(0, 0, 0, 0.8);
-
-      @media (max-width: 768px) {
-        font-size: 1rem;
       }
     }
   }

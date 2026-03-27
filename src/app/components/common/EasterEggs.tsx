@@ -9,7 +9,6 @@ import Terminal from "./Terminal";
 
 import "./EasterEggs.scss";
 
-// 🎮 easter eggs
 const EASTER_EGGS = [
   {
     sequence: ["b", "n", "b"],
@@ -36,7 +35,7 @@ const EASTER_EGGS = [
     sequence: ["h", "e", "l", "p"],
     id: "terminal",
     name: "Terminal",
-    component: null, // Terminal will be handled specially
+    component: null,
     duration: 0,
   },
   {
@@ -71,9 +70,7 @@ export default function EasterEggs() {
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      setFoundEggs(new Set(JSON.parse(saved)));
-    }
+    if (saved) setFoundEggs(new Set(JSON.parse(saved)));
   }, []);
 
   useEffect(() => {
@@ -100,19 +97,15 @@ export default function EasterEggs() {
           lastKeys.length === egg.sequence.length &&
           lastKeys.every((key, index) => key === egg.sequence[index])
         ) {
-          // Terminal es especial - se abre en modal
           if (egg.id === "terminal") {
             setShowTerminal(true);
             const wasFirstTime = !foundEggs.has(egg.id);
             const updatedFound = saveProgress(egg.id);
-            if (wasFirstTime && updatedFound.size === EASTER_EGGS.length) {
-              setJustCompletedAll(true);
-            }
+            if (wasFirstTime && updatedFound.size === EASTER_EGGS.length) setJustCompletedAll(true);
             setKeySequence([]);
             return true;
           }
 
-          // Otros easter eggs (toasts)
           const newToast: Toast = {
             id: `${egg.id}-${Date.now()}`,
             eggId: egg.id,
@@ -123,7 +116,6 @@ export default function EasterEggs() {
 
           const wasFirstTime = !foundEggs.has(egg.id);
           const updatedFound = saveProgress(egg.id);
-
           if (wasFirstTime && updatedFound.size === EASTER_EGGS.length) setJustCompletedAll(true);
 
           setTimeout(() => {
@@ -148,13 +140,8 @@ export default function EasterEggs() {
       } else {
         setKeySequence((prev) => {
           const newSequence = [...prev, e.key.toLowerCase()];
-
-          if (newSequence.length > 20) {
-            newSequence.shift();
-          }
-
+          if (newSequence.length > 20) newSequence.shift();
           checkForEasterEgg(newSequence);
-
           return newSequence;
         });
       }
@@ -180,10 +167,8 @@ export default function EasterEggs() {
         </AnimatePresence>
       </div>
 
-      {/* Terminal Modal */}
       {showTerminal && <Terminal onClose={() => setShowTerminal(false)} />}
 
-      {/* 📊 PROGRESS BUTTON */}
       <motion.button
         className={`easter-egg-progress-button ${allFound ? "completed" : ""}`}
         onClick={() => setShowProgress(!showProgress)}
@@ -199,7 +184,6 @@ export default function EasterEggs() {
         </span>
       </motion.button>
 
-      {/* 📋 PROGRESS PANEL */}
       <AnimatePresence>
         {showProgress && (
           <motion.div
@@ -279,15 +263,8 @@ function BananaToast() {
     <motion.div
       className="easter-egg-toast banana-toast"
       initial={{ y: "100vh", rotate: -20, scale: 0.5 }}
-      animate={{
-        y: ["100vh", "60vh", "100vh"],
-        scale: [0.5, 5, 0.5],
-      }}
-      transition={{
-        duration: 3,
-        times: [0, 0.5, 1],
-        ease: [0.43, 0.13, 0.23, 0.96],
-      }}
+      animate={{ y: ["100vh", "60vh", "100vh"], scale: [0.5, 5, 0.5] }}
+      transition={{ duration: 3, times: [0, 0.5, 1], ease: [0.43, 0.13, 0.23, 0.96] }}
       exit={{ opacity: 0, scale: 0 }}
     >
       <div className="toast-content">
@@ -303,20 +280,14 @@ function WowToast() {
     <motion.div
       className="easter-egg-toast wow-toast"
       initial={{ scale: 0, rotate: 0 }}
-      animate={{
-        y: ["100vh", "60vh", "100vh"],
-        scale: [0, 1, 0],
-        rotate: [0, 360, 720],
-      }}
+      animate={{ y: ["100vh", "60vh", "100vh"], scale: [0, 1, 0], rotate: [0, 360, 720] }}
       transition={{ duration: 3 }}
       exit={{ opacity: 0 }}
     >
       <div className="toast-content">
         <motion.div
           className="wow-emoji"
-          animate={{
-            scale: [1, 1.2, 1, 1.2, 1],
-          }}
+          animate={{ scale: [1, 1.2, 1, 1.2, 1] }}
           transition={{ duration: 0.5, repeat: 5 }}
         >
           🎉
@@ -327,11 +298,7 @@ function WowToast() {
           <motion.div
             key={i}
             className="confetti"
-            initial={{
-              x: 0,
-              y: 0,
-              opacity: 1,
-            }}
+            initial={{ x: 0, y: 0, opacity: 1 }}
             animate={{
               x: Math.cos(((i * 360) / 20) * (Math.PI / 180)) * 200,
               y: Math.sin(((i * 360) / 20) * (Math.PI / 180)) * 200,
@@ -347,7 +314,7 @@ function WowToast() {
   );
 }
 
-// 🔪 KUNAI NARUTO TOAST
+// 🔪 KUNAI TOAST
 function KunaiToast() {
   const [audioPlayed, setAudioPlayed] = useState(false);
 
@@ -358,85 +325,113 @@ function KunaiToast() {
       audio.play().catch((err) => console.log("Audio play failed:", err));
 
       document.body.classList.add("kunai-impact");
-      setTimeout(() => {
-        document.body.classList.remove("kunai-impact");
-      }, 900);
+      setTimeout(() => document.body.classList.remove("kunai-impact"), 900);
 
       setAudioPlayed(true);
     }
   }, [audioPlayed]);
 
   return (
-    <>
-      <motion.div
-        className="easter-egg-toast kunai-toast"
-        initial={{
-          x: "-90vw",
-          y: "-90vh",
-        }}
-        animate={{
-          x: ["100vw", "0vw"],
-          y: ["100vh", "30vh"],
-        }}
-      >
-        <div className="toast-content kunai-content">
-          <motion.img src="/easters/kunai.png" alt="Kunai" className="kunai-image" />
+    <motion.div
+      className="easter-egg-toast kunai-toast"
+      style={{
+        position: "fixed",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        zIndex: 10000,
+      }}
+      initial={{ x: "60vw", y: 0, rotate: -45, opacity: 1 }}
+      animate={{ x: 0, y: 0, rotate: 0 }}
+      transition={{ duration: 0.5, ease: [0.2, 0, 0.2, 1] }}
+    >
+      <div className="toast-content kunai-content">
+        <motion.img
+          src="/easters/kunai.png"
+          alt="Kunai"
+          className="kunai-image"
+          animate={{ rotate: [0, -3, 3, 0] }}
+          transition={{ delay: 0.5, duration: 0.3 }}
+        />
 
+        <motion.div
+          className="impact-effect"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{
+            scale: [0, 2, 0],
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            delay: 0,
+            duration: 0.6,
+            ease: "easeOut",
+          }}
+        />
+
+        {Array.from({ length: 12 }).map((_, i) => (
           <motion.div
-            className="impact-effect"
-            initial={{ scale: 0, opacity: 0 }}
+            key={`smoke-${i}`}
+            className="smoke-particle"
+            initial={{
+              x: 0,
+              y: 0,
+              scale: 0,
+              opacity: 0,
+            }}
             animate={{
-              scale: [0, 2, 0],
-              opacity: [0, 1, 0],
+              x: Math.cos(((i * 360) / 12) * (Math.PI / 180)) * 80,
+              y: Math.sin(((i * 360) / 12) * (Math.PI / 180)) * 80,
+              scale: [0, 1.5, 0],
+              opacity: [0, 0.8, 0],
             }}
             transition={{
-              delay: 0,
-              duration: 0.6,
+              delay: 0.2 + i * 0.01,
+              duration: 0.8,
               ease: "easeOut",
             }}
-          />
-
-          {Array.from({ length: 12 }).map((_, i) => (
-            <motion.div
-              key={`smoke-${i}`}
-              className="smoke-particle"
-              initial={{
-                x: 0,
-                y: 0,
-                scale: 0,
-                opacity: 0,
-              }}
-              animate={{
-                x: Math.cos(((i * 360) / 12) * (Math.PI / 180)) * 80,
-                y: Math.sin(((i * 360) / 12) * (Math.PI / 180)) * 80,
-                scale: [0, 1.5, 0],
-                opacity: [0, 0.8, 0],
-              }}
-              transition={{
-                delay: 0.2 + i * 0.01,
-                duration: 0.8,
-                ease: "easeOut",
-              }}
-            >
-              💨
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </>
+          >
+            💨
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
   );
 }
 
 // 🌸 SENBONZAKURA KAGEYOSHI TOAST
 function SenbonzakuraToast() {
+  const mainPetals = Array.from({ length: 80 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    delay: Math.random() * 3,
+    duration: 4 + Math.random() * 4,
+    rotation: Math.random() * 360,
+    size: 20 + Math.random() * 28,
+    xWave: (Math.random() - 0.5) * 120,
+    initialRotation: Math.random() * 360,
+  }));
+
+  const spiralPetals = Array.from({ length: 24 }, (_, i) => {
+    const angle = (i * 360) / 24;
+    const radius = 120 + i * 8;
+    return {
+      id: i,
+      angle,
+      radius,
+      delay: 1 + i * 0.04,
+      size: 16 + Math.random() * 20,
+      rotation: Math.random() * 360,
+    };
+  });
+
   return (
     <>
       <motion.div
         className="senbonzakura-overlay"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.7 }}
+        animate={{ opacity: 0.65 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6 }}
       />
 
       <motion.div
@@ -447,147 +442,104 @@ function SenbonzakuraToast() {
         transition={{ duration: 0.3 }}
       >
         <motion.div
-          className="sword-container"
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: "40vh", opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
-          <motion.div
-            className="sword"
-            initial={{ scale: 1, rotate: 45 }}
-            animate={{
-              scale: [1, 1.2, 0],
-              rotate: [45, 45, 180],
-              opacity: [1, 1, 0],
-            }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          >
-            ⚔️
-          </motion.div>
-        </motion.div>
-
-        <motion.div
           className="senbonzakura-text"
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
+          exit={{ opacity: 0, scale: 0.7 }}
+          transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="bankai-title">卍解</h2>
-          <h3 className="technique-name">Senbonzakura Kageyoshi</h3>
-          <p className="technique-subtitle">千本桜景厳</p>
         </motion.div>
 
-        {Array.from({ length: 100 }).map((_, i) => {
-          const randomX = Math.random() * 100;
-          const randomDelay = Math.random() * 2;
-          const randomDuration = 3 + Math.random() * 3;
-          const randomRotation = Math.random() * 360;
-          const randomSize = 0.5 + Math.random() * 1.5;
-
-          return (
-            <motion.div
-              key={`petal-${i}`}
-              className="sakura-petal"
-              style={{
-                left: `${randomX}%`,
-                fontSize: `${randomSize}rem`,
-              }}
-              initial={{
-                y: -50,
-                x: 0,
-                rotate: randomRotation,
-                opacity: 0,
-              }}
-              animate={{
-                y: "110vh",
-                x: [0, 30, -20, 40, 0],
-                rotate: [randomRotation, randomRotation + 720],
-                opacity: [0, 1, 1, 0],
-              }}
-              transition={{
-                delay: randomDelay,
-                duration: randomDuration,
-                ease: "linear",
-              }}
-            >
-              🌸
-            </motion.div>
-          );
-        })}
-
-        {Array.from({ length: 30 }).map((_, i) => {
-          const angle = (i * 360) / 30;
-          const radius = 150 + i * 5;
-
-          return (
-            <motion.div
-              key={`spiral-${i}`}
-              className="sakura-petal-spiral"
-              initial={{
-                x: "50vw",
-                y: "40vh",
-                scale: 0,
-                opacity: 0,
-              }}
-              animate={{
-                x: ["50vw", `calc(50vw + ${Math.cos((angle * Math.PI) / 180) * radius}px)`],
-                y: ["40vh", `calc(40vh + ${Math.sin((angle * Math.PI) / 180) * radius}px)`],
-                scale: [0, 1, 0],
-                opacity: [0, 1, 0],
-                rotate: [0, 360],
-              }}
-              transition={{
-                delay: 1 + i * 0.03,
-                duration: 2,
-                ease: "easeOut",
-              }}
-            >
-              🌸
-            </motion.div>
-          );
-        })}
-
-        {Array.from({ length: 40 }).map((_, i) => (
-          <motion.div
-            key={`sparkle-${i}`}
-            className="sparkle-particle"
+        {mainPetals.map((petal) => (
+          <motion.img
+            key={`petal-${petal.id}`}
+            src="/easters/sakura-petal.png"
+            alt=""
+            aria-hidden="true"
+            className="sakura-petal"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${petal.left}%`,
+              top: "-60px",
+              width: `${petal.size}px`,
+              height: `${petal.size}px`,
+              position: "absolute",
+              objectFit: "contain",
+              pointerEvents: "none",
             }}
-            initial={{ scale: 0, opacity: 0 }}
+            initial={{
+              y: -60,
+              x: 0,
+              rotate: petal.initialRotation,
+              opacity: 0,
+            }}
             animate={{
-              scale: [0, 1, 0],
-              opacity: [0, 1, 0],
+              y: "110vh",
+              x: [0, petal.xWave * 0.4, petal.xWave * -0.3, petal.xWave * 0.6, 0],
+              rotate: petal.initialRotation + 540,
+              opacity: [0, 0.9, 0.9, 0.7, 0],
             }}
             transition={{
-              delay: 1.5 + Math.random() * 2,
-              duration: 1 + Math.random(),
-              repeat: 2,
+              delay: petal.delay,
+              duration: petal.duration,
+              ease: "linear",
+              x: { duration: petal.duration, ease: "easeInOut" },
             }}
-          >
-            ✨
-          </motion.div>
+          />
+        ))}
+
+        {spiralPetals.map((petal) => (
+          <motion.img
+            key={`spiral-${petal.id}`}
+            src="/easters/sakura-petal.png"
+            alt=""
+            aria-hidden="true"
+            className="sakura-petal-spiral"
+            style={{
+              width: `${petal.size}px`,
+              height: `${petal.size}px`,
+              position: "absolute",
+              objectFit: "contain",
+              pointerEvents: "none",
+            }}
+            initial={{
+              left: "50%",
+              top: "50%",
+              x: "-50%",
+              y: "-50%",
+              scale: 0,
+              opacity: 0,
+              rotate: petal.rotation,
+            }}
+            animate={{
+              x: `calc(-50% + ${Math.cos((petal.angle * Math.PI) / 180) * petal.radius}px)`,
+              y: `calc(-50% + ${Math.sin((petal.angle * Math.PI) / 180) * petal.radius}px)`,
+              scale: [0, 1.2, 0],
+              opacity: [0, 1, 0],
+              rotate: petal.rotation + 360,
+            }}
+            transition={{
+              delay: petal.delay,
+              duration: 2.5,
+              ease: "easeOut",
+            }}
+          />
         ))}
 
         <motion.div
           className="shockwave"
-          initial={{ scale: 0, opacity: 0.8 }}
-          animate={{ scale: 4, opacity: 0 }}
-          transition={{ delay: 0.5, duration: 1.5, ease: "easeOut" }}
+          initial={{ scale: 0, opacity: 0.7 }}
+          animate={{ scale: 5, opacity: 0 }}
+          transition={{ delay: 0.5, duration: 1.8, ease: "easeOut" }}
         />
 
-        {[0, 0.3, 0.6].map((delay, index) => (
+        {[0, 0.35, 0.7].map((delay, i) => (
           <motion.div
-            key={`ring-${index}`}
+            key={`ring-${i}`}
             className="energy-ring"
-            initial={{ scale: 0, opacity: 0.6 }}
-            animate={{ scale: 3, opacity: 0 }}
-            transition={{
-              delay: 1 + delay,
-              duration: 2,
-              ease: "easeOut",
-            }}
+            initial={{ scale: 0, opacity: 0.5 }}
+            animate={{ scale: 3.5, opacity: 0 }}
+            transition={{ delay: 0.8 + delay, duration: 2, ease: "easeOut" }}
           />
         ))}
       </motion.div>
