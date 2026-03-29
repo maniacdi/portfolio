@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { AboutSection } from "@/app/components/about/AboutMeSection/AboutMeSection";
 
 import "@/styles/page.scss";
+import { motion } from "framer-motion";
 
 const BASE_URL = "https://magaldidev.vercel.app";
 
@@ -37,9 +38,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <main className="page-container">
-      <h1 className="page-title gradient-text" style={{ marginBottom: "0.5rem" }}>
-        {t("title")}
-      </h1>
+      <h1 className="page-title gradient-text">{t("title")}</h1>
+      <p className="page-description">{t("subtitle")}</p>
+
       <AboutSection className="about-page" />
     </main>
   );
