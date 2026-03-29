@@ -6,6 +6,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import WeatherWidget from "@components/common/WeatherWidget";
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
+import { Analytics } from "@vercel/analytics/react";
 
 import ChatBot from "../components/chatBot/ChatBot";
 import EasterEggs from "../components/common/EasterEggs";
@@ -75,6 +76,7 @@ export default async function LocaleLayout({
       <>
         <WebsiteSchema />
         <PersonSchema locale={locale as "es" | "en"} />
+        <Analytics />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ToastProvider>
             <TerminalLoader />
