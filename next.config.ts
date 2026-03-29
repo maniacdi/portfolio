@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
         hostname: "nominatim.openstreetmap.org",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
     ],
   },
 
