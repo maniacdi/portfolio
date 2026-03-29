@@ -16,17 +16,20 @@ export default function LanguageSwitcher() {
   const isEnglish = locale === "en";
   const nextLocale = isEnglish ? "es" : "en";
 
-  // Remove locale from pathname and add new one
-  const newUrl = pathname.replace(`/${locale}`, `/${nextLocale}`);
+  const languageLabels = { en: "English", es: "Español" };
 
-  const languageLabels = {
-    en: "English",
-    es: "Español",
+  const getNewUrl = () => {
+    if (isEnglish) {
+      const withoutPrefix = pathname.replace(/^\/en/, "") || "/";
+      return withoutPrefix;
+    } else {
+      return pathname === "/" ? "/en" : `/en${pathname}`;
+    }
   };
 
   return (
     <Link
-      href={newUrl}
+      href={getNewUrl()}
       className={`lang-switcher ${isEnglish ? "en" : "es"}`}
       aria-label={`Change language to ${languageLabels[nextLocale]}`}
       title={`Switch to ${languageLabels[nextLocale]}`}
@@ -44,21 +47,10 @@ export default function LanguageSwitcher() {
         <motion.div
           className="selection-bubble"
           layout
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 25,
-            mass: 0.8,
-          }}
+          transition={{ type: "spring", stiffness: 300, damping: 25, mass: 0.8 }}
           aria-hidden="true"
         />
       </div>
-
-      {/* Screen reader only text
-      <span className="sr-only">
-        Current language: {languageLabels[locale]}. 
-        Click to switch to {languageLabels[nextLocale]}
-      </span> */}
     </Link>
   );
 }
