@@ -19,7 +19,7 @@ export const cookingList: HobbyItem[] = [
     id: slugify("Asian Cuisine"),
     title: "Asian Cuisine",
     slug: slugify("Asian Cuisine"),
-    image: "/images/cooking/asian.jpg",
+    image: "https://res.cloudinary.com/dblcttl2g/image/upload/v1774793737/udon_zjflov.jpg",
   },
   {
     id: slugify("Spanish Cuisine"),

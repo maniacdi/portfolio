@@ -7,7 +7,7 @@ export const videoGamesList: HobbyItem[] = [
     title: "Zelda",
     slug: slugify("Zelda"),
     favorite: true,
-    image: "/images/anime/default.png",
+    image: "https://res.cloudinary.com/dblcttl2g/image/upload/v1774793522/zelda_arkef0.jpg",
   },
   {
     id: slugify("League of legends"),
@@ -20,7 +20,7 @@ export const videoGamesList: HobbyItem[] = [
     title: "Pokemon",
     slug: slugify("Pokemon"),
     favorite: true,
-    image: "/images/anime/default.png",
+    image: "https://res.cloudinary.com/dblcttl2g/image/upload/v1774793522/snorlax_o0mzph.jpg",
   },
   {
     id: slugify("Rocket league"),
@@ -55,7 +55,7 @@ export const videoGamesList: HobbyItem[] = [
     title: "Blasphemous",
     slug: slugify("Blasphemous"),
     favorite: false,
-    image: "/images/anime/default.png",
+    image: "https://res.cloudinary.com/dblcttl2g/image/upload/v1774793523/blasphemous_gcfsn3.jpg",
   },
   {
     id: slugify("Far Cry"),
@@ -69,13 +69,13 @@ export const videoGamesList: HobbyItem[] = [
     title: "Assassin's Creed",
     slug: slugify("Assassin's Creed"),
     favorite: false,
-    image: "/images/anime/default.png",
+    image: "https://res.cloudinary.com/dblcttl2g/image/upload/v1774793523/assasins_fev8pi.jpg",
   },
   {
     id: slugify("Call of Duty"),
     title: "Call of Duty",
     slug: slugify("Call of Duty"),
     favorite: false,
-    image: "/images/anime/default.png",
+    image: "https://res.cloudinary.com/dblcttl2g/image/upload/v1774793522/cod_foizaj.jpg",
   },
 ];

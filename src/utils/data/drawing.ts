@@ -7,13 +7,13 @@ export const drawingList: HobbyItem[] = [
     title: "Sketching",
     slug: slugify("Sketching"),
     favorite: true,
-    image: "/images/anime/default.png",
+    image: "https://res.cloudinary.com/dblcttl2g/image/upload/v1774793524/sketch_kqfge0.jpg",
   },
   {
     id: slugify("Digital Art"),
     title: "Digital Art",
     slug: slugify("Digital Art"),
-    image: "/images/anime/default.png",
+    image: "https://res.cloudinary.com/dblcttl2g/image/upload/v1774793687/digital_e8x9kx.png",
   },
   {
     id: slugify("Improvising"),
