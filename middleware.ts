@@ -2,9 +2,11 @@ import { NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
 const intlMiddleware = createMiddleware({
-  locales: ["en", "es"],
+  locales: ["es", "en"],
   defaultLocale: "es",
-  localePrefix: "always",
+  // "as-needed" means / serves Spanish directly (no redirect)
+  // and /en serves English. Fixes 307 redirects and hreflang issues.
+  localePrefix: "as-needed",
 });
 
 export function middleware(request: NextRequest) {
@@ -17,10 +19,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    // Match all pathnames except for
-    // - … if they start with `/api`, `/_next` or `/_vercel`
-    // - … the ones containing a dot (e.g., `favicon.ico`)
-    "/((?!api|_next|_vercel|.*\\..*).*)",
-  ],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };

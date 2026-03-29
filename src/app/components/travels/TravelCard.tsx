@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
-import { Calendar, Camera,ChevronRight, MapPin } from "lucide-react";
+import { Calendar, Camera, ChevronRight, MapPin } from "lucide-react";
 
 import { formatDate, getDuration, getTypeColor } from "@/utils/helpers/travels";
 import { Travel } from "@/utils/types/Travel";
@@ -33,10 +33,10 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
         {travel.photos[0] ? (
           <img
             src={travel.photos[0]}
-            alt={travel.title}
             onError={(e) => {
               e.currentTarget.src = "/images/travels/default.jpg";
             }}
+            alt={`${travel.title} ${travel.location.country} photo`}
           />
         ) : (
           <div className="no-image">

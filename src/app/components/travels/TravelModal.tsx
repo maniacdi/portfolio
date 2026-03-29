@@ -3,16 +3,8 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-import { AnimatePresence,motion } from "framer-motion";
-import {
-  Calendar,
-  Camera,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  MapPin,
-  X,
-} from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Calendar, Camera, ChevronLeft, ChevronRight, Clock, MapPin, X } from "lucide-react";
 
 import { formatDate, getDuration, getTypeColor } from "@/utils/helpers/travels";
 import { Travel } from "@/utils/types/Travel";
@@ -92,7 +84,7 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                               className={`thumbnail ${index === currentPhotoIndex ? "active" : ""}`}
                               onClick={() => setCurrentPhotoIndex(index)}
                             >
-                              <img src={photo} alt={`Thumbnail ${index + 1}`} />
+                              <img src={photo} alt={`${travel.title} - Thumbnail ${index + 1}`} />
                             </button>
                           ))}
                         </div>

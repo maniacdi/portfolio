@@ -1,18 +1,29 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+});
 
 export const metadata: Metadata = {
-  title: "Magaldidev - Portfolio",
-  description: "Portfolio de desarrollador frontend especializado en React y Next.js",
+  title: {
+    default: "Magaldidev — Portfolio",
+    template: "%s | Magaldidev",
+  },
+  description: "Portfolio de Javi García Magaldi, desarrollador web full-stack desde Santander.",
+  metadataBase: new URL("https://magaldidev.vercel.app"),
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="es">
-      <body className={inter.className}>{children}</body>
+      <body className={spaceGrotesk.variable}>{children}</body>
     </html>
   );
 }

@@ -10,9 +10,12 @@ import Header from "@components/header/Header";
 import ChatBot from "../components/chatBot/ChatBot";
 import EasterEggs from "../components/common/EasterEggs";
 import TerminalLoader from "../components/common/TerminalLoader";
+import { PersonSchema, WebsiteSchema } from "../components/common/JsonLd";
 import { ToastProvider } from "../components/toast/ToastProvider";
 
 import "../../styles/globals.scss";
+
+const BASE_URL = "https://magaldidev.vercel.app";
 
 export async function generateMetadata({
   params,
@@ -22,9 +25,37 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
 
+  const isEs = locale === "es";
+  const canonical = isEs ? BASE_URL : `${BASE_URL}/en`;
+
   return {
-    title: t("title"),
+    title: {
+      default: t("title"),
+      template: `%s | Magaldidev`,
+    },
     description: t("description"),
+    metadataBase: new URL(BASE_URL),
+    alternates: {
+      canonical,
+      languages: {
+        es: BASE_URL,
+        en: `${BASE_URL}/en`,
+        "x-default": BASE_URL,
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: canonical,
+      siteName: "Magaldidev",
+      locale: isEs ? "es_ES" : "en_US",
+      alternateLocale: isEs ? "en_US" : "es_ES",
+      type: "website",
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
@@ -41,17 +72,21 @@ export default async function LocaleLayout({
     const messages = await getMessages({ locale });
 
     return (
-      <NextIntlClientProvider locale={locale} messages={messages}>
-        <ToastProvider>
-          <TerminalLoader />
-          <Header />
-          <main className="main-content">{children}</main>
-          <ChatBot />
-          <Footer />
-          <WeatherWidget />
-          <EasterEggs />
-        </ToastProvider>
-      </NextIntlClientProvider>
+      <>
+        <WebsiteSchema />
+        <PersonSchema locale={locale as "es" | "en"} />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ToastProvider>
+            <TerminalLoader />
+            <Header />
+            <main className="main-content">{children}</main>
+            <ChatBot />
+            <Footer />
+            <WeatherWidget />
+            <EasterEggs />
+          </ToastProvider>
+        </NextIntlClientProvider>
+      </>
     );
   } catch (error) {
     console.error(`Error loading messages for locale ${locale}:`, error);

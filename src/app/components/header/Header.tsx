@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback,useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 
@@ -76,7 +76,7 @@ export default function Header() {
       >
         <div className="header-content">
           <LocalizedLink href="/" onClick={handleLinkClick}>
-            <img className="logo" src="/images/LOGO.png" alt="Magaldidev" />
+            <img className="logo" src="/images/LOGO.png" alt="Magaldidev logo" />
           </LocalizedLink>
 
           <button
