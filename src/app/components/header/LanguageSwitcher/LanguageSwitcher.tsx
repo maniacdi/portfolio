@@ -6,6 +6,7 @@ import { useLocale } from "next-intl";
 import { motion } from "framer-motion";
 
 import "./LanguageSwitcher.scss";
+import Link from "next/link";
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
@@ -29,11 +30,12 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <button
+    <Link
       onClick={handleSwitch}
       className={`lang-switcher ${isEnglish ? "en" : "es"}`}
       aria-label={`Change language to ${languageLabels[nextLocale]}`}
       title={`Switch to ${languageLabels[nextLocale]}`}
+      href={"#"}
     >
       <div className="track">
         <div className="flags-container">
@@ -52,6 +54,6 @@ export default function LanguageSwitcher() {
           aria-hidden="true"
         />
       </div>
-    </button>
+    </Link>
   );
 }
