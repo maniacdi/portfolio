@@ -1,10 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
-
 import { motion } from "framer-motion";
 
 import "./LanguageSwitcher.scss";
@@ -12,24 +10,27 @@ import "./LanguageSwitcher.scss";
 export default function LanguageSwitcher() {
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
 
   const isEnglish = locale === "en";
   const nextLocale = isEnglish ? "es" : "en";
 
   const languageLabels = { en: "English", es: "Español" };
 
-  const getNewUrl = () => {
-    if (isEnglish) {
-      const withoutPrefix = pathname.replace(/^\/en/, "") || "/";
-      return withoutPrefix;
-    } else {
-      return pathname === "/" ? "/en" : `/en${pathname}`;
-    }
+  const getPathWithoutLocalePrefix = () => pathname.replace(/^\/en/, "") || "/";
+
+  const handleSwitch = () => {
+    const pathWithoutPrefix = getPathWithoutLocalePrefix();
+    const newPath = nextLocale === "en" ? `/en${pathWithoutPrefix}` : pathWithoutPrefix;
+
+    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=${60 * 60 * 24 * 365}`;
+
+    router.push(newPath);
   };
 
   return (
-    <Link
-      href={getNewUrl()}
+    <button
+      onClick={handleSwitch}
       className={`lang-switcher ${isEnglish ? "en" : "es"}`}
       aria-label={`Change language to ${languageLabels[nextLocale]}`}
       title={`Switch to ${languageLabels[nextLocale]}`}
@@ -51,6 +52,6 @@ export default function LanguageSwitcher() {
           aria-hidden="true"
         />
       </div>
-    </Link>
+    </button>
   );
 }
