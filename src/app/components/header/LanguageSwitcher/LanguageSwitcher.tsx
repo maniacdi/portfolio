@@ -1,41 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
+
 import { motion } from "framer-motion";
 
 import "./LanguageSwitcher.scss";
-import Link from "next/link";
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
 
   const isEnglish = locale === "en";
   const nextLocale = isEnglish ? "es" : "en";
 
-  const languageLabels = { en: "English", es: "Español" };
+  // Remove locale from pathname and add new one
+  const newUrl = pathname.replace(`/${locale}`, `/${nextLocale}`);
 
-  const getPathWithoutLocalePrefix = () => pathname.replace(/^\/en/, "") || "/";
-
-  const handleSwitch = () => {
-    const pathWithoutPrefix = getPathWithoutLocalePrefix();
-    const newPath = nextLocale === "en" ? `/en${pathWithoutPrefix}` : pathWithoutPrefix;
-
-    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=${60 * 60 * 24 * 365}`;
-
-    router.push(newPath);
+  const languageLabels = {
+    en: "English",
+    es: "Español",
   };
 
   return (
     <Link
-      onClick={handleSwitch}
+      href={newUrl}
       className={`lang-switcher ${isEnglish ? "en" : "es"}`}
       aria-label={`Change language to ${languageLabels[nextLocale]}`}
       title={`Switch to ${languageLabels[nextLocale]}`}
-      href={"#"}
     >
       <div className="track">
         <div className="flags-container">
@@ -50,7 +44,12 @@ export default function LanguageSwitcher() {
         <motion.div
           className="selection-bubble"
           layout
-          transition={{ type: "spring", stiffness: 300, damping: 25, mass: 0.8 }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 25,
+            mass: 0.8,
+          }}
           aria-hidden="true"
         />
       </div>

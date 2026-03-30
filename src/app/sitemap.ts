@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://magaldidev.vercel.app";
+const BASE_URL = "https://javimagaldi.com";
 
 // Static routes
 const routes = ["/", "/about", "/code", "/travels", "/hobbies"];

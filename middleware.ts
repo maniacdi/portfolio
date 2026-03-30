@@ -6,7 +6,7 @@ const intlMiddleware = createMiddleware({
   defaultLocale: "es",
   // "as-needed" means / serves Spanish directly (no redirect)
   // and /en serves English. Fixes 307 redirects and hreflang issues.
-  localePrefix: "as-needed",
+  localePrefix: "always",
 });
 
 export function middleware(request: NextRequest) {

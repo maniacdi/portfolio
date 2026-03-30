@@ -16,7 +16,7 @@ import { ToastProvider } from "../components/toast/ToastProvider";
 
 import "../../styles/globals.scss";
 
-const BASE_URL = "https://magaldidev.vercel.app";
+const BASE_URL = "https://javimagaldi.com";
 
 export async function generateMetadata({
   params,

@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: "https://magaldidev.vercel.app/sitemap.xml",
-    host: "https://magaldidev.vercel.app",
+    sitemap: "https://javimagaldi.com/sitemap.xml",
+    host: "https://javimagaldi.com",
   };
 }
