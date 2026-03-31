@@ -81,7 +81,6 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
   };
 
   const getTypeEmoji = (type: string) => {
-    console.log("Getting emoji for type:", type);
     const emojis: Record<string, string> = {
       vacation: "🏖️",
       business: "💼",
