@@ -185,7 +185,6 @@
 
 .timeline-period {
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
   font-weight: 500;
   color: var(--neon-mid);
   background: var(--neon-subtle);
@@ -197,7 +196,6 @@
 
 .timeline-location {
   color: var(--text-secondary);
-  font-size: 13px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -212,21 +210,18 @@
   font-weight: 500;
   color: var(--text);
   margin: 0.5rem 0;
-  font-size: 16px;
 }
 
 .timeline-subtitle {
   color: var(--neon-mid);
   margin: 0.25rem 0 0.75rem;
   font-weight: 400;
-  font-size: 14px;
 }
 
 .timeline-description {
   color: var(--text-secondary);
   line-height: 1.7;
   margin: 0.75rem 0;
-  font-size: 14px;
 }
 
 .timeline-tags {
@@ -243,7 +238,6 @@
 
 .timeline-tag {
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
   background: var(--neon-subtle);
   color: var(--neon-mid);
   padding: 0.3rem 0.75rem;

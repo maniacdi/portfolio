@@ -92,7 +92,6 @@
 
 .column-title {
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
   font-weight: 500;
   color: var(--neon-mid);
   letter-spacing: 0.1em;
@@ -130,7 +129,6 @@
     .footer-logo {
       font-family: "JetBrains Mono", monospace;
       font-weight: 500;
-      font-size: 14px;
       background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -140,7 +138,6 @@
 
   .brand-tagline {
     color: var(--text-secondary);
-    font-size: 14px;
     line-height: 1.7;
     max-width: 400px;
 
@@ -164,7 +161,6 @@
       align-items: center;
       gap: 0.5rem;
       color: var(--text-secondary);
-      font-size: 14px;
       transition: color 0.2s ease;
 
       svg {
@@ -209,7 +205,6 @@
     align-items: center;
     gap: 0.5rem;
     color: var(--text-secondary);
-    font-size: 14px;
     text-decoration: none;
     transition:
       color 0.2s ease,
@@ -260,7 +255,6 @@
 .footer-connect {
   .connect-description {
     color: var(--text-secondary);
-    font-size: 14px;
     line-height: 1.7;
     margin-bottom: 0.5rem;
   }
@@ -283,7 +277,6 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       color: var(--text-secondary);
-      font-size: 13px;
       text-decoration: none;
       transition:
         background 0.2s ease,
@@ -352,7 +345,6 @@
   align-items: center;
   gap: 0.5rem;
   color: var(--text-secondary);
-  font-size: 13px;
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
@@ -398,7 +390,6 @@
   border: 1px solid var(--border2);
   border-radius: var(--radius-lg);
   color: var(--text-secondary);
-  font-size: 13px;
   font-weight: 400;
   cursor: pointer;
   transition:

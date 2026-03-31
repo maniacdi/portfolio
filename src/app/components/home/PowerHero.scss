@@ -105,7 +105,6 @@
   border-radius: 100px;
   color: var(--neon-mid);
   font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -159,7 +158,6 @@
     align-items: center;
     gap: 0.75rem;
     font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
 
     @media (max-width: 768px) {
       gap: 0.5rem;
@@ -271,7 +269,6 @@
     }
 
     .tech-text {
-      font-size: 13px;
       font-weight: 400;
       letter-spacing: 0.04em;
     }
@@ -287,7 +284,6 @@
   color: var(--text-secondary);
   max-width: 800px;
   margin: 0 auto 2rem;
-  font-size: 15px;
 
   .highlight {
     color: var(--neon-mid);
@@ -296,7 +292,6 @@
 
   .code {
     font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
     color: var(--neon-mid);
     background: rgba(111, 0, 255, 0.08);
     padding: 0.15rem 0.5rem;
@@ -349,7 +344,6 @@
 
     .stat-number {
       font-weight: 700;
-      font-size: 1.75rem;
       background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -359,7 +353,6 @@
 
     .stat-label {
       color: var(--text-secondary);
-      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 400;
@@ -401,7 +394,6 @@
       margin-bottom: 0.625rem;
 
       .stack-name {
-        font-size: 12px;
         font-weight: 500;
         color: var(--text);
         font-family: "JetBrains Mono", monospace;
@@ -410,7 +402,6 @@
 
       .stack-level {
         color: var(--neon-mid);
-        font-size: 12px;
         font-weight: 400;
         font-family: "JetBrains Mono", monospace;
       }
@@ -444,7 +435,6 @@
       gap: 0.5rem;
       margin-top: 0.5rem;
       color: var(--text-secondary);
-      font-size: 12px;
       justify-content: center;
     }
   }
@@ -468,7 +458,6 @@
     gap: 0.5rem;
     padding: 0.875rem 1.75rem;
     border-radius: var(--radius-lg);
-    font-size: 14px;
     font-weight: 500;
     text-decoration: none;
     transition:

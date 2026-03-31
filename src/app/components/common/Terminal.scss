@@ -91,7 +91,6 @@
 
   .terminal-title {
     font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
     font-weight: 400;
     color: var(--neon-mid);
     letter-spacing: 0.04em;
@@ -107,7 +106,6 @@
   padding: 1.5rem;
   overflow-y: auto;
   font-family: "Courier New", "Consolas", monospace;
-  font-size: 0.95rem;
   line-height: 1.6;
   color: #0f0;
   background: #0a0e14;
@@ -169,7 +167,6 @@
 
   .ascii-logo {
     color: var(--neon-mid);
-    font-size: 0.75rem;
     margin-bottom: 1rem;
   }
 
@@ -234,7 +231,6 @@
     outline: none;
     color: #fff;
     font-family: "Courier New", "Consolas", monospace;
-    font-size: 0.95rem;
     caret-color: #0f0;
 
     &::selection {
@@ -359,12 +355,10 @@
     }
     .job-period {
       color: #ffbd2e;
-      font-size: 0.875rem;
     }
     .job-desc {
       color: #0f0;
       margin-left: 1rem;
-      font-size: 0.875rem;
     }
   }
 }
@@ -427,7 +421,6 @@
 
 .ascii-art {
   color: var(--neon-mid);
-  font-size: 0.8rem;
   line-height: 1.4;
   margin: 1rem 0;
   white-space: pre;
@@ -439,24 +432,20 @@
 
 @media (max-width: 768px) {
   .terminal-body {
-    font-size: 0.85rem;
     padding: 1rem;
   }
 
   .help-output .commands-list .command-item {
     grid-template-columns: 100px 1fr;
     gap: 0.5rem;
-    font-size: 0.85rem;
   }
 
   .ascii-art {
-    font-size: 0.65rem;
   }
 
   .projects-output .project-item,
   .experience-output .job-item,
   .skills-output .skill-category {
-    font-size: 0.85rem;
   }
 }
 

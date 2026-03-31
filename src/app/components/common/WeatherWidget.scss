@@ -31,7 +31,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
     font-weight: 400;
     transition:
       transform 0.2s ease,
@@ -106,7 +105,6 @@
 
     .city {
       font-weight: 500;
-      font-size: 14px;
       flex-grow: 1;
       white-space: nowrap;
       overflow: hidden;
@@ -199,13 +197,11 @@
 
       .description {
         font-weight: 500;
-        font-size: 14px;
         text-transform: capitalize;
       }
 
       .feels-like {
         color: var(--text-secondary);
-        font-size: 13px;
       }
     }
   }
@@ -235,7 +231,6 @@
       }
 
       span {
-        font-size: 12px;
         font-weight: 500;
       }
     }
@@ -258,8 +253,6 @@
       align-items: center;
       gap: 8px;
       color: var(--text-secondary);
-      font-size: 13px;
-
       svg {
         color: #ffd700;
       }
@@ -268,7 +261,6 @@
 
   .forecast-days {
     h4 {
-      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 10px;
@@ -295,7 +287,6 @@
         }
 
         .day-name {
-          font-size: 10px;
           font-weight: 500;
           text-transform: uppercase;
           letter-spacing: 0.04em;
@@ -309,7 +300,6 @@
         .day-temps {
           display: flex;
           gap: 4px;
-          font-size: 11px;
           font-family: "JetBrains Mono", monospace;
 
           .temp-max {

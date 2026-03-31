@@ -105,7 +105,6 @@
     gap: 0.75rem;
     color: var(--text);
     font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
     font-weight: 400;
     flex: 1;
     min-width: 0;
@@ -152,7 +151,6 @@
     align-items: center;
     gap: 0.5rem;
     color: var(--success);
-    font-size: 12px;
     flex-shrink: 0;
 
     .status-indicator {
@@ -195,7 +193,6 @@
     border: none;
     color: var(--text-secondary);
     font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
     cursor: pointer;
     transition:
       color 0.2s ease,
@@ -247,7 +244,6 @@
   gap: 0.75rem;
   margin-bottom: 2rem;
   font-family: "JetBrains Mono", monospace;
-  font-size: 13px;
   color: var(--text-secondary);
 
   @media (max-width: 768px) {
@@ -344,7 +340,6 @@
       .job-title {
         color: var(--text-secondary);
         margin-bottom: 1rem;
-        font-size: 14px;
       }
 
       .status-badge {
@@ -356,8 +351,6 @@
         border: 1px solid rgba(76, 217, 100, 0.3);
         border-radius: 100px;
         color: var(--success);
-        font-size: 12px;
-
         .status-indicator {
           width: 6px;
           height: 6px;
@@ -419,7 +412,6 @@
 
         .detail-label {
           color: var(--text-secondary);
-          font-size: 10px;
           text-transform: uppercase;
           letter-spacing: 0.08em;
           font-family: "JetBrains Mono", monospace;
@@ -428,7 +420,6 @@
         .detail-value {
           color: var(--text);
           font-weight: 500;
-          font-size: 14px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -445,7 +436,6 @@
 
     h4 {
       color: var(--neon-mid);
-      font-size: 12px;
       font-family: "JetBrains Mono", monospace;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -455,7 +445,6 @@
     .bio-text {
       line-height: 1.7;
       color: var(--text-secondary);
-      font-size: 14px;
     }
   }
 }
@@ -481,7 +470,6 @@
 
     .skills-subtitle {
       color: var(--text-secondary);
-      font-size: 14px;
     }
   }
 
@@ -513,7 +501,6 @@
           font-weight: 500;
           color: var(--text);
           text-transform: capitalize;
-          font-size: 14px;
         }
       }
 
@@ -542,7 +529,6 @@
           }
 
           .skill-name {
-            font-size: 13px;
             font-weight: 500;
             margin-bottom: 0.5rem;
             color: var(--text);
@@ -583,7 +569,6 @@
     h4 {
       color: var(--neon-mid);
       margin-bottom: 1rem;
-      font-size: 13px;
     }
 
     .skill-stats {
@@ -599,7 +584,6 @@
 
         .stat-label {
           color: var(--text-secondary);
-          font-size: 10px;
           text-transform: uppercase;
           letter-spacing: 0.08em;
           font-family: "JetBrains Mono", monospace;
@@ -608,7 +592,6 @@
         .stat-value {
           color: var(--neon-mid);
           font-weight: 500;
-          font-size: 14px;
         }
       }
     }
@@ -643,7 +626,6 @@
     }
     .contact-subtitle {
       color: var(--text-secondary);
-      font-size: 14px;
     }
   }
 
@@ -708,12 +690,10 @@
           font-weight: 500;
           margin-bottom: 0.25rem;
           color: var(--text);
-          font-size: 14px;
         }
 
         p {
           color: var(--text-secondary);
-          font-size: 13px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -722,7 +702,6 @@
         .contact-action-text {
           display: block;
           color: var(--neon-mid);
-          font-size: 12px;
           margin-top: 0.2rem;
         }
       }
@@ -749,7 +728,6 @@
     p {
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
-      font-size: 14px;
     }
 
     .cta-button {
@@ -762,7 +740,6 @@
       border: none;
       border-radius: var(--radius-lg);
       font-weight: 500;
-      font-size: 14px;
       cursor: pointer;
       transition:
         box-shadow 0.25s ease,
@@ -795,7 +772,6 @@
     align-items: center;
     margin-bottom: 1rem;
     font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
     color: var(--text-secondary);
 
     @media (max-width: 768px) {
@@ -824,8 +800,6 @@
     align-items: center;
     gap: 0.5rem;
     font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
-
     .prompt {
       color: var(--success);
     }

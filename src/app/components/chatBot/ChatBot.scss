@@ -125,7 +125,6 @@
     .header-info {
       h3 {
         font-family: "JetBrains Mono", monospace;
-        font-size: 13px;
         font-weight: 500;
         color: var(--text);
         margin: 0 0 0.2rem 0;
@@ -136,7 +135,6 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-size: 11px;
         color: var(--text-secondary);
         margin: 0;
 
@@ -228,7 +226,6 @@
       margin: 0;
       padding: 0.75rem 1rem;
       border-radius: 10px;
-      font-size: 14px;
       line-height: 1.6;
       white-space: pre-wrap;
       word-wrap: break-word;
@@ -290,7 +287,6 @@
     border: 1px solid var(--neon-border);
     border-radius: var(--radius-lg);
     color: var(--neon-mid);
-    font-size: 13px;
     cursor: pointer;
     transition:
       background 0.2s ease,
@@ -367,7 +363,6 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     color: var(--text);
-    font-size: 14px;
     font-family: inherit;
     outline: none;
     transition:
@@ -427,7 +422,6 @@
 
   p {
     margin: 0;
-    font-size: 11px;
     color: var(--text-secondary);
     opacity: 0.6;
 

@@ -172,7 +172,6 @@
     background: rgba(0, 0, 0, 0.65);
     color: var(--text);
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
     padding: 0.2rem 0.625rem;
     border-radius: 100px;
   }
@@ -197,7 +196,6 @@
 
       .travel-type-badge {
         font-family: "JetBrains Mono", monospace;
-        font-size: 10px;
         padding: 0.2rem 0.75rem;
         border-radius: 100px;
         font-weight: 500;
@@ -210,7 +208,6 @@
         background: rgba(255, 215, 0, 0.15);
         color: #ffd700;
         font-family: "JetBrains Mono", monospace;
-        font-size: 10px;
         padding: 0.2rem 0.75rem;
         border-radius: 100px;
         font-weight: 500;
@@ -231,7 +228,6 @@
 
       .rating-text {
         color: var(--text-secondary);
-        font-size: 13px;
       }
     }
   }
@@ -263,7 +259,6 @@
         display: block;
         color: var(--text-secondary);
         font-family: "JetBrains Mono", monospace;
-        font-size: 10px;
         text-transform: uppercase;
         letter-spacing: 0.08em;
       }
@@ -272,7 +267,6 @@
         display: block;
         color: var(--text);
         font-weight: 500;
-        font-size: 14px;
       }
     }
   }
@@ -283,13 +277,11 @@
     h3 {
       margin-bottom: 0.75rem;
       color: var(--text);
-      font-size: 14px;
       font-weight: 500;
     }
     p {
       line-height: 1.8;
       color: var(--text-secondary);
-      font-size: 14px;
     }
   }
 
@@ -299,7 +291,6 @@
     h3 {
       margin-bottom: 0.75rem;
       color: var(--text);
-      font-size: 14px;
       font-weight: 500;
     }
 
@@ -331,7 +322,6 @@
         span {
           color: var(--text-secondary);
           line-height: 1.6;
-          font-size: 14px;
         }
       }
     }
@@ -346,7 +336,6 @@
     h3 {
       margin-bottom: 0.75rem;
       color: var(--text);
-      font-size: 14px;
       font-weight: 500;
     }
 
@@ -363,7 +352,6 @@
         color: var(--text-secondary);
         line-height: 1.8;
         margin: 0;
-        font-size: 14px;
       }
     }
   }

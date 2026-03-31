@@ -83,7 +83,6 @@
 
   .progress-count {
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
     font-weight: 500;
     color: white;
   }
@@ -134,7 +133,6 @@
 
     h3 {
       font-family: "JetBrains Mono", monospace;
-      font-size: 12px;
       font-weight: 500;
       color: var(--neon-mid);
       margin: 0;
@@ -185,7 +183,6 @@
 
     .progress-text {
       font-family: "JetBrains Mono", monospace;
-      font-size: 12px;
       color: var(--text-secondary);
       text-align: center;
       margin: 0;
@@ -241,7 +238,6 @@
 
       .egg-name {
         font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
         font-weight: 500;
         color: var(--text);
         margin: 0 0 0.25rem 0;
@@ -249,7 +245,6 @@
 
       .egg-hint {
         font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
         color: var(--text-secondary);
         margin: 0;
       }
@@ -264,7 +259,6 @@
     border-radius: var(--radius-lg);
     color: white;
     font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -288,7 +282,6 @@
     border: 1px solid rgba(255, 107, 107, 0.25);
     border-radius: var(--radius-lg);
     color: var(--reset);
-    font-size: 13px;
     cursor: pointer;
     transition:
       background 0.2s ease,
@@ -303,7 +296,6 @@
   .mobile-warning {
     margin-top: 0.5rem;
     color: var(--text-secondary);
-    font-size: 12px;
     text-align: center;
   }
 }
@@ -400,7 +392,6 @@
 
     .naruto-quote {
       font-family: "Orbitron", sans-serif;
-      font-size: 2rem;
       font-weight: 900;
       color: #ff6b00;
       text-shadow:
@@ -412,7 +403,6 @@
       letter-spacing: 2px;
 
       @media (max-width: 768px) {
-        font-size: 1.5rem;
       }
     }
   }
@@ -449,7 +439,6 @@
 
   .smoke-particle {
     position: absolute;
-    font-size: 2rem;
     pointer-events: none;
     z-index: 4;
   }
@@ -531,7 +520,6 @@ body.kunai-impact {
 
     .bankai-title {
       font-family: serif;
-      font-size: 5rem;
       font-weight: 900;
       color: #fff;
       margin: 0;
@@ -542,7 +530,6 @@ body.kunai-impact {
       animation: pulseGlow 2s ease-in-out infinite;
 
       @media (max-width: 768px) {
-        font-size: 3rem;
       }
     }
   }
@@ -550,7 +537,6 @@ body.kunai-impact {
   .sakura-petal {
     position: absolute;
     top: -50px;
-    font-size: 1.5rem;
     filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.8));
     pointer-events: none;
     z-index: 5;
@@ -558,7 +544,6 @@ body.kunai-impact {
 
   .sakura-petal-spiral {
     position: absolute;
-    font-size: 1.2rem;
     filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.9));
     pointer-events: none;
     z-index: 6;
@@ -566,7 +551,6 @@ body.kunai-impact {
 
   .sparkle-particle {
     position: absolute;
-    font-size: 1rem;
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
     pointer-events: none;
     z-index: 7;
@@ -629,13 +613,10 @@ body.kunai-impact {
 
   .senbonzakura-toast {
     .sakura-petal {
-      font-size: 1rem;
     }
     .sakura-petal-spiral {
-      font-size: 0.9rem;
     }
     .sparkle-particle {
-      font-size: 0.8rem;
     }
 
     .shockwave,
@@ -652,7 +633,6 @@ body.kunai-impact {
       height: 2px;
     }
     .smoke-particle {
-      font-size: 1.5rem;
     }
   }
 }
