@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 import {
@@ -16,6 +15,7 @@ import {
 } from "lucide-react";
 
 import "./Footer.scss";
+import LocalizedLink from "../common/LocalizedLink";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -91,10 +91,10 @@ export default function Footer() {
             <h3 className="column-title">{t("quickLinks")}</h3>
             <nav className="links-list">
               {quickLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="footer-link">
+                <LocalizedLink key={link.href} href={link.href} className="footer-link">
                   <span className="link-arrow">→</span>
                   {link.label}
-                </Link>
+                </LocalizedLink>
               ))}
             </nav>
           </div>

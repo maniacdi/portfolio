@@ -229,7 +229,7 @@ export default function ChatBot() {
                 placeholder={t("placeholder")}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyDown={handleKeyPress}
                 maxLength={500}
               />
               <button

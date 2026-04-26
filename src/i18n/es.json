@@ -10,7 +10,8 @@
     "travels": "Viajes",
     "hobbies": "Hobbies",
     "language": "Idioma",
-    "code": "Código"
+    "code": "Código",
+    "contact": "Contacto"
   },
   "home": {
     "title": "Bienvenido a mi portfolio",
@@ -292,5 +293,11 @@
     "poweredBy": "Powered by",
     "noCost": "Sin costos de API",
     "typing": "Escribiendo..."
+  },
+  "toast": {
+    "success": "¡Éxito!",
+    "error": "Error",
+    "warning": "Advertencia",
+    "info": "Información"
   }
 }

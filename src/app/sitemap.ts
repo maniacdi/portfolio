@@ -1,28 +1,20 @@
 import { MetadataRoute } from "next";
 
+
+
+export default function sitemap(): MetadataRoute.Sitemap {
 const BASE_URL = "https://javimagaldi.com";
 
 // Static routes
-const routes = ["/", "/about", "/code", "/travels", "/hobbies"];
+const pages = ["/", "/about", "/code", "/travels", "/hobbies"];
+const locales = ["es", "en"];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = [];
-
-  for (const route of routes) {
-    // Spanish (default) — no prefix
-    entries.push({
-      url: `${BASE_URL}${route}`,
-      lastModified: new Date(),
-      changeFrequency: route === "/" ? "weekly" : "monthly",
-      priority: route === "/" ? 1 : 0.8,
-      alternates: {
-        languages: {
-          es: `${BASE_URL}${route}`,
-          en: `${BASE_URL}/en${route === "/" ? "" : route}`,
-        },
-      },
-    });
-  }
-
-  return entries;
+return locales.flatMap((locale) =>
+  pages.map((page) => ({
+    url: `${BASE_URL}/${locale}${page}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: page === "" ? 1.0 : 0.8,
+  }))
+);
 }

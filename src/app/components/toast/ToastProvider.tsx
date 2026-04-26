@@ -6,6 +6,7 @@ import { AnimatePresence,motion } from "framer-motion";
 import { AlertTriangle, CheckCircle, Info, X,XCircle } from "lucide-react";
 
 import "./ToastProvider.scss";
+import { useTranslations } from "next-intl";
 
 type ToastType = "success" | "error" | "info" | "warning";
 
@@ -27,6 +28,8 @@ interface ToastContextType {
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
 export function ToastProvider({ children }: { children: ReactNode }) {
+   
+  
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   const removeToast = useCallback((id: string) => {
@@ -117,15 +120,16 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
   };
 
   const getTitle = () => {
+    const t = useTranslations("toast");
     switch (toast.type) {
       case "success":
-        return "¡Éxito!";
+        return t("success");
       case "error":
-        return "Error";
+        return t("error");
       case "warning":
-        return "Advertencia";
+        return t("warning");
       case "info":
-        return "Información";
+        return t("info");
     }
   };
 

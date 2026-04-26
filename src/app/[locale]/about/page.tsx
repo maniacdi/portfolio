@@ -4,9 +4,8 @@ import { getTranslations } from "next-intl/server";
 import { AboutSection } from "@/app/components/about/AboutMeSection/AboutMeSection";
 
 import "@/styles/page.scss";
-import { motion } from "framer-motion";
 
-const BASE_URL = "https://magaldidev.vercel.app";
+const BASE_URL = "https://javimagaldi.com"
 
 export async function generateMetadata({
   params,

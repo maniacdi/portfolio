@@ -5,7 +5,7 @@ import HobbyTabs from "@/app/components/hobbies/HobbyTabs";
 
 import "@/styles/page.scss";
 
-const BASE_URL = "https://magaldidev.vercel.app";
+const BASE_URL = "https://javimagaldi.com"
 
 export async function generateMetadata({
   params,

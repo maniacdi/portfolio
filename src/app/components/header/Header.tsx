@@ -141,7 +141,7 @@ export default function Header() {
               aria-label="Contact me via email"
             >
               <Mail size={18} />
-              <span>CONTACTO</span>
+              <span>{t("contact")}</span>
             </button>
 
             <div className="mobile-menu-footer">

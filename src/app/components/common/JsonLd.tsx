@@ -11,7 +11,7 @@ export function PersonSchema({ locale }: PersonSchemaProps) {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Javier García Magaldi",
-    url: "https://magaldidev.vercel.app",
+    url: "https://javimagaldi.com",
     jobTitle: isEs ? "Desarrollador Web Full-Stack" : "Full-Stack Web Developer",
     description: isEs
       ? "Desarrollador web con 5 años de experiencia en React, TypeScript y Node.js, basado en Santander, España."
@@ -43,7 +43,7 @@ export function WebsiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Magaldidev",
-    url: "https://magaldidev.vercel.app",
+    url: "https://javimagaldi.com",
     description: "Portfolio de Javi García Magaldi, desarrollador web full-stack desde Santander.",
     author: {
       "@type": "Person",

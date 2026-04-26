@@ -159,16 +159,3 @@ button {
   scrollbar-width: thin;
   scrollbar-color: var(--neon) var(--bg2);
 }
-
-/* ============================================
-   TRANSICIONES GLOBALES
-   — Solo propiedades específicas, no `all`
-   para evitar jank en animaciones
-============================================ */
-
-* {
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
-}

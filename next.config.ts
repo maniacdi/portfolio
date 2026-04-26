@@ -77,10 +77,6 @@ const nextConfig: NextConfig = {
 
   // Compression
   compress: true,
-
-  typescript: {
-    ignoreBuildErrors: true,
-  },
 };
 
 export default withNextIntl("./src/i18n/request.ts")(nextConfig);
