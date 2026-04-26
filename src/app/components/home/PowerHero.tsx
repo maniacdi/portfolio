@@ -51,13 +51,6 @@ export default function PowerHero() {
   const [isGlitching, setIsGlitching] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
 
-  // const heroRef = useRef<HTMLDivElement>(null);
-  // const mouseX = useMotionValue(0);
-  // const mouseY = useMotionValue(0);
-
-  // const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
-  // const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
-
   // Terminal typing effect
   useEffect(() => {
     const currentCommand = TERMINAL_COMMANDS[currentCommandIndex];
@@ -82,19 +75,6 @@ export default function PowerHero() {
 
     return () => clearInterval(typingInterval);
   }, [currentCommandIndex]);
-
-  // Mouse tracking for 3D effect
-  // const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-  //   if (!heroRef.current) return;
-  //   const rect = heroRef.current.getBoundingClientRect();
-  //   mouseX.set(e.clientX - rect.left - rect.width / 2);
-  //   mouseY.set(e.clientY - rect.top - rect.height / 2);
-  // };
-
-  // const handleMouseLeave = () => {
-  //   mouseX.set(0);
-  //   mouseY.set(0);
-  // };
 
   // Handle CV download
   const handleDownloadCV = async () => {
@@ -397,7 +377,7 @@ function AnimatedStat({
       whileHover={{ scale: 1.1 }}
     >
       <Icon className="stat-icon" size={24} />
-      <span className="stat-number">{count}+</span>
+      <span className="stat-number">{count || value}+</span>
       <span className="stat-label">{label}</span>
     </motion.div>
   );

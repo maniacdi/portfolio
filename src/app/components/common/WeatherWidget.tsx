@@ -34,7 +34,6 @@ export default function WeatherWidget() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isMinimized, setIsMinimized] = useState(false);
-  const [isRefreshing, _setIsRefreshing] = useState(false);
   const locale = useLocale();
   const t = useTranslations("weather");
   const dateLocale = locale === "es" ? es : enUS;
@@ -84,11 +83,11 @@ export default function WeatherWidget() {
     }
   }, [error]);
 
-  if (weatherLoading || isRefreshing) {
+  if (weatherLoading) {
     return (
       <div className="weather-widget loading">
         <div className="weather-spinner"></div>
-        <span>{isRefreshing ? t("refreshing") : t("loading")}</span>
+        <span>{t("loading")}</span>
       </div>
     );
   }

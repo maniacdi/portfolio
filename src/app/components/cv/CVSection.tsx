@@ -16,7 +16,6 @@ export default function CVSection() {
   const locale = useLocale() as "es" | "en";
   const [cvUrls, setCvUrls] = useState<{ es: string; en: string } | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [selectedLang, _setSelectedLang] = useState<"es" | "en">(locale);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -38,7 +37,7 @@ export default function CVSection() {
   const handleDownload = async () => {
     try {
       setIsLoading(true);
-      await cvService.downloadCV(selectedLang);
+      await cvService.downloadCV(locale);
     } catch (error) {
       console.error("Error downloading CV:", error);
     } finally {
@@ -88,22 +87,22 @@ export default function CVSection() {
         </div>
       </div>
 
-      {isPreviewOpen && cvUrls && cvUrls[selectedLang] && (
+      {isPreviewOpen && cvUrls && cvUrls[locale] && (
         <div className="cv-preview-modal">
           <div className="modal-overlay" onClick={() => setIsPreviewOpen(false)}></div>
           <div className="modal-content">
             <div className="modal-header">
               <h3>
-                {t("previewCv")} - {selectedLang.toUpperCase()}
+                {t("previewCv")} - {locale.toUpperCase()}
               </h3>
               <button className="close-btn" onClick={() => setIsPreviewOpen(false)}>
                 ✕
               </button>
             </div>
             <iframe
-              src={`${cvUrls[selectedLang]}#view=fitH`}
+              src={`${cvUrls[locale]}#view=fitH`}
               className="pdf-viewer"
-              title={`CV ${selectedLang.toUpperCase()} Preview`}
+              title={`CV ${locale.toUpperCase()} Preview`}
             />
             <div className="modal-actions">
               <button className="modal-download-btn" onClick={handleDownload}>

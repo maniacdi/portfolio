@@ -20,7 +20,7 @@ export const profileData = {
       { name: "Node.js", level: 85, years: 5 },
       { name: "MongoDB", level: 80, years: 3 },
       { name: "Socket.io", level: 65, years: 1 },
-      { name: "JAVA", level: 60, years: 1 },
+      { name: "Java", level: 60, years: 1 },
     ],
     tools: [
       { name: "Git", level: 95, years: 6 },
@@ -31,7 +31,7 @@ export const profileData = {
     ],
     languages: [
       { name: "TypeScript", level: 95, years: 5 },
-      { name: "JAVA", level: 60, years: 1 },
+      { name: "Java", level: 60, years: 1 },
       { name: "SQL", level: 80, years: 3 },
       { name: "C#", level: 70, years: 1 },
     ],

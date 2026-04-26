@@ -76,10 +76,10 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
         <div className="cta-content">
           <h3 className="cta-title">{t("cta")}</h3>
           <p className="cta-subtitle">{t("ctaText")}</p>
-          <button className="neon-button">
+          <a href="mailto:magaldi6@gmail.com" className="neon-button">
             <span>{t("ctaButton")}</span>
             <Zap size={16} />
-          </button>
+          </a>
         </div>
         <div className="cta-glow"></div>
       </motion.div>

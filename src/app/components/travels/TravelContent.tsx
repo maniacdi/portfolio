@@ -185,28 +185,28 @@ export default function TravelContent() {
         {loading ? (
           <div className="travels-loading">
             <div className="loader"></div>
-            <p>Cargando viajes...</p>
+            <p>{t("loadingTravels")}</p>
           </div>
         ) : error ? (
           <div className="travels-error">
             <div className="error-icon">⚠️</div>
-            <h3>Error al cargar los viajes</h3>
-            <p>No se pudieron cargar los datos. Por favor, intenta de nuevo.</p>
+            <h3>{t("errorLoadingTravels")}</h3>
+            <p>{t("errorLoadingTravelsMessage")}</p>
             <button className="retry-button" onClick={handleRetry}>
-              🔄 Reintentar
+              🔄 {t("retry")}
             </button>
           </div>
         ) : travels.length === 0 ? (
           <div className="travels-empty">
             <div className="empty-icon">🗺️</div>
-            <h3>No hay viajes disponibles</h3>
-            <p>Aún no hay viajes registrados en el sistema.</p>
+            <h3>{t("noTravelsAvailable")}</h3>
+            <p>{t("noTravelsAvailableMessage")}</p>
           </div>
         ) : filteredTravels.length === 0 ? (
           <div className="travels-empty">
             <div className="empty-icon">🔍</div>
-            <h3>No se encontraron resultados</h3>
-            <p>Prueba con otros filtros o términos de búsqueda.</p>
+            <h3>{t("noResultsFound")}</h3>
+            <p>{t("tryOtherFiltersOrSearchTerms")}</p>
           </div>
         ) : viewMode === "map" ? (
           <TravelMap travels={filteredTravels} onMarkerClick={handleTravelClick} />

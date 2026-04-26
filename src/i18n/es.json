@@ -106,6 +106,21 @@
       "business": "Negocios",
       "adventure": "Aventura",
       "cultural": "Cultural"
+    },
+    "loadingTravels": "Cargando viajes...",
+    "errorLoadingTravels": "Error al cargar los viajes",
+    "errorLoadingTravelsMessage": "No se pudieron cargar los datos. Por favor, intenta de nuevo.",
+    "noTravelsAvailable": "No hay viajes disponibles",
+    "noTravelsAvailableMessage": "Aún no hay viajes registrados en el sistema.",
+    "noResultsFound": "No se encontraron resultados",
+    "tryOtherFiltersOrSearchTerms": "Prueba con otros filtros o términos de búsqueda.",
+    "filters": {
+      "header": "Filtros",
+      "all": "Todos",
+      "vacation": "Vacaciones",
+      "business": "Negocios",
+      "adventure": "Aventura",
+      "cultural": "Cultural"
     }
   },
   "hobbies": {
