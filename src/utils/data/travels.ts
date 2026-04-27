@@ -21,8 +21,6 @@ export const mockTravels: Travel[] = [
       "/images/travels/tokyo-3.jpg",
     ],
     highlights: ["Shibuya Crossing", "Senso-ji Temple", "Tokyo Skytree", "Sushi at Tsukiji Market"],
-    tips: "Get a Suica card for easy transportation. Visit temples early to avoid crowds. Eat everything!",
-    rating: 5,
     isFeatured: true,
   },
   {
@@ -41,7 +39,6 @@ export const mockTravels: Travel[] = [
     type: "cultural",
     photos: ["/images/travels/barcelona-1.jpg", "/images/travels/barcelona-2.jpg"],
     highlights: ["Sagrada Familia", "Park Güell", "Gothic Quarter", "Tapas in El Born"],
-    rating: 4,
     isFeatured: true,
   },
   {
@@ -60,7 +57,6 @@ export const mockTravels: Travel[] = [
     type: "adventure",
     photos: ["/images/travels/ice-1.jpg", "/images/travels/ice-2.jpg"],
     highlights: ["Golden Circle", "Blue Lagoon", "Reykjavik City", "Northern Lights"],
-    rating: 5,
     isFeatured: false,
   },
   {
@@ -85,8 +81,6 @@ export const mockTravels: Travel[] = [
       "Chinatown",
       "NBA Game",
     ],
-    tips: "Book Alcatraz tickets in advance. Use public transport to get around the city.",
-    rating: 4,
     isFeatured: false,
   },
   {
@@ -109,7 +103,6 @@ export const mockTravels: Travel[] = [
       "/images/travels/mald-3.jpg",
     ],
     highlights: ["Overwater Bungalow", "Snorkeling with Manta Rays", "Sunset", "Spa Day"],
-    rating: 5,
     isFeatured: true,
   },
 ];
