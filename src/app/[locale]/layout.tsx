@@ -54,7 +54,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/og-image.jpg`,
+          url: `${BASE_URL}/images/og-image.jpg`,
           width: 1200,
           height: 630,
           alt: "Magaldidev Portfolio",
@@ -67,7 +67,7 @@ export async function generateMetadata({
       description: t("description"),
       site: "@magaldidev",
       creator: "@magaldidev",
-      images: [`${BASE_URL}/og-image.jpg`],
+      images: [`${BASE_URL}/images/og-image.jpg`],
     },
     robots: {
       index: true,

@@ -47,13 +47,13 @@ export default function TravelContent() {
       if (!data || data.length === 0) {
         setTravels([]);
         if (!hasShownToast.current) {
-          toast.warning("No se encontraron viajes disponibles");
+          toast.warning(t("noTravelsAvailable"));
           hasShownToast.current = true;
         }
       } else {
         setTravels(data);
         if (isFirstLoad.current) {
-          toast.success(`${data.length} viajes cargados correctamente`);
+          toast.success(`${data.length} ${t("travelLength")}`);
           isFirstLoad.current = false;
           hasShownToast.current = true;
         }
@@ -64,7 +64,7 @@ export default function TravelContent() {
       setTravels([]);
 
       if (!hasShownToast.current) {
-        toast.error("Error al cargar los viajes. Por favor, intenta recargar la página.", 8000);
+        toast.error(t("errorLoadingTravelsMessage"), 8000);
         hasShownToast.current = true;
       }
     } finally {
@@ -98,7 +98,7 @@ export default function TravelContent() {
 
   const handleRetry = () => {
     hasShownToast.current = false;
-    toast.info("Recargando viajes...");
+    toast.info(t("reloadingTravels"));
     loadTravels();
   };
 

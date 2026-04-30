@@ -13,6 +13,11 @@
     "code": "Código",
     "contact": "Contacto"
   },
+  "biog": {
+    "bio": "Me apasiona crear experiencias digitales que combinen estética y funcionalidad. Me especializo en tecnologías web modernas y arquitectura de código limpio..",
+    "status": "Disponible para proyectos",
+    "years": "años"
+  },
   "home": {
     "title": "Bienvenido a mi portfolio",
     "subtitle": "Soy Javi, desarrollador web especializado en crear experiencias modernas y funcionales.",
@@ -108,12 +113,14 @@
       "cultural": "Cultural"
     },
     "loadingTravels": "Cargando viajes...",
+    "reloadingTravels": "Cargando viajes...",
     "errorLoadingTravels": "Error al cargar los viajes",
     "errorLoadingTravelsMessage": "No se pudieron cargar los datos. Por favor, intenta de nuevo.",
     "noTravelsAvailable": "No hay viajes disponibles",
     "noTravelsAvailableMessage": "Aún no hay viajes registrados en el sistema.",
     "noResultsFound": "No se encontraron resultados",
     "tryOtherFiltersOrSearchTerms": "Prueba con otros filtros o términos de búsqueda.",
+    "travelLength": "viajes cargados correctamente",
     "filters": {
       "header": "Filtros",
       "all": "Todos",
@@ -314,5 +321,34 @@
     "error": "Error",
     "warning": "Advertencia",
     "info": "Información"
+  },
+  "featuredProjects": {
+    "label": "PROYECTOS",
+    "title": "Lo que he construido",
+    "subtitle": "Una selección de proyectos personales y profesionales que muestran mi forma de trabajar.",
+    "featuredLabel": "Destacado",
+    "liveDemo": "Ver demo",
+    "viewCode": "Ver código",
+    "viewAll": "Ver todos los proyectos",
+    "portfolioDesc": "Mi portfolio personal construido con Next.js, TypeScript y Framer Motion. Diseño neon-purple con sistema de internacionalización completo.",
+    "homeServerDesc": "Stack de servidor casero con Docker: automatización, backups, media server y monitorización. Todo corriendo en mi NAS.",
+    "travelTrackerDesc": "Tracker de viajes con mapa interactivo, galería de fotos y sistema de filtros. Backend con Node.js + MongoDB en Azure."
+  },
+  "contactForm": {
+    "label": "CONTACTO",
+    "title": "¿Hablamos?",
+    "subtitle": "Si tienes un proyecto en mente o simplemente quieres saludar, escríbeme.",
+    "nameLabel": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "emailLabel": "Email",
+    "emailPlaceholder": "tu@email.com",
+    "messageLabel": "Mensaje",
+    "messagePlaceholder": "Cuéntame en qué puedo ayudarte...",
+    "send": "Enviar mensaje",
+    "sending": "Enviando...",
+    "successTitle": "¡Mensaje enviado!",
+    "successMessage": "Gracias por escribirme. Te responderé lo antes posible.",
+    "sendAnother": "Enviar otro mensaje",
+    "errorMessage": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme directamente a magaldi6@gmail.com."
   }
 }

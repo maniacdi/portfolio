@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-import { AnimatePresence,motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import "./TerminalLoader.scss";
 
@@ -21,10 +21,23 @@ export default function TerminalLoader() {
   const [visibleLines, setVisibleLines] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
-  const [shouldShow, setShouldShow] = useState(true); // ← CAMBIO: Ahora empieza en true
+  const [shouldShow, setShouldShow] = useState(true);
 
+  // Skip handler — click or key press dismisses the loader
+  const handleSkip = useCallback(() => {
+    setIsComplete(true);
+  }, []);
+
+  // Keyboard listener for skip
   useEffect(() => {
-    setShouldShow(true);
+    const onKey = () => handleSkip();
+    window.addEventListener("keydown", onKey, { once: true });
+    return () => window.removeEventListener("keydown", onKey);
+  }, [handleSkip]);
+
+  // Terminal typing effect — 150ms per line
+  useEffect(() => {
+    if (isComplete) return;
 
     const interval = setInterval(() => {
       setVisibleLines((prev) => {
@@ -32,12 +45,12 @@ export default function TerminalLoader() {
           clearInterval(interval);
           setTimeout(() => {
             setIsComplete(true);
-          }, 1000);
+          }, 600);
           return prev;
         }
         return prev + 1;
       });
-    }, 300);
+    }, 150);
 
     const cursorInterval = setInterval(() => {
       setShowCursor((prev) => !prev);
@@ -47,7 +60,7 @@ export default function TerminalLoader() {
       clearInterval(interval);
       clearInterval(cursorInterval);
     };
-  }, []);
+  }, [isComplete]);
 
   if (!shouldShow || isComplete) return null;
 
@@ -58,6 +71,7 @@ export default function TerminalLoader() {
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
+        onClick={handleSkip}
       >
         <div className="terminal">
           <div className="terminal-header">
@@ -80,7 +94,7 @@ export default function TerminalLoader() {
                   className="terminal-line"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.2 }}
                 >
                   <span
                     className={
@@ -111,6 +125,16 @@ export default function TerminalLoader() {
           <span>Initializing experience...</span>
           <div className="spinner" />
         </div>
+
+        {/* Skip hint */}
+        <motion.div
+          className="skip-hint"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          Click or press any key to skip
+        </motion.div>
       </motion.div>
     </AnimatePresence>
   );

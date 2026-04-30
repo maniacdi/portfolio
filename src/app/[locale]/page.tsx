@@ -4,6 +4,8 @@ import { getTranslations } from "next-intl/server";
 import PowerHero from "../components/home/PowerHero";
 
 import "@/styles/page.scss";
+import ContactForm from "../components/contact/ContactForm";
+import FeaturedProjects from "../components/home/FeatureProjects";
 
 const BASE_URL = "https://javimagaldi.com";
 
@@ -38,6 +40,8 @@ export default async function Home() {
   return (
     <main className="home-container">
       <PowerHero />
+      <FeaturedProjects />
+      <ContactForm />
     </main>
   );
 }

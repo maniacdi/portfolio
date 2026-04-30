@@ -111,7 +111,7 @@ export default function Header() {
               aria-label="Contact me via email"
             >
               <Mail size={16} />
-              <span>CONTACTO</span>
+              <span>{t("contact")}</span>
             </button>
             <LanguageSwitcher />
           </div>

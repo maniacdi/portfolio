@@ -91,7 +91,6 @@ export default function PowerHero() {
   return (
     <section
       className="power-hero"
-      //ref={heroRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
     >
       {/* Animated Background */}
       <div className="tech-background">
@@ -125,7 +124,6 @@ export default function PowerHero() {
 
       <motion.div
         className="hero-container"
-        // style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       >
         {/* Tech Badge */}
         <motion.div

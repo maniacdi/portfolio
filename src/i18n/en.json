@@ -13,6 +13,11 @@
     "code": "Code",
     "contact": "Contact"
   },
+  "biog": {
+    "bio": "Passionate about creating digital experiences that combine aesthetics with functionality. Specializing in modern web technologies and clean code architecture.",
+    "status": "Available for projects",
+    "years": "years"
+  },
   "home": {
     "title": "Welcome to my portfolio",
     "subtitle": "I'm Javi, a web developer specialized in creating modern and functional experiences.",
@@ -114,6 +119,7 @@
     "noTravelsAvailableMessage": "No travels have been registered in the system yet.",
     "noResultsFound": "No results found",
     "tryOtherFiltersOrSearchTerms": "Try other filters or search terms.",
+    "travelLength": "travels loaded successfully",
     "filters": {
       "header": "Filters",
       "all": "All",
@@ -314,5 +320,34 @@
     "error": "Error",
     "warning": "Warning",
     "info": "Info"
+  },
+  "featuredProjects": {
+    "label": "PROJECTS",
+    "title": "What I've built",
+    "subtitle": "A selection of personal and professional projects that showcase how I work.",
+    "featuredLabel": "Featured",
+    "liveDemo": "Live Demo",
+    "viewCode": "View Code",
+    "viewAll": "View all projects",
+    "portfolioDesc": "My personal portfolio built with Next.js, TypeScript and Framer Motion. Neon-purple design with full internationalization system.",
+    "homeServerDesc": "Home server stack with Docker: automation, backups, media server and monitoring. Everything running on my NAS.",
+    "travelTrackerDesc": "Travel tracker with interactive map, photo gallery and filter system. Backend with Node.js + MongoDB on Azure."
+  },
+  "contactForm": {
+    "label": "CONTACT",
+    "title": "Let's talk",
+    "subtitle": "Got a project in mind or just want to say hi? Drop me a message.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@email.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell me how I can help...",
+    "send": "Send message",
+    "sending": "Sending...",
+    "successTitle": "Message sent!",
+    "successMessage": "Thanks for reaching out. I'll get back to you as soon as possible.",
+    "sendAnother": "Send another message",
+    "errorMessage": "Couldn't send the message. Try again or email me directly at magaldi6@gmail.com."
   }
 }

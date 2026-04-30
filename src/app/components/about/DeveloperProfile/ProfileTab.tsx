@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
+
 import { motion } from "framer-motion";
-import { Briefcase, Heart,Mail, MapPin, User } from "lucide-react";
+import { Briefcase, Heart, Mail, MapPin, User } from "lucide-react";
 
 import type { ProfileData } from "@/utils/data/profileData";
 
@@ -35,7 +37,14 @@ export const ProfileTab = ({ data, t }: ProfileTabProps) => {
           transition={{ delay: 0.1, type: "spring" }}
         >
           <div className="avatar">
-            <User size={48} />
+            <Image
+              src="/images/avatar.webp"
+              alt="Javi García Magaldi"
+              width={96}
+              height={96}
+              priority
+              style={{ borderRadius: "50%", objectFit: "cover" }}
+            />
           </div>
           <div className="avatar-glow" />
         </motion.div>
