@@ -81,7 +81,7 @@
     position: absolute;
     width: 300px;
     padding: 2rem;
-    background: rgba(13, 17, 23, 0.85);
+    background: var(--card-bg);
     border-radius: var(--radius-xl);
     border: 1px solid var(--border);
     backdrop-filter: blur(10px);

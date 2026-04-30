@@ -21,7 +21,7 @@
     width: 100%;
     max-width: 800px;
     height: clamp(400px, 80vh, 500px);
-    background: rgba(13, 17, 23, 0.95);
+    background: var(--terminal-bg);
     border-radius: 12px;
     overflow: hidden;
     box-shadow:

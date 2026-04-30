@@ -165,7 +165,7 @@
       background: linear-gradient(
         180deg,
         transparent 0%,
-        rgba(8, 12, 16, 0.6) 100%
+        var(--bg) 100%
       );
       opacity: 0.5;
       transition: opacity 0.3s ease;
