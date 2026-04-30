@@ -15,6 +15,7 @@
   justify-content: center;
   font-family: "Space Grotesk", monospace;
   padding: 1rem;
+  cursor: pointer;
 
   .terminal {
     width: 100%;
@@ -39,7 +40,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 1.5rem;
-      background: rgba(8, 12, 16, 0.8);
+      background: var(--bg-transparent);
       border-bottom: 1px solid var(--border-soft);
 
       @media (max-width: 768px) {
@@ -204,7 +205,7 @@
 
   .hint {
     position: absolute;
-    bottom: clamp(2rem, 5vh, 3rem);
+    bottom: clamp(2.5rem, 5vh, 3.5rem);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -213,6 +214,7 @@
     color: var(--neon-mid);
     opacity: 0.6;
     white-space: nowrap;
+
     @media (max-width: 768px) {
       gap: 0.75rem;
       padding: 0 1rem;
@@ -234,9 +236,10 @@
     }
   }
 
+  /* ---- Skip Hint (INSIDE .terminal-loader) ---- */
   .skip-hint {
     position: absolute;
-    bottom: clamp(0.75rem, 2vh, 1.5rem);
+    bottom: clamp(0.5rem, 1.5vh, 1rem);
     left: 50%;
     transform: translateX(-50%);
     font-family: "JetBrains Mono", monospace;
@@ -245,9 +248,11 @@
     white-space: nowrap;
     cursor: pointer;
     transition: color 0.2s ease;
-  
+    opacity: 0.7;
+
     &:hover {
       color: var(--neon-mid);
+      opacity: 1;
     }
   }
 }

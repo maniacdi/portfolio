@@ -109,7 +109,7 @@
   width: 400px;
   max-width: 90vw;
   height: 100vh;
-  background: rgba(8, 12, 16, 0.98);
+  background: var(--bg-transparent-max);
   backdrop-filter: blur(20px);
   border-right: 1px solid var(--neon-border);
   box-shadow: 4px 0 40px rgba(0, 0, 0, 0.5);

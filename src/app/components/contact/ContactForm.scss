@@ -88,7 +88,7 @@
     textarea {
       width: 100%;
       padding: 0.875rem 1rem;
-      background: rgba(13, 17, 23, 0.7);
+      background: var(--input-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       color: var(--text);
@@ -106,7 +106,7 @@
       &:focus {
         border-color: rgba(111, 0, 255, 0.5);
         box-shadow: 0 0 0 3px rgba(111, 0, 255, 0.08);
-        background: rgba(13, 17, 23, 0.9);
+        background: var(--input-bg-focus);
       }
     }
 

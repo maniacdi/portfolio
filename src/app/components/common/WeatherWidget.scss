@@ -21,7 +21,7 @@
 
   .weather-toggle-btn,
   .weather-show-btn {
-    background: rgba(8, 12, 16, 0.9);
+    background: var(--widget-bg);
     backdrop-filter: blur(10px);
     border: 1px solid var(--neon-border);
     border-radius: 20px;
@@ -59,7 +59,7 @@
 }
 
 .weather-widget {
-  background: rgba(8, 12, 16, 0.95);
+  background: var(--bg-transparent-heavy);
   backdrop-filter: blur(15px);
   border: 1px solid var(--weather-color, var(--neon-border));
   border-radius: 16px;

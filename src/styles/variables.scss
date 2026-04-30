@@ -4,14 +4,14 @@
 
 :root {
   /* ----- Neon Principal ----- */
-  --neon: #6f00ff; /* Morado puro — CTAs, dots, bordes activos */
-  --neon-mid: #9b4dff; /* Morado medio — labels, chips activos, texto accent */
-  --neon-subtle: rgba(111, 0, 255, 0.08); /* Alpha — fondos chip, card hover */
-  --neon-border: rgba(111, 0, 255, 0.35); /* Bordes neon suaves */
+  --neon: #6f00ff;
+  --neon-mid: #9b4dff;
+  --neon-subtle: rgba(111, 0, 255, 0.08);
+  --neon-border: rgba(111, 0, 255, 0.35);
 
   /* ----- Colores de apoyo ----- */
-  --accent: #c49dff; /* Morado claro — highlights, hover secundario */
-  --text: #e8edf3; /* Texto principal */
+  --accent: #c49dff;
+  --text: #e8edf3;
 
   /* ----- Backgrounds ----- */
   --bg: #080c10;
@@ -19,14 +19,31 @@
   --bg3: #111820;
   --bg4: #05040a;
   --bg-transparent: rgba(8, 12, 16, 0.85);
+  --bg-transparent-heavy: rgba(8, 12, 16, 0.95);
+  --bg-transparent-max: rgba(8, 12, 16, 0.98);
   --terminal-bg: rgba(8, 12, 16, 0.95);
   --card-bg: rgba(13, 17, 23, 0.9);
+  --header-bg: rgba(8, 12, 16, 0.65);
+  --header-bg-scrolled: rgba(8, 12, 16, 0.95);
+  --footer-bg: linear-gradient(180deg, rgba(8, 12, 16, 0.8) 0%, rgba(8, 12, 16, 0.98) 100%);
+  --footer-bottom-bg: rgba(0, 0, 0, 0.15);
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+  --widget-bg: rgba(8, 12, 16, 0.9);
+  --input-bg: rgba(13, 17, 23, 0.7);
+  --input-bg-focus: rgba(13, 17, 23, 0.9);
+  --toast-bg: rgba(8, 12, 16, 0.97);
+  --shadow-heavy: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.4);
 
   /* ----- Borders ----- */
   --border-soft: rgba(255, 255, 255, 0.04);
   --border: #1a2332;
   --border2: #243040;
   --border-neon: var(--neon);
+
+  /* ----- Low-opacity white (for dark bg subtleties) ----- */
+  --white-2: rgba(255, 255, 255, 0.02);
+  --white-3: rgba(255, 255, 255, 0.03);
 
   /* ----- Shadows ----- */
   --shadow-neon: 0 0 20px rgba(111, 0, 255, 0.25);
@@ -68,42 +85,55 @@
   --radius-xl: 0.75rem;
 }
 
+/* ============================================
+   LIGHT THEME
+============================================ */
+
 [data-theme="light"] {
-  /* ----- Neon Principal (se mantiene, funciona en ambos) ----- */
   --neon: #6f00ff;
   --neon-mid: #7c2fff;
   --neon-subtle: rgba(111, 0, 255, 0.06);
   --neon-border: rgba(111, 0, 255, 0.2);
 
-  /* ----- Colores de apoyo ----- */
   --accent: #9b4dff;
   --text: #1a1a2e;
 
-  /* ----- Backgrounds ----- */
   --bg: #f8f9fc;
   --bg2: #ffffff;
   --bg3: #f0f1f5;
   --bg4: #e8eaef;
   --bg-transparent: rgba(248, 249, 252, 0.9);
-  --terminal-bg: rgba(255, 255, 255, 0.97);
+  --bg-transparent-heavy: rgba(248, 249, 252, 0.97);
+  --bg-transparent-max: rgba(248, 249, 252, 0.99);
+  --terminal-bg: rgba(248, 249, 252, 0.97);
   --card-bg: rgba(255, 255, 255, 0.95);
+  --header-bg: rgba(248, 249, 252, 0.75);
+  --header-bg-scrolled: rgba(248, 249, 252, 0.97);
+  --footer-bg: linear-gradient(180deg, rgba(240, 241, 245, 0.8) 0%, rgba(240, 241, 245, 0.98) 100%);
+  --footer-bottom-bg: rgba(0, 0, 0, 0.03);
+  --overlay-bg: rgba(0, 0, 0, 0.4);
+  --widget-bg: rgba(255, 255, 255, 0.95);
+  --input-bg: rgba(240, 241, 245, 0.8);
+  --input-bg-focus: rgba(255, 255, 255, 0.95);
+  --toast-bg: rgba(255, 255, 255, 0.97);
+  --shadow-heavy: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.08);
 
-  /* ----- Borders ----- */
   --border-soft: rgba(0, 0, 0, 0.04);
   --border: #e0e3ea;
   --border2: #cdd1db;
   --border-neon: var(--neon);
 
-  /* ----- Shadows ----- */
+  --white-2: rgba(0, 0, 0, 0.02);
+  --white-3: rgba(0, 0, 0, 0.03);
+
   --shadow-neon: 0 0 20px rgba(111, 0, 255, 0.12);
   --shadow-accent: 0 0 12px rgba(155, 77, 255, 0.08);
 
-  /* ----- Text ----- */
   --text-primary: #1a1a2e;
   --text-secondary: #5a6070;
   --text-muted: #9aa0b0;
 
-  /* ----- Semánticos ----- */
   --success: #16a34a;
   --warning: #d97706;
   --danger: #dc2626;

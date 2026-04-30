@@ -58,7 +58,7 @@
   top: 1.25rem;
   right: 1.25rem;
   z-index: 10;
-  background: rgba(8, 12, 16, 0.85);
+  background: var(--bg-transparent);
   border: 1px solid var(--border);
   border-radius: 50%;
   width: 36px;

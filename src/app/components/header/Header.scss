@@ -7,7 +7,7 @@
   top: 0;
   z-index: 100;
   padding: 1rem 2rem;
-  background: rgba(8, 12, 16, 0.65);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-soft);
   transition:
@@ -20,7 +20,7 @@
   }
 
   &.scrolled {
-    background: rgba(8, 12, 16, 0.95);
+    background: var(--header-bg-scrolled);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   }
 }
@@ -238,7 +238,7 @@
   width: 100%;
   height: 100vh;
   padding: 5rem 2rem 2rem;
-  background: rgba(8, 12, 16, 0.98);
+  background: var(--bg-transparent-max);
   backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;

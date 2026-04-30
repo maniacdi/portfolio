@@ -27,7 +27,7 @@
   align-items: flex-start;
   gap: 0.875rem;
   padding: 0.875rem 1.125rem;
-  background: rgba(8, 12, 16, 0.97);
+  background: var(--toast-bg);
   backdrop-filter: blur(12px);
   border-radius: var(--radius-lg);
   border: 1px solid;

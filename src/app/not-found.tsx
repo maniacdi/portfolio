@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Home, RefreshCw, Terminal } from "lucide-react";
+import { ArrowLeft, Home, Terminal } from "lucide-react";
 
 import "./not-found.scss";
 
@@ -130,7 +130,7 @@ export default function NotFound() {
           Parece que esta ruta no existe. Quizá fue un enlace antiguo, o simplemente un typo.
         </motion.p>
 
-        {/* Actions */}
+        {/* Actions — only 2 relevant buttons */}
         <motion.div
           className="nf-actions"
           initial={{ opacity: 0, y: 10 }}
@@ -147,13 +147,6 @@ export default function NotFound() {
           >
             <ArrowLeft size={16} />
             <span>Volver atrás</span>
-          </button>
-          <button
-            onClick={() => window.location.reload()}
-            className="nf-btn tertiary"
-          >
-            <RefreshCw size={16} />
-            <span>Reintentar</span>
           </button>
         </motion.div>
       </div>

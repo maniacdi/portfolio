@@ -4,7 +4,7 @@
 
 .footer-container {
   position: relative;
-  background: linear-gradient(180deg, rgba(8, 12, 16, 0.8) 0%, rgba(8, 12, 16, 0.98) 100%);
+  background: var(--footer-bg);
   border-top: 1px solid var(--border-soft);
   width: 100%;
   margin: auto;
