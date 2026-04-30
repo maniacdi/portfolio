@@ -9,7 +9,7 @@ import { CheckCircle, Loader2, Mail, MessageSquare, Send, User } from "lucide-re
 import "./ContactForm.scss";
 
 
-const WEB3FORMS_KEY = process.env.WEB3FORMS_KEY;
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 interface FormData {
   name: string;

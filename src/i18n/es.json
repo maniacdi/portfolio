@@ -330,9 +330,9 @@
     "liveDemo": "Ver demo",
     "viewCode": "Ver código",
     "viewAll": "Ver todos los proyectos",
-    "portfolioDesc": "Mi portfolio personal construido con Next.js, TypeScript y Framer Motion. Diseño neon-purple con sistema de internacionalización completo.",
-    "homeServerDesc": "Stack de servidor casero con Docker: automatización, backups, media server y monitorización. Todo corriendo en mi NAS.",
-    "travelTrackerDesc": "Tracker de viajes con mapa interactivo, galería de fotos y sistema de filtros. Backend con Node.js + MongoDB en Azure."
+    "portfolioDesc": "Mi portfolio personal construido con Next.js, TypeScript y Framer Motion. Diseño neon-purple con internacionalización completa.",
+    "comprasDesc": "App de lista de compras colaborativa con autenticación, listas compartidas y sincronización en tiempo real. React + Node.js + MongoDB.",
+    "instaCheckerDesc": "Herramienta para analizar seguidores de Instagram: detecta quién no te sigue de vuelta, unfollows recientes y estadísticas."
   },
   "contactForm": {
     "label": "CONTACTO",
@@ -349,6 +349,7 @@
     "successTitle": "¡Mensaje enviado!",
     "successMessage": "Gracias por escribirme. Te responderé lo antes posible.",
     "sendAnother": "Enviar otro mensaje",
-    "errorMessage": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme directamente a magaldi6@gmail.com."
+    "errorMessage": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme directamente a magaldi6@gmail.com.",
+    "close": "Cerrar"
   }
 }

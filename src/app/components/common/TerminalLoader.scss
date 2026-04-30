@@ -233,6 +233,23 @@
       }
     }
   }
+
+  .skip-hint {
+    position: absolute;
+    bottom: clamp(0.75rem, 2vh, 1.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "JetBrains Mono", monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  
+    &:hover {
+      color: var(--neon-mid);
+    }
+  }
 }
 
 @keyframes cursor-blink {
@@ -267,23 +284,6 @@ body:has(.terminal-loader) {
     }
     .spinner {
       animation: spin 3s linear infinite;
-    }
-  }
-
-  .skip-hint {
-    position: absolute;
-    bottom: clamp(0.75rem, 2vh, 1.5rem);
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: "JetBrains Mono", monospace;
-    color: var(--text-muted);
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  
-    &:hover {
-      color: var(--neon-mid);
     }
   }
 }

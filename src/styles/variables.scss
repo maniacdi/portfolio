@@ -67,3 +67,44 @@
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
 }
+
+[data-theme="light"] {
+  /* ----- Neon Principal (se mantiene, funciona en ambos) ----- */
+  --neon: #6f00ff;
+  --neon-mid: #7c2fff;
+  --neon-subtle: rgba(111, 0, 255, 0.06);
+  --neon-border: rgba(111, 0, 255, 0.2);
+
+  /* ----- Colores de apoyo ----- */
+  --accent: #9b4dff;
+  --text: #1a1a2e;
+
+  /* ----- Backgrounds ----- */
+  --bg: #f8f9fc;
+  --bg2: #ffffff;
+  --bg3: #f0f1f5;
+  --bg4: #e8eaef;
+  --bg-transparent: rgba(248, 249, 252, 0.9);
+  --terminal-bg: rgba(255, 255, 255, 0.97);
+  --card-bg: rgba(255, 255, 255, 0.95);
+
+  /* ----- Borders ----- */
+  --border-soft: rgba(0, 0, 0, 0.04);
+  --border: #e0e3ea;
+  --border2: #cdd1db;
+  --border-neon: var(--neon);
+
+  /* ----- Shadows ----- */
+  --shadow-neon: 0 0 20px rgba(111, 0, 255, 0.12);
+  --shadow-accent: 0 0 12px rgba(155, 77, 255, 0.08);
+
+  /* ----- Text ----- */
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a6070;
+  --text-muted: #9aa0b0;
+
+  /* ----- Semánticos ----- */
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+}

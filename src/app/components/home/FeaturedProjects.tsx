@@ -14,25 +14,32 @@ interface Project {
   demo?: string;
   repo?: string;
   featured?: boolean;
-  image?: string; // rute to screenshot /public/images/projects/
+  image?: string;
 }
 
 const PROJECTS: Project[] = [
+  {
+    title: "Compras App",
+    descriptionKey: "comprasDesc",
+    tags: ["React", "TypeScript", "Node.js", "MongoDB"],
+    repo: "https://github.com/maniacdi/compras-app",
+    featured: true,
+    image: "/images/projects/compras-app.webp",
+  },
   {
     title: "Portfolio Website",
     descriptionKey: "portfolioDesc",
     tags: ["Next.js", "TypeScript", "SCSS", "Framer Motion"],
     demo: "https://javimagaldi.com",
     repo: "https://github.com/maniacdi/portfolio",
-    featured: true,
     image: "/images/projects/portfolio.webp",
   },
   {
-    title: "Home Server Stack",
-    descriptionKey: "homeServerDesc",
-    tags: ["Docker", "Node.js", "Nginx", "Linux"],
-    repo: "https://github.com/maniacdi",
-    image: "/images/projects/homeserver.webp",
+    title: "Insta Checker",
+    descriptionKey: "instaCheckerDesc",
+    tags: ["Python", "Instagram API", "Automation"],
+    repo: "https://github.com/maniacdi/insta-checker",
+    image: "/images/projects/insta-checker.webp",
   },
 ];
 

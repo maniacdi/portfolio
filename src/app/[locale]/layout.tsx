@@ -15,6 +15,7 @@ import { PersonSchema, WebsiteSchema } from "../components/common/JsonLd";
 import { ToastProvider } from "../components/toast/ToastProvider";
 
 import "../../styles/globals.scss";
+import ThemeProvider from "../components/common/ThemeProvider";
 
 const BASE_URL = "https://javimagaldi.com";
 
@@ -90,6 +91,7 @@ export default async function LocaleLayout({
 
     return (
       <>
+        <ThemeProvider/>
         <WebsiteSchema />
         <PersonSchema locale={locale as "es" | "en"} />
         <Analytics />

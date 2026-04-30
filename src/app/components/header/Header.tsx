@@ -8,14 +8,17 @@ import { Mail } from "lucide-react";
 
 import LanguageSwitcher from "@/app/components/header/LanguageSwitcher/LanguageSwitcher";
 import LocalizedLink from "@components/common/LocalizedLink";
+import ContactModal from "@/app/components/contact/ContactModal";
 
 import "./Header.scss";
+import ThemeToggle from "../common/ThemeToggle";
 
 export default function Header() {
   const t = useTranslations("header");
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   const links = [
     { href: "/about", label: t("about") },
@@ -65,8 +68,8 @@ export default function Header() {
   }, [open]);
 
   const handleContactClick = useCallback(() => {
-    window.location.href = "mailto:magaldi6@gmail.com";
-    setOpen(false);
+    setOpen(false); // close mobile menu if open
+    setContactOpen(true);
   }, []);
 
   return (
@@ -108,11 +111,12 @@ export default function Header() {
             <button
               className="cta-btn"
               onClick={handleContactClick}
-              aria-label="Contact me via email"
+              aria-label="Open contact form"
             >
               <Mail size={16} />
               <span>{t("contact")}</span>
             </button>
+            <ThemeToggle />
             <LanguageSwitcher />
           </div>
         </div>
@@ -138,13 +142,14 @@ export default function Header() {
             <button
               className="cta-btn mobile"
               onClick={handleContactClick}
-              aria-label="Contact me via email"
+              aria-label="Open contact form"
             >
               <Mail size={18} />
               <span>{t("contact")}</span>
             </button>
 
             <div className="mobile-menu-footer">
+              <ThemeToggle />
               <LanguageSwitcher />
             </div>
           </div>
@@ -153,6 +158,9 @@ export default function Header() {
 
       {/* Overlay for mobile menu */}
       {open && <div className="header-overlay" onClick={() => setOpen(false)} aria-hidden="true" />}
+
+      {/* Contact Modal */}
+      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </>
   );
 }
