@@ -69,3 +69,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## 🤝 Author
 
 Created by Javier Garcia Magaldi - [GitHub](https://github.com/maniacdi)
+
+![Test](https://github.com/maniacdi/portfolio/actions/workflows/test.yml/badge.svg)

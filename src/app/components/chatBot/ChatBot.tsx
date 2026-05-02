@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect,useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-import { AnimatePresence,motion } from "framer-motion";
-import { Bot,MessageCircle, Send, Sparkles, User, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Bot, MessageCircle, Send, Sparkles, User, X } from "lucide-react";
 
 import { calculateTypingDelay, getChatResponse, isValidQuestion } from "@/app/services/chatEngine";
 
@@ -43,8 +43,8 @@ export default function ChatBot() {
       setTimeout(() => {
         const welcomeMessage =
           locale === "es"
-            ? "¡Hola! 👋 Soy el Lacayo de Javi. Puedo responder preguntas sobre su experiencia, proyectos, stack tecnológico y mucho más. ¿Qué te gustaría saber?"
-            : "Hello! 👋 I'm Javi's Minion. I can answer questions about his experience, projects, tech stack, and much more. What would you like to know?";
+            ? "¡Hola! 👋 Soy el asistente IA de Javi. Puedo responder preguntas sobre su experiencia, proyectos, stack tecnológico y mucho más. ¿Qué te gustaría saber?"
+            : "Hello! 👋 I'm Javi's AI assistant. I can answer questions about his experience, projects, tech stack, and much more. What would you like to know?";
 
         const followUpSuggestions =
           locale === "es"
@@ -90,16 +90,42 @@ export default function ChatBot() {
 
     addUserMessage(trimmedInput);
     setInputValue("");
-
     setIsTyping(true);
 
-    const response = getChatResponse(trimmedInput, locale);
-    const typingDelay = calculateTypingDelay(response.answer);
+    try {
+      // Intentar con la API de Groq primero
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: trimmedInput,
+          locale,
+          history: messages.slice(-6).map((m) => ({
+            type: m.type,
+            content: m.content,
+          })),
+        }),
+      });
 
-    setTimeout(() => {
-      setIsTyping(false);
-      addBotMessage(response.answer, response.followUp);
-    }, typingDelay);
+      if (response.ok) {
+        const data = await response.json();
+        setIsTyping(false);
+        addBotMessage(data.answer, data.followUp);
+        return;
+      }
+
+      // Si la API falla (429, 500, etc.), fallback al engine local
+      throw new Error("API unavailable");
+    } catch {
+      // Fallback: usar el engine local de keyword matching
+      const localResponse = getChatResponse(trimmedInput, locale);
+      const typingDelay = calculateTypingDelay(localResponse.answer);
+
+      setTimeout(() => {
+        setIsTyping(false);
+        addBotMessage(localResponse.answer, localResponse.followUp);
+      }, typingDelay);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
