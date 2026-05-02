@@ -7,6 +7,7 @@
       "@providers/*": ["app/providers/*"],
       "@i18n/*": ["i18n/*"]
     },
+    "types": ["cypress"],
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

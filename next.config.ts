@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   // React Compiler (opcional pero recomendado si usas React 19)
   experimental: {
     optimizePackageImports: [
-      "three",
-      "@react-three/fiber",
-      "@react-three/drei",
       "framer-motion",
       "lucide-react",
       "zustand",
@@ -52,12 +49,6 @@ const nextConfig: NextConfig = {
         splitChunks: {
           chunks: "all",
           cacheGroups: {
-            three: {
-              test: /[\\/]node_modules[\\/](three|@react-three)[\\/]/,
-              name: "three",
-              priority: 10,
-              chunks: "all",
-            },
             framer: {
               test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
               name: "framer",
