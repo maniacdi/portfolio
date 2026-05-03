@@ -12,12 +12,14 @@ import ContactModal from "@/app/components/contact/ContactModal";
 
 import "./Header.scss";
 import ThemeToggle from "../common/ThemeToggle";
+import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 export default function Header() {
   const t = useTranslations("header");
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { open: openContactModal } = useContactModalStore();
 
   const links = [
     { href: "/about", label: t("about") },
@@ -67,7 +69,8 @@ export default function Header() {
   }, [open]);
 
   const handleContactClick = useCallback(() => {
-    setOpen(false); // close mobile menu if open
+    setOpen(false); 
+    openContactModal();
   }, []);
 
   return (
