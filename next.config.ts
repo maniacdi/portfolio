@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 import withNextIntl from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
@@ -42,7 +43,7 @@ const nextConfig: NextConfig = {
       };
     }
 
-    // Optimización para Three.js en producción
+    // Optimización para producción
     if (!dev) {
       config.optimization = {
         ...config.optimization,
@@ -63,19 +64,15 @@ const nextConfig: NextConfig = {
     return config;
   },
 
-  // Performance optimizations for Vercel
-  output: "standalone",
-
   // Compression
   compress: true,
 };
 
-export default withNextIntl("./src/i18n/request.ts")(nextConfig);
 
-const {withSentryConfig} = require("@sentry/nextjs");
+const withIntl = withNextIntl("./src/i18n/request.ts");
 
-module.exports = withSentryConfig(nextConfig, {
-  silent: true, 
+export default withSentryConfig(withIntl(nextConfig), {
+  silent: true,
   org: "javier-garcia-b5",
   project: "portfolio-next",
 });
