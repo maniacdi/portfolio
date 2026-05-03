@@ -17,7 +17,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
+    "@sentry/nextjs": "^10.51.0",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "axios": "^1.13.2",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.24",

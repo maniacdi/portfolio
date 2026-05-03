@@ -3,9 +3,7 @@
 describe("Contact Modal", () => {
   beforeEach(() => {
     cy.visit("/en");
-    // Skip terminal loader
-    cy.get("body").click();
-    cy.wait(500);
+    cy.skipTerminalLoader();
   });
 
   it("opens contact modal when clicking header contact button", () => {
@@ -17,7 +15,6 @@ describe("Contact Modal", () => {
   it("closes modal on backdrop click", () => {
     cy.get(".header-actions .cta-btn").click();
     cy.get(".contact-modal-backdrop").should("be.visible");
-    // Click the backdrop (outside the modal)
     cy.get(".contact-modal-backdrop").click("topLeft");
     cy.get(".contact-modal-backdrop").should("not.exist");
   });
@@ -32,7 +29,6 @@ describe("Contact Modal", () => {
   it("validates required fields", () => {
     cy.get(".header-actions .cta-btn").click();
     cy.get(".contact-modal form").should("exist");
-    // Check required fields exist
     cy.get(".contact-modal input[name='name']").should("exist");
     cy.get(".contact-modal input[name='email']").should("exist");
     cy.get(".contact-modal textarea[name='message']").should("exist");

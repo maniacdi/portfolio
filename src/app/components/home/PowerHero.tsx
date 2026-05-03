@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
+import { useContactModalStore } from "@/app/store/useContactModalStore";  
 
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -50,6 +51,7 @@ export default function PowerHero() {
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const [isGlitching, setIsGlitching] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const { open: openContactModal } = useContactModalStore();
 
   // Terminal typing effect
   useEffect(() => {
@@ -300,15 +302,15 @@ export default function PowerHero() {
             <span>{t("seeMore")}</span>
           </motion.a>
 
-          <motion.a
-            href="mailto:magaldi6@gmail.com"
-            className="secondary-action"
+          <motion.button
+            onClick={openContactModal}
+            className="cta-button primary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <Mail size={18} />
             <span>{t("ctaPrimary")}</span>
-          </motion.a>
+          </motion.button>
 
           <motion.button
             onClick={handleDownloadCV}

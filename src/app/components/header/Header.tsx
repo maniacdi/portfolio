@@ -18,7 +18,6 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
 
   const links = [
     { href: "/about", label: t("about") },
@@ -69,7 +68,6 @@ export default function Header() {
 
   const handleContactClick = useCallback(() => {
     setOpen(false); // close mobile menu if open
-    setContactOpen(true);
   }, []);
 
   return (
@@ -160,7 +158,7 @@ export default function Header() {
       {open && <div className="header-overlay" onClick={() => setOpen(false)} aria-hidden="true" />}
 
       {/* Contact Modal */}
-      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <ContactModal />
     </>
   );
 }

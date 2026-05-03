@@ -16,14 +16,10 @@ describe("Navigation & Routes", () => {
       routes.forEach(({ path, title }) => {
         it(`loads ${path} without errors`, () => {
           cy.visit(path);
+          cy.skipTerminalLoader();
           cy.title().should("contain", title);
-          // No uncaught exceptions
-          cy.on("uncaught:exception", () => false);
-          // Main content exists
           cy.get("main.main-content").should("exist");
-          // Header visible
           cy.get(".header-container").should("be.visible");
-          // Footer exists
           cy.get("footer").should("exist");
         });
       });

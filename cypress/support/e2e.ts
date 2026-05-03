@@ -1,18 +1,45 @@
 /// <reference types="cypress" />
 
-// Global before each: suppress terminal loader animation delays
+// ────────────────────────────────────────
+// Custom command: skip TerminalLoader
+// ────────────────────────────────────────
+// The TerminalLoader is a full-screen overlay that blocks all
+// interactions. In CI (headless Chrome) timing varies, so we
+// need to reliably dismiss it before any test runs.
+
+Cypress.Commands.add("skipTerminalLoader", () => {
+  // Wait for the loader to appear, then dismiss it
+  cy.get("body").then(($body) => {
+    if ($body.find(".terminal-loader").length > 0) {
+      cy.get(".terminal-loader").click({ force: true });
+      // Wait for exit animation to complete
+      cy.get(".terminal-loader", { timeout: 5000 }).should("not.exist");
+    }
+  });
+});
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      skipTerminalLoader(): Chainable<void>;
+    }
+  }
+}
+
+// ────────────────────────────────────────
+// Global hooks
+// ────────────────────────────────────────
 beforeEach(() => {
-  // Suppress uncaught exceptions from third-party scripts
+  // Suppress known harmless exceptions
   cy.on("uncaught:exception", (err) => {
-    // Ignore hydration errors and chunk loading errors
     if (
       err.message.includes("Hydration") ||
       err.message.includes("ChunkLoadError") ||
-      err.message.includes("Loading chunk")
+      err.message.includes("Loading chunk") ||
+      err.message.includes("ResizeObserver")
     ) {
       return false;
     }
-    // Let other errors fail the test
     return true;
   });
 });

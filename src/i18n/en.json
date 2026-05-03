@@ -33,6 +33,11 @@
       "backend": "Back-end Development",
       "fullstack": "Full-stack Development"
     },
+    "educationSubjects": {
+      "algorithms": "Algorithms",
+      "dataStructures": "Data Structures",
+      "softwareEngineering": "Software Engineering"
+    },
     "frontendDesc": "Modern interfaces with React, Vue and TypeScript. I focus on making them fast, clear and easy to maintain.",
     "backendDesc": "APIs with Node.js and MongoDB. Enough to give the frontend everything it needs.",
     "fullstackDesc": "When needed, I work across the full stack. I have built complete projects from scratch, server included.",

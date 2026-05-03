@@ -71,3 +71,11 @@ const nextConfig: NextConfig = {
 };
 
 export default withNextIntl("./src/i18n/request.ts")(nextConfig);
+
+const {withSentryConfig} = require("@sentry/nextjs");
+
+module.exports = withSentryConfig(nextConfig, {
+  silent: true, 
+  org: "javier-garcia-b5",
+  project: "portfolio-next",
+});

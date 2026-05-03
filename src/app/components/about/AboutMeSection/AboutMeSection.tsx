@@ -40,7 +40,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
       period: "2020-2022",
       location: "España",
       title: `${t("exp1Title")}`,
-      company: "Incontro",
+      company: "Incentro",
       description: `${t("exp3Description")}`,
       technologies: ["JavaScript", "Vue.js", "CSS"],
     },
@@ -53,7 +53,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
       title: `${t("edu1Title")}`,
       institution: `${t("edu1Subtitle")}`,
       specialization: `${t("edu1Description")}`,
-      subjects: ["Algorithms", "Data", "Software Engineering"],
+      subjects: [`${t("educationSubjects.algorithms")}`, `${t("educationSubjects.dataStructures")}`, `${t("educationSubjects.softwareEngineering")}`],
     },
   ];
   return (

@@ -13,6 +13,7 @@ import EasterEggs from "../components/common/EasterEggs";
 import TerminalLoader from "../components/common/TerminalLoader";
 import { PersonSchema, WebsiteSchema } from "../components/common/JsonLd";
 import { ToastProvider } from "../components/toast/ToastProvider";
+import { SpeedInsights} from "@vercel/speed-insights/next";
 
 import "../../styles/globals.scss";
 import ThemeProvider from "../components/common/ThemeProvider";
@@ -95,6 +96,7 @@ export default async function LocaleLayout({
         <WebsiteSchema />
         <PersonSchema locale={locale as "es" | "en"} />
         <Analytics />
+        <SpeedInsights/>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ToastProvider>
             <TerminalLoader />

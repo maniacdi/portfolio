@@ -3,9 +3,7 @@
 describe("Featured Projects Section", () => {
   beforeEach(() => {
     cy.visit("/en");
-    // Skip terminal loader
-    cy.get("body").click();
-    cy.wait(500);
+    cy.skipTerminalLoader();
   });
 
   it("displays the featured projects section", () => {

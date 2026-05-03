@@ -33,6 +33,11 @@
       "backend": "Desarrollo Back-end",
       "fullstack": "Desarrollo Full-stack"
     },
+    "educationSubjects": {
+      "algorithms": "Algoritmos",
+      "dataStructures": "Estructuras de Datos",
+      "softwareEngineering": "Ingeniería de Software"
+    },
     "frontendDesc": "Interfaces modernas con React, Vue y TypeScript. Me centro en que sean rápidas, claras y fáciles de mantener.",
     "backendDesc": "APIs con Node.js y bases de datos con MongoDB. Lo justo para que el frontend tenga todo lo que necesita.",
     "fullstackDesc": "Cuando hace falta, tiro de todo el stack. He montado proyectos completos desde cero, incluyendo el servidor.",
@@ -171,16 +176,16 @@
     "contact": "Contacto",
     "copyright": "Todos los derechos reservados.",
     "home": "Home",
-    "travels": "Travels",
+    "travels": "Viajes",
     "hobbies": "Hobbies",
-    "connect": "Let's Connect",
-    "connectText": "Follow me on social media for updates and insights.",
-    "quickLinks": "Quick Links",
+    "connect": "Conectemos",
+    "connectText": "Sígueme en las redes sociales para actualizaciones e información.",
+    "quickLinks": "Enlaces Rápidos",
     "tagline": "Desarrollador web desde Santander. Hago cosas con código.",
-    "madeWith": "Made with",
-    "and": "and",
-    "backToTop": "Back to top",
-    "country": "Spain"
+    "madeWith": "Hecho con",
+    "and": "y",
+    "backToTop": "Volver arriba",
+    "country": "España"
   },
   "hero": {
     "title": "BIENVENIDO",

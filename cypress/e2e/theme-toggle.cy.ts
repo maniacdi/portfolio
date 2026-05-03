@@ -3,9 +3,7 @@
 describe("Theme Toggle", () => {
   beforeEach(() => {
     cy.visit("/en");
-    // Skip terminal loader if present
-    cy.get("body").click();
-    cy.wait(500);
+    cy.skipTerminalLoader();
   });
 
   it("renders the theme toggle button in header", () => {
@@ -32,6 +30,7 @@ describe("Theme Toggle", () => {
     cy.get(".theme-toggle").first().click();
     cy.get("html").should("have.attr", "data-theme", "light");
     cy.visit("/en/about");
+    cy.skipTerminalLoader();
     cy.get("html").should("have.attr", "data-theme", "light");
   });
 });

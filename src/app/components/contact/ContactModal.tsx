@@ -2,16 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle, Loader2, Mail, MessageSquare, Send, User, X } from "lucide-react";
 
 import "./ContactModal.scss";
-
-interface ContactModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
 
 interface FormData {
   name: string;
@@ -19,12 +15,13 @@ interface FormData {
   message: string;
 }
 
-export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+export default function ContactModal() {
   const t = useTranslations("contactForm");
   const [form, setForm] = useState<FormData>({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
+  const { isOpen, close } = useContactModalStore();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -34,11 +31,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") close();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isOpen, onClose]);
+  }, [isOpen, close]);
 
   // Lock body scroll when open
   useEffect(() => {
@@ -55,9 +52,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   // Close on backdrop click
   const handleBackdropClick = useCallback(
     (e: React.MouseEvent) => {
-      if (e.target === backdropRef.current) onClose();
+      if (e.target === backdropRef.current) close();
     },
-    [onClose]
+    [close]
   );
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -93,7 +90,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   const handleCloseAfterSuccess = () => {
-    onClose();
+    close();
     // Reset after animation
     setTimeout(() => {
       setStatus("idle");
@@ -126,7 +123,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <Mail size={18} className="modal-icon" />
                 <h3>{t("title")}</h3>
               </div>
-              <button className="modal-close" onClick={onClose} aria-label="Close">
+              <button className="modal-close" onClick={close} aria-label="Close">
                 <X size={18} />
               </button>
             </div>
