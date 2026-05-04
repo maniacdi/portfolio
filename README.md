@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://github.com/maniacdi/portfolio/actions/workflows/tests.yml">
-    <img src="https://github.com/maniacdi/portfolio/actions/workflows/tests.yml/badge.svg" alt="Tests" />
+    <img src="https://github.com/maniacdi/portfolio/actions/workflows/tests.yml/badge.svg" alt="Tests status" />
   </a>
   <img src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" alt="Next.js 16" />
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
