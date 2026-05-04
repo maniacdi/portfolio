@@ -6,7 +6,8 @@ describe("Language Switcher", () => {
     cy.skipTerminalLoader();
     cy.get(".lang-switcher").first().click();
     cy.url().should("include", "/en");
-    cy.contains("Welcome").should("exist");
+    // Hero title is uppercase in i18n
+    cy.contains("WELCOME").should("exist");
   });
 
   it("switches from English to Spanish", () => {
@@ -14,7 +15,8 @@ describe("Language Switcher", () => {
     cy.skipTerminalLoader();
     cy.get(".lang-switcher").first().click();
     cy.url().should("include", "/es");
-    cy.contains("Bienvenido").should("exist");
+    // Hero title is uppercase in i18n
+    cy.contains("BIENVENIDO").should("exist");
   });
 
   it("preserves current page route when switching language", () => {

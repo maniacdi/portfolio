@@ -28,12 +28,14 @@ describe("Navigation & Routes", () => {
 
   it("redirects root / to /es", () => {
     cy.visit("/");
+    cy.skipTerminalLoader();
     cy.url().should("include", "/es");
   });
 
   it("shows 404 page for invalid routes", () => {
     cy.visit("/es/this-page-does-not-exist", { failOnStatusCode: false });
-    cy.get(".not-found-page").should("exist");
+    cy.skipTerminalLoader();
+    cy.get(".not-found-page", { timeout: 10000 }).should("exist");
     cy.contains("404").should("be.visible");
   });
 });
