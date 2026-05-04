@@ -9,7 +9,6 @@ describe("Navigation & Routes", () => {
         { path: `/${locale}`, title: locale === "es" ? "Javi" : "Javi" },
         { path: `/${locale}/about`, title: locale === "es" ? "Sobre" : "About" },
         { path: `/${locale}/code`, title: locale === "es" ? "Código" : "Code" },
-        { path: `/${locale}/travels`, title: locale === "es" ? "Viajes" : "Travels" },
         { path: `/${locale}/hobbies`, title: locale === "es" ? "Hobbies" : "Hobbies" },
       ];
 
