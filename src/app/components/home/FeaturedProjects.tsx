@@ -146,9 +146,18 @@ export default function FeaturedProjects() {
               </div>
             </div>
 
-            <div className="card-arrow">
-              <ArrowUpRight size={18} />
-            </div>
+            {(project.demo || project.repo) && (
+              <a
+                href={project.demo || project.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-arrow"
+                aria-label={`${t("openProject")}: ${project.title}`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <ArrowUpRight size={18} />
+              </a>
+            )}
           </motion.article>
         ))}
       </div>

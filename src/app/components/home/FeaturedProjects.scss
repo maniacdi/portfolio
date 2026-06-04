@@ -292,8 +292,17 @@
     color: var(--neon-mid);
     transition:
       opacity 0.25s ease,
-      transform 0.25s ease;
-    pointer-events: none;
+      transform 0.25s ease,
+      background 0.25s ease,
+      box-shadow 0.25s ease;
+    pointer-events: auto;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      background: rgba(111, 0, 255, 0.3);
+      box-shadow: 0 0 16px rgba(111, 0, 255, 0.45);
+    }
 
     @media (max-width: 768px) {
       display: none;

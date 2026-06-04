@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ChevronRight,Github, Globe, Linkedin, Mail } from "lucide-react";
 
 import type { ProfileData } from "@/utils/data/profileData";
+import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 interface ContactTabProps {
   data: ProfileData["contact"];
@@ -13,6 +14,9 @@ interface ContactTabProps {
 }
 
 export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) => {
+
+  const openContactModal = useContactModalStore((state) => state.open);
+
   const contactOptions = [
     {
       icon: Mail,
@@ -100,7 +104,7 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
                 <p>{option.value}</p>
                 {option.title === "Email" && (
                   <span className="contact-action-text">
-                    {copied ? "✓ Copied!" : "Click to copy"}
+                    {copied ? `✓ ${t("copied")}` : t("clickToCopy")}
                   </span>
                 )}
               </div>
@@ -117,11 +121,11 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
           className="cta-button"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={onCopyEmail}
-          aria-label="Copy email address to send a message"
+          onClick={openContactModal}
+          aria-label="Open contact form"
         >
           <Mail size={16} />
-          {copied ? t("copied") || "Email Copied!" : t("sendMessage")}
+          {t("sendMessage")}
         </motion.button>
       </div>
     </motion.div>

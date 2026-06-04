@@ -136,9 +136,9 @@ optimizing performance and writing scalable code."`;
             <span className="project-link">→ github.com/maniacdi/portfolio</span>
           </div>
           <div className="project-item">
-            <span className="project-name">[2] Marvel Explorer</span>
-            <span className="project-tech">React, TypeScript, Marvel API</span>
-            <span className="project-link">→ github.com/maniacdi/marvel-explorer</span>
+            <span className="project-name">[2] Porra Mundial</span>
+            <span className="project-tech">JavaScript, Supabase, Realtime</span>
+            <span className="project-link">→ github.com/maniacdi/porra-mundial</span>
           </div>
           <div className="project-item">
             <span className="project-name">[3] Pokemon App</span>
@@ -230,6 +230,10 @@ optimizing performance and writing scalable code."`;
             <div className="ee-item">
               <span className="ee-code">h e l p</span>
               <span className="ee-name">→ {locale === "es" ? "Este terminal" : "This terminal"} 🖥️</span>
+            </div>
+            <div className="ee-item">
+              <span className="ee-code">b a n k a i</span>
+              <span className="ee-name">→ Senbonzakura Kageyoshi 🌸</span>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ const FEATURED_REPOS = [
   "compras-app",
   "compras-backend",
   "insta-checker",
-  "marvel-explorer",
+  "porra-mundial",
   "ams-test",
   "pokemon-app",
   "vue-project",

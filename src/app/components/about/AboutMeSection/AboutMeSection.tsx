@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, use } from "react";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
@@ -11,6 +11,7 @@ import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/Develo
 import { HorizontalTimeline } from "../HorizontalTimeline/HorizontalTimeline";
 
 import "./AboutMeSection.scss";
+import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 interface AboutSectionProps {
   className?: string;
@@ -18,6 +19,7 @@ interface AboutSectionProps {
 
 export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   const t = useTranslations("about");
+  const openContactModal = useContactModalStore((state) => state.open);
 
   const experiences = [
     {
@@ -76,10 +78,10 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
         <div className="cta-content">
           <h3 className="cta-title">{t("cta")}</h3>
           <p className="cta-subtitle">{t("ctaText")}</p>
-          <a href="mailto:magaldi6@gmail.com" className="neon-button">
+          <button type="button" onClick={() => openContactModal()} className="neon-button">
             <span>{t("ctaButton")}</span>
             <Zap size={16} />
-          </a>
+          </button>
         </div>
         <div className="cta-glow"></div>
       </motion.div>

@@ -381,6 +381,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
+  font: inherit;
   padding: 0.875rem 2rem;
   background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
   color: white;

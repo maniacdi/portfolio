@@ -53,7 +53,9 @@
     "new": "Nuevo",
     "soon": "Próximamente...",
     "interestedIn": "¿Interesado en trabajar juntos?",
-    "sendMessage": "Enviame un correo",
+    "sendMessage": "Escribeme un mensaje",
+    "copied": "¡Copiado!",
+    "clickToCopy": "Clic para copiar",
     "files": "archivos",
     "updated": "Actualizado justo ahora",
     "cvManager": "Administrador de CV",
@@ -335,6 +337,7 @@
     "liveDemo": "Ver demo",
     "viewCode": "Ver código",
     "viewAll": "Ver todos los proyectos",
+    "openProject": "Abrir proyecto",
     "portfolioDesc": "Mi portfolio personal construido con Next.js, TypeScript y Framer Motion. Diseño neon-purple con internacionalización completa.",
     "comprasDesc": "App de lista de compras colaborativa con autenticación, listas compartidas y sincronización en tiempo real. React + Node.js + MongoDB.",
     "instaCheckerDesc": "Herramienta para analizar seguidores de Instagram: detecta quién no te sigue de vuelta, unfollows recientes y estadísticas."
