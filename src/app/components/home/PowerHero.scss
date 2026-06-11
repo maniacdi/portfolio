@@ -400,32 +400,28 @@
         letter-spacing: 0.06em;
       }
 
-      .stack-level {
+      .stack-years {
         color: var(--neon-mid);
         font-weight: 400;
         font-family: "JetBrains Mono", monospace;
+        font-size: 0.85em;
       }
     }
 
-    .stack-bar {
-      position: relative;
-      height: 2px;
-      background: var(--border);
-      border-radius: 1px;
-      overflow: hidden;
+    .stack-track {
+      display: flex;
+      gap: 4px;
 
-      .stack-fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--neon), var(--neon-mid));
-        border-radius: 1px;
-        position: relative;
+      .seg {
+        flex: 1;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--border);
+        transform-origin: left;
 
-        &::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          animation: shimmer 2.5s infinite;
+        &.lit {
+          background: linear-gradient(90deg, var(--neon), var(--neon-mid));
+          box-shadow: 0 0 6px rgba(111, 0, 255, 0.35);
         }
       }
     }
@@ -611,15 +607,6 @@
   }
   50% {
     opacity: 0.4;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
   }
 }
 

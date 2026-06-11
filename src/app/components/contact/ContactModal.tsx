@@ -2,10 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle, Loader2, Mail, MessageSquare, Send, User, X } from "lucide-react";
+
+import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 import "./ContactModal.scss";
 

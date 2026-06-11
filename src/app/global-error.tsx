@@ -1,8 +1,9 @@
 // src/app/global-error.tsx — Captura errores no manejados en Next.js App Router
 "use client";
 
-import * as Sentry from "@sentry/nextjs";
 import { useEffect } from "react";
+
+import * as Sentry from "@sentry/nextjs";
 
 export default function GlobalError({
   error,

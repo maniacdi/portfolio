@@ -1,12 +1,12 @@
 "use client";
 
 import { createContext, ReactNode,useCallback, useContext, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import { AnimatePresence,motion } from "framer-motion";
 import { AlertTriangle, CheckCircle, Info, X,XCircle } from "lucide-react";
 
 import "./ToastProvider.scss";
-import { useTranslations } from "next-intl";
 
 type ToastType = "success" | "error" | "info" | "warning";
 

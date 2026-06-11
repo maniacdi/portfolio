@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
 import { ArrowLeft, Home, Terminal } from "lucide-react";
@@ -137,10 +138,10 @@ export default function NotFound() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
         >
-          <a href="/" className="nf-btn primary">
+          <Link href="/" className="nf-btn primary">
             <Home size={16} />
             <span>Ir al inicio</span>
-          </a>
+          </Link>
           <button
             onClick={() => window.history.back()}
             className="nf-btn secondary"

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+import ContactForm from "../components/contact/ContactForm";
+import FeaturedProjects from "../components/home/FeaturedProjects";
 import PowerHero from "../components/home/PowerHero";
 
 import "@/styles/page.scss";
-import ContactForm from "../components/contact/ContactForm";
-import FeaturedProjects from "../components/home/FeaturedProjects";
 
 const BASE_URL = "https://javimagaldi.com";
 

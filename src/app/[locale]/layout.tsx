@@ -3,20 +3,20 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 
-import WeatherWidget from "@components/common/WeatherWidget";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights} from "@vercel/speed-insights/next";
+
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
-import { Analytics } from "@vercel/analytics/react";
 
 import ChatBot from "../components/chatBot/ChatBot";
 import EasterEggs from "../components/common/EasterEggs";
-import TerminalLoader from "../components/common/TerminalLoader";
 import { PersonSchema, WebsiteSchema } from "../components/common/JsonLd";
+import TerminalLoader from "../components/common/TerminalLoader";
+import ThemeProvider from "../components/common/ThemeProvider";
 import { ToastProvider } from "../components/toast/ToastProvider";
-import { SpeedInsights} from "@vercel/speed-insights/next";
 
 import "../../styles/globals.scss";
-import ThemeProvider from "../components/common/ThemeProvider";
 
 const BASE_URL = "https://javimagaldi.com";
 
@@ -104,7 +104,6 @@ export default async function LocaleLayout({
             <main className="main-content">{children}</main>
             <ChatBot />
             <Footer />
-            <WeatherWidget />
             <EasterEggs />
           </ToastProvider>
         </NextIntlClientProvider>

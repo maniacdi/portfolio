@@ -3,6 +3,7 @@ import nextPlugin from "@next/eslint-plugin-next";
 import prettier from "eslint-config-prettier";
 import react from "eslint-plugin-react";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import process from "node:process";
 import tseslint from "typescript-eslint";
 
 const config = [

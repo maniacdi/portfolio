@@ -1,47 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Code2, ExternalLink, Folder, Star } from "lucide-react";
 
+import { FEATURED_PROJECTS } from "@/app/data/projects";
+
 import "./FeaturedProjects.scss";
-
-interface Project {
-  title: string;
-  descriptionKey: string;
-  tags: string[];
-  demo?: string;
-  repo?: string;
-  featured?: boolean;
-  image?: string;
-}
-
-const PROJECTS: Project[] = [
-  {
-    title: "Compras App",
-    descriptionKey: "comprasDesc",
-    tags: ["React", "TypeScript", "Node.js", "MongoDB"],
-    repo: "https://github.com/maniacdi/compras-app",
-    featured: true,
-    image: "/images/projects/compras-app.webp",
-  },
-  {
-    title: "Portfolio Website",
-    descriptionKey: "portfolioDesc",
-    tags: ["Next.js", "TypeScript", "SCSS", "Framer Motion"],
-    demo: "https://javimagaldi.com",
-    repo: "https://github.com/maniacdi/portfolio",
-    image: "/images/projects/portfolio.webp",
-  },
-  {
-    title: "Insta Checker",
-    descriptionKey: "instaCheckerDesc",
-    tags: ["Python", "Instagram API", "Automation"],
-    repo: "https://github.com/maniacdi/insta-checker",
-    image: "/images/projects/insta-checker.webp",
-  },
-];
 
 export default function FeaturedProjects() {
   const t = useTranslations("featuredProjects");
@@ -81,7 +48,7 @@ export default function FeaturedProjects() {
       </motion.p>
 
       <div className="projects-grid">
-        {PROJECTS.map((project, index) => (
+        {FEATURED_PROJECTS.map((project, index) => (
           <motion.article
             key={project.title}
             className={`project-card ${project.featured ? "featured" : ""}`}
@@ -93,10 +60,11 @@ export default function FeaturedProjects() {
           >
             {project.image && (
               <div className="project-image">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  loading="lazy"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                 />
                 <div className="image-overlay" />
                 {project.featured && (

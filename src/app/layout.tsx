@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Space_Grotesk, Orbitron, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono,Orbitron, Space_Grotesk } from "next/font/google";
 import { getLocale } from "next-intl/server";
+
+import "../styles/globals.scss";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],

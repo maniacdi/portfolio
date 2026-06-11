@@ -26,8 +26,8 @@
   },
   "about": {
     "title": "Sobre Mí",
-    "subtitle": "Desarrollo frontend durante el día. Por las noches monto mis propios proyectos y experimento con lo que me apetece.",
-    "description": "Soy desarrollador con 5 años de experiencia. Trabajo principalmente con React y TypeScript, aunque no me da miedo meterme en el backend cuando hace falta. Me gusta el código limpio y las cosas bien hechas.",
+    "subtitle": "Full-stack de día: React y Java en producción para el ecosistema Inditex. Por las noches monto mis propios proyectos en mi homelab.",
+    "description": "Desarrollador full-stack con 5+ años de experiencia. Frontend con React y TypeScript, backend con Java (Spring Boot) y Node.js: microservicios con arquitectura hexagonal sirviendo a más de 10.000 usuarios diarios. Me gusta el código limpio y las cosas bien hechas.",
     "skills": {
       "frontend": "Desarrollo Front-end",
       "backend": "Desarrollo Back-end",
@@ -39,7 +39,7 @@
       "softwareEngineering": "Ingeniería de Software"
     },
     "frontendDesc": "Interfaces modernas con React, Vue y TypeScript. Me centro en que sean rápidas, claras y fáciles de mantener.",
-    "backendDesc": "APIs con Node.js y bases de datos con MongoDB. Lo justo para que el frontend tenga todo lo que necesita.",
+    "backendDesc": "Microservicios con Java (Spring Boot) y APIs con Node.js. Arquitectura hexagonal, BFF, MongoDB y Redis en producción.",
     "fullstackDesc": "Cuando hace falta, tiro de todo el stack. He montado proyectos completos desde cero, incluyendo el servidor.",
     "experience": "Experiencia",
     "education": "Educación",
@@ -79,11 +79,12 @@
     "edu1Title": "Grado en Ingeniería Informática",
     "edu1Subtitle": "Universidad de Cantabria",
     "edu1Description": "Especializado en ingeniería de software y tecnologías web",
-    "exp1Title": "Desarrollador Frontend",
-    "exp1Description": "Desarrollando aplicaciones web responsivas con React y TypeScript",
-    "exp2Title": "Desarrollador Full-stack",
-    "exp2Description": "Construyendo aplicaciones full-stack con Node.js y MongoDB",
-    "exp3Description": "Creando interfaces de usuario e implementando sistemas de diseño",
+    "exp1Title": "Senior Front-End / Full-Stack Developer",
+    "exp1Description": "Hub de noticias y accesos para el ecosistema Inditex con más de 10.000 usuarios diarios. Microservicios en Java 21 + Spring Boot con arquitectura hexagonal, BFF, microfrontends y mentoría de 3 juniors.",
+    "exp2Title": "Consultor & Desarrollador Full-stack",
+    "exp2Description": "Definición de requisitos con cliente, reporting con SQL (de 3 días a 4 horas) y componentes React para aplicaciones corporativas.",
+    "exp3Title": "Desarrollador Front-End",
+    "exp3Description": "Rediseño completo de la web corporativa con React y CMS (carga de 4s a 2s). Multi-frontend internacional para Grandvision con más de 50.000 visitas mensuales.",
     "country": "España",
     "email": "Correo",
     "role": "Rol",
@@ -95,6 +96,8 @@
   "travels": {
     "title": "Mis Viajes",
     "description": "Una colección de mis experiencias de viaje, aventuras y exploraciones alrededor del mundo.",
+    "poweredBy": "Datos servidos en vivo desde mi propia API · Node.js + Express + MongoDB",
+    "viewApiCode": "Ver código",
     "mapView": "Vista Mapa",
     "listView": "Vista Lista",
     "filterBy": "Filtrar por",
@@ -191,8 +194,11 @@
   },
   "hero": {
     "title": "BIENVENIDO",
-    "subtitle": "FRONTEND DEVELOPER · SANTANDER",
-    "description": "REACT · NODE.JS · TYPESCRIPT",
+    "subtitle": "FULL-STACK DEVELOPER · SANTANDER",
+    "description": "REACT · TYPESCRIPT · JAVA · NODE.JS",
+    "usedAt": "usado en",
+    "dailyUsers": "usuarios diarios",
+    "coverage": "cobertura de tests",
     "d1": "Hago cosas con código.",
     "d2": "Desde interfaces web",
     "d3": "hasta",
@@ -338,9 +344,9 @@
     "viewCode": "Ver código",
     "viewAll": "Ver todos los proyectos",
     "openProject": "Abrir proyecto",
-    "portfolioDesc": "Mi portfolio personal construido con Next.js, TypeScript y Framer Motion. Diseño neon-purple con internacionalización completa.",
-    "comprasDesc": "App de lista de compras colaborativa con autenticación, listas compartidas y sincronización en tiempo real. React + Node.js + MongoDB.",
-    "instaCheckerDesc": "Herramienta para analizar seguidores de Instagram: detecta quién no te sigue de vuelta, unfollows recientes y estadísticas."
+    "portfolioDesc": "Mi portfolio personal con Next.js, TypeScript y Framer Motion, backend propio en Node.js/Express con MongoDB Atlas e imágenes en Cloudinary. Bilingüe, con CI/CD en cada push.",
+    "portfolioBackendDesc": "API REST que alimenta este portfolio: Node.js + Express con MongoDB Atlas. La página de Viajes consume sus endpoints en vivo (viajes, estadísticas). Desplegada con CI/CD.",
+    "comprasDesc": "Lista de la compra compartida en tiempo real: React Native + Expo, backend Node.js con Socket.io y MongoDB Atlas. Desplegada en mi NAS con Docker, Nginx, SSL automático y CI/CD con GitHub Actions. En uso diario real."
   },
   "contactForm": {
     "label": "CONTACTO",

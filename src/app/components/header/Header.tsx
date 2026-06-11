@@ -6,13 +6,14 @@ import { useTranslations } from "next-intl";
 
 import { Mail } from "lucide-react";
 
-import LanguageSwitcher from "@/app/components/header/LanguageSwitcher/LanguageSwitcher";
-import LocalizedLink from "@components/common/LocalizedLink";
 import ContactModal from "@/app/components/contact/ContactModal";
+import LanguageSwitcher from "@/app/components/header/LanguageSwitcher/LanguageSwitcher";
+import { useContactModalStore } from "@/app/store/useContactModalStore";
+import LocalizedLink from "@components/common/LocalizedLink";
+
+import ThemeToggle from "../common/ThemeToggle";
 
 import "./Header.scss";
-import ThemeToggle from "../common/ThemeToggle";
-import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 export default function Header() {
   const t = useTranslations("header");

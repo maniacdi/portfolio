@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
     // Intentar parsear sugerencias si el modelo las incluye
     const followUpMatch = aiAnswer.match(/(?:Sugerencias?|Suggestions?|followUp|También puedes preguntar)[:.]?\s*[-•]?\s*(.+)/i);
 
-    let answer = aiAnswer;
+    const answer = aiAnswer;
     let followUp: string[] = [];
 
     // Generar followUp basado en el contexto si el modelo no las incluye explícitamente

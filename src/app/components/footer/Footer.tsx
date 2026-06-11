@@ -14,8 +14,9 @@ import {
   Twitter,
 } from "lucide-react";
 
-import "./Footer.scss";
 import LocalizedLink from "../common/LocalizedLink";
+
+import "./Footer.scss";
 
 export default function Footer() {
   const t = useTranslations("footer");

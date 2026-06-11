@@ -19,6 +19,8 @@ Cypress.Commands.add("skipTerminalLoader", () => {
 });
 
 declare global {
+  // Cypress requires namespace augmentation for custom commands
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
     interface Chainable {
       skipTerminalLoader(): Chainable<void>;

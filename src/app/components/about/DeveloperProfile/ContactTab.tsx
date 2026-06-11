@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { ChevronRight,Github, Globe, Linkedin, Mail } from "lucide-react";
 
-import type { ProfileData } from "@/utils/data/profileData";
 import { useContactModalStore } from "@/app/store/useContactModalStore";
+import type { ProfileData } from "@/utils/data/profileData";
 
 interface ContactTabProps {
   data: ProfileData["contact"];

@@ -14,6 +14,10 @@ interface SkillsTabProps {
 
 type AnySkill = ProfileData["skills"][keyof ProfileData["skills"]][number];
 
+const MAX_YEARS = 6;
+
+const yearsToPercent = (years: number) => Math.min(years / MAX_YEARS, 1) * 100;
+
 const getCategoryIcon = (category: string) => {
   const icons = {
     frontend: Palette,
@@ -86,7 +90,7 @@ export const SkillsTab = ({ data, t }: SkillsTabProps) => {
                       }}
                       style={{
                         transformOrigin: "left",
-                        background: `linear-gradient(90deg, var(--neon-blue) 0%, var(--neon) ${skill.level}%)`,
+                        background: `linear-gradient(90deg, var(--neon-blue) 0%, var(--neon) ${yearsToPercent(skill.years)}%)`,
                       }}
                     />
                   </motion.div>
@@ -108,13 +112,9 @@ export const SkillsTab = ({ data, t }: SkillsTabProps) => {
             <h4>{hoveredSkill.name}</h4>
             <div className="skill-stats">
               <div className="stat">
-                <span className="stat-label">{t("proficiency")}</span>
-                <span className="stat-value">{hoveredSkill.level}%</span>
-              </div>
-              <div className="stat">
                 <span className="stat-label">{t("experience")}</span>
                 <span className="stat-value">
-                  {hoveredSkill.years}+ {t("years")}
+                  {hoveredSkill.years} {t("years")}
                 </span>
               </div>
             </div>
@@ -122,7 +122,7 @@ export const SkillsTab = ({ data, t }: SkillsTabProps) => {
               <motion.div
                 className="skill-level-fill"
                 initial={{ width: 0 }}
-                animate={{ width: `${hoveredSkill.level}%` }}
+                animate={{ width: `${yearsToPercent(hoveredSkill.years)}%` }}
                 transition={{ duration: 0.5 }}
               />
             </div>
