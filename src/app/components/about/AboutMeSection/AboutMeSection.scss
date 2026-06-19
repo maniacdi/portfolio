@@ -148,13 +148,21 @@
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr;
+  /* minmax(0,1fr) — plain `1fr` has an implicit min-content minimum, so a wide
+     child (the terminal card) blows the track wider than the viewport, dragging
+     the timeline with it. minmax(0,...) lets the track shrink so content wraps. */
+  grid-template-columns: minmax(0, 1fr);
   gap: 3rem;
   margin-top: 2rem;
   width: 100%;
 
   @media (max-width: 1024px) {
     gap: 2rem;
+  }
+
+  /* allow grid items to shrink below their content's intrinsic width */
+  > * {
+    min-width: 0;
   }
 }
 
