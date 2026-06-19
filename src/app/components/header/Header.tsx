@@ -46,15 +46,15 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when menu is open
+  // Prevent page scroll when menu is open (lock both html and body — html owns
+  // the scroll because it has overflow-x: clip, so locking body alone isn't enough)
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    const value = open ? "hidden" : "";
+    document.documentElement.style.overflow = value;
+    document.body.style.overflow = value;
 
     return () => {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
   }, [open]);
