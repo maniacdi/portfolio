@@ -102,7 +102,7 @@ export default async function LocaleLayout({
             <TerminalLoader />
             <Header />
             <main className="main-content">{children}</main>
-            {/* <ChatBot /> */}
+            <ChatBot />
             <Footer />
             <EasterEggs />
           </ToastProvider>
