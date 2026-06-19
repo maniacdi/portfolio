@@ -12,6 +12,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Clip horizontal overflow at the viewport level — also contains fixed-position
+     floats (chatbot, easter-egg button) which escape `main`'s clip.
+     `clip` (not `hidden`) does NOT create a scroll container → keeps the sticky header working. */
+  overflow-x: clip;
 }
 
 html,
