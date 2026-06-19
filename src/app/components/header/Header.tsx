@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-import { Mail } from "lucide-react";
+import { Mail, X } from "lucide-react";
 
 import ContactModal from "@/app/components/contact/ContactModal";
 import LanguageSwitcher from "@/app/components/header/LanguageSwitcher/LanguageSwitcher";
@@ -135,6 +135,21 @@ export default function Header() {
         aria-label="Mobile navigation"
         aria-hidden={!open}
       >
+        {/* Self-contained top bar: logo + close. The menu must not depend on the
+            sticky header (which can drop off-screen while scroll is locked). */}
+        <div className="mobile-menu-top">
+          <LocalizedLink href="/" onClick={handleLinkClick}>
+            <img className="menu-logo" src="/images/LOGO.png" alt="Magaldidev logo" />
+          </LocalizedLink>
+          <button
+            className="menu-close"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
         <div className="mobile-menu-content">
           {links.map(({ href, label }) => (
             <LocalizedLink
