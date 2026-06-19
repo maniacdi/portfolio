@@ -14,8 +14,7 @@
   }
 
   @media (max-width: 480px) {
-    margin-left: -10dvw;
-    width: 100dvw;
+    padding: 0 var(--padding-sm);
   }
 }
 
