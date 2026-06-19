@@ -29,7 +29,13 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
       title: `${t("exp1Title")}`,
       company: "AMS Solutions",
       description: `${t("exp1Description")}`,
-      technologies: ["React", "TypeScript", "Java · Spring Boot", "MongoDB · Redis", "Microfrontends"],
+      technologies: [
+        "React",
+        "TypeScript",
+        "Java · Spring Boot",
+        "MongoDB · Redis",
+        "Microfrontends",
+      ],
     },
     {
       period: "2022-2023",
@@ -56,7 +62,11 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
       title: `${t("edu1Title")}`,
       institution: `${t("edu1Subtitle")}`,
       specialization: `${t("edu1Description")}`,
-      subjects: [`${t("educationSubjects.algorithms")}`, `${t("educationSubjects.dataStructures")}`, `${t("educationSubjects.softwareEngineering")}`],
+      subjects: [
+        `${t("educationSubjects.algorithms")}`,
+        `${t("educationSubjects.dataStructures")}`,
+        `${t("educationSubjects.softwareEngineering")}`,
+      ],
     },
   ];
   return (
@@ -70,22 +80,6 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
           </div>
         </div>
       </section>
-      <motion.div
-        className="cta-section"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-      >
-        <div className="cta-content">
-          <h3 className="cta-title">{t("cta")}</h3>
-          <p className="cta-subtitle">{t("ctaText")}</p>
-          <button type="button" onClick={() => openContactModal()} className="neon-button">
-            <span>{t("ctaButton")}</span>
-            <Zap size={16} />
-          </button>
-        </div>
-        <div className="cta-glow"></div>
-      </motion.div>
 
       <motion.div
         className="off-hours"
@@ -105,6 +99,22 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
           <span>{t("travelsLink")}</span>
           <ArrowRight size={16} />
         </LocalizedLink>
+      </motion.div>
+      <motion.div
+        className="cta-section"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        <div className="cta-content">
+          <h3 className="cta-title">{t("cta")}</h3>
+          <p className="cta-subtitle">{t("ctaText")}</p>
+          <button type="button" onClick={() => openContactModal()} className="neon-button">
+            <span>{t("ctaButton")}</span>
+            <Zap size={16} />
+          </button>
+        </div>
+        <div className="cta-glow"></div>
       </motion.div>
     </>
   );

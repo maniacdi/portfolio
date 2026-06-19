@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights} from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
@@ -92,17 +92,17 @@ export default async function LocaleLayout({
 
     return (
       <>
-        <ThemeProvider/>
+        <ThemeProvider />
         <WebsiteSchema />
         <PersonSchema locale={locale as "es" | "en"} />
         <Analytics />
-        <SpeedInsights/>
+        <SpeedInsights />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ToastProvider>
             <TerminalLoader />
             <Header />
             <main className="main-content">{children}</main>
-            <ChatBot />
+            {/* <ChatBot /> */}
             <Footer />
             <EasterEggs />
           </ToastProvider>
