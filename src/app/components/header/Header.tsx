@@ -124,41 +124,44 @@ export default function Header() {
             <LanguageSwitcher />
           </div>
         </div>
-
-        {/* Mobile menu */}
-        <nav
-          className={`mobile-menu ${open ? "show" : ""}`}
-          aria-label="Mobile navigation"
-          aria-hidden={!open}
-        >
-          <div className="mobile-menu-content">
-            {links.map(({ href, label }) => (
-              <LocalizedLink
-                key={href}
-                href={href}
-                className={pathname.endsWith(href) ? "active" : ""}
-                onClick={handleLinkClick}
-              >
-                {label}
-              </LocalizedLink>
-            ))}
-
-            <button
-              className="cta-btn mobile"
-              onClick={handleContactClick}
-              aria-label="Open contact form"
-            >
-              <Mail size={18} />
-              <span>{t("contact")}</span>
-            </button>
-
-            <div className="mobile-menu-footer">
-              <ThemeToggle />
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </nav>
       </header>
+
+      {/* Mobile menu — rendered OUTSIDE <header> on purpose: the header has
+          backdrop-filter (and a transform when scrolled), which would make this
+          position:fixed element anchor to the header instead of the viewport.
+          Outside the header it covers the full viewport. */}
+      <nav
+        className={`mobile-menu ${open ? "show" : ""}`}
+        aria-label="Mobile navigation"
+        aria-hidden={!open}
+      >
+        <div className="mobile-menu-content">
+          {links.map(({ href, label }) => (
+            <LocalizedLink
+              key={href}
+              href={href}
+              className={pathname.endsWith(href) ? "active" : ""}
+              onClick={handleLinkClick}
+            >
+              {label}
+            </LocalizedLink>
+          ))}
+
+          <button
+            className="cta-btn mobile"
+            onClick={handleContactClick}
+            aria-label="Open contact form"
+          >
+            <Mail size={18} />
+            <span>{t("contact")}</span>
+          </button>
+
+          <div className="mobile-menu-footer">
+            <ThemeToggle />
+            <LanguageSwitcher />
+          </div>
+        </div>
+      </nav>
 
       {/* Overlay for mobile menu */}
       {open && <div className="header-overlay" onClick={() => setOpen(false)} aria-hidden="true" />}

@@ -277,7 +277,7 @@
 .mobile-menu {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 1000;
   padding: 5rem var(--content-pad) 1.75rem;
   background: var(--glass-bg);
   -webkit-backdrop-filter: blur(24px) saturate(160%);

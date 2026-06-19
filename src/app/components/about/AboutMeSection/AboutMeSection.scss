@@ -152,16 +152,9 @@
   gap: 3rem;
   margin-top: 2rem;
   width: 100%;
-  max-width: var(--content-max);
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 clamp(1rem, 3vw, 2rem);
 
   @media (max-width: 1024px) {
     gap: 2rem;
-  }
-  @media (max-width: 768px) {
-    padding: 0 1rem;
   }
 }
 

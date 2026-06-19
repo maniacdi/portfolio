@@ -419,9 +419,7 @@
         .detail-value {
           color: var(--text);
           font-weight: 500;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          overflow-wrap: anywhere;
         }
       }
     }
