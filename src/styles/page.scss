@@ -1,7 +1,10 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* stretch (not center): in a flex column, align-items:center sizes children to
+     their max-content, so wide cards / long text overflow the viewport. Stretch
+     makes them container-width so text wraps. Text stays centered via text-align. */
+  align-items: stretch;
   width: 100%;
   max-width: var(--content-max);
   margin: 0 auto;
