@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import ContactForm from "../components/contact/ContactForm";
 import FeaturedProjects from "../components/home/FeaturedProjects";
 import PowerHero from "../components/home/PowerHero";
+import Services from "../components/home/Services";
 
 import "@/styles/page.scss";
 
@@ -40,6 +41,7 @@ export default async function Home() {
   return (
     <main className="home-container">
       <PowerHero />
+      <Services />
       <FeaturedProjects />
       <ContactForm />
     </main>

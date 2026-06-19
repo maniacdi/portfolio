@@ -3,35 +3,23 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-import { animate, AnimatePresence, motion, useMotionValue, useTransform } from "framer-motion";
-import type { LucideIcon } from "lucide-react";
-import {
-  Calendar,
-  Code2,
-  Cpu,
-  Download,
-  Mail,
-  ShieldCheck,
-  Sparkles,
-  Terminal,
-  Users,
-  Zap,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Code2, Cpu, Download, Mail, Sparkles, Terminal, Zap } from "lucide-react";
 
 import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 import { cvService } from "../../services/cvService";
 
+import NodeGraphBackground from "./NodeGraphBackground";
+
 import "./PowerHero.scss";
 
-const MAX_YEARS = 5;
-
 const TECH_STACK = [
-  { name: "REACT", years: 5, context: "Incentro · Innova-tsn · AMS Solutions" },
-  { name: "TYPESCRIPT", years: 5, context: "AMS Solutions" },
-  { name: "JAVA · SPRING BOOT", years: 3, context: "AMS Solutions (Inditex)" },
-  { name: "NODE.JS", years: 4, context: "Compras App · homelab" },
-  { name: "CSS / SCSS", years: 5, context: "Incentro · AMS Solutions" },
+  { name: "REACT", context: "Incentro · Innova-tsn · AMS Solutions" },
+  { name: "TYPESCRIPT", context: "AMS Solutions" },
+  { name: "JAVA · SPRING BOOT", context: "AMS Solutions (Inditex)" },
+  { name: "NODE.JS", context: "Compras App · homelab" },
+  { name: "CSS / SCSS", context: "Incentro · AMS Solutions" },
 ] as const;
 
 const TERMINAL_COMMANDS = [
@@ -42,27 +30,12 @@ const TERMINAL_COMMANDS = [
   "npm run build",
 ] as const;
 
-const STATS = [
-  { value: 5, suffix: "+", label: "years", icon: Calendar },
-  { value: 10, suffix: "K+", label: "dailyUsers", icon: Users },
-  { value: 85, suffix: "%", label: "coverage", icon: ShieldCheck },
-] as const;
-
-const PARTICLES = Array.from({ length: 10 }, (_, i) => ({
-  left: `${(i * 61.8 + 7) % 100}%`,
-  top: `${(i * 38.2 + 13) % 100}%`,
-  drift: ((i * 17) % 50) - 25,
-  duration: 3 + (i % 5) * 0.45,
-  delay: (i % 4) * 0.5,
-}));
-
 export default function PowerHero() {
   const t = useTranslations("hero");
   const locale = useLocale() as "es" | "en";
   const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
   const [displayedCommand, setDisplayedCommand] = useState("");
   const [isTyping, setIsTyping] = useState(true);
-  const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const [isGlitching, setIsGlitching] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const { open: openContactModal } = useContactModalStore();
@@ -110,30 +83,7 @@ export default function PowerHero() {
       <div className="tech-background">
         <div className="grid-overlay" />
         <div className="gradient-orb" />
-
-        {/* Floating particles */}
-        <div className="particles">
-          {PARTICLES.map((particle, i) => (
-            <motion.div
-              key={i}
-              className="particle"
-              animate={{
-                y: [0, -100, 0],
-                x: [0, particle.drift, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: particle.duration,
-                repeat: Infinity,
-                delay: particle.delay,
-              }}
-              style={{
-                left: particle.left,
-                top: particle.top,
-              }}
-            />
-          ))}
-        </div>
+        <NodeGraphBackground />
       </div>
 
       <motion.div className="hero-container">
@@ -223,26 +173,7 @@ export default function PowerHero() {
           <span className="highlight">{t("d6")}</span>.
         </motion.p>
 
-        {/* Animated Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="stats-grid"
-        >
-          {STATS.map((stat, index) => (
-            <AnimatedStat
-              key={stat.label}
-              value={stat.value}
-              suffix={stat.suffix}
-              label={t(stat.label)}
-              Icon={stat.icon}
-              delay={0.35 + index * 0.1}
-            />
-          ))}
-        </motion.div>
-
-        {/* Tech Stack — years of real experience, no made-up percentages */}
+        {/* Tech Stack — clean chips, real stack, context on hover via title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -250,49 +181,16 @@ export default function PowerHero() {
           className="quick-stack"
         >
           {TECH_STACK.map((tech, index) => (
-            <motion.div
+            <motion.span
               key={tech.name}
-              className={`stack-item ${hoveredTech === tech.name ? "hovered" : ""}`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.45 + index * 0.07 }}
-              onMouseEnter={() => setHoveredTech(tech.name)}
-              onMouseLeave={() => setHoveredTech(null)}
+              className="stack-chip"
+              title={`${t("usedAt")} ${tech.context}`}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45 + index * 0.05 }}
             >
-              <div className="stack-header">
-                <span className="stack-name">{tech.name}</span>
-                <span className="stack-years">
-                  {tech.years} {t("years").toLowerCase()}
-                </span>
-              </div>
-
-              <div className="stack-track" aria-hidden="true">
-                {Array.from({ length: MAX_YEARS }).map((_, segIndex) => (
-                  <motion.span
-                    key={segIndex}
-                    className={`seg ${segIndex < tech.years ? "lit" : ""}`}
-                    initial={{ opacity: 0, scaleX: 0 }}
-                    animate={{ opacity: 1, scaleX: 1 }}
-                    transition={{ delay: 0.55 + index * 0.07 + segIndex * 0.05 }}
-                  />
-                ))}
-              </div>
-
-              <AnimatePresence>
-                {hoveredTech === tech.name && (
-                  <motion.div
-                    className="stack-info"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                  >
-                    <span>
-                      {t("usedAt")} {tech.context}
-                    </span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              {tech.name}
+            </motion.span>
           ))}
         </motion.div>
 
@@ -303,17 +201,17 @@ export default function PowerHero() {
           className="hero-actions"
         >
           <motion.a
-            href={`/${locale}/about`}
+            href="#proyectos"
             className="primary-action"
             whileHover={{ scale: 1.03, boxShadow: "0 0 28px rgba(111, 0, 255, 0.45)" }}
             whileTap={{ scale: 0.95 }}
           >
             <Sparkles size={18} />
-            <span>{t("seeMore")}</span>
+            <span>{t("seeProjects")}</span>
           </motion.a>
 
           <motion.button
-            onClick={openContactModal}
+            onClick={() => openContactModal()}
             className="cta-button primary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -335,45 +233,5 @@ export default function PowerHero() {
         </motion.div>
       </motion.div>
     </section>
-  );
-}
-
-// Animated Stat Component
-function AnimatedStat({
-  value,
-  suffix,
-  label,
-  Icon,
-  delay,
-}: {
-  value: number;
-  suffix: string;
-  label: string;
-  Icon: LucideIcon;
-  delay: number;
-}) {
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.round(latest));
-
-  useEffect(() => {
-    const controls = animate(count, value, { duration: 1.4, delay, ease: "easeOut" });
-    return () => controls.stop();
-  }, [count, value, delay]);
-
-  return (
-    <motion.div
-      className="stat-item"
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay }}
-      whileHover={{ scale: 1.1 }}
-    >
-      <Icon className="stat-icon" size={24} />
-      <span className="stat-number">
-        <motion.span>{rounded}</motion.span>
-        {suffix}
-      </span>
-      <span className="stat-label">{label}</span>
-    </motion.div>
   );
 }

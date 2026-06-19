@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
-
-import { AnimatePresence,motion } from "framer-motion";
-import { Code,Cpu, Database, Palette, Zap } from "lucide-react";
+import { motion } from "framer-motion";
+import { Code, Cpu, Database, Palette, Zap } from "lucide-react";
 
 import type { ProfileData } from "@/utils/data/profileData";
 
@@ -11,12 +9,6 @@ interface SkillsTabProps {
   data: ProfileData["skills"];
   t: any;
 }
-
-type AnySkill = ProfileData["skills"][keyof ProfileData["skills"]][number];
-
-const MAX_YEARS = 6;
-
-const yearsToPercent = (years: number) => Math.min(years / MAX_YEARS, 1) * 100;
 
 const getCategoryIcon = (category: string) => {
   const icons = {
@@ -29,8 +21,6 @@ const getCategoryIcon = (category: string) => {
 };
 
 export const SkillsTab = ({ data, t }: SkillsTabProps) => {
-  const [hoveredSkill, setHoveredSkill] = useState<AnySkill | null>(null);
-
   return (
     <motion.div
       className="tab-content skills-tab"
@@ -44,7 +34,6 @@ export const SkillsTab = ({ data, t }: SkillsTabProps) => {
           <Zap size={20} />
           {t("techSkills")}
         </h3>
-        <p className="skills-subtitle">{t("hoverAd")}</p>
       </div>
 
       <div className="skills-grid">
@@ -64,71 +53,23 @@ export const SkillsTab = ({ data, t }: SkillsTabProps) => {
                 <h4 className="category-title">{category}</h4>
               </div>
 
-              <div className="skills-list">
+              <div className="skills-tags">
                 {skills.map((skill, skillIndex) => (
-                  <motion.div
+                  <motion.span
                     key={skill.name}
-                    className={`skill-item ${hoveredSkill?.name === skill.name ? "hovered" : ""}`}
-                    onMouseEnter={() => setHoveredSkill(skill)}
-                    onMouseLeave={() => setHoveredSkill(null)}
+                    className="skill-tag"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                    whileHover={{
-                      scale: 1.05,
-                      color: "var(--neon)",
-                    }}
+                    transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.04 }}
                   >
-                    <div className="skill-name">{skill.name}</div>
-                    <motion.div
-                      className="skill-progress"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{
-                        delay: categoryIndex * 0.1 + skillIndex * 0.05 + 0.2,
-                        duration: 0.8,
-                      }}
-                      style={{
-                        transformOrigin: "left",
-                        background: `linear-gradient(90deg, var(--neon-blue) 0%, var(--neon) ${yearsToPercent(skill.years)}%)`,
-                      }}
-                    />
-                  </motion.div>
+                    {skill.name}
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
           );
         })}
       </div>
-
-      <AnimatePresence>
-        {hoveredSkill && (
-          <motion.div
-            className="skill-details-panel"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-          >
-            <h4>{hoveredSkill.name}</h4>
-            <div className="skill-stats">
-              <div className="stat">
-                <span className="stat-label">{t("experience")}</span>
-                <span className="stat-value">
-                  {hoveredSkill.years} {t("years")}
-                </span>
-              </div>
-            </div>
-            <div className="skill-level-bar">
-              <motion.div
-                className="skill-level-fill"
-                initial={{ width: 0 }}
-                animate={{ width: `${yearsToPercent(hoveredSkill.years)}%` }}
-                transition={{ duration: 0.5 }}
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
   );
 };

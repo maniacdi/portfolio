@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Bot, MessageCircle, Send, Sparkles, User, X } from "lucide-react";
+import { Bot, Maximize2, MessageCircle, Minimize2, Send, Sparkles, User, X } from "lucide-react";
 
 import { calculateTypingDelay, getChatResponse, isValidQuestion } from "@/app/services/chatEngine";
+import { useChatbotStore } from "@/app/store/useChatbotStore";
 
 import "./ChatBot.scss";
 
@@ -21,7 +22,8 @@ interface Message {
 export default function ChatBot() {
   const locale = useLocale() as "es" | "en";
   const t = useTranslations("chatbot");
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, open, close } = useChatbotStore();
+  const [isExpanded, setIsExpanded] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -43,16 +45,20 @@ export default function ChatBot() {
       setTimeout(() => {
         const welcomeMessage =
           locale === "es"
-            ? "¡Hola! 👋 Soy el asistente IA de Javi. Puedo responder preguntas sobre su experiencia, proyectos, stack tecnológico y mucho más. ¿Qué te gustaría saber?"
-            : "Hello! 👋 I'm Javi's AI assistant. I can answer questions about his experience, projects, tech stack, and much more. What would you like to know?";
+            ? "¡Hola! 👋 Soy el asistente IA de Javi. Puedo contarte cómo trabaja, sus proyectos y cómo contratarle — para tu negocio como freelance o en plantilla. ¿Qué te gustaría saber?"
+            : "Hello! 👋 I'm Javi's AI assistant. I can tell you how he works, his projects, and how to hire him — freelance for your business or full-time. What would you like to know?";
 
         const followUpSuggestions =
           locale === "es"
-            ? ["¿Qué tecnologías dominas?", "¿Dónde has trabajado?", "¿Qué proyectos has hecho?"]
+            ? [
+                "¿Cómo puedo contratarte?",
+                "¿Puedes ayudarme con mi proyecto?",
+                "¿Estás disponible para trabajar en plantilla?",
+              ]
             : [
-                "What technologies do you master?",
-                "Where have you worked?",
-                "What projects have you done?",
+                "How can I hire you?",
+                "Can you help with my project?",
+                "Are you open to a full-time role?",
               ];
 
         addBotMessage(welcomeMessage, followUpSuggestions);
@@ -81,8 +87,8 @@ export default function ChatBot() {
     setMessages((prev) => [...prev, newMessage]);
   };
 
-  const handleSendMessage = async () => {
-    const trimmedInput = inputValue.trim();
+  const handleSendMessage = async (override?: string) => {
+    const trimmedInput = (override ?? inputValue).trim();
 
     if (!trimmedInput || !isValidQuestion(trimmedInput)) {
       return;
@@ -136,8 +142,7 @@ export default function ChatBot() {
   };
 
   const handleSuggestionClick = (suggestion: string) => {
-    setInputValue(suggestion);
-    inputRef.current?.focus();
+    handleSendMessage(suggestion);
   };
 
   return (
@@ -146,16 +151,17 @@ export default function ChatBot() {
         {!isOpen && (
           <motion.button
             className="chatbot-trigger"
-            onClick={() => setIsOpen(true)}
+            onClick={open}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.9 }}
             transition={{ delay: 0.5 }}
             aria-label={t("openChat")}
           >
             <MessageCircle size={24} />
+            <span className="trigger-label">{t("triggerLabel")}</span>
             <span className="trigger-badge">
               <Sparkles size={12} />
             </span>
@@ -166,7 +172,7 @@ export default function ChatBot() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="chatbot-window"
+            className={`chatbot-window ${isExpanded ? "expanded" : ""}`}
             initial={{ opacity: 0, y: 100, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.8 }}
@@ -185,13 +191,18 @@ export default function ChatBot() {
                   </p>
                 </div>
               </div>
-              <button
-                className="close-button"
-                onClick={() => setIsOpen(false)}
-                aria-label={t("close")}
-              >
-                <X size={20} />
-              </button>
+              <div className="header-buttons">
+                <button
+                  className="expand-button"
+                  onClick={() => setIsExpanded((p) => !p)}
+                  aria-label={isExpanded ? t("minimize") : t("maximize")}
+                >
+                  {isExpanded ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
+                </button>
+                <button className="close-button" onClick={close} aria-label={t("close")}>
+                  <X size={20} />
+                </button>
+              </div>
             </div>
 
             <div className="chatbot-messages">
@@ -260,7 +271,7 @@ export default function ChatBot() {
               />
               <button
                 className="send-button"
-                onClick={handleSendMessage}
+                onClick={() => handleSendMessage()}
                 disabled={!inputValue.trim() || isTyping}
                 aria-label={t("send")}
               >

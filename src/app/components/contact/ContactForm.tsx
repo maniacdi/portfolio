@@ -4,26 +4,34 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
-import { CheckCircle, Loader2, Mail, MessageSquare, Send, User } from "lucide-react";
+import { Briefcase, CheckCircle, Loader2, Mail, MessageSquare, Send, User } from "lucide-react";
 
 import "./ContactForm.scss";
 
 
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
+const SERVICE_KEYS = ["web", "shop", "mobile", "custom"] as const;
+
 interface FormData {
   name: string;
   email: string;
   message: string;
+  service: string;
 }
 
 export default function ContactForm() {
   const t = useTranslations("contactForm");
-  const [form, setForm] = useState<FormData>({ name: "", email: "", message: "" });
+  const ts = useTranslations("services");
+  const serviceLabel = (key: string) =>
+    key === "employee" ? ts("employeeLabel") : ts(`items.${key}.title`);
+  const [form, setForm] = useState<FormData>({ name: "", email: "", message: "", service: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -40,13 +48,16 @@ export default function ContactForm() {
           name: form.name,
           email: form.email,
           message: form.message,
-          subject: `Portfolio Contact — ${form.name}`,
+          service: form.service ? serviceLabel(form.service) : "—",
+          subject: `Portfolio Contact — ${form.name}${
+            form.service ? ` (${serviceLabel(form.service)})` : ""
+          }`,
         }),
       });
 
       if (res.ok) {
         setStatus("success");
-        setForm({ name: "", email: "", message: "" });
+        setForm({ name: "", email: "", message: "", service: "" });
       } else {
         setStatus("error");
       }
@@ -155,6 +166,29 @@ export default function ContactForm() {
             placeholder={t("emailPlaceholder")}
             autoComplete="email"
           />
+        </div>
+
+        {/* Service */}
+        <div className="form-group">
+          <label htmlFor="cf-service">
+            <Briefcase size={14} />
+            <span>{t("serviceLabel")}</span>
+          </label>
+          <select
+            id="cf-service"
+            name="service"
+            value={form.service}
+            onChange={handleChange}
+            className="service-select"
+          >
+            <option value="">{t("servicePlaceholder")}</option>
+            {SERVICE_KEYS.map((key) => (
+              <option key={key} value={key}>
+                {ts(`items.${key}.title`)}
+              </option>
+            ))}
+            <option value="employee">{ts("employeeLabel")}</option>
+          </select>
         </div>
 
         {/* Message */}

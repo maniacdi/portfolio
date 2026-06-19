@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   background-color: var(--bg);
@@ -17,7 +21,27 @@ body {
   font-family: "Space Grotesk", sans-serif;
   padding: 0;
   margin: 0;
-  height: 100dvh;
+  min-height: 100dvh;
+}
+
+/* Offset anchored sections so the fixed header doesn't cover them */
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
@@ -27,8 +51,7 @@ body {
 
 main {
   flex: 1;
-  padding: var(--padding-lg);
-  margin: 0 3dvw;
+  min-width: 0;
 }
 
 /* ============================================

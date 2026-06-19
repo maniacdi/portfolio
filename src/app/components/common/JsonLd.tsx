@@ -14,8 +14,8 @@ export function PersonSchema({ locale }: PersonSchemaProps) {
     url: "https://javimagaldi.com",
     jobTitle: isEs ? "Desarrollador Web Full-Stack" : "Full-Stack Web Developer",
     description: isEs
-      ? "Desarrollador web con 5 años de experiencia en React, TypeScript y Node.js, basado en Santander, España."
-      : "Web developer with 5 years of experience in React, TypeScript and Node.js, based in Santander, Spain.",
+      ? "Desarrollador web full-stack en Santander. Construyo aplicaciones web y móviles, APIs e infraestructura con React, React Native, Node.js y Java (Spring Boot)."
+      : "Full-stack web developer in Santander, Spain. I build web and mobile apps, APIs and infrastructure with React, React Native, Node.js and Java (Spring Boot).",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Santander",
@@ -26,7 +26,20 @@ export function PersonSchema({ locale }: PersonSchemaProps) {
       "https://www.linkedin.com/in/javimagaldi",
       "https://x.com/Magaldi6",
     ],
-    knowsAbout: ["React", "TypeScript", "Next.js", "Node.js", "MongoDB", "Docker"],
+    knowsAbout: [
+      "React",
+      "React Native",
+      "TypeScript",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "Java",
+      "Spring Boot",
+      "REST APIs",
+      "MongoDB",
+      "Docker",
+      "CI/CD",
+    ],
     email: "magaldi6@gmail.com",
   };
 

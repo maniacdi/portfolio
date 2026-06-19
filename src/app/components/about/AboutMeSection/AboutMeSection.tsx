@@ -1,13 +1,14 @@
 "use client";
 
-import { FC, use } from "react";
+import { FC } from "react";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
+import { ArrowRight, MapPin, Zap } from "lucide-react";
 
 import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/DeveloperProfile";
 import { useContactModalStore } from "@/app/store/useContactModalStore";
+import LocalizedLink from "@components/common/LocalizedLink";
 
 import { HorizontalTimeline } from "../HorizontalTimeline/HorizontalTimeline";
 
@@ -84,6 +85,26 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
           </button>
         </div>
         <div className="cta-glow"></div>
+      </motion.div>
+
+      <motion.div
+        className="off-hours"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <span className="off-hours-icon">
+          <MapPin size={26} />
+        </span>
+        <div className="off-hours-text">
+          <p className="off-hours-lead">{t("offHoursLead")}</p>
+          <p className="off-hours-sub">{t("travelsSub")}</p>
+        </div>
+        <LocalizedLink href="/travels" className="off-hours-link">
+          <span>{t("travelsLink")}</span>
+          <ArrowRight size={16} />
+        </LocalizedLink>
       </motion.div>
     </>
   );

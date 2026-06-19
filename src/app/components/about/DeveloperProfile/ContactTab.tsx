@@ -121,7 +121,7 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
           className="cta-button"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={openContactModal}
+          onClick={() => openContactModal()}
           aria-label="Open contact form"
         >
           <Mail size={16} />

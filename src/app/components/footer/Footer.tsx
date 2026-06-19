@@ -22,11 +22,11 @@ export default function Footer() {
   const t = useTranslations("footer");
   const year = new Date().getFullYear();
 
+  // Hobbies hidden (route kept alive). Travels stays here in footer.
   const quickLinks = [
     { href: "/", label: t("home") || "Home" },
     { href: "/about", label: t("about") || "About" },
     { href: "/travels", label: t("travels") || "Travels" },
-    { href: "/hobbies", label: t("hobbies") || "Hobbies" },
   ];
 
   const socialLinks = [

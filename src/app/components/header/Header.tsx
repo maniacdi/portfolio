@@ -22,10 +22,12 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { open: openContactModal } = useContactModalStore();
 
+  // Hobbies hidden from nav (route kept alive in code). Travels relocated to footer + Sobre mí.
+  // Servicios/Proyectos are home sections — "/#anchor" navigates home then scrolls from any page.
   const links = [
+    { href: "/#servicios", label: t("services") },
+    { href: "/#proyectos", label: t("projects") },
     { href: "/about", label: t("about") },
-    { href: "/travels", label: t("travels") },
-    { href: "/hobbies", label: t("hobbies") },
     { href: "/code", label: t("code") },
   ];
 

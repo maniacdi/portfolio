@@ -25,7 +25,7 @@ export const knowledgeBaseES = {
     responses: [
       {
         answer:
-          "¡Hola! Soy Javi, Front-End Engineer con casi 5 años de experiencia en productos web en producción y entornos corporativos a gran escala. Trabajo principalmente con React y Vue, participando en el desarrollo de aplicaciones utilizadas por miles de usuarios en Inditex. Me apasiona crear experiencias de usuario de calidad, optimizar rendimiento y escribir código que escale en el tiempo.",
+          "¡Hola! Soy Javi, Front-End Engineer con casi 6 años de experiencia en productos web en producción y entornos corporativos a gran escala. Trabajo principalmente con React y Vue, participando en el desarrollo de aplicaciones utilizadas por miles de usuarios en Inditex. Me apasiona crear experiencias de usuario de calidad, optimizar rendimiento y escribir código que escale en el tiempo.",
         followUp: [
           "¿Qué tecnologías dominas?",
           "¿Dónde trabajas actualmente?",
@@ -51,7 +51,7 @@ export const knowledgeBaseES = {
     responses: [
       {
         answer:
-          "Tengo casi 5 años de experiencia como desarrollador frontend. Empecé con prácticas en Incentro (2020), donde luego trabajé 2 años rediseñando webs corporativas y gestionando e-commerce. Después estuve 10 meses en Innova-tsn como consultor frontend. Actualmente (desde mayo 2023) trabajo en AMS Solutions desarrollando aplicaciones críticas para Inditex, donde lidero proyectos de optimización y mentorizo a desarrolladores junior.",
+          "Tengo casi 6 años de experiencia como desarrollador frontend. Empecé con prácticas en Incentro (2020), donde luego trabajé 2 años rediseñando webs corporativas y gestionando e-commerce. Después estuve 10 meses en Innova-tsn como consultor frontend. Actualmente (desde mayo 2023) trabajo en AMS Solutions desarrollando aplicaciones críticas para Inditex, donde lidero proyectos de optimización y mentorizo a desarrolladores junior.",
         followUp: ["¿Qué haces en AMS?", "¿Qué lograste en cada empresa?", "¿Trabajas en remoto?"],
       },
     ],
@@ -444,6 +444,29 @@ export const knowledgeBaseES = {
         answer:
           "Actualmente estoy trabajando en AMS Solutions y disfruto mi rol, pero siempre estoy abierto a escuchar propuestas interesantes. Me interesan: 1) Proyectos con impacto real y desafíos técnicos complejos. 2) Equipos técnicos sólidos con cultura de calidad. 3) Oportunidades de crecimiento y aprendizaje. 4) Stack moderno (React, TS, Node) preferiblemente. 5) Remoto o híbrido (soy de Santander). Si tienes algo que encaje, ¡hablemos! Respondo rápido a propuestas concretas.",
         followUp: ["¿Qué buscas en un trabajo?", "¿Cómo puedo contactarte?", "¿Haces freelance?"],
+      },
+    ],
+  },
+
+  // FREELANCE Y SERVICIOS
+  freelance: {
+    keywords: [
+      "freelance",
+      "autonomo",
+      "autónomo",
+      "presupuesto",
+      "negocio",
+      "cliente",
+      "encargo",
+      "contratarte",
+      "servicios",
+      "web para mi negocio",
+    ],
+    responses: [
+      {
+        answer:
+          "Sí, trabajo como freelance. Me centro en negocios que necesitan algo directo y bien hecho: webs para restaurantes, clínicas y comercios, tiendas o sistemas de reservas online, apps móviles (iOS y Android) y software a medida para automatizar tareas. Nada de paquetes raros ni letra pequeña: me cuentas qué necesitas y te lo monto, y respondo en menos de 48h por el formulario de contacto. Y si eres una empresa que busca un desarrollador en plantilla, también estoy abierto a incorporarme a un equipo.",
+        followUp: ["¿Qué servicios ofreces?", "¿Cómo te contacto?", "¿Trabajas en plantilla?"],
       },
     ],
   },

@@ -504,108 +504,30 @@
         }
       }
 
-      .skills-list {
+      .skills-tags {
         display: flex;
-        flex-direction: column;
-        gap: 0.625rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
 
-        .skill-item {
-          position: relative;
-          padding: 0.75rem;
+        .skill-tag {
+          padding: 0.4rem 0.75rem;
           background: rgba(255, 255, 255, 0.02);
           border: 1px solid var(--border);
-          border-radius: var(--radius);
-          cursor: pointer;
+          border-radius: 100px;
+          color: var(--text);
+          font-family: "JetBrains Mono", monospace;
+          font-size: 0.82rem;
           transition:
             background 0.2s ease,
             border-color 0.2s ease,
-            transform 0.15s ease;
+            color 0.2s ease;
 
-          &:hover,
-          &.hovered {
+          &:hover {
             background: var(--neon-subtle);
             border-color: var(--neon-border);
-            transform: translateX(4px);
-          }
-
-          .skill-name {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-          }
-
-          .skill-progress {
-            height: 2px;
-            background: var(--border);
-            border-radius: 1px;
-            overflow: hidden;
-            position: relative;
-
-            &::after {
-              content: "";
-              position: absolute;
-              inset: 0;
-              background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-              );
-              animation: shimmer 2s infinite;
-            }
+            color: var(--neon-mid);
           }
         }
-      }
-    }
-  }
-
-  .skill-details-panel {
-    padding: 1.25rem 1.5rem;
-    background: var(--neon-subtle);
-    border: 1px solid var(--neon-border);
-    border-radius: var(--radius-lg);
-    margin-top: 1.5rem;
-
-    h4 {
-      color: var(--neon-mid);
-      margin-bottom: 1rem;
-    }
-
-    .skill-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1rem;
-
-      .stat {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-
-        .stat-label {
-          color: var(--text-secondary);
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          font-family: "JetBrains Mono", monospace;
-        }
-
-        .stat-value {
-          color: var(--neon-mid);
-          font-weight: 500;
-        }
-      }
-    }
-
-    .skill-level-bar {
-      height: 2px;
-      background: var(--border);
-      border-radius: 1px;
-      overflow: hidden;
-
-      .skill-level-fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--neon), var(--neon-mid));
-        border-radius: 1px;
       }
     }
   }

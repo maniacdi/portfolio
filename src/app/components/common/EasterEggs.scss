@@ -325,35 +325,6 @@
 }
 
 /* ============================================
-   WOW TOAST — themed, intentionally kept
-============================================ */
-
-.wow-toast {
-  .toast-content {
-    position: relative;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: 3px solid #fff;
-    border-radius: 20px;
-    box-shadow:
-      0 0 30px rgba(255, 255, 255, 0.8),
-      0 0 60px rgba(102, 126, 234, 0.5);
-  }
-
-  .wow-text {
-    color: white;
-    text-shadow:
-      0 0 10px rgba(255, 255, 255, 0.8),
-      0 0 20px rgba(255, 255, 255, 0.6);
-    margin: 0;
-  }
-
-  .confetti {
-    position: absolute;
-    pointer-events: none;
-  }
-}
-
-/* ============================================
    KUNAI TOAST
 ============================================ */
 
@@ -642,8 +613,7 @@ body.kunai-impact {
 ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .banana-emoji,
-  .wow-emoji {
+  .banana-emoji {
     animation: none !important;
   }
 

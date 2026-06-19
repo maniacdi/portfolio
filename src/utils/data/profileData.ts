@@ -4,7 +4,7 @@ export const profileData = {
     job: "Full-Stack Developer",
     location: "Santander, Spain",
     email: "magaldi6@gmail.com",
-    experience: "5+ years",
+    experience: "6+ years",
     bio: "Full-stack developer: React and TypeScript on the front, Java (Spring Boot) and Node.js on the back. Microservices with hexagonal architecture serving 10,000+ daily users.",
     status: "Available for projects",
   },
