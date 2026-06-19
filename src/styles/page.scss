@@ -11,8 +11,12 @@
 
 .main-content {
   flex: 1;
+  min-width: 0;
   padding: 0;
   margin: 0;
+  /* Safety net: clip (not hidden — keeps sticky working) so no page can ever
+     push the document wider than the viewport on mobile. */
+  overflow-x: clip;
 }
 
 .home-container {
