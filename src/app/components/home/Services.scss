@@ -93,6 +93,7 @@
     line-height: 1.6;
     font-size: 0.95rem;
     flex: 1;
+    text-wrap: pretty;
   }
 
   .service-cta {
@@ -175,6 +176,7 @@
     color: var(--text-secondary);
     line-height: 1.55;
     font-size: 0.95rem;
+    text-wrap: pretty;
   }
 
   .hire-cta {

@@ -22,7 +22,7 @@ export const FEATURED_PROJECTS: Project[] = [
     status: "daily",
     repo: "https://github.com/maniacdi/compras-app",
     featured: true,
-    image: "/images/projects/compras-app.webp",
+    image: "/images/projects/compras-app/cover.webp",
   },
   {
     title: "IronLog",
@@ -31,7 +31,7 @@ export const FEATURED_PROJECTS: Project[] = [
     tags: ["React Native", "Expo", "TypeScript", "AsyncStorage"],
     status: "production",
     repo: "https://github.com/maniacdi/ironlog",
-    image: "/images/projects/ironlog-1.webp",
+    image: "/images/projects/ironlog/cover.webp",
   },
   {
     title: "Porra Mundial",
@@ -41,7 +41,7 @@ export const FEATURED_PROJECTS: Project[] = [
     status: "production",
     demo: "https://porra-mundial-lilac.vercel.app/",
     repo: "https://github.com/maniacdi/porra-mundial",
-    image: "/images/projects/porra-mundial.webp",
+    image: "/images/projects/porra-mundial/cover.webp",
   },
   {
     title: "Portfolio Website",
@@ -51,6 +51,6 @@ export const FEATURED_PROJECTS: Project[] = [
     status: "production",
     demo: "https://javimagaldi.com",
     repo: "https://github.com/maniacdi/portfolio",
-    image: "/images/projects/portfolio.webp",
+    image: "/images/projects/portfolio/cover.webp",
   },
 ];
