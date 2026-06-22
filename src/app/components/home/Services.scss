@@ -84,14 +84,12 @@
   .service-name {
     font-family: "Space Grotesk", sans-serif;
     font-weight: 500;
-    font-size: 1.1rem;
     color: var(--text);
   }
 
   .service-desc {
     color: var(--text-secondary);
     line-height: 1.6;
-    font-size: 0.95rem;
     flex: 1;
     text-wrap: pretty;
   }
@@ -103,7 +101,6 @@
     margin-top: 0.5rem;
     color: var(--text-secondary);
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.82rem;
     transition: color 0.2s ease;
 
     svg {
@@ -167,7 +164,6 @@
   .hire-title {
     font-family: "Space Grotesk", sans-serif;
     font-weight: 600;
-    font-size: 1.1rem;
     color: var(--text);
     margin-bottom: 0.25rem;
   }
@@ -175,7 +171,6 @@
   .hire-desc {
     color: var(--text-secondary);
     line-height: 1.55;
-    font-size: 0.95rem;
     text-wrap: pretty;
   }
 
@@ -189,7 +184,6 @@
     background: var(--neon);
     color: #fff;
     font-weight: 500;
-    font-size: 0.95rem;
     white-space: nowrap;
 
     svg {

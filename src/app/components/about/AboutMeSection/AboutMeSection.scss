@@ -41,14 +41,12 @@
 
   .off-hours-lead {
     color: var(--text);
-    font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.25rem;
   }
 
   .off-hours-sub {
     color: var(--text-secondary);
-    font-size: 0.95rem;
     line-height: 1.55;
   }
 
@@ -62,7 +60,6 @@
     background: var(--neon);
     color: #fff;
     font-weight: 600;
-    font-size: 0.95rem;
     white-space: nowrap;
     box-shadow: 0 6px 20px rgba(111, 0, 255, 0.3);
     transition:
@@ -386,7 +383,6 @@
       }
     }
   }
-
 }
 
 /* ============================================
