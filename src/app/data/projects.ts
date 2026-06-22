@@ -2,6 +2,7 @@ export type ProjectStatus = "production" | "development" | "daily";
 export type ProjectCategory = "mobile" | "web" | "game";
 
 export interface Project {
+  slug: string;
   title: string;
   descriptionKey: string;
   category: ProjectCategory;
@@ -15,6 +16,7 @@ export interface Project {
 
 export const FEATURED_PROJECTS: Project[] = [
   {
+    slug: "compras-app",
     title: "Compras App",
     descriptionKey: "comprasDesc",
     category: "mobile",
@@ -25,6 +27,7 @@ export const FEATURED_PROJECTS: Project[] = [
     image: "/images/projects/compras-app/cover.webp",
   },
   {
+    slug: "ironlog",
     title: "IronLog",
     descriptionKey: "ironlogDesc",
     category: "mobile",
@@ -34,6 +37,7 @@ export const FEATURED_PROJECTS: Project[] = [
     image: "/images/projects/ironlog/cover.webp",
   },
   {
+    slug: "porra-mundial",
     title: "Porra Mundial",
     descriptionKey: "porraDesc",
     category: "game",
@@ -44,6 +48,7 @@ export const FEATURED_PROJECTS: Project[] = [
     image: "/images/projects/porra-mundial/cover.webp",
   },
   {
+    slug: "portfolio",
     title: "Portfolio Website",
     descriptionKey: "portfolioDesc",
     category: "web",

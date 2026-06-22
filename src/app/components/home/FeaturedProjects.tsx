@@ -1,21 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Code2, ExternalLink, Folder } from "lucide-react";
 
 import { FEATURED_PROJECTS } from "@/app/data/projects";
+import LocalizedLink from "@components/common/LocalizedLink";
 
 import "./FeaturedProjects.scss";
 
 export default function FeaturedProjects() {
   const t = useTranslations("featuredProjects");
-  const locale = useLocale();
 
   return (
-    <section id="proyectos" className="featured-projects">
+    <section id="projects" className="featured-projects">
       <motion.div
         className="section-label"
         initial={{ opacity: 0, x: -20 }}
@@ -49,7 +49,6 @@ export default function FeaturedProjects() {
 
       <div className="projects-grid">
         {FEATURED_PROJECTS.map((project, index) => {
-          const primaryLink = project.demo || project.repo;
           return (
             <motion.article
               key={project.title}
@@ -81,19 +80,13 @@ export default function FeaturedProjects() {
                 <span className="project-category">{t(`categories.${project.category}`)}</span>
 
                 <h3 className="project-title">
-                  {primaryLink ? (
-                    <a
-                      href={primaryLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="stretched-link"
-                      aria-label={`${t("openProject")}: ${project.title}`}
-                    >
-                      {project.title}
-                    </a>
-                  ) : (
-                    project.title
-                  )}
+                  <LocalizedLink
+                    href={`/projects/${project.slug}`}
+                    className="stretched-link"
+                    aria-label={`${t("openProject")}: ${project.title}`}
+                  >
+                    {project.title}
+                  </LocalizedLink>
                 </h3>
 
                 <p className="project-description">{t(project.descriptionKey)}</p>
@@ -138,13 +131,10 @@ export default function FeaturedProjects() {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.5 }}
       >
-        <a
-          href={`/${locale}/code`}
-          className="view-all-link"
-        >
+        <LocalizedLink href="/projects" className="view-all-link">
           <span>{t("viewAll")}</span>
           <ArrowUpRight size={16} />
-        </a>
+        </LocalizedLink>
       </motion.div>
     </section>
   );

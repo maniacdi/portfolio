@@ -8,6 +8,7 @@
     "services": "Servicios",
     "about": "Sobre mí",
     "projects": "Proyectos",
+    "blog": "Blog",
     "travels": "Viajes",
     "hobbies": "Hobbies",
     "language": "Idioma",
@@ -357,6 +358,31 @@
     "porraDesc": "Juego de predicciones del Mundial para picarse con los amigos: aciertas marcadores y subes en la clasificación del grupo. JavaScript + Supabase, desplegado en Vercel.",
     "portfolioDesc": "Mi portfolio personal con Next.js, TypeScript y Framer Motion, con una API REST propia en Node.js/Express y MongoDB Atlas que alimenta la página de Viajes en vivo. Bilingüe y con CI/CD en cada push.",
     "comprasDesc": "Lista de la compra compartida en tiempo real: React Native + Expo, backend Node.js con Socket.io y MongoDB Atlas. Desplegada en mi NAS con Docker, Nginx, SSL automático y CI/CD con GitHub Actions. En uso diario real."
+  },
+  "projectsPage": {
+    "title": "Proyectos",
+    "subtitle": "Cosas que he construido — apps, webs y herramientas reales, no demos.",
+    "metaTitle": "Proyectos — Javi García Magaldi",
+    "metaDescription": "Proyectos de Javi García Magaldi: apps móviles, webs y software a medida con React, React Native, Node.js, Java y más.",
+    "viewProject": "Ver proyecto"
+  },
+  "projectPage": {
+    "back": "Proyectos",
+    "problem": "El problema",
+    "solution": "La solución",
+    "stack": "Stack",
+    "gallery": "Galería",
+    "allProjects": "Ver todos los proyectos"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Notas sobre proyectos, retos técnicos y el día a día como desarrollador.",
+    "metaTitle": "Blog — Javi García Magaldi",
+    "metaDescription": "Artículos de Javi García Magaldi sobre desarrollo web y móvil, proyectos, retos técnicos e IA para developers.",
+    "empty": "Pronto habrá artículos por aquí.",
+    "readMore": "Leer más",
+    "back": "Blog",
+    "relatedProject": "Ver el proyecto"
   },
   "contactForm": {
     "label": "CONTACTO",

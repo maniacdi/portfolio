@@ -26,7 +26,8 @@ export default function Header() {
   // Servicios/Proyectos are home sections — "/#anchor" navigates home then scrolls from any page.
   const links = [
     { href: "/#servicios", label: t("services") },
-    { href: "/#proyectos", label: t("projects") },
+    { href: "/projects", label: t("projects") },
+    { href: "/blog", label: t("blog") },
     { href: "/about", label: t("about") },
     { href: "/code", label: t("code") },
   ];
