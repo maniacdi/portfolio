@@ -1,14 +1,14 @@
+import ReactMarkdown from "react-markdown";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
 import { ArrowLeft, ArrowUpRight, Calendar } from "lucide-react";
-import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import LocalizedLink from "@components/common/LocalizedLink";
 import { getPost, getPostSlugs } from "@/utils/blog";
+import LocalizedLink from "@components/common/LocalizedLink";
 
 import "@/styles/page.scss";
 import "../blog.scss";
@@ -121,12 +121,18 @@ export default async function BlogPostPage({
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
       </article>
 
-      {meta.relatedProject && (
-        <LocalizedLink href={`/projects/${meta.relatedProject}`} className="blog-related">
-          <span>{t("relatedProject")}</span>
-          <ArrowUpRight size={16} />
+      <div className="blog-post-footer">
+        {meta.relatedProject && (
+          <LocalizedLink href={`/projects/${meta.relatedProject}`} className="blog-related">
+            <span>{t("relatedProject")}</span>
+            <ArrowUpRight size={16} />
+          </LocalizedLink>
+        )}
+        <LocalizedLink href="/blog" className="blog-back blog-back-bottom">
+          <ArrowLeft size={16} />
+          <span>{t("allPosts")}</span>
         </LocalizedLink>
-      )}
+      </div>
     </main>
   );
 }

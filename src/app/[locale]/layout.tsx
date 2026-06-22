@@ -11,6 +11,7 @@ import Header from "@components/header/Header";
 
 import ChatBot from "../components/chatBot/ChatBot";
 import EasterEggs from "../components/common/EasterEggs";
+import ScrollToTop from "../components/common/ScrollToTop";
 import { PersonSchema, WebsiteSchema } from "../components/common/JsonLd";
 import TerminalLoader from "../components/common/TerminalLoader";
 import ThemeProvider from "../components/common/ThemeProvider";
@@ -99,6 +100,7 @@ export default async function LocaleLayout({
         <SpeedInsights />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ToastProvider>
+            <ScrollToTop />
             <TerminalLoader />
             <Header />
             <main className="main-content">{children}</main>

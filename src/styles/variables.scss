@@ -98,38 +98,39 @@
 [data-theme="light"] {
   --neon: #6f00ff;
   --neon-mid: #7c2fff;
-  --neon-subtle: rgba(111, 0, 255, 0.06);
-  --neon-border: rgba(111, 0, 255, 0.2);
+  --neon-subtle: rgba(111, 0, 255, 0.07);
+  --neon-border: rgba(111, 0, 255, 0.22);
 
   --accent: #9b4dff;
   --text: #1a1a2e;
 
-  --bg: #f8f9fc;
-  --bg2: #ffffff;
-  --bg3: #f0f1f5;
-  --bg4: #e8eaef;
-  --bg-transparent: rgba(248, 249, 252, 0.9);
-  --bg-transparent-heavy: rgba(248, 249, 252, 0.97);
-  --bg-transparent-max: rgba(248, 249, 252, 0.99);
-  --terminal-bg: rgba(248, 249, 252, 0.97);
-  --card-bg: rgba(255, 255, 255, 0.95);
-  --header-bg: rgba(248, 249, 252, 0.75);
-  --header-bg-scrolled: rgba(248, 249, 252, 0.97);
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-edge: rgba(255, 255, 255, 0.8);
-  --footer-bg: linear-gradient(180deg, rgba(240, 241, 245, 0.8) 0%, rgba(240, 241, 245, 0.98) 100%);
-  --footer-bottom-bg: rgba(0, 0, 0, 0.03);
-  --overlay-bg: rgba(0, 0, 0, 0.4);
-  --widget-bg: rgba(255, 255, 255, 0.95);
-  --input-bg: rgba(240, 241, 245, 0.8);
+  /* Subtle lavender tint so the light theme isn't flat white */
+  --bg: #f3f1fb;
+  --bg2: #fbfaff;
+  --bg3: #ece8f8;
+  --bg4: #e2dcf2;
+  --bg-transparent: rgba(243, 241, 251, 0.9);
+  --bg-transparent-heavy: rgba(243, 241, 251, 0.97);
+  --bg-transparent-max: rgba(243, 241, 251, 0.99);
+  --terminal-bg: rgba(245, 243, 252, 0.97);
+  --card-bg: rgba(252, 251, 255, 0.92);
+  --header-bg: rgba(243, 241, 251, 0.7);
+  --header-bg-scrolled: rgba(243, 241, 251, 0.95);
+  --glass-bg: rgba(248, 246, 255, 0.6);
+  --glass-edge: rgba(255, 255, 255, 0.85);
+  --footer-bg: linear-gradient(180deg, rgba(236, 232, 248, 0.7) 0%, rgba(236, 232, 248, 0.98) 100%);
+  --footer-bottom-bg: rgba(111, 0, 255, 0.03);
+  --overlay-bg: rgba(20, 10, 40, 0.4);
+  --widget-bg: rgba(252, 251, 255, 0.95);
+  --input-bg: rgba(236, 232, 248, 0.8);
   --input-bg-focus: rgba(255, 255, 255, 0.95);
-  --toast-bg: rgba(255, 255, 255, 0.97);
-  --shadow-heavy: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --toast-bg: rgba(252, 251, 255, 0.97);
+  --shadow-heavy: 0 4px 20px rgba(60, 30, 120, 0.08);
+  --shadow-card: 0 12px 40px rgba(60, 30, 120, 0.1);
 
-  --border-soft: rgba(0, 0, 0, 0.04);
-  --border: #e0e3ea;
-  --border2: #cdd1db;
+  --border-soft: rgba(111, 0, 255, 0.06);
+  --border: #e2ddf0;
+  --border2: #cfc6e6;
   --border-neon: var(--neon);
 
   --white-2: rgba(0, 0, 0, 0.02);

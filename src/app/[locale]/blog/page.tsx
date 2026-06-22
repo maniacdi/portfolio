@@ -4,8 +4,8 @@ import { getTranslations } from "next-intl/server";
 
 import { ArrowUpRight, Calendar } from "lucide-react";
 
-import LocalizedLink from "@components/common/LocalizedLink";
 import { getAllPosts } from "@/utils/blog";
+import LocalizedLink from "@components/common/LocalizedLink";
 
 import "@/styles/page.scss";
 import "./blog.scss";
@@ -60,11 +60,15 @@ export default async function BlogListPage({
               : "";
             return (
               <LocalizedLink key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
-                {post.cover && (
-                  <div className="blog-card-media">
-                    <Image src={post.cover} alt={post.title} fill sizes="(max-width: 700px) 100vw, 340px" />
-                  </div>
-                )}
+                <div className="blog-card-media">
+                  {post.cover ? (
+                    <Image src={post.cover} alt={post.title} fill sizes="(max-width: 700px) 100vw, 380px" />
+                  ) : (
+                    <div className="blog-card-placeholder">
+                      <span>{post.tags[0] ?? "Blog"}</span>
+                    </div>
+                  )}
+                </div>
                 <div className="blog-card-body">
                   <div className="blog-card-meta">
                     {dateLabel && (
