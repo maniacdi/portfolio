@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 import LocalizedLink from "../common/LocalizedLink";
+import Logo from "../common/Logo";
 
 import "./Footer.scss";
 
@@ -70,7 +71,7 @@ export default function Footer() {
         <div className="footer-content">
           <div className="footer-column footer-brand">
             <div className="brand-header">
-              <Code className="brand-icon" size={24} />
+              <Logo className="brand-icon" />
               <span className="footer-logo">Magaldidev</span>
             </div>
 

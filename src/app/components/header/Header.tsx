@@ -10,6 +10,7 @@ import ContactModal from "@/app/components/contact/ContactModal";
 import LanguageSwitcher from "@/app/components/header/LanguageSwitcher/LanguageSwitcher";
 import { useContactModalStore } from "@/app/store/useContactModalStore";
 import LocalizedLink from "@components/common/LocalizedLink";
+import Logo from "@components/common/Logo";
 
 import ThemeToggle from "../common/ThemeToggle";
 
@@ -84,7 +85,7 @@ export default function Header() {
       >
         <div className="header-content">
           <LocalizedLink href="/" onClick={handleLinkClick}>
-            <img className="logo" src="/images/LOGO.png" alt="Magaldidev logo" />
+            <Logo className="logo" />
           </LocalizedLink>
 
           <button
@@ -140,7 +141,7 @@ export default function Header() {
             sticky header (which can drop off-screen while scroll is locked). */}
         <div className="mobile-menu-top">
           <LocalizedLink href="/" onClick={handleLinkClick}>
-            <img className="menu-logo" src="/images/LOGO.png" alt="Magaldidev logo" />
+            <Logo className="menu-logo" />
           </LocalizedLink>
           <button
             className="menu-close"
