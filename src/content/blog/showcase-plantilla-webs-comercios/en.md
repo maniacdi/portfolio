@@ -20,6 +20,14 @@ A single template with the four pieces local businesses ask for most, each a wor
 
 The [demo is here](https://magaldi-showcase.vercel.app/). These are functional schemes, not the final design: each project is adapted to the client's identity, content and needs.
 
+![Showcase demo hub: landing, shop, booking and admin panel](/images/projects/showcase/1.webp)
+
+![Online shop with catalog, product page and cart](/images/projects/showcase/2.webp)
+
+![Admin panel: managing appointments and products](/images/projects/showcase/3.webp)
+
+![Admin panel login screen](/images/projects/showcase/4.webp)
+
 ## The stack
 
 - **Next.js + TypeScript** — App Router, server rendering and static routes where it makes sense.

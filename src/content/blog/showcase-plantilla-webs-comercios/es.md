@@ -20,6 +20,14 @@ Una sola plantilla con las cuatro piezas que más piden los negocios locales, ca
 
 El [demo está aquí](https://magaldi-showcase.vercel.app/). Son esquemas funcionales, no el diseño final: cada proyecto se adapta a la identidad, el contenido y las necesidades del cliente.
 
+![Hub de demos de Showcase: landing, tienda, reservas y panel](/images/projects/showcase/1.webp)
+
+![Tienda online con catálogo, producto y carrito](/images/projects/showcase/2.webp)
+
+![Panel de administración: gestión de citas y productos](/images/projects/showcase/3.webp)
+
+![Pantalla de inicio de sesión del panel](/images/projects/showcase/4.webp)
+
 ## El stack
 
 - **Next.js + TypeScript** — App Router, renderizado en servidor y rutas estáticas donde tiene sentido.
