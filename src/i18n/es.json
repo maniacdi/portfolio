@@ -357,7 +357,8 @@
     "ironlogDesc": "App móvil para crear rutinas, registrar entrenamientos y seguir tu progreso. React Native + Expo, con los datos en local (AsyncStorage). La uso a diario, instalada como APK.",
     "porraDesc": "Juego de predicciones del Mundial para picarse con los amigos: aciertas marcadores y subes en la clasificación del grupo. JavaScript + Supabase, desplegado en Vercel.",
     "portfolioDesc": "Mi portfolio personal con Next.js, TypeScript y Framer Motion, con una API REST propia en Node.js/Express y MongoDB Atlas que alimenta la página de Viajes en vivo. Bilingüe y con CI/CD en cada push.",
-    "comprasDesc": "Lista de la compra compartida en tiempo real: React Native + Expo, backend Node.js con Socket.io y MongoDB Atlas. Desplegada en mi NAS con Docker, Nginx, SSL automático y CI/CD con GitHub Actions. En uso diario real."
+    "comprasDesc": "Lista de la compra compartida en tiempo real: React Native + Expo, backend Node.js con Socket.io y MongoDB Atlas. Desplegada en mi NAS con Docker, Nginx, SSL automático y CI/CD con GitHub Actions. En uso diario real.",
+    "showcaseDesc": "Plantilla reescalable para webs de comercios y negocios locales: landing de servicios, tienda online con carrito, reserva de citas y panel de administración con login. Next.js + TypeScript, bilingüe (next-intl) y optimizada para SEO. Una base limpia que adapto a la marca y el contenido de cada cliente."
   },
   "projectsPage": {
     "title": "Proyectos",

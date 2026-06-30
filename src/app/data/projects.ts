@@ -16,6 +16,18 @@ export interface Project {
 
 export const FEATURED_PROJECTS: Project[] = [
   {
+    slug: "showcase",
+    title: "Showcase",
+    descriptionKey: "showcaseDesc",
+    category: "web",
+    tags: ["Next.js", "TypeScript", "SCSS", "next-intl", "Auth", "SEO"],
+    status: "production",
+    demo: "https://magaldi-showcase.vercel.app/",
+    repo: "https://github.com/maniacdi/showcase",
+    featured: true,
+    image: "/images/projects/showcase/cover.webp",
+  },
+  {
     slug: "compras-app",
     title: "Compras App",
     descriptionKey: "comprasDesc",

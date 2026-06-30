@@ -14,6 +14,7 @@ import "./GitHubRepos.scss";
 
 // Ordered by impact — strongest projects first (they read better up top).
 const FEATURED_REPOS = [
+  "showcase",
   "compras-app",
   "portfolio",
   "porra-mundial",
