@@ -16,21 +16,20 @@ export default function LanguageSwitcher() {
   const isEnglish = locale === "en";
   const nextLocale = isEnglish ? "es" : "en";
 
-  // Remove locale from pathname and build new URL
+  // Build the target URL for the OTHER locale.
+  // localePrefix "as-needed": es (default) has no prefix, en → /en.
+  // Strip whatever locale prefix the pathname currently carries, then re-add
+  // the target's. Defensive against both /en/* and (transient) /es/* paths.
   const getNewUrl = () => {
-    // En español, pathname NO tiene prefijo: /about, /projects, /
-    // En inglés, pathname SÍ tiene prefijo: /en/about, /en/projects, /en
-    if (isEnglish) {
-      // Quitar /en del principio para obtener la ruta base
-      const basePath = pathname.replace(/^\/en/, "") || "/";
-      return basePath; // español no lleva prefijo
-    } else {
-      // Añadir /en al principio
-      return `/en${pathname === "/" ? "" : pathname}`;
+    const basePath = pathname.replace(/^\/(en|es)(?=\/|$)/, "") || "/";
+
+    if (nextLocale === "en") {
+      return `/en${basePath === "/" ? "" : basePath}`;
     }
+    return basePath; // Spanish carries no prefix
   };
 
-const newUrl = getNewUrl();
+  const newUrl = getNewUrl();
 
   const languageLabels = {
     en: "English",

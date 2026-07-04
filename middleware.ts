@@ -1,13 +1,11 @@
 import { NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
-const intlMiddleware = createMiddleware({
-  locales: ["es", "en"],
-  defaultLocale: "es",
-  // "as-needed" means / serves Spanish directly (no redirect)
-  // and /en serves English. Fixes 307 redirects and hreflang issues.
-  localePrefix: "as-needed",
-});
+import { routing } from "./src/i18n/routing";
+
+// Single source of truth: middleware config comes from routing.ts.
+// as-needed → / serves Spanish (no prefix), /en serves English.
+const intlMiddleware = createMiddleware(routing);
 
 export function middleware(request: NextRequest) {
   const response = intlMiddleware(request);
