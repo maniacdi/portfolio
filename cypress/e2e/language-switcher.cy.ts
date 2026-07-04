@@ -2,11 +2,10 @@
 
 describe("Language Switcher", () => {
   it("switches from Spanish to English", () => {
-    cy.visit("/es");
+    cy.visit("/");
     cy.skipTerminalLoader();
     cy.get(".lang-switcher").first().click();
     cy.url().should("include", "/en");
-    // Hero title is uppercase in i18n
     cy.contains("WELCOME").should("exist");
   });
 
@@ -14,8 +13,7 @@ describe("Language Switcher", () => {
     cy.visit("/en");
     cy.skipTerminalLoader();
     cy.get(".lang-switcher").first().click();
-    cy.url().should("include", "/es");
-    // Hero title is uppercase in i18n
+    cy.url().should("eq", "http://localhost:3000/");
     cy.contains("BIENVENIDO").should("exist");
   });
 
