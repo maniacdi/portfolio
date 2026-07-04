@@ -1,7 +1,5 @@
 import { MetadataRoute } from "next";
 
-
-
 export default function sitemap(): MetadataRoute.Sitemap {
 const BASE_URL = "https://javimagaldi.com";
 
@@ -9,12 +7,14 @@ const BASE_URL = "https://javimagaldi.com";
 const pages = ["/", "/about", "/code", "/travels", "/hobbies"];
 const locales = ["es", "en"];
 
-return locales.flatMap((locale) =>
-  pages.map((page) => ({
-    url: `${BASE_URL}/${locale}${page}`,
+return pages.map((route) => ({
+    url: route === "/" ? BASE_URL : `${BASE_URL}${route}`,
     lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: page === "" ? 1.0 : 0.8,
-  }))
-);
+    alternates: {
+      languages: {
+        es: route === "/" ? BASE_URL : `${BASE_URL}${route}`,
+        en: route === "/" ? `${BASE_URL}/en` : `${BASE_URL}/en${route}`,
+      },
+    },
+  }));
 }

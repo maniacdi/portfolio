@@ -30,6 +30,8 @@ export async function generateMetadata({
 
   const isEs = locale === "es";
   const canonical = isEs ? BASE_URL : `${BASE_URL}/en`;
+  const baseUrl = "https://javimagaldi.com";
+
 
   return {
     title: {
@@ -39,11 +41,11 @@ export async function generateMetadata({
     description: t("description"),
     metadataBase: new URL(BASE_URL),
     alternates: {
-      canonical,
+      canonical: locale === "es" ? baseUrl : `${baseUrl}/en`,
       languages: {
-        es: BASE_URL,
-        en: `${BASE_URL}/en`,
-        "x-default": BASE_URL,
+        "es": baseUrl,
+        "en": `${baseUrl}/en`,
+        "x-default": baseUrl,
       },
     },
     openGraph: {
