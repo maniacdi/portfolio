@@ -16,8 +16,21 @@ export default function LanguageSwitcher() {
   const isEnglish = locale === "en";
   const nextLocale = isEnglish ? "es" : "en";
 
-  // Remove locale from pathname and add new one
-  const newUrl = pathname.replace(`/${locale}`, `/${nextLocale}`);
+  // Remove locale from pathname and build new URL
+  const getNewUrl = () => {
+    // En español, pathname NO tiene prefijo: /about, /projects, /
+    // En inglés, pathname SÍ tiene prefijo: /en/about, /en/projects, /en
+    if (isEnglish) {
+      // Quitar /en del principio para obtener la ruta base
+      const basePath = pathname.replace(/^\/en/, "") || "/";
+      return basePath; // español no lleva prefijo
+    } else {
+      // Añadir /en al principio
+      return `/en${pathname === "/" ? "" : pathname}`;
+    }
+  };
+
+const newUrl = getNewUrl();
 
   const languageLabels = {
     en: "English",
