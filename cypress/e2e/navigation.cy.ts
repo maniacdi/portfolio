@@ -25,10 +25,10 @@ describe("Navigation & Routes", () => {
     });
   });
 
-  it("redirects root / to /es", () => {
+  it("serves root / in Spanish without redirect", () => {
     cy.visit("/");
-    cy.skipTerminalLoader();
-    cy.url().should("include", "/es");
+    cy.url().should("eq", "http://localhost:3000/");
+    cy.get("html").should("have.attr", "lang", "es"); // o cualquier selector que confirme que es ES
   });
 
   it("shows 404 page for invalid routes", () => {

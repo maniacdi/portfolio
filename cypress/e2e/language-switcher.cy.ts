@@ -23,6 +23,6 @@ describe("Language Switcher", () => {
     cy.visit("/en/about");
     cy.skipTerminalLoader();
     cy.get(".lang-switcher").first().click();
-    cy.url().should("include", "/es/about");
+    cy.url().should("eq", "http://localhost:3000/about");
   });
 });

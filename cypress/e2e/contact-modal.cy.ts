@@ -25,7 +25,7 @@ describe("Contact Modal", () => {
     cy.get(".header-actions .cta-btn").should("be.visible").click();
     cy.get(".contact-modal-backdrop", { timeout: 10000 }).should("exist");
     // Use trigger instead of type — the modal listens on window keydown
-    cy.get("body").trigger("keydown", { key: "Escape" });
+    cy.get("body").type("{esc}", { force: true })
     cy.get(".contact-modal-backdrop", { timeout: 10000 }).should("not.exist");
   });
 
