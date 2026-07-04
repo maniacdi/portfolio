@@ -1,7 +1,15 @@
 import { ReactNode } from "react";
-import type { Metadata } from "next";
-import { Space_Grotesk, Orbitron, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { JetBrains_Mono,Orbitron, Space_Grotesk } from "next/font/google";
 import { getLocale } from "next-intl/server";
+
+import "../styles/globals.scss";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],

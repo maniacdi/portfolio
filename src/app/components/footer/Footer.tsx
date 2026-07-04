@@ -14,18 +14,20 @@ import {
   Twitter,
 } from "lucide-react";
 
-import "./Footer.scss";
 import LocalizedLink from "../common/LocalizedLink";
+import Logo from "../common/Logo";
+
+import "./Footer.scss";
 
 export default function Footer() {
   const t = useTranslations("footer");
   const year = new Date().getFullYear();
 
+  // Hobbies hidden (route kept alive). Travels stays here in footer.
   const quickLinks = [
     { href: "/", label: t("home") || "Home" },
     { href: "/about", label: t("about") || "About" },
     { href: "/travels", label: t("travels") || "Travels" },
-    { href: "/hobbies", label: t("hobbies") || "Hobbies" },
   ];
 
   const socialLinks = [
@@ -69,7 +71,7 @@ export default function Footer() {
         <div className="footer-content">
           <div className="footer-column footer-brand">
             <div className="brand-header">
-              <Code className="brand-icon" size={24} />
+              <Logo className="brand-icon" />
               <span className="footer-logo">Magaldidev</span>
             </div>
 

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import PowerHero from "../components/home/PowerHero";
-
-import "@/styles/page.scss";
 import ContactForm from "../components/contact/ContactForm";
 import FeaturedProjects from "../components/home/FeaturedProjects";
+import PowerHero from "../components/home/PowerHero";
+import Services from "../components/home/Services";
+
+import "@/styles/page.scss";
 
 const BASE_URL = "https://javimagaldi.com";
 
@@ -40,6 +41,7 @@ export default async function Home() {
   return (
     <main className="home-container">
       <PowerHero />
+      <Services />
       <FeaturedProjects />
       <ContactForm />
     </main>

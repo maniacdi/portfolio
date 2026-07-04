@@ -1,0 +1,325 @@
+/* ============================================
+   BLOG — list + post
+============================================ */
+
+.blog-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--text-muted);
+}
+
+.blog-tag {
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  background: var(--neon-subtle);
+  border: 1px solid var(--neon-border);
+  color: var(--neon-mid);
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.03em;
+}
+
+/* ---- List ---- */
+.blog-list-page {
+  text-align: left;
+
+  .page-title,
+  .page-description {
+    text-align: center;
+  }
+}
+
+.blog-empty {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-top: 2rem;
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  width: 100%;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  text-decoration: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+
+  &:hover {
+    border-color: rgba(111, 0, 255, 0.35);
+    box-shadow: 0 14px 40px rgba(111, 0, 255, 0.14);
+    transform: translateY(-5px);
+
+    .blog-card-go svg {
+      transform: translateX(3px);
+    }
+    .blog-card-media img {
+      transform: scale(1.05);
+    }
+  }
+
+  .blog-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--neon-subtle);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .blog-card-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(111, 0, 255, 0.22), transparent 60%),
+        linear-gradient(135deg, rgba(111, 0, 255, 0.16), rgba(111, 0, 255, 0.03));
+
+      span {
+        padding: 0.35rem 0.9rem;
+        border-radius: 100px;
+        border: 1px solid var(--neon-border);
+        background: var(--bg-transparent);
+        color: var(--neon-mid);
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.04em;
+      }
+    }
+  }
+
+  .blog-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .blog-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .blog-card-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text);
+  }
+
+  .blog-card-excerpt {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    text-wrap: pretty;
+    flex: 1;
+
+    /* keep cards even: clamp excerpt to 3 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .blog-card-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    color: var(--neon-mid);
+    font-family: "JetBrains Mono", monospace;
+
+    svg {
+      transition: transform 0.2s ease;
+    }
+  }
+}
+
+/* ---- Post ---- */
+.blog-post {
+  text-align: left;
+  align-items: stretch;
+  max-width: 760px;
+}
+
+.blog-back,
+.blog-related {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  color: var(--text-secondary);
+  font-family: "JetBrains Mono", monospace;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--neon-mid);
+  }
+}
+
+.blog-back {
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-head {
+  .blog-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-post-title {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+}
+
+.blog-post-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Markdown body */
+.blog-content {
+  color: var(--text-secondary);
+  line-height: 1.85;
+
+  h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    color: var(--text);
+    margin: 2.25rem 0 0.75rem;
+  }
+
+  h3 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    color: var(--text);
+    margin: 1.75rem 0 0.5rem;
+  }
+
+  p {
+    margin-bottom: 1.25rem;
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--neon-mid);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: var(--neon);
+    }
+  }
+
+  ul,
+  ol {
+    margin: 0 0 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  li {
+    line-height: 1.7;
+  }
+
+  strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  code {
+    font-family: "JetBrains Mono", monospace;
+    background: var(--neon-subtle);
+    border: 1px solid var(--neon-border);
+    border-radius: 6px;
+    padding: 0.1rem 0.4rem;
+  }
+
+  pre {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+
+    code {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    border-left: 3px solid var(--neon);
+    padding-left: 1rem;
+    margin: 0 0 1.25rem;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+}
+
+.blog-post-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.blog-related {
+  color: var(--neon-mid);
+}
+
+.blog-back-bottom {
+  margin-bottom: 0;
+}

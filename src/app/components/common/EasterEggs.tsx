@@ -18,13 +18,6 @@ const EASTER_EGGS = [
     duration: 3000,
   },
   {
-    sequence: ["w", "o", "w"],
-    id: "wow",
-    name: "WOW Party",
-    component: WowToast,
-    duration: 3000,
-  },
-  {
     sequence: ["k", "u", "n", "a", "i"],
     id: "kunai",
     name: "Kunai Naruto",
@@ -269,46 +262,6 @@ function BananaToast() {
     >
       <div className="toast-content">
         <div className="banana-emoji">🍌</div>
-      </div>
-    </motion.div>
-  );
-}
-
-// 🎉 WOW TOAST
-function WowToast() {
-  return (
-    <motion.div
-      className="easter-egg-toast wow-toast"
-      initial={{ scale: 0, rotate: 0 }}
-      animate={{ y: ["100vh", "60vh", "100vh"], scale: [0, 1, 0], rotate: [0, 360, 720] }}
-      transition={{ duration: 3 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className="toast-content">
-        <motion.div
-          className="wow-emoji"
-          animate={{ scale: [1, 1.2, 1, 1.2, 1] }}
-          transition={{ duration: 0.5, repeat: 5 }}
-        >
-          🎉
-        </motion.div>
-        <p className="wow-text">WOW!</p>
-
-        {Array.from({ length: 20 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="confetti"
-            initial={{ x: 0, y: 0, opacity: 1 }}
-            animate={{
-              x: Math.cos(((i * 360) / 20) * (Math.PI / 180)) * 200,
-              y: Math.sin(((i * 360) / 20) * (Math.PI / 180)) * 200,
-              opacity: 0,
-            }}
-            transition={{ duration: 1.5 }}
-          >
-            {["🎊", "🎉", "✨", "⭐", "💫"][i % 5]}
-          </motion.div>
-        ))}
       </div>
     </motion.div>
   );

@@ -7,7 +7,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "Hi! I'm Javi, a Front-End Engineer with almost 5 years of experience in production web products and large-scale corporate environments. I mainly work with React and Vue, participating in the development of applications used by thousands of users at Inditex. I'm passionate about creating quality user experiences, optimizing performance, and writing code that scales over time.",
+          "Hi! I'm Javi, a Front-End Engineer with almost 6 years of experience in production web products and large-scale corporate environments. I mainly work with React and Vue, participating in the development of applications used by thousands of users at Inditex. I'm passionate about creating quality user experiences, optimizing performance, and writing code that scales over time.",
         followUp: [
           "What technologies do you master?",
           "Where do you work currently?",
@@ -33,7 +33,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "I have almost 5 years of experience as a frontend developer. I started with an internship at Incentro (2020), where I then worked for 2 years redesigning corporate websites and managing e-commerce. After that, I spent 10 months at Innova-tsn as a frontend consultant. Currently (since May 2023) I work at AMS Solutions developing critical applications for Inditex, where I lead optimization projects and mentor junior developers.",
+          "I have almost 6 years of experience as a frontend developer. I started with an internship at Incentro (2020), where I then worked for 2 years redesigning corporate websites and managing e-commerce. After that, I spent 10 months at Innova-tsn as a frontend consultant. Currently (since May 2023) I work at AMS Solutions developing critical applications for Inditex, where I lead optimization projects and mentor junior developers.",
         followUp: [
           "What do you do at AMS?",
           "What did you achieve in each company?",
@@ -387,6 +387,28 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
           "How can I contact you?",
           "Do you do freelance?",
         ],
+      },
+    ],
+  },
+
+  // FREELANCE AND SERVICES
+  freelance: {
+    keywords: [
+      "freelance",
+      "self employed",
+      "self-employed",
+      "quote",
+      "business",
+      "client",
+      "services",
+      "hire you",
+      "website for my business",
+    ],
+    responses: [
+      {
+        answer:
+          "Yes, I take freelance work. I focus on businesses that need something direct and well built: websites for restaurants, clinics and local shops, online stores or booking systems, mobile apps (iOS and Android) and custom software to automate tasks. No weird packages or fine print: tell me what you need and I'll build it, and I reply within 48h through the contact form. And if you're a company looking for a full-time developer, I'm also open to joining a team.",
+        followUp: ["What services do you offer?", "How can I contact you?", "Are you open to a full-time role?"],
       },
     ],
   },

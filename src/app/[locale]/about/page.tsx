@@ -18,8 +18,8 @@ export async function generateMetadata({
   return {
     title: isEs ? "Sobre mí — Javi García Magaldi" : "About me — Javi García Magaldi",
     description: isEs
-      ? "Desarrollador web full-stack desde Santander. 5 años de experiencia con React, TypeScript y Node.js."
-      : "Full-stack web developer from Santander. 5 years of experience with React, TypeScript and Node.js.",
+      ? "Desarrollador web full-stack desde Santander. 6 años de experiencia con React, TypeScript y Node.js."
+      : "Full-stack web developer from Santander. 6 years of experience with React, TypeScript and Node.js.",
     alternates: {
       canonical: isEs ? `${BASE_URL}/about` : `${BASE_URL}/en/about`,
       languages: {

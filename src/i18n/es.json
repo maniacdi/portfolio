@@ -1,12 +1,14 @@
 {
   "metadata": {
-    "title": "Magaldidev",
-    "description": "Portfolio de Javi García Magaldi, desarrollador web full-stack desde Santander."
+    "title": "Desarrollador Web Full-Stack en Santander — Javi García Magaldi",
+    "description": "Apps web y móviles, APIs y la infraestructura para que todo funcione de verdad. Desarrollador full-stack (React, React Native, Node, Java) desde Santander. Hago cosas con código — y que no se caigan."
   },
   "header": {
     "home": "Inicio",
+    "services": "Servicios",
     "about": "Sobre mí",
     "projects": "Proyectos",
+    "blog": "Blog",
     "travels": "Viajes",
     "hobbies": "Hobbies",
     "language": "Idioma",
@@ -26,8 +28,8 @@
   },
   "about": {
     "title": "Sobre Mí",
-    "subtitle": "Desarrollo frontend durante el día. Por las noches monto mis propios proyectos y experimento con lo que me apetece.",
-    "description": "Soy desarrollador con 5 años de experiencia. Trabajo principalmente con React y TypeScript, aunque no me da miedo meterme en el backend cuando hace falta. Me gusta el código limpio y las cosas bien hechas.",
+    "subtitle": "Full-stack de día: React y Java en producción para el ecosistema Inditex. Por las noches monto mis propios proyectos en mi homelab.",
+    "description": "Desarrollador full-stack con 6+ años de experiencia. Frontend con React y TypeScript, backend con Java (Spring Boot) y Node.js: microservicios con arquitectura hexagonal sirviendo a más de 10.000 usuarios diarios. Me gusta el código limpio y las cosas bien hechas.",
     "skills": {
       "frontend": "Desarrollo Front-end",
       "backend": "Desarrollo Back-end",
@@ -39,7 +41,7 @@
       "softwareEngineering": "Ingeniería de Software"
     },
     "frontendDesc": "Interfaces modernas con React, Vue y TypeScript. Me centro en que sean rápidas, claras y fáciles de mantener.",
-    "backendDesc": "APIs con Node.js y bases de datos con MongoDB. Lo justo para que el frontend tenga todo lo que necesita.",
+    "backendDesc": "Microservicios con Java (Spring Boot) y APIs con Node.js. Arquitectura hexagonal, BFF, MongoDB y Redis en producción.",
     "fullstackDesc": "Cuando hace falta, tiro de todo el stack. He montado proyectos completos desde cero, incluyendo el servidor.",
     "experience": "Experiencia",
     "education": "Educación",
@@ -49,6 +51,9 @@
     "cta": "¿Trabajamos juntos?",
     "ctaText": "Estoy disponible para proyectos. Si tienes algo en mente, escríbeme.",
     "ctaButton": "Contactar",
+    "offHoursLead": "Y cuando no estoy programando, viajo ✈️",
+    "travelsSub": "Un mapa interactivo con todos mis viajes: front + back y datos en vivo desde mi propia API.",
+    "travelsLink": "Explorar el mapa",
     "downloadCv": "Descargar CV",
     "new": "Nuevo",
     "soon": "Próximamente...",
@@ -69,7 +74,6 @@
     "location": "Ubicación",
     "passion": "Pasión",
     "techSkills": "Tech Stack & Skills",
-    "hoverAd": "Pasa el cursor sobre las habilidades para ver detalles",
     "letsBuild": "¿Tienes un proyecto en mente?",
     "career": "Cronología de Carrera",
     "timelineDesc": "Mi trayectoria profesional y hitos educativos",
@@ -79,22 +83,24 @@
     "edu1Title": "Grado en Ingeniería Informática",
     "edu1Subtitle": "Universidad de Cantabria",
     "edu1Description": "Especializado en ingeniería de software y tecnologías web",
-    "exp1Title": "Desarrollador Frontend",
-    "exp1Description": "Desarrollando aplicaciones web responsivas con React y TypeScript",
-    "exp2Title": "Desarrollador Full-stack",
-    "exp2Description": "Construyendo aplicaciones full-stack con Node.js y MongoDB",
-    "exp3Description": "Creando interfaces de usuario e implementando sistemas de diseño",
+    "exp1Title": "Senior Front-End / Full-Stack Developer",
+    "exp1Description": "Hub de noticias y accesos para el ecosistema Inditex con más de 10.000 usuarios diarios. Microservicios en Java 21 + Spring Boot con arquitectura hexagonal, BFF, microfrontends y mentoría de 3 juniors.",
+    "exp2Title": "Consultor & Desarrollador Full-stack",
+    "exp2Description": "Definición de requisitos con cliente, reporting con SQL (de 3 días a 4 horas) y componentes React para aplicaciones corporativas.",
+    "exp3Title": "Desarrollador Front-End",
+    "exp3Description": "Rediseño completo de la web corporativa con React y CMS (carga de 4s a 2s). Multi-frontend internacional para Grandvision con más de 50.000 visitas mensuales.",
     "country": "España",
     "email": "Correo",
     "role": "Rol",
     "name": "Nombre",
-    "proficiency": "Competencia",
     "years": "años",
     "experienceLabel": "Experiencia Profesional"
   },
   "travels": {
     "title": "Mis Viajes",
     "description": "Una colección de mis experiencias de viaje, aventuras y exploraciones alrededor del mundo.",
+    "poweredBy": "Datos servidos en vivo desde mi propia API · Node.js + Express + MongoDB",
+    "viewApiCode": "Ver código",
     "mapView": "Vista Mapa",
     "listView": "Vista Lista",
     "filterBy": "Filtrar por",
@@ -190,21 +196,18 @@
     "country": "España"
   },
   "hero": {
-    "title": "BIENVENIDO",
-    "subtitle": "FRONTEND DEVELOPER · SANTANDER",
-    "description": "REACT · NODE.JS · TYPESCRIPT",
+    "title": "HOLA, SOY JAVI",
+    "subtitle": "Desarrollador web full-stack · Santander",
+    "description": "REACT · TYPESCRIPT · JAVA · NODE.JS",
+    "usedAt": "usado en",
     "d1": "Hago cosas con código.",
     "d2": "Desde interfaces web",
     "d3": "hasta",
     "d4": "backends corriendo en mi NAS",
     "d5": "—",
-    "d6": "me gusta que todo funcione de verdad",
-    "ctaPrimary": "Contáctame",
-    "explore": "EXPLORA",
-    "projects": "Proyectos",
-    "years": "Años",
-    "yearsLabel": "años de experiencia",
-    "seeMore": "Ver más",
+    "d6": "me gusta que todo funcione de verdad, y que no se caiga a las 3 de la mañana",
+    "ctaPrimary": "Hablemos",
+    "seeProjects": "Ver proyectos",
     "downloadCv": "Descargar CV",
     "downloadingCv": "Descargando..."
   },
@@ -313,10 +316,13 @@
   },
   "chatbot": {
     "title": "Lacayo de Javi",
+    "triggerLabel": "Habla con mi IA",
     "online": "En línea",
     "offline": "Desconectado",
     "openChat": "Abrir chat",
     "close": "Cerrar",
+    "maximize": "Ampliar",
+    "minimize": "Reducir",
     "placeholder": "Escribe tu pregunta...",
     "send": "Enviar",
     "poweredBy": "Powered by",
@@ -338,9 +344,47 @@
     "viewCode": "Ver código",
     "viewAll": "Ver todos los proyectos",
     "openProject": "Abrir proyecto",
-    "portfolioDesc": "Mi portfolio personal construido con Next.js, TypeScript y Framer Motion. Diseño neon-purple con internacionalización completa.",
-    "comprasDesc": "App de lista de compras colaborativa con autenticación, listas compartidas y sincronización en tiempo real. React + Node.js + MongoDB.",
-    "instaCheckerDesc": "Herramienta para analizar seguidores de Instagram: detecta quién no te sigue de vuelta, unfollows recientes y estadísticas."
+    "status": {
+      "production": "En producción",
+      "development": "En desarrollo",
+      "daily": "Uso diario"
+    },
+    "categories": {
+      "mobile": "App móvil",
+      "web": "Web",
+      "game": "Web · Juego"
+    },
+    "ironlogDesc": "App móvil para crear rutinas, registrar entrenamientos y seguir tu progreso. React Native + Expo, con los datos en local (AsyncStorage). La uso a diario, instalada como APK.",
+    "porraDesc": "Juego de predicciones del Mundial para picarse con los amigos: aciertas marcadores y subes en la clasificación del grupo. JavaScript + Supabase, desplegado en Vercel.",
+    "portfolioDesc": "Mi portfolio personal con Next.js, TypeScript y Framer Motion, con una API REST propia en Node.js/Express y MongoDB Atlas que alimenta la página de Viajes en vivo. Bilingüe y con CI/CD en cada push.",
+    "comprasDesc": "Lista de la compra compartida en tiempo real: React Native + Expo, backend Node.js con Socket.io y MongoDB Atlas. Desplegada en mi NAS con Docker, Nginx, SSL automático y CI/CD con GitHub Actions. En uso diario real.",
+    "showcaseDesc": "Plantilla reescalable para webs de comercios y negocios locales: landing de servicios, tienda online con carrito, reserva de citas y panel de administración con login. Next.js + TypeScript, bilingüe (next-intl) y optimizada para SEO. Una base limpia que adapto a la marca y el contenido de cada cliente."
+  },
+  "projectsPage": {
+    "title": "Proyectos",
+    "subtitle": "Cosas que he construido — apps, webs y herramientas reales, no demos.",
+    "metaTitle": "Proyectos — Javi García Magaldi",
+    "metaDescription": "Proyectos de Javi García Magaldi: apps móviles, webs y software a medida con React, React Native, Node.js, Java y más.",
+    "viewProject": "Ver proyecto"
+  },
+  "projectPage": {
+    "back": "Proyectos",
+    "problem": "El problema",
+    "solution": "La solución",
+    "stack": "Stack",
+    "gallery": "Galería",
+    "allProjects": "Ver todos los proyectos"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Notas sobre proyectos, retos técnicos y el día a día como desarrollador.",
+    "metaTitle": "Blog — Javi García Magaldi",
+    "metaDescription": "Artículos de Javi García Magaldi sobre desarrollo web y móvil, proyectos, retos técnicos e IA para developers.",
+    "empty": "Pronto habrá artículos por aquí.",
+    "readMore": "Leer más",
+    "back": "Blog",
+    "allPosts": "Volver al blog",
+    "relatedProject": "Ver el proyecto"
   },
   "contactForm": {
     "label": "CONTACTO",
@@ -352,6 +396,8 @@
     "emailPlaceholder": "tu@email.com",
     "messageLabel": "Mensaje",
     "messagePlaceholder": "Cuéntame en qué puedo ayudarte...",
+    "serviceLabel": "Servicio",
+    "servicePlaceholder": "¿En qué puedo ayudarte?",
     "send": "Enviar mensaje",
     "sending": "Enviando...",
     "successTitle": "¡Mensaje enviado!",
@@ -359,5 +405,35 @@
     "sendAnother": "Enviar otro mensaje",
     "errorMessage": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme directamente a magaldi6@gmail.com.",
     "close": "Cerrar"
+  },
+  "services": {
+    "label": "SERVICIOS",
+    "title": "En qué puedo ayudarte",
+    "subtitle": "Webs y apps directas para tu negocio — restaurantes, clínicas, comercios. Sin enredos: me cuentas qué necesitas y te lo monto.",
+    "ctaLabel": "Hablemos de esto",
+    "employeeLabel": "Trabajo en plantilla (empresa)",
+    "items": {
+      "web": {
+        "title": "Web para tu negocio",
+        "desc": "Presencia online que trae clientes: rápida, clara y fácil de actualizar."
+      },
+      "shop": {
+        "title": "Reservas / tienda online",
+        "desc": "Que tus clientes reserven o compren sin tener que llamarte."
+      },
+      "mobile": {
+        "title": "App móvil",
+        "desc": "iOS y Android. Una app directa para tu negocio o idea, sin florituras."
+      },
+      "custom": {
+        "title": "Software a medida",
+        "desc": "Automatiza lo que te roba tiempo: herramientas internas, integraciones, lo que necesites."
+      }
+    },
+    "hire": {
+      "title": "¿Buscas un dev en plantilla?",
+      "desc": "Empresas: además de freelance, estoy abierto a incorporarme a un equipo como desarrollador full-stack. Hablemos.",
+      "cta": "Escríbeme"
+    }
   }
 }

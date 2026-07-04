@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
-import { withSentryConfig } from "@sentry/nextjs";
 import withNextIntl from "next-intl/plugin";
+
+import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig: NextConfig = {
   // React Compiler (opcional pero recomendado si usas React 19)

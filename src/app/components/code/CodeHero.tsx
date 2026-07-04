@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
-import { BookOpen, Calendar, Code2, ExternalLink,Github } from "lucide-react";
+import { BookOpen, Calendar, Code2, ExternalLink, Github } from "lucide-react";
 
 import { fetchGitHubStats, fetchPrimaryLanguages, GitHubStats } from "@/app/services/githubService";
 
@@ -56,30 +56,6 @@ export default function CodeHero() {
         </h1>
 
         <p className="hero-description">{t("description")}</p>
-
-        <div className="hero-stats-mini">
-          <motion.div
-            className="stat-mini"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <BookOpen size={20} />
-            <span>
-              {stats.totalRepos} {t("projects")}
-            </span>
-          </motion.div>
-
-          <motion.div
-            className="stat-mini tech-stack"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            <Code2 size={20} />
-            <span>{primaryLanguages.join(" · ")}</span>
-          </motion.div>
-        </div>
 
         <div className="hero-stats">
           <motion.div

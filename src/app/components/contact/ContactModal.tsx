@@ -2,10 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { CheckCircle, Loader2, Mail, MessageSquare, Send, User, X } from "lucide-react";
+import { Briefcase, CheckCircle, Loader2, Mail, MessageSquare, Send, User, X } from "lucide-react";
+
+import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 import "./ContactModal.scss";
 
@@ -13,17 +14,32 @@ interface FormData {
   name: string;
   email: string;
   message: string;
+  service: string;
 }
+
+const SERVICE_KEYS = ["web", "shop", "mobile", "custom"] as const;
 
 export default function ContactModal() {
   const t = useTranslations("contactForm");
-  const [form, setForm] = useState<FormData>({ name: "", email: "", message: "" });
+  const ts = useTranslations("services");
+  const serviceLabel = (key: string) =>
+    key === "employee" ? ts("employeeLabel") : ts(`items.${key}.title`);
+  const [form, setForm] = useState<FormData>({ name: "", email: "", message: "", service: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
-  const { isOpen, close } = useContactModalStore();
+  const { isOpen, close, selectedService } = useContactModalStore();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  // Prefill the service when the modal is opened from a Services card
+  useEffect(() => {
+    if (isOpen) {
+      setForm((prev) => ({ ...prev, service: selectedService }));
+    }
+  }, [isOpen, selectedService]);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -70,13 +86,16 @@ export default function ContactModal() {
           name: form.name,
           email: form.email,
           message: form.message,
-          subject: `Portfolio Contact — ${form.name}`,
+          service: form.service ? serviceLabel(form.service) : "—",
+          subject: `Portfolio Contact — ${form.name}${
+            form.service ? ` (${serviceLabel(form.service)})` : ""
+          }`,
         }),
       });
 
       if (res.ok) {
         setStatus("success");
-        setForm({ name: "", email: "", message: "" });
+        setForm({ name: "", email: "", message: "", service: "" });
       } else {
         setStatus("error");
       }
@@ -94,7 +113,7 @@ export default function ContactModal() {
     // Reset after animation
     setTimeout(() => {
       setStatus("idle");
-      setForm({ name: "", email: "", message: "" });
+      setForm({ name: "", email: "", message: "", service: "" });
     }, 300);
   };
 
@@ -188,6 +207,28 @@ export default function ContactModal() {
                       placeholder={t("emailPlaceholder")}
                       autoComplete="email"
                     />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="modal-service">
+                      <Briefcase size={13} />
+                      <span>{t("serviceLabel")}</span>
+                    </label>
+                    <select
+                      id="modal-service"
+                      name="service"
+                      value={form.service}
+                      onChange={handleChange}
+                      className="service-select"
+                    >
+                      <option value="">{t("servicePlaceholder")}</option>
+                      {SERVICE_KEYS.map((key) => (
+                        <option key={key} value={key}>
+                          {ts(`items.${key}.title`)}
+                        </option>
+                      ))}
+                      <option value="employee">{ts("employeeLabel")}</option>
+                    </select>
                   </div>
 
                   <div className={`form-group ${focusedField === "message" ? "focused" : ""}`}>

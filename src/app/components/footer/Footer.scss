@@ -8,10 +8,6 @@
   border-top: 1px solid var(--border-soft);
   width: 100%;
   margin: auto;
-
-  @media (max-width: 768px) {
-    width: 110%;
-  }
 }
 
 /* ============================================
@@ -122,6 +118,8 @@
     }
 
     .brand-icon {
+      width: 26px;
+      height: 26px;
       color: var(--neon-mid);
       animation: pulse 2s ease-in-out infinite;
     }

@@ -4,7 +4,7 @@ import { useEffect, useRef,useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
-import { Calendar, Filter, Globe, Kayak, List, Map, Search, Star, TreePalm } from "lucide-react";
+import { Calendar, Filter, Globe, Kayak, List, Map, Search, Server, Star, TreePalm } from "lucide-react";
 
 import { useToast } from "@/app/components/toast/ToastProvider";
 import { Travel } from "@/utils/types/Travel";
@@ -122,6 +122,22 @@ export default function TravelContent() {
         >
           {t("description")}
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="travels-api-badge"
+        >
+          <Server size={14} />
+          <span>{t("poweredBy")}</span>
+          <a
+            href="https://github.com/maniacdi/portfolio-backend"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("viewApiCode")}
+          </a>
+        </motion.div>
       </div>
 
       {/* Controls */}

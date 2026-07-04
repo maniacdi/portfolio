@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect,it } from "vitest";
 
 /**
  * Easter Eggs configuration tests.
@@ -11,7 +11,6 @@ import { describe, it, expect } from "vitest";
 // Replicate the config from EasterEggs.tsx for unit testing
 const EASTER_EGGS = [
   { sequence: ["b", "n", "b"], id: "banana", name: "Banana Jump", duration: 3000 },
-  { sequence: ["w", "o", "w"], id: "wow", name: "WOW Party", duration: 3000 },
   { sequence: ["k", "u", "n", "a", "i"], id: "kunai", name: "Kunai Naruto", duration: 4000 },
   { sequence: ["h", "e", "l", "p"], id: "terminal", name: "Terminal", duration: 0 },
   { sequence: ["b", "a", "n", "k", "a", "i"], id: "senbonzakura", name: "Senbonzakura", duration: 6000 },
@@ -19,7 +18,7 @@ const EASTER_EGGS = [
 
 describe("Easter Eggs Configuration", () => {
   it("has exactly 5 easter eggs defined", () => {
-    expect(EASTER_EGGS).toHaveLength(5);
+    expect(EASTER_EGGS).toHaveLength(4);
   });
 
   it("each egg has unique id", () => {

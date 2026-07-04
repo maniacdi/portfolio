@@ -4,15 +4,17 @@ import { useCallback, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-import { Mail } from "lucide-react";
+import { Mail, X } from "lucide-react";
 
-import LanguageSwitcher from "@/app/components/header/LanguageSwitcher/LanguageSwitcher";
-import LocalizedLink from "@components/common/LocalizedLink";
 import ContactModal from "@/app/components/contact/ContactModal";
+import LanguageSwitcher from "@/app/components/header/LanguageSwitcher/LanguageSwitcher";
+import { useContactModalStore } from "@/app/store/useContactModalStore";
+import LocalizedLink from "@components/common/LocalizedLink";
+import Logo from "@components/common/Logo";
+
+import ThemeToggle from "../common/ThemeToggle";
 
 import "./Header.scss";
-import ThemeToggle from "../common/ThemeToggle";
-import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 export default function Header() {
   const t = useTranslations("header");
@@ -21,10 +23,13 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { open: openContactModal } = useContactModalStore();
 
+  // Hobbies hidden from nav (route kept alive in code). Travels relocated to footer + Sobre mí.
+  // Servicios/Proyectos are home sections — "/#anchor" navigates home then scrolls from any page.
   const links = [
+    { href: "/#servicios", label: t("services") },
+    { href: "/projects", label: t("projects") },
+    { href: "/blog", label: t("blog") },
     { href: "/about", label: t("about") },
-    { href: "/travels", label: t("travels") },
-    { href: "/hobbies", label: t("hobbies") },
     { href: "/code", label: t("code") },
   ];
 
@@ -43,15 +48,15 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when menu is open
+  // Prevent page scroll when menu is open (lock both html and body — html owns
+  // the scroll because it has overflow-x: clip, so locking body alone isn't enough)
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    const value = open ? "hidden" : "";
+    document.documentElement.style.overflow = value;
+    document.body.style.overflow = value;
 
     return () => {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
   }, [open]);
@@ -80,7 +85,7 @@ export default function Header() {
       >
         <div className="header-content">
           <LocalizedLink href="/" onClick={handleLinkClick}>
-            <img className="logo" src="/images/LOGO.png" alt="Magaldidev logo" />
+            <Logo className="logo" />
           </LocalizedLink>
 
           <button
@@ -121,41 +126,59 @@ export default function Header() {
             <LanguageSwitcher />
           </div>
         </div>
-
-        {/* Mobile menu */}
-        <nav
-          className={`mobile-menu ${open ? "show" : ""}`}
-          aria-label="Mobile navigation"
-          aria-hidden={!open}
-        >
-          <div className="mobile-menu-content">
-            {links.map(({ href, label }) => (
-              <LocalizedLink
-                key={href}
-                href={href}
-                className={pathname.endsWith(href) ? "active" : ""}
-                onClick={handleLinkClick}
-              >
-                {label}
-              </LocalizedLink>
-            ))}
-
-            <button
-              className="cta-btn mobile"
-              onClick={handleContactClick}
-              aria-label="Open contact form"
-            >
-              <Mail size={18} />
-              <span>{t("contact")}</span>
-            </button>
-
-            <div className="mobile-menu-footer">
-              <ThemeToggle />
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </nav>
       </header>
+
+      {/* Mobile menu — rendered OUTSIDE <header> on purpose: the header has
+          backdrop-filter (and a transform when scrolled), which would make this
+          position:fixed element anchor to the header instead of the viewport.
+          Outside the header it covers the full viewport. */}
+      <nav
+        className={`mobile-menu ${open ? "show" : ""}`}
+        aria-label="Mobile navigation"
+        aria-hidden={!open}
+      >
+        {/* Self-contained top bar: logo + close. The menu must not depend on the
+            sticky header (which can drop off-screen while scroll is locked). */}
+        <div className="mobile-menu-top">
+          <LocalizedLink href="/" onClick={handleLinkClick}>
+            <Logo className="menu-logo" />
+          </LocalizedLink>
+          <button
+            className="menu-close"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        <div className="mobile-menu-content">
+          {links.map(({ href, label }) => (
+            <LocalizedLink
+              key={href}
+              href={href}
+              className={pathname.endsWith(href) ? "active" : ""}
+              onClick={handleLinkClick}
+            >
+              {label}
+            </LocalizedLink>
+          ))}
+
+          <button
+            className="cta-btn mobile"
+            onClick={handleContactClick}
+            aria-label="Open contact form"
+          >
+            <Mail size={18} />
+            <span>{t("contact")}</span>
+          </button>
+
+          <div className="mobile-menu-footer">
+            <ThemeToggle />
+            <LanguageSwitcher />
+          </div>
+        </div>
+      </nav>
 
       {/* Overlay for mobile menu */}
       {open && <div className="header-overlay" onClick={() => setOpen(false)} aria-hidden="true" />}

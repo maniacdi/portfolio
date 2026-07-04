@@ -2,44 +2,32 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { useContactModalStore } from "@/app/store/useContactModalStore";  
 
-import { AnimatePresence, motion } from "framer-motion";
-import {
-  Briefcase,
-  Calendar,
-  Code2,
-  Cpu,
-  Download,
-  Mail,
-  Sparkles,
-  Terminal,
-  Zap,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Code2, Cpu, Download, Mail, Sparkles, Terminal, Zap } from "lucide-react";
+
+import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 import { cvService } from "../../services/cvService";
+
+import NodeGraphBackground from "./NodeGraphBackground";
 
 import "./PowerHero.scss";
 
 const TECH_STACK = [
-  { name: "REACT", level: 95, projects: 6, years: 5 },
-  { name: "NODE.JS", level: 85, projects: 2, years: 4 },
-  { name: "TYPESCRIPT", level: 95, projects: 7, years: 5 },
-  { name: "CSS", level: 88, projects: 7, years: 5 },
-  { name: "VUE", level: 70, projects: 1, years: 1 },
+  { name: "REACT", context: "Incentro · Innova-tsn · AMS Solutions" },
+  { name: "TYPESCRIPT", context: "AMS Solutions" },
+  { name: "JAVA · SPRING BOOT", context: "AMS Solutions (Inditex)" },
+  { name: "NODE.JS", context: "Compras App · homelab" },
+  { name: "CSS / SCSS", context: "Incentro · AMS Solutions" },
 ] as const;
 
 const TERMINAL_COMMANDS = [
   "whoami",
-  "cat about.md",
-  "npm run create-awesome",
-  "git commit -m 'Building the future'",
-  "docker compose up innovation",
-] as const;
-
-const STATS = [
-  { value: 8, label: "projects", icon: Briefcase },
-  { value: 5, label: "years", icon: Calendar },
+  "git log --oneline -3",
+  "docker compose up -d",
+  "ssh homelab",
+  "npm run build",
 ] as const;
 
 export default function PowerHero() {
@@ -48,7 +36,6 @@ export default function PowerHero() {
   const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
   const [displayedCommand, setDisplayedCommand] = useState("");
   const [isTyping, setIsTyping] = useState(true);
-  const [hoveredTech, setHoveredTech] = useState<string | null>(null);
   const [isGlitching, setIsGlitching] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const { open: openContactModal } = useContactModalStore();
@@ -91,47 +78,20 @@ export default function PowerHero() {
   };
 
   return (
-    <section
-      className="power-hero"
-    >
+    <section className="power-hero">
       {/* Animated Background */}
       <div className="tech-background">
         <div className="grid-overlay" />
         <div className="gradient-orb" />
-
-        {/* Floating particles */}
-        <div className="particles">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="particle"
-              animate={{
-                y: [0, -100, 0],
-                x: [0, Math.random() * 50 - 25, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-            />
-          ))}
-        </div>
+        <NodeGraphBackground />
       </div>
 
-      <motion.div
-        className="hero-container"
-      >
+      <motion.div className="hero-container">
         {/* Tech Badge */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="tech-badge"
         >
           <Cpu size={16} />
@@ -147,7 +107,7 @@ export default function PowerHero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="home-terminal-header"
         >
           <Terminal className="terminal-icon" />
@@ -168,7 +128,7 @@ export default function PowerHero() {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
           className="main-name"
           onMouseEnter={() => setIsGlitching(true)}
           onMouseLeave={() => setIsGlitching(false)}
@@ -188,7 +148,7 @@ export default function PowerHero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="specialization"
         >
           <div className="specialization-line">
@@ -205,7 +165,7 @@ export default function PowerHero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
           className="value-proposition"
         >
           {t("d1")} <span className="highlight">{t("d2")}</span> {t("d3")}{" "}
@@ -213,97 +173,45 @@ export default function PowerHero() {
           <span className="highlight">{t("d6")}</span>.
         </motion.p>
 
-        {/* Animated Stats */}
+        {/* Tech Stack — clean chips, real stack, context on hover via title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
-          className="stats-grid"
-        >
-          {STATS.map((stat, index) => (
-            <AnimatedStat
-              key={stat.label}
-              value={stat.value}
-              label={t(stat.label)}
-              Icon={stat.icon}
-              delay={0.6 + index * 0.1}
-            />
-          ))}
-        </motion.div>
-
-        {/* Interactive Tech Stack */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
           className="quick-stack"
         >
           {TECH_STACK.map((tech, index) => (
-            <motion.div
+            <motion.span
               key={tech.name}
-              className={`stack-item ${hoveredTech === tech.name ? "hovered" : ""}`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8 + index * 0.1 }}
-              whileHover={{
-                scale: 1.02,
-                backgroundColor: "rgba(111, 0, 255, 0.08)",
-              }}
-              onMouseEnter={() => setHoveredTech(tech.name)}
-              onMouseLeave={() => setHoveredTech(null)}
+              className="stack-chip"
+              title={`${t("usedAt")} ${tech.context}`}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45 + index * 0.05 }}
             >
-              <div className="stack-header">
-                <span className="stack-name">{tech.name}</span>
-                <span className="stack-level">{tech.level}%</span>
-              </div>
-
-              <div className="stack-bar">
-                <motion.div
-                  className="stack-fill"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${tech.level}%` }}
-                  transition={{ duration: 1, delay: 1 + index * 0.1 }}
-                />
-              </div>
-
-              <AnimatePresence>
-                {hoveredTech === tech.name && (
-                  <motion.div
-                    className="stack-info"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                  >
-                    {/* <span>{tech.projects} proyectos</span> */}
-                    <span>•</span>
-                    <span>
-                      {tech.years} {t("yearsLabel")}
-                    </span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              {tech.name}
+            </motion.span>
           ))}
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
           className="hero-actions"
         >
           <motion.a
-            href={`/${locale}/about`}
+            href="#proyectos"
             className="primary-action"
             whileHover={{ scale: 1.03, boxShadow: "0 0 28px rgba(111, 0, 255, 0.45)" }}
             whileTap={{ scale: 0.95 }}
           >
             <Sparkles size={18} />
-            <span>{t("seeMore")}</span>
+            <span>{t("seeProjects")}</span>
           </motion.a>
 
           <motion.button
-            onClick={openContactModal}
+            onClick={() => openContactModal()}
             className="cta-button primary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -325,60 +233,5 @@ export default function PowerHero() {
         </motion.div>
       </motion.div>
     </section>
-  );
-}
-
-// Animated Stat Component
-function AnimatedStat({
-  value,
-  label,
-  Icon,
-  delay,
-}: {
-  value: number;
-  label: string;
-  Icon: any;
-  delay: number;
-}) {
-  const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    if (hasAnimated) return;
-
-    const timer = setTimeout(() => {
-      let start = 0;
-      const duration = 2000;
-      const increment = value / (duration / 16);
-
-      const counter = setInterval(() => {
-        start += increment;
-        if (start >= value) {
-          setCount(value);
-          clearInterval(counter);
-          setHasAnimated(true);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
-
-      return () => clearInterval(counter);
-    }, delay * 1000);
-
-    return () => clearTimeout(timer);
-  }, [value, delay, hasAnimated]);
-
-  return (
-    <motion.div
-      className="stat-item"
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay }}
-      whileHover={{ scale: 1.1 }}
-    >
-      <Icon className="stat-icon" size={24} />
-      <span className="stat-number">{count || value}+</span>
-      <span className="stat-label">{label}</span>
-    </motion.div>
   );
 }

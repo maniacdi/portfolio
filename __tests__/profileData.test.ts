@@ -1,4 +1,5 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect,it } from "vitest";
+
 import { profileData } from "@/utils/data/profileData";
 
 describe("profileData", () => {
@@ -35,23 +36,22 @@ describe("profileData", () => {
       it(`${category} skills have valid structure`, () => {
         profileData.skills[category].forEach((skill) => {
           expect(skill.name).toBeTruthy();
-          expect(skill.level).toBeGreaterThanOrEqual(0);
-          expect(skill.level).toBeLessThanOrEqual(100);
           expect(skill.years).toBeGreaterThanOrEqual(0);
+          expect(skill.years).toBeLessThanOrEqual(15);
         });
       });
     });
 
-    it("TypeScript is in languages with level >= 90", () => {
+    it("TypeScript is in languages with 5+ years", () => {
       const ts = profileData.skills.languages.find((s) => s.name === "TypeScript");
       expect(ts).toBeDefined();
-      expect(ts!.level).toBeGreaterThanOrEqual(90);
+      expect(ts!.years).toBeGreaterThanOrEqual(5);
     });
 
-    it("React is in frontend with level >= 90", () => {
+    it("React is in frontend with 5+ years", () => {
       const react = profileData.skills.frontend.find((s) => s.name === "React");
       expect(react).toBeDefined();
-      expect(react!.level).toBeGreaterThanOrEqual(90);
+      expect(react!.years).toBeGreaterThanOrEqual(5);
     });
   });
 

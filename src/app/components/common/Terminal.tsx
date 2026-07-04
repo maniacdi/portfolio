@@ -70,7 +70,7 @@ export default function Terminal({ onClose }: TerminalProps) {
 │  💼 AMS Solutions (Inditex)         │
 │  🎓 Computer Science @ UC           │
 │  💻 React · Vue · TypeScript        │
-│  🚀 ~5 años experiencia             │
+│  🚀 ~6 años experiencia             │
 └─────────────────────────────────────┘
 
 "Me apasiona crear experiencias web de calidad,
@@ -83,7 +83,7 @@ optimizar rendimiento y escribir código escalable."`
 │  💼 AMS Solutions (Inditex)         │
 │  🎓 Computer Science @ UC           │
 │  💻 React · Vue · TypeScript        │
-│  🚀 ~5 years experience             │
+│  🚀 ~6 years experience             │
 └─────────────────────────────────────┘
 
 "Passionate about creating quality web experiences,
@@ -218,10 +218,6 @@ optimizing performance and writing scalable code."`;
             <div className="ee-item">
               <span className="ee-code">b n b</span>
               <span className="ee-name">→ Banana Jump</span>
-            </div>
-            <div className="ee-item">
-              <span className="ee-code">w o w</span>
-              <span className="ee-name">→ WOW Party</span>
             </div>
             <div className="ee-item">
               <span className="ee-code">k u n a i</span>

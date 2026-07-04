@@ -1,11 +1,12 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect,it } from "vitest";
+
 import {
-  getChatResponse,
-  isValidQuestion,
   calculateTypingDelay,
   extractKeywords,
-  isQuestionAbout,
+  getChatResponse,
   getContextualSuggestions,
+  isQuestionAbout,
+  isValidQuestion,
 } from "@/app/services/chatEngine";
 
 // ============================================

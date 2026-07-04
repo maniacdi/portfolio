@@ -1,20 +1,44 @@
 import { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+import { fetchProjectSlugs } from "@/app/services/projectsService";
+import { getPostSlugs } from "@/utils/blog";
+
 const BASE_URL = "https://javimagaldi.com";
 
-// Static routes
-const pages = ["/", "/about", "/code", "/travels", "/hobbies"];
-const locales = ["es", "en"];
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const pages = ["/", "/about", "/code", "/travels", "/hobbies", "/projects", "/blog"];
+  const locales = ["es", "en"];
 
-return pages.map((route) => ({
-    url: route === "/" ? BASE_URL : `${BASE_URL}${route}`,
-    lastModified: new Date(),
-    alternates: {
-      languages: {
-        es: route === "/" ? BASE_URL : `${BASE_URL}${route}`,
-        en: route === "/" ? `${BASE_URL}/en` : `${BASE_URL}/en${route}`,
-      },
-    },
-  }));
+  const staticEntries = locales.flatMap((locale) =>
+    pages.map((page) => ({
+      url: `${BASE_URL}/${locale}${page}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: page === "/" ? 1.0 : 0.8,
+    }))
+  );
+
+  // Per-project pages
+  const slugs = await fetchProjectSlugs();
+  const projectEntries = locales.flatMap((locale) =>
+    slugs.map((slug) => ({
+      url: `${BASE_URL}/${locale}/projects/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }))
+  );
+
+  // Blog posts
+  const postSlugs = getPostSlugs();
+  const blogEntries = locales.flatMap((locale) =>
+    postSlugs.map((slug) => ({
+      url: `${BASE_URL}/${locale}/blog/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }))
+  );
+
+  return [...staticEntries, ...projectEntries, ...blogEntries];
 }

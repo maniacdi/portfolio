@@ -1,17 +1,18 @@
 "use client";
 
-import { FC, use } from "react";
+import { FC } from "react";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
+import { ArrowRight, MapPin, Zap } from "lucide-react";
 
 import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/DeveloperProfile";
+import { useContactModalStore } from "@/app/store/useContactModalStore";
+import LocalizedLink from "@components/common/LocalizedLink";
 
 import { HorizontalTimeline } from "../HorizontalTimeline/HorizontalTimeline";
 
 import "./AboutMeSection.scss";
-import { useContactModalStore } from "@/app/store/useContactModalStore";
 
 interface AboutSectionProps {
   className?: string;
@@ -24,38 +25,48 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   const experiences = [
     {
       period: "2023-Presente",
-      location: "España",
+      location: "A Coruña, España",
       title: `${t("exp1Title")}`,
       company: "AMS Solutions",
       description: `${t("exp1Description")}`,
-      technologies: ["React", "TypeScript", "Next.js"],
+      technologies: [
+        "React",
+        "TypeScript",
+        "Java · Spring Boot",
+        "MongoDB · Redis",
+        "Microfrontends",
+      ],
     },
     {
       period: "2022-2023",
-      location: "España",
+      location: "Santander, España",
       title: `${t("exp2Title")}`,
       company: "Innova-tsn",
       description: `${t("exp2Description")}`,
-      technologies: ["Node.js", "MongoDB", "Express"],
+      technologies: ["React", "SQL"],
     },
     {
       period: "2020-2022",
-      location: "España",
-      title: `${t("exp1Title")}`,
+      location: "Santander, España",
+      title: `${t("exp3Title")}`,
       company: "Incentro",
       description: `${t("exp3Description")}`,
-      technologies: ["JavaScript", "Vue.js", "CSS"],
+      technologies: ["React", "JavaScript", "CMS"],
     },
   ];
 
   const education = [
     {
-      period: "2015-2021",
+      period: "2014-2020",
       location: "España",
       title: `${t("edu1Title")}`,
       institution: `${t("edu1Subtitle")}`,
       specialization: `${t("edu1Description")}`,
-      subjects: [`${t("educationSubjects.algorithms")}`, `${t("educationSubjects.dataStructures")}`, `${t("educationSubjects.softwareEngineering")}`],
+      subjects: [
+        `${t("educationSubjects.algorithms")}`,
+        `${t("educationSubjects.dataStructures")}`,
+        `${t("educationSubjects.softwareEngineering")}`,
+      ],
     },
   ];
   return (
@@ -69,6 +80,26 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
           </div>
         </div>
       </section>
+
+      <motion.div
+        className="off-hours"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <span className="off-hours-icon">
+          <MapPin size={26} />
+        </span>
+        <div className="off-hours-text">
+          <p className="off-hours-lead">{t("offHoursLead")}</p>
+          <p className="off-hours-sub">{t("travelsSub")}</p>
+        </div>
+        <LocalizedLink href="/travels" className="off-hours-link">
+          <span>{t("travelsLink")}</span>
+          <ArrowRight size={16} />
+        </LocalizedLink>
+      </motion.div>
       <motion.div
         className="cta-section"
         initial={{ opacity: 0, y: 40 }}

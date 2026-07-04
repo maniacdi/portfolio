@@ -12,14 +12,16 @@ import { useToast } from "../toast/ToastProvider";
 
 import "./GitHubRepos.scss";
 
+// Ordered by impact — strongest projects first (they read better up top).
 const FEATURED_REPOS = [
-  "portfolio",
-  "portfolio-backend",
+  "showcase",
   "compras-app",
+  "portfolio",
+  "porra-mundial",
+  "ironlog",
+  "portfolio-backend",
   "compras-backend",
   "insta-checker",
-  "porra-mundial",
-  "ams-test",
   "pokemon-app",
   "vue-project",
 ];
