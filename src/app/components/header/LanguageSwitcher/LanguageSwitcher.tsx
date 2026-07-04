@@ -1,35 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
 
 import { motion } from "framer-motion";
+
+// next-intl navigation Link + usePathname — REQUIRED for locale switching.
+// Plain next/link only soft-navigates and never reloads the server locale,
+// so the switcher appeared to "do nothing".
+import { Link, usePathname } from "@/i18n/navigation";
 
 import "./LanguageSwitcher.scss";
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
+  // next-intl usePathname returns the pathname WITHOUT locale prefix
+  // (e.g. "/about" on both /about and /en/about).
   const pathname = usePathname();
 
   const isEnglish = locale === "en";
   const nextLocale = isEnglish ? "es" : "en";
-
-  // Build the target URL for the OTHER locale.
-  // localePrefix "as-needed": es (default) has no prefix, en → /en.
-  // Strip whatever locale prefix the pathname currently carries, then re-add
-  // the target's. Defensive against both /en/* and (transient) /es/* paths.
-  const getNewUrl = () => {
-    const basePath = pathname.replace(/^\/(en|es)(?=\/|$)/, "") || "/";
-
-    if (nextLocale === "en") {
-      return `/en${basePath === "/" ? "" : basePath}`;
-    }
-    return basePath; // Spanish carries no prefix
-  };
-
-  const newUrl = getNewUrl();
 
   const languageLabels = {
     en: "English",
@@ -38,7 +28,8 @@ export default function LanguageSwitcher() {
 
   return (
     <Link
-      href={newUrl}
+      href={pathname}
+      locale={nextLocale}
       className={`lang-switcher ${isEnglish ? "en" : "es"}`}
       aria-label={`Change language to ${languageLabels[nextLocale]}`}
       title={`Switch to ${languageLabels[nextLocale]}`}
