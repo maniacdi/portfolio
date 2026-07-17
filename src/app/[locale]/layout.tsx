@@ -11,8 +11,8 @@ import Header from "@components/header/Header";
 
 import ChatBot from "../components/chatBot/ChatBot";
 import EasterEggs from "../components/common/EasterEggs";
-import ScrollToTop from "../components/common/ScrollToTop";
 import { PersonSchema, WebsiteSchema } from "../components/common/JsonLd";
+import ScrollToTop from "../components/common/ScrollToTop";
 import TerminalLoader from "../components/common/TerminalLoader";
 import ThemeProvider from "../components/common/ThemeProvider";
 import { ToastProvider } from "../components/toast/ToastProvider";
@@ -31,8 +31,6 @@ export async function generateMetadata({
 
   const isEs = locale === "es";
   const canonical = isEs ? BASE_URL : `${BASE_URL}/en`;
-  const baseUrl = "https://javimagaldi.com";
-
 
   return {
     title: {
@@ -42,11 +40,14 @@ export async function generateMetadata({
     description: t("description"),
     metadataBase: new URL(BASE_URL),
     alternates: {
-      canonical: locale === "es" ? baseUrl : `${baseUrl}/en`,
+      canonical,
       languages: {
-        "es": baseUrl,
-        "en": `${baseUrl}/en`,
-        "x-default": baseUrl,
+        es: BASE_URL,
+        en: `${BASE_URL}/en`,
+        "x-default": BASE_URL,
+      },
+      types: {
+        "application/rss+xml": `${BASE_URL}/feed.xml`,
       },
     },
     openGraph: {

@@ -5,8 +5,8 @@ import { getTranslations } from "next-intl/server";
 
 import { ArrowLeft, ArrowUpRight, Code2, ExternalLink } from "lucide-react";
 
-import LocalizedLink from "@components/common/LocalizedLink";
 import { fetchProjectBySlug, fetchProjectSlugs, localize } from "@/app/services/projectsService";
+import LocalizedLink from "@components/common/LocalizedLink";
 
 import "@/styles/page.scss";
 import "../projectPage.scss";
@@ -80,17 +80,29 @@ export default async function ProjectPage({
   const solution = localize(project.solution, locale);
   const gallery = (project.images || []).filter((img) => img !== project.coverImage);
 
+  const projectUrl = `${BASE_URL}${locale === "es" ? "" : "/en"}/projects/${slug}`;
+  const projectsUrl = `${BASE_URL}${locale === "es" ? "" : "/en"}/projects`;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title,
     headline: tagline,
     description: summary || tagline,
-    url: `${BASE_URL}${locale === "es" ? "" : "/en"}/projects/${slug}`,
+    url: projectUrl,
     image: project.coverImage ? `${BASE_URL}${project.coverImage}` : undefined,
     keywords: (project.stack || []).join(", "),
     author: { "@type": "Person", name: "Javi García Magaldi", url: BASE_URL },
     ...(project.demo ? { sameAs: project.demo } : {}),
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: locale === "es" ? "Proyectos" : "Projects", item: projectsUrl },
+      { "@type": "ListItem", position: 2, name: project.title, item: projectUrl },
+    ],
   };
 
   return (
@@ -98,6 +110,10 @@ export default async function ProjectPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
       <LocalizedLink href="/projects" className="project-back">

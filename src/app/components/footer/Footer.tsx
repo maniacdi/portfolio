@@ -63,9 +63,7 @@ export default function Footer() {
 
   return (
     <footer className="footer-container">
-      <div className="footer-divider">
-        <div className="divider-glow" />
-      </div>
+      <div className="footer-divider" />
 
       <div className="footer-main">
         <div className="footer-content">

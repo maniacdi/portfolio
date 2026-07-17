@@ -36,7 +36,7 @@
 }
 
 .timeline-section-title {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
   font-weight: 500;
   color: var(--text);
   margin: 3rem 0 2rem;
@@ -184,7 +184,7 @@
 }
 
 .timeline-period {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-jetbrains-mono), monospace;
   font-weight: 500;
   color: var(--neon-mid);
   background: var(--neon-subtle);
@@ -206,7 +206,7 @@
 }
 
 .timeline-title {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
   font-weight: 500;
   color: var(--text);
   margin: 0.5rem 0;
@@ -237,7 +237,7 @@
 }
 
 .timeline-tag {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-jetbrains-mono), monospace;
   background: var(--neon-subtle);
   color: var(--neon-mid);
   padding: 0.3rem 0.75rem;

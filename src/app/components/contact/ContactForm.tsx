@@ -68,7 +68,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <section className="contact-form-section">
+      <section id="contacto" className="contact-form-section">
         <motion.div
           className="success-state"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -87,7 +87,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="contact-form-section">
+    <section id="contacto" className="contact-form-section">
       {/* Label */}
       <motion.div
         className="section-label"

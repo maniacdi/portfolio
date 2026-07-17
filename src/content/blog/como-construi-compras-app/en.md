@@ -22,8 +22,8 @@ A **shared, real-time** shopping list: if my partner ticks off the milk from her
 
 ## What I learned
 
-- **Real-time state is easy to break.** I had to think hard about reconciliation when two people edit at once and one drops connection.
-- **Self-hosting teaches more than any tutorial.** Setting up Nginx, certificates and CI/CD for something you actually use forces you to understand the whole piece, not just the code.
-- **An app you use daily maintains itself** — bugs show up in real use, not in demos.
+- Real-time state is easy to break. I had to think hard about reconciliation when two people edit at once and one drops connection.
+- Self-hosting teaches more than any tutorial. Setting up Nginx, certificates and CI/CD for something you actually use forces you to understand the whole piece, not just the code.
+- An app you use daily maintains itself: bugs show up in real use, not in demos.
 
 For the technical breakdown (problem, architecture, results), see the [project page](/en/projects/compras-app).

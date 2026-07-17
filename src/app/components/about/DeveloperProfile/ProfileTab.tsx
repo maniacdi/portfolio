@@ -46,7 +46,6 @@ export const ProfileTab = ({ data, t }: ProfileTabProps) => {
               style={{ borderRadius: "50%", objectFit: "cover" }}
             />
           </div>
-          <div className="avatar-glow" />
         </motion.div>
 
         <div className="profile-info">

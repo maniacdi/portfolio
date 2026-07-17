@@ -22,8 +22,8 @@ Una lista de la compra **compartida y en tiempo real**: si mi pareja tacha la le
 
 ## Lo que aprendí
 
-- **El estado en tiempo real es fácil de romper.** Tuve que pensar bien la reconciliación cuando dos personas editan a la vez y uno pierde conexión.
-- **Self-hosting enseña más que cualquier tutorial.** Montar Nginx, certificados y CI/CD para algo que usas de verdad te obliga a entender la pieza entera, no solo el código.
-- **Una app que usas a diario se mantiene sola** — los bugs aparecen en uso real, no en demos.
+- El estado en tiempo real es fácil de romper. Tuve que pensar bien la reconciliación cuando dos personas editan a la vez y uno pierde conexión.
+- Self-hosting enseña más que cualquier tutorial. Montar Nginx, certificados y CI/CD para algo que usas de verdad te obliga a entender la pieza entera, no solo el código.
+- Una app que usas a diario se mantiene sola: los bugs aparecen en uso real, no en demos.
 
 Si quieres ver el detalle técnico (problema, arquitectura, resultados), está en la [página del proyecto](/projects/compras-app).

@@ -16,7 +16,7 @@
     "contact": "Contacto"
   },
   "biog": {
-    "bio": "Me apasiona crear experiencias digitales que combinen estética y funcionalidad. Me especializo en tecnologías web modernas y arquitectura de código limpio..",
+    "bio": "Me apasiona crear experiencias digitales que combinen estética y funcionalidad. Me especializo en tecnologías web modernas y arquitectura de código limpio.",
     "status": "Disponible para proyectos",
     "years": "años"
   },
@@ -58,7 +58,7 @@
     "new": "Nuevo",
     "soon": "Próximamente...",
     "interestedIn": "¿Interesado en trabajar juntos?",
-    "sendMessage": "Escribeme un mensaje",
+    "sendMessage": "Escríbeme un mensaje",
     "copied": "¡Copiado!",
     "clickToCopy": "Clic para copiar",
     "files": "archivos",
@@ -84,7 +84,7 @@
     "edu1Subtitle": "Universidad de Cantabria",
     "edu1Description": "Especializado en ingeniería de software y tecnologías web",
     "exp1Title": "Senior Front-End / Full-Stack Developer",
-    "exp1Description": "Hub de noticias y accesos para el ecosistema Inditex con más de 10.000 usuarios diarios. Microservicios en Java 21 + Spring Boot con arquitectura hexagonal, BFF, microfrontends y mentoría de 3 juniors.",
+    "exp1Description": "Hub de noticias y accesos para el ecosistema Inditex con más de 10.000 usuarios diarios. Microservicios en Java 21 + Spring Boot con arquitectura hexagonal, BFF, microfrontends y mentoría de 2 juniors.",
     "exp2Title": "Consultor & Desarrollador Full-stack",
     "exp2Description": "Definición de requisitos con cliente, reporting con SQL (de 3 días a 4 horas) y componentes React para aplicaciones corporativas.",
     "exp3Title": "Desarrollador Front-End",

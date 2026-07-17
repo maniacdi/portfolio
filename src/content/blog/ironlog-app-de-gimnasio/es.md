@@ -7,7 +7,7 @@ cover: "/images/projects/ironlog/cover.webp"
 relatedProject: "ironlog"
 ---
 
-Probé varias apps de gimnasio y todas tenían el mismo problema: anuncios, suscripción para lo básico o te obligaban a crear cuenta para guardar una rutina. Yo solo quería apuntar series y ver si progreso. Así que me hice IronLog.
+Probé varias apps de gimnasio y todas tenían el mismo problema: anuncios, suscripción para lo básico o te obligaban a crear cuenta para guardar una rutina. Yo solo quería apuntar series y ver si progresaba. Así que me hice IronLog.
 
 ## La idea
 
@@ -25,8 +25,6 @@ No todo necesita backend. Para una app personal de uso diario, guardar en local 
 
 ## Lo que me llevo
 
-- **Menos es más.** Quitar login y servidor eliminó la mitad de la complejidad y mejoró la experiencia.
-- **Construir para ti afina el criterio de producto:** cada fricción la notas tú primero.
-- **Distribuir como APK** me dio control total sin pasar por la store para algo que uso solo yo.
+Quitar login y servidor eliminó la mitad de la complejidad y mejoró la experiencia: menos es más. Construir algo que usas tú a diario además afina el criterio de producto, porque cada fricción la notas tú primero. Y distribuirla como APK, sin pasar por la store, me dio control total para algo que uso solo yo.
 
 El detalle técnico (rutinas, registro, progreso) está en la [página del proyecto](/projects/ironlog).

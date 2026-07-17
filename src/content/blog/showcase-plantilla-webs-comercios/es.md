@@ -38,12 +38,14 @@ El [demo está aquí](https://magaldi-showcase.vercel.app/). Son esquemas funcio
 
 ## Por qué una plantilla y no un WordPress
 
-Un negocio local no necesita el peso ni los plugins de un CMS genérico. Necesita una web **rápida, accesible y que posicione**. Partir de una base propia me da control total del rendimiento (Lighthouse alto, carga por debajo del segundo) y me deja entregar más rápido: cambio marca, colores, tipografías, contenido y verticales desde puntos centralizados, sin reescribir la arquitectura.
+Un negocio local no necesita el peso ni los plugins de un CMS genérico. Necesita una web rápida, accesible y que posicione — ya conté [por qué una web a medida rinde mejor que WordPress](/blog/web-a-medida-vs-wordpress). Partir de una base propia me da control total del rendimiento (Lighthouse alto, carga por debajo del segundo) y me deja entregar más rápido: cambio marca, colores, tipografías, contenido y verticales desde puntos centralizados, sin reescribir la arquitectura.
+
+Y ojo: la plantilla es el punto de partida, no el producto. El diseño, las secciones y las funcionalidades finales las decide cada cliente; la base solo me ahorra la parte que nadie ve.
 
 ## Lo que me llevo
 
-- **Construir para reutilizar cambia el diseño.** Centralizar marca, textos, datos y temas obliga a separar bien lo que cambia de lo que no.
-- **Menos piezas, más velocidad.** Sin CMS pesado, la web vuela y mantenerla es trivial.
-- **Una base sólida se vende mejor.** Enseñar un demo real que ya funciona convence más que una propuesta sobre papel.
+- Construir para reutilizar cambia el diseño: centralizar marca, textos, datos y temas obliga a separar bien lo que cambia de lo que no.
+- Menos piezas, más velocidad. Sin CMS pesado, la web vuela y mantenerla es trivial.
+- Una base sólida se vende mejor: enseñar un demo real que ya funciona convence más que una propuesta sobre papel.
 
-El detalle técnico y las capturas están en la [página del proyecto](/projects/showcase).
+El detalle técnico y las capturas están en la [página del proyecto](/projects/showcase). ¿Tienes un negocio y quieres algo así? [Escríbeme](/#contacto).

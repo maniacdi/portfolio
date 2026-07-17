@@ -25,8 +25,8 @@ El front es **JavaScript** directo (sin framework pesado, no hacía falta) y tod
 
 ## Lo interesante
 
-- **La lógica de puntos vive en un sitio.** Acertar el resultado exacto, acertar el ganador… cada caso suma distinto, y al estar en código nadie discute.
-- **Elegir la herramienta correcta para el tamaño del problema.** No todo necesita microservicios; a veces Supabase + JS plano es la respuesta más rápida y mantenible.
-- **Los proyectos con tus amigos son el mejor banco de pruebas:** lo usan de verdad, te dicen lo que falla al instante.
+- La lógica de puntos vive en un sitio. Acertar el resultado exacto, acertar el ganador… cada caso suma distinto, y al estar en código nadie discute.
+- Elegir la herramienta correcta para el tamaño del problema. No todo necesita microservicios; a veces Supabase + JS plano es la respuesta más rápida y mantenible.
+- Los proyectos con tus amigos son el mejor banco de pruebas: lo usan de verdad, te dicen lo que falla al instante.
 
 Si quieres el resumen técnico (stack, decisiones, estado), está en la [página del proyecto](/projects/porra-mundial).

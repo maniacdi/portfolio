@@ -4,14 +4,8 @@
 }
 
 .section-header-title {
-  font-weight: 500;
   margin-bottom: 1rem;
   color: var(--text);
-  /* Removed text-shadow — gradients and shadows don't mix cleanly */
-  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .section-header-description {

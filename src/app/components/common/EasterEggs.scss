@@ -30,7 +30,7 @@
 }
 
 .toast-text {
-  font-family: "Orbitron", sans-serif;
+  font-family: var(--font-orbitron), sans-serif;
   font-weight: 700;
   color: white;
   margin: 0;
@@ -48,9 +48,9 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
-  border: 2px solid rgba(155, 77, 255, 0.4);
-  box-shadow: 0 4px 20px rgba(111, 0, 255, 0.3);
+  background: var(--neon);
+  border: 2px solid var(--neon-border);
+  box-shadow: var(--shadow-neon);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -72,17 +72,17 @@
 
   &:hover {
     transform: scale(1.08);
-    box-shadow: 0 6px 28px rgba(111, 0, 255, 0.5);
+    box-shadow: var(--shadow-neon);
   }
 
   /* All eggs found */
   &.completed {
-    background: linear-gradient(135deg, var(--neon) 0%, var(--accent) 100%);
+    background: var(--neon-mid);
     animation: trophyPulse 2s ease-in-out infinite;
   }
 
   .progress-count {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-jetbrains-mono), monospace;
     font-weight: 500;
     color: white;
   }
@@ -91,10 +91,10 @@
 @keyframes trophyPulse {
   0%,
   100% {
-    box-shadow: 0 4px 20px rgba(111, 0, 255, 0.3);
+    box-shadow: var(--shadow-neon);
   }
   50% {
-    box-shadow: 0 6px 36px rgba(111, 0, 255, 0.6);
+    box-shadow: 0 0 36px rgba(111, 0, 255, 0.6);
   }
 }
 
@@ -109,10 +109,8 @@
   width: 400px;
   max-width: 90vw;
   height: 100vh;
-  background: var(--bg-transparent-max);
-  backdrop-filter: blur(20px);
+  background: var(--card-bg);
   border-right: 1px solid var(--neon-border);
-  box-shadow: 4px 0 40px rgba(0, 0, 0, 0.5);
   padding: 2rem;
   overflow-y: auto;
   z-index: 9997;
@@ -132,7 +130,7 @@
     border-bottom: 1px solid var(--border2);
 
     h3 {
-      font-family: "JetBrains Mono", monospace;
+      font-family: var(--font-jetbrains-mono), monospace;
       font-weight: 500;
       color: var(--neon-mid);
       margin: 0;
@@ -169,20 +167,18 @@
       width: 100%;
       height: 2px;
       background: var(--border);
-      border-radius: 1px;
       overflow: hidden;
       margin-bottom: 0.5rem;
 
       .progress-fill {
         height: 100%;
-        background: linear-gradient(90deg, var(--neon), var(--neon-mid));
-        border-radius: 1px;
+        background: var(--neon);
         transition: width 0.5s ease;
       }
     }
 
     .progress-text {
-      font-family: "JetBrains Mono", monospace;
+      font-family: var(--font-jetbrains-mono), monospace;
       color: var(--text-secondary);
       text-align: center;
       margin: 0;
@@ -203,9 +199,8 @@
     align-items: center;
     gap: 1rem;
     padding: 0.875rem 1rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: transparent;
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
     transition:
       background 0.2s ease,
       border-color 0.2s ease,
@@ -219,7 +214,7 @@
       cursor: pointer;
 
       &:hover {
-        background: rgba(111, 0, 255, 0.1);
+        border-color: var(--neon);
         transform: translateX(4px);
       }
     }
@@ -237,14 +232,14 @@
       flex: 1;
 
       .egg-name {
-        font-family: "JetBrains Mono", monospace;
+        font-family: var(--font-jetbrains-mono), monospace;
         font-weight: 500;
         color: var(--text);
         margin: 0 0 0.25rem 0;
       }
 
       .egg-hint {
-        font-family: "JetBrains Mono", monospace;
+        font-family: var(--font-jetbrains-mono), monospace;
         color: var(--text-secondary);
         margin: 0;
       }
@@ -254,16 +249,14 @@
   .trophy-button {
     width: 100%;
     padding: 0.875rem;
-    background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
+    background: var(--neon);
     border: none;
-    border-radius: var(--radius-lg);
     color: white;
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-jetbrains-mono), monospace;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(111, 0, 255, 0.3);
     margin-bottom: 0.75rem;
     transition:
       box-shadow 0.2s ease,
@@ -271,7 +264,7 @@
 
     &:hover {
       transform: translateY(-1px);
-      box-shadow: 0 6px 28px rgba(111, 0, 255, 0.5);
+      box-shadow: var(--shadow-neon);
     }
   }
 
@@ -280,7 +273,6 @@
     padding: 0.625rem;
     background: rgba(255, 107, 107, 0.06);
     border: 1px solid rgba(255, 107, 107, 0.25);
-    border-radius: var(--radius-lg);
     color: var(--reset);
     cursor: pointer;
     transition:
@@ -362,7 +354,7 @@
     text-align: center;
 
     .naruto-quote {
-      font-family: "Orbitron", sans-serif;
+      font-family: var(--font-orbitron), sans-serif;
       font-weight: 900;
       color: #ff6b00;
       text-shadow:

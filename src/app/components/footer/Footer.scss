@@ -5,40 +5,18 @@
 .footer-container {
   position: relative;
   background: var(--footer-bg);
-  border-top: 1px solid var(--border-soft);
   width: 100%;
   margin: auto;
 }
 
 /* ============================================
-   DECORATIVE TOP LINE
+   TOP ACCENT LINE
 ============================================ */
 
 .footer-divider {
-  position: relative;
-  height: 1px;
+  height: 2px;
   width: 100%;
-  background: var(--border);
-  overflow: hidden;
-
-  .divider-glow {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, var(--neon-mid), var(--neon), transparent);
-    animation: slideGlow 4s ease-in-out infinite;
-  }
-}
-
-@keyframes slideGlow {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
+  background: var(--neon);
 }
 
 /* ============================================
@@ -87,7 +65,7 @@
 }
 
 .column-title {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-jetbrains-mono), monospace;
   font-weight: 500;
   color: var(--neon-mid);
   letter-spacing: 0.1em;
@@ -125,7 +103,7 @@
     }
 
     .footer-logo {
-      font-family: "JetBrains Mono", monospace;
+      font-family: var(--font-jetbrains-mono), monospace;
       font-weight: 500;
       background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
       -webkit-background-clip: text;
@@ -270,36 +248,17 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.625rem 0.875rem;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      padding: 0.25rem 0;
       color: var(--text-secondary);
       text-decoration: none;
-      transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
-      position: relative;
-      overflow: hidden;
+      transition: color 0.2s ease;
 
       @media (max-width: 768px) {
         justify-content: center;
       }
 
-      svg,
-      span {
-        position: relative;
-        z-index: 1;
-        transition: color 0.2s ease;
-      }
-
       &:hover {
-        border-color: var(--neon-border);
-        background: var(--neon-subtle);
         color: var(--neon-mid);
-        transform: translateY(-2px);
 
         svg {
           color: var(--neon-mid);
@@ -316,7 +275,7 @@
 .footer-bottom {
   border-top: 1px solid var(--border-soft);
   padding: 1.25rem 2rem;
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--bg2);
 
   @media (max-width: 768px) {
     padding: 1.25rem 1.5rem;
@@ -386,15 +345,13 @@
   padding: 0.5rem 1rem;
   background: transparent;
   border: 1px solid var(--border2);
-  border-radius: var(--radius-lg);
   color: var(--text-secondary);
   font-weight: 400;
   cursor: pointer;
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+    color 0.2s ease;
 
   svg {
     transition: transform 0.2s ease;
@@ -402,17 +359,12 @@
 
   &:hover {
     background: var(--neon-subtle);
-    border-color: var(--neon-border);
+    border-color: var(--neon);
     color: var(--neon-mid);
-    transform: translateY(-1px);
 
     svg {
       transform: translateY(-2px);
     }
-  }
-
-  &:active {
-    transform: translateY(0);
   }
 }
 
@@ -474,7 +426,6 @@
 ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .divider-glow,
   .footer-glow,
   .brand-icon,
   .heart-icon {

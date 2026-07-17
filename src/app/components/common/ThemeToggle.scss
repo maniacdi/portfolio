@@ -8,7 +8,6 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 50%;
   border: 1px solid var(--border);
   background: transparent;
   color: var(--text-secondary);
@@ -20,10 +19,9 @@
     transform 0.2s ease;
 
   &:hover {
-    background: rgba(111, 0, 255, 0.08);
-    border-color: rgba(111, 0, 255, 0.35);
+    background: var(--neon-subtle);
+    border-color: var(--neon);
     color: var(--neon-mid);
-    transform: rotate(15deg);
   }
 
   &:active {

@@ -25,8 +25,6 @@ Not everything needs a backend. For a personal, daily-use app, storing locally i
 
 ## What I take away
 
-- **Less is more.** Removing login and the server cut half the complexity and improved the experience.
-- **Building for yourself sharpens product judgment:** you feel every bit of friction first.
-- **Shipping as an APK** gave me full control without going through the store for something only I use.
+Removing login and the server cut half the complexity and improved the experience: less is more. Building something you use daily also sharpens your product judgment, because you feel every bit of friction first. And shipping it as an APK, skipping the store, gave me full control for something only I use.
 
 The technical breakdown (routines, logging, progress) is on the [project page](/en/projects/ironlog).

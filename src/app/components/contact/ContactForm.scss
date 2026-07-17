@@ -9,7 +9,7 @@
 
   /* ---- Section Label (mono pill) ---- */
   .section-label {
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-jetbrains-mono), monospace;
     font-weight: 400;
     color: var(--neon);
     letter-spacing: 0.12em;
@@ -30,7 +30,7 @@
   }
 
   .section-title {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: var(--font-space-grotesk), sans-serif;
     font-weight: 300;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     color: var(--text);
@@ -72,7 +72,7 @@
       display: flex;
       align-items: center;
       gap: 0.375rem;
-      font-family: "JetBrains Mono", monospace;
+      font-family: var(--font-jetbrains-mono), monospace;
       font-weight: 400;
       color: var(--text-secondary);
       text-transform: uppercase;
@@ -91,13 +91,11 @@
       padding: 0.875rem 1rem;
       background: var(--input-bg);
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
       color: var(--text);
-      font-family: "Space Grotesk", sans-serif;
+      font-family: var(--font-space-grotesk), sans-serif;
       outline: none;
       transition:
         border-color 0.25s ease,
-        box-shadow 0.25s ease,
         background 0.25s ease;
 
       &::placeholder {
@@ -105,8 +103,7 @@
       }
 
       &:focus {
-        border-color: rgba(111, 0, 255, 0.5);
-        box-shadow: 0 0 0 3px rgba(111, 0, 255, 0.08);
+        border-color: var(--neon);
         background: var(--input-bg-focus);
       }
     }
@@ -129,11 +126,10 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
+  background: var(--gradient-cta);
   color: #fff;
   font-weight: 600;
   border: none;
-  border-radius: var(--radius-lg);
   cursor: pointer;
   font-family: inherit;
   transition:
@@ -142,7 +138,7 @@
   margin-top: 0.5rem;
 
   &:hover:not(:disabled) {
-    box-shadow: 0 0 28px rgba(111, 0, 255, 0.4);
+    box-shadow: var(--shadow-neon);
     transform: translateY(-2px);
   }
 
@@ -168,9 +164,8 @@
   grid-column: 1 / -1;
   color: var(--danger);
   padding: 0.75rem 1rem;
-  background: rgba(255, 95, 86, 0.06);
-  border: 1px solid rgba(255, 95, 86, 0.2);
-  border-radius: var(--radius-lg);
+  background: transparent;
+  border: 1px solid var(--danger);
 }
 
 /* ============================================
@@ -187,7 +182,7 @@
   }
 
   h3 {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: var(--font-space-grotesk), sans-serif;
     font-weight: 400;
     color: var(--text);
     margin-bottom: 0.75rem;
@@ -204,10 +199,9 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.625rem 1.5rem;
-    background: rgba(111, 0, 255, 0.08);
+    background: var(--neon-subtle);
     color: var(--neon-mid);
-    border: 1px solid rgba(111, 0, 255, 0.25);
-    border-radius: var(--radius-lg);
+    border: 1px solid var(--neon-border);
     cursor: pointer;
     font-family: inherit;
     transition:
@@ -215,8 +209,7 @@
       border-color 0.2s ease;
 
     &:hover {
-      background: rgba(111, 0, 255, 0.14);
-      border-color: rgba(111, 0, 255, 0.45);
+      border-color: var(--neon);
     }
   }
 }

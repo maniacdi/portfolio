@@ -5,12 +5,11 @@ import { getTranslations } from "next-intl/server";
 import { ArrowUpRight, Calendar } from "lucide-react";
 
 import { getAllPosts } from "@/utils/blog";
+import { pageMetadata } from "@/utils/seo";
 import LocalizedLink from "@components/common/LocalizedLink";
 
 import "@/styles/page.scss";
 import "./blog.scss";
-
-const BASE_URL = "https://javimagaldi.com";
 
 export async function generateMetadata({
   params,
@@ -19,21 +18,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
-  const isEs = locale === "es";
-  const canonical = isEs ? `${BASE_URL}/blog` : `${BASE_URL}/en/blog`;
 
-  return {
+  return pageMetadata({
+    locale,
+    path: "/blog",
     title: t("metaTitle"),
     description: t("metaDescription"),
-    alternates: {
-      canonical,
-      languages: {
-        es: `${BASE_URL}/blog`,
-        en: `${BASE_URL}/en/blog`,
-        "x-default": `${BASE_URL}/blog`,
-      },
-    },
-  };
+  });
 }
 
 export default async function BlogListPage({

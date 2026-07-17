@@ -14,23 +14,23 @@ export const viewport: Viewport = {
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
+  display: "swap",
 });
 
 const orbitron = Orbitron({
   subsets: ["latin"],
   variable: "--font-orbitron",
+  display: "swap",
 });
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
-}); 
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: {
-    default: "Magaldidev — Portfolio",
-    template: "%s | Magaldidev",
-  },
+  title: "Magaldidev — Portfolio",
   description: "Portfolio of Javi García Magaldi, full-stack web developer from Santander.",
   metadataBase: new URL("https://javimagaldi.com"),
   robots: {

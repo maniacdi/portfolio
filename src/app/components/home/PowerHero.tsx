@@ -14,6 +14,9 @@ import NodeGraphBackground from "./NodeGraphBackground";
 
 import "./PowerHero.scss";
 
+/** Glitch del nombre al hacer hover. Poner a false para desactivarlo. */
+const GLITCH_ENABLED = true;
+
 const TECH_STACK = [
   { name: "REACT", context: "Incentro · Innova-tsn · AMS Solutions" },
   { name: "TYPESCRIPT", context: "AMS Solutions" },
@@ -96,11 +99,6 @@ export default function PowerHero() {
         >
           <Cpu size={16} />
           <span>{t("title")}</span>
-          <motion.div
-            className="badge-glow"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
         </motion.div>
 
         {/* Interactive Terminal */}
@@ -130,7 +128,7 @@ export default function PowerHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="main-name"
-          onMouseEnter={() => setIsGlitching(true)}
+          onMouseEnter={() => GLITCH_ENABLED && setIsGlitching(true)}
           onMouseLeave={() => setIsGlitching(false)}
         >
           <span className={`name-first ${isGlitching ? "glitch" : ""}`} data-text="JAVIER">

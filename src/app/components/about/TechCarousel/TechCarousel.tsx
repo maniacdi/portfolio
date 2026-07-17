@@ -535,8 +535,6 @@ export default function TechCarousel() {
         onMouseLeave={handleMouseLeave}
         ref={carouselRef}
       >
-        <div className="carousel-gradient" />
-
         <button
           className="carousel-control prev"
           onClick={handlePrev}
@@ -588,8 +586,6 @@ export default function TechCarousel() {
                     <span className="badge-text">{t("badge")}</span>
                   </div>
                 </div>
-
-                <div className="tech-glow" style={{ background: tech.color }} />
               </motion.div>
             ))}
           </AnimatePresence>

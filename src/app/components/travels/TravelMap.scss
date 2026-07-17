@@ -1,10 +1,8 @@
 .travel-map-container {
   position: relative;
   height: 600px;
-  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .travel-map {
@@ -96,16 +94,15 @@
   .popup-btn {
     width: 100%;
     padding: 0.5rem;
-    background: #6f00ff;
+    background: var(--neon);
     border: none;
-    border-radius: 4px;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s ease;
 
     &:hover {
-      background: #9b4dff;
+      background: var(--neon-mid);
     }
   }
 }
@@ -118,10 +115,8 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background: var(--bg-transparent-heavy);
-  backdrop-filter: blur(10px);
+  background: var(--widget-bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   padding: 0.875rem;
   z-index: 1000;
   max-width: 190px;
@@ -168,15 +163,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(111, 0, 255, 0.02);
-  border-radius: var(--radius-lg);
+  background: var(--card-bg);
   border: 1px dashed var(--border2);
   gap: 1rem;
 
   .loading-spinner {
     width: 40px;
     height: 40px;
-    border: 2px solid rgba(111, 0, 255, 0.15);
+    border: 2px solid var(--neon-border);
     border-top-color: var(--neon-mid);
     border-radius: 50%;
     animation: spin 1s linear infinite;

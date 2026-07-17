@@ -9,7 +9,7 @@ When people talk about AI for programming, almost everyone pictures "write me th
 
 ## 1. Structure the problem before coding
 
-Before writing a line, I explain the problem and ask it to help me **break it down**: what the pieces are, what order makes sense, which edge cases I'm missing. Not so it decides for me, but so I have a first map that I then critique and adjust. I start with a plan, not a blank page.
+Before writing a line, I explain the problem and ask it to help me break it down: what the pieces are, what order makes sense, which edge cases I'm missing. Not so it decides for me, but so I have a first map that I then critique and adjust. I start with a plan, not a blank page.
 
 ## 2. Split the work into real tasks
 
@@ -17,7 +17,7 @@ From a big, fuzzy feature to a concrete, ordered task list. AI is great at turni
 
 ## 3. Architecture sparring
 
-For design decisions I use it as **someone to argue with**: I propose two approaches and ask for trade-offs. I don't trust the answer blindly —it's often incomplete— but it forces me to justify my decision, which is exactly what I want.
+For design decisions I use it as someone to argue with: I propose two approaches and ask for trade-offs. I don't trust the answer blindly (it's often incomplete), but it forces me to justify my decision, which is exactly what I want.
 
 ## 4. Documentation and review
 
@@ -25,10 +25,10 @@ First drafts of docs, READMEs, meaningful commit messages, and a first review pa
 
 ## What I DON'T do
 
-- **I don't trust it blindly.** I verify anything that touches code or data; AI is wrong with apparent confidence.
-- **I don't delegate judgment.** The decision and the responsibility are mine; AI speeds me up, it doesn't decide.
-- **I don't ship code I don't understand.** If I can't explain it, it doesn't go in.
+- I don't trust it blindly. I verify anything that touches code or data; AI is wrong with apparent confidence.
+- I don't delegate judgment. The decision and the responsibility are mine; AI speeds me up, it doesn't decide.
+- I don't ship code I don't understand. If I can't explain it, it doesn't go in.
 
-## Takeaway
+## What it's actually good for
 
-For me, AI is mostly a tool for **order and structure**: it helps me think better and faster, keep the thread, and reach the code with a clear plan. The value isn't that it writes for you, but that it helps you think before you write.
+Reaching the code with a clear plan and not losing the thread on long projects. And I apply the same thing to client work: first structure what you actually need together, then build it. If you have an idea you want to land, [write to me](/en/#contacto).

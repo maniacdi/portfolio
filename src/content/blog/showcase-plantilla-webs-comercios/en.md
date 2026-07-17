@@ -38,12 +38,14 @@ The [demo is here](https://magaldi-showcase.vercel.app/). These are functional s
 
 ## Why a template and not WordPress
 
-A local business doesn't need the weight or plugins of a generic CMS. It needs a site that is **fast, accessible and ranks well**. Starting from my own base gives me full control over performance (high Lighthouse, sub-second loads) and lets me ship faster: I swap brand, colors, fonts, content and verticals from centralized points, without rewriting the architecture.
+A local business doesn't need the weight or plugins of a generic CMS. It needs a site that is fast, accessible and ranks well — I've written about [why a custom website beats WordPress](/en/blog/web-a-medida-vs-wordpress). Starting from my own base gives me full control over performance (high Lighthouse, sub-second loads) and lets me ship faster: I swap brand, colors, fonts, content and verticals from centralized points, without rewriting the architecture.
+
+And to be clear: the template is the starting point, not the product. The final design, sections and features are decided by each client; the base just saves me the part nobody sees.
 
 ## What I take away
 
-- **Building for reuse changes the design.** Centralizing brand, copy, data and themes forces a clean split between what changes and what doesn't.
-- **Fewer pieces, more speed.** With no heavy CMS, the site flies and maintenance is trivial.
-- **A solid base sells better.** Showing a real, working demo convinces more than a proposal on paper.
+- Building for reuse changes the design: centralizing brand, copy, data and themes forces a clean split between what changes and what doesn't.
+- Fewer pieces, more speed. With no heavy CMS, the site flies and maintenance is trivial.
+- A solid base sells better: showing a real, working demo convinces more than a proposal on paper.
 
-The technical detail and screenshots are on the [project page](/projects/showcase).
+The technical detail and screenshots are on the [project page](/en/projects/showcase). Have a business and want something like this? [Write to me](/en/#contacto).

@@ -25,8 +25,8 @@ The front is plain **JavaScript** (no heavy framework, none needed) and it's all
 
 ## What's interesting
 
-- **Scoring logic lives in one place.** Exact result, correct winner… each case scores differently, and since it's in code, nobody argues.
-- **Pick the right tool for the size of the problem.** Not everything needs microservices; sometimes Supabase + plain JS is the fastest, most maintainable answer.
-- **Projects with your friends are the best testing ground:** they actually use it and tell you what breaks instantly.
+- Scoring logic lives in one place. Exact result, correct winner… each case scores differently, and since it's in code, nobody argues.
+- Pick the right tool for the size of the problem. Not everything needs microservices; sometimes Supabase + plain JS is the fastest, most maintainable answer.
+- Projects with your friends are the best testing ground: they actually use it and tell you what breaks instantly.
 
 For the technical summary (stack, decisions, status), see the [project page](/en/projects/porra-mundial).

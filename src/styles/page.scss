@@ -37,16 +37,21 @@
   margin-top: 32px;
 }
 
-/* Título de página — gradiente morado */
+/* Título de página — tinta sólida + cursor de terminal (firma) */
 .page-title {
-  font-weight: 500;
-  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 60%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.15;
   text-align: center;
+
+  &::after {
+    content: "_";
+    color: var(--neon-mid);
+    margin-left: 0.08em;
+    animation: cursor-blink 1.1s steps(2, start) infinite;
+  }
 }
 
 .page-description {

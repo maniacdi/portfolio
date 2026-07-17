@@ -4,13 +4,12 @@ import { getTranslations } from "next-intl/server";
 
 import { ArrowUpRight } from "lucide-react";
 
-import LocalizedLink from "@components/common/LocalizedLink";
 import { fetchProjects, localize } from "@/app/services/projectsService";
+import { pageMetadata } from "@/utils/seo";
+import LocalizedLink from "@components/common/LocalizedLink";
 
 import "@/styles/page.scss";
 import "./projectPage.scss";
-
-const BASE_URL = "https://javimagaldi.com";
 
 export async function generateMetadata({
   params,
@@ -19,21 +18,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "projectsPage" });
-  const isEs = locale === "es";
-  const canonical = isEs ? `${BASE_URL}/projects` : `${BASE_URL}/en/projects`;
 
-  return {
+  return pageMetadata({
+    locale,
+    path: "/projects",
     title: t("metaTitle"),
     description: t("metaDescription"),
-    alternates: {
-      canonical,
-      languages: {
-        es: `${BASE_URL}/projects`,
-        en: `${BASE_URL}/en/projects`,
-        "x-default": `${BASE_URL}/projects`,
-      },
-    },
-  };
+  });
 }
 
 export default async function ProjectsListPage({

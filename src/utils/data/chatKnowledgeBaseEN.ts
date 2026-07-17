@@ -7,7 +7,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "Hi! I'm Javi, a Front-End Engineer with almost 6 years of experience in production web products and large-scale corporate environments. I mainly work with React and Vue, participating in the development of applications used by thousands of users at Inditex. I'm passionate about creating quality user experiences, optimizing performance, and writing code that scales over time.",
+          "Hi! I'm Javi, a full-stack developer with 6 years of experience in production web products and large-scale corporate environments. I work with React and TypeScript on the front end and Java (Spring Boot) and Node.js on the back end, on applications used by 10,000+ daily users at Inditex. I'm passionate about creating quality user experiences, optimizing performance, and writing code that scales over time.",
         followUp: [
           "What technologies do you master?",
           "Where do you work currently?",
@@ -33,7 +33,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "I have almost 6 years of experience as a frontend developer. I started with an internship at Incentro (2020), where I then worked for 2 years redesigning corporate websites and managing e-commerce. After that, I spent 10 months at Innova-tsn as a frontend consultant. Currently (since May 2023) I work at AMS Solutions developing critical applications for Inditex, where I lead optimization projects and mentor junior developers.",
+          "I have 6 years of experience as a developer. I started with an internship at Incentro (2020), where I then worked for 2 years redesigning corporate websites and managing e-commerce. After that, I spent 9 months at Innova-tsn as a full-stack consultant. Currently (since May 2023) I work at AMS Solutions as a senior front-end/full-stack developer on critical applications for Inditex, where I lead optimization projects and mentor junior developers.",
         followUp: [
           "What do you do at AMS?",
           "What did you achieve in each company?",
@@ -49,7 +49,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "At AMS Solutions I'm a Front-End Engineer for Inditex, working on corporate applications used by thousands of employees. My achievements include: 1) Led the creation of a unified component platform that improved team technical convergence. 2) Developed a news center and unified access for the entire ecosystem. 3) Designed and implemented a Backend For Frontend (BFF) that significantly reduced response times. 4) Promoted testing (Jest, Cypress) ensuring robustness. 5) Mentor juniors through code reviews and best practices.",
+          "At AMS Solutions I'm a Senior Front-End/Full-Stack Developer for Inditex, working on corporate applications with 10,000+ daily users. My achievements include: 1) Developed a news hub and unified access for the entire ecosystem (−25% in information search time). 2) Implemented microservices in Java 21 + Spring Boot 3 with hexagonal architecture/DDD on MongoDB and Redis. 3) Designed a BFF that improved response times by 40% and reduced frontend service load by more than 30%. 4) Raised test coverage (Jest + Cypress) from 60% to 85%. 5) Mentor juniors through code reviews (one promoted in under a year).",
         followUp: ["What is a BFF?", "How do you mentor?", "What impact did you have?"],
       },
     ],
@@ -61,7 +61,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "At Innova-tsn I worked for 10 months as a Front-End Developer/Consultant. I developed components for corporate web applications, analyzed functional and technical requirements in collaboration with clients, and managed data through SQL for reporting. It was my first consulting experience, which taught me to quickly adapt to different contexts and communicate technical solutions clearly.",
+          "At Innova-tsn I worked for 9 months as a full-stack consultant/developer. I developed components for corporate web applications, analyzed functional and technical requirements in collaboration with clients, and managed data through SQL for reporting. It was my first consulting experience, which taught me to quickly adapt to different contexts and communicate technical solutions clearly.",
         followUp: ["What did you learn in consulting?", "Where else have you worked?"],
       },
     ],
@@ -94,7 +94,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "My main stack: Frontend → React, Vue, TypeScript, JavaScript, HTML5, CSS3/SASS, Tailwind, Framer Motion. Backend → Node.js, Express, BFF, Java. Databases → MongoDB, MySQL, SQL Server. Testing → Jest, Cypress. DevOps/Tools → Git/GitHub, Docker, AWS, Vercel, Agile/Scrum. I've also worked with Redux, GraphQL, and CMS/e-commerce. I stay updated with the latest trends and best practices in the JavaScript ecosystem.",
+          "My main stack: Frontend → React, React Native, Vue 3, TypeScript, JavaScript, Next.js, HTML5, CSS3/SASS, Tailwind, Framer Motion, Zustand/Redux. Backend → Java 21 + Spring Boot 3, Node.js, Express/Koa, BFF, REST APIs, WebSockets. Databases → MongoDB, Redis, SQL. Testing → Jest, React Testing Library, Cypress, JUnit. DevOps/Tools → Git/GitHub, GitHub Actions, Docker, Nginx, Vercel, Agile/Scrum. I've also worked with microfrontends (Module Federation) and CMS/e-commerce.",
         followUp: [
           "Do you prefer React or Vue?",
           "Do you have backend experience?",
@@ -134,7 +134,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "Although my specialty is frontend, I have solid backend experience. I've designed and implemented a BFF (Backend For Frontend) with Node.js/Express that optimized response times and reduced backend calls. I work with databases (MongoDB, MySQL, SQL Server) for reporting and data management. I've developed REST APIs, handled authentication, and understand microservices architectures. I feel comfortable across the full stack when the project requires it.",
+          "Although my specialty is frontend, I have solid backend experience. I've designed and implemented a BFF (Backend For Frontend) with Node.js/Express that optimized response times and reduced backend calls. I work with databases (MongoDB, Redis, SQL) for reporting and data management. I've developed REST APIs, handled authentication, and understand microservices architectures. I feel comfortable across the full stack when the project requires it.",
         followUp: [
           "What exactly is a BFF?",
           "Which databases do you prefer?",
@@ -150,7 +150,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "A BFF (Backend For Frontend) is an architectural pattern where you create an intermediate layer specific to your frontend. In my implementation: 1) It aggregated data from multiple microservices in a single call. 2) Transformed responses to the exact format the frontend needs. 3) Handled caching to reduce latency. 4) Optimized payload by eliminating unnecessary data. Result: we went from 5-6 individual calls to just 1, reducing load time by ~60%. I implemented it with Node.js/Express and it was critical for improving performance in AMS applications.",
+          "A BFF (Backend For Frontend) is an architectural pattern where you create an intermediate layer specific to your frontend. In my implementation: 1) It aggregated data from multiple microservices in a single call. 2) Transformed responses to the exact format the frontend needs. 3) Handled caching to reduce latency. 4) Optimized payload by eliminating unnecessary data. Result: we went from 5-6 individual calls to just 1, improving response times by 40% and reducing frontend service load by more than 30%. I implemented it with Node.js/Express and it was critical for improving performance in AMS applications.",
         followUp: [
           "What technologies did you use?",
           "How did you measure the improvement?",
@@ -166,7 +166,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "Testing is fundamental in my workflow. I use Jest for unit tests of components, functions, and business logic, with minimum 80% coverage. Cypress for E2E, simulating complete user flows. At AMS I promoted testing adoption from the start: wrote documentation, conducted internal workshops, and established standards. I also practice TDD when the project allows. I believe testing isn't just for bugs, but for refactoring confidence and executable code documentation.",
+          "Testing is fundamental in my workflow. I use Jest for unit tests of components, functions, and business logic (at AMS I raised coverage from 60% to 85%). Cypress for E2E, simulating complete user flows. At AMS I promoted testing adoption from the start: wrote documentation, conducted internal workshops, and established standards. I also practice TDD when the project allows. I believe testing isn't just for bugs, but for refactoring confidence and executable code documentation.",
         followUp: [
           "What test coverage do you have?",
           "Do you do TDD?",
@@ -182,7 +182,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "I studied Computer Science at the University of Cantabria (2015-2019). During my degree I learned solid fundamentals: algorithms, data structures, databases, object-oriented programming (Java was my first serious language), networks, operating systems, and software development. I also did my final thesis on game development (Pang project in C#). University gave me the theoretical foundation; professional experience, the practice and web specialization.",
+          "I studied a Degree in Computer Engineering (Ingeniería Informática) at the University of Cantabria (2014-2020). During my degree I learned solid fundamentals: algorithms, data structures, databases, object-oriented programming (Java was my first serious language), networks, operating systems, and software development. I also did my final thesis on game development (Pang project in C#). University gave me the theoretical foundation; professional experience, the practice and web specialization.",
         followUp: [
           "What was your thesis about?",
           "Do you have certifications?",
@@ -232,7 +232,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "This portfolio is my most complete personal project. Stack: Next.js 14 (App Router), React, TypeScript, Framer Motion, SASS. Own backend in Node.js/Express/MongoDB deployed on Vercel. Unique features: interactive travel map with Leaflet, easter egg system (try typing 'kunai'!), chat assistant with pattern matching without API costs, featured repos from GitHub API, and cyberpunk design with animations. All responsive, with i18n (ES/EN), designed to demonstrate not just clean code but creativity and attention to detail.",
+          "This portfolio is my most complete personal project. Stack: Next.js 16 (App Router), React, TypeScript, Framer Motion, SASS. Own backend in Node.js/Express/MongoDB deployed on Vercel. Unique features: interactive travel map with Leaflet, easter egg system (try typing 'kunai'!), chat assistant with pattern matching without API costs, featured repos from GitHub API, and a custom neon-brutalist design. All responsive, with i18n (ES/EN), designed to demonstrate not just clean code but creativity and attention to detail.",
         followUp: [
           "How long did it take?",
           "What was the most difficult?",
@@ -289,7 +289,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "At AMS I regularly mentor 2-3 junior developers. My approach: 1) Detailed code reviews explaining the 'why', not just the 'what'. 2) Pair programming on complex features. 3) Sharing resources (articles, documentation, courses). 4) Creating internal documentation of patterns and conventions. 5) Encouraging questions without judgment. I believe a good mentor doesn't just teach code, but critical thinking, debugging, and autonomy. It's rewarding to see their evolution and know I contributed to their growth.",
+          "At AMS I regularly mentor 2 junior developers (one promoted in under a year). My approach: 1) Detailed code reviews explaining the 'why', not just the 'what'. 2) Pair programming on complex features. 3) Sharing resources (articles, documentation, courses). 4) Creating internal documentation of patterns and conventions. 5) Encouraging questions without judgment. I believe a good mentor doesn't just teach code, but critical thinking, debugging, and autonomy. It's rewarding to see their evolution and know I contributed to their growth.",
         followUp: ["What do you advise juniors?", "What's the hardest thing to teach?"],
       },
     ],
@@ -301,7 +301,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "Native Spanish and professional English (B2-C1). I read technical documentation in English daily (MDN, blogs, RFCs). I've worked on international projects with colleagues from UK, India, and LATAM, communicating fluently in calls and writing. I also consume technical content in English: podcasts, conferences, courses. I feel comfortable in multilingual environments and can maintain complex technical conversations in English without problem.",
+          "Native Spanish and fluent English (B2 – First Certificate). I read technical documentation in English daily (MDN, blogs, RFCs). I've worked on international projects with colleagues from the UK, Sweden, the Netherlands, India, Italy, and Germany, communicating fluently in calls and writing. I also consume technical content in English: podcasts, conferences, courses. I feel comfortable in multilingual environments and can maintain complex technical conversations in English without problem.",
         followUp: ["Have you worked with international teams?", "Other languages?"],
       },
     ],
@@ -345,7 +345,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "Optimization is one of my specialties. Techniques I apply: 1) Code splitting and lazy loading to reduce initial bundle. 2) Memoization (useMemo, useCallback) in heavy components. 3) Long list virtualization (react-window). 4) Debouncing/throttling on frequent events. 5) Strategic caching (BFF, service workers). 6) Image optimization (WebP, lazy load, responsive). 7) Web Vitals (LCP, FID, CLS). At AMS, my BFF reduced response times by ~60%. I regularly use Lighthouse and profiler.",
+          "Optimization is one of my specialties. Techniques I apply: 1) Code splitting and lazy loading to reduce initial bundle. 2) Memoization (useMemo, useCallback) in heavy components. 3) Long list virtualization (react-window). 4) Debouncing/throttling on frequent events. 5) Strategic caching (BFF, service workers). 6) Image optimization (WebP, lazy load, responsive). 7) Web Vitals (LCP, INP, CLS). At AMS, my BFF improved response times by 40%. I regularly use Lighthouse and profiler.",
         followUp: ["How do you measure performance?", "What was your biggest optimization?"],
       },
     ],
@@ -431,7 +431,7 @@ export const knowledgeBaseEN: Record<string, KnowledgeCategory> = {
     responses: [
       {
         answer:
-          "I use Next.js 14 with App Router in my portfolio and love it. Key advantages: SSR/SSG out-of-the-box, automatic image optimization, file-based routing, integrated API routes, excellent DX. I've worked with Pages Router and migrated to App Router (Server Components, nested layouts). I also value its SEO optimization and Vercel ecosystem. It's my choice for React projects that need SSR, SEO, or better initial performance.",
+          "I use Next.js 16 with App Router in my portfolio and love it. Key advantages: SSR/SSG out-of-the-box, automatic image optimization, file-based routing, integrated API routes, excellent DX. I've worked with Pages Router and migrated to App Router (Server Components, nested layouts). I also value its SEO optimization and Vercel ecosystem. It's my choice for React projects that need SSR, SEO, or better initial performance.",
         followUp: ["What frameworks do you know?", "Do you prefer Next.js or CRA?"],
       },
     ],

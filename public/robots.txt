@@ -1,8 +1,0 @@
-# https://javimagaldi.com
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /_next/
-
-Sitemap: https://javimagaldi.com/sitemap.xml
-Host: https://javimagaldi.com

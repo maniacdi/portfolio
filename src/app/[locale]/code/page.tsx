@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 
 import Code from "@/app/components/code/Code";
+import { pageMetadata } from "@/utils/seo";
 
 import "@/styles/page.scss";
-
-const BASE_URL = "https://javimagaldi.com"
 
 export async function generateMetadata({
   params,
@@ -14,20 +13,14 @@ export async function generateMetadata({
   const { locale } = await params;
   const isEs = locale === "es";
 
-  return {
+  return pageMetadata({
+    locale,
+    path: "/code",
     title: isEs ? "Código — Proyectos y repositorios" : "Code — Projects and repositories",
     description: isEs
       ? "Mis proyectos en GitHub: apps React, backends Node.js, herramientas personales y experimentos."
       : "My GitHub projects: React apps, Node.js backends, personal tools and experiments.",
-    alternates: {
-      canonical: isEs ? `${BASE_URL}/code` : `${BASE_URL}/en/code`,
-      languages: {
-        es: `${BASE_URL}/code`,
-        en: `${BASE_URL}/en/code`,
-        "x-default": `${BASE_URL}/code`,
-      },
-    },
-  };
+  });
 }
 
 export default async function CodePage() {

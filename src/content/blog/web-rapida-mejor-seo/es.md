@@ -15,29 +15,29 @@ Google mide la experiencia real de tus usuarios con tres métricas principales:
 - **INP (Interaction to Next Paint):** cómo de rápido responde la web cuando alguien hace clic o escribe.
 - **CLS (Cumulative Layout Shift):** cuánto "baila" el contenido mientras carga. Cuanto más estable, mejor.
 
-Estas métricas forman parte de cómo Google decide **a quién posicionar más arriba**. Web lenta, peor posición.
+Estas métricas forman parte de cómo Google decide a quién posicionar más arriba. Web lenta, peor posición.
 
 ## Por qué la velocidad afecta a las ventas, no solo al SEO
 
-Cada segundo de espera dispara el porcentaje de gente que se va. Da igual lo bonita que sea la web: si tarda en cargar en el móvil con datos, esa visita ya no vuelve. Una **web rápida** convierte mejor porque la gente se queda.
+Cada segundo de espera dispara el porcentaje de gente que se va. Da igual lo bonita que sea la web: si tarda en cargar en el móvil con datos, esa visita ya no vuelve. Una web rápida convierte mejor porque la gente se queda.
 
 ## Cómo consigo que una web cargue rápido
 
 No hay magia, hay decisiones técnicas:
 
-1. **Enviar solo el código necesario.** Nada de temas genéricos ni plugins que cargan librerías que no usas.
-2. **Renderizar en el servidor / estático.** El HTML llega ya listo, no se construye entero en el navegador del usuario.
-3. **Optimizar imágenes.** Formatos modernos, tamaños correctos y carga diferida de lo que no se ve aún.
-4. **Cuidar las fuentes y el CSS crítico.** Para que el texto aparezca ya, sin saltos ni parpadeos.
+- Enviar solo el código necesario. Nada de temas genéricos ni plugins que cargan librerías que no usas.
+- Renderizar en el servidor o en estático: el HTML llega ya listo, no se construye entero en el navegador del usuario.
+- Optimizar imágenes: formatos modernos, tamaños correctos y carga diferida de lo que no se ve aún.
+- Cuidar las fuentes y el CSS crítico, para que el texto aparezca ya, sin saltos ni parpadeos.
 
 Esta misma web está hecha con Next.js precisamente por esto: páginas estáticas, imágenes optimizadas y solo el JavaScript imprescindible.
 
 ## El error típico
 
-Mucha gente añade velocidad **al final**, cuando la web ya va lenta, a base de plugins de caché que tapan el problema. La velocidad se diseña **desde el principio**: la arquitectura correcta vale más que cualquier plugin de optimización pegado después.
+Mucha gente añade velocidad al final, cuando la web ya va lenta, a base de plugins de caché que tapan el problema. La velocidad se diseña desde el principio: la arquitectura correcta vale más que cualquier plugin de optimización pegado después.
 
-## Conclusión
+## Si tu web ya existe y va lenta
 
-Una **web rápida posiciona mejor en Google, retiene más visitas y convierte más**. Los Core Web Vitals no son una moda: son la forma en que Google premia las webs que respetan a sus usuarios. Si tu web es lenta, estás perdiendo tráfico y clientes cada día.
+Se puede medir gratis con PageSpeed Insights y saber exactamente dónde se pierde el tiempo. A veces basta con optimizar lo que hay; otras compensa más rehacerla bien — ya conté [cuándo compensa una web a medida frente a WordPress](/blog/web-a-medida-vs-wordpress). Cada caso es distinto, y la decisión final siempre es tuya.
 
-¿Quieres ver cómo trabajo? Echa un vistazo a [mis proyectos](/projects).
+¿Quieres saber cuánto margen tiene la tuya? [Escríbeme](/#contacto) y le echo un ojo, o mira [mis proyectos](/projects) para ver cómo trabajo.

@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
-import { routing } from "./src/i18n/routing";
+import { routing } from "./i18n/routing";
 
 // Single source of truth: middleware config comes from routing.ts.
 // as-needed → / serves Spanish (no prefix), /en serves English.

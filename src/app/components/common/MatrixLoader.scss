@@ -37,7 +37,7 @@
       border-bottom: 1px solid rgba(0, 255, 0, 0.2);
 
       .matrix-title {
-        font-family: "Orbitron", sans-serif;
+        font-family: var(--font-orbitron), sans-serif;
         color: #0f0;
         text-shadow:
           0 0 10px #0f0,
@@ -51,7 +51,7 @@
         align-items: center;
         gap: 1rem;
         color: #0f0;
-        font-family: "Space Grotesk", monospace;
+        font-family: var(--font-space-grotesk), monospace;
 
         .status-dot {
           width: 10px;
@@ -72,7 +72,6 @@
       flex: 1;
       background: rgba(0, 20, 0, 0.3);
       border: 1px solid rgba(0, 255, 0, 0.2);
-      border-radius: 8px;
       padding: 2rem;
       overflow: hidden;
       position: relative;
@@ -117,7 +116,7 @@
           .stat-label {
             display: block;
             color: #0f0;
-            font-family: "Space Grotesk", monospace;
+            font-family: var(--font-space-grotesk), monospace;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -126,14 +125,12 @@
           .stat-bar {
             height: 8px;
             background: rgba(0, 255, 0, 0.1);
-            border-radius: 4px;
             overflow: hidden;
             position: relative;
 
             .stat-fill {
               height: 100%;
               background: linear-gradient(90deg, #0f0, #00ff9d);
-              border-radius: 4px;
               position: relative;
 
               &::after {
@@ -165,7 +162,7 @@
 
       .hint {
         color: #0f0;
-        font-family: "Space Grotesk", monospace;
+        font-family: var(--font-space-grotesk), monospace;
         letter-spacing: 0.1em;
         opacity: 0.8;
       }

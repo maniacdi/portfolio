@@ -1,8 +1,7 @@
 .cv-section {
   padding: var(--padding-lg);
   background: var(--bg3);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--border);
   margin: 2rem 0;
   position: relative;
   overflow: hidden;
@@ -14,7 +13,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--neon-mid), var(--neon), transparent);
+    background: var(--neon);
   }
 }
 
@@ -33,12 +32,8 @@
   }
 
   .cv-title {
-    background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text);
     margin: 0;
-    font-weight: 500;
   }
 
   .terminal-dots {
@@ -52,13 +47,13 @@
       border-radius: 50%;
 
       &.red {
-        background: #ff5f56;
+        background: var(--danger);
       }
       &.yellow {
-        background: #ffbd2e;
+        background: var(--warning);
       }
       &.green {
-        background: #27c93f;
+        background: var(--success);
       }
     }
   }
@@ -70,10 +65,8 @@
 
 .cv-control-panel {
   background: var(--card-bg);
-  border-radius: var(--radius-lg);
   padding: 1.5rem;
-  border: 1px solid var(--neon-border);
-  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
 
   .panel-header {
     display: flex;
@@ -86,7 +79,6 @@
     }
     h3 {
       margin: 0;
-      font-weight: 500;
     }
   }
 }
@@ -106,8 +98,7 @@
     justify-content: center;
     gap: 10px;
     padding: 14px;
-    border-radius: var(--radius-lg);
-    font-family: "JetBrains Mono", monospace;
+    font-family: var(--font-jetbrains-mono), monospace;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -115,8 +106,7 @@
     transition:
       background 0.2s ease,
       border-color 0.2s ease,
-      box-shadow 0.2s ease,
-      transform 0.2s ease;
+      box-shadow 0.2s ease;
     border: none;
 
     &.preview-btn {
@@ -126,21 +116,16 @@
 
       &:hover {
         background: var(--neon-subtle);
-        border-color: rgba(111, 0, 255, 0.5);
+        border-color: var(--neon);
       }
     }
 
     &.download-btn {
-      background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
-      color: white;
+      background: var(--gradient-cta);
+      color: #fff;
 
       &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(111, 0, 255, 0.4);
-      }
-
-      &:active {
-        transform: translateY(0);
+        box-shadow: var(--shadow-neon);
       }
     }
   }
@@ -168,18 +153,15 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
   }
 
   .modal-content {
     position: relative;
     background: var(--bg);
-    border-radius: var(--radius-lg);
     width: 90%;
     max-width: 1000px;
     height: 90vh;
     border: 1px solid var(--neon-border);
-    box-shadow: 0 0 40px rgba(111, 0, 255, 0.15);
     display: flex;
     flex-direction: column;
     z-index: 10001;
@@ -190,13 +172,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 1.5rem;
-    background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    background: var(--neon);
+    border-bottom: 1px solid var(--border);
 
     h3 {
       margin: 0;
       color: white;
-      font-weight: 500;
     }
 
     .close-btn {
@@ -206,7 +187,6 @@
       cursor: pointer;
       width: 36px;
       height: 36px;
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -232,12 +212,11 @@
     border-top: 1px solid var(--border);
 
     .modal-download-btn {
-      background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
+      background: var(--gradient-cta);
       color: white;
       border: none;
       padding: 12px 28px;
-      border-radius: var(--radius-lg);
-      font-family: "JetBrains Mono", monospace;
+      font-family: var(--font-jetbrains-mono), monospace;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -245,13 +224,10 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition:
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
+      transition: box-shadow 0.2s ease;
 
       &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(111, 0, 255, 0.4);
+        box-shadow: var(--shadow-neon);
       }
     }
   }
@@ -265,7 +241,6 @@
   .cv-section {
     padding: 1rem;
     margin: 1.5rem 0;
-    border-radius: var(--radius-lg);
   }
 
   .cv-header {

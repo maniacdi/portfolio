@@ -72,22 +72,40 @@ export default async function BlogPostPage({
     ? new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(new Date(meta.date))
     : "";
 
+  const postUrl = `${BASE_URL}${locale === "es" ? "" : "/en"}/blog/${slug}`;
+  const blogUrl = `${BASE_URL}${locale === "es" ? "" : "/en"}/blog`;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: meta.title,
     description: meta.excerpt,
     datePublished: meta.date,
-    url: `${BASE_URL}${locale === "es" ? "" : "/en"}/blog/${slug}`,
-    image: meta.cover ? `${BASE_URL}${meta.cover}` : undefined,
+    dateModified: meta.date,
+    url: postUrl,
+    image: meta.cover ? `${BASE_URL}${meta.cover}` : `${BASE_URL}/images/og-image.jpg`,
     keywords: meta.tags.join(", "),
     author: { "@type": "Person", name: "Javi García Magaldi", url: BASE_URL },
-    mainEntityOfPage: `${BASE_URL}${locale === "es" ? "" : "/en"}/blog/${slug}`,
+    publisher: { "@type": "Person", name: "Javi García Magaldi", url: BASE_URL },
+    mainEntityOfPage: postUrl,
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Blog", item: blogUrl },
+      { "@type": "ListItem", position: 2, name: meta.title, item: postUrl },
+    ],
   };
 
   return (
     <main className="page-container blog-post">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
 
       <LocalizedLink href="/blog" className="blog-back">
         <ArrowLeft size={16} />
