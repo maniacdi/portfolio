@@ -138,7 +138,8 @@
 
     @media (max-width: 768px) {
       padding: 1rem 1.25rem;
-      flex: 1 1 calc(50% - 0.5rem);
+      /* Una columna: los labels mono uppercase no caben a 2 por fila */
+      flex: 1 1 100%;
       min-width: 0;
     }
 
