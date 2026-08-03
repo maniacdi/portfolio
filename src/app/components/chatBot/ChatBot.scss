@@ -384,6 +384,26 @@
    CHATBOT - INPUT
 ============================================ */
 
+/* Aviso de tratamiento: el prompt sale a un tercero (Groq). */
+.chatbot-disclaimer {
+  padding: 0 1rem 0.75rem;
+  background: var(--bg);
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  text-align: left;
+
+  a {
+    color: var(--neon-mid);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: var(--text);
+    }
+  }
+}
+
 .chatbot-input {
   display: flex;
   gap: 0.625rem;

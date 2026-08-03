@@ -14,6 +14,8 @@ type Entry = { path: string; lastmod: string; priority: number };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = ["/", "/about", "/code", "/travels", "/hobbies", "/projects", "/blog"];
+  // Indexable but low priority: they must be findable, not compete for ranking.
+  const legalPages = ["/legal", "/privacy", "/cookies"];
 
   const projects = await fetchProjects();
   const postSlugs = getPostSlugs();
@@ -23,6 +25,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       path,
       lastmod: SITE_LAST_UPDATED,
       priority: path === "/" ? 1.0 : 0.8,
+    })),
+    ...legalPages.map((path) => ({
+      path,
+      lastmod: SITE_LAST_UPDATED,
+      priority: 0.3,
     })),
     ...projects.map((p) => ({
       path: `/projects/${p.slug}`,

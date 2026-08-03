@@ -16,12 +16,21 @@ import {
 
 import LocalizedLink from "../common/LocalizedLink";
 import Logo from "../common/Logo";
+import CookiePreferencesButton from "../legal/CookiePreferencesButton";
 
 import "./Footer.scss";
 
 export default function Footer() {
   const t = useTranslations("footer");
+  const tLegal = useTranslations("legal");
   const year = new Date().getFullYear();
+
+  // Required by LSSI-CE art. 10 and RGPD art. 13: reachable from every page.
+  const legalLinks = [
+    { href: "/legal", label: tLegal("notice") },
+    { href: "/privacy", label: tLegal("privacy") },
+    { href: "/cookies", label: tLegal("cookies") },
+  ];
 
   // Hobbies hidden (route kept alive). Travels stays here in footer.
   const quickLinks = [
@@ -127,6 +136,15 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
+        <nav className="footer-legal" aria-label={tLegal("navLabel")}>
+          {legalLinks.map((link) => (
+            <LocalizedLink key={link.href} href={link.href} className="footer-legal-link">
+              {link.label}
+            </LocalizedLink>
+          ))}
+          <CookiePreferencesButton className="footer-legal-link footer-legal-button" />
+        </nav>
+
         <div className="footer-bottom-content">
           <div className="footer-copyright">
             <span>© {year} Magaldidev</span>

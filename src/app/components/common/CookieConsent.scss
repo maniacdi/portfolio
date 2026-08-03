@@ -1,0 +1,233 @@
+/* ============================================
+   COOKIE CONSENT — neón brutalista
+   Tinta sólida, radius 0, borde 1px, sin glass.
+============================================ */
+
+.cookie-consent {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 9000;
+  background: var(--bg2);
+  border-top: 2px solid var(--neon);
+}
+
+.cookie-consent__inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--padding-md) var(--content-pad);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  text-align: left;
+}
+
+.cookie-consent__close {
+  position: absolute;
+  top: 0.75rem;
+  right: var(--content-pad);
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text);
+    border-color: var(--neon);
+  }
+}
+
+.cookie-consent__head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cookie-consent__icon {
+  color: var(--neon-mid);
+  flex-shrink: 0;
+}
+
+.cookie-consent__title {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text);
+
+  &::after {
+    content: "_";
+    color: var(--neon-mid);
+    margin-left: 0.08em;
+    animation: cursor-blink 1.1s steps(2, start) infinite;
+  }
+}
+
+.cookie-consent__text {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 70ch;
+}
+
+.cookie-consent__link {
+  color: var(--neon-mid);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover {
+    color: var(--text);
+  }
+}
+
+/* ----- Granular options ----- */
+
+.cookie-consent__options {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  list-style: none;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+
+.cookie-consent__option {
+  background: var(--bg3);
+  padding: 0.7rem 0.9rem;
+
+  label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    cursor: pointer;
+  }
+
+  input[type="checkbox"] {
+    margin-top: 0.15rem;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    accent-color: var(--neon);
+    cursor: pointer;
+  }
+
+  .option-name {
+    display: block;
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .option-desc {
+    display: block;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--text-muted);
+  }
+
+  &--locked {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    color: var(--text-muted);
+
+    svg {
+      margin-top: 0.15rem;
+      color: var(--success);
+      flex-shrink: 0;
+    }
+
+    .option-always {
+      margin-left: auto;
+      font-family: var(--font-jetbrains-mono), monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--success);
+      white-space: nowrap;
+    }
+  }
+}
+
+/* ----- Actions -----
+   Reject and accept share size and weight on purpose: rejecting cannot be
+   harder than accepting (RGPD art. 7.3 / AEPD cookie guidance). */
+
+.cookie-consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.cc-btn {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.6rem 1.1rem;
+  min-width: 140px;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &--solid {
+    background: var(--neon);
+    color: #fff;
+    border-color: var(--neon);
+
+    &:hover {
+      box-shadow: var(--shadow-neon);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--neon);
+
+    &:hover {
+      background: var(--neon-subtle);
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border-color: var(--border2);
+    min-width: auto;
+
+    &:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--neon-mid);
+    outline-offset: 2px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cookie-consent__actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .cc-btn {
+    width: 100%;
+  }
+}

@@ -282,6 +282,49 @@
   }
 }
 
+/* Legal row: aviso legal / privacidad / cookies + revocar consentimiento.
+   Debe estar accesible desde cualquier página (LSSI-CE art. 10). */
+.footer-legal {
+  max-width: 1400px;
+  margin: 0 auto 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.footer-legal-link {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--neon-mid);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--neon-mid);
+    outline-offset: 2px;
+  }
+}
+
+.footer-legal-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 .footer-bottom-content {
   max-width: 1400px;
   margin: 0 auto;

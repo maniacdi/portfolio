@@ -4,7 +4,7 @@ import { JetBrains_Mono,Orbitron, Space_Grotesk } from "next/font/google";
 import { getLocale } from "next-intl/server";
 
 import "../styles/globals.scss";
-import GoogleAnalytics from "./components/common/GoogleAnalytics";
+import ConsentedTracking from "./components/common/ConsentedTracking";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -46,7 +46,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang={locale || "es"}>
       <body className={`${spaceGrotesk.variable} ${orbitron.variable} ${jetBrainsMono.variable}`}>
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
+        <ConsentedTracking gaId={process.env.NEXT_PUBLIC_GA_ID} />
         {children}
       </body>
     </html>

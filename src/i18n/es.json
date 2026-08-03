@@ -327,7 +327,8 @@
     "send": "Enviar",
     "poweredBy": "Powered by",
     "noCost": "Sin costos de API",
-    "typing": "Escribiendo..."
+    "typing": "Escribiendo...",
+    "disclaimer": "Tus mensajes se envían a un modelo de IA (Groq, EE. UU.) para generar la respuesta. No escribas datos personales ni información confidencial. <link>Más info</link>."
   },
   "toast": {
     "success": "¡Éxito!",
@@ -404,7 +405,10 @@
     "successMessage": "Gracias por escribirme. Te responderé lo antes posible.",
     "sendAnother": "Enviar otro mensaje",
     "errorMessage": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme directamente a magaldi6@gmail.com.",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "privacyConsent": "He leído y acepto la <link>política de privacidad</link>.",
+    "privacyBasic": "Responsable: Javier García Magaldi. Finalidad: responder a tu consulta y preparar un presupuesto si procede. Base jurídica: tu consentimiento. Destinatarios: Web3Forms como encargado del envío. Derechos: acceso, rectificación, supresión y oposición escribiendo a magaldi6@gmail.com.",
+    "privacyRequired": "Tienes que aceptar la política de privacidad para poder enviar el mensaje."
   },
   "services": {
     "label": "SERVICIOS",
@@ -435,5 +439,30 @@
       "desc": "Empresas: además de freelance, estoy abierto a incorporarme a un equipo como desarrollador full-stack. Hablemos.",
       "cta": "Escríbeme"
     }
+  },
+  "legal": {
+    "notice": "Aviso legal",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "cookiePrefs": "Preferencias de cookies",
+    "navLabel": "Información legal"
+  },
+  "cookieConsent": {
+    "title": "Cookies",
+    "body": "Uso cookies propias necesarias para que la web funcione y, solo si me das permiso, analítica y grabación de sesión para entender qué falla y qué se lee. Puedes rechazarlo todo y seguir navegando igual.",
+    "cookiesLink": "Política de cookies",
+    "privacyLink": "Política de privacidad",
+    "configure": "Configurar",
+    "savePreferences": "Guardar preferencias",
+    "rejectAll": "Rechazar todo",
+    "acceptAll": "Aceptar todo",
+    "close": "Cerrar panel",
+    "alwaysOn": "Siempre activas",
+    "necessaryName": "Necesarias",
+    "necessaryDesc": "Idioma, tema y tu propia decisión sobre cookies. Sin ellas la web no funciona, así que no requieren consentimiento.",
+    "analyticsName": "Analítica (Google Analytics 4)",
+    "analyticsDesc": "Visitas y páginas más leídas. Instala cookies de Google y puede implicar transferencia a EE. UU.",
+    "monitoringName": "Grabación de sesión (Sentry)",
+    "monitoringDesc": "Reconstruye tu navegación cuando salta un error, para poder reproducirlo. El aviso de errores sin grabación funciona siempre y no guarda datos identificativos."
   }
 }

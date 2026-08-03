@@ -9,6 +9,8 @@ import { Bot, Maximize2, MessageCircle, Minimize2, Send, Sparkles, User, X } fro
 import { calculateTypingDelay, getChatResponse, isValidQuestion } from "@/app/services/chatEngine";
 import { useChatbotStore } from "@/app/store/useChatbotStore";
 
+import LocalizedLink from "../common/LocalizedLink";
+
 import "./ChatBot.scss";
 
 interface Message {
@@ -278,6 +280,18 @@ export default function ChatBot() {
                 <Send size={18} />
               </button>
             </div>
+
+            {/* The prompt is sent to a third-party model (Groq, USA): say so
+                where the user types, not only in the privacy policy. */}
+            <p className="chatbot-disclaimer">
+              {t.rich("disclaimer", {
+                link: (chunks) => (
+                  <LocalizedLink href="/privacy" target="_blank" rel="noopener noreferrer">
+                    {chunks}
+                  </LocalizedLink>
+                ),
+              })}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>

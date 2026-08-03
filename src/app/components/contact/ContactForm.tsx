@@ -6,6 +6,8 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Briefcase, CheckCircle, Loader2, Mail, MessageSquare, Send, User } from "lucide-react";
 
+import PrivacyConsentField from "./PrivacyConsentField";
+
 import "./ContactForm.scss";
 
 
@@ -28,6 +30,7 @@ export default function ContactForm() {
   const [form, setForm] = useState<FormData>({ name: "", email: "", message: "", service: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -37,6 +40,11 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Belt and braces: the checkbox is `required`, but never send personal data
+    // without consent if the native validation is bypassed.
+    if (!privacyAccepted) return;
+
     setStatus("sending");
 
     try {
@@ -49,6 +57,8 @@ export default function ContactForm() {
           email: form.email,
           message: form.message,
           service: form.service ? serviceLabel(form.service) : "—",
+          // Record of consent (RGPD art. 7.1) travels with the submission.
+          privacy_accepted: "yes",
           subject: `Portfolio Contact — ${form.name}${
             form.service ? ` (${serviceLabel(form.service)})` : ""
           }`,
@@ -58,6 +68,7 @@ export default function ContactForm() {
       if (res.ok) {
         setStatus("success");
         setForm({ name: "", email: "", message: "", service: "" });
+        setPrivacyAccepted(false);
       } else {
         setStatus("error");
       }
@@ -209,6 +220,13 @@ export default function ContactForm() {
             placeholder={t("messagePlaceholder")}
           />
         </div>
+
+        {/* Privacy consent — RGPD art. 13 first layer + art. 6.1.a */}
+        <PrivacyConsentField
+          id="cf-privacy"
+          checked={privacyAccepted}
+          onChange={setPrivacyAccepted}
+        />
 
         {/* Error */}
         {status === "error" && (

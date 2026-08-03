@@ -327,7 +327,8 @@
     "send": "Send",
     "poweredBy": "Powered by",
     "noCost": "No API costs",
-    "typing": "Typing..."
+    "typing": "Typing...",
+    "disclaimer": "Your messages are sent to an AI model (Groq, USA) to generate the reply. Do not type personal or confidential information. <link>More info</link>."
   },
   "toast": {
     "success": "Success!",
@@ -405,7 +406,10 @@
     "successMessage": "Thanks for reaching out. I'll get back to you as soon as possible.",
     "sendAnother": "Send another message",
     "errorMessage": "Couldn't send the message. Try again or email me directly at magaldi6@gmail.com.",
-    "close": "Close"
+    "close": "Close",
+    "privacyConsent": "I have read and accept the <link>privacy policy</link>.",
+    "privacyBasic": "Controller: Javier García Magaldi. Purpose: reply to your enquiry and prepare a quote where relevant. Legal basis: your consent. Recipients: Web3Forms as the delivery processor. Rights: access, rectification, erasure and objection by writing to magaldi6@gmail.com.",
+    "privacyRequired": "You need to accept the privacy policy before sending the message."
   },
   "services": {
     "label": "SERVICES",
@@ -436,5 +440,30 @@
       "desc": "Companies: beyond freelance, I'm open to joining a team as a full-stack developer. Let's talk.",
       "cta": "Reach out"
     }
+  },
+  "legal": {
+    "notice": "Legal notice",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "cookiePrefs": "Cookie preferences",
+    "navLabel": "Legal information"
+  },
+  "cookieConsent": {
+    "title": "Cookies",
+    "body": "I use first-party cookies that the site needs to work and, only if you allow it, analytics and session replay to understand what breaks and what gets read. You can reject everything and keep browsing just the same.",
+    "cookiesLink": "Cookie policy",
+    "privacyLink": "Privacy policy",
+    "configure": "Configure",
+    "savePreferences": "Save preferences",
+    "rejectAll": "Reject all",
+    "acceptAll": "Accept all",
+    "close": "Close panel",
+    "alwaysOn": "Always on",
+    "necessaryName": "Necessary",
+    "necessaryDesc": "Language, theme and your own cookie decision. The site does not work without them, so they need no consent.",
+    "analyticsName": "Analytics (Google Analytics 4)",
+    "analyticsDesc": "Visits and most-read pages. Sets Google cookies and may involve a transfer to the USA.",
+    "monitoringName": "Session replay (Sentry)",
+    "monitoringDesc": "Reconstructs your browsing when an error fires so it can be reproduced. Plain error reporting works at all times and stores no identifying data."
   }
 }

@@ -8,6 +8,8 @@ import { Briefcase, CheckCircle, Loader2, Mail, MessageSquare, Send, User, X } f
 
 import { useContactModalStore } from "@/app/store/useContactModalStore";
 
+import PrivacyConsentField from "./PrivacyConsentField";
+
 import "./ContactModal.scss";
 
 interface FormData {
@@ -27,6 +29,7 @@ export default function ContactModal() {
   const [form, setForm] = useState<FormData>({ name: "", email: "", message: "", service: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const backdropRef = useRef<HTMLDivElement>(null);
   const { isOpen, close, selectedService } = useContactModalStore();
 
@@ -75,6 +78,11 @@ export default function ContactModal() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Belt and braces: the checkbox is `required`, but never send personal data
+    // without consent if the native validation is bypassed.
+    if (!privacyAccepted) return;
+
     setStatus("sending");
 
     try {
@@ -87,6 +95,8 @@ export default function ContactModal() {
           email: form.email,
           message: form.message,
           service: form.service ? serviceLabel(form.service) : "—",
+          // Record of consent (RGPD art. 7.1) travels with the submission.
+          privacy_accepted: "yes",
           subject: `Portfolio Contact — ${form.name}${
             form.service ? ` (${serviceLabel(form.service)})` : ""
           }`,
@@ -96,6 +106,7 @@ export default function ContactModal() {
       if (res.ok) {
         setStatus("success");
         setForm({ name: "", email: "", message: "", service: "" });
+        setPrivacyAccepted(false);
       } else {
         setStatus("error");
       }
@@ -114,6 +125,7 @@ export default function ContactModal() {
     setTimeout(() => {
       setStatus("idle");
       setForm({ name: "", email: "", message: "", service: "" });
+      setPrivacyAccepted(false);
     }, 300);
   };
 
@@ -248,6 +260,13 @@ export default function ContactModal() {
                       placeholder={t("messagePlaceholder")}
                     />
                   </div>
+
+                  {/* Privacy consent — RGPD art. 13 first layer + art. 6.1.a */}
+                  <PrivacyConsentField
+                    id="modal-privacy"
+                    checked={privacyAccepted}
+                    onChange={setPrivacyAccepted}
+                  />
 
                   {status === "error" && (
                     <motion.p
