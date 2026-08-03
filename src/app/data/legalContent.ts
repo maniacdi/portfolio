@@ -6,8 +6,6 @@
  * only ever read on three pages. Here they stay in the server bundle of those
  * routes.
  *
- * ⚠️ Los valores marcados como PENDING deben rellenarse antes de publicar:
- *    son obligatorios (LSSI-CE art. 10 / RGPD art. 13) y no se pueden inventar.
  */
 
 export const OWNER = {
