@@ -3,8 +3,9 @@ import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono,Orbitron, Space_Grotesk } from "next/font/google";
 import { getLocale } from "next-intl/server";
 
-import "../styles/globals.scss";
 import ConsentedTracking from "./components/common/ConsentedTracking";
+
+import "../styles/globals.scss";
 
 export const viewport: Viewport = {
   width: "device-width",

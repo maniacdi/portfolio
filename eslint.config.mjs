@@ -109,6 +109,19 @@ const config = [
     },
   },
 
+  // Scripts de utilidad en docs/: corren en Node, no en el navegador
+  {
+    files: ["docs/**/*.mjs"],
+    languageOptions: {
+      globals: {
+        console: "readonly",
+        fetch: "readonly",
+        process: "readonly",
+        URL: "readonly",
+      },
+    },
+  },
+
   prettier,
 ];
 

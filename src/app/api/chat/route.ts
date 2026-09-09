@@ -1,28 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { clientIp, consume } from "@/utils/rateLimit";
+
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
 
-// Rate limiting simple en memoria (en producción usar Redis/Upstash)
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT = 20; // requests por minuto por IP
-const RATE_WINDOW = 60_000; // 1 minuto
+// Cada llamada gasta tokens de Groq, así que hay dos ventanas: una corta para
+// el que le da en bucle y una larga para el que va a goteo.
+const RATE_WINDOWS = [
+  { limit: 15, windowMs: 60_000 }, // 15 por minuto
+  { limit: 80, windowMs: 60 * 60_000 }, // 80 por hora
+];
 
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
+// Límites del payload. El historial lo manda el cliente, así que aquí se
+// recorta: sin esto se pueden colar 6 mensajes gigantes e inflar la factura.
+const MAX_MESSAGE_LENGTH = 500;
+const MAX_HISTORY_MESSAGES = 6;
 
-  if (!entry || now > entry.resetTime) {
-    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_WINDOW });
-    return true;
-  }
+interface HistoryMessage {
+  type: string;
+  content: string;
+}
 
-  if (entry.count >= RATE_LIMIT) {
-    return false;
-  }
+function sanitizeHistory(raw: unknown): HistoryMessage[] {
+  if (!Array.isArray(raw)) return [];
 
-  entry.count++;
-  return true;
+  return raw
+    .filter(
+      (item): item is HistoryMessage =>
+        !!item &&
+        typeof item === "object" &&
+        typeof (item as HistoryMessage).type === "string" &&
+        typeof (item as HistoryMessage).content === "string"
+    )
+    .slice(-MAX_HISTORY_MESSAGES)
+    .map((item) => ({ type: item.type, content: item.content.slice(0, MAX_MESSAGE_LENGTH) }));
 }
 
 // System prompt con toda la info de Javi
@@ -98,6 +110,16 @@ PROYECTOS PERSONALES:
 4. Marvel Explorer: Integración con Marvel API
 5. Pokemon App: Backend Node.js con PokéAPI
 
+PROYECTOS DE CLIENTE (trabajo freelance real, con permiso para mencionarlo):
+1. Ū Medicina Estética (umedicinaestetica.com, EN PRODUCCIÓN): web pública bilingüe y panel
+   de gestión para una clínica de medicina estética de Santander. Next.js, PostgreSQL (Neon)
+   con Drizzle, Clerk, Resend, desplegado en Vercel. Agenda, citas, contenidos editables por
+   la clínica y tareas automáticas (recordatorios de cita). Proyecto con datos de salud, así
+   que RGPD y trazabilidad de accesos desde el diseño.
+   Si preguntan por este proyecto: NO dar detalles de pacientes ni datos internos de la clínica.
+2. Ū Skin Store (en desarrollo): tienda Shopify para la misma clínica, con productos de
+   distribución selectiva que solo se compran con un código, y carga de catálogo automatizada.
+
 IDIOMAS: Español (nativo), Inglés (B2-C1 profesional)
 
 HOBBIES: Viajes (15+ países), anime (Naruto fan), videojuegos, tecnología, home server con Docker
@@ -116,30 +138,47 @@ export async function POST(request: NextRequest) {
     }
 
     // Rate limiting
-    const ip = request.headers.get("x-forwarded-for") || "unknown";
-    if (!checkRateLimit(ip)) {
+    const ip = clientIp(request.headers);
+    const { allowed, retryAfterSeconds } = consume(ip ?? "sin-ip", RATE_WINDOWS);
+    if (!allowed) {
       return NextResponse.json(
-        { error: "Demasiadas peticiones. Intenta de nuevo en un minuto." },
-        { status: 429 }
+        { error: "Demasiadas peticiones. Intenta de nuevo en un rato." },
+        { status: 429, headers: { "Retry-After": String(retryAfterSeconds) } }
       );
     }
 
     // Parsear body
-    const body = await request.json();
-    const { message, locale = "es", history = [] } = body;
+    let body: unknown;
+    try {
+      body = await request.json();
+    } catch {
+      return NextResponse.json({ error: "Body inválido" }, { status: 400 });
+    }
 
-    if (!message || typeof message !== "string" || message.length > 500) {
+    const {
+      message,
+      locale: rawLocale,
+      history: rawHistory,
+    } = (body ?? {}) as {
+      message?: unknown;
+      locale?: unknown;
+      history?: unknown;
+    };
+
+    if (typeof message !== "string" || !message.trim() || message.length > MAX_MESSAGE_LENGTH) {
       return NextResponse.json(
         { error: "Mensaje inválido" },
         { status: 400 }
       );
     }
 
+    const locale = rawLocale === "en" ? "en" : "es";
+
     // Construir mensajes para Groq
     const messages = [
       { role: "system" as const, content: SYSTEM_PROMPT },
-      // Incluir las últimas 6 mensajes del historial para contexto
-      ...history.slice(-6).map((msg: { type: string; content: string }) => ({
+      // Últimos mensajes del historial para contexto, ya recortados
+      ...sanitizeHistory(rawHistory).map((msg) => ({
         role: msg.type === "user" ? ("user" as const) : ("assistant" as const),
         content: msg.content,
       })),
@@ -179,10 +218,6 @@ export async function POST(request: NextRequest) {
 
     const data = await response.json();
     const aiAnswer = data.choices?.[0]?.message?.content || "";
-
-    // Extraer followUp del response (el modelo incluye sugerencias al final)
-    // Intentar parsear sugerencias si el modelo las incluye
-    const followUpMatch = aiAnswer.match(/(?:Sugerencias?|Suggestions?|followUp|También puedes preguntar)[:.]?\s*[-•]?\s*(.+)/i);
 
     const answer = aiAnswer;
     let followUp: string[] = [];
