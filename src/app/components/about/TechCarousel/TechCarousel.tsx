@@ -5,10 +5,13 @@ import { FaAws, FaJava } from "react-icons/fa";
 import { RiReactjsLine } from "react-icons/ri";
 import {
   SiBitbucket,
+  SiBrevo,
+  SiClerk,
   SiConfluence,
   SiCss,
   SiCypress,
   SiDocker,
+  SiDrizzle,
   SiEslint,
   SiExpo,
   SiExpress,
@@ -31,20 +34,27 @@ import {
   SiNotion,
   SiNpm,
   SiPnpm,
+  SiPostgresql,
   SiPostman,
   SiPrettier,
+  SiPython,
+  SiRadixui,
   SiReact,
   SiRedis,
   SiRedux,
+  SiResend,
   SiSass,
+  SiShopify,
   SiSlack,
   SiSocketdotio,
   SiSpringboot,
+  SiSupabase,
   SiTailwindcss,
   SiTypescript,
   SiUbuntu,
   SiVercel,
   SiVite,
+  SiVitest,
   SiVuedotjs,
   SiWebpack,
 } from "react-icons/si";
@@ -135,6 +145,13 @@ export default function TechCarousel() {
       color: "#6DB33F",
       category: "backend",
     },
+    {
+      id: "python",
+      name: "Python",
+      icon: <SiPython />,
+      color: "#3776AB",
+      category: "backend",
+    },
 
     // ============================================
     // STYLING
@@ -165,6 +182,13 @@ export default function TechCarousel() {
       name: "Tailwind CSS",
       icon: <SiTailwindcss />,
       color: "#06B6D4",
+      category: "frontend",
+    },
+    {
+      id: "radix",
+      name: "Radix UI",
+      icon: <SiRadixui />,
+      color: "#ffffff",
       category: "frontend",
     },
 
@@ -260,6 +284,34 @@ export default function TechCarousel() {
       color: "#E10098",
       category: "backend",
     },
+    {
+      id: "clerk",
+      name: "Clerk",
+      icon: <SiClerk />,
+      color: "#6C47FF",
+      category: "backend",
+    },
+    {
+      id: "resend",
+      name: "Resend",
+      icon: <SiResend />,
+      color: "#ffffff",
+      category: "backend",
+    },
+    {
+      id: "brevo",
+      name: "Brevo",
+      icon: <SiBrevo />,
+      color: "#0B996E",
+      category: "backend",
+    },
+    {
+      id: "shopify",
+      name: "Shopify",
+      icon: <SiShopify />,
+      color: "#7AB55C",
+      category: "backend",
+    },
 
     // ============================================
     // DATABASES
@@ -285,6 +337,27 @@ export default function TechCarousel() {
       color: "#FF4438",
       category: "database",
     },
+    {
+      id: "postgresql",
+      name: "PostgreSQL",
+      icon: <SiPostgresql />,
+      color: "#4169E1",
+      category: "database",
+    },
+    {
+      id: "supabase",
+      name: "Supabase",
+      icon: <SiSupabase />,
+      color: "#3FCF8E",
+      category: "database",
+    },
+    {
+      id: "drizzle",
+      name: "Drizzle ORM",
+      icon: <SiDrizzle />,
+      color: "#C5F74F",
+      category: "database",
+    },
 
     // ============================================
     // TESTING
@@ -301,6 +374,13 @@ export default function TechCarousel() {
       name: "Cypress",
       icon: <SiCypress />,
       color: "#17202C",
+      category: "tools",
+    },
+    {
+      id: "vitest",
+      name: "Vitest",
+      icon: <SiVitest />,
+      color: "#6E9F18",
       category: "tools",
     },
 

@@ -16,6 +16,27 @@ export interface Project {
 
 export const FEATURED_PROJECTS: Project[] = [
   {
+    slug: "umedicinaestetica",
+    title: "Ū Medicina Estética",
+    descriptionKey: "umedicinaesteticaDesc",
+    category: "web",
+    tags: ["Next.js", "TypeScript", "Postgres", "Drizzle", "Clerk", "Tailwind", "Vercel"],
+    status: "production",
+    demo: "https://umedicinaestetica.com",
+    featured: true,
+    image: "/images/projects/umedicinaestetica/cover.webp",
+  },
+  {
+    slug: "uskinstore",
+    title: "Ū Skin Store",
+    descriptionKey: "uskinstoreDesc",
+    category: "web",
+    tags: ["Shopify", "Liquid", "Shopify Functions", "Next.js", "Postgres", "Python"],
+    status: "production",
+    demo: "https://uskinstore.com",
+    image: "/images/projects/uskinstore/cover.webp",
+  },
+  {
     slug: "showcase",
     title: "Showcase",
     descriptionKey: "showcaseDesc",
@@ -37,6 +58,16 @@ export const FEATURED_PROJECTS: Project[] = [
     repo: "https://github.com/maniacdi/compras-app",
     featured: true,
     image: "/images/projects/compras-app/cover.webp",
+  },
+  {
+    slug: "boda-web",
+    title: "Web de boda",
+    descriptionKey: "bodaWebDesc",
+    category: "web",
+    tags: ["React", "TypeScript", "Vite", "Supabase", "Postgres", "Brevo", "Vercel"],
+    status: "production",
+    demo: "https://elena-y-javier.vercel.app",
+    image: "/images/projects/boda-web/cover.webp",
   },
   {
     slug: "ironlog",
