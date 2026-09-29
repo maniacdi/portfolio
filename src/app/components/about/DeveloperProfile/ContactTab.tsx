@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronRight,Github, Globe, Linkedin, Mail } from "lucide-react";
+import { ChevronRight, Github, Linkedin, Mail } from "lucide-react";
 
 import { useContactModalStore } from "@/app/store/useContactModalStore";
 import type { ProfileData } from "@/utils/data/profileData";
@@ -41,13 +41,6 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
       link: `https://${data.linkedin}`,
       color: "#0A66C2",
       ariaLabel: "Visit LinkedIn profile",
-    },
-    {
-      icon: Globe,
-      title: t("new"),
-      value: t("soon"),
-      color: "#10B981",
-      ariaLabel: "Personal website coming soon",
     },
   ];
 
