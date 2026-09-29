@@ -388,7 +388,9 @@
     "readMore": "Leer más",
     "back": "Blog",
     "allPosts": "Volver al blog",
-    "relatedProject": "Ver el proyecto"
+    "relatedProject": "Ver el proyecto",
+    "readingTime": "{minutes} min de lectura",
+    "relatedPosts": "Sigue leyendo"
   },
   "contactForm": {
     "label": "CONTACTO",

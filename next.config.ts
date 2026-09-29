@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 import withNextIntl from "next-intl/plugin";
 
-import { withSentryConfig } from "@sentry/nextjs";
+import { withSentryConfig } from "@sentry/nextjs/config";
 
 const nextConfig: NextConfig = {
   // React Compiler (opcional pero recomendado si usas React 19)
@@ -32,37 +32,6 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
-  },
-
-  // Webpack configuration optimizada
-  webpack: (config, { isServer, dev }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        path: false,
-      };
-    }
-
-    // Optimización para producción
-    if (!dev) {
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: "all",
-          cacheGroups: {
-            framer: {
-              test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
-              name: "framer",
-              priority: 9,
-              chunks: "all",
-            },
-          },
-        },
-      };
-    }
-
-    return config;
   },
 
   // Compression

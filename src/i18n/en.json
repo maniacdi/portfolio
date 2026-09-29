@@ -388,9 +388,10 @@
     "readMore": "Read more",
     "back": "Blog",
     "allPosts": "Back to the blog",
-    "relatedProject": "View the project"
+    "relatedProject": "View the project",
+    "readingTime": "{minutes} min read",
+    "relatedPosts": "Keep reading"
   },
-
   "contactForm": {
     "label": "CONTACT",
     "title": "Let's talk",

@@ -46,12 +46,12 @@ This isn't a template — every component, animation, and interaction was built 
 | **State** | Zustand (with persist middleware) |
 | **Animations** | Framer Motion |
 | **i18n** | next-intl (EN / ES) |
-| **AI Chatbot** | Groq API (Llama 3.3-70B) with local fallback engine |
+| **AI Chatbot** | Groq API (gpt-oss-120b, streamed) with local fallback engine |
 | **Maps** | Leaflet (dynamic import, SSR-safe) |
 | **Forms** | Web3Forms API |
 | **Monitoring** | Sentry + Vercel Speed Insights + Vercel Analytics |
 | **Testing** | Cypress (E2E) + Vitest (Unit) |
-| **CI/CD** | GitHub Actions (parallel unit + E2E jobs) |
+| **CI/CD** | GitHub Actions (lint + typecheck, unit, E2E and Lighthouse budget in parallel) |
 | **Deployment** | Vercel |
 
 ---
@@ -62,13 +62,13 @@ This isn't a template — every component, animation, and interaction was built 
 
 **Internationalization** — Full EN/ES support via next-intl. Language switcher preserves current route. All UI strings, metadata, and SEO tags are localized.
 
-**AI Chatbot** — Ask the bot about Javi's experience, tech stack, or projects. Powered by Groq (Llama 3.3-70B) with rate limiting and a keyword-based local fallback when the API is unavailable.
+**AI Chatbot** — Ask the bot about Javi's experience, tech stack, or projects. Powered by Groq (gpt-oss-120b) with streamed answers, rate limiting and a keyword-based local fallback when the API is unavailable. The system prompt is built from the same data the site renders, so the bot never drifts from the CV.
 
 **Interactive Sections** — Travel map with Leaflet markers, project cards linked to GitHub repos, tech stack carousel with proficiency levels, easter eggs hidden across the site.
 
 **Performance** — Optimized bundle (Three.js removed, tree-shaken imports), standalone output, Vercel Speed Insights tracking Core Web Vitals.
 
-**Testing & CI** — Cypress E2E covering navigation, theme toggle, contact modal, language switching. Vitest unit tests for chat engine, stores, profile data, easter eggs. GitHub Actions runs both in parallel on every push.
+**Testing & CI** — Cypress E2E covering navigation, theme toggle, contact modal, language switching. Vitest unit tests for chat engine, stores, profile data, easter eggs. GitHub Actions runs them in parallel on every push, next to lint, typecheck and a Lighthouse CI budget (accessibility, SEO and CLS fail the build; performance warns).
 
 ---
 
@@ -104,6 +104,9 @@ __tests__/                 # Vitest unit tests
 # Clone
 git clone https://github.com/maniacdi/portfolio.git
 cd portfolio
+
+# Node version (see .nvmrc; Vitest needs >= 20.19)
+nvm use
 
 # Install
 npm install
@@ -142,6 +145,7 @@ The site is deployed on **Vercel** with automatic deployments on push to `main`.
 | Variable | Description |
 |---|---|
 | `GROQ_API_KEY` | Groq API key for AI chatbot (server-side) |
+| `GROQ_MODEL` | Optional. Groq model id, defaults to `openai/gpt-oss-120b` |
 | `NEXT_PUBLIC_WEB3FORMS_KEY` | Web3Forms access key for contact form |
 | `NEXT_PUBLIC_SENTRY_DSN` | Sentry DSN for error tracking |
 

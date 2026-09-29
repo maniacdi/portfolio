@@ -37,8 +37,8 @@ export interface LegalDoc {
 export type Locale = "es" | "en";
 
 const UPDATED = {
-  es: "3 de agosto de 2026",
-  en: "3 August 2026",
+  es: "29 de septiembre de 2026",
+  en: "29 September 2026",
 } as const;
 
 /* ============================================================
@@ -87,9 +87,9 @@ const privacyEs: LegalDoc = {
             [
               "Asistente virtual (chatbot)",
               "Contenido de los mensajes que escribes; dirección IP para limitar abuso",
-              "Responder preguntas sobre el portfolio y evitar el uso abusivo del servicio",
-              "Consentimiento al iniciar la conversación e interés legítimo en la seguridad (art. 6.1.a y 6.1.f RGPD)",
-              "Los mensajes no se almacenan en este sitio; la IP se guarda en memoria volátil un máximo de 1 minuto",
+              "Responder preguntas sobre el portfolio, evitar el uso abusivo del servicio y mejorar las respuestas del asistente",
+              "Consentimiento al iniciar la conversación e interés legítimo en la seguridad y en mejorar el servicio (art. 6.1.a y 6.1.f RGPD)",
+              "La pregunta, sin IP ni otros identificadores, queda en los registros del servidor según la retención de Vercel (por defecto, 30 días); la IP se guarda en memoria volátil un máximo de 1 hora",
             ],
             [
               "Analítica web (Google Analytics 4)",
@@ -207,7 +207,7 @@ const privacyEs: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "El contenido que escribes en el chatbot se envía a un modelo de lenguaje alojado por Groq, Inc. para generar la respuesta. No introduzcas datos personales de terceros, credenciales, información confidencial ni datos de categorías especiales (salud, ideología, orientación sexual u otros del art. 9 RGPD). Si necesitas tratar algo así, escríbeme por correo.",
+          text: "El contenido que escribes en el chatbot se envía a un modelo de lenguaje alojado por Groq, Inc. para generar la respuesta. No introduzcas datos personales de terceros, credenciales, información confidencial ni datos de categorías especiales (salud, ideología, orientación sexual u otros del art. 9 RGPD). Si necesitas tratar algo así, escríbeme por correo. El texto de cada pregunta, sin tu IP ni nada que te identifique, queda en los registros del servidor para ver qué se pregunta y mejorar las respuestas.",
         },
       ],
     },
@@ -308,9 +308,9 @@ const privacyEn: LegalDoc = {
             [
               "Virtual assistant (chatbot)",
               "The content of the messages you type; IP address for abuse limiting",
-              "Answer questions about the portfolio and prevent abuse of the service",
-              "Consent when starting the conversation and legitimate interest in security (Art. 6(1)(a) and 6(1)(f) GDPR)",
-              "Messages are not stored on this site; the IP is held in volatile memory for at most 1 minute",
+              "Answer questions about the portfolio, prevent abuse of the service and improve the assistant's answers",
+              "Consent when starting the conversation and legitimate interest in security and in improving the service (Art. 6(1)(a) and 6(1)(f) GDPR)",
+              "The question, without the IP or any other identifier, stays in the server logs as per Vercel's retention (30 days by default); the IP is held in volatile memory for at most 1 hour",
             ],
             [
               "Web analytics (Google Analytics 4)",
@@ -420,7 +420,7 @@ const privacyEn: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "What you type into the chatbot is sent to a language model hosted by Groq, Inc. to generate the reply. Do not enter third-party personal data, credentials, confidential information or special category data (health, beliefs, sexual orientation or others under Art. 9 GDPR). If you need to discuss something like that, email me instead.",
+          text: "What you type into the chatbot is sent to a language model hosted by Groq, Inc. to generate the reply. Do not enter third-party personal data, credentials, confidential information or special category data (health, beliefs, sexual orientation or others under Art. 9 GDPR). If you need to discuss something like that, email me instead. The text of each question, without your IP or anything that identifies you, stays in the server logs so I can see what people ask and improve the answers.",
         },
       ],
     },

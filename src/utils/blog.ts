@@ -14,11 +14,23 @@ export interface PostMeta {
   cover?: string;
   relatedProject?: string;
   locale: string;
+  readingMinutes: number;
 }
 
 export interface Post {
   meta: PostMeta;
   content: string; // raw markdown body
+}
+
+// ~200 palabras por minuto, lectura técnica en pantalla. Mínimo 1.
+const WORDS_PER_MINUTE = 200;
+
+export function readingMinutes(markdown: string): number {
+  const text = markdown
+    .replace(/```[\s\S]*?```/g, " ") // los bloques de código se escanean, no se leen
+    .replace(/[#>*_`~\-|[\]()!]/g, " ");
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 }
 
 function safeReadDir(dir: string): string[] {
@@ -59,6 +71,7 @@ export function getPost(slug: string, locale: string): Post | null {
           cover: data.cover,
           relatedProject: data.relatedProject,
           locale: loc,
+          readingMinutes: readingMinutes(content),
         },
         content,
       };
@@ -72,4 +85,24 @@ export function getAllPosts(locale: string): PostMeta[] {
     .map((slug) => getPost(slug, locale)?.meta)
     .filter((m): m is PostMeta => Boolean(m))
     .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+// Posts relacionados: los que más etiquetas comparten con el actual; a igualdad,
+// el más reciente. Si no comparte ninguna, se rellena con los últimos publicados.
+export function getRelatedPosts(slug: string, locale: string, limit = 2): PostMeta[] {
+  const current = getPost(slug, locale)?.meta;
+  if (!current) return [];
+
+  const tags = new Set(current.tags.map((t) => t.toLowerCase()));
+  const others = getAllPosts(locale).filter((p) => p.slug !== slug);
+
+  return others
+    .map((post, recency) => ({
+      post,
+      recency,
+      shared: post.tags.filter((t) => tags.has(t.toLowerCase())).length,
+    }))
+    .sort((a, b) => b.shared - a.shared || a.recency - b.recency)
+    .slice(0, limit)
+    .map(({ post }) => post);
 }

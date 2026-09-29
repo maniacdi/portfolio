@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { useLocale, useTranslations } from "next-intl";
 
 import { AnimatePresence, motion } from "framer-motion";
@@ -21,6 +22,20 @@ interface Message {
   followUp?: string[];
 }
 
+// Lo que el modelo puede usar al responder: texto con énfasis, listas y enlaces.
+// Encabezados, imágenes o tablas se desenvuelven a texto.
+const BOT_MARKDOWN_ELEMENTS = ["p", "strong", "em", "ul", "ol", "li", "a", "code", "br"];
+
+function parseFollowUp(header: string | null): string[] | undefined {
+  if (!header) return undefined;
+  try {
+    const parsed: unknown = JSON.parse(decodeURIComponent(header));
+    return Array.isArray(parsed) ? parsed.filter((s): s is string => typeof s === "string") : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 export default function ChatBot() {
   const locale = useLocale() as "es" | "en";
   const t = useTranslations("chatbot");
@@ -31,6 +46,14 @@ export default function ChatBot() {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
+
+  // Cerrar el chat corta la respuesta en curso.
+  useEffect(() => {
+    if (!isOpen) abortRef.current?.abort();
+  }, [isOpen]);
+
+  useEffect(() => () => abortRef.current?.abort(), []);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -89,10 +112,14 @@ export default function ChatBot() {
     setMessages((prev) => [...prev, newMessage]);
   };
 
+  const updateBotMessage = (id: string, patch: Partial<Message>) => {
+    setMessages((prev) => prev.map((m) => (m.id === id ? { ...m, ...patch } : m)));
+  };
+
   const handleSendMessage = async (override?: string) => {
     const trimmedInput = (override ?? inputValue).trim();
 
-    if (!trimmedInput || !isValidQuestion(trimmedInput)) {
+    if (isTyping || !trimmedInput || !isValidQuestion(trimmedInput)) {
       return;
     }
 
@@ -100,11 +127,16 @@ export default function ChatBot() {
     setInputValue("");
     setIsTyping(true);
 
+    const controller = new AbortController();
+    abortRef.current = controller;
+    // Id del mensaje que se va rellenando; solo existe desde el primer trozo.
+    let streamingId: string | null = null;
+
     try {
-      // Intentar con la API de Groq primero
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           message: trimmedInput,
           locale,
@@ -115,16 +147,44 @@ export default function ChatBot() {
         }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
+      // Si la API falla (429, 502, 503...), fallback al engine local
+      if (!response.ok || !response.body) throw new Error("API unavailable");
+
+      const followUp = parseFollowUp(response.headers.get("X-Chat-Follow-Up"));
+      const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
+      let answer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        answer += value;
+
+        if (!streamingId) {
+          streamingId = `bot-${Date.now()}`;
+          const id = streamingId;
+          setIsTyping(false);
+          setMessages((prev) => [
+            ...prev,
+            { id, type: "bot", content: answer, timestamp: new Date() },
+          ]);
+        } else {
+          updateBotMessage(streamingId, { content: answer });
+        }
+      }
+
+      if (!streamingId) throw new Error("Empty answer");
+      updateBotMessage(streamingId, { followUp });
+      setIsTyping(false);
+    } catch {
+      // Chat cerrado a media respuesta: no hay nada que rellenar.
+      if (controller.signal.aborted) return;
+
+      // Cortado a medias: se queda lo que llegó, sin mezclarlo con otra respuesta.
+      if (streamingId) {
         setIsTyping(false);
-        addBotMessage(data.answer, data.followUp);
         return;
       }
 
-      // Si la API falla (429, 500, etc.), fallback al engine local
-      throw new Error("API unavailable");
-    } catch {
       // Fallback: usar el engine local de keyword matching
       const localResponse = getChatResponse(trimmedInput, locale);
       const typingDelay = calculateTypingDelay(localResponse.answer);
@@ -133,6 +193,8 @@ export default function ChatBot() {
         setIsTyping(false);
         addBotMessage(localResponse.answer, localResponse.followUp);
       }, typingDelay);
+    } finally {
+      if (abortRef.current === controller) abortRef.current = null;
     }
   };
 
@@ -220,7 +282,25 @@ export default function ChatBot() {
                     {message.type === "user" ? <User size={16} /> : <Bot size={16} />}
                   </div>
                   <div className="message-content">
-                    <p>{message.content}</p>
+                    {message.type === "bot" ? (
+                      <div className="message-markdown">
+                        <ReactMarkdown
+                          allowedElements={BOT_MARKDOWN_ELEMENTS}
+                          unwrapDisallowed
+                          components={{
+                            a: ({ href, children }) => (
+                              <a href={href} target="_blank" rel="noopener noreferrer">
+                                {children}
+                              </a>
+                            ),
+                          }}
+                        >
+                          {message.content}
+                        </ReactMarkdown>
+                      </div>
+                    ) : (
+                      <p>{message.content}</p>
+                    )}
 
                     {message.followUp && message.followUp.length > 0 && (
                       <div className="followup-suggestions">

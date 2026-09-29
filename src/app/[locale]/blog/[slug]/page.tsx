@@ -4,10 +4,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
-import { ArrowLeft, ArrowUpRight, Calendar } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Calendar, Clock } from "lucide-react";
 import remarkGfm from "remark-gfm";
 
-import { getPost, getPostSlugs } from "@/utils/blog";
+import { getPost, getPostSlugs, getRelatedPosts } from "@/utils/blog";
 import LocalizedLink from "@components/common/LocalizedLink";
 
 import "@/styles/page.scss";
@@ -32,8 +32,6 @@ export async function generateMetadata({
   const isEs = locale === "es";
   const path = `/blog/${slug}`;
   const canonical = isEs ? `${BASE_URL}${path}` : `${BASE_URL}/en${path}`;
-  const image = post.meta.cover ? `${BASE_URL}${post.meta.cover}` : `${BASE_URL}/images/og-image.jpg`;
-
   return {
     title: post.meta.title,
     description: post.meta.excerpt,
@@ -51,9 +49,9 @@ export async function generateMetadata({
       url: canonical,
       type: "article",
       publishedTime: post.meta.date,
-      images: [{ url: image, width: 1200, height: 630, alt: post.meta.title }],
+      // The image comes from opengraph-image.tsx, generated per post.
     },
-    twitter: { card: "summary_large_image", title: post.meta.title, description: post.meta.excerpt, images: [image] },
+    twitter: { card: "summary_large_image", title: post.meta.title, description: post.meta.excerpt },
   };
 }
 
@@ -68,6 +66,7 @@ export default async function BlogPostPage({
 
   const t = await getTranslations({ locale, namespace: "blog" });
   const { meta, content } = post;
+  const related = getRelatedPosts(slug, locale);
   const dateLabel = meta.date
     ? new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(new Date(meta.date))
     : "";
@@ -83,7 +82,7 @@ export default async function BlogPostPage({
     datePublished: meta.date,
     dateModified: meta.date,
     url: postUrl,
-    image: meta.cover ? `${BASE_URL}${meta.cover}` : `${BASE_URL}/images/og-image.jpg`,
+    image: `${BASE_URL}/${locale}/blog/${slug}/opengraph-image`,
     keywords: meta.tags.join(", "),
     author: { "@type": "Person", name: "Javi García Magaldi", url: BASE_URL },
     publisher: { "@type": "Person", name: "Javi García Magaldi", url: BASE_URL },
@@ -120,6 +119,10 @@ export default async function BlogPostPage({
               {dateLabel}
             </span>
           )}
+          <span className="blog-date">
+            <Clock size={14} />
+            {t("readingTime", { minutes: meta.readingMinutes })}
+          </span>
           {meta.tags.map((tag) => (
             <span key={tag} className="blog-tag">
               {tag}
@@ -138,6 +141,27 @@ export default async function BlogPostPage({
       <article className="blog-content">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
       </article>
+
+      {related.length > 0 && (
+        <section className="blog-related-posts" aria-labelledby="related-posts-title">
+          <h2 id="related-posts-title">{t("relatedPosts")}</h2>
+          <div className="blog-related-list">
+            {related.map((post) => (
+              <LocalizedLink key={post.slug} href={`/blog/${post.slug}`} className="blog-related-card">
+                <span className="blog-related-meta">
+                  {post.tags[0] && <span className="blog-tag">{post.tags[0]}</span>}
+                  <span className="blog-date">
+                    <Clock size={13} />
+                    {t("readingTime", { minutes: post.readingMinutes })}
+                  </span>
+                </span>
+                <span className="blog-related-title">{post.title}</span>
+                <ArrowUpRight size={16} className="blog-related-arrow" />
+              </LocalizedLink>
+            ))}
+          </div>
+        </section>
+      )}
 
       <div className="blog-post-footer">
         {meta.relatedProject && (

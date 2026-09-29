@@ -246,7 +246,7 @@ export const knowledgeBaseES = {
     responses: [
       {
         answer:
-          "Mis proyectos principales: 1) Portfolio Full-Stack: Frontend con Next.js, React, TypeScript, Framer Motion; Backend con Node.js, Express, MongoDB. Incluye sistema de viajes con mapa interactivo, easter eggs, chat assistant y más. 2) Marvel Explorer: Integración con Marvel API oficial, búsqueda de personajes y cómics con autenticación MD5. 3) Pokemon App: Backend Node.js consumiendo PokéAPI con caché y endpoints personalizados. 4) AMS Technical Test: E-commerce SPA completo con React, sistema de caché y gestión de carrito. Todos con READMEs detallados en github.com/maniacdi",
+          "De cliente: 1) Ū Medicina Estética (umedicinaestetica.com): web bilingüe y panel propio de agenda, citas y contenidos para una clínica de Santander, con Next.js, Postgres y Clerk. 2) Ū Skin Store: su tienda Shopify, con productos que solo se compran con un código de la clínica. Propios: 3) Compras App: lista de la compra en tiempo real con React Native y Socket.io, desplegada en mi NAS y en uso diario. 4) Showcase: plantilla para webs de comercios con tienda, reservas y panel. 5) IronLog: app de gimnasio offline-first. 6) Porra Mundial y una web de boda con Supabase. Los tienes todos en la sección de proyectos.",
         followUp: ["¿Cuál es tu favorito?", "¿Qué tecnologías usaste?", "¿Puedo ver el código?"],
       },
     ],
@@ -264,7 +264,7 @@ export const knowledgeBaseES = {
     responses: [
       {
         answer:
-          "Este portfolio es mi proyecto personal más completo. Stack: Next.js 16 (App Router), React, TypeScript, Framer Motion, SASS. Backend propio en Node.js/Express/MongoDB desplegado en Vercel. Features únicas: mapa interactivo de viajes con Leaflet, sistema de easter eggs (¡prueba escribiendo 'kunai'!), chat assistant con pattern matching sin costos de API, repos destacados desde GitHub API, y un diseño neón-brutalista propio. Todo responsive, con i18n (ES/EN), y pensado para demostrar no solo código limpio sino creatividad y atención al detalle.",
+          "Este portfolio es mi proyecto personal más completo. Stack: Next.js 16 (App Router), React, TypeScript, Framer Motion, SASS. Backend propio en Node.js/Express/MongoDB desplegado en Vercel. Features únicas: mapa interactivo de viajes con Leaflet, sistema de easter eggs (¡prueba escribiendo 'kunai'!), asistente con IA (Groq) y un motor local de respaldo si la IA no responde, repos destacados desde GitHub API, y un diseño neón-brutalista propio. Todo responsive, con i18n (ES/EN), y pensado para demostrar no solo código limpio sino creatividad y atención al detalle.",
         followUp: ["¿Cuánto tardaste?", "¿Qué fue lo más difícil?", "¿Qué tecnologías usaste?"],
       },
     ],

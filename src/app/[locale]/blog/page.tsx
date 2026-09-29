@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
-import { ArrowUpRight, Calendar } from "lucide-react";
+import { ArrowUpRight, Calendar, Clock } from "lucide-react";
 
 import { getAllPosts } from "@/utils/blog";
 import { pageMetadata } from "@/utils/seo";
@@ -68,6 +68,10 @@ export default async function BlogListPage({
                         {dateLabel}
                       </span>
                     )}
+                    <span className="blog-date">
+                      <Clock size={13} />
+                      {t("readingTime", { minutes: post.readingMinutes })}
+                    </span>
                     {post.tags.slice(0, 2).map((tag) => (
                       <span key={tag} className="blog-tag">
                         {tag}
