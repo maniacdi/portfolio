@@ -22,12 +22,21 @@ interface FormData {
   service: string;
 }
 
-export default function ContactForm() {
+interface ContactFormProps {
+  /** Service preselected in the select (service landing pages). */
+  defaultService?: string;
+  /** Heading and intro overrides; default to the generic contact copy. */
+  title?: string;
+  subtitle?: string;
+}
+
+export default function ContactForm({ defaultService = "", title, subtitle }: ContactFormProps) {
   const t = useTranslations("contactForm");
   const ts = useTranslations("services");
   const serviceLabel = (key: string) =>
     key === "employee" ? ts("employeeLabel") : ts(`items.${key}.title`);
-  const [form, setForm] = useState<FormData>({ name: "", email: "", message: "", service: "" });
+  const emptyForm: FormData = { name: "", email: "", message: "", service: defaultService };
+  const [form, setForm] = useState<FormData>(emptyForm);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
@@ -67,7 +76,7 @@ export default function ContactForm() {
 
       if (res.ok) {
         setStatus("success");
-        setForm({ name: "", email: "", message: "", service: "" });
+        setForm(emptyForm);
         setPrivacyAccepted(false);
       } else {
         setStatus("error");
@@ -118,7 +127,7 @@ export default function ContactForm() {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
       >
-        {t("title")}
+        {title ?? t("title")}
       </motion.h2>
 
       <motion.p
@@ -128,7 +137,7 @@ export default function ContactForm() {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        {t("subtitle")}
+        {subtitle ?? t("subtitle")}
       </motion.p>
 
       <motion.form

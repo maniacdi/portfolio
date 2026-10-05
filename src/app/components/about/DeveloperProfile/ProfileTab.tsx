@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import { motion } from "framer-motion";
-import { Briefcase, Heart, Mail, MapPin, User } from "lucide-react";
+import { Briefcase, Heart, Mail, MapPin } from "lucide-react";
 
 import type { ProfileData } from "@/utils/data/profileData";
 
@@ -13,12 +13,13 @@ interface ProfileTabProps {
 }
 
 export const ProfileTab = ({ data, t }: ProfileTabProps) => {
+  // The name is already the heading above; the rest is translated (profileData
+  // only holds the English copy the chatbot uses).
   const details = [
-    { icon: User, label: t("name"), value: data.name },
-    { icon: Briefcase, label: t("role"), value: data.job },
-    { icon: MapPin, label: t("location"), value: data.location },
+    { icon: Briefcase, label: t("role"), value: t("profileJob") },
+    { icon: MapPin, label: t("location"), value: t("profileLocation") },
     { icon: Mail, label: t("email"), value: data.email },
-    { icon: Heart, label: t("experience"), value: data.experience },
+    { icon: Heart, label: t("experience"), value: t("profileExperience") },
   ];
 
   return (
@@ -62,7 +63,7 @@ export const ProfileTab = ({ data, t }: ProfileTabProps) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            {data.job}
+            {t("profileJob")}
           </motion.p>
           <motion.div
             className="status-badge"
@@ -71,7 +72,7 @@ export const ProfileTab = ({ data, t }: ProfileTabProps) => {
             transition={{ delay: 0.4 }}
           >
             <div className="status-indicator" />
-            <span>{data.status}</span>
+            <span>{t("profileStatus")}</span>
           </motion.div>
         </div>
       </div>
@@ -111,7 +112,7 @@ export const ProfileTab = ({ data, t }: ProfileTabProps) => {
         transition={{ delay: 0.5 }}
       >
         <h4>{t("title")}</h4>
-        <p className="bio-text">{data.bio}</p>
+        <p className="bio-text">{t("profileBio")}</p>
       </motion.div>
     </motion.div>
   );

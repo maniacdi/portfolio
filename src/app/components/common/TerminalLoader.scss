@@ -52,7 +52,7 @@
         }
 
         .icon {
-          color: var(--neon);
+          color: var(--neon-mid);
           flex-shrink: 0;
         }
 
@@ -73,12 +73,25 @@
           gap: 0.5rem;
         }
 
+        /* grey at rest; hovering the group lights all three (macOS) */
+        &:hover {
+          .control.close {
+            background: var(--danger);
+          }
+          .control.minimize {
+            background: var(--warning);
+          }
+          .control.expand {
+            background: var(--success);
+          }
+        }
+
         .control {
           width: 12px;
           height: 12px;
           border-radius: 50%;
           cursor: pointer;
-          transition: filter 0.2s ease;
+          transition: background 0.15s ease;
           flex-shrink: 0;
 
           @media (max-width: 768px) {
@@ -87,22 +100,13 @@
           }
 
           &.close {
-            background: var(--danger);
-            &:hover {
-              filter: brightness(1.2);
-            }
+            background: var(--border2);
           }
           &.minimize {
-            background: var(--warning);
-            &:hover {
-              filter: brightness(1.2);
-            }
+            background: var(--border2);
           }
           &.expand {
-            background: var(--success);
-            &:hover {
-              filter: brightness(1.2);
-            }
+            background: var(--border2);
           }
         }
       }
@@ -159,7 +163,7 @@
         opacity: 0.8;
         &::before {
           content: "> ";
-          color: #ffd700;
+          color: var(--neon-mid);
         }
       }
 

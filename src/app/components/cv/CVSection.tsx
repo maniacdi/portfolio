@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect,useState } from "react";
-import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
+import { useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 
-import { Download, Eye, FileText, Terminal } from "lucide-react";
+import { Download, Eye, FileText } from "lucide-react";
 
 import { cvService } from "@/app/services/cvService";
 
@@ -50,41 +49,32 @@ export default function CVSection() {
   };
 
   return (
-    <section className="cv-section">
-      <div className="cv-header">
-        <Terminal className="terminal-icon" />
-        <h2 className="cv-title">/usr/bin/cv</h2>
-        <div className="terminal-dots">
-          <span className="dot red"></span>
-          <span className="dot yellow"></span>
-          <span className="dot green"></span>
+    <section className="cv-section" aria-label={t("cvLabel")}>
+      <div className="cv-info">
+        <FileText className="cv-icon" size={22} aria-hidden="true" />
+        <div>
+          <p className="cv-label">{t("cvLabel")}</p>
+          <p className="cv-hint">{t("cvHint")}</p>
         </div>
       </div>
 
-      <div className="cv-control-panel">
-        <div className="panel-header">
-          <FileText className="panel-icon" />
-          <h3>{t("cvManager")}</h3>
-        </div>
-
-        <div className="action-buttons">
-          <button
-            className="action-btn preview-btn"
-            onClick={handlePreview}
-            disabled={isLoading || !cvUrls}
-          >
-            <Eye />
-            {t("previewCv")}
-          </button>
-          <button
-            className="action-btn download-btn"
-            onClick={handleDownload}
-            disabled={isLoading || !cvUrls}
-          >
-            <Download />
-            {isLoading ? t("loadingCv") : t("downloadCvButton")}
-          </button>
-        </div>
+      <div className="action-buttons">
+        <button
+          className="action-btn preview-btn"
+          onClick={handlePreview}
+          disabled={isLoading || !cvUrls}
+        >
+          <Eye aria-hidden="true" />
+          {t("previewCv")}
+        </button>
+        <button
+          className="action-btn download-btn"
+          onClick={handleDownload}
+          disabled={isLoading || !cvUrls}
+        >
+          <Download aria-hidden="true" />
+          {isLoading ? t("loadingCv") : t("downloadCvButton")}
+        </button>
       </div>
 
       {isPreviewOpen && cvUrls && cvUrls[locale] && (

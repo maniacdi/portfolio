@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef,useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
@@ -12,8 +13,11 @@ import { Travel } from "@/utils/types/Travel";
 import { fetchAllTravels } from "../../services/travelService";
 
 import TravelCard from "./TravelCard";
-import TravelMap from "./TravelMap";
 import TravelModal from "./TravelModal";
+
+// Leaflet touches `window` as soon as it's imported, so the map can't render
+// on the server: that took /travels down with a 500 (and out of Google).
+const TravelMap = dynamic(() => import("./TravelMap"), { ssr: false });
 
 import "./TravelContent.scss";
 

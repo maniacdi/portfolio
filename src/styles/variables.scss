@@ -1,5 +1,10 @@
 /* ============================================
    NEON BRUTALIST PALETTE
+   Fondos con un punto de violeta (no el gris
+   azulado de GitHub) para que el neón sea de la
+   casa. Texto tenue ≥ 4.5:1 (AA) en fondos y
+   tarjetas. --neon solo para fondos/bordes; como
+   color de texto, --neon-mid.
    Neón = tinta sólida (sin degradados).
    Brutalismo = radius 0, superficies opacas,
    jerarquía por bordes 1px.
@@ -14,37 +19,37 @@
 
   /* ----- Colores de apoyo ----- */
   --accent: #c49dff;
-  --text: #e8edf3;
+  --text: #ecebf5;
 
   /* ----- Backgrounds (opacos: sin glassmorphism) ----- */
-  --bg: #080c10;
-  --bg2: #0d1117;
-  --bg3: #111820;
-  --bg4: #05040a;
-  --bg-transparent: rgba(8, 12, 16, 0.85);
-  --bg-transparent-heavy: rgba(8, 12, 16, 0.95);
-  --bg-transparent-max: rgba(8, 12, 16, 0.98);
-  --terminal-bg: #05070a;
-  --card-bg: #0d1117;
+  --bg: #0a0a12;
+  --bg2: #12111c;
+  --bg3: #181724;
+  --bg4: #06050b;
+  --bg-transparent: rgba(10, 10, 18, 0.85);
+  --bg-transparent-heavy: rgba(10, 10, 18, 0.95);
+  --bg-transparent-max: rgba(10, 10, 18, 0.98);
+  --terminal-bg: #07060d;
+  --card-bg: #12111c;
   /* Header: única superficie glass permitida (petición explícita de Javier) */
-  --header-bg: rgba(8, 12, 16, 0.65);
-  --header-bg-scrolled: rgba(8, 12, 16, 0.95);
-  --glass-bg: rgba(12, 16, 22, 0.5);
+  --header-bg: rgba(10, 10, 18, 0.65);
+  --header-bg-scrolled: rgba(10, 10, 18, 0.95);
+  --glass-bg: rgba(18, 17, 28, 0.5);
   --glass-edge: rgba(255, 255, 255, 0.1);
-  --footer-bg: #05070a;
+  --footer-bg: #07060d;
   --footer-bottom-bg: rgba(0, 0, 0, 0.15);
   --overlay-bg: rgba(0, 0, 0, 0.7);
-  --widget-bg: #0b0f14;
-  --input-bg: #0d1117;
-  --input-bg-focus: #111820;
-  --toast-bg: #0b0f14;
+  --widget-bg: #12111c;
+  --input-bg: #12111c;
+  --input-bg-focus: #181724;
+  --toast-bg: #12111c;
   --shadow-heavy: none;
   --shadow-card: none;
 
   /* ----- Borders ----- */
   --border-soft: rgba(255, 255, 255, 0.04);
-  --border: #1a2332;
-  --border2: #243040;
+  --border: #2c2a40;
+  --border2: #3a3754;
   --border-neon: var(--neon);
 
   /* ----- Low-opacity white (for dark bg subtleties) ----- */
@@ -58,9 +63,9 @@
   --gradient-cta: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
 
   /* ----- Text ----- */
-  --text-primary: #e8edf3;
-  --text-secondary: #98a3b8;
-  --text-muted: #5b6779;
+  --text-primary: #ecebf5;
+  --text-secondary: #a3a3bd;
+  --text-muted: #7f7f99;
 
   /* ----- Semánticos ----- */
   --success: #4cd964;
@@ -138,7 +143,7 @@
 
   --border-soft: rgba(111, 0, 255, 0.06);
   --border: #e2ddf0;
-  --border2: #cfc6e6;
+  --border2: #c4bae0;
   --border-neon: var(--neon);
 
   --white-2: rgba(0, 0, 0, 0.02);
@@ -150,8 +155,8 @@
   --gradient-cta: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
 
   --text-primary: #1a1a2e;
-  --text-secondary: #5a6070;
-  --text-muted: #7d8496;
+  --text-secondary: #4f5466;
+  --text-muted: #656a7e;
 
   --success: #16a34a;
   --warning: #d97706;

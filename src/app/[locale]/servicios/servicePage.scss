@@ -1,0 +1,375 @@
+/* ============================================
+   SERVICE LANDING PAGE — /servicios/<slug>
+   Long-form and left-aligned: it's a page to read
+   before getting in touch, not a poster.
+============================================ */
+
+.service-page {
+  max-width: 860px;
+  text-align: left;
+}
+
+.sp-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+
+  a {
+    color: var(--text-secondary);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--neon-mid);
+    }
+  }
+
+  [aria-current="page"] {
+    color: var(--text);
+  }
+}
+
+/* ---- header ---- */
+.sp-head {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+
+  .sp-title {
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text);
+  }
+
+  .sp-lede {
+    margin-top: 1rem;
+    max-width: 52ch;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .sp-cta {
+    display: inline-flex;
+    margin-top: 1.75rem;
+    padding: 0.875rem 1.6rem;
+    background: var(--gradient-cta);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: var(--shadow-neon);
+    }
+  }
+}
+
+.sp-intro {
+  margin-top: 2rem;
+  max-width: 68ch;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+/* ---- sections ---- */
+.sp-block {
+  margin-top: 3.5rem;
+}
+
+.sp-h2 {
+  margin-bottom: 1.25rem;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sp-includes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+
+  @media (max-width: 640px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1rem 1rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.5;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+      color: var(--neon-mid);
+    }
+  }
+}
+
+/* the four steps are a real sequence, so they're numbered */
+.sp-process {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+
+  @media (max-width: 760px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 460px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  li {
+    counter-increment: step;
+    padding-top: 1rem;
+    border-top: 2px solid var(--neon);
+
+    &::before {
+      content: counter(step, decimal-leading-zero);
+      display: block;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-jetbrains-mono), monospace;
+      font-size: 0.8rem;
+      color: var(--neon-mid);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    p {
+      margin-top: 0.4rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+  }
+}
+
+.sp-projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.sp-project {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--neon);
+
+    .sp-project-go svg {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .sp-project-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg3);
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .sp-project-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.1rem 1.25rem 1.25rem;
+  }
+
+  .sp-project-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .sp-project-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .sp-project-go {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+    color: var(--neon-mid);
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.8rem;
+
+    svg {
+      transition: transform 0.2s ease;
+    }
+  }
+}
+
+.sp-posts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+
+    &:hover .sp-post-title {
+      color: var(--neon-mid);
+    }
+  }
+
+  .sp-post-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+    transition: color 0.2s ease;
+  }
+
+  .sp-post-excerpt {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+}
+
+/* native <details>: accessible, and the answers stay in the HTML for Google */
+.sp-faq {
+  border-top: 1px solid var(--border);
+
+  details {
+    border-bottom: 1px solid var(--border);
+
+    &[open] summary::after {
+      transform: rotate(45deg);
+    }
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    cursor: pointer;
+    list-style: none;
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: "+";
+      flex-shrink: 0;
+      color: var(--neon-mid);
+      font-family: var(--font-jetbrains-mono), monospace;
+      font-size: 1.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      color: var(--neon-mid);
+    }
+  }
+
+  p {
+    max-width: 68ch;
+    padding-bottom: 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+}
+
+/* the contact form brings its own section padding */
+.service-page .contact-form-section {
+  margin-top: 4rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sp-others {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.1rem;
+    border: 1px solid var(--border2);
+    color: var(--text);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
+
+    &:hover {
+      border-color: var(--neon);
+      color: var(--neon-mid);
+    }
+  }
+}

@@ -6,7 +6,9 @@ import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, Briefcase, Globe, ShoppingBag, Smartphone, Wrench } from "lucide-react";
 
+import { getServiceByKey, servicePath } from "@/app/data/services";
 import { useContactModalStore } from "@/app/store/useContactModalStore";
+import LocalizedLink from "@components/common/LocalizedLink";
 import Reveal from "@components/common/Reveal";
 
 import "./Services.scss";
@@ -40,12 +42,11 @@ export default function Services() {
       <div className="services-grid">
         {SERVICES.map(({ key, Icon }, index) => (
           <Reveal key={key} delay={0.12 + index * 0.06}>
-            <motion.button
-              type="button"
+            {/* Real links to each service page: crawlable, and the page has
+                the detail plus the form with the service preselected. */}
+            <LocalizedLink
+              href={servicePath(getServiceByKey(key)!.slug)}
               className="service-card"
-              onClick={() => open(key)}
-              whileHover={{ y: -4 }}
-              aria-label={`${t(`items.${key}.title`)} — ${t("ctaLabel")}`}
             >
               <span className="service-icon">
                 <Icon size={22} />
@@ -53,10 +54,10 @@ export default function Services() {
               <h3 className="service-name">{t(`items.${key}.title`)}</h3>
               <p className="service-desc">{t(`items.${key}.desc`)}</p>
               <span className="service-cta">
-                {t("ctaLabel")}
+                {t("moreLabel")}
                 <ArrowRight size={15} />
               </span>
-            </motion.button>
+            </LocalizedLink>
           </Reveal>
         ))}
       </div>

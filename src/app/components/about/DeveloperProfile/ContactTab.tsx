@@ -23,7 +23,6 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
       title: "Email",
       value: data.email,
       action: onCopyEmail,
-      color: "#FF6B6B",
       ariaLabel: "Copy email address",
     },
     {
@@ -31,7 +30,6 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
       title: "GitHub",
       value: data.github,
       link: `https://${data.github}`,
-      color: "#6B7280",
       ariaLabel: "Visit GitHub profile",
     },
     {
@@ -39,7 +37,6 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
       title: "LinkedIn",
       value: data.linkedin,
       link: `https://${data.linkedin}`,
-      color: "#0A66C2",
       ariaLabel: "Visit LinkedIn profile",
     },
   ];
@@ -74,21 +71,11 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{
-                y: -8,
-                boxShadow: `0 15px 40px ${option.color}40`,
-              }}
+              whileHover={{ y: -4 }}
               whileTap={{ scale: 0.95 }}
               aria-label={option.ariaLabel}
             >
-              <div
-                className="contact-icon"
-                style={{
-                  backgroundColor: `${option.color}20`,
-                  color: option.color,
-                }}
-                aria-hidden="true"
-              >
+              <div className="contact-icon" aria-hidden="true">
                 <Icon size={20} />
               </div>
 

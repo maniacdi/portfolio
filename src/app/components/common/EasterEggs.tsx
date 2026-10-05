@@ -165,11 +165,11 @@ export default function EasterEggs() {
       <motion.button
         className={`easter-egg-progress-button ${allFound ? "completed" : ""}`}
         onClick={() => setShowProgress(!showProgress)}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
+        aria-label={`${t("title")}: ${foundEggs.size}/${EASTER_EGGS.length}`}
       >
         {allFound ? "🏆" : "🎮"}
         <span className="progress-count">

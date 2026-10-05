@@ -69,8 +69,9 @@
     text-align: center;
     z-index: 1;
 
+    /* one accent for every technology: the site's neon, not each brand */
     &:hover {
-      border-color: var(--tech-color, var(--neon));
+      border-color: var(--neon);
 
       .tech-icon-large {
         transform: scale(1.15) rotate(5deg);
@@ -79,12 +80,19 @@
 
     &.active {
       z-index: 10;
-      border-color: var(--tech-color, var(--neon));
+      border-color: var(--neon);
+
+      .tech-icon-large {
+        color: var(--neon-mid);
+      }
     }
 
     .tech-icon-large {
       margin-bottom: 1.5rem;
-      transition: transform 0.3s ease;
+      color: var(--text-secondary);
+      transition:
+        transform 0.3s ease,
+        color 0.3s ease;
     }
 
     .tech-content {
@@ -118,6 +126,7 @@
           width: 6px;
           height: 6px;
           border-radius: 50%;
+          background: var(--neon-mid);
           animation: pulseBadge 2s infinite;
         }
 
@@ -213,18 +222,22 @@
     justify-content: center;
     background: transparent;
     border: 1px solid var(--border);
+    color: var(--text-muted);
     cursor: pointer;
     transition:
       background 0.15s ease,
-      border-color 0.15s ease;
+      border-color 0.15s ease,
+      color 0.15s ease;
     &:hover {
       background: var(--neon-subtle);
-      border-color: currentColor;
+      border-color: var(--neon-border);
+      color: var(--text);
     }
 
     &.active {
       background: var(--neon-subtle);
       border-color: var(--neon);
+      color: var(--neon-mid);
     }
   }
 }

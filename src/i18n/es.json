@@ -61,7 +61,6 @@
     "clickToCopy": "Clic para copiar",
     "files": "archivos",
     "updated": "Actualizado justo ahora",
-    "cvManager": "Administrador de CV",
     "previewCv": "Ver CV",
     "loadingCv": "Cargando CV...",
     "downloadCvButton": "Descargar CV",
@@ -73,10 +72,6 @@
     "passion": "Pasión",
     "techSkills": "Tech Stack & Skills",
     "letsBuild": "¿Tienes un proyecto en mente?",
-    "career": "Cronología de Carrera",
-    "timelineDesc": "Mi trayectoria profesional y hitos educativos",
-    "workLabel": "Experiencia Laboral",
-    "educationLabel": "Educación",
     "scrollHint": "Desplazar horizontalmente",
     "edu1Title": "Grado en Ingeniería Informática",
     "edu1Subtitle": "Universidad de Cantabria",
@@ -92,7 +87,21 @@
     "role": "Rol",
     "name": "Nombre",
     "years": "años",
-    "experienceLabel": "Experiencia Profesional"
+    "profileJob": "Desarrollador full-stack",
+    "profileLocation": "Santander, España",
+    "profileExperience": "6+ años",
+    "profileStatus": "Disponible para proyectos",
+    "profileBio": "Full-stack: React y TypeScript en el front, Java (Spring Boot) y Node.js en el back. Microservicios con arquitectura hexagonal para más de 10.000 usuarios diarios.",
+    "careerTitle": "Trayectoria",
+    "careerSub": "Dónde he trabajado y qué hice en cada sitio, de lo más reciente a lo más antiguo.",
+    "careerTags": "Tecnologías",
+    "present": "hoy",
+    "kindWork": "trabajo",
+    "kindEducation": "formación",
+    "locCoruna": "A Coruña, España",
+    "locSantander": "Santander, España",
+    "cvLabel": "Currículum",
+    "cvHint": "PDF en español e inglés"
   },
   "travels": {
     "title": "Mis Viajes",
@@ -181,17 +190,20 @@
     "projects": "Proyectos",
     "contact": "Contacto",
     "copyright": "Todos los derechos reservados.",
-    "home": "Home",
+    "home": "Inicio",
     "travels": "Viajes",
     "hobbies": "Hobbies",
     "connect": "Conectemos",
-    "connectText": "Sígueme en las redes sociales para actualizaciones e información.",
-    "quickLinks": "Enlaces Rápidos",
+    "connectText": "Código en GitHub, trayectoria en LinkedIn y viajes en Instagram.",
+    "quickLinks": "Navegación",
     "tagline": "Desarrollador web desde Santander. Hago cosas con código.",
     "madeWith": "Hecho con",
     "and": "y",
     "backToTop": "Volver arriba",
-    "country": "España"
+    "country": "España",
+    "services": "Servicios",
+    "blog": "Blog",
+    "code": "Código"
   },
   "hero": {
     "title": "HOLA, SOY JAVI",
@@ -417,7 +429,6 @@
     "label": "SERVICIOS",
     "title": "En qué puedo ayudarte",
     "subtitle": "Webs y apps directas para tu negocio — restaurantes, clínicas, comercios. Sin enredos: me cuentas qué necesitas y te lo monto.",
-    "ctaLabel": "Hablemos de esto",
     "employeeLabel": "Trabajo en plantilla (empresa)",
     "items": {
       "web": {
@@ -441,7 +452,8 @@
       "title": "¿Buscas un dev en plantilla?",
       "desc": "Empresas: además de freelance, estoy abierto a incorporarme a un equipo como desarrollador full-stack. Hablemos.",
       "cta": "Escríbeme"
-    }
+    },
+    "moreLabel": "Ver qué incluye"
   },
   "legal": {
     "notice": "Aviso legal",
@@ -467,5 +479,184 @@
     "analyticsDesc": "Visitas y páginas más leídas. Instala cookies de Google y puede implicar transferencia a EE. UU.",
     "monitoringName": "Grabación de sesión (Sentry)",
     "monitoringDesc": "Reconstruye tu navegación cuando salta un error, para poder reproducirlo. El aviso de errores sin grabación funciona siempre y no guarda datos identificativos."
+  },
+  "heroNext": {
+    "role": "Desarrollador web full-stack",
+    "location": "Santander, España",
+    "available": "Disponible para proyectos",
+    "lede": "Hago webs, apps y backends que funcionan de verdad. De día, aplicaciones para el ecosistema Inditex; por la noche, proyectos propios corriendo en mi NAS.",
+    "factsLabel": "Datos de mi trabajo",
+    "facts": [
+      "6 años en producción",
+      "10.000+ usuarios diarios en Inditex",
+      "BFF con tiempos de respuesta un 40% más bajos",
+      "Cobertura de tests del 60% al 85%",
+      "Ū Medicina Estética: web y panel en producción",
+      "Compras App en uso diario desde mi NAS"
+    ]
+  },
+  "servicePages": {
+    "breadcrumbHome": "Inicio",
+    "breadcrumbServices": "Servicios",
+    "includesTitle": "Qué incluye",
+    "processTitle": "Cómo trabajo",
+    "process": [
+      {
+        "title": "Me cuentas tu caso",
+        "text": "Por el formulario o en una llamada: qué necesitas y qué te está fallando ahora."
+      },
+      {
+        "title": "Propuesta cerrada",
+        "text": "Te paso opciones con lo que incluye cada una, el precio y las fechas. Eliges tú."
+      },
+      {
+        "title": "Desarrollo por entregas",
+        "text": "Vas viendo el trabajo mientras avanza, no solo al final."
+      },
+      {
+        "title": "Publicación y soporte",
+        "text": "Lo dejo funcionando, te enseño a usarlo y sigo disponible para cambios."
+      }
+    ],
+    "projectsTitle": "Proyectos reales de este tipo",
+    "seeProject": "Ver el proyecto",
+    "postsTitle": "Para leer antes de decidir",
+    "faqTitle": "Preguntas frecuentes",
+    "formTitle": "Cuéntame tu caso",
+    "formSubtitle": "Te respondo en menos de 48 horas con cómo lo haría y los siguientes pasos.",
+    "otherServices": "Otros servicios",
+    "areaServed": "Santander y en remoto para toda España",
+    "web": {
+      "metaTitle": "Diseño y desarrollo web para negocios en Santander",
+      "metaDescription": "Webs a medida para restaurantes, clínicas y comercios: rápidas, bien posicionadas en Google y fáciles de actualizar. Desarrollador web full-stack en Santander.",
+      "h1": "Web para tu negocio",
+      "lede": "Una web rápida, clara y que puedas actualizar tú, hecha a mano para tu negocio. Sin plantillas que pesan ni plugins que mantener.",
+      "intro": "La mayoría de webs de negocios pequeños que veo tienen el mismo problema: tardan en cargar, se ven mal en el móvil y nadie sabe cómo cambiar un horario. Así que la hago al revés: primero lo que tu cliente viene a buscar (qué haces, dónde estás, cómo te contacta) y después todo lo demás. La programo a medida con Next.js, así que carga rápido y Google la entiende bien desde el primer día.",
+      "includes": [
+        "Diseño a medida de tu marca, pensado primero para el móvil",
+        "Carga rápida y SEO técnico desde el inicio: metadatos, datos estructurados y sitemap",
+        "Textos e imágenes editables por ti, sin tocar código",
+        "Formulario de contacto, mapa y enlaces a WhatsApp o redes",
+        "En español e inglés si tus clientes lo necesitan",
+        "Dominio, hosting y SSL configurados, con aviso legal y cookies en regla"
+      ],
+      "faq": [
+        {
+          "q": "¿Cuánto cuesta una web para mi negocio?",
+          "a": "Depende de lo que necesites: no es lo mismo una página de presentación que una web con blog, dos idiomas y un panel propio. Me cuentas tu caso, te propongo opciones con lo que incluye cada una y te paso un presupuesto cerrado antes de empezar."
+        },
+        {
+          "q": "¿Cuánto tarda?",
+          "a": "Lo marca el alcance, y lo tendrás por escrito en la propuesta junto con las fechas de cada entrega. Vas viendo la web mientras se construye, no solo al final."
+        },
+        {
+          "q": "¿Podré cambiar los textos yo mismo?",
+          "a": "Sí. Lo que vayas a cambiar a menudo (horarios, precios, fotos, noticias) queda editable desde un panel sencillo. En la web de Ū Medicina Estética, por ejemplo, la clínica actualiza sola tratamientos, equipo y blog."
+        },
+        {
+          "q": "¿Por qué no WordPress?",
+          "a": "Para la web de un negocio, una hecha a medida suele ser más rápida, más segura y más barata de mantener: no hay plugins que actualizar ni temas que se rompen. Si en tu caso WordPress tiene más sentido, te lo diré."
+        }
+      ]
+    },
+    "shop": {
+      "metaTitle": "Sistema de reservas y tienda online para tu negocio",
+      "metaDescription": "Reservas de citas y tienda online a medida: que tus clientes reserven o compren sin llamarte. Shopify o desarrollo propio, según lo que necesite tu negocio.",
+      "h1": "Reservas y tienda online",
+      "lede": "Que tus clientes reserven una cita o compren sin tener que llamarte, y que tú lo gestiones todo desde un solo sitio.",
+      "intro": "Si las citas entran por teléfono y por WhatsApp, acabas con la agenda en tres sitios y alguna reserva perdida. Con una tienda pasa lo mismo con el stock. Así que monto el sistema que encaje con tu negocio: a veces es Shopify con lo que le falte programado encima, y a veces un desarrollo propio con tu agenda y tu panel. Te explico las dos opciones, con lo que cuesta mantener cada una, y eliges tú.",
+      "includes": [
+        "Reserva de citas online con confirmación y recordatorios automáticos por email",
+        "Tienda online con Shopify o a medida, con pagos seguros",
+        "Panel para gestionar citas, pedidos, productos y clientes",
+        "Reglas propias de tu negocio: productos con código de acceso, horarios o servicios por profesional",
+        "Carga y actualización del catálogo automatizadas",
+        "Protección de datos desde el diseño: RGPD y control de accesos"
+      ],
+      "faq": [
+        {
+          "q": "¿Shopify o una tienda a medida?",
+          "a": "Shopify resuelve pagos, envíos y stock desde el primer día, y para muchas tiendas es lo más sensato. Si necesitas algo que Shopify no hace (en Ū Skin Store, vender ciertos productos solo con un código de la clínica), lo programo encima. Si tu caso no encaja en Shopify, lo hago a medida."
+        },
+        {
+          "q": "¿Mis clientes recibirán recordatorios de la cita?",
+          "a": "Sí. La confirmación y los recordatorios salen solos por email, como en la agenda que monté para Ū Medicina Estética."
+        },
+        {
+          "q": "¿Cuánto cuesta?",
+          "a": "Depende de lo que necesites y de si partimos de Shopify o de cero. Te paso opciones con su coste de montaje y de mantenimiento, y un presupuesto cerrado antes de empezar."
+        },
+        {
+          "q": "¿Y si ya tengo web?",
+          "a": "Se puede añadir a tu web actual o conectarla con ella. Lo vemos cuando me cuentes tu caso."
+        }
+      ]
+    },
+    "mobile": {
+      "metaTitle": "Desarrollo de apps móviles para iOS y Android",
+      "metaDescription": "Apps para iOS y Android con React Native: una sola base de código, más barata de mantener. Para tu negocio o tu idea, de la primera versión a las tiendas.",
+      "h1": "App móvil",
+      "lede": "Una app para iOS y Android, directa y sin florituras, para tu negocio o para esa idea que llevas tiempo rumiando.",
+      "intro": "Las dos apps que más uso son mías: Compras App, la lista de la compra que usamos en casa a diario, e IronLog, con la que apunto los entrenamientos en el gimnasio. Las dos están hechas con React Native, que permite una sola base de código para iOS y Android: menos coste y menos mantenimiento que dos apps separadas. Empezamos por la versión más pequeña que te sirva y crecemos con lo que usen de verdad tus usuarios.",
+      "includes": [
+        "App para iOS y Android desde una sola base de código (React Native y Expo)",
+        "Funcionamiento sin conexión cuando hace falta",
+        "Sincronización en tiempo real entre usuarios y dispositivos",
+        "Backend y base de datos propios, o conectados a lo que ya uses",
+        "Notificaciones push",
+        "Publicación en App Store y Google Play"
+      ],
+      "faq": [
+        {
+          "q": "¿Necesito una app o me vale una web?",
+          "a": "Muchas veces basta con una web que se vea bien en el móvil. Una app compensa si se va a usar a diario, si tiene que funcionar sin conexión o si usa funciones del teléfono. Si en tu caso no compensa, te lo diré antes de empezar."
+        },
+        {
+          "q": "¿Hay que hacer dos apps, una para iOS y otra para Android?",
+          "a": "No. Con React Native hay una sola base de código para las dos, que es como están hechas Compras App e IronLog."
+        },
+        {
+          "q": "¿Cuánto cuesta una app?",
+          "a": "Depende sobre todo del número de pantallas y de si necesita backend propio. Empezamos por una primera versión pequeña con presupuesto cerrado y ampliamos a partir de ahí."
+        },
+        {
+          "q": "¿Te encargas de publicarla en las tiendas?",
+          "a": "Sí, preparo la publicación en App Store y Google Play. Las cuentas de desarrollador quedan a tu nombre, así que la app es tuya."
+        }
+      ]
+    },
+    "custom": {
+      "metaTitle": "Software a medida y automatización para negocios",
+      "metaDescription": "Herramientas internas, paneles de gestión, integraciones y automatizaciones a medida para que tu negocio deje de perder horas en tareas repetitivas.",
+      "h1": "Software a medida",
+      "lede": "Herramientas internas, paneles de gestión e integraciones para quitarte de encima las tareas que te roban horas cada semana.",
+      "intro": "Casi todos los negocios tienen una hoja de cálculo que alguien actualiza a mano cada semana, o dos programas que no se hablan y obligan a copiar datos de uno a otro. En AMS paso los días con este tipo de sistemas para el ecosistema Inditex: APIs, microservicios y paneles que usan miles de personas. Para un negocio pequeño la idea es la misma a otra escala: un sistema que haga solo lo que hoy haces a mano.",
+      "includes": [
+        "Paneles de gestión a medida para tu equipo",
+        "Integraciones entre las herramientas que ya usas: APIs, CRM, ERP u hojas de cálculo",
+        "Automatización de tareas repetitivas: informes, avisos, importación de datos",
+        "Bases de datos y APIs bien diseñadas, con control de accesos",
+        "Despliegue en la nube o en tu propio servidor",
+        "Documentación y traspaso, para que no dependas de mí"
+      ],
+      "faq": [
+        {
+          "q": "¿Qué tipo de cosas se pueden automatizar?",
+          "a": "Lo repetitivo con reglas claras: generar informes, importar catálogos, pasar datos de un sistema a otro o mandar avisos. En Ū Skin Store, por ejemplo, el catálogo se carga con scripts en vez de producto a producto."
+        },
+        {
+          "q": "¿Funciona con las herramientas que ya tengo?",
+          "a": "Casi siempre. Si tu herramienta tiene API o exporta datos, se puede integrar. Si no, buscamos la forma menos frágil de conectarla."
+        },
+        {
+          "q": "¿Cuánto cuesta?",
+          "a": "Depende del problema. Empezamos por la parte que más tiempo te quita, con presupuesto cerrado, y seguimos si te compensa."
+        },
+        {
+          "q": "¿Y si un día no estás disponible?",
+          "a": "El código, los accesos y la documentación quedan a tu nombre, así que cualquier desarrollador podría continuar el trabajo."
+        }
+      ]
+    }
   }
 }

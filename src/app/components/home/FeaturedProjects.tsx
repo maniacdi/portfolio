@@ -15,7 +15,7 @@ export default function FeaturedProjects() {
   const t = useTranslations("featuredProjects");
 
   return (
-    <section id="projects" className="featured-projects">
+    <section id="proyectos" className="featured-projects">
       <motion.div
         className="section-label"
         initial={{ opacity: 0, x: -20 }}

@@ -146,6 +146,8 @@ The site is deployed on **Vercel** with automatic deployments on push to `main`.
 |---|---|
 | `GROQ_API_KEY` | Groq API key for AI chatbot (server-side) |
 | `GROQ_MODEL` | Optional. Groq model id, defaults to `openai/gpt-oss-120b` |
+| `HERO_VARIANT` | Optional. Home hero: `billboard` (default) or `classic` |
+| `HERO_GLITCH` | Optional. `true` turns on the name glitch in the billboard hero |
 | `NEXT_PUBLIC_WEB3FORMS_KEY` | Web3Forms access key for contact form |
 | `NEXT_PUBLIC_SENTRY_DSN` | Sentry DSN for error tracking |
 

@@ -31,7 +31,7 @@
     height: 56px;
     background: var(--neon-subtle);
     border: 1px solid var(--neon-border);
-    color: var(--neon);
+    color: var(--neon-mid);
   }
 
   .off-hours-text {
@@ -207,15 +207,15 @@
       }
 
       &.backend-icon {
-        background: rgba(58, 134, 255, 0.08);
-        border: 1px solid rgba(58, 134, 255, 0.3);
-        color: #3a86ff;
+        background: var(--neon-subtle);
+        border: 1px solid var(--neon-border);
+        color: var(--neon-mid);
       }
 
       &.fullstack-icon {
         background: var(--neon-subtle);
         border: 1px solid var(--neon-border);
-        color: var(--neon);
+        color: var(--neon-mid);
       }
     }
 
@@ -270,77 +270,6 @@
 
   h3 {
     color: var(--text);
-  }
-}
-
-/* ============================================
-   TIMELINE SECTION
-============================================ */
-
-.timeline-section {
-  width: 100%;
-
-  .timeline {
-    position: relative;
-
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: var(--border);
-
-      @media (max-width: 768px) {
-        left: 20px;
-      }
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2rem;
-      padding-bottom: 2rem;
-
-      &:last-child {
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-
-      .timeline-year {
-        font-family: var(--font-jetbrains-mono), monospace;
-        font-weight: 500;
-        color: var(--neon-mid);
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      .timeline-content {
-        h4 {
-          margin-bottom: 0.25rem;
-          color: var(--text);
-        }
-
-        p {
-          color: var(--text-secondary);
-        }
-      }
-
-      .timeline-dot {
-        position: absolute;
-        left: -2.4rem;
-        top: 0.3rem;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--neon);
-
-        @media (max-width: 768px) {
-          left: 14px;
-        }
-      }
-    }
   }
 }
 

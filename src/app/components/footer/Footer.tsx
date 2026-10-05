@@ -11,7 +11,6 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  Twitter,
 } from "lucide-react";
 
 import LocalizedLink from "../common/LocalizedLink";
@@ -32,37 +31,33 @@ export default function Footer() {
     { href: "/cookies", label: tLegal("cookies") },
   ];
 
-  // Hobbies hidden (route kept alive). Travels stays here in footer.
+  // Same order as the header, plus Travels (footer + Sobre mí only).
+  // Hobbies stays hidden (route kept alive).
   const quickLinks = [
-    { href: "/", label: t("home") || "Home" },
-    { href: "/about", label: t("about") || "About" },
-    { href: "/travels", label: t("travels") || "Travels" },
+    { href: "/", label: t("home") },
+    { href: "/#servicios", label: t("services") },
+    { href: "/projects", label: t("projects") },
+    { href: "/blog", label: t("blog") },
+    { href: "/about", label: t("about") },
+    { href: "/code", label: t("code") },
+    { href: "/travels", label: t("travels") },
   ];
 
   const socialLinks = [
     {
-      href: "https://x.com/Magaldi6",
-      icon: Twitter,
-      label: "Twitter",
-      color: "#1DA1F2",
-    },
-    {
       href: "https://github.com/maniacdi",
       icon: Github,
       label: "GitHub",
-      color: "#fff",
     },
     {
       href: "https://www.instagram.com/magaldi6/",
       icon: Instagram,
       label: "Instagram",
-      color: "#E4405F",
     },
     {
       href: "https://www.linkedin.com/in/javimagaldi/",
       icon: Linkedin,
       label: "LinkedIn",
-      color: "#0A66C2",
     },
   ];
 
@@ -123,7 +118,6 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="social-link"
                     aria-label={social.label}
-                    style={{ "--social-color": social.color } as React.CSSProperties}
                   >
                     <Icon size={20} />
                     <span>{social.label}</span>

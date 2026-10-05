@@ -133,6 +133,9 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
             )}
           </AnimatePresence>
 
+          {/* CV: one action row inside the terminal, not a nested window */}
+          <CVSection />
+
           {/* Terminal Footer */}
           <footer className="terminal-footer">
             <div className="footer-content">
@@ -148,7 +151,6 @@ export const DeveloperProfile: FC<DeveloperProfileProps> = ({ className }) => {
             </div>
           </footer>
 
-          <CVSection />
         </div>
       </div>
     </motion.div>

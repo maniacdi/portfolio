@@ -53,32 +53,36 @@
     gap: 0.5rem;
     margin-right: 1rem;
 
+    /* grey at rest; hovering the group lights all three (macOS) */
+    &:hover {
+      .btn.btn-close {
+        background: var(--danger);
+      }
+      .btn.btn-minimize {
+        background: var(--warning);
+      }
+      .btn.btn-maximize {
+        background: var(--success);
+      }
+    }
+
     .btn {
       width: 12px;
       height: 12px;
       border-radius: 50%;
       cursor: pointer;
-      transition: box-shadow 0.2s ease;
+      transition: background 0.15s ease;
 
       &.btn-close {
-        background: var(--danger);
-        &:hover {
-          box-shadow: 0 0 8px var(--danger);
-        }
+        background: var(--border2);
       }
 
       &.btn-minimize {
-        background: var(--warning);
-        &:hover {
-          box-shadow: 0 0 8px var(--warning);
-        }
+        background: var(--border2);
       }
 
       &.btn-maximize {
-        background: var(--success);
-        &:hover {
-          box-shadow: 0 0 8px var(--success);
-        }
+        background: var(--border2);
       }
     }
   }
@@ -164,7 +168,7 @@
   }
 
   .welcome-text {
-    color: #888;
+    color: var(--text-muted);
     margin: 0;
   }
 }
@@ -258,7 +262,7 @@
         font-weight: 600;
       }
       .command-desc {
-        color: #888;
+        color: var(--text-muted);
       }
     }
   }
@@ -315,7 +319,7 @@
       font-weight: 600;
     }
     .project-tech {
-      color: #888;
+      color: var(--text-muted);
       margin-left: 1rem;
     }
     .project-link {

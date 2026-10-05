@@ -9,9 +9,9 @@ export const contentType = "image/png";
 export const alt = "Javi García Magaldi — Blog";
 
 const COLORS = {
-  bg: "#080c10",
-  text: "#e8edf3",
-  muted: "#8b949e",
+  bg: "#0a0a12",
+  text: "#ecebf5",
+  muted: "#a3a3bd",
   neon: "#6f00ff",
   neonMid: "#a259ff",
 };

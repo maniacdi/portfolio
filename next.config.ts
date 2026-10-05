@@ -34,6 +34,21 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // Spanish lives at / with no prefix. next-intl answers /es/* with a 307
+  // (temporary), which Search Console reports as "page with redirect" and
+  // keeps re-crawling; a permanent 308 settles it. opengraph-image stays out:
+  // it's served at its /es/ path on purpose (see src/proxy.ts).
+  async redirects() {
+    return [
+      { source: "/es", destination: "/", permanent: true },
+      {
+        source: "/es/:path((?!.*opengraph-image).*)",
+        destination: "/:path",
+        permanent: true,
+      },
+    ];
+  },
+
   // Compression
   compress: true,
 };

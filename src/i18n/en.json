@@ -61,7 +61,6 @@
     "clickToCopy": "Click to copy",
     "files": "files",
     "updated": "Updated just now",
-    "cvManager": "CV Manager",
     "previewCv": "Preview CV",
     "loadingCv": "Loading CV...",
     "downloadCvButton": "Download CV",
@@ -73,10 +72,6 @@
     "passion": "Passion",
     "techSkills": "Tech Stack & Skills",
     "letsBuild": "Got a project in mind?",
-    "career": "Career Timeline",
-    "timelineDesc": "My professional journey and education milestones",
-    "workLabel": "Work Experience",
-    "educationLabel": "Education",
     "scrollHint": "Scroll horizontally",
     "edu1Title": "Computer Science Degree",
     "edu1Subtitle": "University of Cantabria",
@@ -92,7 +87,21 @@
     "role": "Role",
     "name": "Name",
     "years": "years",
-    "experienceLabel": "Professional Experience"
+    "profileJob": "Full-Stack Developer",
+    "profileLocation": "Santander, Spain",
+    "profileExperience": "6+ years",
+    "profileStatus": "Available for projects",
+    "profileBio": "Full-stack developer: React and TypeScript on the front, Java (Spring Boot) and Node.js on the back. Microservices with hexagonal architecture serving 10,000+ daily users.",
+    "careerTitle": "Career",
+    "careerSub": "Where I've worked and what I did there, newest first.",
+    "careerTags": "Technologies",
+    "present": "today",
+    "kindWork": "work",
+    "kindEducation": "education",
+    "locCoruna": "A Coruña, Spain",
+    "locSantander": "Santander, Spain",
+    "cvLabel": "Résumé",
+    "cvHint": "PDF in English and Spanish"
   },
   "travels": {
     "title": "My Travels",
@@ -185,13 +194,16 @@
     "contact": "Contact",
     "copyright": "All rights reserved.",
     "connect": "Let's Connect",
-    "connectText": "Follow me on social media for updates and insights.",
-    "quickLinks": "Quick Links",
+    "connectText": "Code on GitHub, career on LinkedIn and travels on Instagram.",
+    "quickLinks": "Navigation",
     "tagline": "Web developer from Santander. I build things with code.",
     "madeWith": "Made with",
     "and": "and",
     "backToTop": "Back to top",
-    "country": "Spain"
+    "country": "Spain",
+    "services": "Services",
+    "blog": "Blog",
+    "code": "Code"
   },
   "hero": {
     "title": "HEY, I'M JAVI",
@@ -417,7 +429,6 @@
     "label": "SERVICES",
     "title": "How I can help",
     "subtitle": "Direct websites and apps for your business — restaurants, clinics, local shops. No fuss: tell me what you need and I'll build it.",
-    "ctaLabel": "Let's talk about this",
     "employeeLabel": "Full-time role (company)",
     "items": {
       "web": {
@@ -441,7 +452,8 @@
       "title": "Looking for a full-time dev?",
       "desc": "Companies: beyond freelance, I'm open to joining a team as a full-stack developer. Let's talk.",
       "cta": "Reach out"
-    }
+    },
+    "moreLabel": "See what's included"
   },
   "legal": {
     "notice": "Legal notice",
@@ -467,5 +479,184 @@
     "analyticsDesc": "Visits and most-read pages. Sets Google cookies and may involve a transfer to the USA.",
     "monitoringName": "Session replay (Sentry)",
     "monitoringDesc": "Reconstructs your browsing when an error fires so it can be reproduced. Plain error reporting works at all times and stores no identifying data."
+  },
+  "heroNext": {
+    "role": "Full-stack web developer",
+    "location": "Santander, Spain",
+    "available": "Available for projects",
+    "lede": "I build websites, apps and backends that actually work. By day, apps for the Inditex ecosystem; by night, my own projects running on my home server.",
+    "factsLabel": "Facts from my work",
+    "facts": [
+      "6 years in production",
+      "10,000+ daily users at Inditex",
+      "A BFF that cut response times by 40%",
+      "Test coverage from 60% to 85%",
+      "Ū Medicina Estética: website and panel in production",
+      "Compras App, used daily from my home server"
+    ]
+  },
+  "servicePages": {
+    "breadcrumbHome": "Home",
+    "breadcrumbServices": "Services",
+    "includesTitle": "What's included",
+    "processTitle": "How I work",
+    "process": [
+      {
+        "title": "You tell me about it",
+        "text": "Through the form or on a call: what you need and what isn't working right now."
+      },
+      {
+        "title": "A fixed proposal",
+        "text": "I send you options with what each includes, the price and the dates. You choose."
+      },
+      {
+        "title": "Built in stages",
+        "text": "You see the work as it progresses, not just at the end."
+      },
+      {
+        "title": "Launch and support",
+        "text": "I leave it running, show you how to use it and stay available for changes."
+      }
+    ],
+    "projectsTitle": "Real projects like this",
+    "seeProject": "View the project",
+    "postsTitle": "Worth reading before you decide",
+    "faqTitle": "Frequently asked questions",
+    "formTitle": "Tell me about your project",
+    "formSubtitle": "I'll reply within 48 hours with how I'd approach it and the next steps.",
+    "otherServices": "Other services",
+    "areaServed": "Santander and remote across Spain",
+    "web": {
+      "metaTitle": "Website design and development for small businesses",
+      "metaDescription": "Custom websites for restaurants, clinics and shops: fast, well ranked on Google and easy to update. Full-stack web developer based in Santander, Spain.",
+      "h1": "A website for your business",
+      "lede": "A fast, clear website you can update yourself, hand-built for your business. No heavy templates, no plugins to maintain.",
+      "intro": "Most small-business websites I come across share the same problems: they load slowly, look wrong on a phone and nobody knows how to change the opening hours. So I build them the other way round: first what your customers come looking for (what you do, where you are, how to reach you), then everything else. I code it from scratch with Next.js, so it loads fast and Google understands it from day one.",
+      "includes": [
+        "A custom design for your brand, mobile first",
+        "Fast loading and technical SEO from the start: metadata, structured data and sitemap",
+        "Text and images you can edit yourself, without touching code",
+        "Contact form, map and links to WhatsApp or social media",
+        "In Spanish and English if your customers need it",
+        "Domain, hosting and SSL set up, with legal notice and cookies in order"
+      ],
+      "faq": [
+        {
+          "q": "How much does a business website cost?",
+          "a": "It depends on what you need: a simple presentation page isn't the same as a site with a blog, two languages and its own admin panel. Tell me about your case, I'll suggest options with what each includes and give you a fixed quote before we start."
+        },
+        {
+          "q": "How long does it take?",
+          "a": "It depends on the scope, and you'll have it in writing in the proposal along with the date of each delivery. You see the site as it's being built, not only at the end."
+        },
+        {
+          "q": "Can I change the content myself?",
+          "a": "Yes. Anything you'll change often (opening hours, prices, photos, news) is editable from a simple panel. On the Ū Medicina Estética site, for instance, the clinic updates its treatments, team and blog on its own."
+        },
+        {
+          "q": "Why not WordPress?",
+          "a": "For a business website, a custom build is usually faster, more secure and cheaper to maintain: no plugins to update, no themes that break. If WordPress makes more sense for you, I'll tell you."
+        }
+      ]
+    },
+    "shop": {
+      "metaTitle": "Online booking system and online shop for your business",
+      "metaDescription": "Custom online booking and online shops: let your customers book or buy without calling you. Shopify or a custom build, depending on what your business needs.",
+      "h1": "Online booking and shop",
+      "lede": "Let your customers book an appointment or buy without having to call you, and manage it all from one place.",
+      "intro": "If bookings come in by phone and WhatsApp, you end up with your diary in three places and the odd lost appointment. A shop has the same problem with stock. So I build the system that fits your business: sometimes that's Shopify with whatever it's missing coded on top, sometimes a custom build with your own diary and panel. I'll walk you through both options, including what each costs to maintain, and you choose.",
+      "includes": [
+        "Online appointment booking with automatic email confirmations and reminders",
+        "Online shop with Shopify or custom-built, with secure payments",
+        "A panel to manage appointments, orders, products and customers",
+        "Your business's own rules: code-locked products, opening hours or services per professional",
+        "Automated catalogue loading and updates",
+        "Data protection by design: GDPR and access control"
+      ],
+      "faq": [
+        {
+          "q": "Shopify or a custom shop?",
+          "a": "Shopify handles payments, shipping and stock from day one, and for many shops it's the sensible choice. If you need something Shopify doesn't do (at Ū Skin Store, selling some products only with a code from the clinic), I build it on top. If your case doesn't fit Shopify, I build it from scratch."
+        },
+        {
+          "q": "Will my customers get appointment reminders?",
+          "a": "Yes. Confirmations and reminders go out by email automatically, like in the booking system I built for Ū Medicina Estética."
+        },
+        {
+          "q": "How much does it cost?",
+          "a": "It depends on what you need and whether we start from Shopify or from scratch. I'll give you options with their setup and maintenance cost, and a fixed quote before we start."
+        },
+        {
+          "q": "What if I already have a website?",
+          "a": "It can be added to your current site or connected to it. We'll look at it when you tell me about your case."
+        }
+      ]
+    },
+    "mobile": {
+      "metaTitle": "Mobile app development for iOS and Android",
+      "metaDescription": "iOS and Android apps with React Native: one codebase, cheaper to maintain. For your business or your idea, from the first version to the app stores.",
+      "h1": "Mobile app",
+      "lede": "An app for iOS and Android, straightforward and no frills, for your business or for that idea you've been mulling over.",
+      "intro": "The two apps I use most are my own: Compras App, the shopping list we use at home every day, and IronLog, which I log my gym sessions with. Both are built with React Native, which means one codebase for iOS and Android: lower cost and less maintenance than two separate apps. We start with the smallest version that's useful to you and grow it based on what your users actually use.",
+      "includes": [
+        "An iOS and Android app from a single codebase (React Native and Expo)",
+        "Works offline where it needs to",
+        "Real-time sync between users and devices",
+        "Its own backend and database, or connected to what you already use",
+        "Push notifications",
+        "Publishing on the App Store and Google Play"
+      ],
+      "faq": [
+        {
+          "q": "Do I need an app or will a website do?",
+          "a": "Often a website that works well on phones is enough. An app pays off if it'll be used daily, has to work offline or uses phone features. If it doesn't pay off for you, I'll tell you before we start."
+        },
+        {
+          "q": "Do I need two apps, one for iOS and one for Android?",
+          "a": "No. With React Native there's a single codebase for both, which is how Compras App and IronLog are built."
+        },
+        {
+          "q": "How much does an app cost?",
+          "a": "Mostly it depends on the number of screens and whether it needs its own backend. We start with a small first version at a fixed price and grow from there."
+        },
+        {
+          "q": "Will you publish it on the app stores?",
+          "a": "Yes, I prepare the release on the App Store and Google Play. The developer accounts are in your name, so the app is yours."
+        }
+      ]
+    },
+    "custom": {
+      "metaTitle": "Custom software and automation for businesses",
+      "metaDescription": "Internal tools, admin panels, integrations and custom automation so your business stops losing hours on repetitive tasks.",
+      "h1": "Custom software",
+      "lede": "Internal tools, admin panels and integrations to take the tasks that eat hours every week off your plate.",
+      "intro": "Almost every business has a spreadsheet someone updates by hand every week, or two programs that don't talk to each other and force you to copy data across. At AMS I spend my days on this kind of system for the Inditex ecosystem: APIs, microservices and panels used by thousands of people. For a small business the idea is the same at a different scale: a system that does by itself what you do by hand today.",
+      "includes": [
+        "Custom admin panels for your team",
+        "Integrations between the tools you already use: APIs, CRM, ERP or spreadsheets",
+        "Automation of repetitive tasks: reports, alerts, data imports",
+        "Well-designed databases and APIs, with access control",
+        "Deployed to the cloud or to your own server",
+        "Documentation and handover, so you don't depend on me"
+      ],
+      "faq": [
+        {
+          "q": "What kind of things can be automated?",
+          "a": "Repetitive work with clear rules: generating reports, importing catalogues, moving data between systems or sending alerts. At Ū Skin Store, for instance, the catalogue is loaded with scripts instead of product by product."
+        },
+        {
+          "q": "Will it work with the tools I already have?",
+          "a": "Almost always. If your tool has an API or exports data, it can be integrated. If not, we find the least fragile way to connect it."
+        },
+        {
+          "q": "How much does it cost?",
+          "a": "It depends on the problem. We start with the part that costs you the most time, at a fixed price, and carry on if it's worth it to you."
+        },
+        {
+          "q": "What if you're not available one day?",
+          "a": "The code, the access and the documentation are in your name, so any developer could pick up the work."
+        }
+      ]
+    }
   }
 }

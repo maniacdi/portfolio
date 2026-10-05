@@ -10,7 +10,7 @@ import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/Develo
 import { useContactModalStore } from "@/app/store/useContactModalStore";
 import LocalizedLink from "@components/common/LocalizedLink";
 
-import { HorizontalTimeline } from "../HorizontalTimeline/HorizontalTimeline";
+import { CareerItem, CareerTimeline } from "../CareerTimeline/CareerTimeline";
 
 import "./AboutMeSection.scss";
 
@@ -22,62 +22,62 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   const t = useTranslations("about");
   const openContactModal = useContactModalStore((state) => state.open);
 
-  const experiences = [
+  // Newest first. Locations and the "present" label come from i18n so the
+  // English page doesn't show Spanish text.
+  const career: CareerItem[] = [
     {
-      period: "2023-Presente",
-      location: "A Coruña, España",
-      title: `${t("exp1Title")}`,
-      company: "AMS Solutions",
-      description: `${t("exp1Description")}`,
-      technologies: [
-        "React",
-        "TypeScript",
-        "Java · Spring Boot",
-        "MongoDB · Redis",
-        "Microfrontends",
+      kind: "work",
+      start: 2023,
+      end: null,
+      title: t("exp1Title"),
+      org: "AMS Solutions",
+      location: t("locCoruna"),
+      description: t("exp1Description"),
+      tags: ["React", "TypeScript", "Java · Spring Boot", "MongoDB · Redis", "Microfrontends"],
+    },
+    {
+      kind: "work",
+      start: 2022,
+      end: 2023,
+      title: t("exp2Title"),
+      org: "Innova-tsn",
+      location: t("locSantander"),
+      description: t("exp2Description"),
+      tags: ["React", "SQL"],
+    },
+    {
+      kind: "work",
+      start: 2020,
+      end: 2022,
+      title: t("exp3Title"),
+      org: "Incentro",
+      location: t("locSantander"),
+      description: t("exp3Description"),
+      tags: ["React", "JavaScript", "CMS"],
+    },
+    {
+      kind: "education",
+      start: 2014,
+      end: 2020,
+      title: t("edu1Title"),
+      org: t("edu1Subtitle"),
+      location: t("locSantander"),
+      description: t("edu1Description"),
+      tags: [
+        t("educationSubjects.algorithms"),
+        t("educationSubjects.dataStructures"),
+        t("educationSubjects.softwareEngineering"),
       ],
-    },
-    {
-      period: "2022-2023",
-      location: "Santander, España",
-      title: `${t("exp2Title")}`,
-      company: "Innova-tsn",
-      description: `${t("exp2Description")}`,
-      technologies: ["React", "SQL"],
-    },
-    {
-      period: "2020-2022",
-      location: "Santander, España",
-      title: `${t("exp3Title")}`,
-      company: "Incentro",
-      description: `${t("exp3Description")}`,
-      technologies: ["React", "JavaScript", "CMS"],
     },
   ];
 
-  const education = [
-    {
-      period: "2014-2020",
-      location: "España",
-      title: `${t("edu1Title")}`,
-      institution: `${t("edu1Subtitle")}`,
-      specialization: `${t("edu1Description")}`,
-      subjects: [
-        `${t("educationSubjects.algorithms")}`,
-        `${t("educationSubjects.dataStructures")}`,
-        `${t("educationSubjects.softwareEngineering")}`,
-      ],
-    },
-  ];
   return (
     <>
       <section className={`about-section ${className}`} aria-labelledby="about-title" role="region">
         <div className="about-content">
           <DeveloperProfile className="developer-profile-side" />
 
-          <div className="timeline-section">
-            <HorizontalTimeline experiences={experiences} education={education} />
-          </div>
+          <CareerTimeline items={career} />
         </div>
       </section>
 

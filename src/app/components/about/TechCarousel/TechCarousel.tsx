@@ -646,14 +646,9 @@ export default function TechCarousel() {
                 }}
                 exit={{ opacity: 0, scale: 0.8, y: -20 }}
                 transition={{ duration: 0.5, type: "spring" }}
-                style={
-                  {
-                    "--tech-color": tech.color,
-                  } as React.CSSProperties
-                }
                 onClick={() => setCurrentIndex(index)}
               >
-                <div className="tech-icon-large" style={{ color: tech.color }}>
+                <div className="tech-icon-large">
                   {tech.icon}
                 </div>
 
@@ -662,7 +657,7 @@ export default function TechCarousel() {
                   <span className="tech-category">{tech.category}</span>
 
                   <div className="tech-badge">
-                    <span className="badge-dot" style={{ background: tech.color }} />
+                    <span className="badge-dot" />
                     <span className="badge-text">{t("badge")}</span>
                   </div>
                 </div>
@@ -689,7 +684,6 @@ export default function TechCarousel() {
               className={`mini-tech-item ${index === currentIndex ? "active" : ""}`}
               whileHover={{ scale: 1.1 }}
               onClick={() => setCurrentIndex(index)}
-              style={{ color: tech.color }}
               title={tech.name}
             >
               {tech.icon}
