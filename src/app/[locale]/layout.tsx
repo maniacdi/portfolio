@@ -10,6 +10,7 @@ import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
 
 import ChatBot from "../components/chatBot/ChatBot";
+import ConsoleGreeting from "../components/common/ConsoleGreeting";
 import CookieConsent from "../components/common/CookieConsent";
 import EasterEggs from "../components/common/EasterEggs";
 import { PersonSchema, WebsiteSchema } from "../components/common/JsonLd";
@@ -111,6 +112,7 @@ export default async function LocaleLayout({
             <ChatBot />
             <Footer />
             <EasterEggs />
+            <ConsoleGreeting />
             <CookieConsent />
           </ToastProvider>
         </NextIntlClientProvider>
