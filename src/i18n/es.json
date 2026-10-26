@@ -197,8 +197,6 @@
     "connectText": "Código en GitHub, trayectoria en LinkedIn y viajes en Instagram.",
     "quickLinks": "Navegación",
     "tagline": "Desarrollador web desde Santander. Hago cosas con código.",
-    "madeWith": "Hecho con",
-    "and": "y",
     "backToTop": "Volver arriba",
     "country": "España",
     "services": "Servicios",
@@ -218,7 +216,7 @@
     "d6": "me gusta que todo funcione de verdad, y que no se caiga a las 3 de la mañana",
     "ctaPrimary": "Hablemos",
     "seeProjects": "Ver proyectos",
-    "downloadCv": "Descargar CV",
+    "downloadCv": "CV en PDF",
     "downloadingCv": "Descargando..."
   },
   "anime": {
@@ -284,7 +282,8 @@
     "state": "encontrados",
     "keys": "teclas",
     "resetProgress": "Reiniciar progreso",
-    "only": "Solo jugable en escritorio"
+    "only": "Solo jugable en escritorio",
+    "signatureUnlocked": "Firma desbloqueada: mira el logo del footer."
   },
   "general": {
     "removedFromFavorites": "Eliminado de favoritos",

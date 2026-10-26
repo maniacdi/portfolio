@@ -1,9 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { useLocale } from "next-intl";
-
-import { motion } from "framer-motion";
 
 // next-intl navigation Link + usePathname — REQUIRED for locale switching.
 // Plain next/link only soft-navigates and never reloads the server locale,
@@ -11,6 +8,11 @@ import { motion } from "framer-motion";
 import { Link, usePathname } from "@/i18n/navigation";
 
 import "./LanguageSwitcher.scss";
+
+const LANGUAGE_LABELS = {
+  en: "English",
+  es: "Español",
+};
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
@@ -21,41 +23,20 @@ export default function LanguageSwitcher() {
   const isEnglish = locale === "en";
   const nextLocale = isEnglish ? "es" : "en";
 
-  const languageLabels = {
-    en: "English",
-    es: "Español",
-  };
-
+  // Plain "ES / EN" in mono, current one lit: same box as the theme toggle.
   return (
     <Link
       href={pathname}
       locale={nextLocale}
-      className={`lang-switcher ${isEnglish ? "en" : "es"}`}
-      aria-label={`Change language to ${languageLabels[nextLocale]}`}
-      title={`Switch to ${languageLabels[nextLocale]}`}
+      className="lang-switcher"
+      aria-label={`Change language to ${LANGUAGE_LABELS[nextLocale]}`}
+      title={`Switch to ${LANGUAGE_LABELS[nextLocale]}`}
     >
-      <div className="track">
-        <div className="flags-container">
-          <div className="flag flag-en" aria-hidden="true">
-            <Image src="/flags/en.svg" width={16} height={16} alt="" priority />
-          </div>
-          <div className="flag flag-es" aria-hidden="true">
-            <Image src="/flags/es.svg" width={16} height={16} alt="" priority />
-          </div>
-        </div>
-
-        <motion.div
-          className="selection-bubble"
-          layout
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 25,
-            mass: 0.8,
-          }}
-          aria-hidden="true"
-        />
-      </div>
+      <span className={isEnglish ? undefined : "active"}>ES</span>
+      <span className="lang-sep" aria-hidden="true">
+        /
+      </span>
+      <span className={isEnglish ? "active" : undefined}>EN</span>
     </Link>
   );
 }

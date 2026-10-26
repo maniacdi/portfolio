@@ -67,9 +67,12 @@
 
   .hero-cta-text {
     background: transparent;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
 
     &:hover:not(:disabled) {
       color: var(--text);

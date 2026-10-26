@@ -93,16 +93,12 @@
 
 .logo {
   cursor: pointer;
-  height: 6dvh;
-  min-height: 40px;
-  max-height: 60px;
-  width: auto;
+  height: 26px;
   transition: transform 0.3s ease;
   justify-self: start;
 
   @media (max-width: 768px) {
-    height: 5dvh;
-    min-height: 35px;
+    height: 22px;
   }
 
   &:hover {
@@ -192,13 +188,16 @@
     background 0.2s ease,
     box-shadow 0.2s ease,
     transform 0.2s ease;
-  border: 1px solid var(--neon);
-  background: var(--gradient-cta);
-  color: #fff;
+  /* Outline on purpose: the hero's "see projects" is the one filled CTA
+     on first screen. The mobile menu keeps the filled version below. */
+  border: 1px solid var(--neon-border);
+  background: transparent;
+  color: var(--neon-mid);
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(111, 0, 255, 0.35);
+    border-color: var(--neon);
+    background: var(--neon-subtle);
   }
 
   &:active {
@@ -206,6 +205,9 @@
   }
 
   &.mobile {
+    border-color: var(--neon);
+    background: var(--gradient-cta);
+    color: #fff;
     width: 100%;
     justify-content: center;
     padding: 1rem;
@@ -314,8 +316,7 @@
     margin: 0 auto 1.5rem;
 
     .menu-logo {
-      height: 44px;
-      width: auto;
+      height: 24px;
     }
 
     .menu-close {

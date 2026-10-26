@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="9 14 47 47">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#9b4dff"/>
-      <stop offset="1" stop-color="#6f00ff"/>
-    </linearGradient>
-  </defs>
-  <path d="M12 50 L12 18 L32 41 L52 18" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M52 18 L52 37 L38 44 L52 51 L52 37" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-9.0 8.0 133 133"><rect x="-9.0" y="8.0" width="133" height="133" fill="#6f00ff"/><path d="M16.2 100L3.6 100L3.6 50.4L16.2 50.4L16.2 55.2L18 55.2Q18.6 52.5 20.8 50.8Q23 49 26.4 49L26.4 49Q29.7 49 32.1 50.8Q34.4 52.5 35.1 55.2L35.1 55.2L36.9 55.2Q37.7 52.5 40.3 50.8Q42.9 49 46.6 49L46.6 49Q51.6 49 54.6 52.3Q57.6 55.7 57.6 61.6L57.6 61.6L57.6 100L45 100L45 65.2Q45 63.1 44.0 62.0Q42.9 61 41.2 61L41.2 61Q39.3 61 38.1 62.2Q36.9 63.4 36.9 65.8L36.9 65.8L36.9 100L24.3 100L24.3 65.2Q24.3 63.1 23.2 62.0Q22 61 20.4 61L20.4 61Q18.6 61 17.4 62.2Q16.2 63.4 16.2 65.8L16.2 65.8L16.2 100Z" fill="#0a0a12"/><rect x="61.6" y="88" width="50" height="12" fill="#0a0a12"/></svg>

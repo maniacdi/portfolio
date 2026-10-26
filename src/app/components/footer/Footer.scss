@@ -95,20 +95,8 @@
       justify-content: center;
     }
 
-    .brand-icon {
-      width: 26px;
-      height: 26px;
-      color: var(--neon-mid);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    .footer-logo {
-      font-family: var(--font-jetbrains-mono), monospace;
-      font-weight: 500;
-      background: linear-gradient(135deg, var(--neon) 0%, var(--neon-mid) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .brand-logo {
+      height: 30px;
     }
   }
 
@@ -363,31 +351,6 @@
   .separator {
     opacity: 0.4;
   }
-
-  .made-with {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
-
-    .heart-icon {
-      color: var(--neon-mid);
-      animation: heartbeat 1.5s ease-in-out infinite;
-    }
-
-    .code-icon {
-      color: var(--neon-mid);
-    }
-  }
-}
-
-@keyframes heartbeat {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
 }
 
 .back-to-top {
@@ -458,29 +421,11 @@
 }
 
 /* ============================================
-   ANIMATIONS
-============================================ */
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.05);
-  }
-}
-
-/* ============================================
    REDUCED MOTION
 ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .footer-glow,
-  .brand-icon,
-  .heart-icon {
+  .footer-glow {
     animation: none;
   }
 

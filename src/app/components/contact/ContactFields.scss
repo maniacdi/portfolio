@@ -1,0 +1,160 @@
+/* ============================================
+   CONTACT FIELDS — floating label + service chips
+   Set --field-notch-bg on the container to whatever sits behind
+   the fields, so the raised label cuts the border cleanly.
+============================================ */
+
+.float-field {
+  position: relative;
+  --field-bg: var(--input-bg);
+
+  &:focus-within {
+    --field-bg: var(--input-bg-focus);
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    background: var(--field-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
+
+    /* The hint only shows once the label has moved out of the way */
+    &::placeholder {
+      color: var(--text-muted);
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    &:focus {
+      border-color: var(--neon);
+
+      &::placeholder {
+        opacity: 1;
+      }
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+    display: block;
+  }
+
+  label {
+    position: absolute;
+    top: 1rem;
+    left: 0.75rem;
+    padding: 0 0.25rem;
+    color: var(--text-muted);
+    font-family: var(--font-space-grotesk), sans-serif;
+    font-size: 1rem;
+    line-height: 1.2;
+    pointer-events: none;
+    transition:
+      top 0.18s ease,
+      font-size 0.18s ease,
+      color 0.18s ease,
+      letter-spacing 0.18s ease;
+  }
+
+  input:focus + label,
+  input:not(:placeholder-shown) + label,
+  input:-webkit-autofill + label,
+  textarea:focus + label,
+  textarea:not(:placeholder-shown) + label {
+    top: 0;
+    transform: translateY(-50%);
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    /* Top half matches what is behind the field, bottom half the field */
+    background: linear-gradient(
+      to bottom,
+      var(--field-notch-bg, var(--bg)) 50%,
+      var(--field-bg) 50%
+    );
+  }
+
+  input:focus + label,
+  textarea:focus + label {
+    color: var(--neon-mid);
+  }
+}
+
+/* ---- Service chips ---- */
+
+.service-chips {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+
+  legend {
+    padding: 0;
+    margin-bottom: 0.6rem;
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+}
+
+.service-chips__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.service-chip {
+  padding: 0.45rem 0.8rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
+
+  &:hover {
+    border-color: var(--neon-border);
+    color: var(--text);
+  }
+
+  &[aria-pressed="true"] {
+    border-color: var(--neon);
+    background: var(--neon-subtle);
+    color: var(--neon-mid);
+
+    &::before {
+      content: "✓ ";
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--neon-mid);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-field label,
+  .float-field input,
+  .float-field textarea,
+  .service-chip {
+    transition: none;
+  }
+}

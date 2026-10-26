@@ -261,6 +261,17 @@
     }
   }
 
+  .signature-unlocked {
+    margin-bottom: 0.75rem;
+    padding: 0.625rem;
+    border: 1px solid var(--neon-border);
+    background: var(--neon-subtle);
+    color: var(--neon-mid);
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
   .reset-button {
     width: 100%;
     padding: 0.625rem;
@@ -644,4 +655,10 @@ body.kunai-impact {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Out of the way while the cookie banner is up: on mobile it sat on the
+   banner's buttons. */
+body:has(.cookie-consent) .easter-egg-progress-button {
+  display: none;
 }

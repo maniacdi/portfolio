@@ -4,10 +4,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Briefcase, CheckCircle, Loader2, Mail, MessageSquare, Send, User, X } from "lucide-react";
+import { CheckCircle, Loader2, Mail, Send, X } from "lucide-react";
 
 import { useContactModalStore } from "@/app/store/useContactModalStore";
 
+import { FloatingField, ServiceChips } from "./ContactFields";
 import PrivacyConsentField from "./PrivacyConsentField";
 
 import "./ContactModal.scss";
@@ -19,8 +20,6 @@ interface FormData {
   service: string;
 }
 
-const SERVICE_KEYS = ["web", "shop", "mobile", "custom"] as const;
-
 export default function ContactModal() {
   const t = useTranslations("contactForm");
   const ts = useTranslations("services");
@@ -28,9 +27,9 @@ export default function ContactModal() {
     key === "employee" ? ts("employeeLabel") : ts(`items.${key}.title`);
   const [form, setForm] = useState<FormData>({ name: "", email: "", message: "", service: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [focusedField, setFocusedField] = useState<string | null>(null);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const backdropRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const { isOpen, close, selectedService } = useContactModalStore();
 
   // Prefill the service when the modal is opened from a Services card
@@ -40,20 +39,50 @@ export default function ContactModal() {
     }
   }, [isOpen, selectedService]);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // Close on ESC
+  // Close on ESC and keep Tab inside the dialog; focus goes back to
+  // whatever opened it on close.
   useEffect(() => {
     if (!isOpen) return;
+    const opener = document.activeElement as HTMLElement | null;
+    const focusables = () =>
+      Array.from(
+        dialogRef.current?.querySelectorAll<HTMLElement>(
+          "a[href], button:not([disabled]), input, textarea"
+        ) ?? []
+      );
+    // Wait for the enter animation to mount the form
+    const focusTimer = setTimeout(() => {
+      (dialogRef.current?.querySelector<HTMLElement>("input") ?? focusables()[0])?.focus();
+    }, 50);
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
+      if (e.key === "Escape") {
+        close();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const items = focusables();
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      clearTimeout(focusTimer);
+      window.removeEventListener("keydown", onKey);
+      opener?.focus();
+    };
   }, [isOpen, close]);
 
   // Lock body scroll when open
@@ -143,6 +172,10 @@ export default function ContactModal() {
         >
           <motion.div
             className="contact-modal"
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-modal-title"
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -152,9 +185,9 @@ export default function ContactModal() {
             <div className="modal-header">
               <div className="modal-header-text">
                 <Mail size={18} className="modal-icon" />
-                <h3>{t("title")}</h3>
+                <h3 id="contact-modal-title">{t("title")}</h3>
               </div>
-              <button className="modal-close" onClick={close} aria-label="Close">
+              <button className="modal-close" onClick={close} aria-label={t("close")}>
                 <X size={18} />
               </button>
             </div>
@@ -183,83 +216,38 @@ export default function ContactModal() {
                 <form className="modal-form" onSubmit={handleSubmit}>
                   <p className="modal-subtitle">{t("subtitle")}</p>
 
-                  <div className={`form-group ${focusedField === "name" ? "focused" : ""}`}>
-                    <label htmlFor="modal-name">
-                      <User size={13} />
-                      <span>{t("nameLabel")}</span>
-                    </label>
-                    <input
-                      id="modal-name"
-                      type="text"
-                      name="name"
-                      required
-                      value={form.name}
-                      onChange={handleChange}
-                      onFocus={() => setFocusedField("name")}
-                      onBlur={() => setFocusedField(null)}
-                      placeholder={t("namePlaceholder")}
-                      autoComplete="name"
-                    />
-                  </div>
-
-                  <div className={`form-group ${focusedField === "email" ? "focused" : ""}`}>
-                    <label htmlFor="modal-email">
-                      <Mail size={13} />
-                      <span>{t("emailLabel")}</span>
-                    </label>
-                    <input
-                      id="modal-email"
-                      type="email"
-                      name="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      onFocus={() => setFocusedField("email")}
-                      onBlur={() => setFocusedField(null)}
-                      placeholder={t("emailPlaceholder")}
-                      autoComplete="email"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="modal-service">
-                      <Briefcase size={13} />
-                      <span>{t("serviceLabel")}</span>
-                    </label>
-                    <select
-                      id="modal-service"
-                      name="service"
-                      value={form.service}
-                      onChange={handleChange}
-                      className="service-select"
-                    >
-                      <option value="">{t("servicePlaceholder")}</option>
-                      {SERVICE_KEYS.map((key) => (
-                        <option key={key} value={key}>
-                          {ts(`items.${key}.title`)}
-                        </option>
-                      ))}
-                      <option value="employee">{ts("employeeLabel")}</option>
-                    </select>
-                  </div>
-
-                  <div className={`form-group ${focusedField === "message" ? "focused" : ""}`}>
-                    <label htmlFor="modal-message">
-                      <MessageSquare size={13} />
-                      <span>{t("messageLabel")}</span>
-                    </label>
-                    <textarea
-                      id="modal-message"
-                      name="message"
-                      required
-                      rows={4}
-                      value={form.message}
-                      onChange={handleChange}
-                      onFocus={() => setFocusedField("message")}
-                      onBlur={() => setFocusedField(null)}
-                      placeholder={t("messagePlaceholder")}
-                    />
-                  </div>
+                  <FloatingField
+                    id="modal-name"
+                    name="name"
+                    label={t("nameLabel")}
+                    hint={t("namePlaceholder")}
+                    value={form.name}
+                    onChange={handleChange}
+                    autoComplete="name"
+                  />
+                  <FloatingField
+                    id="modal-email"
+                    name="email"
+                    type="email"
+                    label={t("emailLabel")}
+                    hint={t("emailPlaceholder")}
+                    value={form.email}
+                    onChange={handleChange}
+                    autoComplete="email"
+                  />
+                  <ServiceChips
+                    value={form.service}
+                    onChange={(service) => setForm((prev) => ({ ...prev, service }))}
+                  />
+                  <FloatingField
+                    id="modal-message"
+                    name="message"
+                    label={t("messageLabel")}
+                    hint={t("messagePlaceholder")}
+                    value={form.message}
+                    onChange={handleChange}
+                    multiline
+                  />
 
                   {/* Privacy consent — RGPD art. 13 first layer + art. 6.1.a */}
                   <PrivacyConsentField

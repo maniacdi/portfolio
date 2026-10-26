@@ -197,8 +197,6 @@
     "connectText": "Code on GitHub, career on LinkedIn and travels on Instagram.",
     "quickLinks": "Navigation",
     "tagline": "Web developer from Santander. I build things with code.",
-    "madeWith": "Made with",
-    "and": "and",
     "backToTop": "Back to top",
     "country": "Spain",
     "services": "Services",
@@ -218,7 +216,7 @@
     "d6": "I like things that actually work, and don't fall over at 3 a.m.",
     "ctaPrimary": "Let's talk",
     "seeProjects": "See projects",
-    "downloadCv": "Download CV",
+    "downloadCv": "CV as PDF",
     "downloadingCv": "Downloading..."
   },
   "anime": {
@@ -284,7 +282,8 @@
     "state": "found",
     "keys": "keys",
     "resetProgress": "Reset progress",
-    "only": "Only playable on desktop"
+    "only": "Only playable on desktop",
+    "signatureUnlocked": "Signature unlocked: check the footer logo."
   },
   "general": {
     "removedFromFavorites": "Removed from favorites",

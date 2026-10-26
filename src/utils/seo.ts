@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 
 export const BASE_URL = "https://javimagaldi.com";
-const OG_IMAGE = `${BASE_URL}/images/og-image.jpg`;
+
+/** Site-wide social card, one per language (the card carries text). */
+export function ogImage(locale: string) {
+  return `${BASE_URL}/images/${locale === "en" ? "og-card-en" : "og-card"}.jpg`;
+}
 
 interface PageSeo {
   locale: string;
@@ -23,6 +27,7 @@ export function pageMetadata({ locale, path, title, description }: PageSeo): Met
   const esUrl = `${BASE_URL}${path}`;
   const enUrl = `${BASE_URL}/en${path}`;
   const canonical = isEs ? esUrl : enUrl;
+  const image = ogImage(locale);
 
   return {
     title,
@@ -43,7 +48,7 @@ export function pageMetadata({ locale, path, title, description }: PageSeo): Met
       locale: isEs ? "es_ES" : "en_US",
       alternateLocale: isEs ? "en_US" : "es_ES",
       type: "website",
-      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: title }],
+      images: [{ url: image, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
@@ -51,7 +56,7 @@ export function pageMetadata({ locale, path, title, description }: PageSeo): Met
       description,
       site: "@magaldidev",
       creator: "@magaldidev",
-      images: [OG_IMAGE],
+      images: [image],
     },
   };
 }

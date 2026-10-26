@@ -4,15 +4,14 @@ import { useTranslations } from "next-intl";
 
 import {
   ArrowUp,
-  Code,
   Github,
-  Heart,
   Instagram,
   Linkedin,
   Mail,
   MapPin,
 } from "lucide-react";
 
+import { useSignatureUnlocked } from "../common/easterEggsProgress";
 import LocalizedLink from "../common/LocalizedLink";
 import Logo from "../common/Logo";
 import CookiePreferencesButton from "../legal/CookiePreferencesButton";
@@ -22,6 +21,8 @@ import "./Footer.scss";
 export default function Footer() {
   const t = useTranslations("footer");
   const tLegal = useTranslations("legal");
+  // Finding every easter egg swaps the logo for the graffiti tag.
+  const signatureUnlocked = useSignatureUnlocked();
   const year = new Date().getFullYear();
 
   // Required by LSSI-CE art. 10 and RGPD art. 13: reachable from every page.
@@ -73,8 +74,7 @@ export default function Footer() {
         <div className="footer-content">
           <div className="footer-column footer-brand">
             <div className="brand-header">
-              <Logo className="brand-icon" />
-              <span className="footer-logo">Magaldidev</span>
+              <Logo className="brand-logo" variant={signatureUnlocked ? "tag" : "mono"} />
             </div>
 
             <p className="brand-tagline">{t("tagline")}</p>
@@ -141,14 +141,9 @@ export default function Footer() {
 
         <div className="footer-bottom-content">
           <div className="footer-copyright">
-            <span>© {year} Magaldidev</span>
+            <span>© {year} Javier García Magaldi</span>
             <span className="separator">•</span>
             <span>{t("copyright") || "All rights reserved"}</span>
-            <span className="separator">•</span>
-            <span className="made-with">
-              {t("madeWith")} <Heart className="heart-icon" size={14} /> {t("and")}{" "}
-              <Code className="code-icon" size={14} />
-            </span>
           </div>
 
           <button className="back-to-top" onClick={scrollToTop} aria-label={t("backToTop")}>

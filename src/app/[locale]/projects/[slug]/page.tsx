@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { ArrowLeft, ArrowUpRight, Code2, ExternalLink } from "lucide-react";
 
 import { fetchProjectBySlug, fetchProjectSlugs, localize } from "@/app/services/projectsService";
+import { ogImage } from "@/utils/seo";
 import LocalizedLink from "@components/common/LocalizedLink";
 
 import "@/styles/page.scss";
@@ -38,7 +39,7 @@ export async function generateMetadata({
     localize(project.tagline, locale);
   const path = `/projects/${slug}`;
   const canonical = isEs ? `${BASE_URL}${path}` : `${BASE_URL}/en${path}`;
-  const image = project.coverImage ? `${BASE_URL}${project.coverImage}` : `${BASE_URL}/images/og-image.jpg`;
+  const image = project.coverImage ? `${BASE_URL}${project.coverImage}` : ogImage(locale);
 
   return {
     title,

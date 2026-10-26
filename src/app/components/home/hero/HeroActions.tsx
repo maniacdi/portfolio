@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-import { Download } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 
 import { useContactModalStore } from "@/app/store/useContactModalStore";
 
@@ -18,6 +18,7 @@ export default function HeroActions({ className = "" }: { className?: string }) 
     <div className={`hero-cta ${className}`}>
       <a href="#proyectos" className="hero-cta-primary">
         {t("seeProjects")}
+        <ArrowDown size={18} aria-hidden="true" />
       </a>
       <button type="button" className="hero-cta-secondary" onClick={() => openContactModal()}>
         {t("ctaPrimary")}
@@ -28,7 +29,7 @@ export default function HeroActions({ className = "" }: { className?: string }) 
         onClick={download}
         disabled={isDownloading}
       >
-        <Download size={16} aria-hidden="true" />
+        <Download size={14} aria-hidden="true" />
         {isDownloading ? t("downloadingCv") : t("downloadCv")}
       </button>
     </div>

@@ -5,10 +5,12 @@ import { useTranslations } from "next-intl";
 
 import { AnimatePresence, motion } from "framer-motion";
 
+import { readFoundEggs, writeFoundEggs } from "./easterEggsProgress";
 import Terminal from "./Terminal";
 
 import "./EasterEggs.scss";
 
+// Keep EASTER_EGGS_TOTAL (easterEggsProgress.ts) in sync: it unlocks the footer tag.
 const EASTER_EGGS = [
   {
     sequence: ["b", "n", "b"],
@@ -40,8 +42,6 @@ const EASTER_EGGS = [
   },
 ];
 
-const STORAGE_KEY = "portfolio-easter-eggs";
-
 interface Toast {
   id: string;
   eggId: string;
@@ -62,8 +62,7 @@ export default function EasterEggs() {
   const SEQUENCE_TIMEOUT = 3000;
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) setFoundEggs(new Set(JSON.parse(saved)));
+    setFoundEggs(new Set(readFoundEggs()));
   }, []);
 
   useEffect(() => {
@@ -77,7 +76,7 @@ export default function EasterEggs() {
     const newFound = new Set(foundEggs);
     newFound.add(eggId);
     setFoundEggs(newFound);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify([...newFound]));
+    writeFoundEggs([...newFound]);
     return newFound;
   };
 
@@ -232,10 +231,12 @@ export default function EasterEggs() {
               })}
             </div>
 
+            {allFound && <p className="signature-unlocked">{t("signatureUnlocked")}</p>}
+
             <button
               className="reset-button"
               onClick={() => {
-                localStorage.removeItem(STORAGE_KEY);
+                writeFoundEggs(null);
                 setFoundEggs(new Set());
                 setShowProgress(false);
               }}

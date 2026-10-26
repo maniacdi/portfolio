@@ -6,6 +6,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+import { ogImage } from "@/utils/seo";
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
 
@@ -22,6 +23,10 @@ import { ToastProvider } from "../components/toast/ToastProvider";
 import "../../styles/globals.scss";
 
 const BASE_URL = "https://javimagaldi.com";
+
+// Terminal splash before the content. Off by default; set
+// TERMINAL_LOADER = "true" in Vercel to bring it back (applies on next deploy).
+const LOADER_ENABLED = process.env.TERMINAL_LOADER === "true";
 
 export async function generateMetadata({
   params,
@@ -62,7 +67,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/images/og-image.jpg`,
+          url: ogImage(locale),
           width: 1200,
           height: 630,
           alt: "Magaldidev Portfolio",
@@ -75,7 +80,7 @@ export async function generateMetadata({
       description: t("description"),
       site: "@magaldidev",
       creator: "@magaldidev",
-      images: [`${BASE_URL}/images/og-image.jpg`],
+      images: [ogImage(locale)],
     },
     robots: {
       index: true,
@@ -106,7 +111,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ToastProvider>
             <ScrollToTop />
-            <TerminalLoader />
+            {LOADER_ENABLED && <TerminalLoader />}
             <Header />
             <main className="main-content">{children}</main>
             <ChatBot />

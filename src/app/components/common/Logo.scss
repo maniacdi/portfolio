@@ -1,0 +1,17 @@
+.wordmark {
+  display: block;
+  width: auto;
+  color: var(--text-primary);
+  overflow: visible;
+}
+
+.wordmark-cursor {
+  fill: var(--neon-mid);
+  animation: cursor-blink 1.1s steps(2, start) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-cursor {
+    animation: none;
+  }
+}

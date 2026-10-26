@@ -4,16 +4,14 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
-import { Briefcase, CheckCircle, Loader2, Mail, MessageSquare, Send, User } from "lucide-react";
+import { CheckCircle, Loader2, Mail, Send } from "lucide-react";
 
+import { FloatingField, ServiceChips } from "./ContactFields";
 import PrivacyConsentField from "./PrivacyConsentField";
 
 import "./ContactForm.scss";
 
-
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-
-const SERVICE_KEYS = ["web", "shop", "mobile", "custom"] as const;
 
 interface FormData {
   name: string;
@@ -23,7 +21,7 @@ interface FormData {
 }
 
 interface ContactFormProps {
-  /** Service preselected in the select (service landing pages). */
+  /** Service preselected in the chips (service landing pages). */
   defaultService?: string;
   /** Heading and intro overrides; default to the generic contact copy. */
   title?: string;
@@ -38,12 +36,9 @@ export default function ContactForm({ defaultService = "", title, subtitle }: Co
   const emptyForm: FormData = { name: "", email: "", message: "", service: defaultService };
   const [form, setForm] = useState<FormData>(emptyForm);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [focusedField, setFocusedField] = useState<string | null>(null);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -148,87 +143,41 @@ export default function ContactForm({ defaultService = "", title, subtitle }: Co
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        {/* Name */}
-        <div className={`form-group ${focusedField === "name" ? "focused" : ""}`}>
-          <label htmlFor="cf-name">
-            <User size={14} />
-            <span>{t("nameLabel")}</span>
-          </label>
-          <input
-            id="cf-name"
-            type="text"
-            name="name"
-            required
-            value={form.name}
-            onChange={handleChange}
-            onFocus={() => setFocusedField("name")}
-            onBlur={() => setFocusedField(null)}
-            placeholder={t("namePlaceholder")}
-            autoComplete="name"
-          />
-        </div>
-
-        {/* Email */}
-        <div className={`form-group ${focusedField === "email" ? "focused" : ""}`}>
-          <label htmlFor="cf-email">
-            <Mail size={14} />
-            <span>{t("emailLabel")}</span>
-          </label>
-          <input
-            id="cf-email"
-            type="email"
-            name="email"
-            required
-            value={form.email}
-            onChange={handleChange}
-            onFocus={() => setFocusedField("email")}
-            onBlur={() => setFocusedField(null)}
-            placeholder={t("emailPlaceholder")}
-            autoComplete="email"
-          />
-        </div>
-
-        {/* Service */}
-        <div className="form-group">
-          <label htmlFor="cf-service">
-            <Briefcase size={14} />
-            <span>{t("serviceLabel")}</span>
-          </label>
-          <select
-            id="cf-service"
-            name="service"
-            value={form.service}
-            onChange={handleChange}
-            className="service-select"
-          >
-            <option value="">{t("servicePlaceholder")}</option>
-            {SERVICE_KEYS.map((key) => (
-              <option key={key} value={key}>
-                {ts(`items.${key}.title`)}
-              </option>
-            ))}
-            <option value="employee">{ts("employeeLabel")}</option>
-          </select>
-        </div>
-
-        {/* Message */}
-        <div className={`form-group full-width ${focusedField === "message" ? "focused" : ""}`}>
-          <label htmlFor="cf-message">
-            <MessageSquare size={14} />
-            <span>{t("messageLabel")}</span>
-          </label>
-          <textarea
-            id="cf-message"
-            name="message"
-            required
-            rows={5}
-            value={form.message}
-            onChange={handleChange}
-            onFocus={() => setFocusedField("message")}
-            onBlur={() => setFocusedField(null)}
-            placeholder={t("messagePlaceholder")}
-          />
-        </div>
+        <FloatingField
+          id="cf-name"
+          name="name"
+          label={t("nameLabel")}
+          hint={t("namePlaceholder")}
+          value={form.name}
+          onChange={handleChange}
+          autoComplete="name"
+        />
+        <FloatingField
+          id="cf-email"
+          name="email"
+          type="email"
+          label={t("emailLabel")}
+          hint={t("emailPlaceholder")}
+          value={form.email}
+          onChange={handleChange}
+          autoComplete="email"
+        />
+        <ServiceChips
+          className="full-width"
+          value={form.service}
+          onChange={(service) => setForm((prev) => ({ ...prev, service }))}
+        />
+        <FloatingField
+          id="cf-message"
+          name="message"
+          className="full-width"
+          label={t("messageLabel")}
+          hint={t("messagePlaceholder")}
+          value={form.message}
+          onChange={handleChange}
+          multiline
+          rows={5}
+        />
 
         {/* Privacy consent — RGPD art. 13 first layer + art. 6.1.a */}
         <PrivacyConsentField

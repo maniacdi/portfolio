@@ -1,21 +1,18 @@
-"use client";
+import { LOGO_PATHS } from "./logoPaths";
 
-import { useId } from "react";
+import "./Logo.scss";
 
 /**
- * Magaldidev logo — monograma "M + 6 en espejo" en SVG vectorial.
+ * Magaldidev logo: the "magaldi_" wordmark, with the neon "_" cursor that is
+ * the site's signature.
  *
- * Dos variantes intercambiables:
- *  - "mark": monograma suelto (C). Limpio, moderno, ocupa poco. Recomendado.
- *  - "hex":  monograma dentro de hexágono perfilado (A). Continuidad con la marca anterior.
+ *  - "mono": Space Mono. The default, used in header, footer and favicon.
+ *  - "tag":  graffiti tag (Sedgwick Ave Display). Reward for finding every
+ *            easter egg; the footer switches to it.
  *
- * Para cambiar el logo de TODO el sitio de golpe, edita DEFAULT_LOGO_VARIANT.
- * Para forzar una variante en un sitio concreto, pasa la prop `variant`.
+ * The OG image draws its own glitch version (Rubik Glitch) at render time.
  */
-export type LogoVariant = "mark" | "hex";
-
-// 👇 Cambia esto para intercalar el logo en cabecera/footer/favicon de un plumazo.
-export const DEFAULT_LOGO_VARIANT: LogoVariant = "mark";
+export type LogoVariant = keyof typeof LOGO_PATHS;
 
 interface LogoProps {
   variant?: LogoVariant;
@@ -23,75 +20,20 @@ interface LogoProps {
   title?: string;
 }
 
-export default function Logo({
-  variant = DEFAULT_LOGO_VARIANT,
-  className,
-  title = "Magaldidev",
-}: LogoProps) {
-  // useId evita colisiones del id del degradado cuando hay varios logos en la página.
-  const gid = useId().replace(/:/g, "");
+export default function Logo({ variant = "mono", className, title = "Magaldidev" }: LogoProps) {
+  const { viewBox, text, cursor } = LOGO_PATHS[variant];
 
   return (
     <svg
-      className={className}
-      viewBox="0 0 64 64"
+      className={`wordmark wordmark--${variant}${className ? ` ${className}` : ""}`}
+      viewBox={viewBox}
       role="img"
       aria-label={title}
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>{title}</title>
-      <defs>
-        <linearGradient id={gid} x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#9b4dff" />
-          <stop offset="1" stopColor="#6f00ff" />
-        </linearGradient>
-      </defs>
-
-      {variant === "hex" ? (
-        <>
-          <path
-            d="M32 3 L57 17.5 L57 46.5 L32 61 L7 46.5 L7 17.5 Z"
-            fill="none"
-            stroke={`url(#${gid})`}
-            strokeWidth="2.2"
-          />
-          <path
-            d="M16 46 L16 21 L32 38 L48 21"
-            fill="none"
-            stroke={`url(#${gid})`}
-            strokeWidth="4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M48 21 L48 37 L37 43 L48 49 L48 37"
-            fill="none"
-            stroke={`url(#${gid})`}
-            strokeWidth="4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </>
-      ) : (
-        <>
-          <path
-            d="M12 50 L12 18 L32 41 L52 18"
-            fill="none"
-            stroke={`url(#${gid})`}
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M52 18 L52 37 L38 44 L52 51 L52 37"
-            fill="none"
-            stroke={`url(#${gid})`}
-            strokeWidth="5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </>
-      )}
+      <path d={text} fill="currentColor" />
+      <rect className="wordmark-cursor" {...cursor} />
     </svg>
   );
 }
