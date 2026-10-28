@@ -37,8 +37,13 @@ function skillList(): string {
 function projectList(client: boolean): string {
   return FEATURED_PROJECTS.filter((p) => CLIENT_PROJECTS.has(p.slug) === client)
     .map((p) => {
-      const links = [p.demo, p.repo].filter(Boolean).join(" · ");
-      const status = p.status ? ` (${STATUS_LABEL[p.status]})` : "";
+      const launched = p.launched !== false;
+      const links = [launched ? p.demo : undefined, p.repo].filter(Boolean).join(" · ");
+      const status = !launched
+        ? " (pendiente de lanzamiento, aún no es pública)"
+        : p.status
+          ? ` (${STATUS_LABEL[p.status]})`
+          : "";
       const description = projectDescriptions[p.descriptionKey] ?? "";
       return `- ${p.title}${status}: ${description}${links ? ` Enlaces: ${links}` : ""}`;
     })

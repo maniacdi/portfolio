@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import ContactForm from "../components/contact/ContactForm";
+import ClientWork from "../components/home/ClientWork";
 import FeaturedProjects from "../components/home/FeaturedProjects";
 import HeroBillboard from "../components/home/hero/HeroBillboard";
+import NowStrip from "../components/home/NowStrip";
 import PowerHero from "../components/home/PowerHero";
 import Services from "../components/home/Services";
 
@@ -46,12 +48,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+
   return (
     <main className="home-container">
       {HERO_VARIANT === "classic" ? <PowerHero /> : <HeroBillboard glitch={GLITCH_ENABLED} />}
+      <ClientWork />
       <Services />
       <FeaturedProjects />
+      <NowStrip locale={locale} />
       <ContactForm />
     </main>
   );

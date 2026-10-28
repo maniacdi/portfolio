@@ -1,163 +1,206 @@
-.tech-carousel-section {
-  padding: 4rem 2rem;
-  background: var(--bg);
-  position: relative;
-  width: 100%;
+/* ============================================
+   TECH STAGE — /code spotlight carousel: 3D coverflow over a giant
+   outlined name, segmented progress like stories.
+============================================ */
 
-  .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+.tech-stage-section {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--padding-xl) var(--content-pad);
 
-    .section-title {
-      margin-bottom: 1rem;
-      font-family: var(--font-space-grotesk), sans-serif;
-    }
-
-    .gradient-text {
-      color: var(--neon-mid);
-    }
-
-    .section-subtitle {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 600px;
-      margin: 0 auto;
-
-      @media (max-width: 768px) {
-        padding: 0 1rem;
-      }
-    }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 }
 
-.tech-carousel-container {
+.tech-stage-header {
+  margin-bottom: 2rem;
+}
+
+.tech-stage-title {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.tech-stage-subtitle {
+  max-width: 600px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.tech-stage {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto 3rem;
-  padding: 2rem;
-  background: var(--bg2);
-  border: 1px solid var(--border);
+  height: clamp(420px, 52vw, 580px);
   overflow: hidden;
-  min-height: 500px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  perspective: 1200px;
+  cursor: grab;
+  touch-action: pan-y;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--neon-mid);
+    outline-offset: 2px;
+  }
+}
+
+// Sits in the top band the cards leave free, so it reads as a headline.
+.tech-stage-ghost {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 1rem;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+
+  span {
+    font-family: var(--font-space-grotesk), sans-serif;
+    // Shrinks with the name length (--chars) so long names still fit.
+    font-size: min(13rem, calc((min(100vw, 1200px) - 4rem) * 1.45 / var(--chars, 6)));
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--neon-mid);
+    opacity: 0.7;
+    text-transform: uppercase;
+  }
+}
+
+.tech-stage-track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 2.5rem;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.tech-slide {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
+  align-items: flex-start;
+  gap: 0.6rem;
+  width: clamp(200px, 26vw, 300px);
+  aspect-ratio: 4 / 5;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 
-.tech-carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 350px;
-  position: relative;
-  z-index: 2;
+  &.is-active {
+    border-color: var(--neon);
+    background: var(--bg);
+    color: var(--text);
+    box-shadow: 10px 10px 0 var(--neon);
+    cursor: inherit;
 
-  .tech-card {
-    position: absolute;
-    width: 300px;
-    padding: 2rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    z-index: 1;
-
-    /* one accent for every technology: the site's neon, not each brand */
-    &:hover {
-      border-color: var(--neon);
-
-      .tech-icon-large {
-        transform: scale(1.15) rotate(5deg);
-      }
-    }
-
-    &.active {
-      z-index: 10;
-      border-color: var(--neon);
-
-      .tech-icon-large {
-        color: var(--neon-mid);
-      }
-    }
-
-    .tech-icon-large {
-      margin-bottom: 1.5rem;
-      color: var(--text-secondary);
-      transition:
-        transform 0.3s ease,
-        color 0.3s ease;
-    }
-
-    .tech-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .tech-name {
-        margin-bottom: 0.375rem;
-        color: var(--text);
-      }
-
-      .tech-category {
-        color: var(--text-secondary);
-        font-family: var(--font-jetbrains-mono), monospace;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        margin-bottom: 1rem;
-      }
-
-      .tech-badge {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.375rem 0.875rem;
-        background: transparent;
-        border: 1px solid var(--border);
-
-        .badge-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: var(--neon-mid);
-          animation: pulseBadge 2s infinite;
-        }
-
-        .badge-text {
-          font-family: var(--font-jetbrains-mono), monospace;
-          color: var(--text-secondary);
-          letter-spacing: 0.06em;
-        }
-      }
+    .tech-slide-icon {
+      color: var(--neon-mid);
     }
   }
 }
 
-.carousel-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.tech-slide-index {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.tech-slide-icon {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.tech-slide-name {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.tech-slide-meta {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neon-mid);
+}
+
+.tech-stage-used {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  min-height: 1.6em;
+  margin-top: 1.25rem;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.8rem;
+
+  a {
+    color: var(--neon-mid);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+.tech-stage-used-label {
+  color: var(--text-muted);
+}
+
+.tech-stage-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.tech-stage-btn {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
   width: 44px;
   height: 44px;
-  background: var(--bg3);
-  border: 1px solid var(--border2);
+  border: 1px solid var(--border);
+  background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
-  z-index: 20;
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
     color 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   &:hover {
     background: var(--neon-subtle);
@@ -165,173 +208,77 @@
     color: var(--neon-mid);
   }
 
-  &.prev {
-    left: 1rem;
-  }
-  &.next {
-    right: 1rem;
+  &:focus-visible {
+    outline: 2px solid var(--neon-mid);
+    outline-offset: 2px;
   }
 }
 
-.carousel-indicators {
+.tech-stage-progress {
   display: flex;
-  justify-content: center;
-  gap: 0.4rem;
-  margin-top: 2rem;
+  flex: 1;
+  gap: 4px;
+  min-width: 0;
+}
 
-  .indicator {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--border2);
-    border: none;
-    cursor: pointer;
-    transition:
-      background 0.2s ease,
-      transform 0.2s ease;
-    padding: 0;
+.tech-stage-segment {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  background: var(--border);
 
-    &:hover {
-      background: var(--neon-mid);
-      transform: scale(1.2);
-    }
+  &.is-done {
+    background: var(--neon);
+  }
 
-    &.active {
-      background: var(--neon);
-      transform: scale(1.3);
+  i {
+    position: absolute;
+    inset: 0;
+    background: var(--neon);
+    transform-origin: left;
+    animation-name: techSegmentFill;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+}
+
+.tech-stage-counter {
+  flex-shrink: 0;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+@keyframes techSegmentFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .tech-slide {
+    padding: 1.1rem;
+    box-shadow: none;
+
+    &.is-active {
+      box-shadow: 6px 6px 0 var(--neon);
     }
   }
 }
 
-.tech-mini-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 2rem;
-  padding: 1rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  z-index: 10;
-
-  .mini-tech-item {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    cursor: pointer;
-    transition:
-      background 0.15s ease,
-      border-color 0.15s ease,
-      color 0.15s ease;
-    &:hover {
-      background: var(--neon-subtle);
-      border-color: var(--neon-border);
-      color: var(--text);
-    }
-
-    &.active {
-      background: var(--neon-subtle);
-      border-color: var(--neon);
-      color: var(--neon-mid);
-    }
-  }
-}
-
-.tech-categories {
-  display: flex;
-  justify-content: center;
-  gap: 0.625rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-
-  .category-btn {
-    padding: 0.5rem 1.25rem;
-    background: transparent;
-    border: 1px solid var(--border);
-    font-family: var(--font-jetbrains-mono), monospace;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition:
-      background 0.2s ease,
-      border-color 0.2s ease,
-      color 0.2s ease;
-
-    &:hover {
-      border-color: var(--neon);
-      color: var(--text);
-    }
-
-    &.active {
-      background: var(--neon-subtle);
-      border-color: var(--neon);
-      color: var(--neon-mid);
-      font-weight: 500;
-    }
-  }
-}
-
-@keyframes pulseBadge {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-}
-
-@media (max-width: 1024px) {
-  .tech-carousel-container {
-    padding: 1.5rem;
-  }
-  .tech-card {
-    width: 250px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .tech-carousel-section {
-    padding: 3rem 1rem;
-  }
-  .tech-carousel-container {
-    padding: 1rem;
+@media (prefers-reduced-motion: reduce) {
+  .tech-slide,
+  .tech-slide-icon,
+  .tech-stage-btn {
+    transition: none;
   }
 
-  .carousel-control {
-    width: 36px;
-    height: 36px;
-    &.prev {
-      left: 0.5rem;
-    }
-    &.next {
-      right: 0.5rem;
-    }
-  }
-
-  .tech-card {
-    width: 220px !important;
-    padding: 1.5rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .tech-mini-grid {
-    gap: 0.5rem;
-    .mini-tech-item {
-      width: 38px;
-      height: 38px;
-    }
-  }
-
-  .tech-categories {
-    gap: 0.5rem;
-    .category-btn {
-      padding: 0.4rem 0.875rem;
-    }
+  .tech-stage-segment i {
+    animation: none;
+    transform: scaleX(1);
   }
 }

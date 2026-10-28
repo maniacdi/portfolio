@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 
 import { ArrowLeft, ArrowUpRight, Code2, ExternalLink } from "lucide-react";
 
+import { liveUrl } from "@/app/data/projects";
 import { fetchProjectBySlug, fetchProjectSlugs, localize } from "@/app/services/projectsService";
 import { ogImage } from "@/utils/seo";
 import LocalizedLink from "@components/common/LocalizedLink";
@@ -71,6 +72,7 @@ export default async function ProjectPage({
   const { locale, slug } = await params;
   const project = await fetchProjectBySlug(slug);
   if (!project) notFound();
+  const demo = liveUrl(project.slug ?? slug, project.demo);
 
   const t = await getTranslations({ locale, namespace: "projectPage" });
   const tf = await getTranslations({ locale, namespace: "featuredProjects" });
@@ -94,7 +96,7 @@ export default async function ProjectPage({
     image: project.coverImage ? `${BASE_URL}${project.coverImage}` : undefined,
     keywords: (project.stack || []).join(", "),
     author: { "@type": "Person", name: "Javi García Magaldi", url: BASE_URL },
-    ...(project.demo ? { sameAs: project.demo } : {}),
+    ...(demo ? { sameAs: demo } : {}),
   };
 
   const breadcrumbLd = {
@@ -136,8 +138,8 @@ export default async function ProjectPage({
         <p className="project-detail-tagline">{tagline}</p>
 
         <div className="project-detail-links">
-          {project.demo && (
-            <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-primary">
+          {demo && (
+            <a href={demo} target="_blank" rel="noopener noreferrer" className="btn-primary">
               <ExternalLink size={16} />
               <span>{tf("liveDemo")}</span>
             </a>

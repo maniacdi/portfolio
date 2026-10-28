@@ -264,18 +264,21 @@
     "languages": "languages"
   },
   "techCarousel": {
-    "title": "Tech Stack & Tools",
-    "subtitle": "Technologies and tools I use daily to build digital products",
+    "label": "STACK",
+    "title": "What I build with",
+    "subtitle": "The technologies I have spent the most hours on, with years of use for each.",
     "previous": "Previous technology",
     "next": "Next technology",
-    "goToTech": "Go to technology {index}",
+    "roleDescription": "carousel",
+    "years": "{years, plural, one {# year} other {# years}}",
+    "usedIn": "Used in:",
+    "usedAtWork": "Mostly in company projects",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
-      "database": "Database",
-      "tools": "Tools"
-    },
-    "badge": "Daily Use"
+      "languages": "Language",
+      "tools": "Tool"
+    }
   },
   "easterEggs": {
     "title": "Easter Eggs",
@@ -452,7 +455,8 @@
       "desc": "Companies: beyond freelance, I'm open to joining a team as a full-stack developer. Let's talk.",
       "cta": "Reach out"
     },
-    "moreLabel": "See what's included"
+    "moreLabel": "See what's included",
+    "proofLabel": "Example"
   },
   "legal": {
     "notice": "Legal notice",
@@ -657,5 +661,24 @@
         }
       ]
     }
+  },
+  "clientWork": {
+    "label": "CLIENTS",
+    "title": "Sites already at work",
+    "visit": "Visit site",
+    "caseStudy": "Case study",
+    "comingSoon": "Coming soon"
+  },
+  "now": {
+    "label": "RIGHT NOW",
+    "commitTitle": "Latest commit",
+    "commitFallback": "See what's on GitHub",
+    "postTitle": "Latest post",
+    "askTitle": "Ask my AI",
+    "questions": [
+      "What have you built for clinics or shops?",
+      "How much does a website for my business cost?",
+      "Do you work as an employee or freelance?"
+    ]
   }
 }

@@ -87,6 +87,12 @@ export function getAllPosts(locale: string): PostMeta[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+// Último post escrito en ese idioma: getPost cae al otro idioma si falta la
+// traducción, y la home no debe enseñar un título en español en /en.
+export function latestPostIn(posts: PostMeta[], locale: string): PostMeta | undefined {
+  return posts.find((p) => p.locale === locale);
+}
+
 // Posts relacionados: los que más etiquetas comparten con el actual; a igualdad,
 // el más reciente. Si no comparte ninguna, se rellena con los últimos publicados.
 export function getRelatedPosts(slug: string, locale: string, limit = 2): PostMeta[] {

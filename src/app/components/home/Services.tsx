@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, Briefcase, Globe, ShoppingBag, Smartphone, Wrench } from "lucide-react";
 
+import { getProjectBySlug, SERVICE_PROOF } from "@/app/data/projects";
 import { getServiceByKey, servicePath } from "@/app/data/services";
 import { useContactModalStore } from "@/app/store/useContactModalStore";
 import LocalizedLink from "@components/common/LocalizedLink";
@@ -13,7 +14,7 @@ import Reveal from "@components/common/Reveal";
 
 import "./Services.scss";
 
-const SERVICES: { key: string; Icon: LucideIcon }[] = [
+const SERVICES: { key: keyof typeof SERVICE_PROOF; Icon: LucideIcon }[] = [
   { key: "web", Icon: Globe },
   { key: "shop", Icon: ShoppingBag },
   { key: "mobile", Icon: Smartphone },
@@ -40,26 +41,38 @@ export default function Services() {
       </Reveal>
 
       <div className="services-grid">
-        {SERVICES.map(({ key, Icon }, index) => (
-          <Reveal key={key} delay={0.12 + index * 0.06}>
-            {/* Real links to each service page: crawlable, and the page has
-                the detail plus the form with the service preselected. */}
-            <LocalizedLink
-              href={servicePath(getServiceByKey(key)!.slug)}
-              className="service-card"
-            >
-              <span className="service-icon">
-                <Icon size={22} />
-              </span>
-              <h3 className="service-name">{t(`items.${key}.title`)}</h3>
-              <p className="service-desc">{t(`items.${key}.desc`)}</p>
-              <span className="service-cta">
-                {t("moreLabel")}
-                <ArrowRight size={15} />
-              </span>
-            </LocalizedLink>
-          </Reveal>
-        ))}
+        {SERVICES.map(({ key, Icon }, index) => {
+          const proof = getProjectBySlug(SERVICE_PROOF[key])!;
+          return (
+            <Reveal key={key} delay={0.12 + index * 0.06}>
+              {/* Real links to each service page: crawlable, and the page has
+                  the detail plus the form with the service preselected. The
+                  title link is stretched over the card; the proof link sits
+                  above it with its own click. */}
+              <article className="service-card">
+                <span className="service-icon">
+                  <Icon size={22} />
+                </span>
+                <h3 className="service-name">
+                  <LocalizedLink
+                    href={servicePath(getServiceByKey(key)!.slug)}
+                    className="stretched-link"
+                  >
+                    {t(`items.${key}.title`)}
+                  </LocalizedLink>
+                </h3>
+                <p className="service-desc">{t(`items.${key}.desc`)}</p>
+                <span className="service-cta" aria-hidden="true">
+                  {t("moreLabel")}
+                  <ArrowRight size={15} />
+                </span>
+                <LocalizedLink href={`/projects/${proof.slug}`} className="service-proof">
+                  {t("proofLabel")}: {proof.title} →
+                </LocalizedLink>
+              </article>
+            </Reveal>
+          );
+        })}
       </div>
 
       <Reveal delay={0.1} className="hire-reveal">

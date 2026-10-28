@@ -39,7 +39,7 @@ function parseFollowUp(header: string | null): string[] | undefined {
 export default function ChatBot() {
   const locale = useLocale() as "es" | "en";
   const t = useTranslations("chatbot");
-  const { isOpen, open, close } = useChatbotStore();
+  const { isOpen, open, close, pendingQuestion, consumePendingQuestion } = useChatbotStore();
   const [isExpanded, setIsExpanded] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
@@ -90,6 +90,15 @@ export default function ChatBot() {
       }, 500);
     }
   }, [isOpen, locale]);
+
+  // A question asked from outside (home chips) goes out once the welcome
+  // message is shown and nothing else is being answered.
+  useEffect(() => {
+    if (isOpen && pendingQuestion && messages.length > 0 && !isTyping) {
+      const question = consumePendingQuestion();
+      if (question) handleSendMessage(question);
+    }
+  }, [isOpen, pendingQuestion, messages.length, isTyping]);
 
   const addUserMessage = (content: string) => {
     const newMessage: Message = {
@@ -215,7 +224,7 @@ export default function ChatBot() {
         {!isOpen && (
           <motion.button
             className="chatbot-trigger"
-            onClick={open}
+            onClick={() => open()}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}

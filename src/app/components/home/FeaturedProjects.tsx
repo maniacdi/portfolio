@@ -6,10 +6,15 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Code2, ExternalLink, Folder } from "lucide-react";
 
-import { FEATURED_PROJECTS } from "@/app/data/projects";
+import { CLIENT_SLUGS, FEATURED_PROJECTS } from "@/app/data/projects";
 import LocalizedLink from "@components/common/LocalizedLink";
 
 import "./FeaturedProjects.scss";
+
+// Client sites already lead the home in ClientWork.
+const OTHER_PROJECTS = FEATURED_PROJECTS.filter(
+  (p) => !(CLIENT_SLUGS as readonly string[]).includes(p.slug)
+);
 
 export default function FeaturedProjects() {
   const t = useTranslations("featuredProjects");
@@ -48,7 +53,7 @@ export default function FeaturedProjects() {
       </motion.p>
 
       <div className="projects-grid">
-        {FEATURED_PROJECTS.map((project, index) => {
+        {OTHER_PROJECTS.map((project, index) => {
           return (
             <motion.article
               key={project.title}

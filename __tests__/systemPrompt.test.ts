@@ -45,3 +45,11 @@ describe("buildSystemPrompt", () => {
     expect(prompt).toContain("español");
   });
 });
+
+describe("buildSystemPrompt and unlaunched projects", () => {
+  it("never gives the bot a link to a site that is not launched yet", () => {
+    const prompt = buildSystemPrompt("es");
+    expect(prompt).toContain("Ū Skin Store");
+    expect(prompt).not.toContain("uskinstore.com");
+  });
+});

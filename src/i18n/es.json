@@ -264,18 +264,21 @@
     "languages": "idiomas"
   },
   "techCarousel": {
-    "title": "Tecnologías y Herramientas",
-    "subtitle": "Tecnologías y herramientas que uso diariamente para construir productos digitales",
+    "label": "STACK",
+    "title": "Con qué trabajo",
+    "subtitle": "Las tecnologías en las que más horas llevo, con los años de uso de cada una.",
     "previous": "Tecnología anterior",
     "next": "Siguiente tecnología",
-    "goToTech": "Ir a tecnología {index}",
+    "roleDescription": "carrusel",
+    "years": "{years, plural, one {# año} other {# años}}",
+    "usedIn": "Usado en:",
+    "usedAtWork": "Sobre todo en proyectos de empresa",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
-      "database": "Base de datos",
-      "tools": "Herramientas"
-    },
-    "badge": "Uso diario"
+      "languages": "Lenguaje",
+      "tools": "Herramienta"
+    }
   },
   "easterEggs": {
     "title": "Easter Eggs",
@@ -452,7 +455,8 @@
       "desc": "Empresas: además de freelance, estoy abierto a incorporarme a un equipo como desarrollador full-stack. Hablemos.",
       "cta": "Escríbeme"
     },
-    "moreLabel": "Ver qué incluye"
+    "moreLabel": "Ver qué incluye",
+    "proofLabel": "Ejemplo"
   },
   "legal": {
     "notice": "Aviso legal",
@@ -657,5 +661,24 @@
         }
       ]
     }
+  },
+  "clientWork": {
+    "label": "CLIENTES",
+    "title": "Webs que ya están trabajando",
+    "visit": "Ver web",
+    "caseStudy": "Ver caso",
+    "comingSoon": "Próximamente"
+  },
+  "now": {
+    "label": "AHORA MISMO",
+    "commitTitle": "Último commit",
+    "commitFallback": "Mira lo que hay en GitHub",
+    "postTitle": "Último post",
+    "askTitle": "Pregúntale a mi IA",
+    "questions": [
+      "¿Qué has hecho para clínicas o comercios?",
+      "¿Cuánto cuesta una web para mi negocio?",
+      "¿Trabajas en plantilla o freelance?"
+    ]
   }
 }

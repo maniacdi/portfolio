@@ -1,695 +1,264 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { FaAws, FaJava } from "react-icons/fa";
+import { useCallback, useEffect, useState } from "react";
+import { FaJava } from "react-icons/fa";
 import { RiReactjsLine } from "react-icons/ri";
 import {
-  SiBitbucket,
-  SiBrevo,
-  SiClerk,
-  SiConfluence,
-  SiCss,
   SiCypress,
   SiDocker,
-  SiDrizzle,
-  SiEslint,
   SiExpo,
-  SiExpress,
   SiFigma,
-  SiFramer,
   SiGit,
-  SiGithub,
-  SiGraphql,
-  SiHtml5,
-  SiJavascript,
-  SiJest,
-  SiJira,
-  SiLinux,
-  SiMarkdown,
   SiMongodb,
-  SiMysql,
-  SiNetlify,
   SiNextdotjs,
   SiNodedotjs,
-  SiNotion,
-  SiNpm,
-  SiPnpm,
-  SiPostgresql,
-  SiPostman,
-  SiPrettier,
-  SiPython,
-  SiRadixui,
   SiReact,
-  SiRedis,
   SiRedux,
-  SiResend,
   SiSass,
-  SiShopify,
-  SiSlack,
-  SiSocketdotio,
-  SiSpringboot,
-  SiSupabase,
-  SiTailwindcss,
   SiTypescript,
-  SiUbuntu,
-  SiVercel,
-  SiVite,
-  SiVitest,
   SiVuedotjs,
-  SiWebpack,
 } from "react-icons/si";
-import { TbBrandThreejs } from "react-icons/tb";
-import { VscVscode } from "react-icons/vsc";
 import { useTranslations } from "next-intl";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
+import { FEATURED_PROJECTS } from "@/app/data/projects";
+import { profileData, type SkillCategory } from "@/utils/data/profileData";
+import LocalizedLink from "@components/common/LocalizedLink";
 
 import "./TechCarousel.scss";
 
 interface TechItem {
-  id: string;
-  name: string;
+  // Name exactly as in profileData.skills: years come from there (the CV).
+  skill: string;
+  label: string;
   icon: React.ReactNode;
-  color: string;
-  category: "frontend" | "backend" | "tools" | "database";
+  // Project tags that count as "used in" for this technology.
+  tags: string[];
+  // No portfolio project shows it, but it is part of company work.
+  atWork?: boolean;
+}
+
+// The short list worth a spotlight; the full stack lives in the CV.
+const TECHS: TechItem[] = [
+  { skill: "React", label: "React", icon: <SiReact />, tags: ["React"] },
+  { skill: "TypeScript", label: "TypeScript", icon: <SiTypescript />, tags: ["TypeScript"] },
+  { skill: "Next.js", label: "Next.js", icon: <SiNextdotjs />, tags: ["Next.js"] },
+  { skill: "Java · Spring Boot", label: "Java · Spring", icon: <FaJava />, tags: [], atWork: true },
+  { skill: "Node.js", label: "Node.js", icon: <SiNodedotjs />, tags: ["Node.js"] },
+  {
+    skill: "React Native",
+    label: "React Native",
+    icon: <RiReactjsLine />,
+    tags: ["React Native"],
+  },
+  { skill: "SCSS / Sass", label: "SCSS", icon: <SiSass />, tags: ["SCSS"] },
+  { skill: "Redux / Zustand", label: "Redux · Zustand", icon: <SiRedux />, tags: [], atWork: true },
+  { skill: "Vue 3", label: "Vue 3", icon: <SiVuedotjs />, tags: [], atWork: true },
+  { skill: "MongoDB", label: "MongoDB", icon: <SiMongodb />, tags: ["MongoDB"] },
+  { skill: "Docker", label: "Docker", icon: <SiDocker />, tags: ["Docker"] },
+  { skill: "Cypress", label: "Cypress", icon: <SiCypress />, tags: [], atWork: true },
+  { skill: "Expo", label: "Expo", icon: <SiExpo />, tags: ["Expo"] },
+  { skill: "Git", label: "Git", icon: <SiGit />, tags: [] },
+  { skill: "Figma", label: "Figma", icon: <SiFigma />, tags: [] },
+];
+
+const AUTOPLAY_MS = 4500;
+
+function skillInfo(name: string): { years: number; category: SkillCategory } | null {
+  for (const category of Object.keys(profileData.skills) as SkillCategory[]) {
+    const found = profileData.skills[category].find((s) => s.name === name);
+    if (found) return { years: found.years, category };
+  }
+  return null;
+}
+
+// Signed distance from the active slide on a circular list (-n/2..n/2).
+function offsetFrom(index: number, current: number, total: number): number {
+  let d = index - current;
+  if (d > total / 2) d -= total;
+  if (d < -total / 2) d += total;
+  return d;
 }
 
 export default function TechCarousel() {
   const t = useTranslations("techCarousel");
-  const [isPaused, setIsPaused] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const reduceMotion = useReducedMotion();
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = TECHS.length;
 
-  const techStack: TechItem[] = [
-    // ============================================
-    // FRONTEND FRAMEWORKS & LIBRARIES
-    // ============================================
-    {
-      id: "react",
-      name: "React",
-      icon: <SiReact />,
-      color: "#61DAFB",
-      category: "frontend",
-    },
-    {
-      id: "react-native",
-      name: "React Native",
-      icon: <RiReactjsLine />,
-      color: "#61DAFB",
-      category: "frontend",
-    },
-    {
-      id: "vue",
-      name: "Vue.js",
-      icon: <SiVuedotjs />,
-      color: "#4FC08D",
-      category: "frontend",
-    },
-    {
-      id: "nextjs",
-      name: "Next.js",
-      icon: <SiNextdotjs />,
-      color: "#ffffff",
-      category: "frontend",
-    },
+  const go = useCallback((step: number) => setCurrent((c) => (c + step + total) % total), [total]);
 
-    // ============================================
-    // LANGUAGES
-    // ============================================
-    {
-      id: "typescript",
-      name: "TypeScript",
-      icon: <SiTypescript />,
-      color: "#3178C6",
-      category: "frontend",
-    },
-    {
-      id: "javascript",
-      name: "JavaScript",
-      icon: <SiJavascript />,
-      color: "#F7DF1E",
-      category: "frontend",
-    },
-    {
-      id: "java",
-      name: "Java",
-      icon: <FaJava />,
-      color: "#007396",
-      category: "backend",
-    },
-    {
-      id: "spring",
-      name: "Spring Boot",
-      icon: <SiSpringboot />,
-      color: "#6DB33F",
-      category: "backend",
-    },
-    {
-      id: "python",
-      name: "Python",
-      icon: <SiPython />,
-      color: "#3776AB",
-      category: "backend",
-    },
-
-    // ============================================
-    // STYLING
-    // ============================================
-    {
-      id: "html",
-      name: "HTML5",
-      icon: <SiHtml5 />,
-      color: "#E34F26",
-      category: "frontend",
-    },
-    {
-      id: "css",
-      name: "CSS3",
-      icon: <SiCss />,
-      color: "#1572B6",
-      category: "frontend",
-    },
-    {
-      id: "sass",
-      name: "Sass",
-      icon: <SiSass />,
-      color: "#CC6699",
-      category: "frontend",
-    },
-    {
-      id: "tailwind",
-      name: "Tailwind CSS",
-      icon: <SiTailwindcss />,
-      color: "#06B6D4",
-      category: "frontend",
-    },
-    {
-      id: "radix",
-      name: "Radix UI",
-      icon: <SiRadixui />,
-      color: "#ffffff",
-      category: "frontend",
-    },
-
-    // ============================================
-    // ANIMATION & 3D
-    // ============================================
-    {
-      id: "framer",
-      name: "Framer Motion",
-      icon: <SiFramer />,
-      color: "#FF4EDD",
-      category: "frontend",
-    },
-    {
-      id: "threejs",
-      name: "Three.js",
-      icon: <TbBrandThreejs />,
-      color: "#a0a0a0",
-      category: "frontend",
-    },
-
-    // ============================================
-    // STATE MANAGEMENT
-    // ============================================
-    {
-      id: "redux",
-      name: "Redux",
-      icon: <SiRedux />,
-      color: "#764ABC",
-      category: "frontend",
-    },
-    {
-      id: "zustand",
-      name: "Zustand",
-      icon: <RiReactjsLine />,
-      color: "#443E38",
-      category: "frontend",
-    },
-
-    // ============================================
-    // BUILD TOOLS
-    // ============================================
-    {
-      id: "vite",
-      name: "Vite",
-      icon: <SiVite />,
-      color: "#646CFF",
-      category: "tools",
-    },
-    {
-      id: "webpack",
-      name: "Webpack",
-      icon: <SiWebpack />,
-      color: "#8DD6F9",
-      category: "tools",
-    },
-    {
-      id: "expo",
-      name: "Expo",
-      icon: <SiExpo />,
-      color: "#000020",
-      category: "tools",
-    },
-
-    // ============================================
-    // BACKEND
-    // ============================================
-    {
-      id: "nodejs",
-      name: "Node.js",
-      icon: <SiNodedotjs />,
-      color: "#339933",
-      category: "backend",
-    },
-    {
-      id: "express",
-      name: "Express",
-      icon: <SiExpress />,
-      color: "#a0a0a0",
-      category: "backend",
-    },
-    {
-      id: "socketio",
-      name: "Socket.io",
-      icon: <SiSocketdotio />,
-      color: "#010101",
-      category: "backend",
-    },
-    {
-      id: "graphql",
-      name: "GraphQL",
-      icon: <SiGraphql />,
-      color: "#E10098",
-      category: "backend",
-    },
-    {
-      id: "clerk",
-      name: "Clerk",
-      icon: <SiClerk />,
-      color: "#6C47FF",
-      category: "backend",
-    },
-    {
-      id: "resend",
-      name: "Resend",
-      icon: <SiResend />,
-      color: "#ffffff",
-      category: "backend",
-    },
-    {
-      id: "brevo",
-      name: "Brevo",
-      icon: <SiBrevo />,
-      color: "#0B996E",
-      category: "backend",
-    },
-    {
-      id: "shopify",
-      name: "Shopify",
-      icon: <SiShopify />,
-      color: "#7AB55C",
-      category: "backend",
-    },
-
-    // ============================================
-    // DATABASES
-    // ============================================
-    {
-      id: "mongodb",
-      name: "MongoDB",
-      icon: <SiMongodb />,
-      color: "#47A248",
-      category: "database",
-    },
-    {
-      id: "mysql",
-      name: "MySQL",
-      icon: <SiMysql />,
-      color: "#4479A1",
-      category: "database",
-    },
-    {
-      id: "redis",
-      name: "Redis",
-      icon: <SiRedis />,
-      color: "#FF4438",
-      category: "database",
-    },
-    {
-      id: "postgresql",
-      name: "PostgreSQL",
-      icon: <SiPostgresql />,
-      color: "#4169E1",
-      category: "database",
-    },
-    {
-      id: "supabase",
-      name: "Supabase",
-      icon: <SiSupabase />,
-      color: "#3FCF8E",
-      category: "database",
-    },
-    {
-      id: "drizzle",
-      name: "Drizzle ORM",
-      icon: <SiDrizzle />,
-      color: "#C5F74F",
-      category: "database",
-    },
-
-    // ============================================
-    // TESTING
-    // ============================================
-    {
-      id: "jest",
-      name: "Jest",
-      icon: <SiJest />,
-      color: "#C21325",
-      category: "tools",
-    },
-    {
-      id: "cypress",
-      name: "Cypress",
-      icon: <SiCypress />,
-      color: "#17202C",
-      category: "tools",
-    },
-    {
-      id: "vitest",
-      name: "Vitest",
-      icon: <SiVitest />,
-      color: "#6E9F18",
-      category: "tools",
-    },
-
-    // ============================================
-    // VERSION CONTROL & COLLABORATION
-    // ============================================
-    {
-      id: "git",
-      name: "Git",
-      icon: <SiGit />,
-      color: "#F05032",
-      category: "tools",
-    },
-    {
-      id: "github",
-      name: "GitHub",
-      icon: <SiGithub />,
-      color: "#181717",
-      category: "tools",
-    },
-    {
-      id: "bitbucket",
-      name: "Bitbucket",
-      icon: <SiBitbucket />,
-      color: "#0052CC",
-      category: "tools",
-    },
-
-    // ============================================
-    // DEVOPS & DEPLOYMENT
-    // ============================================
-    {
-      id: "docker",
-      name: "Docker",
-      icon: <SiDocker />,
-      color: "#2496ED",
-      category: "tools",
-    },
-    {
-      id: "aws",
-      name: "AWS",
-      icon: <FaAws />,
-      color: "#FF9900",
-      category: "tools",
-    },
-    {
-      id: "vercel",
-      name: "Vercel",
-      icon: <SiVercel />,
-      color: "#ffffff",
-      category: "tools",
-    },
-    {
-      id: "netlify",
-      name: "Netlify",
-      icon: <SiNetlify />,
-      color: "#00C7B7",
-      category: "tools",
-    },
-
-    // ============================================
-    // PACKAGE MANAGERS
-    // ============================================
-    {
-      id: "npm",
-      name: "npm",
-      icon: <SiNpm />,
-      color: "#CB3837",
-      category: "tools",
-    },
-    {
-      id: "pnpm",
-      name: "pnpm",
-      icon: <SiPnpm />,
-      color: "#F69220",
-      category: "tools",
-    },
-
-    // ============================================
-    // CODE QUALITY
-    // ============================================
-    {
-      id: "eslint",
-      name: "ESLint",
-      icon: <SiEslint />,
-      color: "#4B32C3",
-      category: "tools",
-    },
-    {
-      id: "prettier",
-      name: "Prettier",
-      icon: <SiPrettier />,
-      color: "#F7B93E",
-      category: "tools",
-    },
-
-    // ============================================
-    // DESIGN & PROTOTYPING
-    // ============================================
-    {
-      id: "figma",
-      name: "Figma",
-      icon: <SiFigma />,
-      color: "#F24E1E",
-      category: "tools",
-    },
-
-    // ============================================
-    // API TESTING & DEVELOPMENT
-    // ============================================
-    {
-      id: "postman",
-      name: "Postman",
-      icon: <SiPostman />,
-      color: "#FF6C37",
-      category: "tools",
-    },
-
-    // ============================================
-    // PROJECT MANAGEMENT
-    // ============================================
-    {
-      id: "jira",
-      name: "Jira",
-      icon: <SiJira />,
-      color: "#0052CC",
-      category: "tools",
-    },
-    {
-      id: "confluence",
-      name: "Confluence",
-      icon: <SiConfluence />,
-      color: "#172B4D",
-      category: "tools",
-    },
-    {
-      id: "notion",
-      name: "Notion",
-      icon: <SiNotion />,
-      color: "#a0a0a0",
-      category: "tools",
-    },
-
-    // ============================================
-    // COMMUNICATION
-    // ============================================
-    {
-      id: "slack",
-      name: "Slack",
-      icon: <SiSlack />,
-      color: "#4A154B",
-      category: "tools",
-    },
-
-    // ============================================
-    // EDITORS & IDEs
-    // ============================================
-    {
-      id: "vscode",
-      name: "VS Code",
-      icon: <VscVscode />,
-      color: "#007ACC",
-      category: "tools",
-    },
-
-    // ============================================
-    // OPERATING SYSTEMS
-    // ============================================
-    {
-      id: "linux",
-      name: "Linux",
-      icon: <SiLinux />,
-      color: "#FCC624",
-      category: "tools",
-    },
-    {
-      id: "ubuntu",
-      name: "Ubuntu",
-      icon: <SiUbuntu />,
-      color: "#E95420",
-      category: "tools",
-    },
-
-    // ============================================
-    // OTHER
-    // ============================================
-    {
-      id: "markdown",
-      name: "Markdown",
-      icon: <SiMarkdown />,
-      color: "#a0a0a0",
-      category: "tools",
-    },
-  ];
-
-  // Autoplay
+  // One timer per slide, so the progress segment and the switch stay in step.
   useEffect(() => {
-    if (!isPaused) {
-      autoplayRef.current = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % techStack.length);
-      }, 2000);
-    }
+    if (paused || reduceMotion) return;
+    const id = setTimeout(() => go(1), AUTOPLAY_MS);
+    return () => clearTimeout(id);
+  }, [current, paused, reduceMotion, go]);
 
-    return () => {
-      if (autoplayRef.current) {
-        clearInterval(autoplayRef.current);
-      }
-    };
-  }, [isPaused, techStack.length]);
-
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? techStack.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === techStack.length - 1 ? 0 : prev + 1));
-  };
+  const active = TECHS[current];
+  const info = skillInfo(active.skill);
+  const usedIn = FEATURED_PROJECTS.filter((p) => p.tags.some((tag) => active.tags.includes(tag)));
 
   return (
-    <section className="tech-carousel-section" aria-label="Tecnologías y herramientas">
-      <div className="section-header">
-        <h2 className="section-title gradient-text">{t("title")}</h2>
-        <p className="section-subtitle">{t("subtitle")}</p>
+    <section className="tech-stage-section" aria-labelledby="tech-stage-title">
+      <div className="tech-stage-header">
+        <p className="section-label">
+          <span>{t("label")}</span>
+        </p>
+        <h2 id="tech-stage-title" className="tech-stage-title">
+          {t("title")}
+        </h2>
+        <p className="tech-stage-subtitle">{t("subtitle")}</p>
       </div>
 
       <div
-        className="tech-carousel-container"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        ref={carouselRef}
+        className="tech-stage"
+        role="region"
+        aria-roledescription={t("roleDescription")}
+        aria-label={t("title")}
+        tabIndex={0}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowRight") go(1);
+          if (e.key === "ArrowLeft") go(-1);
+        }}
       >
-        <button
-          className="carousel-control prev"
-          onClick={handlePrev}
-          aria-label="Tecnología anterior"
+        {/* Giant outlined name behind the cards. */}
+        <div
+          className="tech-stage-ghost"
+          aria-hidden="true"
+          style={{ "--chars": active.label.length } as React.CSSProperties}
         >
-          ←
-        </button>
-
-        <button
-          className="carousel-control next"
-          onClick={handleNext}
-          aria-label="Siguiente tecnología"
-        >
-          →
-        </button>
-
-        <div className="tech-carousel">
-          <AnimatePresence mode="wait">
-            {/* Tech items */}
-            {techStack.map((tech, index) => (
-              <motion.div
-                key={tech.id}
-                className={`tech-card ${index === currentIndex ? "active" : ""}`}
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={{
-                  opacity: index === currentIndex ? 1 : 0.3,
-                  scale: index === currentIndex ? 1 : 0.7,
-                  y: index === currentIndex ? 0 : 10,
-                }}
-                exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                transition={{ duration: 0.5, type: "spring" }}
-                onClick={() => setCurrentIndex(index)}
-              >
-                <div className="tech-icon-large">
-                  {tech.icon}
-                </div>
-
-                <div className="tech-content">
-                  <h3 className="tech-name">{tech.name}</h3>
-                  <span className="tech-category">{tech.category}</span>
-
-                  <div className="tech-badge">
-                    <span className="badge-dot" />
-                    <span className="badge-text">{t("badge")}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.span
+              key={active.label}
+              initial={reduceMotion ? false : { x: "30%", opacity: 0 }}
+              animate={{ x: "0%", opacity: 1 }}
+              exit={reduceMotion ? undefined : { x: "-30%", opacity: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {active.label}
+            </motion.span>
           </AnimatePresence>
         </div>
 
-        <div className="carousel-indicators">
-          {techStack.map((_, index) => (
-            <button
-              key={index}
-              className={`indicator ${index === currentIndex ? "active" : ""}`}
-              onClick={() => setCurrentIndex(index)}
-              aria-label={`Ir a tecnología ${index + 1}`}
-            />
+        <motion.div
+          className="tech-stage-track"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.25}
+          onDragEnd={(_, { offset }) => {
+            if (offset.x < -60) go(1);
+            if (offset.x > 60) go(-1);
+          }}
+        >
+          {TECHS.map((tech, index) => {
+            const d = offsetFrom(index, current, total);
+            const visible = Math.abs(d) <= 2;
+            const techInfo = skillInfo(tech.skill);
+            return (
+              <motion.button
+                key={tech.skill}
+                type="button"
+                className={`tech-slide ${d === 0 ? "is-active" : ""}`}
+                aria-hidden={d !== 0}
+                tabIndex={-1}
+                onClick={() => d !== 0 && setCurrent(index)}
+                initial={false}
+                animate={{
+                  x: `${d * 78}%`,
+                  rotateY: d * -32,
+                  scale: 1 - Math.abs(d) * 0.16,
+                  opacity: visible ? 1 : 0,
+                  filter: `brightness(${1 - Math.abs(d) * 0.3})`,
+                }}
+                style={{ zIndex: 10 - Math.abs(d), pointerEvents: visible ? "auto" : "none" }}
+                transition={
+                  reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 260, damping: 30 }
+                }
+              >
+                <span className="tech-slide-index">{String(index + 1).padStart(2, "0")}</span>
+                <span className="tech-slide-icon">{tech.icon}</span>
+                <span className="tech-slide-name">{tech.label}</span>
+                {techInfo && (
+                  <span className="tech-slide-meta">
+                    {t("years", { years: techInfo.years })} · {t(`categories.${techInfo.category}`)}
+                  </span>
+                )}
+              </motion.button>
+            );
+          })}
+        </motion.div>
+      </div>
+
+      <p className="tech-stage-used" aria-live="polite">
+        <span className="sr-only">
+          {active.label}
+          {info ? `, ${t("years", { years: info.years })}. ` : ". "}
+        </span>
+        {usedIn.length > 0 ? (
+          <>
+            <span className="tech-stage-used-label">{t("usedIn")}</span>
+            {usedIn.map((p) => (
+              <LocalizedLink key={p.slug} href={`/projects/${p.slug}`}>
+                {p.title}
+              </LocalizedLink>
+            ))}
+          </>
+        ) : active.atWork ? (
+          <span className="tech-stage-used-label">{t("usedAtWork")}</span>
+        ) : null}
+      </p>
+
+      <div className="tech-stage-controls">
+        <button
+          type="button"
+          className="tech-stage-btn"
+          onClick={() => go(-1)}
+          aria-label={t("previous")}
+        >
+          <ArrowLeft size={18} />
+        </button>
+
+        <div className="tech-stage-progress" aria-hidden="true">
+          {TECHS.map((tech, index) => (
+            <span
+              key={tech.skill}
+              className={`tech-stage-segment ${index < current ? "is-done" : ""} ${
+                index === current ? "is-current" : ""
+              }`}
+            >
+              {index === current && (
+                <i
+                  key={current}
+                  style={{
+                    animationDuration: `${AUTOPLAY_MS}ms`,
+                    animationPlayState: paused || reduceMotion ? "paused" : "running",
+                  }}
+                />
+              )}
+            </span>
           ))}
         </div>
 
-        <div className="tech-mini-grid">
-          {techStack.map((tech, index) => (
-            <motion.div
-              key={`mini-${tech.id}`}
-              className={`mini-tech-item ${index === currentIndex ? "active" : ""}`}
-              whileHover={{ scale: 1.1 }}
-              onClick={() => setCurrentIndex(index)}
-              title={tech.name}
-            >
-              {tech.icon}
-            </motion.div>
-          ))}
-        </div>
+        <span className="tech-stage-counter">
+          {String(current + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        </span>
+
+        <button
+          type="button"
+          className="tech-stage-btn"
+          onClick={() => go(1)}
+          aria-label={t("next")}
+        >
+          <ArrowRight size={18} />
+        </button>
       </div>
     </section>
   );

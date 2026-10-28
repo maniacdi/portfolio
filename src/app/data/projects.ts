@@ -12,6 +12,10 @@ export interface Project {
   repo?: string;
   featured?: boolean;
   image?: string;
+  // Absent = launched. While false, the home never links to the live site.
+  launched?: boolean;
+  // Full-page capture shown in the home browser frame.
+  fullImage?: string;
 }
 
 export const FEATURED_PROJECTS: Project[] = [
@@ -25,6 +29,7 @@ export const FEATURED_PROJECTS: Project[] = [
     demo: "https://umedicinaestetica.com",
     featured: true,
     image: "/images/projects/umedicinaestetica/cover.webp",
+    fullImage: "/images/projects/umedicinaestetica/full.webp",
   },
   {
     slug: "uskinstore",
@@ -35,6 +40,8 @@ export const FEATURED_PROJECTS: Project[] = [
     status: "production",
     demo: "https://uskinstore.com",
     image: "/images/projects/uskinstore/cover.webp",
+    fullImage: "/images/projects/uskinstore/full.webp",
+    launched: false,
   },
   {
     slug: "showcase",
@@ -102,3 +109,29 @@ export const FEATURED_PROJECTS: Project[] = [
     image: "/images/projects/portfolio/cover.webp",
   },
 ];
+
+export const CLIENT_SLUGS = ["umedicinaestetica", "uskinstore"] as const;
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return FEATURED_PROJECTS.find((p) => p.slug === slug);
+}
+
+export const CLIENT_PROJECTS: Project[] = CLIENT_SLUGS.map((slug) => getProjectBySlug(slug)!);
+
+// The project that proves each home service card.
+export const SERVICE_PROOF: Record<"web" | "shop" | "mobile" | "custom", string> = {
+  web: "umedicinaestetica",
+  shop: "uskinstore",
+  mobile: "ironlog",
+  custom: "compras-app",
+};
+
+// Live site for pages fed by other data sources (case study): hidden until launch.
+export function liveUrl(slug: string, demo?: string): string | undefined {
+  return getProjectBySlug(slug)?.launched === false ? undefined : demo;
+}
+
+export function projectLink(p: Project): { href: string; external: boolean } {
+  if (p.launched !== false && p.demo) return { href: p.demo, external: true };
+  return { href: `/projects/${p.slug}`, external: false };
+}
