@@ -17,9 +17,7 @@ const BASE_URL = "https://javimagaldi.com";
 // changes apply on the next deployment):
 //   HERO_VARIANT = "billboard" (default) | "classic" (the previous PowerHero,
 //                  kept in the code in case we go back to it)
-//   HERO_GLITCH  = "true" turns on the name glitch in the billboard (off by default)
 const HERO_VARIANT = process.env.HERO_VARIANT === "classic" ? "classic" : "billboard";
-const GLITCH_ENABLED = process.env.HERO_GLITCH === "true";
 
 export async function generateMetadata({
   params,
@@ -53,7 +51,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <main className="home-container">
-      {HERO_VARIANT === "classic" ? <PowerHero /> : <HeroBillboard glitch={GLITCH_ENABLED} />}
+      {HERO_VARIANT === "classic" ? <PowerHero /> : <HeroBillboard />}
       <ClientWork />
       <Services />
       <FeaturedProjects />

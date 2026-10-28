@@ -1,70 +1,86 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 
+import { LOGO_PATHS } from "@components/common/logoPaths";
+
 import HeroActions from "./HeroActions";
+import HeroAvatar from "./HeroAvatar";
 
 import "./hero.scss";
 import "./HeroBillboard.scss";
 
 /**
- * "Brutalist billboard" hero: the name set as big as the viewport allows,
- * a facts row on top, the pitch and actions underneath, and one moving band
- * of real figures from the CV — the only animation on the page load.
+ * "Brutalist billboard" hero: a poster headline over a technical grid, the
+ * graffiti "magaldi" tag outlined behind it, and the voxel me kicking bugs.
+ * One moving band of real figures from the CV closes it.
  */
-interface HeroBillboardProps {
-  /** Chromatic glitch on the name while hovered. Driven by HERO_GLITCH. */
-  glitch?: boolean;
+
+// "<out>otros</out> dejan" -> the word in the tags is drawn outlined.
+function HeadlineLine({ line }: { line: string }) {
+  const parts = line.split(/<out>(.*?)<\/out>/);
+  return (
+    <span className="hb-line">
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <span key={i} className="hb-line-out">
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </span>
+  );
 }
 
-export default function HeroBillboard({ glitch = false }: HeroBillboardProps) {
+export default function HeroBillboard() {
   const t = useTranslations("heroNext");
   const facts = t.raw("facts") as string[];
-  const [isGlitching, setIsGlitching] = useState(false);
-
-  const glitchProps = glitch
-    ? {
-        onMouseEnter: () => setIsGlitching(true),
-        onMouseLeave: () => setIsGlitching(false),
-      }
-    : {};
-  const glitchClass = isGlitching ? " is-glitching" : "";
+  const headline = t.raw("headline") as string[];
+  const { viewBox, text } = LOGO_PATHS.tag;
 
   return (
     <section className="hero-billboard" aria-labelledby="hero-name">
-      <div className="bb-inner">
-        <div className="bb-meta">
-          <span>{t("location")}</span>
-          <span className="bb-meta-role">{t("role")}</span>
-          <span className="bb-meta-status">
-            <span className="bb-dot" aria-hidden="true" />
-            {t("available")}
-          </span>
-        </div>
+      <div className="hb-grid" aria-hidden="true" />
+      <svg className="hb-tag" viewBox={viewBox} aria-hidden="true" focusable="false">
+        <path d={text} />
+      </svg>
 
-        {/* The poster lines are a layout grid shared with the pitch, so the
-            heading itself is the plain name for assistive tech. */}
+      <div className="bb-inner">
         <h1 id="hero-name" className="sr-only">
-          Javier García Magaldi
+          Javier García Magaldi — {t("role")}
         </h1>
-        <div className="bb-stage">
-          <span
-            className={`bb-line bb-line--1${glitchClass}`}
-            data-text="Javier García"
-            aria-hidden="true"
-            {...glitchProps}
-          >
-            Javier García
-          </span>
-          <span className="bb-line bb-line--2" aria-hidden="true" {...glitchProps}>
-            <span className={`bb-glitch${glitchClass}`} data-text="Magaldi">
-              Magaldi
-            </span>
-            <span className="bb-cursor">_</span>
-          </span>
+
+        <div className="hb-main">
+          <p className="hb-headline">
+            {headline.map((line) => (
+              <HeadlineLine key={line} line={line} />
+            ))}
+          </p>
           <p className="bb-lede">{t("lede")}</p>
           <HeroActions className="bb-actions" />
+        </div>
+
+        <div className="hb-side">
+          <dl className="hb-info">
+            <div>
+              <dt>{t("roleLabel")}</dt>
+              <dd>{t("role")}</dd>
+            </div>
+            <div>
+              <dt>{t("locationLabel")}</dt>
+              <dd>{t("location")}</dd>
+            </div>
+            <div>
+              <dt>{t("statusLabel")}</dt>
+              <dd className="hb-info-status">
+                <span className="bb-dot" aria-hidden="true" />
+                {t("available")}
+              </dd>
+            </div>
+          </dl>
+          <HeroAvatar />
         </div>
       </div>
 

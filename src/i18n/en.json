@@ -485,18 +485,26 @@
   },
   "heroNext": {
     "role": "Full-stack web developer",
+    "roleLabel": "Role",
     "location": "Santander, Spain",
+    "locationLabel": "Based in",
     "available": "Available for projects",
+    "statusLabel": "Status",
+    "headline": ["I finish", "what <out>others</out>", "leave", "half-done"],
     "lede": "I build websites, apps and backends that actually work. By day, apps for the Inditex ecosystem; by night, my own projects running on my home server.",
     "factsLabel": "Facts from my work",
     "facts": [
       "6 years in production",
-      "10,000+ daily users at Inditex",
       "A BFF that cut response times by 40%",
-      "Test coverage from 60% to 85%",
       "Ū Medicina Estética: website and panel in production",
       "Compras App, used daily from my home server"
-    ]
+    ],
+    "avatar": {
+      "kick": "Kick the bug",
+      "damage": "-1 BUG",
+      "critical": "CRITICAL!",
+      "counter": "bugs squashed: {count}"
+    }
   },
   "servicePages": {
     "breadcrumbHome": "Home",

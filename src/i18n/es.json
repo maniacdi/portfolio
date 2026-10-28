@@ -485,18 +485,26 @@
   },
   "heroNext": {
     "role": "Desarrollador web full-stack",
+    "roleLabel": "Rol",
     "location": "Santander, España",
+    "locationLabel": "Base",
     "available": "Disponible para proyectos",
+    "statusLabel": "Estado",
+    "headline": ["Construyo", "lo que", "<out>otros</out> dejan", "a medias"],
     "lede": "Hago webs, apps y backends que funcionan de verdad. De día, aplicaciones para el ecosistema Inditex; por la noche, proyectos propios corriendo en mi NAS.",
     "factsLabel": "Datos de mi trabajo",
     "facts": [
       "6 años en producción",
-      "10.000+ usuarios diarios en Inditex",
       "BFF con tiempos de respuesta un 40% más bajos",
-      "Cobertura de tests del 60% al 85%",
       "Ū Medicina Estética: web y panel en producción",
       "Compras App en uso diario desde mi NAS"
-    ]
+    ],
+    "avatar": {
+      "kick": "Dale una patada al bug",
+      "damage": "-1 BUG",
+      "critical": "¡CRÍTICO!",
+      "counter": "bugs aplastados: {count}"
+    }
   },
   "servicePages": {
     "breadcrumbHome": "Inicio",

@@ -1,0 +1,202 @@
+/* ============================================
+   HERO AVATAR — voxel me on WASD, kicking bugs.
+   Both poses share one canvas (577×760) so they
+   swap without the keycaps moving.
+============================================ */
+
+.hero-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-avatar-stage {
+  position: relative;
+  height: clamp(220px, 40vh, 380px);
+  aspect-ratio: 577 / 760;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--neon-mid);
+    outline-offset: 6px;
+  }
+}
+
+.hero-avatar-aura {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  width: 160%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgb(111 0 255 / 45%) 0%,
+    rgb(111 0 255 / 12%) 40%,
+    transparent 68%
+  );
+  pointer-events: none;
+  animation: hero-aura 3.2s ease-in-out infinite;
+}
+
+.hero-avatar-pool {
+  position: absolute;
+  left: 50%;
+  bottom: -3%;
+  width: 115%;
+  height: 14%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgb(162 89 255 / 55%), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-avatar-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 14px rgb(111 0 255 / 35%));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.hero-avatar-img--kick,
+.is-kicking .hero-avatar-img--idle {
+  opacity: 0;
+}
+
+.is-kicking .hero-avatar-img--kick {
+  opacity: 1;
+}
+
+/* The bug crawls by the idle foot and gets punted off on the kick. */
+.hero-avatar-bug {
+  position: absolute;
+  left: 1%;
+  bottom: 5%;
+  width: 7%;
+  z-index: 1;
+
+  &.is-crawl {
+    animation: hero-bug-crawl 0.5s steps(2) infinite;
+  }
+
+  &.is-fly {
+    animation: hero-bug-fly 0.9s cubic-bezier(0.2, 0.7, 0.4, 1) forwards;
+  }
+
+  &.is-respawn {
+    animation:
+      hero-bug-respawn 0.6s ease-out,
+      hero-bug-crawl 0.5s steps(2) 0.6s infinite;
+  }
+}
+
+/* RPG damage number */
+.hero-avatar-dmg {
+  position: absolute;
+  left: -8%;
+  top: 34%;
+  z-index: 2;
+  font-family: var(--font-pixel), monospace;
+  font-size: clamp(0.8rem, 1.3vw, 1.15rem);
+  white-space: nowrap;
+  color: #ffd23f;
+  text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000;
+  pointer-events: none;
+  animation: hero-dmg 1.3s ease-out forwards;
+}
+
+.hero-avatar-dmg--crit {
+  left: 0;
+  top: 25%;
+  font-size: clamp(0.6rem, 0.9vw, 0.8rem);
+  color: #ff3b6b;
+}
+
+.hero-avatar-counter {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.8rem;
+  color: var(--success, #22c55e);
+}
+
+@keyframes hero-aura {
+  50% {
+    opacity: 0.65;
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+}
+
+@keyframes hero-bug-crawl {
+  50% {
+    transform: translateX(-3px);
+  }
+}
+
+@keyframes hero-bug-fly {
+  to {
+    transform: translate(-620%, -900%) rotate(-900deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-bug-respawn {
+  from {
+    transform: translateX(-400%);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-dmg {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.6);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0) scale(1.25);
+  }
+  30% {
+    transform: translateY(-6px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-avatar-aura,
+  .hero-avatar-bug.is-crawl,
+  .hero-avatar-bug.is-respawn {
+    animation: none;
+  }
+
+  /* No flying: the bug just vanishes and the number fades in place. */
+  .hero-avatar-bug.is-fly {
+    animation: none;
+    opacity: 0;
+  }
+
+  .hero-avatar-dmg {
+    animation: hero-dmg-fade 1.3s ease-out forwards;
+  }
+}
+
+@keyframes hero-dmg-fade {
+  0%,
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
