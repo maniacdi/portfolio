@@ -13,6 +13,7 @@ export const profileData = {
       { name: "React", years: 6 },
       { name: "Next.js", years: 3 },
       { name: "React Native", years: 2 },
+      { name: "Expo", years: 1 },
       { name: "Vue 3", years: 2 },
       { name: "SCSS / Sass", years: 6 },
       { name: "Tailwind", years: 2 },
