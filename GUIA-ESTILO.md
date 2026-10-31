@@ -62,9 +62,52 @@ explico qué monté para resolverlo y opino sin rodeos.
    no numerar. Y la sección "Conclusión" casi nunca hace falta.
 7. **Emojis, "En resumen", "en el mundo actual", "cabe destacar"**: nunca (esto ya lo hago bien).
 
+## Quién escribe (datos que se pueden usar)
+
+Todo dato sobre mí sale del CV (`Desktop\Documentos\cv`) o de `src/utils/data/profileData.ts`.
+Nada de inventar clientes, cifras ni anécdotas: si no ha pasado, no se cuenta.
+
+- Javier García Magaldi, "Javi". Santander. Ingeniería Informática en la Universidad de Cantabria (2014-2020).
+- 6+ años en producción. Senior full-stack en AMS Solutions desde 2023 (ecosistema Inditex,
+  apps internas con 10.000+ usuarios diarios). Antes Innova-tsn (2022-2023) e Incentro (2020-2022).
+- Stack: React, TypeScript, Next.js, React Native/Expo, Node, Java + Spring Boot, MongoDB, Postgres.
+- Clientes reales: Ū Medicina Estética (web bilingüe + panel propio de agenda y citas, Santander)
+  y Ū Skin Store (Shopify con productos que solo se compran con código de la clínica).
+- Proyectos propios: Showcase (base para webs de comercios), Compras App (en uso diario, en mi NAS),
+  IronLog (app de gimnasio offline), Porra del Mundial, una web de boda.
+- Cómo trabajo con clientes: respondo en menos de 48 h, presupuesto cerrado antes de empezar,
+  entregas por fases, el cliente elige entre opciones con su coste.
+- Ojo: trabajo a jornada completa en AMS. Nada de "mi agencia", "mi equipo" ni "cientos de clientes".
+
+## Cómo hablo (además de lo de arriba)
+
+- Expresiones de casa, sueltas: "le vamos dando", "vamos con ello", "mejor que sobre que no que falte".
+- Pienso en voz alta y le pregunto al lector: "¿o no es así?", "¿te suena?". Una o dos por post, no más.
+- Hablo de tú al lector, siempre. Nada de "usted" ni de "el usuario".
+- Si algo depende, digo de qué depende. No escondo el "depende" detrás de frases bonitas.
+
 ## Formato de los posts
 
-- 300-500 palabras. Si necesito más, probablemente son dos posts.
+Dos tipos, con medidas distintas:
+
+- **Post de proyecto o personal**: 300-500 palabras. Si necesito más, probablemente son dos posts.
+- **Artículo SEO del calendario** (`SEO Strategy - Magaldog.com.xlsx`): guía pilar 1.000-1.500 palabras,
+  satélite 600-900. Aquí sí manda la estructura útil para quien busca (pasos reales, comparativas),
+  pero con la misma voz: arranque propio, opinión y cero relleno.
+
+Reglas de los artículos SEO:
+
+- Keyword principal en el H1 (`title`), en el primer párrafo y en al menos un H2, escrita como la diría una persona.
+- `seoTitle` en el frontmatter cuando el H1 pasa de 60 caracteres: es el `<title>` de Google, va tal cual.
+- `excerpt` = meta description del Excel, 140-155 caracteres.
+- La fecha del frontmatter es la fecha prevista del calendario: en producción el post no aparece
+  hasta ese día (se puede escribir con antelación).
+- Enlaces: siempre a la landing del cluster (ES `/servicios/…`, EN `/en/services/…`) y a los posts ya
+  publicados. Los marcados "planificado" se enlazan cuando existan: al publicar uno, repasar la guía pilar.
+- Respetar la columna "Diferenciación" del Excel: cada artículo con su intención, sin pisar a otro ni a la landing.
+
+Para todos:
+
 - H2 con títulos propios, no genéricos ("Por qué Supabase" mejor que "Tecnologías utilizadas").
 - Tildes y ortografía impecables (aunque yo escriba rápido sin tildes en chats, el blog va limpio).
 - Enlaces internos: si menciono algo que ya conté en otro post o proyecto, lo enlazo.
@@ -82,3 +125,6 @@ explico qué monté para resolverlo y opino sin rodeos.
 - [ ] ¿Estructura distinta al post anterior?
 - [ ] ¿Enlaces internos donde tocan?
 - [ ] ¿Lo leería en voz alta sin que me dé vergüenza?
+- [ ] ¿Todos los datos sobre mí cuadran con el CV?
+- [ ] (SEO) ¿Keyword en H1, primer párrafo y un H2? ¿`seoTitle` ≤ 60 y `excerpt` ≤ 155?
+- [ ] (SEO) ¿Enlace a la landing del cluster con la URL de su idioma?

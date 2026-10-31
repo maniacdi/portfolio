@@ -1,10 +1,18 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight, Briefcase, Globe, ShoppingBag, Smartphone, Wrench } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  CalendarCheck,
+  Globe,
+  ShoppingBag,
+  Smartphone,
+  Wrench,
+} from "lucide-react";
 
 import { getProjectBySlug, SERVICE_PROOF } from "@/app/data/projects";
 import { getServiceByKey, servicePath } from "@/app/data/services";
@@ -16,6 +24,7 @@ import "./Services.scss";
 
 const SERVICES: { key: keyof typeof SERVICE_PROOF; Icon: LucideIcon }[] = [
   { key: "web", Icon: Globe },
+  { key: "booking", Icon: CalendarCheck },
   { key: "shop", Icon: ShoppingBag },
   { key: "mobile", Icon: Smartphone },
   { key: "custom", Icon: Wrench },
@@ -23,6 +32,7 @@ const SERVICES: { key: keyof typeof SERVICE_PROOF; Icon: LucideIcon }[] = [
 
 export default function Services() {
   const t = useTranslations("services");
+  const locale = useLocale();
   const { open } = useContactModalStore();
 
   return (
@@ -55,7 +65,7 @@ export default function Services() {
                 </span>
                 <h3 className="service-name">
                   <LocalizedLink
-                    href={servicePath(getServiceByKey(key)!.slug)}
+                    href={servicePath(getServiceByKey(key)!, locale)}
                     className="stretched-link"
                   >
                     {t(`items.${key}.title`)}

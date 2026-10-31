@@ -6,7 +6,7 @@ import "./ContactFields.scss";
 
 // Shared by ContactForm (page) and ContactModal so both read the same.
 
-export const SERVICE_KEYS = ["web", "shop", "mobile", "custom", "employee"] as const;
+export const SERVICE_KEYS = ["web", "booking", "shop", "mobile", "custom", "employee"] as const;
 
 interface FloatingFieldProps {
   id: string;

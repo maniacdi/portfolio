@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Full-Stack Web Developer in Santander — Javi García Magaldi",
-    "description": "Web & mobile apps, APIs, and the infrastructure to make it all actually work. Full-stack developer (React, React Native, Node, Java) from Santander, Spain. I build things with code — and keep them running."
+    "title": "Freelance Full-Stack Developer in Spain | Javi Magaldi",
+    "description": "Websites, mobile apps and custom software for businesses. Full-stack developer (React, React Native, Node) in Santander, Spain. Tell me about your project."
   },
   "header": {
     "home": "Home",
@@ -437,9 +437,13 @@
         "title": "Website for your business",
         "desc": "An online presence that brings in customers: fast, clear and easy to update."
       },
+      "booking": {
+        "title": "Online bookings",
+        "desc": "Let your customers book without calling you, with automatic reminders."
+      },
       "shop": {
-        "title": "Bookings / online store",
-        "desc": "Let your customers book or buy without having to call you."
+        "title": "Online store",
+        "desc": "Sell online with Shopify or a custom build, with secure payments and an up-to-date catalogue."
       },
       "mobile": {
         "title": "Mobile app",
@@ -538,8 +542,8 @@
     "otherServices": "Other services",
     "areaServed": "Santander and remote across Spain",
     "web": {
-      "metaTitle": "Website design and development for small businesses",
-      "metaDescription": "Custom websites for restaurants, clinics and shops: fast, well ranked on Google and easy to update. Full-stack web developer based in Santander, Spain.",
+      "metaTitle": "Small Business Website Design and Development",
+      "metaDescription": "Custom websites for restaurants, clinics and shops: fast, built for Google and easy to update yourself. Fixed quote before we start.",
       "h1": "A website for your business",
       "lede": "A fast, clear website you can update yourself, hand-built for your business. No heavy templates, no plugins to maintain.",
       "intro": "Most small-business websites I come across share the same problems: they load slowly, look wrong on a phone and nobody knows how to change the opening hours. So I build them the other way round: first what your customers come looking for (what you do, where you are, how to reach you), then everything else. I code it from scratch with Next.js, so it loads fast and Google understands it from day one.",
@@ -570,42 +574,75 @@
         }
       ]
     },
-    "shop": {
-      "metaTitle": "Online booking system and online shop for your business",
-      "metaDescription": "Custom online booking and online shops: let your customers book or buy without calling you. Shopify or a custom build, depending on what your business needs.",
-      "h1": "Online booking and shop",
-      "lede": "Let your customers book an appointment or buy without having to call you, and manage it all from one place.",
-      "intro": "If bookings come in by phone and WhatsApp, you end up with your diary in three places and the odd lost appointment. A shop has the same problem with stock. So I build the system that fits your business: sometimes that's Shopify with whatever it's missing coded on top, sometimes a custom build with your own diary and panel. I'll walk you through both options, including what each costs to maintain, and you choose.",
+    "booking": {
+      "metaTitle": "Online Booking System Development",
+      "metaDescription": "Custom online booking for your business: customers book without calling you and get automatic reminders. Fixed quote before we start.",
+      "h1": "Online booking system",
+      "lede": "Let your customers book an appointment without having to call you, and see your whole diary in one place.",
+      "intro": "If bookings come in by phone and WhatsApp, you end up with your diary in three places and the odd lost appointment. So I build a booking system that fits how your business works: your hours, your services and who handles each one. Sometimes an off-the-shelf tool set up properly is enough, and sometimes a custom build with your own diary and panel pays off. I'll walk you through both options, including what each costs to maintain, and you choose.",
       "includes": [
-        "Online appointment booking with automatic email confirmations and reminders",
-        "Online shop with Shopify or custom-built, with secure payments",
-        "A panel to manage appointments, orders, products and customers",
-        "Your business's own rules: code-locked products, opening hours or services per professional",
-        "Automated catalogue loading and updates",
+        "Online appointment booking from your website, at any time",
+        "Automatic email confirmations and reminders",
+        "A panel to manage appointments, hours and customers",
+        "Your business's own rules: length per service, opening hours or a diary per professional",
+        "Works with your current website or a new one",
         "Data protection by design: GDPR and access control"
       ],
       "faq": [
         {
-          "q": "Shopify or a custom shop?",
-          "a": "Shopify handles payments, shipping and stock from day one, and for many shops it's the sensible choice. If you need something Shopify doesn't do (at Ū Skin Store, selling some products only with a code from the clinic), I build it on top. If your case doesn't fit Shopify, I build it from scratch."
-        },
-        {
           "q": "Will my customers get appointment reminders?",
           "a": "Yes. Confirmations and reminders go out by email automatically, like in the booking system I built for Ū Medicina Estética."
+        },
+        {
+          "q": "Why not just use a booking platform?",
+          "a": "For many businesses that's the sensible choice, and if it's yours I'll tell you. A custom system pays off when the platform charges a fee per booking, doesn't fit how you work, or you want your customer data to be yours."
+        },
+        {
+          "q": "How much does it cost?",
+          "a": "It depends on what you need and whether we start from an existing tool or from scratch. I'll give you options with their setup and maintenance cost, and a fixed quote before we start."
+        },
+        {
+          "q": "What if I already have a website?",
+          "a": "The booking system can be added to your current site or connected to it. We'll look at it when you tell me about your case."
+        }
+      ]
+    },
+    "shop": {
+      "metaTitle": "Custom Online Store Development",
+      "metaDescription": "Custom online store development, on Shopify or built from scratch, with secure payments and your own rules. Fixed quote before we start.",
+      "h1": "Custom online store",
+      "lede": "Let your customers buy without having to call you, and manage orders, stock and products from one place.",
+      "intro": "An online store is more than a catalogue with a pay button: there are payments, shipping, stock and your business's own rules. So I build the store that fits what you sell: sometimes that's Shopify with whatever it's missing coded on top, sometimes a custom build. I'll walk you through both options, including what each costs to maintain, and you choose.",
+      "includes": [
+        "Online store with Shopify or custom-built, with secure payments",
+        "A panel to manage orders, products and customers",
+        "Your business's own rules: code-locked products, special prices or shipping",
+        "Automated catalogue loading and updates",
+        "Built for Google: fast, with every product page properly tagged",
+        "Data protection by design: GDPR and access control"
+      ],
+      "faq": [
+        {
+          "q": "Shopify or a custom store?",
+          "a": "Shopify handles payments, shipping and stock from day one, and for many stores it's the sensible choice. If you need something Shopify doesn't do (at Ū Skin Store, selling some products only with a code from the clinic), I build it on top. If your case doesn't fit Shopify, I build it from scratch."
         },
         {
           "q": "How much does it cost?",
           "a": "It depends on what you need and whether we start from Shopify or from scratch. I'll give you options with their setup and maintenance cost, and a fixed quote before we start."
         },
         {
+          "q": "Can I add products myself?",
+          "a": "Yes. You get a panel to add and edit products without touching code, and if your catalogue lives somewhere else, I automate the import."
+        },
+        {
           "q": "What if I already have a website?",
-          "a": "It can be added to your current site or connected to it. We'll look at it when you tell me about your case."
+          "a": "The store can be added to your current site or connected to it. We'll look at it when you tell me about your case."
         }
       ]
     },
     "mobile": {
-      "metaTitle": "Mobile app development for iOS and Android",
-      "metaDescription": "iOS and Android apps with React Native: one codebase, cheaper to maintain. For your business or your idea, from the first version to the app stores.",
+      "metaTitle": "Mobile App Development for iOS and Android",
+      "metaDescription": "React Native apps for your business: one codebase for iOS and Android, cheaper to maintain. From the first version to the App Store and Google Play.",
       "h1": "Mobile app",
       "lede": "An app for iOS and Android, straightforward and no frills, for your business or for that idea you've been mulling over.",
       "intro": "The two apps I use most are my own: Compras App, the shopping list we use at home every day, and IronLog, which I log my gym sessions with. Both are built with React Native, which means one codebase for iOS and Android: lower cost and less maintenance than two separate apps. We start with the smallest version that's useful to you and grow it based on what your users actually use.",
@@ -637,8 +674,8 @@
       ]
     },
     "custom": {
-      "metaTitle": "Custom software and automation for businesses",
-      "metaDescription": "Internal tools, admin panels, integrations and custom automation so your business stops losing hours on repetitive tasks.",
+      "metaTitle": "Custom Software and Automation for Businesses",
+      "metaDescription": "Admin panels, integrations and custom automation so your business stops losing hours on repetitive tasks. Fixed price, built in stages.",
       "h1": "Custom software",
       "lede": "Internal tools, admin panels and integrations to take the tasks that eat hours every week off your plate.",
       "intro": "Almost every business has a spreadsheet someone updates by hand every week, or two programs that don't talk to each other and force you to copy data across. At AMS I spend my days on this kind of system for the Inditex ecosystem: APIs, microservices and panels used by thousands of people. For a small business the idea is the same at a different scale: a system that does by itself what you do by hand today.",

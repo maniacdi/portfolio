@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 // next-intl navigation Link + usePathname — REQUIRED for locale switching.
 // Plain next/link only soft-navigates and never reloads the server locale,
 // so the switcher appeared to "do nothing".
+import { translateServicePath } from "@/app/data/services";
 import { Link, usePathname } from "@/i18n/navigation";
 
 import "./LanguageSwitcher.scss";
@@ -22,11 +23,13 @@ export default function LanguageSwitcher() {
 
   const isEnglish = locale === "en";
   const nextLocale = isEnglish ? "es" : "en";
+  // Service pages have a different slug per language.
+  const href = translateServicePath(pathname, locale, nextLocale) ?? pathname;
 
   // Plain "ES / EN" in mono, current one lit: same box as the theme toggle.
   return (
     <Link
-      href={pathname}
+      href={href}
       locale={nextLocale}
       className="lang-switcher"
       aria-label={`Change language to ${LANGUAGE_LABELS[nextLocale]}`}

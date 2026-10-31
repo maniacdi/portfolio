@@ -8,6 +8,8 @@ const BLOG_DIR = path.join(process.cwd(), "src", "content", "blog");
 export interface PostMeta {
   slug: string;
   title: string;
+  /** <title> for Google when the H1 is too long for it (≤ 60 chars, no brand added) */
+  seoTitle?: string;
   date: string; // YYYY-MM-DD
   excerpt: string;
   tags: string[];
@@ -33,6 +35,20 @@ export function readingMinutes(markdown: string): number {
   return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 }
 
+// Posts con fecha futura están programados: en producción no existen hasta su
+// día (ni en listados, ni en sitemap, ni por URL). En desarrollo se ven todos
+// para poder revisarlos. Las páginas que los listan se regeneran cada día
+// (revalidate), así que salen solos sin volver a desplegar.
+export function isPublished(date: string): boolean {
+  if (process.env.NODE_ENV !== "production") return true;
+  return !date || date <= new Date().toISOString().slice(0, 10);
+}
+
+function readDate(file: string): string {
+  const { data } = matter(fs.readFileSync(file, "utf8"));
+  return data.date ? String(data.date).slice(0, 10) : "";
+}
+
 function safeReadDir(dir: string): string[] {
   try {
     return fs.readdirSync(dir);
@@ -44,7 +60,10 @@ function safeReadDir(dir: string): string[] {
 export function getPostSlugs(): string[] {
   return safeReadDir(BLOG_DIR).filter((name) => {
     try {
-      return fs.statSync(path.join(BLOG_DIR, name)).isDirectory();
+      const dir = path.join(BLOG_DIR, name);
+      if (!fs.statSync(dir).isDirectory()) return false;
+      const es = path.join(dir, "es.md");
+      return !fs.existsSync(es) || isPublished(readDate(es));
     } catch {
       return false;
     }
@@ -61,11 +80,14 @@ export function getPost(slug: string, locale: string): Post | null {
     if (fs.existsSync(file)) {
       const raw = fs.readFileSync(file, "utf8");
       const { data, content } = matter(raw);
+      const date = data.date ? String(data.date).slice(0, 10) : "";
+      if (!isPublished(date)) return null;
       return {
         meta: {
           slug,
           title: data.title ?? slug,
-          date: data.date ? String(data.date).slice(0, 10) : "",
+          seoTitle: data.seoTitle,
+          date,
           excerpt: data.excerpt ?? "",
           tags: Array.isArray(data.tags) ? data.tags : [],
           cover: data.cover,

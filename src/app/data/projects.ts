@@ -119,8 +119,9 @@ export function getProjectBySlug(slug: string): Project | undefined {
 export const CLIENT_PROJECTS: Project[] = CLIENT_SLUGS.map((slug) => getProjectBySlug(slug)!);
 
 // The project that proves each home service card.
-export const SERVICE_PROOF: Record<"web" | "shop" | "mobile" | "custom", string> = {
+export const SERVICE_PROOF: Record<"web" | "booking" | "shop" | "mobile" | "custom", string> = {
   web: "umedicinaestetica",
+  booking: "umedicinaestetica",
   shop: "uskinstore",
   mobile: "ironlog",
   custom: "compras-app",

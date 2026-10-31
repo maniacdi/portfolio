@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Desarrollador Web Full-Stack en Santander — Javi García Magaldi",
-    "description": "Apps web y móviles, APIs y la infraestructura para que todo funcione de verdad. Desarrollador full-stack (React, React Native, Node, Java) desde Santander. Hago cosas con código — y que no se caigan."
+    "title": "Desarrollador web freelance en Santander | Javi Magaldi",
+    "description": "Webs, apps y software a medida para negocios. Desarrollador full-stack en Santander con 6 años en producción. Cuéntame tu proyecto y te respondo en 48 h."
   },
   "header": {
     "home": "Inicio",
@@ -437,9 +437,13 @@
         "title": "Web para tu negocio",
         "desc": "Presencia online que trae clientes: rápida, clara y fácil de actualizar."
       },
+      "booking": {
+        "title": "Reservas online",
+        "desc": "Que tus clientes reserven cita sin llamarte, con recordatorios automáticos."
+      },
       "shop": {
-        "title": "Reservas / tienda online",
-        "desc": "Que tus clientes reserven o compren sin tener que llamarte."
+        "title": "Tienda online",
+        "desc": "Vende online con Shopify o a medida, con pagos seguros y tu catálogo al día."
       },
       "mobile": {
         "title": "App móvil",
@@ -538,8 +542,8 @@
     "otherServices": "Otros servicios",
     "areaServed": "Santander y en remoto para toda España",
     "web": {
-      "metaTitle": "Diseño y desarrollo web para negocios en Santander",
-      "metaDescription": "Webs a medida para restaurantes, clínicas y comercios: rápidas, bien posicionadas en Google y fáciles de actualizar. Desarrollador web full-stack en Santander.",
+      "metaTitle": "Diseño web en Santander para negocios y pymes",
+      "metaDescription": "Webs a medida para restaurantes, clínicas y comercios en Santander: rápidas, preparadas para Google y fáciles de editar. Presupuesto cerrado antes de empezar.",
       "h1": "Web para tu negocio",
       "lede": "Una web rápida, clara y que puedas actualizar tú, hecha a mano para tu negocio. Sin plantillas que pesan ni plugins que mantener.",
       "intro": "La mayoría de webs de negocios pequeños que veo tienen el mismo problema: tardan en cargar, se ven mal en el móvil y nadie sabe cómo cambiar un horario. Así que la hago al revés: primero lo que tu cliente viene a buscar (qué haces, dónde estás, cómo te contacta) y después todo lo demás. La programo a medida con Next.js, así que carga rápido y Google la entiende bien desde el primer día.",
@@ -570,18 +574,51 @@
         }
       ]
     },
-    "shop": {
-      "metaTitle": "Sistema de reservas y tienda online para tu negocio",
-      "metaDescription": "Reservas de citas y tienda online a medida: que tus clientes reserven o compren sin llamarte. Shopify o desarrollo propio, según lo que necesite tu negocio.",
-      "h1": "Reservas y tienda online",
-      "lede": "Que tus clientes reserven una cita o compren sin tener que llamarte, y que tú lo gestiones todo desde un solo sitio.",
-      "intro": "Si las citas entran por teléfono y por WhatsApp, acabas con la agenda en tres sitios y alguna reserva perdida. Con una tienda pasa lo mismo con el stock. Así que monto el sistema que encaje con tu negocio: a veces es Shopify con lo que le falte programado encima, y a veces un desarrollo propio con tu agenda y tu panel. Te explico las dos opciones, con lo que cuesta mantener cada una, y eliges tú.",
+    "booking": {
+      "metaTitle": "Desarrollo de sistemas de reservas online",
+      "metaDescription": "Sistemas de reservas de citas online a medida: que tus clientes reserven sin llamarte, con recordatorios automáticos. Presupuesto cerrado antes de empezar.",
+      "h1": "Sistema de reservas online",
+      "lede": "Que tus clientes reserven cita sin tener que llamarte, y que tú veas toda la agenda en un solo sitio.",
+      "intro": "Si las citas entran por teléfono y por WhatsApp, acabas con la agenda en tres sitios y alguna reserva perdida. Así que monto un sistema de reservas que encaje con cómo trabaja tu negocio: tus horarios, tus servicios y quién atiende cada uno. A veces basta con una herramienta del mercado bien configurada, y a veces compensa un desarrollo propio con tu agenda y tu panel. Te explico las dos opciones, con lo que cuesta mantener cada una, y eliges tú.",
       "includes": [
-        "Reserva de citas online con confirmación y recordatorios automáticos por email",
+        "Reserva de citas online desde tu web, a cualquier hora",
+        "Confirmación y recordatorios automáticos por email",
+        "Panel para gestionar citas, horarios y clientes",
+        "Reglas propias de tu negocio: duración por servicio, horarios o agenda por profesional",
+        "Integración con tu web actual o una web nueva",
+        "Protección de datos desde el diseño: RGPD y control de accesos"
+      ],
+      "faq": [
+        {
+          "q": "¿Mis clientes recibirán recordatorios de la cita?",
+          "a": "Sí. La confirmación y los recordatorios salen solos por email, como en la agenda que monté para Ū Medicina Estética."
+        },
+        {
+          "q": "¿Por qué no usar una plataforma de reservas?",
+          "a": "Para muchos negocios es lo más sensato, y si es tu caso te lo diré. Compensa un sistema propio cuando la plataforma cobra comisión por reserva, no se adapta a cómo trabajas o quieres que los datos de tus clientes sean tuyos."
+        },
+        {
+          "q": "¿Cuánto cuesta?",
+          "a": "Depende de lo que necesites y de si partimos de una herramienta existente o de cero. Te paso opciones con su coste de montaje y de mantenimiento, y un presupuesto cerrado antes de empezar."
+        },
+        {
+          "q": "¿Y si ya tengo web?",
+          "a": "El sistema de reservas se puede añadir a tu web actual o conectarlo con ella. Lo vemos cuando me cuentes tu caso."
+        }
+      ]
+    },
+    "shop": {
+      "metaTitle": "Desarrollo de tiendas online a medida",
+      "metaDescription": "Desarrollo de tiendas online a medida para tu comercio, con Shopify o desarrollo propio y pagos seguros. Presupuesto cerrado antes de empezar.",
+      "h1": "Tienda online a medida",
+      "lede": "Que tus clientes compren sin tener que llamarte, y que tú gestiones pedidos, stock y productos desde un solo sitio.",
+      "intro": "Una tienda online no es solo un catálogo con botón de pagar: están los pagos, los envíos, el stock y las reglas propias de tu negocio. Así que monto la tienda que encaje con lo que vendes: a veces es Shopify con lo que le falte programado encima, y a veces un desarrollo propio. Te explico las dos opciones, con lo que cuesta mantener cada una, y eliges tú.",
+      "includes": [
         "Tienda online con Shopify o a medida, con pagos seguros",
-        "Panel para gestionar citas, pedidos, productos y clientes",
-        "Reglas propias de tu negocio: productos con código de acceso, horarios o servicios por profesional",
+        "Panel para gestionar pedidos, productos y clientes",
+        "Reglas propias de tu negocio: productos con código de acceso, precios o envíos especiales",
         "Carga y actualización del catálogo automatizadas",
+        "Preparada para Google: rápida y con la ficha de cada producto bien etiquetada",
         "Protección de datos desde el diseño: RGPD y control de accesos"
       ],
       "faq": [
@@ -590,22 +627,22 @@
           "a": "Shopify resuelve pagos, envíos y stock desde el primer día, y para muchas tiendas es lo más sensato. Si necesitas algo que Shopify no hace (en Ū Skin Store, vender ciertos productos solo con un código de la clínica), lo programo encima. Si tu caso no encaja en Shopify, lo hago a medida."
         },
         {
-          "q": "¿Mis clientes recibirán recordatorios de la cita?",
-          "a": "Sí. La confirmación y los recordatorios salen solos por email, como en la agenda que monté para Ū Medicina Estética."
-        },
-        {
           "q": "¿Cuánto cuesta?",
           "a": "Depende de lo que necesites y de si partimos de Shopify o de cero. Te paso opciones con su coste de montaje y de mantenimiento, y un presupuesto cerrado antes de empezar."
         },
         {
+          "q": "¿Podré subir productos yo?",
+          "a": "Sí. Te dejo un panel para añadir y editar productos sin tocar código, y si tienes el catálogo en otro sitio, automatizo la carga."
+        },
+        {
           "q": "¿Y si ya tengo web?",
-          "a": "Se puede añadir a tu web actual o conectarla con ella. Lo vemos cuando me cuentes tu caso."
+          "a": "La tienda se puede añadir a tu web actual o conectarla con ella. Lo vemos cuando me cuentes tu caso."
         }
       ]
     },
     "mobile": {
-      "metaTitle": "Desarrollo de apps móviles para iOS y Android",
-      "metaDescription": "Apps para iOS y Android con React Native: una sola base de código, más barata de mantener. Para tu negocio o tu idea, de la primera versión a las tiendas.",
+      "metaTitle": "Desarrollo de apps iOS y Android en Santander",
+      "metaDescription": "Apps para tu negocio con React Native: una sola base de código para iOS y Android, más barata de mantener. De la primera versión a App Store y Google Play.",
       "h1": "App móvil",
       "lede": "Una app para iOS y Android, directa y sin florituras, para tu negocio o para esa idea que llevas tiempo rumiando.",
       "intro": "Las dos apps que más uso son mías: Compras App, la lista de la compra que usamos en casa a diario, e IronLog, con la que apunto los entrenamientos en el gimnasio. Las dos están hechas con React Native, que permite una sola base de código para iOS y Android: menos coste y menos mantenimiento que dos apps separadas. Empezamos por la versión más pequeña que te sirva y crecemos con lo que usen de verdad tus usuarios.",
@@ -637,8 +674,8 @@
       ]
     },
     "custom": {
-      "metaTitle": "Software a medida y automatización para negocios",
-      "metaDescription": "Herramientas internas, paneles de gestión, integraciones y automatizaciones a medida para que tu negocio deje de perder horas en tareas repetitivas.",
+      "metaTitle": "Software a medida para empresas en Santander",
+      "metaDescription": "Paneles de gestión, integraciones y automatizaciones a medida para que tu negocio deje de perder horas en tareas repetitivas. Presupuesto cerrado por fases.",
       "h1": "Software a medida",
       "lede": "Herramientas internas, paneles de gestión e integraciones para quitarte de encima las tareas que te roban horas cada semana.",
       "intro": "Casi todos los negocios tienen una hoja de cálculo que alguien actualiza a mano cada semana, o dos programas que no se hablan y obligan a copiar datos de uno a otro. En AMS paso los días con este tipo de sistemas para el ecosistema Inditex: APIs, microservicios y paneles que usan miles de personas. Para un negocio pequeño la idea es la misma a otra escala: un sistema que haga solo lo que hoy haces a mano.",

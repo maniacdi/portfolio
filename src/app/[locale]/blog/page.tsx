@@ -11,6 +11,9 @@ import LocalizedLink from "@components/common/LocalizedLink";
 import "@/styles/page.scss";
 import "./blog.scss";
 
+// Re-render once a day so scheduled blog posts show up on their date.
+export const revalidate = 86400;
+
 export async function generateMetadata({
   params,
 }: {

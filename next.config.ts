@@ -3,6 +3,8 @@ import withNextIntl from "next-intl/plugin";
 
 import { withSentryConfig } from "@sentry/nextjs/config";
 
+import { serviceRedirects } from "./src/app/data/services";
+
 const nextConfig: NextConfig = {
   // React Compiler (opcional pero recomendado si usas React 19)
   experimental: {
@@ -40,6 +42,7 @@ const nextConfig: NextConfig = {
   // it's served at its /es/ path on purpose (see src/proxy.ts).
   async redirects() {
     return [
+      ...serviceRedirects(),
       { source: "/es", destination: "/", permanent: true },
       {
         source: "/es/:path((?!.*opengraph-image).*)",

@@ -6,7 +6,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import { ogImage } from "@/utils/seo";
+import { ogImage, SITE_NAME } from "@/utils/seo";
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
 
@@ -14,7 +14,7 @@ import ChatBot from "../components/chatBot/ChatBot";
 import ConsoleGreeting from "../components/common/ConsoleGreeting";
 import CookieConsent from "../components/common/CookieConsent";
 import EasterEggs from "../components/common/EasterEggs";
-import { PersonSchema, WebsiteSchema } from "../components/common/JsonLd";
+import { BusinessSchema, PersonSchema, WebsiteSchema } from "../components/common/JsonLd";
 import ScrollToTop from "../components/common/ScrollToTop";
 import TerminalLoader from "../components/common/TerminalLoader";
 import ThemeProvider from "../components/common/ThemeProvider";
@@ -42,7 +42,7 @@ export async function generateMetadata({
   return {
     title: {
       default: t("title"),
-      template: `%s | Magaldidev`,
+      template: `%s | ${SITE_NAME}`,
     },
     description: t("description"),
     metadataBase: new URL(BASE_URL),
@@ -61,7 +61,7 @@ export async function generateMetadata({
       title: t("title"),
       description: t("description"),
       url: canonical,
-      siteName: "Magaldidev",
+      siteName: SITE_NAME,
       locale: isEs ? "es_ES" : "en_US",
       alternateLocale: isEs ? "en_US" : "es_ES",
       type: "website",
@@ -70,7 +70,7 @@ export async function generateMetadata({
           url: ogImage(locale),
           width: 1200,
           height: 630,
-          alt: "Magaldidev Portfolio",
+          alt: SITE_NAME,
         },
       ],
     },
@@ -106,6 +106,7 @@ export default async function LocaleLayout({
         <ThemeProvider />
         <WebsiteSchema />
         <PersonSchema locale={locale as "es" | "en"} />
+        <BusinessSchema locale={locale as "es" | "en"} />
         <Analytics />
         <SpeedInsights />
         <NextIntlClientProvider locale={locale} messages={messages}>

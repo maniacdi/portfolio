@@ -9,9 +9,13 @@ const BASE_URL = "https://javimagaldi.com";
 // Stable lastmod for static pages (home/about/code/travels/hobbies/…).
 // Bump this ONLY when those pages get a meaningful content change.
 // Blog posts and projects derive their own dates below.
-const SITE_LAST_UPDATED = "2026-10-05";
+const SITE_LAST_UPDATED = "2026-10-31";
 
-type Entry = { path: string; lastmod: string; priority: number };
+// path is per language only for pages with localized slugs (services).
+type Entry = { path: string | { es: string; en: string }; lastmod: string; priority: number };
+
+// Re-render once a day so scheduled blog posts show up on their date.
+export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = ["/", "/about", "/code", "/travels", "/hobbies", "/projects", "/blog"];
@@ -29,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     // Service landing pages: the ones meant to bring clients from search.
     ...SERVICE_PAGES.map((s) => ({
-      path: servicePath(s.slug),
+      path: { es: servicePath(s, "es"), en: servicePath(s, "en") },
       lastmod: SITE_LAST_UPDATED,
       priority: 0.9,
     })),
@@ -56,8 +60,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // (the English page canonicalises to /en/...), and listing only the Spanish
   // one left the English URLs to be discovered through hreflang alone.
   return entries.flatMap(({ path, lastmod, priority }) => {
-    const esUrl = path === "/" ? BASE_URL : `${BASE_URL}${path}`;
-    const enUrl = path === "/" ? `${BASE_URL}/en` : `${BASE_URL}/en${path}`;
+    const paths = typeof path === "string" ? { es: path, en: path } : path;
+    const esUrl = paths.es === "/" ? BASE_URL : `${BASE_URL}${paths.es}`;
+    const enUrl = paths.en === "/" ? `${BASE_URL}/en` : `${BASE_URL}/en${paths.en}`;
     const alternates = {
       languages: {
         es: esUrl,

@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 export const BASE_URL = "https://javimagaldi.com";
 
+/** Brand shown in titles, social cards and structured data. */
+export const SITE_NAME = "Javi Magaldi";
+
 /** Site-wide social card, one per language (the card carries text). */
 export function ogImage(locale: string) {
   return `${BASE_URL}/images/${locale === "en" ? "og-card-en" : "og-card"}.jpg`;
@@ -9,8 +12,11 @@ export function ogImage(locale: string) {
 
 interface PageSeo {
   locale: string;
-  /** Route path without locale prefix, e.g. "/about". Empty string for home. */
-  path: string;
+  /**
+   * Route path without locale prefix, e.g. "/about". Empty string for home.
+   * An object when the page has a different slug per language (services).
+   */
+  path: string | { es: string; en: string };
   title: string;
   description: string;
 }
@@ -24,8 +30,9 @@ interface PageSeo {
  */
 export function pageMetadata({ locale, path, title, description }: PageSeo): Metadata {
   const isEs = locale === "es";
-  const esUrl = `${BASE_URL}${path}`;
-  const enUrl = `${BASE_URL}/en${path}`;
+  const paths = typeof path === "string" ? { es: path, en: path } : path;
+  const esUrl = `${BASE_URL}${paths.es}`;
+  const enUrl = `${BASE_URL}/en${paths.en}`;
   const canonical = isEs ? esUrl : enUrl;
   const image = ogImage(locale);
 
@@ -44,7 +51,7 @@ export function pageMetadata({ locale, path, title, description }: PageSeo): Met
       title,
       description,
       url: canonical,
-      siteName: "Magaldidev",
+      siteName: SITE_NAME,
       locale: isEs ? "es_ES" : "en_US",
       alternateLocale: isEs ? "en_US" : "es_ES",
       type: "website",

@@ -19,6 +19,9 @@ const BASE_URL = "https://javimagaldi.com";
 //                  kept in the code in case we go back to it)
 const HERO_VARIANT = process.env.HERO_VARIANT === "classic" ? "classic" : "billboard";
 
+// Re-render once a day so scheduled blog posts show up on their date.
+export const revalidate = 86400;
+
 export async function generateMetadata({
   params,
 }: {
@@ -31,9 +34,8 @@ export async function generateMetadata({
   const canonical = isEs ? BASE_URL : `${BASE_URL}/en`;
 
   return {
-    title: isEs
-      ? "Javi García Magaldi — Desarrollador Web Full-Stack"
-      : "Javi García Magaldi — Full-Stack Web Developer",
+    // Already carries the brand: no "| Javi Magaldi" template on top.
+    title: { absolute: t("title") },
     description: t("description"),
     alternates: {
       canonical,

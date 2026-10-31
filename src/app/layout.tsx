@@ -32,8 +32,8 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Magaldidev — Portfolio",
-  description: "Portfolio of Javi García Magaldi, full-stack web developer from Santander.",
+  title: "Javi Magaldi — Portfolio",
+  description: "Portfolio of Javier García Magaldi, full-stack web developer from Santander.",
   metadataBase: new URL("https://javimagaldi.com"),
   robots: {
     index: true,

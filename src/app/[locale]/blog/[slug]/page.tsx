@@ -16,6 +16,9 @@ import "../blog.scss";
 const BASE_URL = "https://javimagaldi.com";
 const LOCALES = ["es", "en"] as const;
 
+// Re-render once a day so scheduled blog posts show up on their date.
+export const revalidate = 86400;
+
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) => getPostSlugs().map((slug) => ({ locale, slug })));
 }
@@ -33,7 +36,7 @@ export async function generateMetadata({
   const path = `/blog/${slug}`;
   const canonical = isEs ? `${BASE_URL}${path}` : `${BASE_URL}/en${path}`;
   return {
-    title: post.meta.title,
+    title: post.meta.seoTitle ? { absolute: post.meta.seoTitle } : post.meta.title,
     description: post.meta.excerpt,
     alternates: {
       canonical,

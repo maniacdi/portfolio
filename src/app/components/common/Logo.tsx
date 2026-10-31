@@ -3,7 +3,7 @@ import { LOGO_PATHS } from "./logoPaths";
 import "./Logo.scss";
 
 /**
- * Magaldidev logo: the "magaldi_" wordmark, with the neon "_" cursor that is
+ * Javi Magaldi logo: the "magaldi_" wordmark, with the neon "_" cursor that is
  * the site's signature.
  *
  *  - "mono": Space Mono. The default, used in header, footer and favicon.
@@ -20,7 +20,7 @@ interface LogoProps {
   title?: string;
 }
 
-export default function Logo({ variant = "mono", className, title = "Magaldidev" }: LogoProps) {
+export default function Logo({ variant = "mono", className, title = "Javi Magaldi" }: LogoProps) {
   const { viewBox, text, cursor } = LOGO_PATHS[variant];
 
   return (
