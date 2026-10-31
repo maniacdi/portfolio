@@ -35,25 +35,37 @@ export const SERVICE_PAGES: ServicePage[] = [
     key: "booking",
     slug: { es: "desarrollo-sistemas-reservas-online", en: "online-booking-system" },
     projects: ["umedicinaestetica", "showcase"],
-    posts: ["showcase-plantilla-webs-comercios", "ocultar-el-producto-no-es-protegerlo"],
+    posts: [
+      "pasar-citas-a-reservas-online",
+      "reducir-citas-no-presentadas",
+      "showcase-plantilla-webs-comercios",
+    ],
   },
   {
     key: "shop",
     slug: { es: "desarrollo-tiendas-online", en: "online-store-development" },
     projects: ["uskinstore", "showcase"],
-    posts: ["ocultar-el-producto-no-es-protegerlo", "showcase-plantilla-webs-comercios"],
+    posts: [
+      "como-montar-tienda-online",
+      "shopify-o-tienda-a-medida",
+      "ocultar-el-producto-no-es-protegerlo",
+    ],
   },
   {
     key: "mobile",
     slug: { es: "app-movil", en: "mobile-app-development" },
     projects: ["compras-app", "ironlog"],
-    posts: ["como-construi-compras-app", "ironlog-app-de-gimnasio"],
+    posts: ["crear-app-para-negocio", "como-construi-compras-app", "ironlog-app-de-gimnasio"],
   },
   {
     key: "custom",
     slug: { es: "software-a-medida", en: "custom-software" },
     projects: ["umedicinaestetica", "boda-web"],
-    posts: ["ocultar-el-producto-no-es-protegerlo", "como-uso-la-ia-en-mi-trabajo"],
+    posts: [
+      "software-a-medida-vs-estandar",
+      "automatizar-tareas-negocio",
+      "ocultar-el-producto-no-es-protegerlo",
+    ],
   },
 ];
 

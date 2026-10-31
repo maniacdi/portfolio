@@ -1,4 +1,4 @@
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { type Components } from "react-markdown";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowUpRight, Calendar, Clock } from "lucide-react";
 import remarkGfm from "remark-gfm";
 
 import { getPost, getPostSlugs, getRelatedPosts } from "@/utils/blog";
+import { PERSON_ID } from "@components/common/JsonLd";
 import LocalizedLink from "@components/common/LocalizedLink";
 
 import "@/styles/page.scss";
@@ -87,9 +88,24 @@ export default async function BlogPostPage({
     url: postUrl,
     image: `${BASE_URL}/${locale}/blog/${slug}/opengraph-image`,
     keywords: meta.tags.join(", "),
-    author: { "@type": "Person", name: "Javi García Magaldi", url: BASE_URL },
-    publisher: { "@type": "Person", name: "Javi García Magaldi", url: BASE_URL },
+    author: { "@type": "Person", "@id": PERSON_ID, name: "Javier García Magaldi", url: BASE_URL },
+    publisher: { "@type": "Person", "@id": PERSON_ID, name: "Javier García Magaldi", url: BASE_URL },
     mainEntityOfPage: postUrl,
+  };
+
+  // Links to posts that are not out yet (scheduled) render as plain text, so
+  // a post can link the whole cluster and each link turns on by itself on the
+  // linked post's date.
+  const markdownComponents: Components = {
+    a: ({ href, children, node: _node, ...props }) => {
+      const target = href?.match(/^(?:\/en)?\/blog\/([^/#?]+)/)?.[1];
+      if (target && !getPost(target, locale)) return <>{children}</>;
+      return (
+        <a href={href} {...props}>
+          {children}
+        </a>
+      );
+    },
   };
 
   const breadcrumbLd = {
@@ -142,7 +158,9 @@ export default async function BlogPostPage({
       )}
 
       <article className="blog-content">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+          {content}
+        </ReactMarkdown>
       </article>
 
       {related.length > 0 && (

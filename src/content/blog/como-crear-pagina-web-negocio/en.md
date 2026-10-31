@@ -18,7 +18,7 @@ The question I always ask is: when someone lands on your site, what do you want 
 
 ## 2. Domain and email, in your name
 
-First things first: the domain (yourbusiness.com) must be registered in your name, with your email. It happens more often than you'd think: a business that can't switch providers because "the website guy" registered the domain under his own name. It's your address on the internet; don't let it depend on anyone else.
+First things first: the domain (yourbusiness.com) must be registered in your name, with your email. It happens more often than you'd think: a business that can't switch providers because "the website guy" registered the domain under his own name. It's your address on the internet; don't let it depend on anyone else. I explain it properly in [domain, hosting and SSL](/en/blog/dominio-hosting-ssl-negocio).
 
 While you're at it, use an email on your own domain (hello@yourbusiness.com) instead of a Gmail address. It builds more trust and costs very little.
 
@@ -31,7 +31,7 @@ For most local businesses, this is enough:
 - About: who's behind it. With a local business, people want to see faces.
 - Contact: phone, address, opening hours and a map. No twelve-field forms.
 
-What you don't need on day one: a blog nobody will update, or a news section whose latest post is two years old. Better small and alive.
+What you don't need on day one: a blog nobody will update, or a news section whose latest post is two years old. Better small and alive. Every sector has its quirks, and I cover them separately for [restaurants](/en/blog/web-para-restaurantes), [clinics](/en/blog/web-para-clinicas) and [local shops](/en/blog/web-para-comercio-local).
 
 ## 4. Copy and photos: what really delays a website
 
@@ -47,7 +47,7 @@ There are three routes, and all three are valid depending on the case:
 - WordPress with a theme: flexible, with plugins for everything. Every plugin is one more door to keep updated.
 - Custom-built: a bigger upfront investment, but it loads faster, does what you need and doesn't carry code you don't use.
 
-I compare them in more detail in [custom website vs WordPress](/en/blog/web-a-medida-vs-wordpress). The choice is yours. What I don't recommend is choosing on launch price alone, without looking at what it costs to maintain each year.
+I compare them in more detail in [custom website vs WordPress](/en/blog/web-a-medida-vs-wordpress). The choice is yours. What I don't recommend is choosing on launch price alone, without looking at what it costs to maintain each year. What drives that price is covered in [how much a small business website costs](/en/blog/cuanto-cuesta-pagina-web-negocio).
 
 ## 6. Ready for Google from day one
 
@@ -62,16 +62,16 @@ SEO isn't something you bolt on at the end. If the site is born right, you won't
 
 Legal notice, privacy policy and cookie policy. If you have a contact or booking form, you're handling personal data and data protection law applies (GDPR, if you're in the EU). And if you use analytics or ad pixels, the cookie banner has to let people actually reject them, not just accept.
 
-Not the fun part, but a fine is less fun.
+Not the fun part, but a fine is less fun. What each page should include is in [website legal requirements](/en/blog/requisitos-legales-web-negocio).
 
 ## 8. Launch, measure and don't forget about it
 
 A published website isn't finished. Connect Google Search Console to see which searches you show up for, and a simple analytics tool to know how many people arrive and what they do. After a couple of months of data you'll know which page works and which one is dead weight.
 
-And decide from the start who looks after it: updates, backups, changes to opening hours. Will you do it yourself, or will someone do it for you? Both work; what doesn't work is nobody doing it.
+And decide from the start who looks after it: updates, backups, changes to opening hours. Will you do it yourself, or will someone do it for you? Both work; what doesn't work is nobody doing it. If you'd rather do it yourself, see [how to update your website without relying on a developer](/en/blog/actualizar-web-sin-programador).
 
 ## Where to start tomorrow
 
-If you keep just one thing: write down what you want people to do when they land on your site, and which services you want them to find on Google. With those two answers, the rest falls into place.
+If you keep just one thing: write down what you want people to do when they land on your site, and which services you want them to find on Google. With those two answers, the rest falls into place. And if you already have a site and can't decide whether to fix it or rebuild it, first check [the signs your website is losing customers](/en/blog/cuando-redisenar-web).
 
-If you'd rather I build it for you, [business websites](/en/services/business-websites) shows how I work and real projects. Or [get in touch](/en#contacto) with your case and I'll reply within 48 hours.
+If you'd rather I build it for you, [business websites](/en/services/business-websites) shows how I work and real projects. If you're torn between a freelancer and an agency, I compare them in [freelancer or agency](/en/blog/freelance-o-agencia-web). Or [get in touch](/en#contacto) with your case and I'll reply within 48 hours.
