@@ -67,12 +67,17 @@
 }
 
 /* ---- left: headline, pitch, actions ---- */
+.hb-main {
+  container-type: inline-size;
+}
+
 .hb-headline {
   display: flex;
   flex-direction: column;
   font-family: var(--font-space-grotesk), sans-serif;
-  /* capped by height too, so on laptops the facts band stays in the first screen */
-  font-size: clamp(2.6rem, min(8.4vw, 12vh), 7rem);
+  /* capped by height too, so on laptops the facts band stays in the first screen;
+     13.5cqi keeps the longest line ("Yo me encargo", ~7.2em) inside its column */
+  font-size: clamp(2.6rem, min(8.4vw, 12vh, 13.5cqi), 7rem);
   font-weight: 700;
   line-height: 0.9;
   letter-spacing: -0.035em;
