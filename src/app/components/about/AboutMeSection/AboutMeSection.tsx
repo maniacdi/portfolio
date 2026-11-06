@@ -81,13 +81,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
         </div>
       </section>
 
-      <motion.div
-        className="off-hours"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div className="off-hours reveal">
         <span className="off-hours-icon">
           <MapPin size={26} />
         </span>

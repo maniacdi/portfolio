@@ -122,6 +122,15 @@
   color: #ff3b6b;
 }
 
+/* the bug-squashing achievement: bigger, green, lingers a bit longer */
+.hero-avatar-dmg--unlock {
+  left: 50%;
+  top: 6%;
+  translate: -50% 0;
+  color: var(--success, #22c55e);
+  animation-duration: 2.2s;
+}
+
 .hero-avatar-counter {
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.8rem;
@@ -197,6 +206,69 @@
     opacity: 1;
   }
   100% {
+    opacity: 0;
+  }
+}
+
+/* ---- intro: the voxel me builds up layer by layer, then the aura flashes on
+   and the bug crawls in to his foot ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-avatar-img--idle {
+    animation: hero-build 0.75s steps(12) 0.7s both;
+  }
+
+  .hero-avatar-aura {
+    animation:
+      hero-aura-in 0.6s ease-out 1.1s backwards,
+      hero-aura 3.2s ease-in-out 1.7s infinite;
+  }
+
+  .hero-avatar-pool {
+    animation: hero-pool-in 0.5s ease-out 0.7s backwards;
+  }
+
+  .hero-avatar-bug.is-crawl {
+    animation:
+      hero-bug-respawn 0.6s ease-out 1.4s backwards,
+      hero-bug-crawl 0.5s steps(2) 2s infinite;
+  }
+
+  /* the bug-squashing achievement: bigger, green, lingers a bit longer */
+  .hero-avatar-dmg--unlock {
+    left: 50%;
+    top: 6%;
+    translate: -50% 0;
+    color: var(--success, #22c55e);
+    animation-duration: 2.2s;
+  }
+
+  .hero-avatar-counter {
+    animation: hero-pool-in 0.4s ease-out 1.6s backwards;
+  }
+}
+
+@keyframes hero-build {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes hero-aura-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+@keyframes hero-pool-in {
+  from {
     opacity: 0;
   }
 }

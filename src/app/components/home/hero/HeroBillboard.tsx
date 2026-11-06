@@ -1,7 +1,9 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useTranslations } from "next-intl";
 
+import { useContactModalStore } from "@/app/store/useContactModalStore";
 import { LOGO_PATHS } from "@components/common/logoPaths";
 
 import HeroActions from "./HeroActions";
@@ -16,16 +18,25 @@ import "./HeroBillboard.scss";
  * One moving band of real figures from the CV closes it.
  */
 
-// "<out>otros</out> dejan" -> the word in the tags is drawn outlined.
-function HeadlineLine({ line }: { line: string }) {
+// "Pulsa <out>start</out>." -> the word in the tags is drawn outlined, and
+// pressing it opens the contact form ("I'll handle the rest").
+function HeadlineLine({ line, index }: { line: string; index: number }) {
+  const t = useTranslations("heroNext");
+  const openContactModal = useContactModalStore((s) => s.open);
   const parts = line.split(/<out>(.*?)<\/out>/);
   return (
-    <span className="hb-line">
+    <span className="hb-line" style={{ "--i": index } as CSSProperties}>
       {parts.map((part, i) =>
         i % 2 === 1 ? (
-          <span key={i} className="hb-line-out">
+          <button
+            key={i}
+            type="button"
+            className="hb-line-out"
+            onClick={() => openContactModal()}
+            aria-label={t("startLabel")}
+          >
             {part}
-          </span>
+          </button>
         ) : (
           part
         )
@@ -44,7 +55,7 @@ export default function HeroBillboard() {
     <section className="hero-billboard" aria-labelledby="hero-name">
       <div className="hb-grid" aria-hidden="true" />
       <svg className="hb-tag" viewBox={viewBox} aria-hidden="true" focusable="false">
-        <path d={text} />
+        <path d={text} pathLength={1} />
       </svg>
 
       <div className="bb-inner">
@@ -54,8 +65,8 @@ export default function HeroBillboard() {
 
         <div className="hb-main">
           <p className="hb-headline">
-            {headline.map((line) => (
-              <HeadlineLine key={line} line={line} />
+            {headline.map((line, i) => (
+              <HeadlineLine key={line} line={line} index={i} />
             ))}
           </p>
           <p className="bb-lede">{t("lede")}</p>
@@ -66,7 +77,7 @@ export default function HeroBillboard() {
           <dl className="hb-info">
             <div>
               <dt>{t("roleLabel")}</dt>
-              <dd>{t("role")}</dd>
+              <dd>{t("roleShort")}</dd>
             </div>
             <div>
               <dt>{t("locationLabel")}</dt>

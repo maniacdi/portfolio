@@ -1,19 +1,19 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import "./HeroAvatar.scss";
+import {
+  BUG_GOAL,
+  readBugsSquashed,
+  readFoundEggs,
+  unlockEgg,
+  writeBugsSquashed,
+} from "@components/common/easterEggsProgress";
+import { pixelFont } from "@components/common/pixelFont";
 
-// Only for the damage numbers, so it never competes with the LCP.
-const pixelFont = Press_Start_2P({
-  weight: "400",
-  subsets: ["latin"],
-  preload: false,
-  variable: "--font-pixel",
-});
+import "./HeroAvatar.scss";
 
 // How long the kick pose stays, and when the next bug crawls back in.
 const KICK_MS = 700;
@@ -31,19 +31,35 @@ export default function HeroAvatar() {
   const [kicking, setKicking] = useState(false);
   const [bug, setBug] = useState<BugPhase>("crawl");
   const [hits, setHits] = useState(0);
+  // kicks in this visit, so the pop-ups don't replay on load
+  const [kicks, setKicks] = useState(0);
   const [crit, setCrit] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
   const busy = useRef(false);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
-  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+  // The count survives visits; squashing BUG_GOAL bugs unlocks an easter egg.
+  useEffect(() => {
+    setHits(readBugsSquashed());
+    return () => timers.current.forEach(clearTimeout);
+  }, []);
 
   const kick = () => {
     if (busy.current) return;
     busy.current = true;
+    const next = hits + 1;
     setKicking(true);
     setBug("fly");
     setCrit(Math.random() < CRIT_CHANCE);
-    setHits((n) => n + 1);
+    setHits(next);
+    setKicks((n) => n + 1);
+    writeBugsSquashed(next);
+    setUnlocked(false);
+    // >= so it can be won again after "reset progress" in the eggs panel
+    if (next >= BUG_GOAL && !readFoundEggs().includes("bugs")) {
+      unlockEgg("bugs");
+      setUnlocked(true);
+    }
     timers.current = [
       setTimeout(() => setKicking(false), KICK_MS),
       setTimeout(() => {
@@ -80,6 +96,7 @@ export default function HeroAvatar() {
           width={577}
           height={760}
           sizes="320px"
+          loading="eager"
         />
         <svg
           className={`hero-avatar-bug is-${bug}`}
@@ -97,14 +114,23 @@ export default function HeroAvatar() {
           </g>
           <rect x="2" y="2" width="1" height="1" fill="#0a0a12" />
         </svg>
-        {hits > 0 && (
-          <span key={hits} className="hero-avatar-dmg" aria-hidden="true">
+        {kicks > 0 && (
+          <span key={kicks} className="hero-avatar-dmg" aria-hidden="true">
             {t("damage")}
           </span>
         )}
-        {hits > 0 && crit && (
+        {unlocked && (
           <span
-            key={`crit-${hits}`}
+            key={`unlock-${kicks}`}
+            className="hero-avatar-dmg hero-avatar-dmg--unlock"
+            aria-hidden="true"
+          >
+            {t("unlocked")}
+          </span>
+        )}
+        {kicks > 0 && crit && (
+          <span
+            key={`crit-${kicks}`}
             className="hero-avatar-dmg hero-avatar-dmg--crit"
             aria-hidden="true"
           >
@@ -113,7 +139,9 @@ export default function HeroAvatar() {
         )}
       </button>
       <p className="hero-avatar-counter" aria-live="polite">
-        {t("counter", { count: hits })}
+        {hits < BUG_GOAL
+          ? t("counterGoal", { count: hits, goal: BUG_GOAL })
+          : t("counter", { count: hits })}
       </p>
     </div>
   );

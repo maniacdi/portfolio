@@ -21,47 +21,21 @@ export default function FeaturedProjects() {
 
   return (
     <section id="proyectos" className="featured-projects">
-      <motion.div
-        className="section-label"
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
+      <motion.div className="section-label reveal">
         <Folder size={14} />
         <span>{t("label")}</span>
       </motion.div>
 
-      <motion.h2
-        className="section-title"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        {t("title")}
-      </motion.h2>
+      <motion.h2 className="section-title reveal">{t("title")}</motion.h2>
 
-      <motion.p
-        className="section-subtitle"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        {t("subtitle")}
-      </motion.p>
+      <motion.p className="section-subtitle reveal">{t("subtitle")}</motion.p>
 
       <div className="projects-grid">
         {OTHER_PROJECTS.map((project, index) => {
           return (
             <motion.article
               key={project.title}
-              className="project-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
+              className="project-card reveal"
               whileHover={{ y: -5 }}
             >
               <div className="project-media">
@@ -129,13 +103,7 @@ export default function FeaturedProjects() {
         })}
       </div>
 
-      <motion.div
-        className="view-all"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-      >
+      <motion.div className="view-all reveal">
         <LocalizedLink href="/projects" className="view-all-link">
           <span>{t("viewAll")}</span>
           <ArrowUpRight size={16} />

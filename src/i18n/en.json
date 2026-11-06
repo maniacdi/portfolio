@@ -1,7 +1,8 @@
 {
   "metadata": {
     "title": "Freelance Full-Stack Developer in Spain | Javi Magaldi",
-    "description": "Websites, mobile apps and custom software for businesses. Full-stack developer (React, React Native, Node) in Santander, Spain. Tell me about your project."
+    "description": "Websites, mobile apps and custom software for businesses. Full-stack developer (React, React Native, Node) in Santander, Spain. Tell me about your project.",
+    "awayTitle": "🐛 The bug is escaping!"
   },
   "header": {
     "home": "Home",
@@ -286,7 +287,9 @@
     "keys": "keys",
     "resetProgress": "Reset progress",
     "only": "Only playable on desktop",
-    "signatureUnlocked": "Signature unlocked: check the footer logo."
+    "signatureUnlocked": "Signature unlocked: check the footer logo.",
+    "bugsName": "Exterminator",
+    "bugsHint": "Squash {goal} bugs on the home page"
   },
   "general": {
     "removedFromFavorites": "Removed from favorites",
@@ -489,25 +492,30 @@
   },
   "heroNext": {
     "role": "Full-stack web developer",
+    "roleShort": "Web developer",
     "roleLabel": "Role",
     "location": "Santander, Spain",
     "locationLabel": "Based in",
     "available": "Available for projects",
     "statusLabel": "Status",
-    "headline": ["I finish", "what <out>others</out>", "leave", "half-done"],
-    "lede": "I build websites, apps and backends that actually work. By day, apps for the Inditex ecosystem; by night, my own projects running on my home server.",
+    "startLabel": "Press start: opens the contact form",
+    "headline": ["Press <out>start</out>.", "I'll handle", "the rest."],
+    "lede": "Websites, online stores and apps for your business. Tell me what you need and I deliver it working, and you always talk to the person who builds it.",
     "factsLabel": "Facts from my work",
     "facts": [
-      "6 years in production",
-      "A BFF that cut response times by 40%",
-      "Ū Medicina Estética: website and panel in production",
-      "Compras App, used daily from my home server"
+      "6 years building software people use every day",
+      "Ū Medicina Estética: website and admin panel in use",
+      "Fixed quote before any work starts",
+      "You see progress along the way, not just at the end",
+      "Compras App: my own app, in daily use at home"
     ],
     "avatar": {
       "kick": "Kick the bug",
       "damage": "-1 BUG",
       "critical": "CRITICAL!",
-      "counter": "bugs squashed: {count}"
+      "counter": "bugs squashed: {count}",
+      "counterGoal": "bugs squashed: {count}/{goal}",
+      "unlocked": "UNLOCKED!"
     }
   },
   "servicePages": {
@@ -725,5 +733,15 @@
       "How much does a website for my business cost?",
       "Do you work as an employee or freelance?"
     ]
+  },
+  "gameOver": {
+    "title": "GAME OVER",
+    "code": "Error 404 · This page doesn't exist",
+    "text": "The link may be old or the address may have a typo. The rest of the site is still up.",
+    "continue": "Continue?",
+    "continueHint": "Taking you home in {seconds} s",
+    "cancel": "Stay here",
+    "home": "Continue",
+    "projects": "See projects"
   }
 }

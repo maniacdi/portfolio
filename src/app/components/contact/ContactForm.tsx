@@ -104,45 +104,16 @@ export default function ContactForm({ defaultService = "", title, subtitle }: Co
   return (
     <section id="contacto" className="contact-form-section">
       {/* Label */}
-      <motion.div
-        className="section-label"
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
+      <motion.div className="section-label reveal">
         <Mail size={14} />
         <span>{t("label")}</span>
       </motion.div>
 
-      <motion.h2
-        className="section-title"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-      >
-        {title ?? t("title")}
-      </motion.h2>
+      <motion.h2 className="section-title reveal">{title ?? t("title")}</motion.h2>
 
-      <motion.p
-        className="section-subtitle"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        {subtitle ?? t("subtitle")}
-      </motion.p>
+      <motion.p className="section-subtitle reveal">{subtitle ?? t("subtitle")}</motion.p>
 
-      <motion.form
-        className="contact-form"
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
+      <motion.form className="contact-form reveal" onSubmit={handleSubmit}>
         <FloatingField
           id="cf-name"
           name="name"
@@ -188,11 +159,7 @@ export default function ContactForm({ defaultService = "", title, subtitle }: Co
 
         {/* Error */}
         {status === "error" && (
-          <motion.p
-            className="form-error"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
+          <motion.p className="form-error" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             {t("errorMessage")}
           </motion.p>
         )}

@@ -1,31 +1,21 @@
-"use client";
-
-import { ReactNode } from "react";
-
-import { motion } from "framer-motion";
+import { CSSProperties, ReactNode } from "react";
 
 /**
- * Reveal-on-scroll wrapper. Subtle fade + upward translate the first time
- * the element enters the viewport. framer-motion's `whileInView` is declarative
- * (safe with the React Compiler) and reduced-motion is handled globally in CSS.
+ * Reveal-on-scroll wrapper: subtle fade + upward slide as the element enters
+ * the viewport. Pure CSS (scroll-driven animation, see `.reveal` in
+ * globals.scss), so the content is never left invisible waiting for JS, for
+ * crawlers or for a slow hydration. Browsers without support just show it.
  */
 interface RevealProps {
   children: ReactNode;
-  delay?: number;
   y?: number;
   className?: string;
 }
 
-export default function Reveal({ children, delay = 0, y = 14, className }: RevealProps) {
+export default function Reveal({ children, y = 14, className = "" }: RevealProps) {
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.4, delay, ease: "easeOut" }}
-    >
+    <div className={`reveal ${className}`} style={{ "--reveal-y": `${y}px` } as CSSProperties}>
       {children}
-    </motion.div>
+    </div>
   );
 }

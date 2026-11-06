@@ -100,13 +100,8 @@ export const Sections = ({
 
       {filteredItems.length > 0 ? (
         <div className={`cards-grid grid-${gridColumns}`}>
-          {filteredItems.map((item, index) => (
-            <HobbyCard
-              key={item.slug || item.id}
-              item={item}
-              index={index}
-              categoryType={categoryType}
-            />
+          {filteredItems.map((item) => (
+            <HobbyCard key={item.slug || item.id} item={item} categoryType={categoryType} />
           ))}
         </div>
       ) : (

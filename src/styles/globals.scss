@@ -48,6 +48,26 @@ section[id] {
   }
 }
 
+/* Reveal on scroll, driven by the scroll position itself (no JS): content is
+   visible by default and browsers without view timelines simply skip it. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      /* a fixed distance, so tall blocks don't stay faded while you read them */
+      animation-range: entry 0% entry 220px;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    translate: 0 var(--reveal-y, 18px);
+  }
+}
+
 body {
   display: flex;
   flex-direction: column;

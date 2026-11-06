@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 
 import { AnimatePresence, motion } from "framer-motion";
 
-import { readFoundEggs, writeFoundEggs } from "./easterEggsProgress";
+import { BUG_GOAL, PROGRESS_EVENT, readFoundEggs, writeFoundEggs } from "./easterEggsProgress";
 import Terminal from "./Terminal";
 
 import "./EasterEggs.scss";
@@ -40,6 +40,14 @@ const EASTER_EGGS = [
     component: SenbonzakuraToast,
     duration: 6000,
   },
+  // Not typed: unlocked by kicking BUG_GOAL bugs with the hero avatar.
+  {
+    sequence: [],
+    id: "bugs",
+    name: "",
+    component: null,
+    duration: 0,
+  },
 ];
 
 interface Toast {
@@ -62,7 +70,11 @@ export default function EasterEggs() {
   const SEQUENCE_TIMEOUT = 3000;
 
   useEffect(() => {
-    setFoundEggs(new Set(readFoundEggs()));
+    const sync = () => setFoundEggs(new Set(readFoundEggs()));
+    sync();
+    // other components (the hero avatar) can unlock eggs too
+    window.addEventListener(PROGRESS_EVENT, sync);
+    return () => window.removeEventListener(PROGRESS_EVENT, sync);
   }, []);
 
   useEffect(() => {
@@ -83,6 +95,7 @@ export default function EasterEggs() {
   const checkForEasterEgg = useCallback(
     (sequence: string[]) => {
       for (const egg of EASTER_EGGS) {
+        if (!egg.sequence.length) continue;
         const lastKeys = sequence.slice(-egg.sequence.length);
 
         if (
@@ -219,11 +232,15 @@ export default function EasterEggs() {
                   >
                     <div className="egg-icon">{found ? "✅" : "🔒"}</div>
                     <div className="egg-info">
-                      <p className="egg-name">{found ? egg.name : "???"}</p>
+                      <p className="egg-name">
+                        {!found ? "???" : egg.id === "bugs" ? t("bugsName") : egg.name}
+                      </p>
                       <p className="egg-hint">
-                        {found
-                          ? `Código: ${egg.sequence.join(" ").toUpperCase()}`
-                          : `${egg.sequence.length} ${t("keys")}`}
+                        {egg.id === "bugs"
+                          ? t("bugsHint", { goal: BUG_GOAL })
+                          : found
+                            ? `Código: ${egg.sequence.join(" ").toUpperCase()}`
+                            : `${egg.sequence.length} ${t("keys")}`}
                       </p>
                     </div>
                   </motion.div>

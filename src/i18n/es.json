@@ -1,7 +1,8 @@
 {
   "metadata": {
     "title": "Desarrollador web freelance en Santander | Javi Magaldi",
-    "description": "Webs, apps y software a medida para negocios. Desarrollador full-stack en Santander con 6 años en producción. Cuéntame tu proyecto y te respondo en 48 h."
+    "description": "Webs, apps y software a medida para negocios. Desarrollador full-stack en Santander con 6 años en producción. Cuéntame tu proyecto y te respondo en 48 h.",
+    "awayTitle": "🐛 ¡El bug se escapa!"
   },
   "header": {
     "home": "Inicio",
@@ -286,7 +287,9 @@
     "keys": "teclas",
     "resetProgress": "Reiniciar progreso",
     "only": "Solo jugable en escritorio",
-    "signatureUnlocked": "Firma desbloqueada: mira el logo del footer."
+    "signatureUnlocked": "Firma desbloqueada: mira el logo del footer.",
+    "bugsName": "Exterminador",
+    "bugsHint": "Aplasta {goal} bugs en la portada"
   },
   "general": {
     "removedFromFavorites": "Eliminado de favoritos",
@@ -489,25 +492,30 @@
   },
   "heroNext": {
     "role": "Desarrollador web full-stack",
+    "roleShort": "Desarrollador web",
     "roleLabel": "Rol",
     "location": "Santander, España",
     "locationLabel": "Base",
     "available": "Disponible para proyectos",
     "statusLabel": "Estado",
-    "headline": ["Construyo", "lo que", "<out>otros</out> dejan", "a medias"],
-    "lede": "Hago webs, apps y backends que funcionan de verdad. De día, aplicaciones para el ecosistema Inditex; por la noche, proyectos propios corriendo en mi NAS.",
+    "startLabel": "Pulsa start: abre el formulario de contacto",
+    "headline": ["Pulsa <out>start</out>.", "Yo me encargo", "del resto."],
+    "lede": "Webs, tiendas online y apps para tu negocio. Me cuentas qué necesitas y te lo entrego funcionando, hablando siempre con quien lo programa.",
     "factsLabel": "Datos de mi trabajo",
     "facts": [
-      "6 años en producción",
-      "BFF con tiempos de respuesta un 40% más bajos",
-      "Ū Medicina Estética: web y panel en producción",
-      "Compras App en uso diario desde mi NAS"
+      "6 años creando software que se usa cada día",
+      "Ū Medicina Estética: web y panel de gestión en uso",
+      "Presupuesto cerrado antes de empezar",
+      "Ves el avance durante el proyecto, no solo al final",
+      "Compras App: mi propia app, en uso diario en casa"
     ],
     "avatar": {
       "kick": "Dale una patada al bug",
       "damage": "-1 BUG",
       "critical": "¡CRÍTICO!",
-      "counter": "bugs aplastados: {count}"
+      "counter": "bugs aplastados: {count}",
+      "counterGoal": "bugs aplastados: {count}/{goal}",
+      "unlocked": "¡LOGRO!"
     }
   },
   "servicePages": {
@@ -725,5 +733,15 @@
       "¿Cuánto cuesta una web para mi negocio?",
       "¿Trabajas en plantilla o freelance?"
     ]
+  },
+  "gameOver": {
+    "title": "GAME OVER",
+    "code": "Error 404 · Esta página no existe",
+    "text": "Puede que el enlace sea antiguo o que la dirección tenga una errata. El resto de la web sigue en pie.",
+    "continue": "¿Continuar?",
+    "continueHint": "Te llevo al inicio en {seconds} s",
+    "cancel": "Quedarme aquí",
+    "home": "Continuar",
+    "projects": "Ver proyectos"
   }
 }

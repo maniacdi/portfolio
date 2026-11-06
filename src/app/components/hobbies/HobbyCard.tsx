@@ -15,11 +15,10 @@ import "./HobbyCard.scss";
 
 interface HobbyCardProps {
   item: HobbyItem;
-  index?: number;
   categoryType: "anime" | "games" | "drawings" | "cooking";
 }
 
-export const HobbyCard = ({ item, index = 0, categoryType }: HobbyCardProps) => {
+export const HobbyCard = ({ item, categoryType }: HobbyCardProps) => {
   const toast = useToast();
   const t = useTranslations("general");
 
@@ -51,11 +50,7 @@ export const HobbyCard = ({ item, index = 0, categoryType }: HobbyCardProps) => 
 
   return (
     <motion.div
-      className="hobby-card"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "100px" }}
-      transition={{ delay: index * 0.05, duration: 0.5 }}
+      className="hobby-card reveal"
       whileHover={{
         scale: 1.05,
         transition: { type: "spring", stiffness: 300, damping: 20 },

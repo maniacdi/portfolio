@@ -122,13 +122,13 @@ export default function ClientWork() {
         <span>{t("label")}</span>
       </Reveal>
 
-      <Reveal delay={0.05}>
+      <Reveal>
         <h2 className="section-title">{t("title")}</h2>
       </Reveal>
 
       <div className="client-list">
         {CLIENT_PROJECTS.map((project) => (
-          <Reveal key={project.slug} delay={0.1}>
+          <Reveal key={project.slug}>
             <ClientFrame project={project} />
           </Reveal>
         ))}

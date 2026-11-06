@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { NextIntlClientProvider } from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+import { routing } from "@/i18n/routing";
 import { ogImage, SITE_NAME } from "@/utils/seo";
 import Footer from "@components/footer/Footer";
 import Header from "@components/header/Header";
 
 import ChatBot from "../components/chatBot/ChatBot";
+import AwayTitle from "../components/common/AwayTitle";
 import ConsoleGreeting from "../components/common/ConsoleGreeting";
 import CookieConsent from "../components/common/CookieConsent";
 import EasterEggs from "../components/common/EasterEggs";
@@ -97,6 +99,9 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  // Paths with a dot skip the proxy (e.g. /wp-login.php) and would arrive here
+  // as a "locale": send them to the 404 instead of rendering the home.
+  if (!hasLocale(routing.locales, locale)) notFound();
 
   try {
     const messages = await getMessages({ locale });
@@ -119,6 +124,7 @@ export default async function LocaleLayout({
             <Footer />
             <EasterEggs />
             <ConsoleGreeting />
+            <AwayTitle />
             <CookieConsent />
           </ToastProvider>
         </NextIntlClientProvider>

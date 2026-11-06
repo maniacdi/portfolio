@@ -42,19 +42,19 @@ export default function Services() {
         <span>{t("label")}</span>
       </Reveal>
 
-      <Reveal delay={0.05}>
+      <Reveal>
         <h2 className="section-title">{t("title")}</h2>
       </Reveal>
 
-      <Reveal delay={0.1}>
+      <Reveal>
         <p className="section-subtitle">{t("subtitle")}</p>
       </Reveal>
 
       <div className="services-grid">
-        {SERVICES.map(({ key, Icon }, index) => {
+        {SERVICES.map(({ key, Icon }) => {
           const proof = getProjectBySlug(SERVICE_PROOF[key])!;
           return (
-            <Reveal key={key} delay={0.12 + index * 0.06}>
+            <Reveal key={key}>
               {/* Real links to each service page: crawlable, and the page has
                   the detail plus the form with the service preselected. The
                   title link is stretched over the card; the proof link sits
@@ -85,7 +85,7 @@ export default function Services() {
         })}
       </div>
 
-      <Reveal delay={0.1} className="hire-reveal">
+      <Reveal className="hire-reveal">
         <motion.button
           type="button"
           className="hire-card"
