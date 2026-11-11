@@ -34,7 +34,7 @@ describe("Navigation & Routes", () => {
   it("shows 404 page for invalid routes", () => {
     cy.visit("/es/this-page-does-not-exist", { failOnStatusCode: false });
     cy.skipTerminalLoader();
-    cy.get(".not-found-page", { timeout: 10000 }).should("exist");
+    cy.get(".game-over", { timeout: 10000 }).should("exist");
     cy.contains("404").should("be.visible");
   });
 });

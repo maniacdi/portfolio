@@ -81,12 +81,22 @@ jobs:
         env:
           NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}
 
+      # Start the server ourselves: the action's own wait-on fired its first
+      # ping before Next was listening and gave up on "Socket closed" instead
+      # of retrying.
+      - name: Start server
+        run: npm start > next.log 2>&1 &
+        env:
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}
+
+      - name: Wait for server
+        run: |
+          timeout 120 bash -c 'until curl -sf -o /dev/null http://localhost:3000/robots.txt; do sleep 2; done' \
+            || { cat next.log; exit 1; }
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm start
-          wait-on: http://localhost:3000
-          wait-on-timeout: 120
           browser: chrome
         env:
           NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}

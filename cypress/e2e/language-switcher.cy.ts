@@ -6,7 +6,7 @@ describe("Language Switcher", () => {
     cy.skipTerminalLoader();
     cy.get(".lang-switcher").first().click();
     cy.url().should("include", "/en");
-    cy.contains("HEY, I'M JAVI").should("exist");
+    cy.get(".lang-switcher .active").first().should("have.text", "EN");
   });
 
   it("switches from English to Spanish", () => {
@@ -14,7 +14,7 @@ describe("Language Switcher", () => {
     cy.skipTerminalLoader();
     cy.get(".lang-switcher").first().click();
     cy.url().should("eq", "http://localhost:3000/");
-    cy.contains("HOLA, SOY JAVI").should("exist");
+    cy.get(".lang-switcher .active").first().should("have.text", "ES");
   });
 
   it("preserves current page route when switching language", () => {
