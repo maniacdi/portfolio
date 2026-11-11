@@ -13,11 +13,17 @@ Probé varias apps de gimnasio y todas tenían el mismo problema: anuncios, susc
 
 Una app **rápida y offline-first**: abres, apuntas tu entreno y ves tu progreso. Sin login, sin conexión obligatoria, sin distracciones.
 
+![Entrenamiento en curso: día de pierna con series, repeticiones y peso](/images/projects/ironlog/1.webp)
+![Registro de series con el peso de la última sesión como referencia](/images/projects/ironlog/2.webp)
+
 ## El stack
 
 - **React Native + Expo** — una base de código, instalada directamente como APK en mi móvil.
 - **AsyncStorage** para persistencia local: tus datos viven en el dispositivo, no en un servidor.
 - **react-native-svg** para las gráficas de progreso.
+
+![Rutinas divididas por días con sus ejercicios](/images/projects/ironlog/3.webp)
+![Biblioteca de ejercicios agrupada por músculo](/images/projects/ironlog/4.webp)
 
 ## Por qué offline-first
 

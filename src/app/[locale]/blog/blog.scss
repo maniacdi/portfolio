@@ -283,9 +283,27 @@
   }
 
   img {
+    display: block;
     max-width: 100%;
+    max-height: 720px; // phone screenshots stay readable instead of filling 3 screens
+    width: auto;
     height: auto;
+    margin-inline: auto;
     border: 1px solid var(--border);
+  }
+
+  // Several images on consecutive markdown lines land in one <p>: lay them out
+  // side by side (phone screenshots in pairs).
+  p:has(> img + img) {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+
+    img {
+      flex: 1 1 0;
+      min-width: 0;
+      max-height: none;
+    }
   }
 
   // GFM tables (comparisons in the guides). Block + overflow so a wide table

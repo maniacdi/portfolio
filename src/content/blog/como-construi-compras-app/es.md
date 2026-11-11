@@ -13,12 +13,18 @@ En casa siempre acabábamos comprando lo mismo dos veces o llegando al súper si
 
 Una lista de la compra **compartida y en tiempo real**: si mi pareja tacha la leche desde su móvil, desaparece del mío al instante. Suena simple, pero "tiempo real" es justo donde está la chicha técnica.
 
+![Pantalla Mis Listas con las listas de la casa](/images/projects/compras-app/1.webp)
+![Lista del súper agrupada por categorías, con lo que ya está comprado tachado](/images/projects/compras-app/2.webp)
+
 ## El stack
 
 - **Front:** React Native + Expo — una sola base de código para Android, distribuida como APK.
 - **Tiempo real:** WebSockets con Socket.io. Cada cambio se emite a todos los dispositivos conectados a la misma lista.
 - **Backend:** Node.js + Express, con MongoDB Atlas para persistencia, autenticación y listas compartidas.
 - **Infra:** lo desplegué en **mi propio NAS** con Docker, Nginx como reverse proxy, SSL automático con Let's Encrypt y CI/CD con GitHub Actions + EAS Update.
+
+![Formulario para añadir un elemento con icono, categoría y cantidad](/images/projects/compras-app/3.webp)
+![Modo compra: lo que falta por meter en el carro](/images/projects/compras-app/4.webp)
 
 ## Lo que aprendí
 

@@ -13,12 +13,18 @@ At home we always ended up buying the same thing twice or getting to the shop wi
 
 A **shared, real-time** shopping list: if my partner ticks off the milk from her phone, it disappears from mine instantly. Sounds simple, but "real time" is exactly where the technical meat is.
 
+![My Lists screen with the household's lists](/images/projects/compras-app/1.webp)
+![Shopping list grouped by category, with bought items crossed out](/images/projects/compras-app/2.webp)
+
 ## The stack
 
 - **Front:** React Native + Expo — a single codebase for Android, shipped as an APK.
 - **Real time:** WebSockets with Socket.io. Every change is broadcast to all devices connected to the same list.
 - **Backend:** Node.js + Express, with MongoDB Atlas for persistence, auth and shared lists.
 - **Infra:** deployed on **my own NAS** with Docker, Nginx as a reverse proxy, automatic SSL via Let's Encrypt and CI/CD with GitHub Actions + EAS Update.
+
+![Form to add an item with icon, category and quantity](/images/projects/compras-app/3.webp)
+![Shopping mode: what's still left to put in the cart](/images/projects/compras-app/4.webp)
 
 ## What I learned
 

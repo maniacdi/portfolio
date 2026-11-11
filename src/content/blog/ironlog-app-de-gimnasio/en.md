@@ -13,11 +13,17 @@ I tried several gym apps and they all had the same problem: ads, a subscription 
 
 A **fast, offline-first** app: open it, log your workout, see your progress. No login, no mandatory connection, no distractions.
 
+![Workout in progress: leg day with sets, reps and weight](/images/projects/ironlog/1.webp)
+![Logging sets with last session's weight as a reference](/images/projects/ironlog/2.webp)
+
 ## The stack
 
 - **React Native + Expo** — one codebase, installed directly as an APK on my phone.
 - **AsyncStorage** for local persistence: your data lives on the device, not on a server.
 - **react-native-svg** for the progress charts.
+
+![Routines split by day with their exercises](/images/projects/ironlog/3.webp)
+![Exercise library grouped by muscle](/images/projects/ironlog/4.webp)
 
 ## Why offline-first
 
