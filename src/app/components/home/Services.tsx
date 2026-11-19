@@ -2,17 +2,9 @@
 
 import { useLocale, useTranslations } from "next-intl";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import {
-  ArrowRight,
-  Briefcase,
-  CalendarCheck,
-  Globe,
-  ShoppingBag,
-  Smartphone,
-  Wrench,
-} from "lucide-react";
+import { Briefcase, CalendarCheck, Globe, ShoppingBag, Smartphone, Wrench } from "lucide-react";
 
 import { getProjectBySlug, SERVICE_PROOF } from "@/app/data/projects";
 import { getServiceByKey, servicePath } from "@/app/data/services";
@@ -34,14 +26,10 @@ export default function Services() {
   const t = useTranslations("services");
   const locale = useLocale();
   const { open } = useContactModalStore();
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="servicios" className="services-section">
-      <Reveal className="section-label">
-        <Wrench size={14} />
-        <span>{t("label")}</span>
-      </Reveal>
-
       <Reveal>
         <h2 className="section-title">{t("title")}</h2>
       </Reveal>
@@ -74,10 +62,9 @@ export default function Services() {
                 <p className="service-desc">{t(`items.${key}.desc`)}</p>
                 <span className="service-cta" aria-hidden="true">
                   {t("moreLabel")}
-                  <ArrowRight size={15} />
                 </span>
                 <LocalizedLink href={`/projects/${proof.slug}`} className="service-proof">
-                  {t("proofLabel")}: {proof.title} →
+                  {t("proofLabel", { project: proof.title })}
                 </LocalizedLink>
               </article>
             </Reveal>
@@ -90,7 +77,7 @@ export default function Services() {
           type="button"
           className="hire-card"
           onClick={() => open("employee")}
-          whileHover={{ y: -3 }}
+          whileHover={reduceMotion ? undefined : { y: -3 }}
           aria-label={`${t("hire.title")} — ${t("hire.cta")}`}
         >
           <span className="hire-icon">
@@ -100,10 +87,7 @@ export default function Services() {
             <h3 className="hire-title">{t("hire.title")}</h3>
             <p className="hire-desc">{t("hire.desc")}</p>
           </div>
-          <span className="hire-cta">
-            {t("hire.cta")}
-            <ArrowRight size={16} />
-          </span>
+          <span className="hire-cta">{t("hire.cta")}</span>
         </motion.button>
       </Reveal>
     </section>

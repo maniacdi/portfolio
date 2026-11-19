@@ -50,12 +50,12 @@ export default function CodeHero() {
           <span>{t("openSource")}</span>
         </div>
 
-        <h1 className="hero-title">
+        <h1 className="page-title hero-title">
           {t("code").split(" ")[0]}{" "}
           <span className="gradient-text">{t("code").split(" ").slice(1).join(" ")}</span>
         </h1>
 
-        <p className="hero-description">{t("description")}</p>
+        <p className="page-description hero-description">{t("description")}</p>
 
         <div className="hero-stats">
           <motion.div

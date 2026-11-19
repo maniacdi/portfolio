@@ -89,10 +89,6 @@
 
     .service-cta {
       color: var(--neon-mid);
-
-      svg {
-        transform: translateX(3px);
-      }
     }
   }
 
@@ -129,10 +125,12 @@
   .service-proof {
     position: relative;
     z-index: 1;
+    max-width: 100%;
     font-family: var(--font-jetbrains-mono), monospace;
     font-size: 0.8rem;
     color: var(--neon-mid);
     text-decoration: none;
+    text-wrap: balance;
 
     &:hover {
       text-decoration: underline;
@@ -160,10 +158,6 @@
     color: var(--text-secondary);
     font-family: var(--font-jetbrains-mono), monospace;
     transition: color 0.2s ease;
-
-    svg {
-      transition: transform 0.2s ease;
-    }
   }
 }
 
@@ -187,10 +181,6 @@
 
   &:hover {
     border-color: var(--neon);
-
-    .hire-cta svg {
-      transform: translateX(3px);
-    }
   }
 
   @media (max-width: 640px) {
@@ -213,7 +203,7 @@
 
   .hire-title {
     font-family: var(--font-space-grotesk), sans-serif;
-    font-weight: 600;
+    font-weight: var(--weight-bold);
     color: var(--text);
     margin-bottom: 0.25rem;
   }
@@ -234,9 +224,19 @@
     color: #fff;
     font-weight: 500;
     white-space: nowrap;
+  }
+}
 
-    svg {
-      transition: transform 0.2s ease;
-    }
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-card .service-icon,
+  .service-card .service-cta,
+  .hire-card {
+    transition: none;
+  }
+
+  .service-card:hover,
+  .service-card:focus-within {
+    transform: none;
   }
 }

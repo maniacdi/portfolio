@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { type ComponentType, useEffect, useState } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
+
+import { Briefcase, Landmark, type LucideProps, MapPin, Mountain, TreePalm } from "lucide-react";
 
 import { Travel } from "@/utils/types/Travel";
 
@@ -40,6 +43,22 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "/leaflet/images/marker-shadow.png",
 });
 
+// Travel types arrive in several spellings (API ids, EN and ES labels).
+const TYPE_ICONS: Record<string, ComponentType<LucideProps>> = {
+  vacation: TreePalm,
+  vacaciones: TreePalm,
+  business: Briefcase,
+  negocios: Briefcase,
+  adventure: Mountain,
+  aventura: Mountain,
+  cultural: Landmark,
+};
+
+function TypeIcon({ type, ...props }: LucideProps & { type: string }) {
+  const Icon = TYPE_ICONS[type.toLowerCase()] ?? MapPin;
+  return <Icon {...props} />;
+}
+
 export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
   const t = useTranslations("travels");
   const [isClient, setIsClient] = useState(false);
@@ -52,7 +71,7 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
     return (
       <div className="travel-map-placeholder">
         <div className="loading-spinner"></div>
-        <p>Loading map...</p>
+        <p>Loading map…</p>
       </div>
     );
   }
@@ -67,7 +86,7 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
         <div class="custom-marker ${type}">
           <div class="marker-pulse"></div>
           <div class="marker-icon">
-            ${getTypeEmoji(type)}
+            ${renderToStaticMarkup(<TypeIcon type={type} aria-hidden="true" />)}
           </div>
         </div>
       `,
@@ -78,23 +97,6 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
     };
 
     return L.divIcon(iconOptions);
-  };
-
-  const getTypeEmoji = (type: string) => {
-    const emojis: Record<string, string> = {
-      vacation: "🏖️",
-      business: "💼",
-      adventure: "🏔️",
-      cultural: "🏛️",
-      Vacation: "🏖️",
-      Business: "💼",
-      Adventure: "🏔️",
-      Cultural: "🏛️",
-      Vacaciones: "🏖️",
-      Negocios: "💼",
-      Aventura: "🏔️",
-    };
-    return emojis[type] || "📍";
   };
 
   return (
@@ -143,7 +145,7 @@ export default function TravelMap({ travels, onMarkerClick }: TravelMapProps) {
           (type) => (
             <div key={type} className="legend-item">
               <div className="legend-marker" style={{ background: getTypeColor(type) }}>
-                {getTypeEmoji(type)}
+                <TypeIcon type={type} aria-hidden="true" />
               </div>
               <span>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
             </div>

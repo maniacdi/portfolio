@@ -4,9 +4,8 @@
 
 /* ---- Shared meta pills (category / status / year) ---- */
 .project-category {
-  font-family: var(--font-jetbrains-mono), monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
   color: var(--neon-mid);
 }
 
@@ -15,10 +14,7 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.2rem 0.6rem;
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: var(--text-small);
   background: transparent;
   border: 1px solid var(--border);
   white-space: nowrap;
@@ -47,18 +43,12 @@
 
 .projects-list-page {
   text-align: left;
-
-  .page-title,
-  .page-description {
-    text-align: center;
-  }
 }
 
 .projects-list-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 1.25rem;
-  margin-top: 2.5rem;
   width: 100%;
 }
 
@@ -125,7 +115,8 @@
 
   .project-list-title {
     font-family: var(--font-space-grotesk), sans-serif;
-    font-weight: 600;
+    font-size: var(--text-item);
+    font-weight: var(--weight-bold);
     color: var(--text);
   }
 
@@ -138,6 +129,7 @@
 
   .project-list-stack {
     font-family: var(--font-jetbrains-mono), monospace;
+    font-size: var(--text-small);
     color: var(--text-muted);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -150,7 +142,8 @@
     gap: 0.4rem;
     margin-top: 0.5rem;
     color: var(--neon-mid);
-    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: var(--text-small);
+    font-weight: var(--weight-medium);
 
     svg {
       transition: transform 0.2s ease;
@@ -174,7 +167,7 @@
   align-items: center;
   gap: 0.4rem;
   color: var(--text-secondary);
-  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: var(--text-small);
   text-decoration: none;
   transition: color 0.2s ease;
   width: fit-content;
@@ -201,15 +194,15 @@
     margin-bottom: 1rem;
 
     .project-year {
-      font-family: var(--font-jetbrains-mono), monospace;
+      font-size: var(--text-small);
       color: var(--text-muted);
     }
   }
 
   .project-detail-title {
     font-family: var(--font-space-grotesk), sans-serif;
-    font-size: clamp(1.9rem, 5vw, 2.75rem);
-    line-height: 1.1;
+    font-size: var(--text-page-title);
+    line-height: 1;
     margin-bottom: 0.75rem;
     color: var(--text);
   }
@@ -243,7 +236,7 @@
 
     .btn-primary {
       background: var(--gradient-cta);
-      color: #fff;
+      color: var(--on-neon);
 
       &:hover {
         box-shadow: var(--shadow-neon);
@@ -287,11 +280,13 @@
   .project-block {
     h2 {
       font-family: var(--font-space-grotesk), sans-serif;
+      font-size: var(--text-section);
       color: var(--text);
       margin-bottom: 0.75rem;
     }
 
     p {
+      max-width: 65ch;
       color: var(--text-secondary);
       line-height: 1.8;
       text-wrap: pretty;
@@ -313,7 +308,7 @@
       border: 1px solid var(--border);
       color: var(--text-secondary);
       font-family: var(--font-jetbrains-mono), monospace;
-      font-size: 0.85rem;
+      font-size: var(--text-small);
     }
   }
 

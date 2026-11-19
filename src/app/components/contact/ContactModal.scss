@@ -111,7 +111,7 @@
   padding: 0.75rem 1.75rem;
   background: var(--gradient-cta);
   color: #fff;
-  font-weight: 600;
+  font-weight: var(--weight-bold);
   border: none;
   cursor: pointer;
   font-family: inherit;
@@ -132,6 +132,20 @@
 
   .spin {
     animation: modal-spin 1s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-form .submit-btn {
+    transition: none;
+
+    &:hover:not(:disabled) {
+      transform: none;
+    }
+
+    .spin {
+      animation: none;
+    }
   }
 }
 
@@ -181,7 +195,7 @@
       padding: 0.625rem 1.25rem;
       background: var(--gradient-cta);
       color: #fff;
-      font-weight: 600;
+      font-weight: var(--weight-bold);
       border: none;
       cursor: pointer;
       font-family: inherit;

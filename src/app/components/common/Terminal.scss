@@ -187,7 +187,7 @@
 
     .prompt {
       color: var(--neon-mid);
-      font-weight: 600;
+      font-weight: var(--weight-bold);
       flex-shrink: 0;
     }
 
@@ -217,7 +217,7 @@
 
   .prompt {
     color: var(--neon-mid);
-    font-weight: 600;
+    font-weight: var(--weight-bold);
     flex-shrink: 0;
   }
 
@@ -244,7 +244,7 @@
   .help-title {
     color: var(--neon-mid);
     margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: var(--weight-bold);
   }
 
   .commands-list {
@@ -259,7 +259,7 @@
 
       .command-name {
         color: var(--warning);
-        font-weight: 600;
+        font-weight: var(--weight-bold);
       }
       .command-desc {
         color: var(--text-muted);
@@ -284,7 +284,7 @@
 
     .category-title {
       color: var(--neon-mid);
-      font-weight: 600;
+      font-weight: var(--weight-bold);
     }
     .category-items {
       color: var(--neon-mid);
@@ -316,7 +316,7 @@
 
     .project-name {
       color: var(--warning);
-      font-weight: 600;
+      font-weight: var(--weight-bold);
     }
     .project-tech {
       color: var(--text-muted);
@@ -348,7 +348,7 @@
 
     .job-title {
       color: var(--neon-mid);
-      font-weight: 600;
+      font-weight: var(--weight-bold);
     }
     .job-period {
       color: var(--warning);
@@ -388,7 +388,7 @@
   .ee-title {
     color: var(--neon-mid);
     margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: var(--weight-bold);
   }
 
   .ee-list {
@@ -402,7 +402,7 @@
 
       .ee-code {
         color: var(--warning);
-        font-weight: 600;
+        font-weight: var(--weight-bold);
         min-width: 100px;
       }
       .ee-name {

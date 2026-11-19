@@ -35,9 +35,9 @@ export default async function NowStrip({ locale }: { locale: string }) {
 
   return (
     <section className="now-strip" aria-labelledby="now-label">
-      <p id="now-label" className="section-label">
-        <span>{t("label")}</span>
-      </p>
+      <h2 id="now-label" className="now-heading">
+        {t("label")}
+      </h2>
 
       <div className={`now-grid ${post ? "" : "now-grid--two"}`}>
         <div className="now-cell">
@@ -60,7 +60,7 @@ export default async function NowStrip({ locale }: { locale: string }) {
               rel="noopener noreferrer"
               className="now-link"
             >
-              <span className="now-main">{t("commitFallback")} →</span>
+              <span className="now-main">{t("commitFallback")}</span>
             </a>
           )}
         </div>

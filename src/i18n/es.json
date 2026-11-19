@@ -28,8 +28,8 @@
     "contact": "Contactar"
   },
   "about": {
-    "title": "Sobre Mí",
-    "subtitle": "Full-stack de día: React y Java en producción para el ecosistema Inditex. Por las noches monto mis propios proyectos en mi homelab.",
+    "title": "Sobre mí",
+    "subtitle": "De día, React y Java en producción para el ecosistema Inditex. De noche, proyectos propios en mi homelab.",
     "description": "Desarrollador full-stack con 6+ años de experiencia. Frontend con React y TypeScript, backend con Java (Spring Boot) y Node.js: microservicios con arquitectura hexagonal sirviendo a más de 10.000 usuarios diarios. Me gusta el código limpio y las cosas bien hechas.",
     "skills": {
       "frontend": "Desarrollo Front-end",
@@ -50,9 +50,9 @@
     "philosophy": "Filosofía de Desarrollo",
     "philosophyText": "Prefiero código sencillo que funcione bien a algo complejo que nadie entiende. Y si puedo hacer que algo sea bonito además de funcional, mejor.",
     "cta": "¿Trabajamos juntos?",
-    "ctaText": "Estoy disponible para proyectos. Si tienes algo en mente, escríbeme.",
+    "ctaText": "Disponible para proyectos. Si tienes algo en mente, escríbeme.",
     "ctaButton": "Contactar",
-    "offHoursLead": "Y cuando no estoy programando, viajo ✈️",
+    "offHoursLead": "Y cuando no estoy programando, viajo",
     "travelsSub": "Un mapa interactivo con todos mis viajes: front + back y datos en vivo desde mi propia API.",
     "travelsLink": "Explorar el mapa",
     "downloadCv": "Descargar CV",
@@ -63,11 +63,11 @@
     "files": "archivos",
     "updated": "Actualizado justo ahora",
     "previewCv": "Ver CV",
-    "loadingCv": "Cargando CV...",
+    "loadingCv": "Cargando CV…",
     "downloadCvButton": "Descargar CV",
-    "profile": "perfil",
-    "skillsSection": "habilidades",
-    "contactSection": "contacto",
+    "profile": "Perfil",
+    "skillsSection": "Habilidades",
+    "contactSection": "Contacto",
     "connected": "Conectado",
     "location": "Ubicación",
     "passion": "Pasión",
@@ -92,13 +92,13 @@
     "profileLocation": "Santander, España",
     "profileExperience": "6+ años",
     "profileStatus": "Disponible para proyectos",
-    "profileBio": "Full-stack: React y TypeScript en el front, Java (Spring Boot) y Node.js en el back. Microservicios con arquitectura hexagonal para más de 10.000 usuarios diarios.",
+    "profileBio": "React y TypeScript en el front; Java (Spring Boot) y Node.js en el back. Microservicios con arquitectura hexagonal para más de 10.000 usuarios diarios.",
     "careerTitle": "Trayectoria",
-    "careerSub": "Dónde he trabajado y qué hice en cada sitio, de lo más reciente a lo más antiguo.",
+    "careerSub": "Dónde he trabajado y qué hice, de lo más reciente a lo más antiguo.",
     "careerTags": "Tecnologías",
     "present": "hoy",
-    "kindWork": "trabajo",
-    "kindEducation": "formación",
+    "kindWork": "Trabajo",
+    "kindEducation": "Formación",
     "locCoruna": "A Coruña, España",
     "locSantander": "Santander, España",
     "cvLabel": "Currículum",
@@ -142,6 +142,8 @@
     "noResultsFound": "No se encontraron resultados",
     "tryOtherFiltersOrSearchTerms": "Prueba con otros filtros o términos de búsqueda.",
     "travelLength": "viajes cargados correctamente",
+    "featured": "Destacado",
+    "retry": "Reintentar",
     "filters": {
       "header": "Filtros",
       "all": "Todos",
@@ -152,7 +154,7 @@
     }
   },
   "hobbies": {
-    "title": "Mis Hobbies",
+    "title": "Mis hobbies",
     "description": "Cosas que me encanta hacer en mi tiempo libre",
     "total": "Total",
     "favorites": "Favoritos",
@@ -226,8 +228,8 @@
     "cta": "Ver Más"
   },
   "weather": {
-    "loading": "Cargando clima...",
-    "refreshing": "Actualizando...",
+    "loading": "Cargando clima…",
+    "refreshing": "Actualizando…",
     "error": "Error",
     "showWeather": "Mostrar clima",
     "feelsLike": "Sensación",
@@ -289,16 +291,18 @@
     "only": "Solo jugable en escritorio",
     "signatureUnlocked": "Firma desbloqueada: mira el logo del footer.",
     "bugsName": "Exterminador",
-    "bugsHint": "Aplasta {goal} bugs en la portada"
+    "bugsHint": "Aplasta {goal} bugs en la portada",
+    "close": "Cerrar panel",
+    "code": "Código"
   },
   "general": {
     "removedFromFavorites": "Eliminado de favoritos",
     "addedToFavorites": "Añadido a favoritos"
   },
   "code": {
-    "feature": "Repositorios Destacados",
+    "feature": "Repositorios destacados",
     "featuredRepos": "Proyectos destacados y experimentos técnicos disponibles en GitHub",
-    "loading": "Cargando repositorios...",
+    "loading": "Cargando repositorios…",
     "fail": "No se pudieron cargar los repositorios",
     "retry": "Reintentar",
     "updated": "Actualizado",
@@ -307,11 +311,11 @@
     "viewAll": "Ver todos los repositorios en GitHub",
     "viewGithub": "Ver perfil completo en GitHub",
     "openSource": "Código abierto",
-    "code": "Código y Proyectos",
+    "code": "Código y proyectos",
     "description": "Explorando tecnologías, construyendo soluciones y compartiendo conocimiento a través del código abierto.",
     "repositories": "Repositorios",
     "languages": "Lenguajes",
-    "active": "Años Activo",
+    "active": "Años activo",
     "projects": "Proyectos",
     "ago": "hace",
     "justNow": "justo ahora",
@@ -354,7 +358,7 @@
   "featuredProjects": {
     "label": "PROYECTOS",
     "title": "Lo que he construido",
-    "subtitle": "Una selección de proyectos personales y profesionales que muestran mi forma de trabajar.",
+    "subtitle": "Una selección de proyectos personales y profesionales.",
     "featuredLabel": "Destacado",
     "liveDemo": "Ver demo",
     "viewCode": "Ver código",
@@ -410,7 +414,7 @@
   "contactForm": {
     "label": "CONTACTO",
     "title": "¿Hablamos?",
-    "subtitle": "Si tienes un proyecto en mente o simplemente quieres saludar, escríbeme.",
+    "subtitle": "¿Tienes un proyecto en mente? Cuéntamelo.",
     "nameLabel": "Nombre",
     "namePlaceholder": "Tu nombre",
     "emailLabel": "Email",
@@ -426,6 +430,7 @@
     "sendAnother": "Enviar otro mensaje",
     "errorMessage": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme directamente a magaldi6@gmail.com.",
     "close": "Cerrar",
+    "orEmail": "O escríbeme a",
     "privacyConsent": "He leído y acepto la <link>política de privacidad</link>.",
     "privacyBasic": "Responsable: Javier García Magaldi. Finalidad: responder a tu consulta y preparar un presupuesto si procede. Base jurídica: tu consentimiento. Destinatarios: Web3Forms como encargado del envío. Derechos: acceso, rectificación, supresión y oposición escribiendo a magaldi6@gmail.com.",
     "privacyRequired": "Tienes que aceptar la política de privacidad para poder enviar el mensaje."
@@ -433,7 +438,7 @@
   "services": {
     "label": "SERVICIOS",
     "title": "En qué puedo ayudarte",
-    "subtitle": "Webs y apps directas para tu negocio — restaurantes, clínicas, comercios. Sin enredos: me cuentas qué necesitas y te lo monto.",
+    "subtitle": "Webs y apps para restaurantes, clínicas y comercios. Me cuentas qué necesitas y te lo monto.",
     "employeeLabel": "Trabajo en plantilla (empresa)",
     "items": {
       "web": {
@@ -459,11 +464,11 @@
     },
     "hire": {
       "title": "¿Buscas un dev en plantilla?",
-      "desc": "Empresas: además de freelance, estoy abierto a incorporarme a un equipo como desarrollador full-stack. Hablemos.",
+      "desc": "Además de freelance, estoy abierto a unirme a un equipo como desarrollador full-stack.",
       "cta": "Escríbeme"
     },
     "moreLabel": "Ver qué incluye",
-    "proofLabel": "Ejemplo"
+    "proofLabel": "Ver {project}"
   },
   "legal": {
     "notice": "Aviso legal",
@@ -477,6 +482,7 @@
     "body": "Uso cookies propias necesarias para que la web funcione y, solo si me das permiso, analítica y grabación de sesión para entender qué falla y qué se lee. Puedes rechazarlo todo y seguir navegando igual.",
     "cookiesLink": "Política de cookies",
     "privacyLink": "Política de privacidad",
+    "linksJoin": "y",
     "configure": "Configurar",
     "savePreferences": "Guardar preferencias",
     "rejectAll": "Rechazar todo",
@@ -723,20 +729,21 @@
     "comingSoon": "Próximamente"
   },
   "now": {
-    "label": "AHORA MISMO",
+    "label": "Ahora mismo",
     "commitTitle": "Último commit",
     "commitFallback": "Mira lo que hay en GitHub",
     "postTitle": "Último post",
     "askTitle": "Pregúntale a mi IA",
     "questions": [
-      "¿Qué has hecho para clínicas o comercios?",
-      "¿Cuánto cuesta una web para mi negocio?",
-      "¿Trabajas en plantilla o freelance?"
+      "¿Qué has hecho para clínicas?",
+      "¿Cuánto cuesta una web?",
+      "¿Plantilla o freelance?"
     ]
   },
   "gameOver": {
     "title": "GAME OVER",
-    "code": "Error 404 · Esta página no existe",
+    "code": "Error 404",
+    "codeDetail": "Esta página no existe",
     "text": "Puede que el enlace sea antiguo o que la dirección tenga una errata. El resto de la web sigue en pie.",
     "continue": "¿Continuar?",
     "continueHint": "Te llevo al inicio en {seconds} s",

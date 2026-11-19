@@ -30,7 +30,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <main className="page-container">
-      <h1 className="page-title gradient-text">{t("title")}</h1>
+      <h1 id="about-title" className="page-title gradient-text">{t("title")}</h1>
       <p className="page-description">{t("subtitle")}</p>
 
       <AboutSection className="about-page" />

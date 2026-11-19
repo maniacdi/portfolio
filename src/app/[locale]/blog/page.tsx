@@ -48,7 +48,7 @@ export default async function BlogListPage({
         <p className="blog-empty">{t("empty")}</p>
       ) : (
         <div className="blog-list">
-          {posts.map((post) => {
+          {posts.map((post, index) => {
             const dateLabel = post.date
               ? new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(new Date(post.date))
               : "";
@@ -56,9 +56,17 @@ export default async function BlogListPage({
               <LocalizedLink key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
                 <div className="blog-card-media">
                   {post.cover ? (
-                    <Image src={post.cover} alt={post.title} fill sizes="(max-width: 700px) 100vw, 380px" />
+                    <Image
+                      src={post.cover}
+                      alt={post.title}
+                      fill
+                      // the first post is the featured, wider card
+                      sizes={index === 0 ? "(max-width: 700px) 100vw, 720px" : "(max-width: 700px) 100vw, 380px"}
+                      preload={index === 0}
+                    />
                   ) : (
-                    <div className="blog-card-placeholder">
+                    // No cover: a typographic one with the post's category.
+                    <div className="blog-card-placeholder" aria-hidden="true">
                       <span>{post.tags[0] ?? "Blog"}</span>
                     </div>
                   )}
@@ -67,25 +75,29 @@ export default async function BlogListPage({
                   <div className="blog-card-meta">
                     {dateLabel && (
                       <span className="blog-date">
-                        <Calendar size={13} />
+                        <Calendar size={13} aria-hidden="true" />
                         {dateLabel}
                       </span>
                     )}
                     <span className="blog-date">
-                      <Clock size={13} />
+                      <Clock size={13} aria-hidden="true" />
                       {t("readingTime", { minutes: post.readingMinutes })}
                     </span>
-                    {post.tags.slice(0, 2).map((tag) => (
-                      <span key={tag} className="blog-tag">
-                        {tag}
-                      </span>
-                    ))}
                   </div>
                   <h2 className="blog-card-title">{post.title}</h2>
                   <p className="blog-card-excerpt">{post.excerpt}</p>
+                  {post.tags.length > 0 && (
+                    <div className="blog-card-tags">
+                      {post.tags.slice(0, 2).map((tag) => (
+                        <span key={tag} className="blog-tag">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   <span className="blog-card-go">
                     {t("readMore")}
-                    <ArrowUpRight size={15} />
+                    <ArrowUpRight size={15} aria-hidden="true" />
                   </span>
                 </div>
               </LocalizedLink>

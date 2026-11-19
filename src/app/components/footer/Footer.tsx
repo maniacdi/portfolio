@@ -2,14 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-import {
-  ArrowUp,
-  Github,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-} from "lucide-react";
+import { ArrowUp, Github, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
 
 import { useSignatureUnlocked } from "../common/easterEggsProgress";
 import LocalizedLink from "../common/LocalizedLink";
@@ -96,7 +89,6 @@ export default function Footer() {
             <nav className="links-list">
               {quickLinks.map((link) => (
                 <LocalizedLink key={link.href} href={link.href} className="footer-link">
-                  <span className="link-arrow">→</span>
                   {link.label}
                 </LocalizedLink>
               ))}
@@ -141,8 +133,7 @@ export default function Footer() {
 
         <div className="footer-bottom-content">
           <div className="footer-copyright">
-            <span>© {year} Javier García Magaldi</span>
-            <span className="separator">•</span>
+            <span>© {year} Javier García Magaldi.</span>
             <span>{t("copyright") || "All rights reserved"}</span>
           </div>
 

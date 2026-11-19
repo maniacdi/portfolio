@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Cookie, ShieldCheck, X } from "lucide-react";
 
 import { type ConsentValue, useConsentStore } from "../../store/useConsentStore";
@@ -32,6 +32,7 @@ export default function CookieConsent() {
   const save = useConsentStore((s) => s.save);
   const closePanel = useConsentStore((s) => s.closePanel);
 
+  const reduceMotion = useReducedMotion();
   const [hydrated, setHydrated] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [analytics, setAnalytics] = useState<ConsentValue>("denied");
@@ -58,13 +59,13 @@ export default function CookieConsent() {
     <AnimatePresence>
       {visible && (
         <motion.aside
-          className="cookie-consent"
+          className={`cookie-consent${showDetails ? " cookie-consent--expanded" : ""}`}
           role="dialog"
           aria-labelledby="cookie-consent-title"
-          initial={{ y: "100%", opacity: 0 }}
+          initial={reduceMotion ? { opacity: 0 } : { y: "100%", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: "100%", opacity: 0 }}
-          transition={{ type: "tween", duration: 0.25 }}
+          exit={reduceMotion ? { opacity: 0 } : { y: "100%", opacity: 0 }}
+          transition={{ type: "tween", duration: reduceMotion ? 0.15 : 0.25 }}
         >
           <div className="cookie-consent__inner">
             {panelOpen && (
@@ -78,23 +79,26 @@ export default function CookieConsent() {
               </button>
             )}
 
-            <div className="cookie-consent__head">
-              <Cookie size={16} className="cookie-consent__icon" />
-              <h2 id="cookie-consent-title" className="cookie-consent__title">
-                {t("title")}
-              </h2>
-            </div>
+            <div className="cookie-consent__copy">
+              <div className="cookie-consent__head">
+                <Cookie size={16} className="cookie-consent__icon" />
+                <h2 id="cookie-consent-title" className="cookie-consent__title">
+                  {t("title")}
+                </h2>
+              </div>
 
-            <p className="cookie-consent__text">
-              {t("body")}{" "}
-              <LocalizedLink href="/cookies" className="cookie-consent__link">
-                {t("cookiesLink")}
-              </LocalizedLink>{" "}
-              ·{" "}
-              <LocalizedLink href="/privacy" className="cookie-consent__link">
-                {t("privacyLink")}
-              </LocalizedLink>
-            </p>
+              <p className="cookie-consent__text">
+                {t("body")}{" "}
+                <LocalizedLink href="/cookies" className="cookie-consent__link">
+                  {t("cookiesLink")}
+                </LocalizedLink>{" "}
+                {t("linksJoin")}{" "}
+                <LocalizedLink href="/privacy" className="cookie-consent__link">
+                  {t("privacyLink")}
+                </LocalizedLink>
+                .
+              </p>
+            </div>
 
             {showDetails && (
               <ul className="cookie-consent__options">

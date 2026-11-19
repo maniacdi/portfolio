@@ -10,8 +10,7 @@
   padding: 0 0.7rem;
   border: 1px solid var(--border);
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
+  font-size: var(--text-small);
   color: var(--text-muted);
   text-decoration: none;
   transition:
@@ -20,7 +19,7 @@
 
   .active {
     color: var(--neon-mid);
-    font-weight: 600;
+    font-weight: var(--weight-bold);
   }
 
   .lang-sep {

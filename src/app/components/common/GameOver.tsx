@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 
+import { Play } from "lucide-react";
+
 import LocalizedLink from "./LocalizedLink";
 import { pixelFont } from "./pixelFont";
 
@@ -63,7 +65,10 @@ export default function GameOver() {
 
         <div className="go-copy">
           <h1 className="go-title">{t("title")}</h1>
-          <p className="go-code">{t("code")}</p>
+          <p className="go-code">
+            <span>{t("code")}</span>
+            <span>{t("codeDetail")}</span>
+          </p>
           <p className="go-text">{t("text")}</p>
 
           <div className="go-continue">
@@ -83,7 +88,8 @@ export default function GameOver() {
 
           <div className="go-actions">
             <LocalizedLink href="/" className="go-btn go-btn--primary">
-              ▶ {t("home")}
+              <Play className="go-btn-icon" aria-hidden="true" />
+              {t("home")}
             </LocalizedLink>
             <LocalizedLink href="/projects" className="go-btn">
               {t("projects")}

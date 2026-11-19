@@ -4,8 +4,6 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { ArrowUpRight, Users } from "lucide-react";
-
 import { CLIENT_PROJECTS, type Project, projectLink } from "@/app/data/projects";
 import LocalizedLink from "@components/common/LocalizedLink";
 import Reveal from "@components/common/Reveal";
@@ -18,7 +16,7 @@ const CAPTURE_HEIGHT: Record<string, number> = {
   uskinstore: 5300,
 };
 
-function ClientFrame({ project }: { project: Project }) {
+function ClientFrame({ project, compact = false }: { project: Project; compact?: boolean }) {
   const t = useTranslations("clientWork");
   const tProjects = useTranslations("featuredProjects");
   const frameRef = useRef<HTMLElement>(null);
@@ -59,7 +57,7 @@ function ClientFrame({ project }: { project: Project }) {
           alt={project.title}
           width={960}
           height={CAPTURE_HEIGHT[project.slug] ?? 4000}
-          sizes="(max-width: 1200px) 100vw, 1200px"
+          sizes={compact ? "(max-width: 900px) 100vw, 480px" : "(max-width: 1200px) 100vw, 1200px"}
           className="frame-capture"
         />
         {!launched && <span className="frame-stamp">{t("comingSoon")}</span>}
@@ -68,7 +66,7 @@ function ClientFrame({ project }: { project: Project }) {
   );
 
   return (
-    <article className="client-item">
+    <article className={`client-item${compact ? " client-item--compact" : ""}`}>
       <figure className="client-frame" ref={frameRef}>
         {link.external ? (
           <a
@@ -94,17 +92,19 @@ function ClientFrame({ project }: { project: Project }) {
       <div className="client-caption">
         <h3 className="client-title">{project.title}</h3>
         <p className="client-desc">{tProjects(project.descriptionKey)}</p>
-        <span className="client-stack">{project.tags.join(" · ")}</span>
+        <ul className="client-stack">
+          {project.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
         <div className="client-links">
           {link.external && (
             <a href={link.href} target="_blank" rel="noopener noreferrer" className="client-link">
               {t("visit")}
-              <ArrowUpRight size={15} />
             </a>
           )}
           <LocalizedLink href={`/projects/${project.slug}`} className="client-link">
             {t("caseStudy")}
-            <ArrowUpRight size={15} />
           </LocalizedLink>
         </div>
       </div>
@@ -117,19 +117,15 @@ export default function ClientWork() {
 
   return (
     <section id="clientes" className="client-work">
-      <Reveal className="section-label">
-        <Users size={14} />
-        <span>{t("label")}</span>
-      </Reveal>
-
       <Reveal>
         <h2 className="section-title">{t("title")}</h2>
       </Reveal>
 
       <div className="client-list">
-        {CLIENT_PROJECTS.map((project) => (
+        {/* First client leads full width; the rest sit in a compact side layout */}
+        {CLIENT_PROJECTS.map((project, index) => (
           <Reveal key={project.slug}>
-            <ClientFrame project={project} />
+            <ClientFrame project={project} compact={index > 0} />
           </Reveal>
         ))}
       </div>

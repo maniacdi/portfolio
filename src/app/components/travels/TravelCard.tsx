@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
-import { Calendar, Camera, ChevronRight, MapPin } from "lucide-react";
+import { Calendar, Camera, ChevronRight, MapPin, Star } from "lucide-react";
 
 import { formatDate, getDuration, getTypeColor } from "@/utils/helpers/travels";
 import { Travel } from "@/utils/types/Travel";
@@ -27,7 +27,12 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
       onClick={onClick}
       style={{ borderLeftColor: getTypeColor(travel.type) }}
     >
-      {travel.isFeatured && <div className="featured-badge">⭐ {t("featured")}</div>}
+      {travel.isFeatured && (
+        <div className="featured-badge">
+          <Star aria-hidden="true" />
+          {t("featured")}
+        </div>
+      )}
 
       <div className="travel-card-image">
         {travel.photos[0] ? (
@@ -64,8 +69,9 @@ export default function TravelCard({ travel, index, onClick }: TravelCardProps) 
 
           <div className="info-item">
             <Calendar size={14} />
+            <span>{formatDate(travel.date.start, locale)}</span>
             <span>
-              {formatDate(travel.date.start, locale)} • {getDuration(travel)} {t("days")}
+              {getDuration(travel)} {t("days")}
             </span>
           </div>
         </div>

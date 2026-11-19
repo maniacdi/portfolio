@@ -31,7 +31,7 @@ export const SkillsTab = ({ data, t }: SkillsTabProps) => {
     >
       <div className="skills-header">
         <h3>
-          <Zap size={20} />
+          <Zap size={20} aria-hidden="true" />
           {t("techSkills")}
         </h3>
       </div>
@@ -49,7 +49,7 @@ export const SkillsTab = ({ data, t }: SkillsTabProps) => {
               transition={{ delay: categoryIndex * 0.1 }}
             >
               <div className="category-header">
-                <Icon size={14} />
+                <Icon size={14} aria-hidden="true" />
                 <h4 className="category-title">{category}</h4>
               </div>
 

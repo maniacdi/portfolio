@@ -98,9 +98,14 @@
   margin-top: 1.25rem;
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+
+  @media (max-width: 760px) {
+    justify-content: center;
+  }
 }
 
 .go-text {
@@ -168,10 +173,11 @@
 .go-btn {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   padding: 0.85rem 1.4rem;
   border: 1px solid var(--border2, var(--border));
   color: var(--text);
-  font-weight: 600;
+  font-weight: var(--weight-bold);
   text-decoration: none;
   cursor: var(--cursor-glove);
   transition:
@@ -182,6 +188,12 @@
     border-color: var(--neon-mid);
     color: var(--neon-mid);
   }
+}
+
+.go-btn-icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
 }
 
 .go-btn--primary {

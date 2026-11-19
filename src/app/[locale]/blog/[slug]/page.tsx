@@ -153,7 +153,7 @@ export default async function BlogPostPage({
 
       {meta.cover && (
         <div className="blog-post-cover">
-          <Image src={meta.cover} alt={meta.title} fill sizes="(max-width: 800px) 100vw, 800px" priority />
+          <Image src={meta.cover} alt={meta.title} fill sizes="(max-width: 800px) 100vw, 800px" preload />
         </div>
       )}
 

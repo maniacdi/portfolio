@@ -104,8 +104,7 @@
   color: var(--neon-mid);
   font-family: var(--font-jetbrains-mono), monospace;
   font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-size: var(--text-small);
   margin-bottom: 2rem;
 
   @media (max-width: 768px) {
@@ -254,7 +253,6 @@
 
     .tech-text {
       font-weight: 400;
-      letter-spacing: 0.04em;
     }
   }
 }
@@ -301,7 +299,6 @@
     border: 1px solid var(--border);
     color: var(--text-secondary);
     font-family: var(--font-jetbrains-mono), monospace;
-    letter-spacing: 0.04em;
     cursor: default;
     transition:
       color 0.2s ease,
@@ -356,8 +353,8 @@
 
   .primary-action {
     background: var(--gradient-cta);
-    color: #fff;
-    font-weight: 600;
+    color: var(--on-neon);
+    font-weight: var(--weight-bold);
 
     &:hover:not(:disabled) {
       box-shadow: var(--shadow-neon);

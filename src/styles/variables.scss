@@ -72,6 +72,8 @@
   --text-primary: #ecebf5;
   --text-secondary: #a3a3bd;
   --text-muted: #7f7f99;
+  /* Text on a solid neon fill (CTA, selection): white in both themes */
+  --on-neon: #ffffff;
 
   /* ----- Semánticos ----- */
   --success: #4cd964;
@@ -90,6 +92,24 @@
     --padding-lg: 1.5rem;
     --padding-xl: 2rem;
   }
+
+  /* ----- Type scale (reuse these, never invent sizes) -----
+     page-title: h1 of inner pages (/about, /blog, /code…) and display moments
+     section:    h2 of a section inside a page
+     item:       title of a card / list item
+     small:      meta, labels, tags (a step under body) */
+  --text-page-title: clamp(2.5rem, 6vw, 4.5rem);
+  --text-section: clamp(1.75rem, 3.5vw, 2.75rem);
+  --text-item: 1.25rem;
+  --text-small: 0.875rem;
+
+  /* ----- Font weights (three, no more) ----- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+
+  /* ----- Vertical rhythm between page sections ----- */
+  --section-gap: clamp(5rem, 10vw, 8rem);
 
   /* ----- Containers ----- */
   --container-sm: 640px;

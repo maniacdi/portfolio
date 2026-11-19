@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { CheckCircle2, Gamepad2, Lock, RotateCcw, Trophy, Wind, X } from "lucide-react";
 
 import { BUG_GOAL, PROGRESS_EVENT, readFoundEggs, writeFoundEggs } from "./easterEggsProgress";
 import Terminal from "./Terminal";
@@ -183,7 +184,11 @@ export default function EasterEggs() {
         transition={{ delay: 1 }}
         aria-label={`${t("title")}: ${foundEggs.size}/${EASTER_EGGS.length}`}
       >
-        {allFound ? "🏆" : "🎮"}
+        {allFound ? (
+          <Trophy className="progress-icon" aria-hidden="true" />
+        ) : (
+          <Gamepad2 className="progress-icon" aria-hidden="true" />
+        )}
         <span className="progress-count">
           {foundEggs.size}/{EASTER_EGGS.length}
         </span>
@@ -199,9 +204,16 @@ export default function EasterEggs() {
             transition={{ type: "spring", damping: 20 }}
           >
             <div className="panel-header">
-              <h3>🎮 {t("title")}</h3>
-              <button className="close-button" onClick={() => setShowProgress(false)}>
-                ✕
+              <h3>
+                <Gamepad2 className="panel-icon" aria-hidden="true" />
+                {t("title")}
+              </h3>
+              <button
+                className="close-button"
+                onClick={() => setShowProgress(false)}
+                aria-label={t("close")}
+              >
+                <X aria-hidden="true" />
               </button>
             </div>
 
@@ -209,8 +221,8 @@ export default function EasterEggs() {
               <div className="progress-bar">
                 <motion.div
                   className="progress-fill"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: progress / 100 }}
                   transition={{ duration: 0.5 }}
                 />
               </div>
@@ -230,7 +242,9 @@ export default function EasterEggs() {
                     animate={{ opacity: 1, x: 0 }}
                     whileHover={found ? { scale: 1.05 } : {}}
                   >
-                    <div className="egg-icon">{found ? "✅" : "🔒"}</div>
+                    <div className="egg-icon" aria-hidden="true">
+                      {found ? <CheckCircle2 /> : <Lock />}
+                    </div>
                     <div className="egg-info">
                       <p className="egg-name">
                         {!found ? "???" : egg.id === "bugs" ? t("bugsName") : egg.name}
@@ -239,7 +253,7 @@ export default function EasterEggs() {
                         {egg.id === "bugs"
                           ? t("bugsHint", { goal: BUG_GOAL })
                           : found
-                            ? `Código: ${egg.sequence.join(" ").toUpperCase()}`
+                            ? `${t("code")}: ${egg.sequence.join(" ").toUpperCase()}`
                             : `${egg.sequence.length} ${t("keys")}`}
                       </p>
                     </div>
@@ -258,7 +272,8 @@ export default function EasterEggs() {
                 setShowProgress(false);
               }}
             >
-              🔄 {t("resetProgress")}
+              <RotateCcw aria-hidden="true" />
+              {t("resetProgress")}
             </button>
             {isMobile && <p className="mobile-warning">{t("only")}</p>}
           </motion.div>
@@ -268,7 +283,7 @@ export default function EasterEggs() {
   );
 }
 
-// 🍌 BANANA TOAST
+// BANANA TOAST
 function BananaToast() {
   return (
     <motion.div
@@ -279,13 +294,16 @@ function BananaToast() {
       exit={{ opacity: 0, scale: 0 }}
     >
       <div className="toast-content">
-        <div className="banana-emoji">🍌</div>
+        {/* The banana itself is the gag: the emoji stays, hidden from AT. */}
+        <div className="banana-emoji" aria-hidden="true">
+          🍌
+        </div>
       </div>
     </motion.div>
   );
 }
 
-// 🔪 KUNAI TOAST
+// KUNAI TOAST
 function KunaiToast() {
   const [audioPlayed, setAudioPlayed] = useState(false);
 
@@ -343,6 +361,7 @@ function KunaiToast() {
           <motion.div
             key={`smoke-${i}`}
             className="smoke-particle"
+            aria-hidden="true"
             initial={{
               x: 0,
               y: 0,
@@ -361,7 +380,7 @@ function KunaiToast() {
               ease: "easeOut",
             }}
           >
-            💨
+            <Wind />
           </motion.div>
         ))}
       </div>
@@ -369,7 +388,7 @@ function KunaiToast() {
   );
 }
 
-// 🌸 SENBONZAKURA KAGEYOSHI TOAST
+// SENBONZAKURA KAGEYOSHI TOAST
 function SenbonzakuraToast() {
   const mainPetals = Array.from({ length: 80 }, (_, i) => ({
     id: i,

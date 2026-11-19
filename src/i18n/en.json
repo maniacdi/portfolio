@@ -28,8 +28,8 @@
     "contact": "Contact"
   },
   "about": {
-    "title": "About Me",
-    "subtitle": "Full-stack by day: React and Java in production for the Inditex ecosystem. At night I build my own projects on my homelab.",
+    "title": "About me",
+    "subtitle": "By day, React and Java in production for the Inditex ecosystem. By night, my own projects on my homelab.",
     "description": "Full-stack developer with 6+ years of experience. Frontend with React and TypeScript, backend with Java (Spring Boot) and Node.js: microservices with hexagonal architecture serving 10,000+ daily users. I care about clean code and things done properly.",
     "skills": {
       "frontend": "Front-end Development",
@@ -50,9 +50,9 @@
     "philosophy": "Development Philosophy",
     "philosophyText": "I prefer simple code that works well over something complex nobody understands. And if it can look good on top of working, even better.",
     "cta": "Want to work together?",
-    "ctaText": "I am available for projects. If you have something in mind, reach out.",
+    "ctaText": "Available for projects. If you have something in mind, reach out.",
     "ctaButton": "Get in touch",
-    "offHoursLead": "And when I'm not coding, I travel ✈️",
+    "offHoursLead": "And when I'm not coding, I travel",
     "travelsSub": "An interactive map of all my travels: front + back, live data from my own API.",
     "travelsLink": "Explore the map",
     "downloadCv": "Download CV",
@@ -63,11 +63,11 @@
     "files": "files",
     "updated": "Updated just now",
     "previewCv": "Preview CV",
-    "loadingCv": "Loading CV...",
+    "loadingCv": "Loading CV…",
     "downloadCvButton": "Download CV",
-    "profile": "profile",
-    "skillsSection": "skills",
-    "contactSection": "contact",
+    "profile": "Profile",
+    "skillsSection": "Skills",
+    "contactSection": "Contact",
     "connected": "Connected",
     "location": "Location",
     "passion": "Passion",
@@ -88,17 +88,17 @@
     "role": "Role",
     "name": "Name",
     "years": "years",
-    "profileJob": "Full-Stack Developer",
+    "profileJob": "Full-stack developer",
     "profileLocation": "Santander, Spain",
     "profileExperience": "6+ years",
     "profileStatus": "Available for projects",
-    "profileBio": "Full-stack developer: React and TypeScript on the front, Java (Spring Boot) and Node.js on the back. Microservices with hexagonal architecture serving 10,000+ daily users.",
+    "profileBio": "React and TypeScript on the front; Java (Spring Boot) and Node.js on the back. Microservices with hexagonal architecture serving 10,000+ daily users.",
     "careerTitle": "Career",
-    "careerSub": "Where I've worked and what I did there, newest first.",
+    "careerSub": "Where I've worked and what I did, newest first.",
     "careerTags": "Technologies",
     "present": "today",
-    "kindWork": "work",
-    "kindEducation": "education",
+    "kindWork": "Work",
+    "kindEducation": "Education",
     "locCoruna": "A Coruña, Spain",
     "locSantander": "Santander, Spain",
     "cvLabel": "Résumé",
@@ -142,6 +142,8 @@
     "noResultsFound": "No results found",
     "tryOtherFiltersOrSearchTerms": "Try other filters or search terms.",
     "travelLength": "travels loaded successfully",
+    "featured": "Featured",
+    "retry": "Retry",
     "filters": {
       "header": "Filters",
       "all": "All",
@@ -152,7 +154,7 @@
     }
   },
   "hobbies": {
-    "title": "My Hobbies",
+    "title": "My hobbies",
     "description": "Things I love doing in my free time",
     "total": "Total",
     "favorites": "Favorites",
@@ -194,7 +196,7 @@
     "hobbies": "Hobbies",
     "contact": "Contact",
     "copyright": "All rights reserved.",
-    "connect": "Let's Connect",
+    "connect": "Let's connect",
     "connectText": "Code on GitHub, career on LinkedIn and travels on Instagram.",
     "quickLinks": "Navigation",
     "tagline": "Web developer from Santander. I build things with code.",
@@ -226,8 +228,8 @@
     "cta": "View More"
   },
   "weather": {
-    "loading": "Loading weather...",
-    "refreshing": "Refreshing...",
+    "loading": "Loading weather…",
+    "refreshing": "Refreshing…",
     "error": "Error",
     "showWeather": "Show weather",
     "feelsLike": "Feels like",
@@ -289,29 +291,31 @@
     "only": "Only playable on desktop",
     "signatureUnlocked": "Signature unlocked: check the footer logo.",
     "bugsName": "Exterminator",
-    "bugsHint": "Squash {goal} bugs on the home page"
+    "bugsHint": "Squash {goal} bugs on the home page",
+    "close": "Close panel",
+    "code": "Code"
   },
   "general": {
     "removedFromFavorites": "Removed from favorites",
     "addedToFavorites": "Added to favorites"
   },
   "code": {
-    "feature": "Featured Repositories",
+    "feature": "Featured repositories",
     "featuredRepos": "Featured projects and technical experiments available on GitHub",
-    "loading": "Loading repositories...",
+    "loading": "Loading repositories…",
     "fail": "Could not load repositories",
     "retry": "Retry",
     "updated": "Updated",
-    "view": "View Code",
-    "live": "Live Demo",
+    "view": "View code",
+    "live": "Live demo",
     "viewAll": "View all repositories on GitHub",
     "viewGithub": "View full profile on GitHub",
-    "openSource": "Open Source",
-    "code": "Code & Projects",
+    "openSource": "Open source",
+    "code": "Code & projects",
     "description": "Exploring technologies, building solutions, and sharing knowledge through open source code.",
     "repositories": "Repositories",
     "languages": "Languages",
-    "active": "Years Active",
+    "active": "Years active",
     "projects": "Projects",
     "ago": "ago",
     "justNow": "just now",
@@ -354,7 +358,7 @@
   "featuredProjects": {
     "label": "PROJECTS",
     "title": "What I've built",
-    "subtitle": "A selection of personal and professional projects that showcase how I work.",
+    "subtitle": "A selection of personal and professional projects.",
     "featuredLabel": "Featured",
     "liveDemo": "Live Demo",
     "viewCode": "View Code",
@@ -410,7 +414,7 @@
   "contactForm": {
     "label": "CONTACT",
     "title": "Let's talk",
-    "subtitle": "Got a project in mind or just want to say hi? Drop me a message.",
+    "subtitle": "Got a project in mind? Tell me about it.",
     "nameLabel": "Name",
     "namePlaceholder": "Your name",
     "emailLabel": "Email",
@@ -426,6 +430,7 @@
     "sendAnother": "Send another message",
     "errorMessage": "Couldn't send the message. Try again or email me directly at magaldi6@gmail.com.",
     "close": "Close",
+    "orEmail": "Or email me at",
     "privacyConsent": "I have read and accept the <link>privacy policy</link>.",
     "privacyBasic": "Controller: Javier García Magaldi. Purpose: reply to your enquiry and prepare a quote where relevant. Legal basis: your consent. Recipients: Web3Forms as the delivery processor. Rights: access, rectification, erasure and objection by writing to magaldi6@gmail.com.",
     "privacyRequired": "You need to accept the privacy policy before sending the message."
@@ -433,7 +438,7 @@
   "services": {
     "label": "SERVICES",
     "title": "How I can help",
-    "subtitle": "Direct websites and apps for your business — restaurants, clinics, local shops. No fuss: tell me what you need and I'll build it.",
+    "subtitle": "Websites and apps for restaurants, clinics and local shops. Tell me what you need and I'll build it.",
     "employeeLabel": "Full-time role (company)",
     "items": {
       "web": {
@@ -459,11 +464,11 @@
     },
     "hire": {
       "title": "Looking for a full-time dev?",
-      "desc": "Companies: beyond freelance, I'm open to joining a team as a full-stack developer. Let's talk.",
+      "desc": "Beyond freelance, I'm open to joining a team as a full-stack developer.",
       "cta": "Reach out"
     },
     "moreLabel": "See what's included",
-    "proofLabel": "Example"
+    "proofLabel": "See {project}"
   },
   "legal": {
     "notice": "Legal notice",
@@ -477,6 +482,7 @@
     "body": "I use first-party cookies that the site needs to work and, only if you allow it, analytics and session replay to understand what breaks and what gets read. You can reject everything and keep browsing just the same.",
     "cookiesLink": "Cookie policy",
     "privacyLink": "Privacy policy",
+    "linksJoin": "and",
     "configure": "Configure",
     "savePreferences": "Save preferences",
     "rejectAll": "Reject all",
@@ -719,24 +725,25 @@
     "label": "CLIENTS",
     "title": "Sites already at work",
     "visit": "Visit site",
-    "caseStudy": "Case study",
+    "caseStudy": "Read case study",
     "comingSoon": "Coming soon"
   },
   "now": {
-    "label": "RIGHT NOW",
+    "label": "Right now",
     "commitTitle": "Latest commit",
     "commitFallback": "See what's on GitHub",
     "postTitle": "Latest post",
     "askTitle": "Ask my AI",
     "questions": [
-      "What have you built for clinics or shops?",
-      "How much does a website for my business cost?",
-      "Do you work as an employee or freelance?"
+      "What have you built for clinics?",
+      "How much does a website cost?",
+      "Employee or freelance?"
     ]
   },
   "gameOver": {
     "title": "GAME OVER",
-    "code": "Error 404 · This page doesn't exist",
+    "code": "Error 404",
+    "codeDetail": "This page doesn't exist",
     "text": "The link may be old or the address may have a typo. The rest of the site is still up.",
     "continue": "Continue?",
     "continueHint": "Taking you home in {seconds} s",

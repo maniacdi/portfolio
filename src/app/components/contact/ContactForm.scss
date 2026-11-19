@@ -3,30 +3,17 @@
 ============================================ */
 
 .contact-form-section {
-  max-width: 720px;
+  max-width: var(--content-max);
   margin: 0 auto;
   padding: var(--padding-xl) var(--content-pad);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
 
-  /* ---- Section Label (mono pill) ---- */
-  .section-label {
-    font-family: var(--font-jetbrains-mono), monospace;
-    font-weight: 400;
-    color: var(--neon-mid);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 1rem;
-
-    &::before {
-      content: "";
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--neon);
-      flex-shrink: 0;
-    }
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 4rem;
+    align-items: start;
   }
 
   .section-title {
@@ -40,9 +27,34 @@
 
   .section-subtitle {
     color: var(--text-secondary);
-    max-width: 500px;
+    max-width: 45ch;
     line-height: 1.7;
-    margin-bottom: 2.5rem;
+    text-wrap: pretty;
+  }
+}
+
+.contact-alt {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  color: var(--text-secondary);
+
+  svg {
+    flex-shrink: 0;
+    color: var(--neon-mid);
+  }
+
+  a {
+    color: var(--neon-mid);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+
+    &:hover {
+      color: var(--text);
+    }
   }
 }
 
@@ -52,13 +64,13 @@
 
 .contact-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem 1.25rem;
   /* Fields sit on the page background (see ContactFields.scss) */
   --field-notch-bg: var(--bg);
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .full-width {
@@ -79,7 +91,7 @@
   padding: 0.875rem 2rem;
   background: var(--gradient-cta);
   color: #fff;
-  font-weight: 600;
+  font-weight: var(--weight-bold);
   border: none;
   cursor: pointer;
   font-family: inherit;
@@ -103,8 +115,24 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .contact-form-section .submit-btn {
+    transition: none;
+
+    &:hover:not(:disabled) {
+      transform: none;
+    }
+
+    .spin {
+      animation: none;
+    }
+  }
+}
+
 @keyframes cf-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ============================================
@@ -124,6 +152,7 @@
 ============================================ */
 
 .success-state {
+  grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 2rem;
 

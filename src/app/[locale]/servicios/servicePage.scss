@@ -62,7 +62,7 @@
     padding: 0.875rem 1.6rem;
     background: var(--gradient-cta);
     color: #fff;
-    font-weight: 600;
+    font-weight: var(--weight-bold);
     font-size: 0.95rem;
     text-decoration: none;
     transition: box-shadow 0.2s ease;
@@ -160,7 +160,7 @@
 
     h3 {
       font-size: 1.1rem;
-      font-weight: 600;
+      font-weight: var(--weight-bold);
       color: var(--text);
     }
 
@@ -270,7 +270,7 @@
 
   .sp-post-title {
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: var(--weight-bold);
     color: var(--text);
     transition: color 0.2s ease;
   }
@@ -304,7 +304,7 @@
     list-style: none;
     color: var(--text);
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: var(--weight-bold);
 
     &::-webkit-details-marker {
       display: none;

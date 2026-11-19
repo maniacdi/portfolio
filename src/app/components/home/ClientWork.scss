@@ -22,6 +22,24 @@
   gap: 4rem;
 }
 
+/* Secondary clients: smaller window, caption beside it on desktop */
+.client-item--compact {
+  .client-frame {
+    --win-h: clamp(200px, 50vw, 280px);
+  }
+
+  @media (min-width: 900px) {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 2.5rem;
+    align-items: center;
+
+    .client-caption {
+      margin-top: 0;
+    }
+  }
+}
+
 .client-frame {
   --win-h: clamp(280px, 45vw, 520px);
   margin: 0;
@@ -109,8 +127,6 @@
   color: var(--neon-mid);
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .client-caption {
@@ -136,6 +152,12 @@
 }
 
 .client-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.8rem;
   color: var(--text-muted);
@@ -149,20 +171,14 @@
 }
 
 .client-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.8rem;
   color: var(--neon-mid);
   text-decoration: none;
 
-  svg {
-    transition: transform 0.2s ease;
-  }
-
-  &:hover svg {
-    transform: translate(2px, -2px);
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   &:focus-visible {
@@ -180,8 +196,7 @@
     transition: none;
   }
 
-  .client-frame,
-  .client-link svg {
+  .client-frame {
     transition: none;
   }
 }

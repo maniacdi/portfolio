@@ -5,7 +5,20 @@ import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
-import { Calendar, Filter, Globe, Kayak, List, Map, Search, Server, Star, TreePalm } from "lucide-react";
+import {
+  AlertTriangle,
+  Calendar,
+  Filter,
+  Globe,
+  Kayak,
+  List,
+  Map,
+  RotateCcw,
+  Search,
+  Server,
+  Star,
+  TreePalm,
+} from "lucide-react";
 
 import { useToast } from "@/app/components/toast/ToastProvider";
 import { Travel } from "@/utils/types/Travel";
@@ -209,22 +222,23 @@ export default function TravelContent() {
           </div>
         ) : error ? (
           <div className="travels-error">
-            <div className="error-icon">⚠️</div>
+            <AlertTriangle className="error-icon" aria-hidden="true" />
             <h3>{t("errorLoadingTravels")}</h3>
             <p>{t("errorLoadingTravelsMessage")}</p>
             <button className="retry-button" onClick={handleRetry}>
-              🔄 {t("retry")}
+              <RotateCcw aria-hidden="true" />
+              {t("retry")}
             </button>
           </div>
         ) : travels.length === 0 ? (
           <div className="travels-empty">
-            <div className="empty-icon">🗺️</div>
+            <Map className="empty-icon" aria-hidden="true" />
             <h3>{t("noTravelsAvailable")}</h3>
             <p>{t("noTravelsAvailableMessage")}</p>
           </div>
         ) : filteredTravels.length === 0 ? (
           <div className="travels-empty">
-            <div className="empty-icon">🔍</div>
+            <Search className="empty-icon" aria-hidden="true" />
             <h3>{t("noResultsFound")}</h3>
             <p>{t("tryOtherFiltersOrSearchTerms")}</p>
           </div>

@@ -186,14 +186,14 @@ optimizing performance and writing scalable code."`;
       description: locale === "es" ? "Información de contacto" : "Contact information",
       execute: () => (
         <div className="contact-output">
-          <p>📧 Email: {locale === "es" ? "Disponible en el formulario del portfolio" : "Available in portfolio form"}</p>
-          <p>💼 LinkedIn: linkedin.com/in/javimagaldi</p>
-          <p>🐙 GitHub: github.com/maniacdi</p>
-          <p>🌐 Portfolio: magaldidev.com</p>
+          <p>Email: {locale === "es" ? "Disponible en el formulario del portfolio" : "Available in portfolio form"}</p>
+          <p>LinkedIn: linkedin.com/in/javimagaldi</p>
+          <p>GitHub: github.com/maniacdi</p>
+          <p>Portfolio: magaldidev.com</p>
           <p className="contact-note">
             {locale === "es"
-              ? "💡 Abierto a oportunidades interesantes!"
-              : "💡 Open to interesting opportunities!"}
+              ? "¡Abierto a oportunidades interesantes!"
+              : "Open to interesting opportunities!"}
           </p>
         </div>
       ),

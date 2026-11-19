@@ -34,17 +34,26 @@
 }
 
 .hobbies-page {
-  margin-top: 32px;
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+
+  > .container {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding-inline: var(--content-pad);
+  }
 }
 
-/* Título de página — tinta sólida + cursor de terminal (firma) */
+/* Cabecera de página — título grande a la izquierda, tinta sólida + cursor de
+   terminal (firma). El texto del resto de la página puede ir centrado; la
+   cabecera siempre se alinea con el borde del contenedor (como el header). */
 .page-title {
-  font-weight: 700;
+  font-size: var(--text-page-title);
+  font-weight: var(--weight-bold);
   color: var(--text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 1;
   margin-bottom: 1rem;
-  line-height: 1.15;
-  text-align: center;
+  text-align: left;
 
   &::after {
     content: "_";
@@ -56,11 +65,20 @@
 
 .page-description {
   color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 60ch;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
   line-height: 1.7;
-  text-align: center;
-  @media (max-width: 482px) {
-    padding-inline: 1.5rem;
-  }
+  text-align: left;
+}
+
+/* Inner pages: breathing room above the big title, under the sticky header */
+.page-container:has(> .page-title),
+.page-container:has(> .legal-doc) {
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* Home: one vertical rhythm between sections. The hero (first child) keeps its
+   own box; every following section gets half the gap above and below. */
+.home-container > section:not(:first-child) {
+  padding-block: calc(var(--section-gap) / 2);
 }

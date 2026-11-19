@@ -112,6 +112,13 @@ h6 {
   line-height: 1.1;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
 /* Clase utilitaria para cuando se quiera el acento neon en un heading */
 .heading-accent {
   color: var(--neon-mid);
@@ -124,6 +131,7 @@ h6 {
 p {
   line-height: 1.7;
   color: var(--text-secondary);
+  text-wrap: pretty;
 }
 
 /* ============================================
@@ -136,7 +144,9 @@ button {
   font-family: inherit;
 }
 
-/* Foco visible = marca: contorno neón recto en todo lo interactivo */
+/* Foco visible = marca: contorno neón recto en todo lo interactivo.
+   Instantáneo (outline no entra en ninguna transition: prohibido
+   `transition: all`) y --neon-mid da ≥ 4.5:1 sobre los fondos de ambos temas. */
 :focus-visible {
   outline: 2px solid var(--neon-mid);
   outline-offset: 2px;
@@ -145,26 +155,6 @@ button {
 /* ============================================
    CLASES UTILITARIAS GLOBALES
 ============================================ */
-
-/* Label de sección estilo mono */
-.section-label {
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-weight: 500;
-  color: var(--neon-mid);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-
-  &::before {
-    content: "//";
-    color: var(--neon-mid);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-}
 
 /* Antes texto degradado; ahora tinta sólida (el degradado-en-texto
    era la firma "IA genérica"). La clase se mantiene por compatibilidad. */
@@ -195,7 +185,7 @@ button {
 
 ::selection {
   background: var(--neon);
-  color: #ffffff;
+  color: var(--on-neon);
 }
 
 /* ============================================

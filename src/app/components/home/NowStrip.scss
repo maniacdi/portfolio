@@ -8,6 +8,14 @@
   padding: var(--padding-xl) var(--content-pad);
 }
 
+.now-heading {
+  margin-bottom: 1.25rem;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
 .now-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -44,10 +52,7 @@
 }
 
 .now-title {
-  font-family: var(--font-jetbrains-mono), monospace;
   font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   color: var(--text-muted);
 }
 
@@ -103,10 +108,17 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
+
+  /* Narrow phones: full-width rows, so a long question wraps evenly
+     instead of leaving one word on a second line */
+  @media (max-width: 480px) {
+    align-items: stretch;
+  }
 }
 
 .ask-chip {
   max-width: 100%;
+  text-wrap: balance;
   padding: 0.45rem 0.75rem;
   border: 1px solid var(--border);
   background: transparent;

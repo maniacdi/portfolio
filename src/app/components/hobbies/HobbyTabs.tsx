@@ -63,7 +63,7 @@ export default function HobbyTabs() {
           <Search className="search-icon" size={20} />
           <input
             type="text"
-            placeholder={`Search ${activeSection.title.toLowerCase()}...`}
+            placeholder={`Search ${activeSection.title.toLowerCase()}…`}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"

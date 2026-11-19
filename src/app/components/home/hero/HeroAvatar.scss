@@ -30,14 +30,15 @@
   position: absolute;
   left: 50%;
   top: 55%;
-  width: 160%;
+  /* a faint backlight so the voxel me reads on the dark bg, not a halo */
+  width: 95%;
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   background: radial-gradient(
     circle,
-    rgb(111 0 255 / 45%) 0%,
-    rgb(111 0 255 / 12%) 40%,
-    transparent 68%
+    color-mix(in srgb, var(--neon) 18%, transparent) 0%,
+    color-mix(in srgb, var(--neon) 5%, transparent) 45%,
+    transparent 70%
   );
   pointer-events: none;
   animation: hero-aura 3.2s ease-in-out infinite;

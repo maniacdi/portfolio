@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { CheckCircle, Loader2, Mail, Send, X } from "lucide-react";
 
 import { useContactModalStore } from "@/app/store/useContactModalStore";
@@ -159,136 +159,134 @@ export default function ContactModal() {
   };
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          className="contact-modal-backdrop"
-          ref={backdropRef}
-          onClick={handleBackdropClick}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-        >
+    <MotionConfig reducedMotion="user">
+      <AnimatePresence>
+        {isOpen && (
           <motion.div
-            className="contact-modal"
-            ref={dialogRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="contact-modal-title"
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.25, type: "spring", damping: 25 }}
+            className="contact-modal-backdrop"
+            ref={backdropRef}
+            onClick={handleBackdropClick}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            {/* Header */}
-            <div className="modal-header">
-              <div className="modal-header-text">
-                <Mail size={18} className="modal-icon" />
-                <h3 id="contact-modal-title">{t("title")}</h3>
+            <motion.div
+              className="contact-modal"
+              ref={dialogRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="contact-modal-title"
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25, type: "spring", damping: 25 }}
+            >
+              {/* Header */}
+              <div className="modal-header">
+                <div className="modal-header-text">
+                  <Mail size={18} className="modal-icon" />
+                  <h3 id="contact-modal-title">{t("title")}</h3>
+                </div>
+                <button className="modal-close" onClick={close} aria-label={t("close")}>
+                  <X size={18} />
+                </button>
               </div>
-              <button className="modal-close" onClick={close} aria-label={t("close")}>
-                <X size={18} />
-              </button>
-            </div>
 
-            {/* Body */}
-            <div className="modal-body">
-              {status === "success" ? (
-                <motion.div
-                  className="modal-success"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                >
-                  <CheckCircle size={44} className="success-icon" />
-                  <h4>{t("successTitle")}</h4>
-                  <p>{t("successMessage")}</p>
-                  <div className="success-actions">
-                    <button className="btn-secondary" onClick={handleReset}>
-                      {t("sendAnother")}
-                    </button>
-                    <button className="btn-primary" onClick={handleCloseAfterSuccess}>
-                      {t("close") || "Cerrar"}
-                    </button>
-                  </div>
-                </motion.div>
-              ) : (
-                <form className="modal-form" onSubmit={handleSubmit}>
-                  <p className="modal-subtitle">{t("subtitle")}</p>
-
-                  <FloatingField
-                    id="modal-name"
-                    name="name"
-                    label={t("nameLabel")}
-                    hint={t("namePlaceholder")}
-                    value={form.name}
-                    onChange={handleChange}
-                    autoComplete="name"
-                  />
-                  <FloatingField
-                    id="modal-email"
-                    name="email"
-                    type="email"
-                    label={t("emailLabel")}
-                    hint={t("emailPlaceholder")}
-                    value={form.email}
-                    onChange={handleChange}
-                    autoComplete="email"
-                  />
-                  <ServiceChips
-                    value={form.service}
-                    onChange={(service) => setForm((prev) => ({ ...prev, service }))}
-                  />
-                  <FloatingField
-                    id="modal-message"
-                    name="message"
-                    label={t("messageLabel")}
-                    hint={t("messagePlaceholder")}
-                    value={form.message}
-                    onChange={handleChange}
-                    multiline
-                  />
-
-                  {/* Privacy consent — RGPD art. 13 first layer + art. 6.1.a */}
-                  <PrivacyConsentField
-                    id="modal-privacy"
-                    checked={privacyAccepted}
-                    onChange={setPrivacyAccepted}
-                  />
-
-                  {status === "error" && (
-                    <motion.p
-                      className="form-error"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                    >
-                      {t("errorMessage")}
-                    </motion.p>
-                  )}
-
-                  <button
-                    type="submit"
-                    className="submit-btn"
-                    disabled={status === "sending"}
+              {/* Body */}
+              <div className="modal-body">
+                {status === "success" ? (
+                  <motion.div
+                    className="modal-success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
                   >
-                    {status === "sending" ? (
-                      <>
-                        <Loader2 size={16} className="spin" />
-                        <span>{t("sending")}</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send size={16} />
-                        <span>{t("send")}</span>
-                      </>
+                    <CheckCircle size={44} className="success-icon" />
+                    <h4>{t("successTitle")}</h4>
+                    <p>{t("successMessage")}</p>
+                    <div className="success-actions">
+                      <button className="btn-secondary" onClick={handleReset}>
+                        {t("sendAnother")}
+                      </button>
+                      <button className="btn-primary" onClick={handleCloseAfterSuccess}>
+                        {t("close") || "Cerrar"}
+                      </button>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <form className="modal-form" onSubmit={handleSubmit}>
+                    <p className="modal-subtitle">{t("subtitle")}</p>
+
+                    <FloatingField
+                      id="modal-name"
+                      name="name"
+                      label={t("nameLabel")}
+                      hint={t("namePlaceholder")}
+                      value={form.name}
+                      onChange={handleChange}
+                      autoComplete="name"
+                    />
+                    <FloatingField
+                      id="modal-email"
+                      name="email"
+                      type="email"
+                      label={t("emailLabel")}
+                      hint={t("emailPlaceholder")}
+                      value={form.email}
+                      onChange={handleChange}
+                      autoComplete="email"
+                    />
+                    <ServiceChips
+                      value={form.service}
+                      onChange={(service) => setForm((prev) => ({ ...prev, service }))}
+                    />
+                    <FloatingField
+                      id="modal-message"
+                      name="message"
+                      label={t("messageLabel")}
+                      hint={t("messagePlaceholder")}
+                      value={form.message}
+                      onChange={handleChange}
+                      multiline
+                    />
+
+                    {/* Privacy consent — RGPD art. 13 first layer + art. 6.1.a */}
+                    <PrivacyConsentField
+                      id="modal-privacy"
+                      checked={privacyAccepted}
+                      onChange={setPrivacyAccepted}
+                    />
+
+                    {status === "error" && (
+                      <motion.p
+                        className="form-error"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                      >
+                        {t("errorMessage")}
+                      </motion.p>
                     )}
-                  </button>
-                </form>
-              )}
-            </div>
+
+                    <button type="submit" className="submit-btn" disabled={status === "sending"}>
+                      {status === "sending" ? (
+                        <>
+                          <Loader2 size={16} className="spin" />
+                          <span>{t("sending")}</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send size={16} />
+                          <span>{t("send")}</span>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+    </MotionConfig>
   );
 }

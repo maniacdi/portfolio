@@ -90,7 +90,12 @@
 }
 
 .hb-line-out {
-  padding: 0;
+  /* the word is the button: on small screens the cap height drops under
+     44px, so pad the hit area to 44px and cancel it with a matching negative
+     margin so the headline lines do not move */
+  --hb-hit-pad: max(0px, calc((44px - 0.9em) / 2));
+  padding: var(--hb-hit-pad) 0;
+  margin: calc(var(--hb-hit-pad) * -1) 0;
   border: 0;
   background: none;
   font: inherit;

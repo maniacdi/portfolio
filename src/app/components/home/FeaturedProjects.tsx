@@ -3,29 +3,26 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, Code2, ExternalLink, Folder } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Code2, ExternalLink } from "lucide-react";
 
 import { CLIENT_SLUGS, FEATURED_PROJECTS } from "@/app/data/projects";
 import LocalizedLink from "@components/common/LocalizedLink";
 
 import "./FeaturedProjects.scss";
 
-// Client sites already lead the home in ClientWork.
+// Client sites already lead the home in ClientWork. Only home uses this
+// section, so it shows the first four; /projects lists them all.
 const OTHER_PROJECTS = FEATURED_PROJECTS.filter(
   (p) => !(CLIENT_SLUGS as readonly string[]).includes(p.slug)
-);
+).slice(0, 4);
 
 export default function FeaturedProjects() {
   const t = useTranslations("featuredProjects");
+  const reduceMotion = useReducedMotion();
 
   return (
     <section id="proyectos" className="featured-projects">
-      <motion.div className="section-label reveal">
-        <Folder size={14} />
-        <span>{t("label")}</span>
-      </motion.div>
-
       <motion.h2 className="section-title reveal">{t("title")}</motion.h2>
 
       <motion.p className="section-subtitle reveal">{t("subtitle")}</motion.p>
@@ -36,7 +33,7 @@ export default function FeaturedProjects() {
             <motion.article
               key={project.title}
               className="project-card reveal"
-              whileHover={{ y: -5 }}
+              whileHover={reduceMotion ? undefined : { y: -5 }}
             >
               <div className="project-media">
                 {project.image && (
@@ -71,7 +68,11 @@ export default function FeaturedProjects() {
                 <p className="project-description">{t(project.descriptionKey)}</p>
 
                 <div className="project-foot">
-                  <span className="project-stack">{project.tags.slice(0, 4).join(" · ")}</span>
+                  <ul className="project-stack">
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
                   <div className="project-links">
                     {project.demo && (
                       <a
@@ -105,8 +106,7 @@ export default function FeaturedProjects() {
 
       <motion.div className="view-all reveal">
         <LocalizedLink href="/projects" className="view-all-link">
-          <span>{t("viewAll")}</span>
-          <ArrowUpRight size={16} />
+          {t("viewAll")}
         </LocalizedLink>
       </motion.div>
     </section>

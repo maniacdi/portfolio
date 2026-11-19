@@ -59,16 +59,15 @@ export default function HeroBillboard() {
       </svg>
 
       <div className="bb-inner">
-        <h1 id="hero-name" className="sr-only">
-          Javier García Magaldi — {t("role")}
-        </h1>
-
         <div className="hb-main">
-          <p className="hb-headline">
+          {/* The poster line is the visible h1; name and role ride along for
+              search engines and screen readers without changing the visual. */}
+          <h1 id="hero-name" className="hb-headline">
+            <span className="sr-only">Javier García Magaldi, {t("role")}. </span>
             {headline.map((line, i) => (
               <HeadlineLine key={line} line={line} index={i} />
             ))}
-          </p>
+          </h1>
           <p className="bb-lede">{t("lede")}</p>
           <HeroActions className="bb-actions" />
         </div>

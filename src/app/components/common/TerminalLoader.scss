@@ -151,7 +151,7 @@
 
       .input {
         color: var(--neon-mid);
-        font-weight: 600;
+        font-weight: var(--weight-bold);
         &::before {
           content: "$ ";
           color: var(--neon-mid);
@@ -169,7 +169,7 @@
 
       .success {
         color: var(--neon-mid);
-        font-weight: 600;
+        font-weight: var(--weight-bold);
         &::before {
           content: "✓ ";
         }
@@ -177,7 +177,7 @@
 
       .command {
         color: var(--neon-mid);
-        font-weight: 600;
+        font-weight: var(--weight-bold);
         &::before {
           content: "$ ";
           color: var(--neon-mid);

@@ -160,7 +160,7 @@ export default async function ProjectPage({
             alt={project.title}
             fill
             sizes="(max-width: 900px) 100vw, 900px"
-            priority
+            preload
           />
         </div>
       )}

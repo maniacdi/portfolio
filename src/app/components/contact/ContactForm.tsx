@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle, Loader2, Mail, Send } from "lucide-react";
 
 import { FloatingField, ServiceChips } from "./ContactFields";
@@ -37,6 +37,7 @@ export default function ContactForm({ defaultService = "", title, subtitle }: Co
   const [form, setForm] = useState<FormData>(emptyForm);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -86,7 +87,7 @@ export default function ContactForm({ defaultService = "", title, subtitle }: Co
       <section id="contacto" className="contact-form-section">
         <motion.div
           className="success-state"
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: "spring" }}
         >
@@ -103,15 +104,19 @@ export default function ContactForm({ defaultService = "", title, subtitle }: Co
 
   return (
     <section id="contacto" className="contact-form-section">
-      {/* Label */}
-      <motion.div className="section-label reveal">
-        <Mail size={14} />
-        <span>{t("label")}</span>
-      </motion.div>
+      {/* Two columns from 900px: pitch + direct email on the left, form on the right */}
+      <div className="contact-intro">
+        <motion.h2 className="section-title reveal">{title ?? t("title")}</motion.h2>
 
-      <motion.h2 className="section-title reveal">{title ?? t("title")}</motion.h2>
+        <motion.p className="section-subtitle reveal">{subtitle ?? t("subtitle")}</motion.p>
 
-      <motion.p className="section-subtitle reveal">{subtitle ?? t("subtitle")}</motion.p>
+        <p className="contact-alt reveal">
+          <Mail size={16} aria-hidden="true" />
+          <span>
+            {t("orEmail")} <a href="mailto:magaldi6@gmail.com">magaldi6@gmail.com</a>
+          </span>
+        </p>
+      </div>
 
       <motion.form className="contact-form reveal" onSubmit={handleSubmit}>
         <FloatingField
@@ -169,8 +174,8 @@ export default function ContactForm({ defaultService = "", title, subtitle }: Co
           type="submit"
           className="submit-btn"
           disabled={status === "sending"}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.97 }}
+          whileHover={reduceMotion ? undefined : { scale: 1.02 }}
+          whileTap={reduceMotion ? undefined : { scale: 0.97 }}
         >
           {status === "sending" ? (
             <>

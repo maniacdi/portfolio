@@ -26,7 +26,7 @@ export default function LanguageSwitcher() {
   // Service pages have a different slug per language.
   const href = translateServicePath(pathname, locale, nextLocale) ?? pathname;
 
-  // Plain "ES / EN" in mono, current one lit: same box as the theme toggle.
+  // Plain "es / en" in mono (lowercase: no shouted labels), current one lit: same box as the theme toggle.
   return (
     <Link
       href={href}
@@ -35,11 +35,11 @@ export default function LanguageSwitcher() {
       aria-label={`Change language to ${LANGUAGE_LABELS[nextLocale]}`}
       title={`Switch to ${LANGUAGE_LABELS[nextLocale]}`}
     >
-      <span className={isEnglish ? undefined : "active"}>ES</span>
+      <span className={isEnglish ? undefined : "active"}>es</span>
       <span className="lang-sep" aria-hidden="true">
         /
       </span>
-      <span className={isEnglish ? "active" : undefined}>EN</span>
+      <span className={isEnglish ? "active" : undefined}>en</span>
     </Link>
   );
 }

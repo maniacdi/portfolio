@@ -122,7 +122,7 @@ export default function TerminalLoader() {
         </div>
 
         <div className="hint">
-          <span>Initializing experience...</span>
+          <span>Initializing experience…</span>
           <div className="spinner" />
         </div>
 

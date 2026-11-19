@@ -3,8 +3,8 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
 
-import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Zap } from "lucide-react";
+import { motion,MotionConfig } from "framer-motion";
+import { ArrowRight, Plane, Zap } from "lucide-react";
 
 import { DeveloperProfile } from "@/app/components/about/DeveloperProfile/DeveloperProfile";
 import { useContactModalStore } from "@/app/store/useContactModalStore";
@@ -33,7 +33,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
       org: "AMS Solutions",
       location: t("locCoruna"),
       description: t("exp1Description"),
-      tags: ["React", "TypeScript", "Java · Spring Boot", "MongoDB · Redis", "Microfrontends"],
+      tags: ["React", "TypeScript", "Java", "Spring Boot", "MongoDB", "Redis", "Microfrontends"],
     },
     {
       kind: "work",
@@ -72,7 +72,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
   ];
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <section className={`about-section ${className}`} aria-labelledby="about-title" role="region">
         <div className="about-content">
           <DeveloperProfile className="developer-profile-side" />
@@ -82,8 +82,8 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
       </section>
 
       <motion.div className="off-hours reveal">
-        <span className="off-hours-icon">
-          <MapPin size={26} />
+        <span className="off-hours-icon" aria-hidden="true">
+          <Plane size={26} />
         </span>
         <div className="off-hours-text">
           <p className="off-hours-lead">{t("offHoursLead")}</p>
@@ -91,7 +91,7 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
         </div>
         <LocalizedLink href="/travels" className="off-hours-link">
           <span>{t("travelsLink")}</span>
-          <ArrowRight size={16} />
+          <ArrowRight size={16} aria-hidden="true" />
         </LocalizedLink>
       </motion.div>
       <motion.div
@@ -105,11 +105,10 @@ export const AboutSection: FC<AboutSectionProps> = ({ className }) => {
           <p className="cta-subtitle">{t("ctaText")}</p>
           <button type="button" onClick={() => openContactModal()} className="neon-button">
             <span>{t("ctaButton")}</span>
-            <Zap size={16} />
+            <Zap size={16} aria-hidden="true" />
           </button>
         </div>
-        <div className="cta-glow"></div>
       </motion.div>
-    </>
+    </MotionConfig>
   );
 };

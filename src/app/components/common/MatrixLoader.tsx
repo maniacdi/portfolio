@@ -86,7 +86,7 @@ export default function MatrixLoader() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <canvas ref={canvasRef} className="matrix-canvas" />
+      <canvas ref={canvasRef} className="matrix-canvas" aria-hidden="true" />
 
       <div className="matrix-content">
         <div className="matrix-header">

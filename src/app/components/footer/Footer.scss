@@ -65,11 +65,10 @@
 }
 
 .column-title {
-  font-family: var(--font-jetbrains-mono), monospace;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: var(--neon-mid);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: var(--text);
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -159,10 +158,6 @@
     .links-list {
       justify-content: center;
     }
-
-    .footer-link .link-arrow {
-      display: none;
-    }
   }
 
   /* 7 links: two short columns instead of one long list */
@@ -178,44 +173,31 @@
     gap: 0.5rem;
     color: var(--text-secondary);
     text-decoration: none;
-    transition:
-      color 0.2s ease,
-      padding-left 0.2s ease;
+    transition: color 0.2s ease;
     position: relative;
     padding: 0.25rem 0;
 
-    .link-arrow {
-      opacity: 0;
-      transform: translateX(-8px);
-      transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
-      color: var(--neon-mid);
-    }
-
     &:hover {
       color: var(--text);
-      padding-left: 0.5rem;
-
-      .link-arrow {
-        opacity: 1;
-        transform: translateX(0);
-      }
     }
 
+    /* Underline grows from the left via scaleX (no layout animation) */
     &::after {
       content: "";
       position: absolute;
       left: 0;
       bottom: 0;
-      width: 0;
+      width: 100%;
       height: 1px;
       background: var(--neon);
-      transition: width 0.25s ease;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.25s ease;
     }
 
-    &:hover::after {
-      width: 100%;
+    &:hover::after,
+    &:focus-visible::after {
+      transform: scaleX(1);
     }
   }
 }
@@ -298,10 +280,8 @@
 }
 
 .footer-legal-link {
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.8rem;
   color: var(--text-muted);
   transition: color 0.15s ease;
 
@@ -346,10 +326,6 @@
 
   @media (max-width: 768px) {
     justify-content: center;
-  }
-
-  .separator {
-    opacity: 0.4;
   }
 }
 
@@ -431,7 +407,14 @@
 
   .social-link,
   .footer-link,
-  .back-to-top {
+  .footer-link::after,
+  .footer-legal-link,
+  .back-to-top,
+  .back-to-top svg {
     transition: none;
+  }
+
+  .back-to-top:hover svg {
+    transform: none;
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronRight, Github, Linkedin, Mail } from "lucide-react";
+import { Check, ChevronRight, Github, Linkedin, Mail } from "lucide-react";
 
 import { useContactModalStore } from "@/app/store/useContactModalStore";
 import type { ProfileData } from "@/utils/data/profileData";
@@ -65,6 +65,7 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
               key={option.title}
               className="contact-card"
               href={option.link}
+              type={isExternal ? undefined : "button"}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}
               onClick={!isExternal ? option.action : undefined}
@@ -84,7 +85,8 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
                 <p>{option.value}</p>
                 {option.title === "Email" && (
                   <span className="contact-action-text">
-                    {copied ? `✓ ${t("copied")}` : t("clickToCopy")}
+                    {copied && <Check size={14} aria-hidden="true" />}
+                    {copied ? t("copied") : t("clickToCopy")}
                   </span>
                 )}
               </div>
@@ -98,13 +100,14 @@ export const ContactTab = ({ data, onCopyEmail, copied, t }: ContactTabProps) =>
       <div className="contact-cta">
         <p>{t("interestedIn")}</p>
         <motion.button
+          type="button"
           className="cta-button"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => openContactModal()}
           aria-label="Open contact form"
         >
-          <Mail size={16} />
+          <Mail size={16} aria-hidden="true" />
           {t("sendMessage")}
         </motion.button>
       </div>

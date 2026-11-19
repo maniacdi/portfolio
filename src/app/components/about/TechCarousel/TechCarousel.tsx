@@ -105,9 +105,6 @@ export default function TechCarousel() {
   return (
     <section className="tech-stage-section" aria-labelledby="tech-stage-title">
       <div className="tech-stage-header">
-        <p className="section-label">
-          <span>{t("label")}</span>
-        </p>
         <h2 id="tech-stage-title" className="tech-stage-title">
           {t("title")}
         </h2>
@@ -188,7 +185,8 @@ export default function TechCarousel() {
                 <span className="tech-slide-name">{tech.label}</span>
                 {techInfo && (
                   <span className="tech-slide-meta">
-                    {t("years", { years: techInfo.years })} · {t(`categories.${techInfo.category}`)}
+                    <span>{t("years", { years: techInfo.years })}</span>
+                    <span>{t(`categories.${techInfo.category}`)}</span>
                   </span>
                 )}
               </motion.button>

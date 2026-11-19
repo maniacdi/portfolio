@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Calendar, Camera, ChevronLeft, ChevronRight, Clock, MapPin, X } from "lucide-react";
+import { Calendar, Camera, ChevronLeft, ChevronRight, Clock, MapPin, Star, X } from "lucide-react";
 
 import { formatDate, getDuration, getTypeColor } from "@/utils/helpers/travels";
 import { Travel } from "@/utils/types/Travel";
@@ -115,7 +115,10 @@ export default function TravelModal({ travel, isOpen, onClose }: TravelModalProp
                       {travel.type}
                     </span>
                     {travel.isFeatured && (
-                      <span className="featured-badge">⭐ {t("featured")}</span>
+                      <span className="featured-badge">
+                        <Star aria-hidden="true" />
+                        {t("featured")}
+                      </span>
                     )}
                   </div>
 
